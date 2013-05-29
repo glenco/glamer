@@ -19,7 +19,7 @@ include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set CCFITS_FOUND to TRUE
 # if all listed variables are TRUE
 find_package_handle_standard_args(
-	CCFITS
+	CCfits
 	DEFAULT_MSG
 	CCFITS_LIBRARY
 	CCFITS_INCLUDE_DIR

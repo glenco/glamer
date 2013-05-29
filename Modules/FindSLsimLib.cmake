@@ -11,7 +11,7 @@ find_package(CosmoLib REQUIRED)
 set(SLSIMLIB_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/../SLsimLib/include" CACHE PATH "Includes for SLsimLib library.")
 set(SLSIMLIB_LIBRARY_DIR "${PROJECT_SOURCE_DIR}/../SLsimLib/build" CACHE PATH "Path to the SLsimLib library.")
 
-find_path(SLSIMLIB_INCLUDE_DIR cosmo.h HINTS ${SLSIMLIB_INCLUDE_DIR})
+find_path(SLSIMLIB_INCLUDE_DIR slsimlib.h HINTS ${SLSIMLIB_INCLUDE_DIR})
 
 find_library(SLSIMLIB_LIBRARY NAMES SLsimLib libSLsimLib HINTS ${SLSIMLIB_LIBRARY_DIR})
 
@@ -23,7 +23,7 @@ include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set SLSIMLIB_FOUND to TRUE
 # if all listed variables are TRUE
 find_package_handle_standard_args(
-	SLSIMLIB
+	SLsimLib
 	DEFAULT_MSG
 	SLSIMLIB_INCLUDE_DIR
 	SLSIMLIB_LIBRARY

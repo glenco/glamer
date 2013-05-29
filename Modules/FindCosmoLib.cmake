@@ -22,7 +22,7 @@ include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set COSMOLIB_FOUND to TRUE
 # if all listed variables are TRUE
 find_package_handle_standard_args(
-	COSMOLIB
+	CosmoLib
 	DEFAULT_MSG
 	COSMOLIB_INCLUDE_DIR
 	COSMOLIB_LIBRARY
