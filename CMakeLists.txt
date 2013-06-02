@@ -38,8 +38,7 @@ add_subdirectory(SLsimLib)
 
 include(CMakePackageConfigHelpers)
 
-export(TARGETS NR CosmoLib SLsimLib
-	FILE "${PROJECT_BINARY_DIR}/GLAMERTargets.cmake")
+export(TARGETS NR CosmoLib SLsimLib FILE GLAMERTargets.cmake)
 
 export(PACKAGE GLAMER)
 
@@ -57,7 +56,7 @@ write_basic_package_version_file(
 
 configure_file(
 	GLAMERConfig.cmake.in
-	"${PROJECT_BINARY_DIR}/GLAMERConfig.cmake"
+	GLAMERConfig.cmake
 	@ONLY
 )
 
