@@ -28,6 +28,15 @@ set(SOURCES
 
 
 ####
+# other files
+####
+
+set(FILES
+	paramfile
+)
+
+
+####
 # dependencies
 ####
 
@@ -40,7 +49,7 @@ include_directories(${GLAMER_INCLUDE_DIRS})
 # build
 ####
 
-add_executable(sample ${HEADERS} ${SOURCES})
+add_executable(sample ${HEADERS} ${SOURCES} ${FILES})
 
 target_link_libraries(sample ${GLAMER_LIBRARIES})
 
