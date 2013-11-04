@@ -1,4 +1,5 @@
 # Try to find CCfits
+# The path given in a CCFITS environment variable will be searched first.
 # Once done this will define
 #  CCFITS_FOUND - System has CCfits
 #  CCFITS_INCLUDE_DIRS - The CCfits include directories
@@ -7,9 +8,19 @@
 
 find_package(CFITSIO REQUIRED)
 
-find_path(CCFITS_INCLUDE_DIR CCfits/CCfits HINTS )
+find_path(CCFITS_INCLUDE_DIR
+	CCfits/CCfits
+	PATHS "${CCFITS}" ENV CCFITS
+	PATH_SUFFIXES "include"
+	DOC "CCfits include directory"
+)
 
-find_library(CCFITS_LIBRARY NAMES CCfits libCCfits HINTS )
+find_library(CCFITS_LIBRARY
+	NAMES CCfits libCCfits
+	PATHS "${CCFITS}" ENV CCFITS
+	PATH_SUFFIXES "lib"
+	DOC "CCfits library"
+)
 
 set(CCFITS_LIBRARIES ${CCFITS_LIBRARY} ${CFITSIO_LIBRARIES})
 set(CCFITS_INCLUDE_DIRS ${CCFITS_INCLUDE_DIR} ${CFITSIO_INCLUDE_DIRS})
