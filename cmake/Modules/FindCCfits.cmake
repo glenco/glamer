@@ -10,15 +10,15 @@ find_package(CFITSIO REQUIRED)
 
 find_path(CCFITS_INCLUDE_DIR
 	CCfits/CCfits
-	PATHS "${CCFITS}" ENV CCFITS
+	PATHS ENV CCFITS
 	PATH_SUFFIXES "include"
 	DOC "CCfits include directory"
 )
 
 find_library(CCFITS_LIBRARY
 	NAMES CCfits libCCfits
-	PATHS "${CCFITS}" ENV CCFITS
-	PATH_SUFFIXES "lib"
+	PATHS ENV CCFITS
+	PATH_SUFFIXES "lib" ".libs"
 	DOC "CCfits library"
 )
 
