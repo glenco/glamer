@@ -6,18 +6,20 @@
 #  CCFITS_LIBRARIES - The libraries needed to use CCfits
 #  CCFITS_DEFINITIONS - Compiler switches required for using CCfits
 
+set(CCFITS CACHE FILEPATH "Path to CCfits.")
+
 find_package(CFITSIO REQUIRED)
 
 find_path(CCFITS_INCLUDE_DIR
 	CCfits/CCfits
-	HINTS ENV CCFITS
+	HINTS ${CCFITS}
 	PATH_SUFFIXES "include" ".."
 	DOC "CCfits include directory"
 )
 
 find_library(CCFITS_LIBRARY
 	NAMES CCfits libCCfits
-	HINTS ENV CCFITS
+	HINTS ${CCFITS}
 	PATH_SUFFIXES "lib" ".libs"
 	DOC "CCfits library"
 )

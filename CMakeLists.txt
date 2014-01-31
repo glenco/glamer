@@ -24,6 +24,19 @@ include(GLAMER)
 
 
 ####
+# dependencies
+####
+
+if(ENABLE_FITS)
+	find_package(CCFITS REQUIRED)
+endif()
+
+if(ENABLE_FFTW3)
+	find_package(FFTW3 REQUIRED)
+endif()
+
+
+####
 # sources
 ####
 
@@ -47,6 +60,18 @@ set(GLAMER_INCLUDE_DIRS
 	"${CosmoLib_SOURCE_DIR}/include"
 	"${SLsimLib_SOURCE_DIR}/include"
 )
+
+set(GLAMER_LIBRARIES NR CosmoLib SLsimLib)
+
+if(ENABLE_FITS)
+	list(APPEND GLAMER_INCLUDE_DIRS ${CCFITS_INCLUDE_DIRS})
+	list(APPEND GLAMER_LIBRARIES ${CCFITS_LIBRARIES})
+endif()
+
+if(ENABLE_FFTW)
+	list(APPEND GLAMER_INCLUDE_DIRS ${FFTW3_INCLUDE_DIRS})
+	list(APPEND GLAMER_LIBRARIES ${FFTW3_LIBRARIES})
+endif()
 
 write_basic_package_version_file(
 	GLAMERConfigVersion.cmake

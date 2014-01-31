@@ -6,16 +6,18 @@
 #  CFITSIO_LIBRARIES - The libraries needed to use CFITSIO
 #  CFITSIO_DEFINITIONS - Compiler switches required for using CFITSIO
 
+set(CFITSIO CACHE FILEPATH "Path to CFITSIO.")
+
 find_path(CFITSIO_INCLUDE_DIR
 	fitsio.h
-	PATHS ENV CFITSIO
+	HINTS ${CFITSIO}
 	PATH_SUFFIXES "include"
 	DOC "CFITSIO include directory"
 )
 
 find_library(CFITSIO_LIBRARY
 	NAMES cfitsio libcfitsio
-	PATHS ENV CFITSIO
+	HINTS ${CFITSIO}
 	PATH_SUFFIXES "lib"
 	DOC "CFITSIO library"
 )
