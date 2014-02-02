@@ -31,7 +31,7 @@ if(ENABLE_FITS)
 	find_package(CCFITS REQUIRED)
 endif()
 
-if(ENABLE_FFTW3)
+if(ENABLE_FFTW)
 	find_package(FFTW3 REQUIRED)
 endif()
 

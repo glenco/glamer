@@ -3,7 +3,7 @@
 ####
 
 option(USE_CXX11 "Use C++11 for compiling (if supported)." ON)
-option(USE_GLIBCXX "Use libstdc++ instead of libc++ for clang." ON)
+option(USE_GLIBCXX "Use libstdc++ instead of libc++ for clang." OFF)
 
 if(USE_CXX11)
 	if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
