@@ -65,3 +65,13 @@ else()
 	message(STATUS "FFTW support: disabled")
 endif()
 
+# GSL
+option(ENABLE_GSL "Enable functions that require GSL." OFF)
+
+if(ENABLE_GSL)
+	add_definitions(-DENABLE_GSL=1)
+	message(STATUS "GSL support: enabled")
+else()
+	message(STATUS "GSL support: disabled")
+endif()
+

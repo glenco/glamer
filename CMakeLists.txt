@@ -35,6 +35,10 @@ if(ENABLE_FFTW)
 	find_package(FFTW3 REQUIRED)
 endif()
 
+if(ENABLE_GSL)
+	find_package(GSL REQUIRED)
+endif()
+
 
 ####
 # sources
@@ -71,6 +75,11 @@ endif()
 if(ENABLE_FFTW)
 	list(APPEND GLAMER_INCLUDE_DIRS ${FFTW3_INCLUDE_DIRS})
 	list(APPEND GLAMER_LIBRARIES ${FFTW3_LIBRARIES})
+endif()
+
+if(ENABLE_GSL)
+	list(APPEND GLAMER_INCLUDE_DIRS ${GSL_INCLUDE_DIRS})
+	list(APPEND GLAMER_LIBRARIES ${GSL_LIBRARIES})
 endif()
 
 write_basic_package_version_file(
