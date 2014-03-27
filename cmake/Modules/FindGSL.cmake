@@ -9,7 +9,7 @@
 set(GSL CACHE FILEPATH "Path to GSL.")
 
 find_path(GSL_INCLUDE_DIR
-	NAMES gsl_sys.h gsl_math.h
+	NAMES gsl/gsl_sys.h gsl/gsl_math.h
 	HINTS ${GSL}
 	PATH_SUFFIXES "include"
 	DOC "GSL include directory"
