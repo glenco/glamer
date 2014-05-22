@@ -75,3 +75,13 @@ else()
 	message(STATUS "GSL support: disabled")
 endif()
 
+# HEALPIX
+option(ENABLE_HEALPIX "Enable functions that require HEALPIX." OFF)
+
+if(ENABLE_HEALPIX)
+	add_definitions(-DENABLE_HEALPIX=1)
+	message(STATUS "HEALPIX support: enabled")
+else()
+	message(STATUS "HEALPIX support: disabled")
+endif()
+
