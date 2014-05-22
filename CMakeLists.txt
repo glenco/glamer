@@ -39,6 +39,10 @@ if(ENABLE_GSL)
 	find_package(GSL REQUIRED)
 endif()
 
+if(ENABLE_HEALPIX)
+	find_package(HEALPIX REQUIRED)
+endif()
+
 
 ####
 # sources
