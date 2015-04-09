@@ -4,6 +4,9 @@ SLSIMLIB="https://github.com/glenco/SLsimLib.git"
 COSMOLIB="https://github.com/glenco/CosmoLib.git"
 NR="https://github.com/glenco/NR.git"
 
+echo "Updating 'GLAMER'..."
+git pull
+
 if [ -d "NR" ]; then
     echo "Updating 'NR'..."
     cd NR
