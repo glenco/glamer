@@ -27,6 +27,8 @@ include(GLAMER)
 # dependencies
 ####
 
+find_package(Threads)
+
 if(ENABLE_FITS)
 	find_package(CCFITS REQUIRED)
 endif()
@@ -69,7 +71,7 @@ set(GLAMER_INCLUDE_DIRS
 	"${SLsimLib_SOURCE_DIR}/include"
 )
 
-set(GLAMER_LIBRARIES SLsimLib CosmoLib NR)
+set(GLAMER_LIBRARIES SLsimLib CosmoLib NR ${CMAKE_THREAD_LIBS_INIT})
 
 if(ENABLE_FITS)
 	list(APPEND GLAMER_INCLUDE_DIRS ${CCFITS_INCLUDE_DIRS})
