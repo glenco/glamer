@@ -4,9 +4,9 @@ lensing simulations.
 
 The files in this project are used to build the files from projects NR, CosmoLib and SLsimLib into the GLAMER static library using cmake.  This is the recommended method for building the library on amy platform.
 
-third party requirements:  git, cmake
+third party requirements:  git, cmake, C++11 compatible compiler
 
-basic installation
+###basic installation
 
 cloning the code: (requires git on you machine)
 
@@ -46,7 +46,7 @@ The wiki for this project should have more information on installing GLAMER and 
 You then must compile the library through your IDE of choice or by
 `make all`.
 
-Updating:
+###Updating:
 
 To update you only need to `git pull` from the directory of the
 individual projects.  You usually do not need to use cmake again
@@ -54,6 +54,14 @@ unless new files have been added to or removed from the projects, but
 it can't hurt to cmake again to be safe.  You will need to build
 again and link to your project that uses the GLAMER library.
 
-Creating your own project:
+###Creating your own project:
 
 See the wiki for this project.
+
+###Getting News
+
+Each of the projects NR, CosmoLib, SLsimLib and this one have separate issue
+tracking.  If you are intersted in development issues you can set
+these to "watch" in the upper right hand corner of the projects.  If
+you are only interested in major updates and major bug fixes you can
+just "watch" this project where they will be announced.
