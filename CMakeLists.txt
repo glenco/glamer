@@ -30,7 +30,7 @@ include(GLAMER)
 find_package(Threads)
 
 if(ENABLE_FITS)
-	find_package(CCFITS REQUIRED)
+	find_package(CCfits REQUIRED)
 endif()
 
 if(ENABLE_FFTW)
