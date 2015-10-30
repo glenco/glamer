@@ -41,7 +41,7 @@ To list the settings:
 To change the maximum number of threads used for example:  
 `cmake .. -DN_THREADS=20`  
 
-The wiki for this project should have more information on installing GLAMER and trouble shooting.  The documentation for the GLAMER code is at http://metcalf1.bo.astro.it.
+The wiki for this project should have more information on installing GLAMER and trouble shooting.  The documentation for the GLAMER code is at http://metcalf1.bo.astro.it/GLAMER++/html/.
 
 You then must compile the library through your IDE of choice or by
 `make all`.
