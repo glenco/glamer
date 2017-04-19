@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['partition',['Partition',['../namespace_utilities.html#aabf0a6a47d34ea949be4b7963e918458',1,'Utilities']]],
   ['partition_5fimages',['partition_images',['../group___image_finding_l2.html#ga8e6f3a57cd89680b0dccf18999c900be',1,'partition_images(Point *point, unsigned long *N_in_image, TreeHndl i_tree):&#160;divide_images.cpp'],['../group___image_finding_l2.html#ga8e6f3a57cd89680b0dccf18999c900be',1,'partition_images(Point *point, unsigned long *N_in_image, TreeHndl i_tree):&#160;divide_images.cpp']]],
   ['partition_5fimages_5fkist',['partition_images_kist',['../group___image_finding_l2.html#gad5de71abe41930d1dc3502a75d1a17e3',1,'partition_images_kist(Point *point, Kist&lt; Point &gt; *imagekist, TreeHndl i_tree):&#160;divide_images.cpp'],['../group___image_finding_l2.html#gad5de71abe41930d1dc3502a75d1a17e3',1,'partition_images_kist(Point *point, Kist&lt; Point &gt; *imagekist, TreeHndl i_tree):&#160;divide_images.cpp']]],
   ['phi_5fh',['phi_h',['../class_lens_halo_power_law.html#ae5698c9af6872119b0c5a9af72d7aa75',1,'LensHaloPowerLaw::phi_h()'],['../class_lens_halo_jaffe.html#a081cb42540744ca510139fa101af0099',1,'LensHaloJaffe::phi_h()']]],

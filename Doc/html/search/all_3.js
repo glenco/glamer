@@ -29,7 +29,6 @@ var searchData=
   ['closest',['closest',['../namespace_utilities.html#aa80185750e610681c64de174516f9799',1,'Utilities']]],
   ['collecttrash',['CollectTrash',['../group___image_finding_l2.html#ga84c7d7f490494d2a457595d93299a9c1',1,'tree_maintenance.cpp']]],
   ['combineplanes',['combinePlanes',['../class_lens.html#a768cde75517c0385d8e08710ac64d150',1,'Lens']]],
-  ['compare',['compare',['../class_pixel_map.html#ae8c8b3282ac27a898d87abd0ec1e44fd',1,'PixelMap']]],
   ['comparez',['compareZ',['../class_lens_halo.html#a9125a5a6f4685d157dfbeacd00433ab2',1,'LensHalo']]],
   ['computehalosdistributionvariables',['ComputeHalosDistributionVariables',['../class_lens.html#aea9120203eddd69be16aa8d0ecd5d2c2',1,'Lens']]],
   ['concave',['concave',['../namespace_utilities.html#a6d17c2495bead70b18b91c376c28c051',1,'Utilities']]],

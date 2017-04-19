@@ -14,6 +14,5 @@ var searchData=
   ['branchnb',['BranchNB',['../struct_branch_n_b.html',1,'']]],
   ['branchv',['BranchV',['../struct_tree_simple_vec_1_1_branch_v.html',1,'TreeSimpleVec']]],
   ['brother',['brother',['../struct_q_branch_n_b.html#a4b80dd6d4a6859d6af1982eb7096a837',1,'QBranchNB::brother()'],['../struct_branch_n_b.html#a8c9bfa3c2152686273da37ba7c587989',1,'BranchNB::brother()'],['../struct_tree_simple_vec_1_1_branch_v.html#a708135c8bfe8378300be3373abd0d270',1,'TreeSimpleVec::BranchV::brother()'],['../class_tree_struct_1_1iterator.html#a524dbaa4ca7674038f194b075861507c',1,'TreeStruct::iterator::brother()']]],
-  ['bsplinegen',['BsplineGEN',['../class_profiles_1_1_bspline_g_e_n.html',1,'Profiles']]],
   ['buildplanes',['buildPlanes',['../class_lens.html#a4bc0f6b6c2c550e428751c3104c3eef0',1,'Lens']]]
 ];

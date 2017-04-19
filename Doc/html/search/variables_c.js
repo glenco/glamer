@@ -11,7 +11,7 @@ var searchData=
   ['nhalosbinmass',['NhalosbinMass',['../class_lens.html#ab0fd584fde27037d953d0869a8b8c2be',1,'Lens']]],
   ['nmassbin',['Nmassbin',['../class_lens.html#a7709cad31a24bae6da2e2695347082f7',1,'Lens']]],
   ['nnu',['Nnu',['../class_c_o_s_m_o_l_o_g_y.html#a25cde82a4dc5500b22211a07860049a2',1,'COSMOLOGY']]],
-  ['npoints',['npoints',['../struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6',1,'Branch::npoints()'],['../struct_old_image_info.html#afc6290e2f1a4e1fc6229e36d03a2c24a',1,'OldImageInfo::Npoints()']]],
+  ['npoints',['Npoints',['../struct_old_image_info.html#afc6290e2f1a4e1fc6229e36d03a2c24a',1,'OldImageInfo::Npoints()'],['../struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6',1,'Branch::npoints()']]],
   ['ntable',['NTABLE',['../class_lens_halo_n_f_w.html#aaf3791f1b4431e07500151c68a613ac1',1,'LensHaloNFW::NTABLE()'],['../class_lens_halo_pseudo_n_f_w.html#a241bdc6fddca8ccaa4bf5c475cdaf753',1,'LensHaloPseudoNFW::NTABLE()'],['../class_lens_halo_hernquist.html#a29032c5e325a6c745aa74378ceeba009',1,'LensHaloHernquist::NTABLE()'],['../class_lens_halo_jaffe.html#a029dbf90de13d84cd603915ae0eb0c2c',1,'LensHaloJaffe::NTABLE()']]],
   ['nzbins',['Nzbins',['../class_lens.html#a4759b0725c105c117515008f85fbda8e',1,'Lens']]],
   ['nzsamples',['NZSamples',['../class_lens.html#a76ec2e498464784789037deb98fab828',1,'Lens']]]

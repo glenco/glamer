@@ -9,7 +9,6 @@ var searchData=
   ['threshold',['threshold',['../class_pixel_map.html#a81fb4e5d1904d31b147b294086448ce8',1,'PixelMap']]],
   ['time',['time',['../group__cosmolib.html#ga2a9e6cb2b8590a52678a8e406a303972',1,'COSMOLOGY']]],
   ['tmpparams',['TmpParams',['../struct_tmp_params.html',1,'']]],
-  ['tnfw2d',['TNFW2D',['../class_profiles_1_1_t_n_f_w2_d.html',1,'Profiles']]],
   ['to',['to',['../class_lens_halo_base_n_s_i_e.html#a770c4fa770deb0c0998a94cc435b169c',1,'LensHaloBaseNSIE']]],
   ['toggle_5fsource_5fplane',['toggle_source_plane',['../class_lens.html#a04b6272d436f698b7e5ab58dfd018028',1,'Lens']]],
   ['top',['top',['../struct_tree_struct.html#ae92808112c94648d4e8ac50b74e79fdb',1,'TreeStruct']]],

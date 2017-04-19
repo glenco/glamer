@@ -12,7 +12,6 @@ var searchData=
   ['nfw_5fv200',['NFW_V200',['../class_n_f_w___utility.html#acc2dee463cfc4de09d9a50b4ae62b7c3',1,'NFW_Utility']]],
   ['nfw_5fvmax',['NFW_Vmax',['../class_n_f_w___utility.html#abb59792831f69289056504e3d43d7c0f',1,'NFW_Utility']]],
   ['nfw_5fvr',['NFW_Vr',['../class_n_f_w___utility.html#a319d740c16b22216b206f1546a13f025',1,'NFW_Utility']]],
-  ['nfwgenerator',['NFWgenerator',['../class_profiles_1_1_n_f_wgenerator.html#a4772b0025ead7b5f140637670b910aa2',1,'Profiles::NFWgenerator']]],
   ['nintegratef',['nintegrateF',['../namespace_utilities.html#afb7f32cbe2c0f17c06a106dee6726e98',1,'Utilities']]],
   ['normalizeflux',['NormalizeFlux',['../class_source_shapelets.html#a0fb81bcea2e0c1eb04549ac4eac390c7',1,'SourceShapelets']]],
   ['nparams',['Nparams',['../class_lens_halo_base_n_s_i_e.html#a5798c54f27c02d790f2033f674973ab6',1,'LensHaloBaseNSIE::Nparams()'],['../class_input_params.html#ab482c105c366784215168c57d480b61c',1,'InputParams::Nparams()'],['../class_lens_halo.html#a687244171b30f97529c981a546055d2f',1,'LensHalo::Nparams()']]],

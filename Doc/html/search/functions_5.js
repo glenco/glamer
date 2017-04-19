@@ -11,6 +11,5 @@ var searchData=
   ['entirelyincausticcurve',['EntirelyinCausticCurve',['../struct_image_finding_1_1_critical_curve.html#a59e02d9f7f9df457db9d06ce0163813e',1,'ImageFinding::CriticalCurve']]],
   ['entirelyincriticalcurve',['EntirelyinCriticalCurve',['../struct_image_finding_1_1_critical_curve.html#a201596fa74ba3a1fcb5baefb38e256be',1,'ImageFinding::CriticalCurve']]],
   ['error_5fmessage1',['error_message1',['../class_lens_halo.html#a6a8cf22c76bab7821b1b0ee3b50ea75f',1,'LensHalo']]],
-  ['estsignlambdas',['estSignLambdas',['../class_lens_halo_mass_map.html#a380b76102786d65d491cab1ed3dbf11b',1,'LensHaloMassMap']]],
-  ['extendradius',['extendRadius',['../class_lens_halo_n_f_w.html#adfba775116e3231c95235e991aaef803',1,'LensHaloNFW']]]
+  ['estsignlambdas',['estSignLambdas',['../class_lens_halo_mass_map.html#a380b76102786d65d491cab1ed3dbf11b',1,'LensHaloMassMap']]]
 ];

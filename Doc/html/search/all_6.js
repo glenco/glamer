@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['fastlightcones',['FastLightCones',['../namespace_light_cones.html#a86fa9b47e77b7f58d7cf192aa48112f7',1,'LightCones']]],
   ['faxial',['faxial',['../class_lens_halo.html#a825833ac8df009db76b5e4b4b4e140f9',1,'LensHalo']]],
   ['felliptical',['felliptical',['../class_lens_halo.html#a70d44bd2ef4edee5fb918a61cf5d3fcf',1,'LensHalo']]],
   ['field_5fbuffer',['field_buffer',['../class_lens.html#a49a338eabf2ed9eedf5cd081d14d2c11',1,'Lens']]],

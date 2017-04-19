@@ -127,6 +127,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:gaef2864fc3791c44eed90c2e980777884"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___image_finding_l2.html#gaef2864fc3791c44eed90c2e980777884">Grid::RefineLeaf</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_point.html">Point</a> *point)</td></tr>
 <tr class="memdesc:gaef2864fc3791c44eed90c2e980777884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fundamental function used to divide a leaf in the tree into nine subcells.  <a href="#gaef2864fc3791c44eed90c2e980777884">More...</a><br /></td></tr>
 <tr class="separator:gaef2864fc3791c44eed90c2e980777884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1d61941f50776c7133ead2f5ea87117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___image_finding_l2.html#gaa1d61941f50776c7133ead2f5ea87117">ImageFinding::image_finder_kist</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, PosType *y_source, PosType r_source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, unsigned long *Nimagepoints, short splitparities, short true_images)</td></tr>
+<tr class="memdesc:gaa1d61941f50776c7133ead2f5ea87117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds images for a given source position and size.  <a href="#gaa1d61941f50776c7133ead2f5ea87117">More...</a><br /></td></tr>
+<tr class="separator:gaa1d61941f50776c7133ead2f5ea87117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a61b57e20ce0984d968c53fd7820b82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___image_finding_l2.html#ga9a61b57e20ce0984d968c53fd7820b82">ImageFinding::IF_routines::refine_grid_kist</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_grid.html">GridHndl</a> grid, <a class="el" href="struct_image_info.html">ImageInfo</a> *imageinfo, int Nimages, double res_target, short criterion, Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; *newpointkist=NULL, bool batch=true)</td></tr>
 <tr class="memdesc:ga9a61b57e20ce0984d968c53fd7820b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refines every point in the given image and its outer border that satisfies the refinement criterion.  <a href="#ga9a61b57e20ce0984d968c53fd7820b82">More...</a><br /></td></tr>
 <tr class="separator:ga9a61b57e20ce0984d968c53fd7820b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -410,6 +413,79 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
 
 </div>
 </div>
+<a class="anchor" id="gaa1d61941f50776c7133ead2f5ea87117"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ImageFinding::image_finder_kist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_lens.html">LensHndl</a>&#160;</td>
+          <td class="paramname"><em>lens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType *&#160;</td>
+          <td class="paramname"><em>y_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>r_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_grid.html">GridHndl</a>&#160;</td>
+          <td class="paramname"><em>grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Nimages</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>imageinfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long *&#160;</td>
+          <td class="paramname"><em>Nimagepoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>splitparities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>true_images</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds images for a given source position and size. </p>
+<p>image points are put into imageinfo[].imagekist imageinfo[].points and imageinfo[].Npoints are not changed</p>
+<p>splitparities= 0 don't split attached negative and positive parity images = 1 do split parities NOTE: this is now obsolete = -1 doesn't slit into images at all , also does not find borders or change in_image markers true_images = 1 gives just the points that are in the image = 0 if there are not enough points in images this will include close points to be refined</p>
+<p>side-effects : Will make in_image = true for all image points if splitparities == 0 </p>
+
+</div>
+</div>
 <a class="anchor" id="gad5de71abe41930d1dc3502a75d1a17e3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -684,7 +760,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 19 2017 15:34:17 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 19 2017 15:51:20 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -3,7 +3,6 @@ var searchData=
   ['test_5fgt_5ffunc',['test_gt_func',['../struct_lens_halo_1_1test__gt__func.html',1,'LensHalo']]],
   ['test_5fkappa_5ffunc',['test_kappa_func',['../struct_lens_halo_1_1test__kappa__func.html',1,'LensHalo']]],
   ['tmpparams',['TmpParams',['../struct_tmp_params.html',1,'']]],
-  ['tnfw2d',['TNFW2D',['../class_profiles_1_1_t_n_f_w2_d.html',1,'Profiles']]],
   ['treeforce',['TreeForce',['../class_tree_force.html',1,'']]],
   ['treenbstruct',['TreeNBStruct',['../struct_tree_n_b_struct.html',1,'']]],
   ['treequad',['TreeQuad',['../class_tree_quad.html',1,'']]],

@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A class for calculating the deflection, kappa and gamma caused by NFW halos.  
+<p>A class for calculating the deflection, kappa and gamma caused by a collection of NFW halos.  
  <a href="class_lens_halo_n_f_w.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="lens__halos_8h_source.html">lens_halos.h</a>&gt;</code></p>
@@ -126,6 +126,63 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ade6f78fa6c93c83c65e15d241e1aad09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade6f78fa6c93c83c65e15d241e1aad09"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LensHaloNFW</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params)</td></tr>
 <tr class="separator:ade6f78fa6c93c83c65e15d241e1aad09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c2b066407a343fe1b6b2263846e0c4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c2b066407a343fe1b6b2263846e0c4e"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ffunction</b> (PosType x) const </td></tr>
+<tr class="separator:a8c2b066407a343fe1b6b2263846e0c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4dede5864b5a9e2fc20d7397d5a72db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4dede5864b5a9e2fc20d7397d5a72db"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>gfunction</b> (PosType x) const </td></tr>
+<tr class="separator:aa4dede5864b5a9e2fc20d7397d5a72db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f6c70a36f4f3eaf90f2db0a08be166"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75f6c70a36f4f3eaf90f2db0a08be166"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dgfunctiondx</b> (PosType x)</td></tr>
+<tr class="separator:a75f6c70a36f4f3eaf90f2db0a08be166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f4b368673545e9e150af6962b72742"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42f4b368673545e9e150af6962b72742"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>g2function</b> (PosType x) const </td></tr>
+<tr class="separator:a42f4b368673545e9e150af6962b72742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a875c06a03fee11a450c0c8ecf41d0eb8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a875c06a03fee11a450c0c8ecf41d0eb8"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>hfunction</b> (PosType x) const </td></tr>
+<tr class="separator:a875c06a03fee11a450c0c8ecf41d0eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d7d7935c52f28bae426633fefe5d6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43d7d7935c52f28bae426633fefe5d6a"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dhfunction</b> (PosType x) const </td></tr>
+<tr class="separator:a43d7d7935c52f28bae426633fefe5d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab759f44d7a48f31272bb47329ce615ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab759f44d7a48f31272bb47329ce615ce"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddhfunction</b> (PosType x, bool numerical)</td></tr>
+<tr class="separator:ab759f44d7a48f31272bb47329ce615ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a022c454d8bc1e369532afb9e4eb47528"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a022c454d8bc1e369532afb9e4eb47528"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dddhfunction</b> (PosType x, bool numerical)</td></tr>
+<tr class="separator:a022c454d8bc1e369532afb9e4eb47528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ca3be5690902af64ee689ec82fc27c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ca3be5690902af64ee689ec82fc27c0"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>bfunction</b> (PosType x)</td></tr>
+<tr class="separator:a9ca3be5690902af64ee689ec82fc27c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8572102bf9ed73289235a5a53b325ccd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8572102bf9ed73289235a5a53b325ccd"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dbfunction</b> (PosType x)</td></tr>
+<tr class="separator:a8572102bf9ed73289235a5a53b325ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac85029dd23a9da6288c7b4221e3af24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac85029dd23a9da6288c7b4221e3af24"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddbfunction</b> (PosType x)</td></tr>
+<tr class="separator:aac85029dd23a9da6288c7b4221e3af24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad38e1cd1d96550571ec6c5ff104c4ba0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad38e1cd1d96550571ec6c5ff104c4ba0"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0">dmoddb</a> (int whichmod, PosType q, PosType b)</td></tr>
+<tr class="memdesc:ad38e1cd1d96550571ec6c5ff104c4ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">dbfunction and ddbfunction are approximation formulae for dbeta/dr and d^2beta/dr^2 whereas dbnum and ddbnum calculate those derivates numerically using the 5-point rule, i.e. 4th order accuracy. <br /></td></tr>
+<tr class="separator:ad38e1cd1d96550571ec6c5ff104c4ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cc3ae3b80daaa72b90a8b0af9dd81b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4cc3ae3b80daaa72b90a8b0af9dd81b2"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddmoddb</b> (int whichmod, PosType q, PosType b)</td></tr>
+<tr class="separator:a4cc3ae3b80daaa72b90a8b0af9dd81b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b541ee31e50cb6b9b2f76b33ac37092"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b541ee31e50cb6b9b2f76b33ac37092"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dmoddq</b> (int whichmod, PosType q, PosType b)</td></tr>
+<tr class="separator:a2b541ee31e50cb6b9b2f76b33ac37092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6104e258a8958e2808f0a93dbc642bb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6104e258a8958e2808f0a93dbc642bb7"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddmoddq</b> (int whichmod, PosType q, PosType b)</td></tr>
+<tr class="separator:a6104e258a8958e2808f0a93dbc642bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa273b32b7c0159776310f9a6b412df6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#afa273b32b7c0159776310f9a6b412df6">alphaNFW</a> (PosType *alpha, PosType *x, PosType Rtrunc, PosType mass, PosType r_scale, PosType *center, PosType Sigma_crit)</td></tr>
+<tr class="memdesc:afa273b32b7c0159776310f9a6b412df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">deflection caused by NFW halo  <a href="#afa273b32b7c0159776310f9a6b412df6">More...</a><br /></td></tr>
+<tr class="separator:afa273b32b7c0159776310f9a6b412df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9319e4578436ec403e936df7dfded030"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9319e4578436ec403e936df7dfded030"></a>
+KappaType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#a9319e4578436ec403e936df7dfded030">kappaNFW</a> (PosType *x, PosType Rtrunc, PosType mass, PosType r_scale, PosType *center, PosType Sigma_crit)</td></tr>
+<tr class="memdesc:a9319e4578436ec403e936df7dfded030"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convergence for an NFW halo. <br /></td></tr>
+<tr class="separator:a9319e4578436ec403e936df7dfded030"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a222a1a0ced3498ba1b8cb4ee53e294f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a222a1a0ced3498ba1b8cb4ee53e294f5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#a222a1a0ced3498ba1b8cb4ee53e294f5">gammaNFW</a> (KappaType *gamma, PosType *x, PosType Rtrunc, PosType mass, PosType r_scale, PosType *center, PosType Sigma_crit)</td></tr>
+<tr class="memdesc:a222a1a0ced3498ba1b8cb4ee53e294f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shear for and NFW halo. this might have a flaw in it. <br /></td></tr>
+<tr class="separator:a222a1a0ced3498ba1b8cb4ee53e294f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e862a84007d11cb5d66fccc2b7c9daa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e862a84007d11cb5d66fccc2b7c9daa"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#a1e862a84007d11cb5d66fccc2b7c9daa">initFromFile</a> (float my_mass, long *seed, float vmax, float r_halfmass)</td></tr>
 <tr class="memdesc:a1e862a84007d11cb5d66fccc2b7c9daa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the profile to match the mass, Vmax and R_halfmass. <br /></td></tr>
@@ -142,9 +199,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#af2e7223e23c87e1e3c1643f119cc7919">set_rscale</a> (float my_rscale)</td></tr>
 <tr class="memdesc:af2e7223e23c87e1e3c1643f119cc7919"><td class="mdescLeft">&#160;</td><td class="mdescRight">set scale radius <br /></td></tr>
 <tr class="separator:af2e7223e23c87e1e3c1643f119cc7919"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfba775116e3231c95235e991aaef803"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#adfba775116e3231c95235e991aaef803">extendRadius</a> (float fac)</td></tr>
-<tr class="memdesc:adfba775116e3231c95235e991aaef803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extend radius of halo without changing the scale length or central density.  <a href="#adfba775116e3231c95235e991aaef803">More...</a><br /></td></tr>
-<tr class="separator:adfba775116e3231c95235e991aaef803"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_lens_halo"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_lens_halo')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_lens_halo.html">LensHalo</a></td></tr>
 <tr class="memitem:a813618bcd6d1f26dafa49a2e509a37db inherit pub_methods_class_lens_halo"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a813618bcd6d1f26dafa49a2e509a37db"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo.html#a813618bcd6d1f26dafa49a2e509a37db">LensHalo</a> ()</td></tr>
@@ -331,51 +385,6 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>renormalization</b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a8c2b066407a343fe1b6b2263846e0c4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c2b066407a343fe1b6b2263846e0c4e"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ffunction</b> (PosType x) const </td></tr>
-<tr class="separator:a8c2b066407a343fe1b6b2263846e0c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4dede5864b5a9e2fc20d7397d5a72db"><td class="memItemLeft" align="right" valign="top">PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#aa4dede5864b5a9e2fc20d7397d5a72db">gfunction</a> (PosType x) const </td></tr>
-<tr class="separator:aa4dede5864b5a9e2fc20d7397d5a72db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75f6c70a36f4f3eaf90f2db0a08be166"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75f6c70a36f4f3eaf90f2db0a08be166"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dgfunctiondx</b> (PosType x)</td></tr>
-<tr class="separator:a75f6c70a36f4f3eaf90f2db0a08be166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f4b368673545e9e150af6962b72742"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42f4b368673545e9e150af6962b72742"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>g2function</b> (PosType x) const </td></tr>
-<tr class="separator:a42f4b368673545e9e150af6962b72742"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a875c06a03fee11a450c0c8ecf41d0eb8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a875c06a03fee11a450c0c8ecf41d0eb8"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>hfunction</b> (PosType x) const </td></tr>
-<tr class="separator:a875c06a03fee11a450c0c8ecf41d0eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43d7d7935c52f28bae426633fefe5d6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a43d7d7935c52f28bae426633fefe5d6a"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dhfunction</b> (PosType x) const </td></tr>
-<tr class="separator:a43d7d7935c52f28bae426633fefe5d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab759f44d7a48f31272bb47329ce615ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab759f44d7a48f31272bb47329ce615ce"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddhfunction</b> (PosType x, bool numerical)</td></tr>
-<tr class="separator:ab759f44d7a48f31272bb47329ce615ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a022c454d8bc1e369532afb9e4eb47528"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a022c454d8bc1e369532afb9e4eb47528"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dddhfunction</b> (PosType x, bool numerical)</td></tr>
-<tr class="separator:a022c454d8bc1e369532afb9e4eb47528"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ca3be5690902af64ee689ec82fc27c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ca3be5690902af64ee689ec82fc27c0"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>bfunction</b> (PosType x)</td></tr>
-<tr class="separator:a9ca3be5690902af64ee689ec82fc27c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8572102bf9ed73289235a5a53b325ccd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8572102bf9ed73289235a5a53b325ccd"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dbfunction</b> (PosType x)</td></tr>
-<tr class="separator:a8572102bf9ed73289235a5a53b325ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac85029dd23a9da6288c7b4221e3af24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac85029dd23a9da6288c7b4221e3af24"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddbfunction</b> (PosType x)</td></tr>
-<tr class="separator:aac85029dd23a9da6288c7b4221e3af24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad38e1cd1d96550571ec6c5ff104c4ba0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad38e1cd1d96550571ec6c5ff104c4ba0"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0">dmoddb</a> (int whichmod, PosType q, PosType b)</td></tr>
-<tr class="memdesc:ad38e1cd1d96550571ec6c5ff104c4ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">dbfunction and ddbfunction are approximation formulae for dbeta/dr and d^2beta/dr^2 whereas dbnum and ddbnum calculate those derivates numerically using the 5-point rule, i.e. 4th order accuracy. <br /></td></tr>
-<tr class="separator:ad38e1cd1d96550571ec6c5ff104c4ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cc3ae3b80daaa72b90a8b0af9dd81b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4cc3ae3b80daaa72b90a8b0af9dd81b2"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddmoddb</b> (int whichmod, PosType q, PosType b)</td></tr>
-<tr class="separator:a4cc3ae3b80daaa72b90a8b0af9dd81b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b541ee31e50cb6b9b2f76b33ac37092"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b541ee31e50cb6b9b2f76b33ac37092"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>dmoddq</b> (int whichmod, PosType q, PosType b)</td></tr>
-<tr class="separator:a2b541ee31e50cb6b9b2f76b33ac37092"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6104e258a8958e2808f0a93dbc642bb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6104e258a8958e2808f0a93dbc642bb7"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ddmoddq</b> (int whichmod, PosType q, PosType b)</td></tr>
-<tr class="separator:a6104e258a8958e2808f0a93dbc642bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec09e889c8b03d29b5d0be6c0711f274"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec09e889c8b03d29b5d0be6c0711f274"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#aec09e889c8b03d29b5d0be6c0711f274">make_tables</a> ()</td></tr>
 <tr class="memdesc:aec09e889c8b03d29b5d0be6c0711f274"><td class="mdescLeft">&#160;</td><td class="mdescRight">make the specific tables <br /></td></tr>
@@ -525,11 +534,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>calcModesC</b> (PosTy
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
 <tr class="memitem:aaf3791f1b4431e07500151c68a613ac1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf3791f1b4431e07500151c68a613ac1"></a>
-static const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#aaf3791f1b4431e07500151c68a613ac1">NTABLE</a> = 50000</td></tr>
+static const long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#aaf3791f1b4431e07500151c68a613ac1">NTABLE</a> = 10000</td></tr>
 <tr class="memdesc:aaf3791f1b4431e07500151c68a613ac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">table size <br /></td></tr>
 <tr class="separator:aaf3791f1b4431e07500151c68a613ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87747a7b1ca624f4fb8630e59f69dea7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87747a7b1ca624f4fb8630e59f69dea7"></a>
-static const PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#a87747a7b1ca624f4fb8630e59f69dea7">maxrm</a> = 500.0</td></tr>
+static const PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_n_f_w.html#a87747a7b1ca624f4fb8630e59f69dea7">maxrm</a> = 100.0</td></tr>
 <tr class="memdesc:a87747a7b1ca624f4fb8630e59f69dea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum Rsize/rscale <br /></td></tr>
 <tr class="separator:a87747a7b1ca624f4fb8630e59f69dea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8e6d1a537c488ed2cabfb9bb6feaa80"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8e6d1a537c488ed2cabfb9bb6feaa80"></a>
@@ -714,7 +723,8 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="separator:a343f6191abf5320eda64a82880146142 inherit pro_attribs_class_lens_halo"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class for calculating the deflection, kappa and gamma caused by NFW halos. </p>
+<div class="textblock"><p>A class for calculating the deflection, kappa and gamma caused by a collection of NFW halos. </p>
+<p>This class uses the true expressions for the NFW profile. This is time consuming and not usually necessary. See TreeQuadPseudoNFW for a faster alternative.</p>
 <p>The default value of theta = 0.1 generally gives better than 1% accuracy on alpha. The shear and kappa is always more accurate than the deflection. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a449b257553642fb33f0baede93d26812"></a>
@@ -790,54 +800,62 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="adfba775116e3231c95235e991aaef803"></a>
+<a class="anchor" id="afa273b32b7c0159776310f9a6b412df6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void LensHaloNFW::extendRadius </td>
+          <td class="memname">void LensHaloNFW::alphaNFW </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>fac</em></td><td>)</td>
+          <td class="paramtype">PosType *&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">PosType *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extend radius of halo without changing the scale length or central density. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">fac</td><td>factor by which radius is increased </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="aa4dede5864b5a9e2fc20d7397d5a72db"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">PosType LensHaloNFW::gfunction </td>
-          <td>(</td>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>Rtrunc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>mass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>r_scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType *&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>Sigma_crit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-<p>Created on: Aug 26, 2010 Author: R.B. Metcalf </p>
 
-<p>Reimplemented from <a class="el" href="class_lens_halo.html">LensHalo</a>.</p>
+<p>deflection caused by NFW halo </p>
+<p>Created on: Aug 26, 2010 Author: R.B. Metcalf </p>
 
 </div>
 </div>
@@ -849,7 +867,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 19 2017 15:34:18 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 19 2017 15:51:21 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

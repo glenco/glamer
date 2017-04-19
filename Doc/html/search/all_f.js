@@ -2,7 +2,6 @@ var searchData=
 [
   ['pa',['pa',['../class_lens_halo_base_n_s_i_e.html#a17effb924199316b21362fc4eb7646d9',1,'LensHaloBaseNSIE::pa()'],['../class_lens_halo_real_n_s_i_e.html#a8cf88e172212e1ea469eb9348fbca782',1,'LensHaloRealNSIE::pa()']]],
   ['particles',['particles',['../struct_q_branch_n_b.html#af28dd7c579a35b6dc44be0e038067468',1,'QBranchNB::particles()'],['../struct_branch_n_b.html#a1dcccbca6f9e700359d056d586045750',1,'BranchNB::particles()']]],
-  ['partition',['Partition',['../namespace_utilities.html#aabf0a6a47d34ea949be4b7963e918458',1,'Utilities']]],
   ['partition_5fimages',['partition_images',['../group___image_finding_l2.html#ga8e6f3a57cd89680b0dccf18999c900be',1,'partition_images(Point *point, unsigned long *N_in_image, TreeHndl i_tree):&#160;divide_images.cpp'],['../group___image_finding_l2.html#ga8e6f3a57cd89680b0dccf18999c900be',1,'partition_images(Point *point, unsigned long *N_in_image, TreeHndl i_tree):&#160;divide_images.cpp']]],
   ['partition_5fimages_5fkist',['partition_images_kist',['../group___image_finding_l2.html#gad5de71abe41930d1dc3502a75d1a17e3',1,'partition_images_kist(Point *point, Kist&lt; Point &gt; *imagekist, TreeHndl i_tree):&#160;divide_images.cpp'],['../group___image_finding_l2.html#gad5de71abe41930d1dc3502a75d1a17e3',1,'partition_images_kist(Point *point, Kist&lt; Point &gt; *imagekist, TreeHndl i_tree):&#160;divide_images.cpp']]],
   ['periodic_5fbuffer',['periodic_buffer',['../class_tree_quad.html#a4cec88e133be76c73850757eec25c1cb',1,'TreeQuad']]],
