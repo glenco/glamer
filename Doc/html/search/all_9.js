@@ -28,7 +28,7 @@ var searchData=
   ['inmapbox',['inMapBox',['../class_pixel_map.html#a61d4d06fecbd9ab5726a3aa9379ca6d1',1,'PixelMap::inMapBox(Branch *branch1) const '],['../class_pixel_map.html#abddead02ce53b64a10cb6ef38ff36ae1',1,'PixelMap::inMapBox(double *branch1) const ']]],
   ['innerborder',['innerborder',['../struct_image_info.html#a6fb8f305b3e9c94f2aba9c401a5493f1',1,'ImageInfo::innerborder()'],['../struct_old_image_info.html#adb96b3f7b0a637c7e96cf68c56a70e22',1,'OldImageInfo::innerborder()']]],
   ['inputparams',['InputParams',['../class_input_params.html',1,'InputParams'],['../class_input_params.html#a96e724a0dd6be6682bbbf5498c1746e9',1,'InputParams::InputParams()'],['../class_input_params.html#a08aa8b40523e8c5ace7ee14bcec66cba',1,'InputParams::InputParams(std::string paramfile)']]],
-  ['insertmainhalo',['insertMainHalo',['../class_lens.html#a1924517e387c30ac137cf361d02e8759',1,'Lens']]],
+  ['insertmainhalo',['insertMainHalo',['../class_lens.html#a20e65c1e8eac1ac66cc19b086ba659b6',1,'Lens']]],
   ['insertmainhalos',['insertMainHalos',['../class_lens.html#a2c50f5eece3783e93fd6fad7ff984cf7',1,'Lens']]],
   ['insertsubstructures',['insertSubstructures',['../class_lens.html#a0324de1e5d25474e42cff1633be9eb1a',1,'Lens']]],
   ['installing_20glamer',['Installing GLAMER',['../install.html',1,'']]],
@@ -55,6 +55,6 @@ var searchData=
   ['iterator',['iterator',['../class_utilities_1_1_mixed_vector_1_1iterator.html',1,'Utilities::MixedVector']]],
   ['iterator',['iterator',['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4_1_1iterator.html',1,'Utilities::MixedVector&lt; BaseT * &gt;']]],
   ['iterator',['iterator',['../class_tree_struct_1_1iterator.html',1,'TreeStruct']]],
-  ['iterator',['iterator',['../class_point_list_1_1iterator.html',1,'PointList']]],
+  ['iterator',['iterator',['../struct_point_list_1_1iterator.html',1,'PointList']]],
   ['rules',['Rules',['../namespace_i_s_o_p_1_1_rules.html',1,'ISOP']]]
 ];

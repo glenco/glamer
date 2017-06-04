@@ -15,7 +15,7 @@ var searchData=
   ['initparams',['initparams',['../class_utilities_1_1_interpolator.html#ab8dadc8b3a9b950d84d0be50bb5f02c6',1,'Utilities::Interpolator']]],
   ['inmapbox',['inMapBox',['../class_pixel_map.html#a61d4d06fecbd9ab5726a3aa9379ca6d1',1,'PixelMap::inMapBox(Branch *branch1) const '],['../class_pixel_map.html#abddead02ce53b64a10cb6ef38ff36ae1',1,'PixelMap::inMapBox(double *branch1) const ']]],
   ['inputparams',['InputParams',['../class_input_params.html#a96e724a0dd6be6682bbbf5498c1746e9',1,'InputParams::InputParams()'],['../class_input_params.html#a08aa8b40523e8c5ace7ee14bcec66cba',1,'InputParams::InputParams(std::string paramfile)']]],
-  ['insertmainhalo',['insertMainHalo',['../class_lens.html#a1924517e387c30ac137cf361d02e8759',1,'Lens']]],
+  ['insertmainhalo',['insertMainHalo',['../class_lens.html#a20e65c1e8eac1ac66cc19b086ba659b6',1,'Lens']]],
   ['insertmainhalos',['insertMainHalos',['../class_lens.html#a2c50f5eece3783e93fd6fad7ff984cf7',1,'Lens']]],
   ['insertsubstructures',['insertSubstructures',['../class_lens.html#a0324de1e5d25474e42cff1633be9eb1a',1,'Lens']]],
   ['integratefilter',['integrateFilter',['../class_source.html#a01f88323bd6901f46f7ae204f357d722',1,'Source']]],
