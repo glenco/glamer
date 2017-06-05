@@ -4,7 +4,7 @@ var searchData=
   ['observation',['Observation',['../class_observation.html',1,'Observation'],['../class_observation.html#a7a7f57b093cf32b10cbd83f0ad54b634',1,'Observation::Observation(Telescope tel_name)'],['../class_observation.html#add998e177de4eb8f67a1de67fdd2d58b',1,'Observation::Observation(float diameter, float transmission, float exp_time, int exp_num, float back_mag, float ron, float seeing=0.)'],['../class_observation.html#a00ae25acbe3f6d3e9d0f091afeb9ddf9',1,'Observation::Observation(float diameter, float transmission, float exp_time, int exp_num, float back_mag, float ron, std::string psf_file, float oversample=1.)']]],
   ['oldimageinfo',['OldImageInfo',['../struct_old_image_info.html',1,'']]],
   ['omb',['Omb',['../class_c_o_s_m_o_l_o_g_y.html#acc366e1a443d30e4b57dc9d5af2c3cab',1,'COSMOLOGY']]],
-  ['omegam',['omegam',['../struct_m_o_k_amap.html#ae4aa8cbe0f88124b50d0beb5787d213b',1,'MOKAmap::omegam()'],['../group__cosmolib.html#ga5d9c41be410e809744f4afbf2ee83658',1,'COSMOLOGY::Omegam()']]],
+  ['omegam',['Omegam',['../group__cosmolib.html#ga5d9c41be410e809744f4afbf2ee83658',1,'COSMOLOGY::Omegam()'],['../struct_m_o_k_amap.html#ae4aa8cbe0f88124b50d0beb5787d213b',1,'MOKAmap::omegam()']]],
   ['oml',['Oml',['../class_c_o_s_m_o_l_o_g_y.html#a85123874fa91eb2ec10b3d452b579b4b',1,'COSMOLOGY']]],
   ['omnu',['Omnu',['../class_c_o_s_m_o_l_o_g_y.html#a441775df563047f61873179c98ca3e53',1,'COSMOLOGY']]],
   ['omo',['Omo',['../class_c_o_s_m_o_l_o_g_y.html#a93cc5686643c90adc81007193ba531d6',1,'COSMOLOGY']]],
