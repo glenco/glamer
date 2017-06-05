@@ -122,6 +122,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b01da293fbb69e50248781ac870f4b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9b01da293fbb69e50248781ac870f4b8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LensHaloUniform</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params, bool verbose=false)</td></tr>
 <tr class="separator:a9b01da293fbb69e50248781ac870f4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c13274a13e31427c55a95645237b626"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_uniform.html#a0c13274a13e31427c55a95645237b626">LensHaloUniform</a> (double zlens, double zsource, double kappa, <a class="el" href="struct_point__2d.html">Point_2d</a> &amp;gamma, <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo)</td></tr>
+<tr class="memdesc:a0c13274a13e31427c55a95645237b626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direct constructor without any stars.  <a href="#a0c13274a13e31427c55a95645237b626">More...</a><br /></td></tr>
+<tr class="separator:a0c13274a13e31427c55a95645237b626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac39732873f3bd9da0d25b78ba56aff61"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac39732873f3bd9da0d25b78ba56aff61"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>assignParams</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params)</td></tr>
 <tr class="separator:ac39732873f3bd9da0d25b78ba56aff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -718,8 +721,9 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>Nmod</b> 
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A uniform surface density and shear with or without stars. </p>
-<pre>
-  Input Parameters:</pre><pre>   ****  Uniform model parameters
+<pre></pre><pre>   Warning:Once this lens is fully constructed it is independent of the source redshift so
+   if the source redshift is change through the <a class="el" href="class_lens.html" title="A class to represents a lens with multiple planes. ">Lens</a> class the input kappa and gamma values will
+   longer be the correct ones because of the change in the critical density.</pre><pre>  Input Parameters in parameter file:</pre><pre>   ****  Uniform model parameters
   kappa_uniform
    gamma_uniform_1
    gamma_uniform_2</pre><pre>   **** Stars parameters
@@ -770,6 +774,62 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>Nmod</b> 
 
 <p>Reads in a parameter file and sets up an uniform lens. </p>
 <p>Sets many parameters within the lens model, source model and force calculation. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0c13274a13e31427c55a95645237b626"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LensHaloUniform::LensHaloUniform </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zlens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>zsource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>kappa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a> &amp;&#160;</td>
+          <td class="paramname"><em>gamma</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;&#160;</td>
+          <td class="paramname"><em>cosmo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Direct constructor without any stars. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zlens</td><td>lens redshift </td></tr>
+    <tr><td class="paramname">zsource</td><td>source redshift </td></tr>
+    <tr><td class="paramname">kappa</td><td>convergence </td></tr>
+    <tr><td class="paramname">gamma</td><td>shear </td></tr>
+    <tr><td class="paramname">cosmo</td><td>cosmology to translate into surface density </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -885,7 +945,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>Nmod</b> 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 5 2017 15:47:23 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 5 2017 16:22:15 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
