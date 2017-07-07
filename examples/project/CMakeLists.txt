@@ -43,6 +43,7 @@ set(FILES
 find_package(GLAMER NO_MODULE REQUIRED)
 
 include_directories(${GLAMER_INCLUDE_DIRS})
+add_definitions(${GLAMER_DEFINITIONS})
 
 
 ####
