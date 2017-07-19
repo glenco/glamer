@@ -85,3 +85,13 @@ else()
 	message(STATUS "HEALPIX support: disabled")
 endif()
 
+# HDF5
+option(ENABLE_HDF5 "Enable functions that require HDF5." OFF)
+
+if(ENABLE_HDF5)
+	add_definitions(-DENABLE_HDF5=1)
+	message(STATUS "HDF5 support: enabled")
+else()
+	message(STATUS "HDF5 support: disabled")
+endif()
+
