@@ -37,7 +37,7 @@ var searchData=
   ['sethmag',['setHMag',['../class_source_overzier.html#a30ef3f1eece03ec0f6bf7120a442c17b',1,'SourceOverzier']]],
   ['sethubble',['sethubble',['../class_c_o_s_m_o_l_o_g_y.html#ac3c0f1336697c6df3dfbaa077e0757bd',1,'COSMOLOGY']]],
   ['setimag',['setIMag',['../class_source_overzier.html#a492ceb337f39e07acd4439b5c2e0b726',1,'SourceOverzier']]],
-  ['setindex',['setIndex',['../class_source_multi_ana_galaxy.html#a350f1d3ce9163e1049c5c8cc4e14be48',1,'SourceMultiAnaGalaxy::setIndex()'],['../class_source_multi_shapelets.html#a0d1f8507b2965eec94cf49b15c1c347e',1,'SourceMultiShapelets::setIndex()'],['../class_c_o_s_m_o_l_o_g_y.html#a79d8eeb8ffc476d54c35063343c24915',1,'COSMOLOGY::setindex()']]],
+  ['setindex',['setindex',['../class_c_o_s_m_o_l_o_g_y.html#a79d8eeb8ffc476d54c35063343c24915',1,'COSMOLOGY::setindex()'],['../class_source_multi_ana_galaxy.html#a350f1d3ce9163e1049c5c8cc4e14be48',1,'SourceMultiAnaGalaxy::setIndex()'],['../class_source_multi_shapelets.html#a0d1f8507b2965eec94cf49b15c1c347e',1,'SourceMultiShapelets::setIndex()']]],
   ['setinternals',['setInternals',['../class_source_overzier.html#a4310f4fdb1fcf8c236c9a1caa969b9c5',1,'SourceOverzier']]],
   ['setinterpolation',['setInterpolation',['../class_c_o_s_m_o_l_o_g_y.html#a0ff9d2c898191502bef4f512e9351f94',1,'COSMOLOGY']]],
   ['setjmag',['setJMag',['../class_source_overzier.html#a5f88711713e46c45fccbb93e884d744a',1,'SourceOverzier']]],

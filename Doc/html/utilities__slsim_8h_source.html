@@ -1066,194 +1066,254 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;  std::vector&lt;double&gt; <a class="code" href="namespace_utilities.html#a1faf43d7dba91cb2697307c22249bc12">AdaptiveSmooth</a>(<span class="keyword">const</span> std::vector&lt;double&gt; &amp;map_in,<span class="keywordtype">size_t</span> Nx,<span class="keywordtype">size_t</span> Ny,<span class="keywordtype">double</span> value);</div>
 <div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160;</div>
 <div class="line"><a name="l01120"></a><span class="lineno"> 1120</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="namespace_utilities.html#afa654746e24cd77549f412bed8d3ee26">GetNThreads</a>();</div>
-<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;  </div>
-<div class="line"><a name="l01124"></a><span class="lineno"> 1124</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt;</div>
-<div class="line"><a name="l01125"></a><span class="lineno"><a class="line" href="namespace_utilities.html#afd3cdbb09da9d15ddb6562e887ad173d"> 1125</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespace_utilities.html#afd3cdbb09da9d15ddb6562e887ad173d">read2columnfile</a>(</div>
-<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;                       std::string filename    </div>
-<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;                       ,std::vector&lt;T1&gt; &amp;x     </div>
-<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;                       ,std::vector&lt;T2&gt; &amp;y     </div>
-<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;                       ,std::string delineator = <span class="stringliteral">&quot; &quot;</span>  </div>
-<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;                       ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
-<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;                       </div>
-<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;                       ){</div>
-<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;    </div>
-<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;    x.clear();</div>
-<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;    y.clear();</div>
-<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;    </div>
-<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;    std::ifstream file_in(filename.c_str());</div>
-<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;    std::string myline;</div>
-<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;    std::string space = <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;    T1 myt1;</div>
-<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;    T2 myt2;</div>
-<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;    </div>
-<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;    std::string strg;</div>
-<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;    std::stringstream buffer;</div>
-<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;    </div>
-<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;    <span class="keywordflow">if</span>(!file_in){</div>
-<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Can&#39;t open file &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;      ERROR_MESSAGE();</div>
-<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot; Cannot open file.&quot;</span>);</div>
-<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;    }</div>
-<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;    </div>
-<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Reading caustic information from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;    <span class="keywordtype">size_t</span> i=0;</div>
-<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;    <span class="keywordflow">while</span>(file_in.peek() == <span class="charliteral">&#39;#&#39;</span>){</div>
-<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;      file_in.ignore(10000,<span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;      ++i;</div>
-<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;    }</div>
-<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;skipped &quot;</span>&lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; comment lines in &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;    </div>
-<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;    <span class="keywordtype">size_t</span> pos;</div>
-<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;    <span class="comment">// read in data</span></div>
-<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;    <span class="keywordflow">while</span>(getline(file_in,myline)){</div>
-<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;      </div>
-<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;      <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;#&#39;</span>){</div>
-<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;skipped line &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;      }</div>
-<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;      </div>
-<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;      pos= myline.find_first_not_of(space);</div>
-<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;      myline.erase(0,pos);</div>
-<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;      </div>
-<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;      </div>
-<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;      pos = myline.find(delineator);</div>
-<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;      strg.assign(myline,0,pos);</div>
-<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;      buffer &lt;&lt; strg;</div>
-<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;      buffer &gt;&gt; myt1;</div>
-<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;      <span class="keywordflow">if</span>(verbose) std::cout &lt;&lt; myt1 &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;      x.push_back(myt1);</div>
-<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;      </div>
-<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;      myline.erase(0,pos+1);</div>
-<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;      pos= myline.find_first_not_of(space);</div>
-<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;      myline.erase(0,pos);</div>
-<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;      </div>
-<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;      strg.clear();</div>
-<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;      buffer.clear();</div>
-<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;      </div>
-<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;      pos = myline.find(space);</div>
-<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;      strg.assign(myline,0,pos);</div>
-<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;      buffer &lt;&lt; strg;</div>
-<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;      buffer &gt;&gt; myt2;</div>
-<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;      <span class="keywordflow">if</span>(verbose)  std::cout &lt;&lt; myt2 &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;      y.push_back(myt2);</div>
-<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;      </div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;      strg.clear();</div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;      buffer.clear();</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;      myline.clear();</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;      </div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;    }</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Read &quot;</span> &lt;&lt; x.size() &lt;&lt; <span class="stringliteral">&quot; lines from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;  }</div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt;</div>
-<div class="line"><a name="l01204"></a><span class="lineno"><a class="line" href="namespace_utilities.html#abef4783ad9c08c0e951893ad9aa21ba1"> 1204</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespace_utilities.html#abef4783ad9c08c0e951893ad9aa21ba1">read3columnfile</a>(</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;                       std::string filename    </div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;                       ,std::vector&lt;T1&gt; &amp;x     </div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;                       ,std::vector&lt;T2&gt; &amp;y     </div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;                       ,std::vector&lt;T3&gt; &amp;z     </div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;                       ,std::string delineator = <span class="stringliteral">&quot; &quot;</span>  </div>
-<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;                       ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;                       </div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;                       ){</div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;    </div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;    </div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;    assert(0); <span class="comment">// Untested!!!!</span></div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;    x.clear();</div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;    y.clear();</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;    z.clear();</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;    </div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;    std::ifstream file_in(filename.c_str());</div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;    std::string myline;</div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;    std::string space = <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;    T1 myt1;</div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;    T2 myt2;</div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;    T3 myt3;</div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;    </div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;    std::string strg;</div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;    std::stringstream buffer;</div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;    </div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;    <span class="keywordflow">if</span>(!file_in){</div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Can&#39;t open file &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;      ERROR_MESSAGE();</div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot; Cannot open file.&quot;</span>);</div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;    }</div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;    </div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Reading caustic information from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;    <span class="keywordtype">size_t</span> i=0;</div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;    <span class="keywordflow">while</span>(file_in.peek() == <span class="charliteral">&#39;#&#39;</span>){</div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;      file_in.ignore(10000,<span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;      ++i;</div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;    }</div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;skipped &quot;</span>&lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; comment lines in &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;    </div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;    <span class="keywordtype">size_t</span> pos;</div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    <span class="comment">// read in data</span></div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;    <span class="keywordflow">while</span>(getline(file_in,myline)){</div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;      </div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;      <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;#&#39;</span>){</div>
-<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;skipped line &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;      }</div>
-<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;      </div>
-<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;      pos= myline.find_first_not_of(space);</div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;      myline.erase(0,pos);</div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;      </div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;      </div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;      pos = myline.find(delineator);</div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;      strg.assign(myline,0,pos);</div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;      buffer &lt;&lt; strg;</div>
-<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;      buffer &gt;&gt; myt1;</div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;      <span class="keywordflow">if</span>(verbose) std::cout &lt;&lt; myt1 &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;      x.push_back(myt1);</div>
-<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;      </div>
-<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;      myline.erase(0,pos+1);</div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;      pos= myline.find_first_not_of(space);</div>
-<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;      myline.erase(0,pos);</div>
-<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;      </div>
-<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;      strg.clear();</div>
-<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;      buffer.clear();</div>
-<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;</div>
-<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;      <span class="comment">// ******************</span></div>
-<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;      </div>
-<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;      </div>
-<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;      pos = myline.find(space);</div>
-<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;      strg.assign(myline,0,pos);</div>
-<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;      buffer &lt;&lt; strg;</div>
-<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;      buffer &gt;&gt; myt2;</div>
-<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;      <span class="keywordflow">if</span>(verbose)  std::cout &lt;&lt; myt2 &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;      y.push_back(myt2);</div>
-<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;</div>
-<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;      myline.erase(0,pos+1);</div>
-<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;      pos= myline.find_first_not_of(space);</div>
-<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;      myline.erase(0,pos);</div>
-<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;      </div>
-<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;      strg.clear();</div>
-<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;      buffer.clear();</div>
-<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;      </div>
-<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;      <span class="comment">// ******************</span></div>
-<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;      pos = myline.find(space);</div>
-<div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;      strg.assign(myline,0,pos);</div>
-<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;      buffer &lt;&lt; strg;</div>
-<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;      buffer &gt;&gt; myt3;</div>
-<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;      <span class="keywordflow">if</span>(verbose)  std::cout &lt;&lt; myt3 &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;      y.push_back(myt3);</div>
-<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;</div>
-<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;      strg.clear();</div>
-<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;      buffer.clear();</div>
-<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;      myline.clear();</div>
-<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;      </div>
-<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;    }</div>
-<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Read &quot;</span> &lt;&lt; x.size() &lt;&lt; <span class="stringliteral">&quot; lines from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;  }</div>
-<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;</div>
-<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;}</div>
-<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01121"></a><span class="lineno"> 1121</span>&#160;</div>
+<div class="line"><a name="l01122"></a><span class="lineno"> 1122</span>&#160;  <span class="keyword">namespace </span>IO{  </div>
+<div class="line"><a name="l01123"></a><span class="lineno"> 1123</span>&#160;</div>
+<div class="line"><a name="l01125"></a><span class="lineno"> 1125</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2&gt;</div>
+<div class="line"><a name="l01126"></a><span class="lineno"> 1126</span>&#160;    <span class="keywordtype">void</span> read2columnfile(</div>
+<div class="line"><a name="l01127"></a><span class="lineno"> 1127</span>&#160;                         std::string filename    </div>
+<div class="line"><a name="l01128"></a><span class="lineno"> 1128</span>&#160;                         ,std::vector&lt;T1&gt; &amp;x     </div>
+<div class="line"><a name="l01129"></a><span class="lineno"> 1129</span>&#160;                         ,std::vector&lt;T2&gt; &amp;y     </div>
+<div class="line"><a name="l01130"></a><span class="lineno"> 1130</span>&#160;                         ,std::string delineator = <span class="stringliteral">&quot; &quot;</span>  </div>
+<div class="line"><a name="l01131"></a><span class="lineno"> 1131</span>&#160;                         ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
+<div class="line"><a name="l01132"></a><span class="lineno"> 1132</span>&#160;                         </div>
+<div class="line"><a name="l01133"></a><span class="lineno"> 1133</span>&#160;                         ){</div>
+<div class="line"><a name="l01134"></a><span class="lineno"> 1134</span>&#160;      </div>
+<div class="line"><a name="l01135"></a><span class="lineno"> 1135</span>&#160;      x.clear();</div>
+<div class="line"><a name="l01136"></a><span class="lineno"> 1136</span>&#160;      y.clear();</div>
+<div class="line"><a name="l01137"></a><span class="lineno"> 1137</span>&#160;      </div>
+<div class="line"><a name="l01138"></a><span class="lineno"> 1138</span>&#160;      std::ifstream file_in(filename.c_str());</div>
+<div class="line"><a name="l01139"></a><span class="lineno"> 1139</span>&#160;      std::string myline;</div>
+<div class="line"><a name="l01140"></a><span class="lineno"> 1140</span>&#160;      std::string space = <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l01141"></a><span class="lineno"> 1141</span>&#160;      T1 myt1;</div>
+<div class="line"><a name="l01142"></a><span class="lineno"> 1142</span>&#160;      T2 myt2;</div>
+<div class="line"><a name="l01143"></a><span class="lineno"> 1143</span>&#160;      </div>
+<div class="line"><a name="l01144"></a><span class="lineno"> 1144</span>&#160;      std::string strg;</div>
+<div class="line"><a name="l01145"></a><span class="lineno"> 1145</span>&#160;      std::stringstream buffer;</div>
+<div class="line"><a name="l01146"></a><span class="lineno"> 1146</span>&#160;      </div>
+<div class="line"><a name="l01147"></a><span class="lineno"> 1147</span>&#160;      <span class="keywordflow">if</span>(!file_in){</div>
+<div class="line"><a name="l01148"></a><span class="lineno"> 1148</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Can&#39;t open file &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01149"></a><span class="lineno"> 1149</span>&#160;        ERROR_MESSAGE();</div>
+<div class="line"><a name="l01150"></a><span class="lineno"> 1150</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot; Cannot open file.&quot;</span>);</div>
+<div class="line"><a name="l01151"></a><span class="lineno"> 1151</span>&#160;      }</div>
+<div class="line"><a name="l01152"></a><span class="lineno"> 1152</span>&#160;      </div>
+<div class="line"><a name="l01153"></a><span class="lineno"> 1153</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Reading caustic information from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01154"></a><span class="lineno"> 1154</span>&#160;      <span class="keywordtype">size_t</span> i=0;</div>
+<div class="line"><a name="l01155"></a><span class="lineno"> 1155</span>&#160;      <span class="keywordflow">while</span>(file_in.peek() == <span class="charliteral">&#39;#&#39;</span>){</div>
+<div class="line"><a name="l01156"></a><span class="lineno"> 1156</span>&#160;        file_in.ignore(10000,<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a name="l01157"></a><span class="lineno"> 1157</span>&#160;        ++i;</div>
+<div class="line"><a name="l01158"></a><span class="lineno"> 1158</span>&#160;      }</div>
+<div class="line"><a name="l01159"></a><span class="lineno"> 1159</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;skipped &quot;</span>&lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; comment lines in &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01160"></a><span class="lineno"> 1160</span>&#160;      </div>
+<div class="line"><a name="l01161"></a><span class="lineno"> 1161</span>&#160;      <span class="keywordtype">size_t</span> pos;</div>
+<div class="line"><a name="l01162"></a><span class="lineno"> 1162</span>&#160;      <span class="comment">// read in data</span></div>
+<div class="line"><a name="l01163"></a><span class="lineno"> 1163</span>&#160;      <span class="keywordflow">while</span>(getline(file_in,myline)){</div>
+<div class="line"><a name="l01164"></a><span class="lineno"> 1164</span>&#160;        </div>
+<div class="line"><a name="l01165"></a><span class="lineno"> 1165</span>&#160;        <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;#&#39;</span>){</div>
+<div class="line"><a name="l01166"></a><span class="lineno"> 1166</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;skipped line &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01167"></a><span class="lineno"> 1167</span>&#160;          <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l01168"></a><span class="lineno"> 1168</span>&#160;        }</div>
+<div class="line"><a name="l01169"></a><span class="lineno"> 1169</span>&#160;        </div>
+<div class="line"><a name="l01170"></a><span class="lineno"> 1170</span>&#160;        pos= myline.find_first_not_of(space);</div>
+<div class="line"><a name="l01171"></a><span class="lineno"> 1171</span>&#160;        myline.erase(0,pos);</div>
+<div class="line"><a name="l01172"></a><span class="lineno"> 1172</span>&#160;        </div>
+<div class="line"><a name="l01173"></a><span class="lineno"> 1173</span>&#160;        </div>
+<div class="line"><a name="l01174"></a><span class="lineno"> 1174</span>&#160;        pos = myline.find(delineator);</div>
+<div class="line"><a name="l01175"></a><span class="lineno"> 1175</span>&#160;        strg.assign(myline,0,pos);</div>
+<div class="line"><a name="l01176"></a><span class="lineno"> 1176</span>&#160;        buffer &lt;&lt; strg;</div>
+<div class="line"><a name="l01177"></a><span class="lineno"> 1177</span>&#160;        buffer &gt;&gt; myt1;</div>
+<div class="line"><a name="l01178"></a><span class="lineno"> 1178</span>&#160;        <span class="keywordflow">if</span>(verbose) std::cout &lt;&lt; myt1 &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l01179"></a><span class="lineno"> 1179</span>&#160;        x.push_back(myt1);</div>
+<div class="line"><a name="l01180"></a><span class="lineno"> 1180</span>&#160;        </div>
+<div class="line"><a name="l01181"></a><span class="lineno"> 1181</span>&#160;        myline.erase(0,pos+1);</div>
+<div class="line"><a name="l01182"></a><span class="lineno"> 1182</span>&#160;        pos= myline.find_first_not_of(space);</div>
+<div class="line"><a name="l01183"></a><span class="lineno"> 1183</span>&#160;        myline.erase(0,pos);</div>
+<div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160;        </div>
+<div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;        strg.clear();</div>
+<div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;        buffer.clear();</div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;        </div>
+<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;        pos = myline.find(space);</div>
+<div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;        strg.assign(myline,0,pos);</div>
+<div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;        buffer &lt;&lt; strg;</div>
+<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;        buffer &gt;&gt; myt2;</div>
+<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;        <span class="keywordflow">if</span>(verbose)  std::cout &lt;&lt; myt2 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;        y.push_back(myt2);</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;        </div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;        strg.clear();</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;        buffer.clear();</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;        myline.clear();</div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;        </div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;      }</div>
+<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Read &quot;</span> &lt;&lt; x.size() &lt;&lt; <span class="stringliteral">&quot; lines from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;    }</div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1,<span class="keyword">class</span> T2,<span class="keyword">class</span> T3&gt;</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;    <span class="keywordtype">void</span> read3columnfile(</div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;                         std::string filename    </div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;                         ,std::vector&lt;T1&gt; &amp;x     </div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;                         ,std::vector&lt;T2&gt; &amp;y     </div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;                         ,std::vector&lt;T3&gt; &amp;z     </div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;                         ,std::string delineator = <span class="stringliteral">&quot; &quot;</span>  </div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;                         ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;                         </div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;                         ){</div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;      </div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;      </div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;      assert(0); <span class="comment">// Untested!!!!</span></div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;      x.clear();</div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;      y.clear();</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;      z.clear();</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;      </div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;      std::ifstream file_in(filename.c_str());</div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;      std::string myline;</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;      std::string space = <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;      T1 myt1;</div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;      T2 myt2;</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;      T3 myt3;</div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;      </div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;      std::string strg;</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;      std::stringstream buffer;</div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;      </div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;      <span class="keywordflow">if</span>(!file_in){</div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Can&#39;t open file &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;        ERROR_MESSAGE();</div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot; Cannot open file.&quot;</span>);</div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;      }</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;      </div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Reading caustic information from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;      <span class="keywordtype">size_t</span> i=0;</div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;      <span class="keywordflow">while</span>(file_in.peek() == <span class="charliteral">&#39;#&#39;</span>){</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;        file_in.ignore(10000,<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;        ++i;</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;      }</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;skipped &quot;</span>&lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; comment lines in &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;      </div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;      <span class="keywordtype">size_t</span> pos;</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;      <span class="comment">// read in data</span></div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;      <span class="keywordflow">while</span>(getline(file_in,myline)){</div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;        </div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;        <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;#&#39;</span>){</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;          std::cout &lt;&lt; <span class="stringliteral">&quot;skipped line &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;          <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;        }</div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;        </div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;        pos= myline.find_first_not_of(space);</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;        myline.erase(0,pos);</div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;        </div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;        </div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;        pos = myline.find(delineator);</div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;        strg.assign(myline,0,pos);</div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;        buffer &lt;&lt; strg;</div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;        buffer &gt;&gt; myt1;</div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;        <span class="keywordflow">if</span>(verbose) std::cout &lt;&lt; myt1 &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;        x.push_back(myt1);</div>
+<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;        </div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;        myline.erase(0,pos+1);</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;        pos= myline.find_first_not_of(space);</div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;        myline.erase(0,pos);</div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;        </div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;        strg.clear();</div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;        buffer.clear();</div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;        </div>
+<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;        <span class="comment">// ******************</span></div>
+<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;        </div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;        </div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;        pos = myline.find(space);</div>
+<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;        strg.assign(myline,0,pos);</div>
+<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;        buffer &lt;&lt; strg;</div>
+<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;        buffer &gt;&gt; myt2;</div>
+<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;        <span class="keywordflow">if</span>(verbose)  std::cout &lt;&lt; myt2 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;        y.push_back(myt2);</div>
+<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;        </div>
+<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;        myline.erase(0,pos+1);</div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;        pos= myline.find_first_not_of(space);</div>
+<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;        myline.erase(0,pos);</div>
+<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;        </div>
+<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;        strg.clear();</div>
+<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;        buffer.clear();</div>
+<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;        </div>
+<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;        <span class="comment">// ******************</span></div>
+<div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;        pos = myline.find(space);</div>
+<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;        strg.assign(myline,0,pos);</div>
+<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;        buffer &lt;&lt; strg;</div>
+<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;        buffer &gt;&gt; myt3;</div>
+<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;        <span class="keywordflow">if</span>(verbose)  std::cout &lt;&lt; myt3 &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;        y.push_back(myt3);</div>
+<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;        </div>
+<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;        strg.clear();</div>
+<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;        buffer.clear();</div>
+<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;        myline.clear();</div>
+<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;        </div>
+<div class="line"><a name="l01301"></a><span class="lineno"> 1301</span>&#160;      }</div>
+<div class="line"><a name="l01302"></a><span class="lineno"> 1302</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Read &quot;</span> &lt;&lt; x.size() &lt;&lt; <span class="stringliteral">&quot; lines from &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01303"></a><span class="lineno"> 1303</span>&#160;    }</div>
+<div class="line"><a name="l01304"></a><span class="lineno"> 1304</span>&#160;    </div>
+<div class="line"><a name="l01305"></a><span class="lineno"> 1305</span>&#160;    <span class="keywordtype">size_t</span> NumberOfEntries(<span class="keyword">const</span> std::string &amp;<span class="keywordtype">string</span>,<span class="keywordtype">char</span> deliniator);</div>
+<div class="line"><a name="l01306"></a><span class="lineno"> 1306</span>&#160;    </div>
+<div class="line"><a name="l01308"></a><span class="lineno"> 1308</span>&#160;    <span class="keywordtype">int</span> CountColumns(std::string filename  </div>
+<div class="line"><a name="l01309"></a><span class="lineno"> 1309</span>&#160;                     ,<span class="keywordtype">char</span> comment_char = <span class="charliteral">&#39;#&#39;</span>  </div>
+<div class="line"><a name="l01310"></a><span class="lineno"> 1310</span>&#160;                     ,<span class="keywordtype">char</span> deliniator = <span class="charliteral">&#39; &#39;</span>    </div>
+<div class="line"><a name="l01311"></a><span class="lineno"> 1311</span>&#160;    );</div>
+<div class="line"><a name="l01312"></a><span class="lineno"> 1312</span>&#160;    </div>
+<div class="line"><a name="l01316"></a><span class="lineno"> 1316</span>&#160;    <span class="keywordtype">void</span> ReadFileNames(</div>
+<div class="line"><a name="l01317"></a><span class="lineno"> 1317</span>&#160;                                  std::string dir              </div>
+<div class="line"><a name="l01318"></a><span class="lineno"> 1318</span>&#160;                                  ,<span class="keyword">const</span> std::string filespec </div>
+<div class="line"><a name="l01319"></a><span class="lineno"> 1319</span>&#160;                                  ,std::vector&lt;std::string&gt; &amp; filenames  </div>
+<div class="line"><a name="l01320"></a><span class="lineno"> 1320</span>&#160;                       ,<span class="keywordtype">bool</span> verbose);</div>
+<div class="line"><a name="l01321"></a><span class="lineno"> 1321</span>&#160;    </div>
+<div class="line"><a name="l01322"></a><span class="lineno"> 1322</span>&#160;    </div>
+<div class="line"><a name="l01332"></a><span class="lineno"> 1332</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l01333"></a><span class="lineno"> 1333</span>&#160;    <span class="keywordtype">void</span> ReadASCII(std::vector&lt;T&gt; &amp;data</div>
+<div class="line"><a name="l01334"></a><span class="lineno"> 1334</span>&#160;                   ,std::string filename</div>
+<div class="line"><a name="l01335"></a><span class="lineno"> 1335</span>&#160;                   ,<span class="keywordtype">int</span> &amp;columns</div>
+<div class="line"><a name="l01336"></a><span class="lineno"> 1336</span>&#160;                   ,<span class="keywordtype">int</span> &amp;rows</div>
+<div class="line"><a name="l01337"></a><span class="lineno"> 1337</span>&#160;                   ,<span class="keywordtype">char</span> comment_char = <span class="charliteral">&#39;#&#39;</span></div>
+<div class="line"><a name="l01338"></a><span class="lineno"> 1338</span>&#160;                   ,<span class="keywordtype">size_t</span> MaxNrows = std::numeric_limits&lt;size_t&gt;::max()</div>
+<div class="line"><a name="l01339"></a><span class="lineno"> 1339</span>&#160;                   ,<span class="keywordtype">bool</span> verbose = <span class="keyword">true</span>){</div>
+<div class="line"><a name="l01340"></a><span class="lineno"> 1340</span>&#160;      </div>
+<div class="line"><a name="l01341"></a><span class="lineno"> 1341</span>&#160;      std::ifstream file(filename);</div>
+<div class="line"><a name="l01342"></a><span class="lineno"> 1342</span>&#160;      <span class="comment">// find number of particles</span></div>
+<div class="line"><a name="l01343"></a><span class="lineno"> 1343</span>&#160;      <span class="keywordflow">if</span> (!file.is_open()){</div>
+<div class="line"><a name="l01344"></a><span class="lineno"> 1344</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;file &quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot; cann&#39;t be opened.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01345"></a><span class="lineno"> 1345</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;no file&quot;</span>);</div>
+<div class="line"><a name="l01346"></a><span class="lineno"> 1346</span>&#160;      }</div>
+<div class="line"><a name="l01347"></a><span class="lineno"> 1347</span>&#160;      </div>
+<div class="line"><a name="l01348"></a><span class="lineno"> 1348</span>&#160;      </div>
+<div class="line"><a name="l01349"></a><span class="lineno"> 1349</span>&#160;      data.empty();</div>
+<div class="line"><a name="l01350"></a><span class="lineno"> 1350</span>&#160;      </div>
+<div class="line"><a name="l01351"></a><span class="lineno"> 1351</span>&#160;      std::string line;</div>
+<div class="line"><a name="l01352"></a><span class="lineno"> 1352</span>&#160;      columns = 0;</div>
+<div class="line"><a name="l01353"></a><span class="lineno"> 1353</span>&#160;      rows = 0;</div>
+<div class="line"><a name="l01354"></a><span class="lineno"> 1354</span>&#160;      <span class="keywordtype">size_t</span> first_data_line;</div>
+<div class="line"><a name="l01355"></a><span class="lineno"> 1355</span>&#160;      </div>
+<div class="line"><a name="l01356"></a><span class="lineno"> 1356</span>&#160;      <span class="comment">// read comment lines and first data line</span></div>
+<div class="line"><a name="l01357"></a><span class="lineno"> 1357</span>&#160;      <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l01358"></a><span class="lineno"> 1358</span>&#160;        first_data_line = file.tellg();</div>
+<div class="line"><a name="l01359"></a><span class="lineno"> 1359</span>&#160;        std::getline(file,line);</div>
+<div class="line"><a name="l01360"></a><span class="lineno"> 1360</span>&#160;        <span class="keywordflow">if</span>(!file) <span class="keywordflow">break</span>;  <span class="comment">// probably EOF</span></div>
+<div class="line"><a name="l01361"></a><span class="lineno"> 1361</span>&#160;      }<span class="keywordflow">while</span>(line[0] == comment_char);</div>
+<div class="line"><a name="l01362"></a><span class="lineno"> 1362</span>&#160;      </div>
+<div class="line"><a name="l01363"></a><span class="lineno"> 1363</span>&#160;      columns =  NumberOfEntries(line,<span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l01364"></a><span class="lineno"> 1364</span>&#160;      </div>
+<div class="line"><a name="l01365"></a><span class="lineno"> 1365</span>&#160;      file.seekg(first_data_line);   <span class="comment">// move back to first data line</span></div>
+<div class="line"><a name="l01366"></a><span class="lineno"> 1366</span>&#160;      </div>
+<div class="line"><a name="l01367"></a><span class="lineno"> 1367</span>&#160;      std::copy(std::istream_iterator&lt;T&gt;(file),</div>
+<div class="line"><a name="l01368"></a><span class="lineno"> 1368</span>&#160;                  std::istream_iterator&lt;T&gt;(),</div>
+<div class="line"><a name="l01369"></a><span class="lineno"> 1369</span>&#160;                  std::back_inserter(data));</div>
+<div class="line"><a name="l01370"></a><span class="lineno"> 1370</span>&#160;      </div>
+<div class="line"><a name="l01371"></a><span class="lineno"> 1371</span>&#160;      rows = data.size()/columns;</div>
+<div class="line"><a name="l01372"></a><span class="lineno"> 1372</span>&#160;      <span class="keywordflow">if</span>(verbose){</div>
+<div class="line"><a name="l01373"></a><span class="lineno"> 1373</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Read &quot;</span> &lt;&lt; rows &lt;&lt; <span class="stringliteral">&quot; rows of &quot;</span> &lt;&lt; columns &lt;&lt; <span class="stringliteral">&quot; columns from file &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l01374"></a><span class="lineno"> 1374</span>&#160;      }</div>
+<div class="line"><a name="l01375"></a><span class="lineno"> 1375</span>&#160;    }</div>
+<div class="line"><a name="l01376"></a><span class="lineno"> 1376</span>&#160;  }</div>
+<div class="line"><a name="l01377"></a><span class="lineno"> 1377</span>&#160;}</div>
+<div class="line"><a name="l01378"></a><span class="lineno"> 1378</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a4d0d15639bf48d0ca15d961d1be672b0"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a4d0d15639bf48d0ca15d961d1be672b0">Utilities::MixedVector::push_back</a></div><div class="ttdeci">void push_back(const SubclassT &amp;obj)</div><div class="ttdoc">add an object of type SubclassT to the vector </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:267</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4_html_a0f2695b67c5e8ef8350a81ac7d3d9981"><div class="ttname"><a href="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a0f2695b67c5e8ef8350a81ac7d3d9981">Utilities::MixedVector&lt; BaseT * &gt;::push_back</a></div><div class="ttdeci">void push_back(BaseT *obj)</div><div class="ttdoc">add an object of type SubclassT to the vector </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:625</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_ad04f3349ebe902f8e1d17da073a08a21"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#ad04f3349ebe902f8e1d17da073a08a21">Utilities::MixedVector::end</a></div><div class="ttdeci">iterator&lt; SubclassT &gt; end()</div><div class="ttdoc">get iterator to last of items of type SubclassT </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:509</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4_html_a4da7977ba3f53343a2d30a469cc5a8a3"><div class="ttname"><a href="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a4da7977ba3f53343a2d30a469cc5a8a3">Utilities::MixedVector&lt; BaseT * &gt;::pop_back</a></div><div class="ttdeci">void pop_back()</div><div class="ttdoc">pop element from back of vector </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:638</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a7f3cff33bce7b8850b2e533deb66ce96"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a7f3cff33bce7b8850b2e533deb66ce96">Utilities::MixedVector::data</a></div><div class="ttdeci">const BaseT * data() const </div><div class="ttdoc">direct access to underlying array (const) </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:361</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a09eaf90ee4d9a4b31c1c29eb197f8450"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a09eaf90ee4d9a4b31c1c29eb197f8450">Utilities::MixedVector::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdoc">check if vector of items of type SubclassT is empty </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:476</div></div>
-<div class="ttc" id="namespace_utilities_html_afd3cdbb09da9d15ddb6562e887ad173d"><div class="ttname"><a href="namespace_utilities.html#afd3cdbb09da9d15ddb6562e887ad173d">Utilities::read2columnfile</a></div><div class="ttdeci">void read2columnfile(std::string filename, std::vector&lt; T1 &gt; &amp;x, std::vector&lt; T2 &gt; &amp;y, std::string delineator=&quot; &quot;, bool verbose=false)</div><div class="ttdoc">Read in data from an ASCII file with two columns. </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:1125</div></div>
 <div class="ttc" id="class_utilities_1_1_d2_matrix_html"><div class="ttname"><a href="class_utilities_1_1_d2_matrix.html">Utilities::D2Matrix</a></div><div class="ttdoc">2 dimensional matrix </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:104</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a9fcf946ef58281ffa6a56b8cd226d867"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a9fcf946ef58281ffa6a56b8cd226d867">Utilities::MixedVector::at</a></div><div class="ttdeci">BaseT &amp; at(std::size_t i)</div><div class="ttdoc">indexed access with bounds checking </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:418</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4_html_a43bd88210a5ae2903d24552c175a4a65"><div class="ttname"><a href="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a43bd88210a5ae2903d24552c175a4a65">Utilities::MixedVector&lt; BaseT * &gt;::at</a></div><div class="ttdeci">BaseT * at(std::size_t i)</div><div class="ttdoc">indexed access with bounds checking </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:750</div></div>
@@ -1265,7 +1325,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a533bdc1c1bd65b9d9195800c37ecb51f"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a533bdc1c1bd65b9d9195800c37ecb51f">Utilities::MixedVector::pop_back</a></div><div class="ttdeci">void pop_back()</div><div class="ttdoc">pop element from back of vector </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:283</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4_html_aaef1a90010a5e3a699067839f6dee49a"><div class="ttname"><a href="class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#aaef1a90010a5e3a699067839f6dee49a">Utilities::MixedVector&lt; BaseT * &gt;::begin</a></div><div class="ttdeci">iterator&lt; SubclassT &gt; begin()</div><div class="ttdoc">get iterator to first of items of type SubclassT </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:831</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a6d724134c9bacc0b9e1f6a3c615cffd3"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a6d724134c9bacc0b9e1f6a3c615cffd3">Utilities::MixedVector::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">clear all elements </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:324</div></div>
-<div class="ttc" id="namespace_utilities_html_abef4783ad9c08c0e951893ad9aa21ba1"><div class="ttname"><a href="namespace_utilities.html#abef4783ad9c08c0e951893ad9aa21ba1">Utilities::read3columnfile</a></div><div class="ttdeci">void read3columnfile(std::string filename, std::vector&lt; T1 &gt; &amp;x, std::vector&lt; T2 &gt; &amp;y, std::vector&lt; T3 &gt; &amp;z, std::string delineator=&quot; &quot;, bool verbose=false)</div><div class="ttdoc">Read in data from an ASCII file with three columns. </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:1204</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a681f430bcf8a7dfd10f0d9e6b0ae826d"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a681f430bcf8a7dfd10f0d9e6b0ae826d">Utilities::MixedVector::operator[]</a></div><div class="ttdeci">const BaseT &amp; operator[](std::size_t i) const </div><div class="ttdoc">Indexing operator for all elements (const). </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:380</div></div>
 <div class="ttc" id="class_utilities_1_1_random_numbers___n_r_html_a74a33e0a7a47e5b1c33f97d4fe0dca18"><div class="ttname"><a href="class_utilities_1_1_random_numbers___n_r.html#a74a33e0a7a47e5b1c33f97d4fe0dca18">Utilities::RandomNumbers_NR::gauss</a></div><div class="ttdeci">PosType gauss()</div><div class="ttdoc">generates a Gaussian distributed number with unit variance by polar Box-Muller transform ...</div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:956</div></div>
 <div class="ttc" id="class_utilities_1_1_d3_matrix_html"><div class="ttname"><a href="class_utilities_1_1_d3_matrix.html">Utilities::D3Matrix</a></div><div class="ttdoc">3 dimensional matrix, fixed size </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:65</div></div>
@@ -1324,7 +1383,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 5 2017 16:22:13 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 8 2017 15:45:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
