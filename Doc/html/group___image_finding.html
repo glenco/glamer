@@ -703,11 +703,11 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
     <tr><td class="paramname">grid</td><td>Tree of grid points </td></tr>
     <tr><td class="paramname">Nimages</td><td>number of images found </td></tr>
     <tr><td class="paramname">imageinfo</td><td>information on each image </td></tr>
-    <tr><td class="paramname">xmax</td><td>Maximum size of source on image plane. The entire source must be within this distance from source-&gt;getX()[] </td></tr>
+    <tr><td class="paramname">xmax</td><td>Maximum size of source on image plane. The entire source must be within this distance from source-&gt;getTheta()[] </td></tr>
     <tr><td class="paramname">xmin</td><td>The smallest scale of the source measured on the lens plane. The more accurate these 2 parameters are the less likely it is that an image will be missed. </td></tr>
     <tr><td class="paramname">initial_size</td><td>Initial size of source for telescoping, 0 to start from the initial grid size. If &lt; 0 no telescoping is used and only the already existing points are used to to initiate the image finding. </td></tr>
     <tr><td class="paramname">criterion</td><td>see data type </td></tr>
-    <tr><td class="paramname">FindCenter</td><td>if the center of the source is not known this can be set to true and it will attempt to find the center, find the size of the source and determine if there is more than one source The entire source must be within xmax of source-&gt;getX() because this is the only region that will be scanned. </td></tr>
+    <tr><td class="paramname">FindCenter</td><td>if the center of the source is not known this can be set to true and it will attempt to find the center, find the size of the source and determine if there is more than one source The entire source must be within xmax of source-&gt;getTheta() because this is the only region that will be scanned. </td></tr>
     <tr><td class="paramname">divide_images</td><td>if true will divide images and apply the exit criterion to them separately. </td></tr>
   </table>
   </dd>
@@ -777,7 +777,7 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
     <tr><td class="paramname">grid</td><td>Tree of grid points </td></tr>
     <tr><td class="paramname">Nimages</td><td>number of images found </td></tr>
     <tr><td class="paramname">imageinfo</td><td>information on each image </td></tr>
-    <tr><td class="paramname">xmax</td><td>Maximum size of source on image plane. The entire source must be within this distance from source-&gt;getX()[]. Decreasing it will make the code run faster. Making xmax much bigger than the grid boundaries will check all points for surface brightness. </td></tr>
+    <tr><td class="paramname">xmax</td><td>Maximum size of source on image plane. The entire source must be within this distance from source-&gt;getTheta()[]. Decreasing it will make the code run faster. Making xmax much bigger than the grid boundaries will check all points for surface brightness. </td></tr>
     <tr><td class="paramname">divide_images</td><td>if true will divide images. </td></tr>
     <tr><td class="paramname">find_borders</td><td>if true will find the inner and outer borders of each image </td></tr>
   </table>
@@ -879,7 +879,7 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
     <tr><td class="paramname">grid</td><td>Tree of grid points </td></tr>
     <tr><td class="paramname">Nimages</td><td>number of images found </td></tr>
     <tr><td class="paramname">imageinfo</td><td>information on each image </td></tr>
-    <tr><td class="paramname">rmax</td><td>Maximum size of source on souce plane. The entire source must be within this distance from source-&gt;getX()[] </td></tr>
+    <tr><td class="paramname">rmax</td><td>Maximum size of source on souce plane. The entire source must be within this distance from source-&gt;getTheta()[] </td></tr>
     <tr><td class="paramname">res_min</td><td>requred resolution of image, typically the pixel size of the final image </td></tr>
     <tr><td class="paramname">initial_size</td><td>Initial size of source for telescoping, 0 to start from the initial grid size. If &lt; 0 no telescoping is used and only the already existing points are used to to initiate the image finding. </td></tr>
     <tr><td class="paramname">criterion</td><td>see data type </td></tr>
@@ -976,7 +976,7 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 15:45:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 7 2018 15:46:31 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

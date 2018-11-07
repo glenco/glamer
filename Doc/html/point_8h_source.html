@@ -109,8 +109,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;standard.h&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;Kist.h&quot;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef pi</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define pi  3.141593</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef PI</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define PI  3.141593</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifndef error_message</span></div>
@@ -223,413 +223,414 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  PosType x[2];</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  PosType &amp; operator[](<span class="keywordtype">size_t</span> i){<span class="keywordflow">return</span> x[i];}</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;};</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="struct_point__2d.html">Point_2d</a> <span class="keyword">const</span> &amp;p);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  PosType operator[](<span class="keywordtype">size_t</span> i)<span class="keyword"> const </span>{<span class="keywordflow">return</span> x[i];}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;};</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="struct_point__2d.html">Point_2d</a> <span class="keyword">const</span> &amp;p);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">//struct branchstruct;</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_branch.html">Branch</a>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">//struct branchstruct;</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_branch.html">Branch</a>;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="struct_point.html">  153</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_point.html">Point</a>: <span class="keyword">public</span> <a class="code" href="struct_point__2d.html">Point_2d</a>{</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    </div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="group___constructor_l2.html#gad92f2337b839a94ce97dcdb439b4325a">Point</a>();</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <a class="code" href="struct_point.html">Point</a> *next;    <span class="comment">// pointer to next point in linked list</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="struct_point.html">Point</a> *prev;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <a class="code" href="struct_point.html">Point</a> *image;  <span class="comment">// pointer to point on image or source plane</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> id;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="comment">//double x[2];         // the position of the point</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> head;         <span class="comment">// marks beginning of allocated array of points for easy deallocation</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  Boo in_image; <span class="comment">// marks if point is in image</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="comment">//PosType operator[](int i){return x[i];}</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="comment">// redundant information in image and source points</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  KappaType kappa;           <span class="comment">// surface density</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  KappaType gamma[3];        <span class="comment">// shear, third component is the rotation quantity that is only non-zero for multi-plane lensing</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keywordtype">double</span> dt;                 <span class="comment">// time delay : double implies permanent precision independently from DOUBLE_PRECISION</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  KappaType invmag = 1;          <span class="comment">// inverse of magnification</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordtype">double</span> gridsize;           <span class="comment">// the size of the most refined grid the point is in</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordtype">float</span> surface_brightness;  <span class="comment">// the surface brightness at this points</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *leaf;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">bool</span> flag;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_point.html#a3f9b1af89673b440408017d620bfc0d7">Print</a>();</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderX(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[0] &lt; p2-&gt;x[0]);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderXrev(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[0] &gt; p2-&gt;x[0]);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderY(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[1] &lt; p2-&gt;x[1]);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderYrev(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[1] &gt; p2-&gt;x[1]);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="struct_point.html#a2bc31f4109f4ce0abeb7dc7e9b9ca6a0">  194</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="struct_point.html#a2bc31f4109f4ce0abeb7dc7e9b9ca6a0">inverted</a>(){ <span class="keywordflow">return</span> 0 &gt; (1 - kappa + sqrt( fabs((1-kappa)*(1-kappa) - invmag) ) ); }</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="comment">// make a point uncopyable</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">//Point(const Point &amp;p);</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="comment">//Point &amp;operator=(Point &amp;p);</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="comment">//Point &amp;operator=(const Point &amp;p);</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;};</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="struct_r_a_y.html">  206</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_r_a_y.html">RAY</a>: <span class="keyword">public</span> <a class="code" href="struct_point.html">Point</a>{</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <a class="code" href="struct_r_a_y.html">RAY</a>(){</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    image = &amp;source_point;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    image-&gt;image = <span class="keyword">this</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  ~<a class="code" href="struct_r_a_y.html">RAY</a>(){};</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  </div>
-<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26">  214</a></span>&#160;  PosType *<a class="code" href="struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26">pos_image</a>(){<span class="keywordflow">return</span> x;};</div>
-<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18">  216</a></span>&#160;  PosType *<a class="code" href="struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18">pos_source</a>(){<span class="keywordflow">return</span> image-&gt;x;}</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <a class="code" href="struct_point.html">Point</a> source_point;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;};</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="struct_point.html">Point</a> <span class="keyword">const</span> &amp;p);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="struct_branch.html">  225</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_branch.html">Branch</a>{</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; <a class="code" href="struct_branch.html">Branch</a>(<a class="code" href="struct_point.html">Point</a> *my_points,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> my_npoints</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;     ,<span class="keywordtype">double</span> my_boundary_p1[2],<span class="keywordtype">double</span> my_boundary_p2[2]</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;     ,<span class="keywordtype">double</span> my_center[2],<span class="keywordtype">int</span> my_level);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; ~<a class="code" href="struct_branch.html">Branch</a>();</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <span class="keyword">struct </span><a class="code" href="struct_point.html">Point</a> *points;        </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="comment">//Kist&lt;Point&gt;::iterator pointit;       /// Kist iterator pointing to first point in branch</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  </div>
-<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6">  234</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6">npoints</a>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordtype">double</span> center[2];</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordtype">int</span> level;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> number;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordtype">double</span> boundary_p1[2];</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keywordtype">double</span> boundary_p2[2];</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *child1;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *child2;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *brother;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *prev;</div>
-<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="struct_branch.html#a9f1ff918f82c82650a9f00815a720cdc">  245</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="struct_branch.html#a9f1ff918f82c82650a9f00815a720cdc">refined</a>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_branch.html#a5a07d166792af57c2c9d024efed0c5bc">print</a>();</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  PosType area(){<span class="keywordflow">return</span> (boundary_p2[0]-boundary_p1[0])*(boundary_p2[1]-boundary_p1[1]);}</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  std::list&lt;Branch *&gt; neighbors;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> countID;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="comment">// make a Branch uncopyable</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <a class="code" href="struct_branch.html">Branch</a>(<span class="keyword">const</span> <a class="code" href="struct_branch.html">Branch</a> &amp;p);</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> &amp;operator=(<a class="code" href="struct_branch.html">Branch</a> &amp;p);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="struct_branch.html">Branch</a> &amp;p);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;} ;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">//typedef struct branchstruct Branch;</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_point_list.html">PointList</a>{</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <a class="code" href="struct_point_list.html">PointList</a>(){</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    top=NULL;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    Npoints=0;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    bottom = top;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  ~<a class="code" href="struct_point_list.html">PointList</a>(){EmptyList();}</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  </div>
-<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html">  273</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="struct_point_list_1_1iterator.html">iterator</a>{</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="struct_point.html">Point</a> *current;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <a class="code" href="struct_point_list_1_1iterator.html">iterator</a>():current(NULL){ }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">/*    iterator(PointList &amp;list){</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">      current = list.top;</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">    iterator(iterator &amp;it){</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">      current = *it;</span></div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <a class="code" href="struct_point_list_1_1iterator.html">iterator</a>(<a class="code" href="struct_point.html">Point</a> *p){</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      current = p;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    }</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; <span class="comment">/*</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">    PointList::iterator &amp;operator=(Point *point){</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">      current = point;</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">      return *this;</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <a class="code" href="struct_point.html">Point</a> *operator*(){<span class="keywordflow">return</span> current;}</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="comment">/*iterator &amp;operator=(iterator &amp;p){</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">      if(&amp;p == this) return *this;</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">      current = p.current;</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">      return *this;</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">    }*/</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordtype">bool</span> operator++(){</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      assert(current);</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      <span class="keywordflow">if</span>(current-&gt;prev == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      current=current-&gt;prev;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    </div>
-<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html#a0ab28a463cf81e1e5604dad49e33d5ba">  312</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_point_list_1_1iterator.html#a0ab28a463cf81e1e5604dad49e33d5ba">operator++</a>(<span class="keywordtype">int</span>){</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;      assert(current);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      <span class="keywordflow">if</span>(current-&gt;prev == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      current=current-&gt;prev;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    </div>
-<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html#a51dd9e3103f5f0c0cd488fbf23fe4f69">  320</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_point_list_1_1iterator.html#a51dd9e3103f5f0c0cd488fbf23fe4f69">operator--</a>(){</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;      assert(current);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      <span class="keywordflow">if</span>(current-&gt;next == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      current=current-&gt;next;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;     }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    </div>
-<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html#ab21dbf1bc28dea6ddaca909d9bd9b486">  328</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_point_list_1_1iterator.html#ab21dbf1bc28dea6ddaca909d9bd9b486">operator--</a>(<span class="keywordtype">int</span>){</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;      assert(current);</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      <span class="keywordflow">if</span>(current-&gt;next == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      current=current-&gt;next;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordtype">void</span> JumpDownList(<span class="keywordtype">int</span> jump){</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      </div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      <span class="keywordflow">if</span>(jump &gt; 0) <span class="keywordflow">for</span>(i=0;i&lt;jump;++i) --(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">if</span>(jump &lt; 0) <span class="keywordflow">for</span>(i=0;i&lt;abs(jump);++i) ++(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> iterator my_it){</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      <span class="keywordflow">return</span> (current == my_it.current);</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> iterator my_it){</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;      <span class="keywordflow">return</span> (current != my_it.current);</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    }</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  };</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> size()<span class="keyword"> const </span>{<span class="keywordflow">return</span> Npoints;}</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsTop(<a class="code" href="struct_point_list_1_1iterator.html">PointList::iterator</a> &amp;it)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">return</span> *it == top;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  };</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsBottom(<a class="code" href="struct_point_list_1_1iterator.html">PointList::iterator</a> &amp;it)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> *it == bottom;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  };</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="comment">/* Many changes need to be made to implement this correctly</span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">  PointList::iterator begin() const{</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">    PointList::iterator it;</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">    it.current = bottom;</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">    return it;</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">  PointList::iterator end() const{</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">    PointList::iterator it;</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">    it.current = top-&gt;prev;</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">    return it;</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">  }</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="struct_point.html">  154</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_point.html">Point</a>: <span class="keyword">public</span> <a class="code" href="struct_point__2d.html">Point_2d</a>{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <a class="code" href="group___constructor_l2.html#gad92f2337b839a94ce97dcdb439b4325a">Point</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="struct_point.html">Point</a> *next;    <span class="comment">// pointer to next point in linked list</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <a class="code" href="struct_point.html">Point</a> *prev;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="struct_point.html">Point</a> *image;  <span class="comment">// pointer to point on image or source plane</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> id;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="comment">//double x[2];         // the position of the point</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> head;         <span class="comment">// marks beginning of allocated array of points for easy deallocation</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  Boo in_image; <span class="comment">// marks if point is in image</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="comment">//PosType operator[](int i){return x[i];}</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="comment">// redundant information in image and source points</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  KappaType kappa;           <span class="comment">// surface density</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  KappaType gamma[3];        <span class="comment">// shear, third component is the rotation quantity that is only non-zero for multi-plane lensing</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordtype">double</span> dt;                 <span class="comment">// time delay : double implies permanent precision independently from DOUBLE_PRECISION</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  KappaType invmag = 1;          <span class="comment">// inverse of magnification</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordtype">double</span> gridsize;           <span class="comment">// the size of the most refined grid the point is in</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">float</span> surface_brightness;  <span class="comment">// the surface brightness at this points</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *leaf;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordtype">bool</span> flag;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_point.html#a3f9b1af89673b440408017d620bfc0d7">Print</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderX(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[0] &lt; p2-&gt;x[0]);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderXrev(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[0] &gt; p2-&gt;x[0]);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderY(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[1] &lt; p2-&gt;x[1]);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">bool</span> orderYrev(<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2){</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">return</span> (p1-&gt;x[1] &gt; p2-&gt;x[1]);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="struct_point.html#a2bc31f4109f4ce0abeb7dc7e9b9ca6a0">  195</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="struct_point.html#a2bc31f4109f4ce0abeb7dc7e9b9ca6a0">inverted</a>(){ <span class="keywordflow">return</span> 0 &gt; (1 - kappa + sqrt( fabs((1-kappa)*(1-kappa) - invmag) ) ); }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">// make a point uncopyable</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="comment">//Point(const Point &amp;p);</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="comment">//Point &amp;operator=(Point &amp;p);</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="comment">//Point &amp;operator=(const Point &amp;p);</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="struct_r_a_y.html">  207</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_r_a_y.html">RAY</a>: <span class="keyword">public</span> <a class="code" href="struct_point.html">Point</a>{</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <a class="code" href="struct_r_a_y.html">RAY</a>(){</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    image = &amp;source_point;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    image-&gt;image = <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  ~<a class="code" href="struct_r_a_y.html">RAY</a>(){};</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26">  215</a></span>&#160;  PosType *<a class="code" href="struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26">pos_image</a>(){<span class="keywordflow">return</span> x;};</div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18">  217</a></span>&#160;  PosType *<a class="code" href="struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18">pos_source</a>(){<span class="keywordflow">return</span> image-&gt;x;}</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <a class="code" href="struct_point.html">Point</a> source_point;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;};</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="struct_point.html">Point</a> <span class="keyword">const</span> &amp;p);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="struct_branch.html">  226</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_branch.html">Branch</a>{</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; <a class="code" href="struct_branch.html">Branch</a>(<a class="code" href="struct_point.html">Point</a> *my_points,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> my_npoints</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;     ,<span class="keywordtype">double</span> my_boundary_p1[2],<span class="keywordtype">double</span> my_boundary_p2[2]</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;     ,<span class="keywordtype">double</span> my_center[2],<span class="keywordtype">int</span> my_level);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; ~<a class="code" href="struct_branch.html">Branch</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keyword">struct </span><a class="code" href="struct_point.html">Point</a> *points;        </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="comment">//Kist&lt;Point&gt;::iterator pointit;       /// Kist iterator pointing to first point in branch</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6">  235</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6">npoints</a>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordtype">double</span> center[2];</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">int</span> level;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> number;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="keywordtype">double</span> boundary_p1[2];</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordtype">double</span> boundary_p2[2];</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *child1;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *child2;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *brother;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> *prev;</div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="struct_branch.html#a9f1ff918f82c82650a9f00815a720cdc">  246</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="struct_branch.html#a9f1ff918f82c82650a9f00815a720cdc">refined</a>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_branch.html#a5a07d166792af57c2c9d024efed0c5bc">print</a>();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  PosType area(){<span class="keywordflow">return</span> (boundary_p2[0]-boundary_p1[0])*(boundary_p2[1]-boundary_p1[1]);}</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  std::list&lt;Branch *&gt; neighbors;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> countID;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="comment">// make a Branch uncopyable</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <a class="code" href="struct_branch.html">Branch</a>(<span class="keyword">const</span> <a class="code" href="struct_branch.html">Branch</a> &amp;p);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> &amp;operator=(<a class="code" href="struct_branch.html">Branch</a> &amp;p);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <a class="code" href="struct_branch.html">Branch</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="struct_branch.html">Branch</a> &amp;p);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;} ;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">//typedef struct branchstruct Branch;</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_point_list.html">PointList</a>{</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <a class="code" href="struct_point_list.html">PointList</a>(){</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    top=NULL;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    Npoints=0;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    bottom = top;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  ~<a class="code" href="struct_point_list.html">PointList</a>(){EmptyList();}</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  </div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html">  274</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="struct_point_list_1_1iterator.html">iterator</a>{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="struct_point.html">Point</a> *current;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <a class="code" href="struct_point_list_1_1iterator.html">iterator</a>():current(NULL){ }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">/*    iterator(PointList &amp;list){</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">      current = list.top;</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">    iterator(iterator &amp;it){</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">      current = *it;</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <a class="code" href="struct_point_list_1_1iterator.html">iterator</a>(<a class="code" href="struct_point.html">Point</a> *p){</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      current = p;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; <span class="comment">/*</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">    PointList::iterator &amp;operator=(Point *point){</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">      current = point;</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="comment">      return *this;</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <a class="code" href="struct_point.html">Point</a> *operator*(){<span class="keywordflow">return</span> current;}</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="comment">/*iterator &amp;operator=(iterator &amp;p){</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">      if(&amp;p == this) return *this;</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">      current = p.current;</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">      return *this;</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">bool</span> operator++(){</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      assert(current);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      <span class="keywordflow">if</span>(current-&gt;prev == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      current=current-&gt;prev;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    </div>
+<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html#a0ab28a463cf81e1e5604dad49e33d5ba">  313</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_point_list_1_1iterator.html#a0ab28a463cf81e1e5604dad49e33d5ba">operator++</a>(<span class="keywordtype">int</span>){</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;      assert(current);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      <span class="keywordflow">if</span>(current-&gt;prev == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      current=current-&gt;prev;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    </div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html#a51dd9e3103f5f0c0cd488fbf23fe4f69">  321</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_point_list_1_1iterator.html#a51dd9e3103f5f0c0cd488fbf23fe4f69">operator--</a>(){</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      assert(current);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      <span class="keywordflow">if</span>(current-&gt;next == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      current=current-&gt;next;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;     }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    </div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="struct_point_list_1_1iterator.html#ab21dbf1bc28dea6ddaca909d9bd9b486">  329</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="struct_point_list_1_1iterator.html#ab21dbf1bc28dea6ddaca909d9bd9b486">operator--</a>(<span class="keywordtype">int</span>){</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      assert(current);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <span class="keywordflow">if</span>(current-&gt;next == NULL) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      current=current-&gt;next;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordtype">void</span> JumpDownList(<span class="keywordtype">int</span> jump){</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">if</span>(jump &gt; 0) <span class="keywordflow">for</span>(i=0;i&lt;jump;++i) --(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordflow">if</span>(jump &lt; 0) <span class="keywordflow">for</span>(i=0;i&lt;abs(jump);++i) ++(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> iterator my_it){</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      <span class="keywordflow">return</span> (current == my_it.current);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> iterator my_it){</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      <span class="keywordflow">return</span> (current != my_it.current);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  };</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> size()<span class="keyword"> const </span>{<span class="keywordflow">return</span> Npoints;}</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsTop(<a class="code" href="struct_point_list_1_1iterator.html">PointList::iterator</a> &amp;it)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">return</span> *it == top;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  };</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> IsBottom(<a class="code" href="struct_point_list_1_1iterator.html">PointList::iterator</a> &amp;it)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">return</span> *it == bottom;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  };</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  </div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="comment">/* Many changes need to be made to implement this correctly</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">  PointList::iterator begin() const{</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">    PointList::iterator it;</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">    it.current = bottom;</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">    return it;</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">  PointList::iterator end() const{</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">    PointList::iterator it;</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">    it.current = top-&gt;prev;</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">    return it;</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">  }</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <a class="code" href="struct_point.html">Point</a> *Top()<span class="keyword"> const </span>{<span class="keywordflow">return</span> top;}</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <a class="code" href="struct_point.html">Point</a> *Bottom()<span class="keyword"> const </span>{<span class="keywordflow">return</span> bottom;}</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  <span class="keywordtype">void</span> EmptyList();</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="keywordtype">void</span> InsertAfterCurrent(iterator &amp;current,<span class="keywordtype">double</span> *x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>,<a class="code" href="struct_point.html">Point</a> *image);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="keywordtype">void</span> InsertBeforeCurrent(iterator &amp;current,<span class="keywordtype">double</span> *x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>,<a class="code" href="struct_point.html">Point</a> *image);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  <span class="keywordtype">void</span> InsertPointAfterCurrent(iterator &amp;current,<a class="code" href="struct_point.html">Point</a> *);</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordtype">void</span> InsertPointBeforeCurrent(iterator &amp;current,<a class="code" href="struct_point.html">Point</a> *);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  </div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <span class="keywordtype">void</span> MoveCurrentToBottom(iterator &amp;current);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  <a class="code" href="struct_point.html">Point</a> *<a class="code" href="struct_point_list.html#a5582e98ded628b2e47642c679fb5faa2">TakeOutCurrent</a>(iterator &amp;current);</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <span class="keywordtype">void</span> InsertListAfterCurrent(iterator &amp;current,<a class="code" href="struct_point_list.html">PointList</a> *list2);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordtype">void</span> InsertListBeforeCurrent(iterator &amp;current,<a class="code" href="struct_point_list.html">PointList</a> *list2);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="keywordtype">void</span> MergeLists(<a class="code" href="struct_point_list.html">PointList</a>* list2);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  <span class="keywordtype">void</span> ShiftList(iterator &amp;current);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  <span class="keywordtype">void</span> FillList(<span class="keywordtype">double</span> **x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> N</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                ,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> idmin);</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  <span class="keywordtype">void</span> PrintList();</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  <span class="keywordtype">void</span> setN(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> N){Npoints = N;}</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;  <span class="keywordtype">void</span> setTop(<a class="code" href="struct_point.html">Point</a> *p){top = p;}</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keywordtype">void</span> setBottom(<a class="code" href="struct_point.html">Point</a> *p){bottom = p;}</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <a class="code" href="struct_point.html">Point</a> *top;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <a class="code" href="struct_point.html">Point</a> *bottom;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> Npoints;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  </div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="comment">// make a point uncopyable</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="comment">//PointList(const PointList &amp;p);</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <a class="code" href="struct_point_list.html">PointList</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="struct_point_list.html">PointList</a> &amp;p);</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;};</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_point_list.html">PointList</a> *<a class="code" href="struct_point_list.html">ListHndl</a>;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="comment">// ***********************************************************</span></div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="comment">//   routines for linked list of points</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="comment">// ************************************************************</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<a class="code" href="struct_point.html">Point</a> *NewPoint(<span class="keywordtype">double</span> *x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="keywordtype">void</span> SwapPointsInList(ListHndl list,<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<a class="code" href="struct_point.html">Point</a> *sortList(<span class="keywordtype">long</span> n, <span class="keywordtype">double</span> arr[],ListHndl list,<a class="code" href="struct_point.html">Point</a> *firstpoint);</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
-<div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="struct_point__3d.html">  426</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_point__3d.html">Point_3d</a>{</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>(){</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    x[0]=x[1]=x[2]=0.0;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  }</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>(PosType xx,PosType yy,PosType zz){</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    x[0]=xx;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    x[1]=yy;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    x[2]=zz;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  }</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  ~<a class="code" href="struct_point__3d.html">Point_3d</a>(){};</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    x[0]=p.x[0];</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    x[1]=p.x[1];</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    x[2]=p.x[2];</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  }</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  </div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator=(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">this</span> == &amp;p) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    x[0]=p.x[0];</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    x[1]=p.x[1];</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    x[2]=p.x[2];</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  }</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>  operator+(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <a class="code" href="struct_point__3d.html">Point_3d</a> tmp;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    tmp.x[0] = x[0] + p.x[0];</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    tmp.x[1] = x[1] + p.x[1];</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    tmp.x[2] = x[2] + p.x[2];</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  }</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>  operator-(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <a class="code" href="struct_point__3d.html">Point_3d</a> tmp;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    tmp.x[0] = x[0] - p.x[0];</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    tmp.x[1] = x[1] - p.x[1];</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    tmp.x[2] = x[2] - p.x[2];</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;  }</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator+=(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    x[0]+=p.x[0];</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    x[1]+=p.x[1];</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    x[2]+=p.x[2];</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  }</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator/=(PosType value){</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    x[0]/=value;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    x[1]/=value;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    x[2]/=value;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  }</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator/(PosType value){</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <a class="code" href="struct_point__3d.html">Point_3d</a> tmp;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    </div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    tmp[0] = x[0]/value;</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    tmp[1] = x[1]/value;</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    tmp[2] = x[2]/value;</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    </div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;  }</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator*=(PosType value){</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    x[0] *=value;</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    x[1] *=value;</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    x[2] *=value;</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;  }</div>
-<div class="line"><a name="l00492"></a><span class="lineno"><a class="line" href="struct_point__3d.html#a1588aeef33b42de57b40743bc34aa9ad">  492</a></span>&#160;  PosType <a class="code" href="struct_point__3d.html#a1588aeef33b42de57b40743bc34aa9ad">operator*</a>(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keywordflow">return</span> x[0]*p.x[0] + x[1]*p.x[1] + x[2]*p.x[2];</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;  }</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  </div>
-<div class="line"><a name="l00497"></a><span class="lineno"><a class="line" href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">  497</a></span>&#160;  PosType <a class="code" href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">length</a>(){</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <span class="keywordflow">return</span> sqrt(x[0]*x[0] + x[1]*x[1] + x[2]*x[2]);</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;  }</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  PosType length_sqr(){</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">return</span> x[0]*x[0] + x[1]*x[1] + x[2]*x[2];</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  }</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;  </div>
-<div class="line"><a name="l00506"></a><span class="lineno"><a class="line" href="struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e">  506</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e">rotate</a>(PosType theta,PosType phi){</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    PosType c = cos(theta),s = sin(theta);</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    PosType tmp = c*x[0] - s*x[1];</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    x[1] = c*x[1] + s*x[0];</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    </div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    c = cos(phi);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    s = sin(phi);;</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    x[0]  = c*tmp - s*x[2];</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    x[2] = c*x[2] + s*tmp;</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;  }</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;  </div>
-<div class="line"><a name="l00518"></a><span class="lineno"><a class="line" href="struct_point__3d.html#a32a535eb4ec26acb4de72704244b6a64">  518</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_point__3d.html#a32a535eb4ec26acb4de72704244b6a64">unitize</a>(){</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    PosType s = <a class="code" href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">length</a>();</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    x[0] /= s;</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    x[1] /= s;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    x[2] /= s;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;  }</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;  </div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  PosType* data(){<span class="keywordflow">return</span> x;}</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;  </div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  PosType x[3];</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;  PosType &amp; operator[](<span class="keywordtype">size_t</span> i){<span class="keywordflow">return</span> x[i];}</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;};</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <a class="code" href="struct_point.html">Point</a> *Top()<span class="keyword"> const </span>{<span class="keywordflow">return</span> top;}</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  <a class="code" href="struct_point.html">Point</a> *Bottom()<span class="keyword"> const </span>{<span class="keywordflow">return</span> bottom;}</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="keywordtype">void</span> EmptyList();</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="keywordtype">void</span> InsertAfterCurrent(iterator &amp;current,<span class="keywordtype">double</span> *x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>,<a class="code" href="struct_point.html">Point</a> *image);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  <span class="keywordtype">void</span> InsertBeforeCurrent(iterator &amp;current,<span class="keywordtype">double</span> *x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>,<a class="code" href="struct_point.html">Point</a> *image);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordtype">void</span> InsertPointAfterCurrent(iterator &amp;current,<a class="code" href="struct_point.html">Point</a> *);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordtype">void</span> InsertPointBeforeCurrent(iterator &amp;current,<a class="code" href="struct_point.html">Point</a> *);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  <span class="keywordtype">void</span> MoveCurrentToBottom(iterator &amp;current);</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <a class="code" href="struct_point.html">Point</a> *<a class="code" href="struct_point_list.html#a5582e98ded628b2e47642c679fb5faa2">TakeOutCurrent</a>(iterator &amp;current);</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordtype">void</span> InsertListAfterCurrent(iterator &amp;current,<a class="code" href="struct_point_list.html">PointList</a> *list2);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="keywordtype">void</span> InsertListBeforeCurrent(iterator &amp;current,<a class="code" href="struct_point_list.html">PointList</a> *list2);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  <span class="keywordtype">void</span> MergeLists(<a class="code" href="struct_point_list.html">PointList</a>* list2);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordtype">void</span> ShiftList(iterator &amp;current);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  <span class="keywordtype">void</span> FillList(<span class="keywordtype">double</span> **x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> N</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                ,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> idmin);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keywordtype">void</span> PrintList();</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;  <span class="keywordtype">void</span> setN(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> N){Npoints = N;}</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keywordtype">void</span> setTop(<a class="code" href="struct_point.html">Point</a> *p){top = p;}</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keywordtype">void</span> setBottom(<a class="code" href="struct_point.html">Point</a> *p){bottom = p;}</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <a class="code" href="struct_point.html">Point</a> *top;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  <a class="code" href="struct_point.html">Point</a> *bottom;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> Npoints;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="comment">// make a point uncopyable</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="comment">//PointList(const PointList &amp;p);</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <a class="code" href="struct_point_list.html">PointList</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="struct_point_list.html">PointList</a> &amp;p);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;};</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_point_list.html">PointList</a> *<a class="code" href="struct_point_list.html">ListHndl</a>;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="comment">// ***********************************************************</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="comment">//   routines for linked list of points</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="comment">// ************************************************************</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<a class="code" href="struct_point.html">Point</a> *NewPoint(<span class="keywordtype">double</span> *x,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="keywordtype">void</span> SwapPointsInList(ListHndl list,<a class="code" href="struct_point.html">Point</a> *p1,<a class="code" href="struct_point.html">Point</a> *p2);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<a class="code" href="struct_point.html">Point</a> *sortList(<span class="keywordtype">long</span> n, <span class="keywordtype">double</span> arr[],ListHndl list,<a class="code" href="struct_point.html">Point</a> *firstpoint);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="struct_point__3d.html">  427</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_point__3d.html">Point_3d</a>{</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>(){</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    x[0]=x[1]=x[2]=0.0;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  }</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>(PosType xx,PosType yy,PosType zz){</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    x[0]=xx;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    x[1]=yy;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    x[2]=zz;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  }</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  ~<a class="code" href="struct_point__3d.html">Point_3d</a>(){};</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    x[0]=p.x[0];</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    x[1]=p.x[1];</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    x[2]=p.x[2];</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator=(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">if</span>(<span class="keyword">this</span> == &amp;p) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    x[0]=p.x[0];</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    x[1]=p.x[1];</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    x[2]=p.x[2];</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>  operator+(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <a class="code" href="struct_point__3d.html">Point_3d</a> tmp;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    tmp.x[0] = x[0] + p.x[0];</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    tmp.x[1] = x[1] + p.x[1];</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    tmp.x[2] = x[2] + p.x[2];</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  }</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a>  operator-(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <a class="code" href="struct_point__3d.html">Point_3d</a> tmp;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    tmp.x[0] = x[0] - p.x[0];</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    tmp.x[1] = x[1] - p.x[1];</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    tmp.x[2] = x[2] - p.x[2];</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator+=(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    x[0]+=p.x[0];</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    x[1]+=p.x[1];</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    x[2]+=p.x[2];</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  }</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator/=(PosType value){</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    x[0]/=value;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    x[1]/=value;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    x[2]/=value;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  }</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator/(PosType value){</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <a class="code" href="struct_point__3d.html">Point_3d</a> tmp;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    </div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    tmp[0] = x[0]/value;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    tmp[1] = x[1]/value;</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    tmp[2] = x[2]/value;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  }</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;  <a class="code" href="struct_point__3d.html">Point_3d</a> &amp; operator*=(PosType value){</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    x[0] *=value;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    x[1] *=value;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    x[2] *=value;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;  }</div>
+<div class="line"><a name="l00493"></a><span class="lineno"><a class="line" href="struct_point__3d.html#a1588aeef33b42de57b40743bc34aa9ad">  493</a></span>&#160;  PosType <a class="code" href="struct_point__3d.html#a1588aeef33b42de57b40743bc34aa9ad">operator*</a>(<span class="keyword">const</span> <a class="code" href="struct_point__3d.html">Point_3d</a> &amp;p){</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keywordflow">return</span> x[0]*p.x[0] + x[1]*p.x[1] + x[2]*p.x[2];</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  </div>
+<div class="line"><a name="l00498"></a><span class="lineno"><a class="line" href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">  498</a></span>&#160;  PosType <a class="code" href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">length</a>(){</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    <span class="keywordflow">return</span> sqrt(x[0]*x[0] + x[1]*x[1] + x[2]*x[2]);</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;  }</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  PosType length_sqr(){</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <span class="keywordflow">return</span> x[0]*x[0] + x[1]*x[1] + x[2]*x[2];</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;  }</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  </div>
+<div class="line"><a name="l00507"></a><span class="lineno"><a class="line" href="struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e">  507</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e">rotate</a>(PosType theta,PosType phi){</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    PosType c = cos(theta),s = sin(theta);</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    PosType tmp = c*x[0] - s*x[1];</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    x[1] = c*x[1] + s*x[0];</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    c = cos(phi);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    s = sin(phi);;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    x[0]  = c*tmp - s*x[2];</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    x[2] = c*x[2] + s*tmp;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;  }</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;  </div>
+<div class="line"><a name="l00519"></a><span class="lineno"><a class="line" href="struct_point__3d.html#a32a535eb4ec26acb4de72704244b6a64">  519</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_point__3d.html#a32a535eb4ec26acb4de72704244b6a64">unitize</a>(){</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    PosType s = <a class="code" href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">length</a>();</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    x[0] /= s;</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    x[1] /= s;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    x[2] /= s;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;  }</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;  </div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;  PosType* data(){<span class="keywordflow">return</span> x;}</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;  </div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;  PosType x[3];</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;  PosType &amp; operator[](<span class="keywordtype">size_t</span> i){<span class="keywordflow">return</span> x[i];}</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;};</div>
 <div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="struct_point__3d.html">Point_3d</a> <span class="keyword">const</span> &amp;p);</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> pointx(<a class="code" href="struct_point.html">Point</a> &amp;p){<span class="keywordflow">return</span> p.x[0];}</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> pointy(<a class="code" href="struct_point.html">Point</a> &amp;p){<span class="keywordflow">return</span> p.x[1];}</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="struct_point__3d.html">Point_3d</a> <span class="keyword">const</span> &amp;p);</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> pointx(<a class="code" href="struct_point.html">Point</a> &amp;p){<span class="keywordflow">return</span> p.x[0];}</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">double</span> pointy(<a class="code" href="struct_point.html">Point</a> &amp;p){<span class="keywordflow">return</span> p.x[1];}</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="struct_point_list_html_a5582e98ded628b2e47642c679fb5faa2"><div class="ttname"><a href="struct_point_list.html#a5582e98ded628b2e47642c679fb5faa2">PointList::TakeOutCurrent</a></div><div class="ttdeci">Point * TakeOutCurrent(iterator &amp;current)</div><div class="ttdef"><b>Definition:</b> list.cpp:104</div></div>
-<div class="ttc" id="struct_point_list_1_1iterator_html_ab21dbf1bc28dea6ddaca909d9bd9b486"><div class="ttname"><a href="struct_point_list_1_1iterator.html#ab21dbf1bc28dea6ddaca909d9bd9b486">PointList::iterator::operator--</a></div><div class="ttdeci">bool operator--(int)</div><div class="ttdoc">Same as Down() </div><div class="ttdef"><b>Definition:</b> point.h:328</div></div>
+<div class="ttc" id="struct_point_list_1_1iterator_html_ab21dbf1bc28dea6ddaca909d9bd9b486"><div class="ttname"><a href="struct_point_list_1_1iterator.html#ab21dbf1bc28dea6ddaca909d9bd9b486">PointList::iterator::operator--</a></div><div class="ttdeci">bool operator--(int)</div><div class="ttdoc">Same as Down() </div><div class="ttdef"><b>Definition:</b> point.h:329</div></div>
 <div class="ttc" id="struct_point_list_html"><div class="ttname"><a href="struct_point_list.html">PointList</a></div><div class="ttdoc">link list for points, uses the linking pointers within the Point type unlike Kist ...</div><div class="ttdef"><b>Definition:</b> List1.h:15</div></div>
 <div class="ttc" id="struct_point__2d_html_a7cbb6a3fafe2582851216f237caafb4b"><div class="ttname"><a href="struct_point__2d.html#a7cbb6a3fafe2582851216f237caafb4b">Point_2d::length_sqr</a></div><div class="ttdeci">PosType length_sqr()</div><div class="ttdoc">length^2 </div><div class="ttdef"><b>Definition:</b> point.h:120</div></div>
-<div class="ttc" id="struct_r_a_y_html"><div class="ttname"><a href="struct_r_a_y.html">RAY</a></div><div class="ttdoc">A point that is automatically linked to its source point eliminating the need for using LinkToSourceP...</div><div class="ttdef"><b>Definition:</b> point.h:206</div></div>
-<div class="ttc" id="struct_point_list_1_1iterator_html_a0ab28a463cf81e1e5604dad49e33d5ba"><div class="ttname"><a href="struct_point_list_1_1iterator.html#a0ab28a463cf81e1e5604dad49e33d5ba">PointList::iterator::operator++</a></div><div class="ttdeci">bool operator++(int)</div><div class="ttdoc">Same as Up() </div><div class="ttdef"><b>Definition:</b> point.h:312</div></div>
+<div class="ttc" id="struct_r_a_y_html"><div class="ttname"><a href="struct_r_a_y.html">RAY</a></div><div class="ttdoc">A point that is automatically linked to its source point eliminating the need for using LinkToSourceP...</div><div class="ttdef"><b>Definition:</b> point.h:207</div></div>
+<div class="ttc" id="struct_point_list_1_1iterator_html_a0ab28a463cf81e1e5604dad49e33d5ba"><div class="ttname"><a href="struct_point_list_1_1iterator.html#a0ab28a463cf81e1e5604dad49e33d5ba">PointList::iterator::operator++</a></div><div class="ttdeci">bool operator++(int)</div><div class="ttdoc">Same as Up() </div><div class="ttdef"><b>Definition:</b> point.h:313</div></div>
 <div class="ttc" id="struct_point__2d_html_a37596b0e394b4038ad36df03e0606448"><div class="ttname"><a href="struct_point__2d.html#a37596b0e394b4038ad36df03e0606448">Point_2d::operator*</a></div><div class="ttdeci">PosType operator*(const Point_2d &amp;p)</div><div class="ttdoc">scalar product </div><div class="ttdef"><b>Definition:</b> point.h:106</div></div>
 <div class="ttc" id="struct_point__2d_html_a2f00580a369bf9deeb9bb73957c67027"><div class="ttname"><a href="struct_point__2d.html#a2f00580a369bf9deeb9bb73957c67027">Point_2d::length</a></div><div class="ttdeci">PosType length()</div><div class="ttdoc">length </div><div class="ttdef"><b>Definition:</b> point.h:115</div></div>
 <div class="ttc" id="struct_point_html_a3f9b1af89673b440408017d620bfc0d7"><div class="ttname"><a href="struct_point.html#a3f9b1af89673b440408017d620bfc0d7">Point::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdoc">print out all member data for testing purposes </div><div class="ttdef"><b>Definition:</b> Tree.cpp:78</div></div>
-<div class="ttc" id="struct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">A point on the source or image plane that contains a position and the lensing quantities. </div><div class="ttdef"><b>Definition:</b> point.h:153</div></div>
+<div class="ttc" id="struct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">A point on the source or image plane that contains a position and the lensing quantities. </div><div class="ttdef"><b>Definition:</b> point.h:154</div></div>
 <div class="ttc" id="struct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:37</div></div>
-<div class="ttc" id="struct_branch_html_a9f1ff918f82c82650a9f00815a720cdc"><div class="ttname"><a href="struct_branch.html#a9f1ff918f82c82650a9f00815a720cdc">Branch::refined</a></div><div class="ttdeci">bool refined</div><div class="ttdoc">Marks point as start of a level of refinement. </div><div class="ttdef"><b>Definition:</b> point.h:245</div></div>
-<div class="ttc" id="struct_r_a_y_html_a3168f5ccf0f01783712e19efe63e7e18"><div class="ttname"><a href="struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18">RAY::pos_source</a></div><div class="ttdeci">PosType * pos_source()</div><div class="ttdoc">postions on source plane </div><div class="ttdef"><b>Definition:</b> point.h:216</div></div>
+<div class="ttc" id="struct_branch_html_a9f1ff918f82c82650a9f00815a720cdc"><div class="ttname"><a href="struct_branch.html#a9f1ff918f82c82650a9f00815a720cdc">Branch::refined</a></div><div class="ttdeci">bool refined</div><div class="ttdoc">Marks point as start of a level of refinement. </div><div class="ttdef"><b>Definition:</b> point.h:246</div></div>
+<div class="ttc" id="struct_r_a_y_html_a3168f5ccf0f01783712e19efe63e7e18"><div class="ttname"><a href="struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18">RAY::pos_source</a></div><div class="ttdeci">PosType * pos_source()</div><div class="ttdoc">postions on source plane </div><div class="ttdef"><b>Definition:</b> point.h:217</div></div>
 <div class="ttc" id="struct_point__2d_html_a60dfcbee77f4a9662089ae19e7c458b7"><div class="ttname"><a href="struct_point__2d.html#a60dfcbee77f4a9662089ae19e7c458b7">Point_2d::operator^</a></div><div class="ttdeci">PosType operator^(const Point_2d &amp;p)</div><div class="ttdoc">outer product </div><div class="ttdef"><b>Definition:</b> point.h:110</div></div>
-<div class="ttc" id="struct_point__3d_html_aac8bbd830a9852bbbdb3e6c794483a3e"><div class="ttname"><a href="struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e">Point_3d::rotate</a></div><div class="ttdeci">void rotate(PosType theta, PosType phi)</div><div class="ttdoc">a rotation theta around the z-axis followed by a rotation phi around the y-axis </div><div class="ttdef"><b>Definition:</b> point.h:506</div></div>
+<div class="ttc" id="struct_point__3d_html_aac8bbd830a9852bbbdb3e6c794483a3e"><div class="ttname"><a href="struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e">Point_3d::rotate</a></div><div class="ttdeci">void rotate(PosType theta, PosType phi)</div><div class="ttdoc">a rotation theta around the z-axis followed by a rotation phi around the y-axis </div><div class="ttdef"><b>Definition:</b> point.h:507</div></div>
 <div class="ttc" id="group___constructor_l2_html_gad92f2337b839a94ce97dcdb439b4325a"><div class="ttname"><a href="group___constructor_l2.html#gad92f2337b839a94ce97dcdb439b4325a">Point::Point</a></div><div class="ttdeci">Point()</div><div class="ttdef"><b>Definition:</b> Tree.cpp:63</div></div>
-<div class="ttc" id="struct_branch_html"><div class="ttname"><a href="struct_branch.html">Branch</a></div><div class="ttdoc">The box representing a branch of a binary tree structure. Used specifically in TreeStruct for organiz...</div><div class="ttdef"><b>Definition:</b> point.h:225</div></div>
-<div class="ttc" id="struct_point_list_1_1iterator_html_a51dd9e3103f5f0c0cd488fbf23fe4f69"><div class="ttname"><a href="struct_point_list_1_1iterator.html#a51dd9e3103f5f0c0cd488fbf23fe4f69">PointList::iterator::operator--</a></div><div class="ttdeci">bool operator--()</div><div class="ttdoc">Same as Down() </div><div class="ttdef"><b>Definition:</b> point.h:320</div></div>
-<div class="ttc" id="struct_point__3d_html_a32a535eb4ec26acb4de72704244b6a64"><div class="ttname"><a href="struct_point__3d.html#a32a535eb4ec26acb4de72704244b6a64">Point_3d::unitize</a></div><div class="ttdeci">void unitize()</div><div class="ttdoc">rescale to make a unit length vector </div><div class="ttdef"><b>Definition:</b> point.h:518</div></div>
-<div class="ttc" id="struct_point__3d_html_a1588aeef33b42de57b40743bc34aa9ad"><div class="ttname"><a href="struct_point__3d.html#a1588aeef33b42de57b40743bc34aa9ad">Point_3d::operator*</a></div><div class="ttdeci">PosType operator*(const Point_3d &amp;p)</div><div class="ttdoc">scalar product </div><div class="ttdef"><b>Definition:</b> point.h:492</div></div>
-<div class="ttc" id="struct_point_list_1_1iterator_html"><div class="ttname"><a href="struct_point_list_1_1iterator.html">PointList::iterator</a></div><div class="ttdef"><b>Definition:</b> point.h:273</div></div>
+<div class="ttc" id="struct_branch_html"><div class="ttname"><a href="struct_branch.html">Branch</a></div><div class="ttdoc">The box representing a branch of a binary tree structure. Used specifically in TreeStruct for organiz...</div><div class="ttdef"><b>Definition:</b> point.h:226</div></div>
+<div class="ttc" id="struct_point_list_1_1iterator_html_a51dd9e3103f5f0c0cd488fbf23fe4f69"><div class="ttname"><a href="struct_point_list_1_1iterator.html#a51dd9e3103f5f0c0cd488fbf23fe4f69">PointList::iterator::operator--</a></div><div class="ttdeci">bool operator--()</div><div class="ttdoc">Same as Down() </div><div class="ttdef"><b>Definition:</b> point.h:321</div></div>
+<div class="ttc" id="struct_point__3d_html_a32a535eb4ec26acb4de72704244b6a64"><div class="ttname"><a href="struct_point__3d.html#a32a535eb4ec26acb4de72704244b6a64">Point_3d::unitize</a></div><div class="ttdeci">void unitize()</div><div class="ttdoc">rescale to make a unit length vector </div><div class="ttdef"><b>Definition:</b> point.h:519</div></div>
+<div class="ttc" id="struct_point__3d_html_a1588aeef33b42de57b40743bc34aa9ad"><div class="ttname"><a href="struct_point__3d.html#a1588aeef33b42de57b40743bc34aa9ad">Point_3d::operator*</a></div><div class="ttdeci">PosType operator*(const Point_3d &amp;p)</div><div class="ttdoc">scalar product </div><div class="ttdef"><b>Definition:</b> point.h:493</div></div>
+<div class="ttc" id="struct_point_list_1_1iterator_html"><div class="ttname"><a href="struct_point_list_1_1iterator.html">PointList::iterator</a></div><div class="ttdef"><b>Definition:</b> point.h:274</div></div>
 <div class="ttc" id="struct_branch_html_a5a07d166792af57c2c9d024efed0c5bc"><div class="ttname"><a href="struct_branch.html#a5a07d166792af57c2c9d024efed0c5bc">Branch::print</a></div><div class="ttdeci">void print()</div><div class="ttdoc">print out all member data for testing purposes </div><div class="ttdef"><b>Definition:</b> Tree.cpp:133</div></div>
-<div class="ttc" id="struct_r_a_y_html_a433118f4bc4a0b469e7ec21c834d4e26"><div class="ttname"><a href="struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26">RAY::pos_image</a></div><div class="ttdeci">PosType * pos_image()</div><div class="ttdoc">postions on image plane </div><div class="ttdef"><b>Definition:</b> point.h:214</div></div>
-<div class="ttc" id="struct_point__3d_html_afc60098f1c0852ac981905fff96b3f7e"><div class="ttname"><a href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">Point_3d::length</a></div><div class="ttdeci">PosType length()</div><div class="ttdoc">length </div><div class="ttdef"><b>Definition:</b> point.h:497</div></div>
-<div class="ttc" id="struct_point__3d_html"><div class="ttname"><a href="struct_point__3d.html">Point_3d</a></div><div class="ttdoc">Class for representing points or vectors in 3 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:426</div></div>
-<div class="ttc" id="struct_point_html_a2bc31f4109f4ce0abeb7dc7e9b9ca6a0"><div class="ttname"><a href="struct_point.html#a2bc31f4109f4ce0abeb7dc7e9b9ca6a0">Point::inverted</a></div><div class="ttdeci">bool inverted()</div><div class="ttdoc">returns true if the image is double inverted, At very low magnification this can fail. </div><div class="ttdef"><b>Definition:</b> point.h:194</div></div>
+<div class="ttc" id="struct_r_a_y_html_a433118f4bc4a0b469e7ec21c834d4e26"><div class="ttname"><a href="struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26">RAY::pos_image</a></div><div class="ttdeci">PosType * pos_image()</div><div class="ttdoc">postions on image plane </div><div class="ttdef"><b>Definition:</b> point.h:215</div></div>
+<div class="ttc" id="struct_point__3d_html_afc60098f1c0852ac981905fff96b3f7e"><div class="ttname"><a href="struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e">Point_3d::length</a></div><div class="ttdeci">PosType length()</div><div class="ttdoc">length </div><div class="ttdef"><b>Definition:</b> point.h:498</div></div>
+<div class="ttc" id="struct_point__3d_html"><div class="ttname"><a href="struct_point__3d.html">Point_3d</a></div><div class="ttdoc">Class for representing points or vectors in 3 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:427</div></div>
+<div class="ttc" id="struct_point_html_a2bc31f4109f4ce0abeb7dc7e9b9ca6a0"><div class="ttname"><a href="struct_point.html#a2bc31f4109f4ce0abeb7dc7e9b9ca6a0">Point::inverted</a></div><div class="ttdeci">bool inverted()</div><div class="ttdoc">returns true if the image is double inverted, At very low magnification this can fail. </div><div class="ttdef"><b>Definition:</b> point.h:195</div></div>
 <div class="ttc" id="struct_point__2d_html_aa05515541562151e99c144fe83532df6"><div class="ttname"><a href="struct_point__2d.html#aa05515541562151e99c144fe83532df6">Point_2d::unitize</a></div><div class="ttdeci">void unitize()</div><div class="ttdoc">rescale to make a unit length vector </div><div class="ttdef"><b>Definition:</b> point.h:132</div></div>
-<div class="ttc" id="struct_branch_html_aedf2f62cd44e29a4e9ce35d150278be6"><div class="ttname"><a href="struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6">Branch::npoints</a></div><div class="ttdeci">unsigned long npoints</div><div class="ttdoc">pointer to first points in Branch </div><div class="ttdef"><b>Definition:</b> point.h:234</div></div>
+<div class="ttc" id="struct_branch_html_aedf2f62cd44e29a4e9ce35d150278be6"><div class="ttname"><a href="struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6">Branch::npoints</a></div><div class="ttdeci">unsigned long npoints</div><div class="ttdoc">pointer to first points in Branch </div><div class="ttdef"><b>Definition:</b> point.h:235</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 15:45:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 7 2018 15:46:30 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

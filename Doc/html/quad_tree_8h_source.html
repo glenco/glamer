@@ -320,20 +320,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      </div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      sigma = (8 - 12*q + 6*q2 - q3)/4;</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      <span class="keywordflow">if</span>(q &gt; 1){</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        sigma *= 10/size/size/7/pi;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        sigma *= 10/size/size/7/PI;</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        M = (-1 + 20*q2*(1 - q + 3*q2/8 - q3/20) )/7;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        *phi += Mass*(-1232. + 1200*q2 - 800.*q3 + 225.*q4 - 24*q5 + 120*log(2./q) )/840/pi;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        *phi += Mass*(-1232. + 1200*q2 - 800.*q3 + 225.*q4 - 24*q5 + 120*log(2./q) )/840/PI;</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        sigma = 10*( sigma - 1 + 3*q - 3*q2 + q3)/size/size/7/pi;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        sigma = 10*( sigma - 1 + 3*q - 3*q2 + q3)/size/size/7/PI;</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        M = 10*q2*(1 - 3*q/4 + 3*q3/10)/7;</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        </div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        *phi += Mass*( phiintconst + 10*(q2/2 - 3*q4/4 + 3*q5/50)/7</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                      )/pi;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                      )/PI;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;      }</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                         </div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    PosType alpha_r,gt;  <span class="comment">// deflection * Sig_crit / Mass</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    alpha_r = (M-1)/pi/r;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    alpha_r = (M-1)/PI/r;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    gt = alpha_r/r - sigma;</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    </div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    alpha[0] -= Mass*alpha_r*xcm[0]/r;</div>
@@ -341,7 +341,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    gamma[0] -= gt*Mass*(xcm[0]*xcm[0]-xcm[1]*xcm[1])/r/r;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    gamma[1] -= gt*Mass*2*xcm[0]*xcm[1]/r/r;</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    *kappa += Mass*sigma;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    *phi -= Mass*log(r)/pi;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    *phi -= Mass*log(r)/PI;</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  }</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  </div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <span class="comment">/* Exponential kernel for particle profile</span></div>
@@ -360,7 +360,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                        )<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    </div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    </div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;     PosType prefac = Mass/rcm2/pi;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;     PosType prefac = Mass/rcm2/PI;</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;     PosType arg1 = rcm2/(size*size);</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;     </div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;     PosType tmp = (alpha_h(arg1,size) + 1.0)*prefac;</div>
@@ -436,7 +436,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 15:45:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 7 2018 15:46:30 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

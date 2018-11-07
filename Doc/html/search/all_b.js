@@ -3,6 +3,7 @@ var searchData=
   ['lens_20manipulation',['Lens Manipulation',['../group___change_lens.html',1,'']]],
   ['lens_20fitting',['Lens Fitting',['../group___fit_lens.html',1,'']]],
   ['lens_20fitting',['Lens Fitting',['../group___fit_lens_l2.html',1,'']]],
+  ['labels',['labels',['../class_utilities_1_1_x_ycsv_look_up.html#a09921a5cd38625bcc59fb178b1e6e7f8',1,'Utilities::XYcsvLookUp']]],
   ['lambda_5fcentral',['lambda_central',['../class_band_info.html#a9a1e3191cac3a878a9597a1d2cfa0286',1,'BandInfo']]],
   ['length',['length',['../struct_point__2d.html#a2f00580a369bf9deeb9bb73957c67027',1,'Point_2d::length()'],['../struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e',1,'Point_3d::length()'],['../class_point___nd.html#a3cbcc6de374a052244cc0767f4bb246a',1,'Point_Nd::length()']]],
   ['length_5fsqr',['length_sqr',['../struct_point__2d.html#a7cbb6a3fafe2582851216f237caafb4b',1,'Point_2d']]],

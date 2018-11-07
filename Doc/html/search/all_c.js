@@ -1,6 +1,7 @@
 var searchData=
 [
   ['mag',['mag',['../class_sun_info.html#a46760b124f5edd65af29f8367c3492fb',1,'SunInfo']]],
+  ['magnification',['magnification',['../struct_grid_map.html#aabd48c3a3ececcc1cdcf0eb6b229257a',1,'GridMap']]],
   ['main_5fdl',['main_Dl',['../class_lens.html#a170602379179392cb171007911ea50e0',1,'Lens']]],
   ['main_5fgalaxy_5fhalo_5ftype',['main_galaxy_halo_type',['../class_lens.html#ab2195628b4b4bf88171c071ccbab3d9a',1,'Lens']]],
   ['main_5fhalo_5ftype',['main_halo_type',['../class_lens.html#af37f4ff5815a2c2928a0a4882576bcae',1,'Lens']]],
@@ -26,8 +27,8 @@ var searchData=
   ['mhat',['mhat',['../class_lens_halo_pseudo_n_f_w.html#ae9c7781165b1c6499fcf960092ba120c',1,'LensHaloPseudoNFW']]],
   ['mhattable',['mhattable',['../class_lens_halo_pseudo_n_f_w.html#aad5c4b7a473f3433954b2a62387b6781',1,'LensHaloPseudoNFW']]],
   ['mid_20level_20routines',['Mid Level Routines',['../group___mid_level.html',1,'']]],
-  ['mixedvector',['MixedVector',['../class_utilities_1_1_mixed_vector.html#a273ae7ad4804f8bf3e6063cfbfb3f14a',1,'Utilities::MixedVector::MixedVector()'],['../class_utilities_1_1_mixed_vector.html#afc51479b9cd15d30bda63437bcfa55ea',1,'Utilities::MixedVector::MixedVector(const MixedVector&lt; BaseT &gt; &amp;other)'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a82e9f8959ec30422795b2d8ad874e5ec',1,'Utilities::MixedVector&lt; BaseT * &gt;::MixedVector()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#af8a762657a2cd8c85c20a31fbef2e0a1',1,'Utilities::MixedVector&lt; BaseT * &gt;::MixedVector(const MixedVector&lt; BaseT * &gt; &amp;other)']]],
   ['mixedvector',['MixedVector',['../class_utilities_1_1_mixed_vector.html',1,'Utilities']]],
+  ['mixedvector',['MixedVector',['../class_utilities_1_1_mixed_vector.html#a273ae7ad4804f8bf3e6063cfbfb3f14a',1,'Utilities::MixedVector::MixedVector()'],['../class_utilities_1_1_mixed_vector.html#afc51479b9cd15d30bda63437bcfa55ea',1,'Utilities::MixedVector::MixedVector(const MixedVector&lt; BaseT &gt; &amp;other)'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a82e9f8959ec30422795b2d8ad874e5ec',1,'Utilities::MixedVector&lt; BaseT * &gt;::MixedVector()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#af8a762657a2cd8c85c20a31fbef2e0a1',1,'Utilities::MixedVector&lt; BaseT * &gt;::MixedVector(const MixedVector&lt; BaseT * &gt; &amp;other)']]],
   ['mixedvector_3c_20baset_20_2a_20_3e',['MixedVector&lt; BaseT * &gt;',['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html',1,'Utilities']]],
   ['mixedvector_3c_20lenshalo_20_2a_20_3e',['MixedVector&lt; LensHalo * &gt;',['../class_utilities_1_1_mixed_vector.html',1,'Utilities']]],
   ['mokamap',['MOKAmap',['../struct_m_o_k_amap.html',1,'']]],

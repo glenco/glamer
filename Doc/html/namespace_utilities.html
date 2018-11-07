@@ -125,6 +125,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_random_numbers___n_r.html">RandomNumbers_NR</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a class for generating random numbers. It simplifies and fool proofs initialization and allows for multiple independent series of numbers.  <a href="class_utilities_1_1_random_numbers___n_r.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_shuffled_index.html">ShuffledIndex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives a randomized sequence of numbers from 0 to N-1.  <a href="class_utilities_1_1_shuffled_index.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_x_ycsv_look_up.html">XYcsvLookUp</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -218,9 +223,8 @@ template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ad3f190fa0f0cac4eb4b7c981d5131e5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#ad3f190fa0f0cac4eb4b7c981d5131e5d">LoadFitsImages</a> (std::string dir, std::vector&lt; std::string &gt; filespecs, std::vector&lt; std::string &gt; file_non_specs, std::vector&lt; <a class="el" href="class_pixel_map.html">PixelMap</a> &gt; &amp;images, std::vector&lt; std::string &gt; &amp;names, int maxN, double resolution=-1, bool verbose=false)</td></tr>
 <tr class="memdesc:ad3f190fa0f0cac4eb4b7c981d5131e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads all the fits files in a directory into a vector of PixelMaps.  <a href="#ad3f190fa0f0cac4eb4b7c981d5131e5d">More...</a><br /></td></tr>
 <tr class="separator:ad3f190fa0f0cac4eb4b7c981d5131e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ecac67b7051e410014dec29cc6721f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ecac67b7051e410014dec29cc6721f4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ReadFileNames</b> (std::string dir, const std::string filespec, std::vector&lt; std::string &gt; &amp;filenames, bool verbose=false)</td></tr>
-<tr class="separator:a7ecac67b7051e410014dec29cc6721f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc7be26dfecdca30048dd4d3842077a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#abc7be26dfecdca30048dd4d3842077a2">ReadFileNames</a> (std::string dir, const std::string filespec, std::vector&lt; std::string &gt; &amp;filenames, const std::string file_non_spec=&quot; &quot;, bool verbose=false)</td></tr>
+<tr class="separator:abc7be26dfecdca30048dd4d3842077a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab99eb78332b2d654761336b8ecbde2da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab99eb78332b2d654761336b8ecbde2da"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>to_string</b> (const Band &amp;band)</td></tr>
 <tr class="separator:ab99eb78332b2d654761336b8ecbde2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -379,6 +383,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ordered_concavehull</
 <tr class="memitem:a865c4f1f38a91d8b3d4e07fdfea16bd0"><td class="memItemLeft" align="right" valign="top">PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a865c4f1f38a91d8b3d4e07fdfea16bd0">ConvexHullArea</a> (Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; *curve)</td></tr>
 <tr class="memdesc:a865c4f1f38a91d8b3d4e07fdfea16bd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces curve with its convex hull. The number of points will change.  <a href="#a865c4f1f38a91d8b3d4e07fdfea16bd0">More...</a><br /></td></tr>
 <tr class="separator:a865c4f1f38a91d8b3d4e07fdfea16bd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6368539a2249ac91796f3ff043e39d"><td class="memTemplParams" colspan="2"><a class="anchor" id="a1a6368539a2249ac91796f3ff043e39d"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a1a6368539a2249ac91796f3ff043e39d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a1a6368539a2249ac91796f3ff043e39d">to_numeric</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a1a6368539a2249ac91796f3ff043e39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">convert a string to a numerical value of various types <br /></td></tr>
+<tr class="separator:a1a6368539a2249ac91796f3ff043e39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55417d380d1000c91b7a59253cd0b82c"><td class="memTemplParams" colspan="2"><a class="anchor" id="a55417d380d1000c91b7a59253cd0b82c"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a55417d380d1000c91b7a59253cd0b82c"><td class="memTemplItemLeft" align="right" valign="top">long&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_numeric&lt; long &gt;</b> (const std::string &amp;str)</td></tr>
+<tr class="separator:a55417d380d1000c91b7a59253cd0b82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d114df3356f5498414ff9a481f2173"><td class="memTemplParams" colspan="2"><a class="anchor" id="a35d114df3356f5498414ff9a481f2173"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a35d114df3356f5498414ff9a481f2173"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_numeric&lt; int &gt;</b> (const std::string &amp;str)</td></tr>
+<tr class="separator:a35d114df3356f5498414ff9a481f2173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a01d1a182e6b247d4702062aab5a32f"><td class="memTemplParams" colspan="2"><a class="anchor" id="a0a01d1a182e6b247d4702062aab5a32f"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a0a01d1a182e6b247d4702062aab5a32f"><td class="memTemplItemLeft" align="right" valign="top">float&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_numeric&lt; float &gt;</b> (const std::string &amp;str)</td></tr>
+<tr class="separator:a0a01d1a182e6b247d4702062aab5a32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b3b8518238ba6cedc16d8012904c70f"><td class="memTemplParams" colspan="2"><a class="anchor" id="a5b3b8518238ba6cedc16d8012904c70f"></a>
+template&lt;&gt; </td></tr>
+<tr class="memitem:a5b3b8518238ba6cedc16d8012904c70f"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><b>to_numeric&lt; double &gt;</b> (const std::string &amp;str)</td></tr>
+<tr class="separator:a5b3b8518238ba6cedc16d8012904c70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5364acb5691c4969be66653956508e6b"><td class="memTemplParams" colspan="2"><a class="anchor" id="a5364acb5691c4969be66653956508e6b"></a>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:a5364acb5691c4969be66653956508e6b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Matrix</b> (T **matrix, long rows, long cols)</td></tr>
@@ -412,10 +437,10 @@ template&lt;typename Container &gt; </td></tr>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a42da2b93e07ba858edd0d2b9ca7032ec"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>between</b> (const T &amp;x, const T &amp;l, const T &amp;u)</td></tr>
 <tr class="separator:a42da2b93e07ba858edd0d2b9ca7032ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeae0bee38ec4c0f219f4f1d8320b0056"><td class="memTemplParams" colspan="2">template&lt;typename T , typename R &gt; </td></tr>
-<tr class="memitem:aeae0bee38ec4c0f219f4f1d8320b0056"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#aeae0bee38ec4c0f219f4f1d8320b0056">shuffle</a> (std::vector&lt; T &gt; &amp;vec, R ran)</td></tr>
-<tr class="memdesc:aeae0bee38ec4c0f219f4f1d8320b0056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuffles a vector into a random order.  <a href="#aeae0bee38ec4c0f219f4f1d8320b0056">More...</a><br /></td></tr>
-<tr class="separator:aeae0bee38ec4c0f219f4f1d8320b0056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9906f7f742a4940019f2a58cabdb05c"><td class="memTemplParams" colspan="2">template&lt;typename T , typename R &gt; </td></tr>
+<tr class="memitem:aa9906f7f742a4940019f2a58cabdb05c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#aa9906f7f742a4940019f2a58cabdb05c">shuffle</a> (std::vector&lt; T &gt; &amp;vec, R &amp;ran)</td></tr>
+<tr class="memdesc:aa9906f7f742a4940019f2a58cabdb05c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuffles a vector into a random order.  <a href="#aa9906f7f742a4940019f2a58cabdb05c">More...</a><br /></td></tr>
+<tr class="separator:aa9906f7f742a4940019f2a58cabdb05c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b44ff17b26b627e429e9984d4908577"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a9b44ff17b26b627e429e9984d4908577"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a9b44ff17b26b627e429e9984d4908577">sort_indexes</a> (const std::vector&lt; T &gt; &amp;v, std::vector&lt; size_t &gt; &amp;index)</td></tr>
 <tr class="memdesc:a9b44ff17b26b627e429e9984d4908577"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the indexes that sort a vector in asending order.  <a href="#a9b44ff17b26b627e429e9984d4908577">More...</a><br /></td></tr>
@@ -1163,7 +1188,60 @@ template&lt;int lev&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aeae0bee38ec4c0f219f4f1d8320b0056"></a>
+<a class="anchor" id="abc7be26dfecdca30048dd4d3842077a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Utilities::ReadFileNames </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>filespec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>filenames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>file_non_spec</em> = <code>&quot;&#160;&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dir</td><td>path to directory containing fits files </td></tr>
+    <tr><td class="paramname">filespec</td><td>string of charactors in file name that are matched. It can be an empty string. </td></tr>
+    <tr><td class="paramname">filenames</td><td>output vector of PixelMaps </td></tr>
+    <tr><td class="paramname">file_non_spec</td><td>string of charactors in file name that file must not have. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa9906f7f742a4940019f2a58cabdb05c"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -1178,7 +1256,7 @@ template&lt;typename T , typename R &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">R&#160;</td>
+          <td class="paramtype">R &amp;&#160;</td>
           <td class="paramname"><em>ran</em>&#160;</td>
         </tr>
         <tr>
@@ -1507,7 +1585,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 8 2017 15:45:39 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 7 2018 15:46:55 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -17,6 +17,7 @@ var searchData=
   ['divide_5fimages_5fkist',['divide_images_kist',['../group___image_finding_l2.html#ga000476cfc3aa55d3b896ceff5d89ff9f',1,'divide_images_kist(TreeHndl i_tree, std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages):&#160;divide_images.cpp'],['../group___image_finding_l2.html#ga000476cfc3aa55d3b896ceff5d89ff9f',1,'divide_images_kist(TreeHndl i_tree, std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages):&#160;divide_images.cpp']]],
   ['dmoddb',['dmoddb',['../class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0',1,'LensHaloNFW']]],
   ['double_5fsort_5fpoints',['double_sort_points',['../namespace_utilities.html#a484765a953bdbceb52b23f6790d59cf2',1,'Utilities']]],
+  ['doubleflip',['doubleFlip',['../class_pixel_map.html#ab4374615054f16ae30b67251c4cd9d9a',1,'PixelMap']]],
   ['down',['down',['../class_q_tree_n_b_1_1iterator.html#aabd24a9fc371d265c98360a6d3658a1e',1,'QTreeNB::iterator::down()'],['../class_tree_struct_1_1iterator.html#a83e1c2a0387b3671cd2f7b765f7e1cb5',1,'TreeStruct::iterator::down()']]],
   ['drawbox',['drawBox',['../class_pixel_map.html#a9706dfb86aec046bea4193ed1228c463',1,'PixelMap']]],
   ['drawcircle',['drawcircle',['../class_pixel_map.html#a185bcea843ddf3affbafedc4b8e38663',1,'PixelMap']]],
@@ -28,5 +29,6 @@ var searchData=
   ['drdz_5fwrapper',['drdz_wrapper',['../group__cosmolib.html#ga4f1640a6826396a30f7788ef935e168f',1,'drdz_wrapper(double x, void *params):&#160;cosmo.cpp'],['../group__cosmolib.html#ga4f1640a6826396a30f7788ef935e168f',1,'drdz_wrapper(double x, void *params):&#160;cosmo.cpp']]],
   ['drradius',['DRradius',['../group__cosmolib.html#ga53a32f5a595308acf1839a82204357bf',1,'COSMOLOGY']]],
   ['drradius2',['DRradius2',['../group__cosmolib.html#gab5b37657376b1e61ea22e226f3b51577',1,'COSMOLOGY']]],
-  ['dsigdm',['dsigdM',['../group__cosmolib.html#ga761624ec8999ee2743b9687e08e25e23',1,'COSMOLOGY']]]
+  ['dsigdm',['dsigdM',['../group__cosmolib.html#ga761624ec8999ee2743b9687e08e25e23',1,'COSMOLOGY']]],
+  ['duplicate',['duplicate',['../class_pixel_map.html#abf48a8ec99723d1475a68ad86a71af8d',1,'PixelMap']]]
 ];
