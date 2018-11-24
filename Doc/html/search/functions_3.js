@@ -7,7 +7,7 @@ var searchData=
   ['causticdatastore',['CausticDataStore',['../class_caustic_data_store.html#a729ccd3080f6e2aef77b44d36b7a4d90',1,'CausticDataStore::CausticDataStore(std::string filename, bool verbose=false)'],['../class_caustic_data_store.html#ada547e47f0971479f103f34084c86a38',1,'CausticDataStore::CausticDataStore(std::vector&lt; ImageFinding::CriticalCurve &gt; &amp;crticurve_vec)']]],
   ['causticradius',['CausticRadius',['../struct_image_finding_1_1_critical_curve.html#aec16f5dfc075717d571a6167d9a88a5e',1,'ImageFinding::CriticalCurve']]],
   ['causticrange',['CausticRange',['../struct_image_finding_1_1_critical_curve.html#a4c7f215b785956e25b2d24c64b31bc27',1,'ImageFinding::CriticalCurve']]],
-  ['centerofmass',['CenterOfMass',['../class_lens_halo_particles.html#a31ad13b3fceb106cbd444bc87c8559c0',1,'LensHaloParticles']]],
+  ['centerofmass',['CenterOfMass',['../class_lens_halo_particles.html#a5b60131204bd264e6ceb0bc1852f27fb',1,'LensHaloParticles']]],
   ['changeband',['changeBand',['../class_source_overzier.html#aa5c8cdf97bb6660a33d1ac27e0d5fe52',1,'SourceOverzier::changeBand()'],['../class_source_overzier_plus.html#ab6164374500d1a48af7403640ca8853c',1,'SourceOverzierPlus::changeBand()']]],
   ['changefilter',['changeFilter',['../class_source.html#a24792a230ec1b4155cb028c19a142046',1,'Source']]],
   ['checkcosmology',['checkCosmology',['../class_lens_halo_mass_map.html#afb6416d108ed824204166b6c7d763eb0',1,'LensHaloMassMap']]],
@@ -51,5 +51,6 @@ var searchData=
   ['critareaorder',['CritAreaOrder',['../class_caustic_data_store.html#a0551fc7b7a892ec97885d2f1695f48a2',1,'CausticDataStore']]],
   ['criticalradius',['CriticalRadius',['../struct_image_finding_1_1_critical_curve.html#a611e96107e4809af25eaef1a28bdccf8',1,'ImageFinding::CriticalCurve']]],
   ['critradiusorder',['CritRadiusOrder',['../class_caustic_data_store.html#a55f1ae0bd681780623dfda1c31610f29',1,'CausticDataStore']]],
-  ['critrange',['CritRange',['../struct_image_finding_1_1_critical_curve.html#ae07d8b4e89a713811338394c7ba77894',1,'ImageFinding::CriticalCurve']]]
+  ['critrange',['CritRange',['../struct_image_finding_1_1_critical_curve.html#ae07d8b4e89a713811338394c7ba77894',1,'ImageFinding::CriticalCurve']]],
+  ['cylindricalcut',['cylindricalCut',['../class_make_particle_lenses.html#a55fa4825f80d5020b01691f66012d713',1,'MakeParticleLenses']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['raddist',['radDist',['../group__cosmolib.html#gaf4d4d3f5a8a7a1d2a4a5483064da1485',1,'COSMOLOGY']]],
+  ['radialcut',['radialCut',['../class_make_particle_lenses.html#a9f43dcfdd75c6703a8cc71859f949c96',1,'MakeParticleLenses']]],
   ['randomfromtable',['RandomFromTable',['../namespace_utilities.html#a0855636bdb71f103a4412555b9711e98',1,'Utilities']]],
   ['randomize',['randomize',['../class_source_overzier_plus.html#a3f7e9b83f0cf5816b3d716ce665100d2',1,'SourceOverzierPlus']]],
   ['randomizesubstructure2',['RandomizeSubstructure2',['../class_lens_halo_ana_n_s_i_e.html#a60a38e5e8611aabb700d797687e74cc6',1,'LensHaloAnaNSIE']]],
@@ -21,7 +22,7 @@ var searchData=
   ['readinputsimfileobservedgalaxies',['readInputSimFileObservedGalaxies',['../class_lens.html#ada31201db7a287980db63515453f74fa',1,'Lens']]],
   ['readmap',['readMap',['../class_lens_halo_mass_map.html#a94ae7e7e4e71b54e4c89afa324e29f24',1,'LensHaloMassMap']]],
   ['readmoka',['readMOKA',['../class_input_params.html#ae5679ef61b65b9ab211f87a775025ab1',1,'InputParams']]],
-  ['readpositionfileascii',['readPositionFileASCII',['../class_lens_halo_particles.html#a4a3f198cd92d9944bfd3bcd06f92a809',1,'LensHaloParticles']]],
+  ['readpositionfileascii',['readPositionFileASCII',['../class_lens_halo_particles.html#a161ea6a0c9d26ae123f6c1e275c5b77d',1,'LensHaloParticles']]],
   ['rebuildtreefromlist',['RebuildTreeFromList',['../group___image_finding_l2.html#ga427822306514170bb89a5d529a6cb565',1,'TreeStruct']]],
   ['recenter',['recenter',['../class_pixel_map.html#a966d2ce5b9457f5af5c7e0694a9a6de8',1,'PixelMap']]],
   ['record',['record',['../class_utilities_1_1_x_ycsv_look_up.html#a355f0f57229c69ffe4593346de632a99',1,'Utilities::XYcsvLookUp']]],
@@ -50,7 +51,7 @@ var searchData=
   ['rho_5fcrit_5fcomoving',['rho_crit_comoving',['../group__cosmolib.html#ga4a02991085bd43b036aec6c8d7313386',1,'COSMOLOGY']]],
   ['rmax_5fcalc',['rmax_calc',['../class_lens_halo_real_n_s_i_e.html#a277e6c93788c290fcf7c9bbbd32b0ce6',1,'LensHaloRealNSIE']]],
   ['rmaxnsie',['rmaxNSIE',['../group__function.html#ga13041999963a2b670474d93f2eb8b18f',1,'rmaxNSIE(PosType sigma, PosType mass, PosType f, PosType rc):&#160;nsie.cpp'],['../group__function.html#ga13041999963a2b670474d93f2eb8b18f',1,'rmaxNSIE(PosType sigma, PosType mass, PosType f, PosType rc):&#160;nsie.cpp']]],
-  ['rotate',['rotate',['../class_lens_halo_particles.html#ae6c923ea6ae932427be6b2e48b637d15',1,'LensHaloParticles::rotate()'],['../struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e',1,'Point_3d::rotate()']]],
-  ['rotate_5fcoordinates',['rotate_coordinates',['../class_tree_force.html#a4e124dae6aa348df5e7398d68e20d0ec',1,'TreeForce::rotate_coordinates()'],['../class_tree_quad.html#af17efeac84204db7c496c5c80c1d572d',1,'TreeQuad::rotate_coordinates()']]],
+  ['rotate',['rotate',['../class_lens_halo_particles.html#a6d2a87ae29ff2a1840ffced17599d8a9',1,'LensHaloParticles::rotate()'],['../struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e',1,'Point_3d::rotate()']]],
+  ['rotate_5fcoordinates',['rotate_coordinates',['../class_tree_force.html#a4e124dae6aa348df5e7398d68e20d0ec',1,'TreeForce::rotate_coordinates()'],['../class_tree_quad_particles.html#aa8969c0e591c62ef85368ed74c9056e0',1,'TreeQuadParticles::rotate_coordinates()'],['../class_tree_quad_halos.html#a4f9c97d2e9311612878c6abfc273992a',1,'TreeQuadHalos::rotate_coordinates()']]],
   ['rotation',['rotation',['../namespace_utilities.html#a31db9f78433a6de800437aedfd1b2eb5',1,'Utilities::rotation(float *xout, float *xin, PosType theta)'],['../namespace_utilities.html#a8ad140aa2e74c584b82ff6416ff16622',1,'Utilities::rotation(PosType *xout, PosType const *xin, PosType theta)']]]
 ];

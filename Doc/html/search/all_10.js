@@ -1,8 +1,11 @@
 var searchData=
 [
+  ['qbiterator',['QBiterator',['../class_q_biterator.html',1,'QBiterator&lt; PType &gt;'],['../class_q_biterator.html#a92d757e4b48e239cdd45a6dc748b82e3',1,'QBiterator::QBiterator(QTreeNB&lt; PType &gt; *tree)'],['../class_q_biterator.html#a2df3dd5d4360267c2d371b6807726b68',1,'QBiterator::QBiterator(QBranchNB *branch)']]],
   ['qbranchnb',['QBranchNB',['../struct_q_branch_n_b.html',1,'']]],
   ['qtreenb',['QTreeNB',['../struct_q_tree_n_b.html',1,'']]],
-  ['quad',['quad',['../struct_q_branch_n_b.html#ab7e5b2d4f10dbe58834d2b360357503f',1,'QBranchNB::quad()'],['../struct_branch_n_b.html#a51a6cee6a1654b630ae9873d336c6c73',1,'BranchNB::quad()']]],
+  ['qtreenb_3c_20postype_20_2a_20_3e',['QTreeNB&lt; PosType * &gt;',['../struct_q_tree_n_b.html',1,'']]],
+  ['qtreenb_3c_20startype_20_3e',['QTreeNB&lt; StarType &gt;',['../struct_q_tree_n_b.html',1,'']]],
+  ['quad',['quad',['../struct_q_branch_n_b.html#ab7e5b2d4f10dbe58834d2b360357503f',1,'QBranchNB']]],
   ['quadmomnsie',['quadMomNSIE',['../group__function.html#ga2711241a6516012a871186a72906f392',1,'quadMomNSIE(float mass, float Rsize, float f, float rc, float theta, PosType *quad):&#160;nsie.cpp'],['../group__function.html#ga2711241a6516012a871186a72906f392',1,'quadMomNSIE(float mass, float Rsize, float f, float rc, float theta, PosType *quad):&#160;nsie.cpp']]],
   ['quadrature_5fresult',['quadrature_result',['../struct_i_s_o_p_1_1quadrature__result.html',1,'ISOP']]],
   ['quadrature_5ftask',['quadrature_task',['../struct_i_s_o_p_1_1detail_1_1quadrature__task.html',1,'ISOP::detail']]],

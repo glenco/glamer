@@ -33,5 +33,5 @@ var searchData=
   ['ismergedimages',['IsMergedImages',['../struct_image_info.html#a4d3e9af5b46a99bc47972cc72379d9f9',1,'ImageInfo']]],
   ['isop',['isop',['../namespace_i_s_o_p.html#acffb220f9cfded153355ddc77dcee566',1,'ISOP']]],
   ['isop_5frender',['isop_render',['../namespace_i_s_o_p.html#a2d64b80f007fc143d7ab35eed009aaf5',1,'ISOP']]],
-  ['iterator',['iterator',['../class_q_tree_n_b_1_1iterator.html#a140384acb4dcd27c4dd363376d01054d',1,'QTreeNB::iterator::iterator(QTreeNB *tree)'],['../class_q_tree_n_b_1_1iterator.html#a18955af7e04e190588f287f4b175f0cd',1,'QTreeNB::iterator::iterator(QBranchNB *branch)'],['../class_tree_struct_1_1iterator.html#a806e9121b2d02cc6acbd5a975f20801d',1,'TreeStruct::iterator::iterator(TreeStruct *tree)'],['../class_tree_struct_1_1iterator.html#a8405f41c58cf6db626f4c494fe327b86',1,'TreeStruct::iterator::iterator(Branch *branch)']]]
+  ['iterator',['iterator',['../class_tree_struct_1_1iterator.html#a806e9121b2d02cc6acbd5a975f20801d',1,'TreeStruct::iterator::iterator(TreeStruct *tree)'],['../class_tree_struct_1_1iterator.html#a8405f41c58cf6db626f4c494fe327b86',1,'TreeStruct::iterator::iterator(Branch *branch)']]]
 ];

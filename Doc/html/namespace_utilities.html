@@ -257,9 +257,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>quickPartitionPoints<
 <tr class="memitem:a9cb92660db855441bddb128d39fb968b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9cb92660db855441bddb128d39fb968b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>quickPartitionPoints</b> (PosType pivotvalue, unsigned long *pivotindex, <a class="el" href="struct_point.html">Point</a> *pointarray, PosType(*func)(<a class="el" href="struct_point.html">Point</a> &amp;p), unsigned long N)</td></tr>
 <tr class="separator:a9cb92660db855441bddb128d39fb968b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a426aa442b7ce674af0bc9ebb5eadedef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a426aa442b7ce674af0bc9ebb5eadedef"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>cutbox</b> (const PosType *center, PosType *p1, PosType *p2, float rmax)</td></tr>
-<tr class="separator:a426aa442b7ce674af0bc9ebb5eadedef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a606f4aebc622ae58090979fda604d1fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#a606f4aebc622ae58090979fda604d1fc">log_polar_grid</a> (<a class="el" href="struct_point.html">Point</a> *i_points, PosType rmax, PosType rmin, PosType *center, long Ngrid)</td></tr>
 <tr class="separator:a606f4aebc622ae58090979fda604d1fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c5dac005305573c90d3c46db67967a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c5dac005305573c90d3c46db67967a0"></a>
@@ -318,6 +315,10 @@ long&#160;</td><td class="memItemRight" valign="bottom"><b>IndexFromPosition</b>
 <tr class="memitem:af1cbfc7c5cbcb4525faabc04298eb54d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1cbfc7c5cbcb4525faabc04298eb54d"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><b>TwoDInterpolator</b> (PosType *map)</td></tr>
 <tr class="separator:af1cbfc7c5cbcb4525faabc04298eb54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca843ce18cb36d8002f0878719ef7f24"><td class="memTemplParams" colspan="2"><a class="anchor" id="aca843ce18cb36d8002f0878719ef7f24"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aca843ce18cb36d8002f0878719ef7f24"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><b>cutbox</b> (const T *center, PosType *p1, PosType *p2, float rmax)</td></tr>
+<tr class="separator:aca843ce18cb36d8002f0878719ef7f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac985ac1b171f2d550864536530bbac2f"><td class="memTemplParams" colspan="2"><a class="anchor" id="ac985ac1b171f2d550864536530bbac2f"></a>
 template&lt;int lev&gt; </td></tr>
 <tr class="memitem:ac985ac1b171f2d550864536530bbac2f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#ac985ac1b171f2d550864536530bbac2f">quicksortPoints_multithread</a> (<a class="el" href="struct_point.html">Point</a> *pointarray, PosType *arr, unsigned long N, int level=0)</td></tr>
@@ -470,6 +471,10 @@ template&lt;typename T &gt; </td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#afa654746e24cd77549f412bed8d3ee26">GetNThreads</a> ()</td></tr>
 <tr class="memdesc:afa654746e24cd77549f412bed8d3ee26"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the compiler variable N_THREADS that is maximum number of threads to be used. <br /></td></tr>
 <tr class="separator:afa654746e24cd77549f412bed8d3ee26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acede0e6fa297e5d2f12c89724110bc25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acede0e6fa297e5d2f12c89724110bc25"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities.html#acede0e6fa297e5d2f12c89724110bc25">splitstring</a> (std::string &amp;line, std::vector&lt; std::string &gt; &amp;vec, const std::string &amp;delimiter)</td></tr>
+<tr class="memdesc:acede0e6fa297e5d2f12c89724110bc25"><td class="mdescLeft">&#160;</td><td class="mdescRight">split string into vector of seporate strings that were seporated by <br /></td></tr>
+<tr class="separator:acede0e6fa297e5d2f12c89724110bc25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae358b58a950d75ef089c7ad73f37a080"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae358b58a950d75ef089c7ad73f37a080"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>xorderD</b> (double *p1, double *p2)</td></tr>
 <tr class="separator:ae358b58a950d75ef089c7ad73f37a080"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -494,7 +499,6 @@ const double&#160;</td><td class="memItemRight" valign="bottom"><b>nXbin</b> =64
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>convert a Band type to a string name. </p>
 <p>The <a class="el" href="namespace_utilities.html" title="convert a Band type to a string name. ">Utilities</a> namespace contains functions for wide use in many classes that perform generic tasks.</p>
-<p>type for particle positions and boundaries etc</p>
 <p>The two functions below are inverses of each other for converting between a 1d array index and a square grid of positions Npixels in the number of point is 1 dimension index is between 0 and Npixels*Npixels-1 If x is outside of the region -1 is returned. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a1faf43d7dba91cb2697307c22249bc12"></a>
@@ -1585,7 +1589,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 7 2018 15:46:55 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 24 2018 18:36:09 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

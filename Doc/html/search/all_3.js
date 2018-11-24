@@ -12,7 +12,7 @@ var searchData=
   ['causticrange',['CausticRange',['../struct_image_finding_1_1_critical_curve.html#a4c7f215b785956e25b2d24c64b31bc27',1,'ImageFinding::CriticalCurve']]],
   ['causticstructure',['CausticStructure',['../struct_caustic_structure.html',1,'']]],
   ['center',['center',['../struct_q_branch_n_b.html#a9ef069b80404d9aff955ad7e60b6cea2',1,'QBranchNB::center()'],['../struct_branch_n_b.html#ac859dfddac9a0c45287e92461e2583f5',1,'BranchNB::center()']]],
-  ['centerofmass',['CenterOfMass',['../class_lens_halo_particles.html#a31ad13b3fceb106cbd444bc87c8559c0',1,'LensHaloParticles']]],
+  ['centerofmass',['CenterOfMass',['../class_lens_halo_particles.html#a5b60131204bd264e6ceb0bc1852f27fb',1,'LensHaloParticles']]],
   ['central_5fpoint_5fsphere',['central_point_sphere',['../class_lens.html#a2cadb4192298c6f5907db4fc215bad5a',1,'Lens']]],
   ['centroid',['centroid',['../struct_image_info.html#a7219edf14cd5daf38a3790bd53aea25b',1,'ImageInfo::centroid()'],['../struct_old_image_info.html#a5bfc48339deedd32690a73addcbe904d',1,'OldImageInfo::centroid()']]],
   ['changeband',['changeBand',['../class_source_overzier.html#aa5c8cdf97bb6660a33d1ac27e0d5fe52',1,'SourceOverzier::changeBand()'],['../class_source_overzier_plus.html#ab6164374500d1a48af7403640ca8853c',1,'SourceOverzierPlus::changeBand()']]],
@@ -74,5 +74,6 @@ var searchData=
   ['criticalcurve',['CriticalCurve',['../struct_image_finding_1_1_critical_curve.html',1,'ImageFinding']]],
   ['criticalradius',['CriticalRadius',['../struct_image_finding_1_1_critical_curve.html#a611e96107e4809af25eaef1a28bdccf8',1,'ImageFinding::CriticalCurve']]],
   ['critradiusorder',['CritRadiusOrder',['../class_caustic_data_store.html#a55f1ae0bd681780623dfda1c31610f29',1,'CausticDataStore']]],
-  ['critrange',['CritRange',['../struct_image_finding_1_1_critical_curve.html#ae07d8b4e89a713811338394c7ba77894',1,'ImageFinding::CriticalCurve']]]
+  ['critrange',['CritRange',['../struct_image_finding_1_1_critical_curve.html#ae07d8b4e89a713811338394c7ba77894',1,'ImageFinding::CriticalCurve']]],
+  ['cylindricalcut',['cylindricalCut',['../class_make_particle_lenses.html#a55fa4825f80d5020b01691f66012d713',1,'MakeParticleLenses']]]
 ];

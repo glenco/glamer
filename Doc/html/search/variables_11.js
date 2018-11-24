@@ -19,7 +19,7 @@ var searchData=
   ['source_5fr_5fout',['source_r_out',['../class_source_b_l_r.html#ad5841d79f09b0d1e4ee2493e229d8dd8',1,'SourceBLR']]],
   ['source_5ftau',['source_tau',['../class_source_b_l_r.html#acb238f6da46a44564cc4099ce7248b41',1,'SourceBLR']]],
   ['source_5fx',['source_x',['../class_source.html#a48ab18beedb3237d02841cc213e4d4df',1,'Source']]],
-  ['star_5fmasses',['star_masses',['../class_lens_halo.html#a50aeaef73c97665ce7dfba8176cbc264',1,'LensHalo']]],
+  ['star_5ffstars',['star_fstars',['../class_lens_halo.html#ac7311b734e9dc9161bd45179ea7eee9a',1,'LensHalo']]],
   ['star_5fsigma',['star_Sigma',['../class_lens_halo.html#a6dde16cbb7293323191cf708bfa5c993',1,'LensHalo']]],
   ['sub_5falpha',['sub_alpha',['../class_lens_halo_base_n_s_i_e.html#a9e5ea60f222da0429288cd791fa74e50',1,'LensHaloBaseNSIE']]],
   ['sub_5fbeta',['sub_beta',['../class_lens_halo_base_n_s_i_e.html#a76ac13d574a52b0136490cc42466f62d',1,'LensHaloBaseNSIE']]],

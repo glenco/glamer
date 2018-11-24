@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['gadget_5fheader',['gadget_header',['../structgadget__header.html',1,'']]],
+  ['gadget_5fparticle_5fdata',['gadget_particle_data',['../structgadget__particle__data.html',1,'']]],
+  ['gadgetfile',['GadgetFile',['../class_gadget_file.html',1,'']]],
   ['gaussianfield',['GaussianField',['../class_gaussian_field.html',1,'']]],
   ['globals',['Globals',['../struct_tree_struct_1_1_globals.html',1,'TreeStruct']]],
   ['grid',['Grid',['../struct_grid.html',1,'']]],

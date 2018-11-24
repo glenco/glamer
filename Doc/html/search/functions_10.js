@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['qbiterator',['QBiterator',['../class_q_biterator.html#a92d757e4b48e239cdd45a6dc748b82e3',1,'QBiterator::QBiterator(QTreeNB&lt; PType &gt; *tree)'],['../class_q_biterator.html#a2df3dd5d4360267c2d371b6807726b68',1,'QBiterator::QBiterator(QBranchNB *branch)']]],
   ['quadmomnsie',['quadMomNSIE',['../group__function.html#ga2711241a6516012a871186a72906f392',1,'quadMomNSIE(float mass, float Rsize, float f, float rc, float theta, PosType *quad):&#160;nsie.cpp'],['../group__function.html#ga2711241a6516012a871186a72906f392',1,'quadMomNSIE(float mass, float Rsize, float f, float rc, float theta, PosType *quad):&#160;nsie.cpp']]],
   ['quicksort',['quicksort',['../class_lens.html#a9b965193e6bc9a9fe4d8cea205413bd2',1,'Lens']]],
   ['quicksort_5fmultithread',['quicksort_multithread',['../namespace_utilities.html#ac7ddbf6268cb6f39b3e6d1b046ff1a48',1,'Utilities']]],

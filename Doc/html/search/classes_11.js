@@ -23,6 +23,7 @@ var searchData=
   ['sourceshapelets',['SourceShapelets',['../class_source_shapelets.html',1,'']]],
   ['sourceuniform',['SourceUniform',['../class_source_uniform.html',1,'']]],
   ['sphericalpoint',['SphericalPoint',['../class_utilities_1_1_geometry_1_1_spherical_point.html',1,'Utilities::Geometry']]],
+  ['startype',['StarType',['../struct_star_type.html',1,'']]],
   ['substructureinfo',['SubStructureInfo',['../struct_lens_1_1_sub_structure_info.html',1,'Lens']]],
   ['suninfo',['SunInfo',['../class_sun_info.html',1,'']]]
 ];

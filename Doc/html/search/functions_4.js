@@ -18,7 +18,7 @@ var searchData=
   ['dmoddb',['dmoddb',['../class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0',1,'LensHaloNFW']]],
   ['double_5fsort_5fpoints',['double_sort_points',['../namespace_utilities.html#a484765a953bdbceb52b23f6790d59cf2',1,'Utilities']]],
   ['doubleflip',['doubleFlip',['../class_pixel_map.html#ab4374615054f16ae30b67251c4cd9d9a',1,'PixelMap']]],
-  ['down',['down',['../class_q_tree_n_b_1_1iterator.html#aabd24a9fc371d265c98360a6d3658a1e',1,'QTreeNB::iterator::down()'],['../class_tree_struct_1_1iterator.html#a83e1c2a0387b3671cd2f7b765f7e1cb5',1,'TreeStruct::iterator::down()']]],
+  ['down',['down',['../class_q_biterator.html#a90861741630eb5bcad4ee156d528c065',1,'QBiterator::down()'],['../class_tree_struct_1_1iterator.html#a83e1c2a0387b3671cd2f7b765f7e1cb5',1,'TreeStruct::iterator::down()']]],
   ['drawbox',['drawBox',['../class_pixel_map.html#a9706dfb86aec046bea4193ed1228c463',1,'PixelMap']]],
   ['drawcircle',['drawcircle',['../class_pixel_map.html#a185bcea843ddf3affbafedc4b8e38663',1,'PixelMap']]],
   ['drawdisk',['drawdisk',['../class_pixel_map.html#a35b538005ba390938559ad30292db360',1,'PixelMap']]],

@@ -2,9 +2,9 @@ var searchData=
 [
   ['n',['n',['../class_c_o_s_m_o_l_o_g_y.html#ae36601fd4a4eae5059470813b68b1095',1,'COSMOLOGY']]],
   ['nbig_5fparticles',['Nbig_particles',['../struct_q_branch_n_b.html#af570b2c9d94ec7bdfbe2dd7fa226a735',1,'QBranchNB']]],
-  ['nbranches',['Nbranches',['../struct_q_tree_n_b.html#ab6f3588dd16a76358c559983690a0d08',1,'QTreeNB::Nbranches()'],['../struct_tree_n_b_struct.html#a397709a8a7ec6f6989857b7d67184913',1,'TreeNBStruct::Nbranches()'],['../class_tree_simple_vec.html#a16dcf35790fe3e9cf45a87f1363d0b60',1,'TreeSimpleVec::Nbranches()'],['../struct_tree_struct.html#a2f0813ee7e560bf22ccb4860940f2130',1,'TreeStruct::Nbranches()']]],
+  ['nbranches',['Nbranches',['../struct_q_tree_n_b.html#a592df65581be8d93f4d4e54ac30c7dc2',1,'QTreeNB::Nbranches()'],['../struct_tree_n_b_struct.html#ad9b56e97c0893defc1eb67f8af279e71',1,'TreeNBStruct::Nbranches()'],['../class_tree_simple_vec.html#a16dcf35790fe3e9cf45a87f1363d0b60',1,'TreeSimpleVec::Nbranches()'],['../struct_tree_struct.html#a2f0813ee7e560bf22ccb4860940f2130',1,'TreeStruct::Nbranches()']]],
   ['nbucket',['Nbucket',['../struct_tree_struct.html#a4e1c7870adbee91ee4f02710dcccab1c',1,'TreeStruct']]],
-  ['ndimensions',['Ndimensions',['../struct_tree_n_b_struct.html#ac4ad2c184c445033b4c1693b1e6275b5',1,'TreeNBStruct::Ndimensions()'],['../class_tree_simple_vec.html#adad8d653a11fa9754de41463e5a5c848',1,'TreeSimpleVec::Ndimensions()']]],
+  ['ndimensions',['Ndimensions',['../struct_tree_n_b_struct.html#a0a83f70f52022b1c0f48797008e02946',1,'TreeNBStruct::Ndimensions()'],['../class_tree_simple_vec.html#adad8d653a11fa9754de41463e5a5c848',1,'TreeSimpleVec::Ndimensions()']]],
   ['ngrid_5fblock',['Ngrid_block',['../struct_grid.html#a153d8e89965c1047ea0a2f3f138013d3',1,'Grid']]],
   ['ngrid_5finit',['Ngrid_init',['../struct_grid.html#a27427e79ae9c3bf1fa9b18e659ebda41',1,'Grid::Ngrid_init()'],['../struct_grid_map.html#a5152f3deb8842985d55218d6008eb92f',1,'GridMap::Ngrid_init()']]],
   ['nhaloestot_5ftab',['Nhaloestot_Tab',['../class_lens.html#adc75c81303547d0c9e4a28d947362254',1,'Lens']]],

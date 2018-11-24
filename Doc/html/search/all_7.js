@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['gadget_5fheader',['gadget_header',['../structgadget__header.html',1,'']]],
+  ['gadget_5fparticle_5fdata',['gadget_particle_data',['../structgadget__particle__data.html',1,'']]],
+  ['gadgetfile',['GadgetFile',['../class_gadget_file.html',1,'']]],
   ['gamma',['gamma',['../class_c_o_s_m_o_l_o_g_y.html#a67962681b52d8ba6014df3e499ed8e76',1,'COSMOLOGY']]],
   ['gamma_5fh',['gamma_h',['../class_lens_halo_power_law.html#afb5da36ae1c918d35082d39eb61c8ff7',1,'LensHaloPowerLaw']]],
   ['gammacrit_5funiform',['gammaCrit_uniform',['../class_lens_halo_uniform.html#afbafc2d748ec0d2e14cbbd87e99cd19a',1,'LensHaloUniform']]],
@@ -30,6 +33,7 @@ var searchData=
   ['getbackgroundnoise',['getBackgroundNoise',['../class_observation.html#a34dd759b292705dac56eef7a4f725c5f',1,'Observation']]],
   ['getbtot',['getBtoT',['../class_source_overzier.html#a8c6917b4df22c1e7eb1f41a9d4a0faf0',1,'SourceOverzier']]],
   ['getcenter',['getCenter',['../class_lens_halo_mass_map.html#a165ec4eaede4fa129d5c29a35dc55d81',1,'LensHaloMassMap']]],
+  ['getcenterofmass',['getCenterOfMass',['../class_make_particle_lenses.html#a00a05d3e0eee6ae651859acd47895381',1,'MakeParticleLenses']]],
   ['getcolor',['getColor',['../class_quasar_l_f.html#a11317364997ef124290936d3e2ea5b1c',1,'QuasarLF']]],
   ['getconcentration',['getConcentration',['../group__cosmolib.html#ga5ea33c1489d3ecaedf62b29b26e1a3d1',1,'HALOCalculator']]],
   ['getcosmo',['getCosmo',['../class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81',1,'Lens']]],
@@ -53,6 +57,7 @@ var searchData=
   ['getmag',['getMag',['../class_source_overzier.html#a35599864666c08f47ff7872fd4d15ee0',1,'SourceOverzier']]],
   ['getmainhalo',['getMainHalo',['../class_lens.html#aecc7754f42783ebe2f3d7a8074591322',1,'Lens::getMainHalo(std::size_t i)'],['../class_lens.html#afbff81a6b811293718d2f58665b81571',1,'Lens::getMainHalo(std::size_t i)']]],
   ['getminsize',['getMinSize',['../class_source_overzier.html#a6feb922edd104dd20122a7c58b3b3cce',1,'SourceOverzier']]],
+  ['getmp',['getmp',['../class_make_particle_lenses.html#aaad77f8b2615f4e5397450a133186c78',1,'MakeParticleLenses']]],
   ['getn',['getN',['../class_lens_halo_mass_map.html#a9beb42d4cf05abf594a5b515e7ee1c82',1,'LensHaloMassMap']]],
   ['getneighborhalos',['getNeighborHalos',['../class_lens_plane_tree.html#a4466569c78397bc0e6e6867f22502499',1,'LensPlaneTree']]],
   ['getnfieldhalos',['getNFieldHalos',['../class_lens.html#af33826b1bed03cbbb2afb168c7cf000d',1,'Lens']]],
@@ -60,6 +65,7 @@ var searchData=
   ['getnimagepoints',['getNimagePoints',['../struct_image_info.html#a6557e522acf36c70853de3e1b84f0879',1,'ImageInfo']]],
   ['getnmainhalos',['getNMainHalos',['../class_lens.html#adbe47fad91453ed6b5e12d0f573d9514',1,'Lens::getNMainHalos() const '],['../class_lens.html#a99272fce19fad415cf95b2b496681bb2',1,'Lens::getNMainHalos() const ']]],
   ['getnmodes',['getNmodes',['../class_lens_halo_fit.html#a3372f9c502297371fbdeebd94615032b',1,'LensHaloFit']]],
+  ['getnp',['getnp',['../class_make_particle_lenses.html#afc22f57bce9965e868884226096a7b40',1,'MakeParticleLenses']]],
   ['getnplanes',['getNplanes',['../class_lens.html#ac83c23a4a6b9e4a55ee6599558c97d98',1,'Lens']]],
   ['getnsubhalos',['getNSubHalos',['../class_lens.html#a99fc0a0e951d8555db86f6f13017b363',1,'Lens']]],
   ['getnthindexcaustarea',['getNthIndexCaustArea',['../class_caustic_data_store.html#a312b623a9e9e70feccc6e36f2e75eba2',1,'CausticDataStore']]],

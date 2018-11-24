@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['walk',['walk',['../class_tree_simple_1_1iterator.html#abab797cedae6a68e0203f9f4b687a309',1,'TreeSimple::iterator']]],
-  ['whichquad',['WhichQuad',['../class_tree_quad.html#ad80cbecc9ea488f7bcefe86fda53bb21',1,'TreeQuad']]],
+  ['walk',['walk',['../class_tree_simple_1_1iterator.html#a9e84d35a92b44120c96e01b25e27e910',1,'TreeSimple::iterator']]],
+  ['whichquad',['WhichQuad',['../class_tree_quad_particles.html#ac27b91f7fe87d968e566880dcac0b2fa',1,'TreeQuadParticles::WhichQuad()'],['../class_tree_quad_halos.html#aa7aeaa6439ea2b13efb23d34a4ed9405',1,'TreeQuadHalos::WhichQuad()']]],
   ['windings',['windings',['../group___utill.html#gac42846299720c47decf597f70d448464',1,'Utilities::windings(PosType *x,Point *points,unsigned long Npoints,PosType *area,short image)'],['../namespace_utilities.html#ad964e6781b61f0d76240eda24a4f9ffa',1,'Utilities::windings(PosType *x, Point **points, unsigned long Npoints, PosType *area, short image=0)'],['../namespace_utilities.html#a64cd4e52a3b543449c6ba0330f13f01e',1,'Utilities::windings(Point_2d &amp;x, std::vector&lt; Point_2d &gt; &amp;point, PosType *area)'],['../namespace_utilities.html#aa7db30634cbf18e1652cd2a9ec7f95aa',1,'Utilities::windings(PosType *x, Kist&lt; Point &gt; *kist, PosType *area, short image=0)']]],
   ['windings2',['windings2',['../group___utill.html#ga70de03dea8a3f77f15fd209a783a8065',1,'Utilities']]],
   ['writecurves',['writeCurves',['../namespace_utilities.html#a7771b5ff9b3034f364adcee471cb754d',1,'Utilities']]],

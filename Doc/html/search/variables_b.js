@@ -11,7 +11,7 @@ var searchData=
   ['mass_5fnorm_5ffactor',['mass_norm_factor',['../class_lens_halo.html#a43de5eba625d4c78e85e2fdb8bbeaa0e',1,'LensHalo']]],
   ['masses',['masses',['../class_tree_force.html#aaf5bfc6384c6717f967d888fbd7fcb24',1,'TreeForce']]],
   ['maxrm',['maxrm',['../class_lens_halo_n_f_w.html#a87747a7b1ca624f4fb8630e59f69dea7',1,'LensHaloNFW::maxrm()'],['../class_lens_halo_pseudo_n_f_w.html#a79486e84643817302f2ae0fdfdc6fa00',1,'LensHaloPseudoNFW::maxrm()'],['../class_lens_halo_hernquist.html#a3f2e647ea4094ec541b22297266e6cf4',1,'LensHaloHernquist::maxrm()'],['../class_lens_halo_jaffe.html#a5dcce014105956d1e790ba680438f6c1',1,'LensHaloJaffe::maxrm()']]],
-  ['maxrsph',['maxrsph',['../struct_q_branch_n_b.html#a24bce67bfb8a3388c8657c1cd06143a8',1,'QBranchNB::maxrsph()'],['../struct_branch_n_b.html#aab957bc29206df3769c7d6c14b447054',1,'BranchNB::maxrsph()']]],
+  ['maxrsph',['maxrsph',['../struct_q_branch_n_b.html#a24bce67bfb8a3388c8657c1cd06143a8',1,'QBranchNB']]],
   ['mhattable',['mhattable',['../class_lens_halo_pseudo_n_f_w.html#aad5c4b7a473f3433954b2a62387b6781',1,'LensHaloPseudoNFW']]],
   ['mpctoasec',['MpcToAsec',['../class_lens_halo_base_n_s_i_e.html#a5630de40317ef02e8cf7df86910cc34a',1,'LensHaloBaseNSIE']]],
   ['multimass',['MultiMass',['../class_tree_force.html#a5a03e820fcfde1a984937c59977e52c2',1,'TreeForce']]],
