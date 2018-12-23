@@ -1,8 +1,9 @@
 var searchData=
 [
+  ['edge',['Edge',['../struct_utilities_1_1_edge.html',1,'Utilities']]],
   ['einstein_5fro',['Einstein_ro',['../class_lens_halo_base_n_s_i_e.html#a792623065d6cfd283482519e4c7ec808',1,'LensHaloBaseNSIE']]],
+  ['einsteinarea',['EinsteinArea',['../struct_grid_map.html#a644d249c180301b75d8f41b728d15be3',1,'GridMap']]],
   ['einsteinradii',['EinsteinRadii',['../class_lens_halo_mass_map.html#ad330f696152521defd2b08f8cebe6b1b',1,'LensHaloMassMap']]],
-  ['eisnsteinarea',['EisnsteinArea',['../struct_grid_map.html#ab3e3494c87759c1d49923fe42362a36a',1,'GridMap']]],
   ['ellipse_5farea',['ellipse_area',['../struct_image_finding_1_1_critical_curve.html#a3d2be4463f75299d5af4f8abb781de45',1,'ImageFinding::CriticalCurve']]],
   ['elliptic',['Elliptic',['../class_elliptic.html',1,'Elliptic'],['../class_elliptic.html#a8753f2219a9ad3137cdb36cf0726be9d',1,'Elliptic::Elliptic()']]],
   ['ellipticradiusnsie',['ellipticRadiusNSIE',['../group__function.html#ga84aa15948a8af02d1bbcd5fc44de746c',1,'ellipticRadiusNSIE(PosType const *x, PosType f, PosType pa):&#160;nsie.cpp'],['../group__function.html#ga84aa15948a8af02d1bbcd5fc44de746c',1,'ellipticRadiusNSIE(PosType const *x, PosType f, PosType pa):&#160;nsie.cpp']]],

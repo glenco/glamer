@@ -1,7 +1,7 @@
 var searchData=
 [
   ['raddist',['radDist',['../group__cosmolib.html#gaf4d4d3f5a8a7a1d2a4a5483064da1485',1,'COSMOLOGY']]],
-  ['radialcut',['radialCut',['../class_make_particle_lenses.html#a9f43dcfdd75c6703a8cc71859f949c96',1,'MakeParticleLenses']]],
+  ['radialcut',['radialCut',['../class_make_particle_lenses.html#a90a0c8f1e910df995458199708d34a38',1,'MakeParticleLenses']]],
   ['randomfromtable',['RandomFromTable',['../namespace_utilities.html#a0855636bdb71f103a4412555b9711e98',1,'Utilities']]],
   ['randomize',['randomize',['../class_source_overzier_plus.html#a3f7e9b83f0cf5816b3d716ce665100d2',1,'SourceOverzierPlus']]],
   ['randomizesubstructure2',['RandomizeSubstructure2',['../class_lens_halo_ana_n_s_i_e.html#a60a38e5e8611aabb700d797687e74cc6',1,'LensHaloAnaNSIE']]],
@@ -28,7 +28,7 @@ var searchData=
   ['readmoka',['readMOKA',['../class_input_params.html#ae5679ef61b65b9ab211f87a775025ab1',1,'InputParams']]],
   ['readpositionfileascii',['readPositionFileASCII',['../class_lens_halo_particles.html#a161ea6a0c9d26ae123f6c1e275c5b77d',1,'LensHaloParticles']]],
   ['rebuildtreefromlist',['RebuildTreeFromList',['../group___image_finding_l2.html#ga427822306514170bb89a5d529a6cb565',1,'TreeStruct']]],
-  ['recenter',['recenter',['../class_pixel_map.html#a966d2ce5b9457f5af5c7e0694a9a6de8',1,'PixelMap']]],
+  ['recenter',['recenter',['../class_pixel_map.html#a966d2ce5b9457f5af5c7e0694a9a6de8',1,'PixelMap::recenter()'],['../class_make_particle_lenses.html#a5a48c73aaf4fadac6b73bd0be64b871c',1,'MakeParticleLenses::Recenter()']]],
   ['record',['record',['../class_utilities_1_1_x_ycsv_look_up.html#a355f0f57229c69ffe4593346de632a99',1,'Utilities::XYcsvLookUp']]],
   ['redshift',['redshift',['../struct_caustic_structure.html#abbe8e1e9b689744fb4f543bf39ac570d',1,'CausticStructure']]],
   ['reff',['Reff',['../class_source_overzier.html#a88d846e0f7f5045679d52bac4dbbaf6d',1,'SourceOverzier']]],

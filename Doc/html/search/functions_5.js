@@ -1,7 +1,7 @@
 var searchData=
 [
+  ['einsteinarea',['EinsteinArea',['../struct_grid_map.html#a644d249c180301b75d8f41b728d15be3',1,'GridMap']]],
   ['einsteinradii',['EinsteinRadii',['../class_lens_halo_mass_map.html#ad330f696152521defd2b08f8cebe6b1b',1,'LensHaloMassMap']]],
-  ['eisnsteinarea',['EisnsteinArea',['../struct_grid_map.html#ab3e3494c87759c1d49923fe42362a36a',1,'GridMap']]],
   ['elliptic',['Elliptic',['../class_elliptic.html#a8753f2219a9ad3137cdb36cf0726be9d',1,'Elliptic']]],
   ['ellipticradiusnsie',['ellipticRadiusNSIE',['../group__function.html#ga84aa15948a8af02d1bbcd5fc44de746c',1,'ellipticRadiusNSIE(PosType const *x, PosType f, PosType pa):&#160;nsie.cpp'],['../group__function.html#ga84aa15948a8af02d1bbcd5fc44de746c',1,'ellipticRadiusNSIE(PosType const *x, PosType f, PosType pa):&#160;nsie.cpp']]],
   ['elliptisizelens',['ElliptisizeLens',['../group___fit_lens_l2.html#ga9db5ded2550ac9f38b5d1c14c03e8c99',1,'LensHaloFit']]],

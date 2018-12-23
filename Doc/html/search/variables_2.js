@@ -2,6 +2,7 @@ var searchData=
 [
   ['caustic_5farea',['caustic_area',['../struct_caustic_structure.html#ac7b1bb5b0efa8b65166a8b117cd9e68c',1,'CausticStructure::caustic_area()'],['../struct_image_finding_1_1_critical_curve.html#ab82ec9ece06281a77aea2a9e7357e542',1,'ImageFinding::CriticalCurve::caustic_area()']]],
   ['caustic_5fcenter',['caustic_center',['../struct_caustic_structure.html#a1aa1e1b086307d32d0907de48ffac536',1,'CausticStructure::caustic_center()'],['../struct_image_finding_1_1_critical_curve.html#a4a969ada54daf515d6f1c0cb4086738f',1,'ImageFinding::CriticalCurve::caustic_center()']]],
+  ['caustic_5fintersections',['caustic_intersections',['../struct_image_finding_1_1_critical_curve.html#a49835fb390c473a49ef139bf3a2ce720',1,'ImageFinding::CriticalCurve']]],
   ['caustic_5fradius',['caustic_radius',['../struct_caustic_structure.html#a1f307ad18350783651eb62e21d2a73b3',1,'CausticStructure']]],
   ['center',['center',['../struct_q_branch_n_b.html#a9ef069b80404d9aff955ad7e60b6cea2',1,'QBranchNB::center()'],['../struct_branch_n_b.html#ac859dfddac9a0c45287e92461e2583f5',1,'BranchNB::center()']]],
   ['central_5fpoint_5fsphere',['central_point_sphere',['../class_lens.html#a2cadb4192298c6f5907db4fc215bad5a',1,'Lens']]],

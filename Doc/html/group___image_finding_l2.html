@@ -128,7 +128,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memdesc:gaef2864fc3791c44eed90c2e980777884"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fundamental function used to divide a leaf in the tree into nine subcells.  <a href="#gaef2864fc3791c44eed90c2e980777884">More...</a><br /></td></tr>
 <tr class="separator:gaef2864fc3791c44eed90c2e980777884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1d61941f50776c7133ead2f5ea87117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___image_finding_l2.html#gaa1d61941f50776c7133ead2f5ea87117">ImageFinding::image_finder_kist</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, PosType *y_source, PosType r_source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, unsigned long *Nimagepoints, short splitparities, short true_images)</td></tr>
-<tr class="memdesc:gaa1d61941f50776c7133ead2f5ea87117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds images for a given source position and size.  <a href="#gaa1d61941f50776c7133ead2f5ea87117">More...</a><br /></td></tr>
+<tr class="memdesc:gaa1d61941f50776c7133ead2f5ea87117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds images for a given source position and size. Not meant for high level user.  <a href="#gaa1d61941f50776c7133ead2f5ea87117">More...</a><br /></td></tr>
 <tr class="separator:gaa1d61941f50776c7133ead2f5ea87117"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9a61b57e20ce0984d968c53fd7820b82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___image_finding_l2.html#ga9a61b57e20ce0984d968c53fd7820b82">ImageFinding::IF_routines::refine_grid_kist</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_grid.html">GridHndl</a> grid, <a class="el" href="struct_image_info.html">ImageInfo</a> *imageinfo, int Nimages, double res_target, short criterion, Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; *newpointkist=NULL, bool batch=true)</td></tr>
 <tr class="memdesc:ga9a61b57e20ce0984d968c53fd7820b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refines every point in the given image and its outer border that satisfies the refinement criterion.  <a href="#ga9a61b57e20ce0984d968c53fd7820b82">More...</a><br /></td></tr>
@@ -479,7 +479,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
       </table>
 </div><div class="memdoc">
 
-<p>Finds images for a given source position and size. </p>
+<p>Finds images for a given source position and size. Not meant for high level user. </p>
 <p>image points are put into imageinfo[].imagekist imageinfo[].points and imageinfo[].Npoints are not changed</p>
 <p>splitparities= 0 don't split attached negative and positive parity images = 1 do split parities NOTE: this is now obsolete = -1 doesn't slit into images at all , also does not find borders or change in_image markers true_images = 1 gives just the points that are in the image = 0 if there are not enough points in images this will include close points to be refined</p>
 <p>side-effects : Will make in_image = true for all image points if splitparities == 0 </p>
@@ -760,7 +760,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 24 2018 18:46:29 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Dec 23 2018 18:41:49 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

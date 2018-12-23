@@ -16,8 +16,6 @@ var searchData=
   ['pointswithinleaf',['PointsWithinLeaf',['../class_pixel_map.html#a67bbdc2c2037f177eb74a747f304d3fe',1,'PixelMap']]],
   ['polintt',['polintT',['../namespace_utilities.html#a85e6e176b88221d17c1a0d6c83a6846d',1,'Utilities']]],
   ['pop_5fback',['pop_back',['../class_utilities_1_1_mixed_vector.html#a533bdc1c1bd65b9d9195800c37ecb51f',1,'Utilities::MixedVector::pop_back()'],['../class_utilities_1_1_mixed_vector.html#a1367c7e909d6023481780e88999a8240',1,'Utilities::MixedVector::pop_back()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a4da7977ba3f53343a2d30a469cc5a8a3',1,'Utilities::MixedVector&lt; BaseT * &gt;::pop_back()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a4e56c13f2b415cae6111fd5527454f4e',1,'Utilities::MixedVector&lt; BaseT * &gt;::pop_back()']]],
-  ['pos_5fimage',['pos_image',['../struct_r_a_y.html#a433118f4bc4a0b469e7ec21c834d4e26',1,'RAY']]],
-  ['pos_5fsource',['pos_source',['../struct_r_a_y.html#a3168f5ccf0f01783712e19efe63e7e18',1,'RAY']]],
   ['positionfromindex',['PositionFromIndex',['../namespace_utilities.html#afa68bfc533f3ce300625ec2b97073800',1,'Utilities::PositionFromIndex(unsigned long i, PosType *x, long Npixels, PosType range, PosType const *center)'],['../namespace_utilities.html#a043901fd09c24707f46eb23b75548882',1,'Utilities::PositionFromIndex(unsigned long i, PosType *x, long Nx, long Ny, PosType range, PosType const *center)']]],
   ['power_5flinear',['power_linear',['../class_c_o_s_m_o_l_o_g_y.html#ac058e962b0293f8f3069e7e925d769c5',1,'COSMOLOGY']]],
   ['power_5fnormalize',['power_normalize',['../group__cosmolib.html#ga3f9e7c97607e583ac4b8f6044f052852',1,'COSMOLOGY']]],
