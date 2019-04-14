@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['gadget_5fheader',['gadget_header',['../structgadget__header.html',1,'']]],
-  ['gadget_5fparticle_5fdata',['gadget_particle_data',['../structgadget__particle__data.html',1,'']]],
-  ['gadgetfile',['GadgetFile',['../class_gadget_file.html',1,'']]],
-  ['gaussianfield',['GaussianField',['../class_gaussian_field.html',1,'']]],
-  ['globals',['Globals',['../struct_tree_struct_1_1_globals.html',1,'TreeStruct']]],
-  ['grid',['Grid',['../struct_grid.html',1,'']]],
-  ['gridmap',['GridMap',['../struct_grid_map.html',1,'']]]
+  ['imageinfo',['ImageInfo',['../struct_image_info.html',1,'']]],
+  ['inputparams',['InputParams',['../class_input_params.html',1,'']]],
+  ['interpolator',['Interpolator',['../class_utilities_1_1_interpolator.html',1,'Utilities']]],
+  ['interpolator_3c_20pixelmap_20_3e',['Interpolator&lt; PixelMap &gt;',['../class_utilities_1_1_interpolator.html',1,'Utilities']]],
+  ['isop_5fmap',['isop_map',['../struct_i_s_o_p_1_1isop__map.html',1,'ISOP']]],
+  ['iterator',['iterator',['../class_tree_struct_1_1iterator.html',1,'TreeStruct']]]
 ];

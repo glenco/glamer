@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,8 +87,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_multi_grid_smoother-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">MultiGridSmoother Class Reference</div>  </div>
@@ -99,11 +97,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="class_multi_grid_smoother.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="image__processing_8h_source.html">image_processing.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for MultiGridSmoother:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_multi_grid_smoother__coll__graph.png" border="0" usemap="#_multi_grid_smoother_coll__map" alt="Collaboration graph"/></div>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -124,29 +117,12 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multi_grid_smoother.html#a717e96f65e41a5e43b781bc8fa11968f">add_particles</a> (std::vector&lt; PosType &gt; x, std::vector&lt; PosType &gt; y)</td></tr>
 <tr class="memdesc:a717e96f65e41a5e43b781bc8fa11968f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add particles to the map. These do not need to be kept in memory after they are added. <br /></td></tr>
 <tr class="separator:a717e96f65e41a5e43b781bc8fa11968f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a8f22970d3945789f35ec175486f333"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multi_grid_smoother.html#a8a8f22970d3945789f35ec175486f333">output_map</a> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map, int Nsmooth)</td></tr>
+<tr class="memitem:a8a8f22970d3945789f35ec175486f333"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_multi_grid_smoother.html#a8a8f22970d3945789f35ec175486f333">output_map</a> (PixelMap &amp;map, int Nsmooth)</td></tr>
 <tr class="memdesc:a8a8f22970d3945789f35ec175486f333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output a map at the resolution of the map smoothed so that no superpixel as less than Nsmooth particles.  <a href="#a8a8f22970d3945789f35ec175486f333">More...</a><br /></td></tr>
 <tr class="separator:a8a8f22970d3945789f35ec175486f333"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d1c6076c3a8444d4fd1e7c717777c36"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d1c6076c3a8444d4fd1e7c717777c36"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>smooth</b> (int Nsmooth, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>smooth</b> (int Nsmooth, PixelMap &amp;map)</td></tr>
 <tr class="separator:a0d1c6076c3a8444d4fd1e7c717777c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a650955f56d4c5296fe0c33907d42a472"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a650955f56d4c5296fe0c33907d42a472"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_smooth_</b> (int k, size_t i, size_t j, int Nsmooth, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map)</td></tr>
-<tr class="separator:a650955f56d4c5296fe0c33907d42a472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:ab8816653d53e133e8f6f51221eb57eea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8816653d53e133e8f6f51221eb57eea"></a>
-std::vector&lt; <a class="el" href="class_pixel_map.html">PixelMap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>maps</b></td></tr>
-<tr class="separator:ab8816653d53e133e8f6f51221eb57eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2987af6c03ee5c3106bd321c07db1755"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2987af6c03ee5c3106bd321c07db1755"></a>
-std::vector<br class="typebreak" />
-&lt; <a class="el" href="class_utilities_1_1_interpolator.html">Utilities::Interpolator</a><br class="typebreak" />
-&lt; <a class="el" href="class_pixel_map.html">PixelMap</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>interpolators</b></td></tr>
-<tr class="separator:a2987af6c03ee5c3106bd321c07db1755"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Warning: Not tested yet. Class for doing adaptive smoothing using multiply resolution grids. </p>
@@ -206,7 +182,7 @@ std::vector<br class="typebreak" />
         <tr>
           <td class="memname">void MultiGridSmoother::output_map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td>
+          <td class="paramtype">PixelMap &amp;&#160;</td>
           <td class="paramname"><em>map</em>, </td>
         </tr>
         <tr>
@@ -235,7 +211,7 @@ std::vector<br class="typebreak" />
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 23 2018 18:41:54 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 14 2019 17:35:56 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

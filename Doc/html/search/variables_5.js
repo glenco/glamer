@@ -1,26 +1,7 @@
 var searchData=
 [
-  ['field_5fbuffer',['field_buffer',['../class_lens.html#a49a338eabf2ed9eedf5cd081d14d2c11',1,'Lens']]],
-  ['field_5fdl',['field_Dl',['../class_lens.html#ae85a2c9e59a1012506db8fadab26e595',1,'Lens']]],
-  ['field_5fdl_5foriginal',['field_Dl_original',['../class_lens.html#a4e74ee77b99021b052fa0d8ee0f5ac4f',1,'Lens']]],
-  ['field_5fhalos',['field_halos',['../class_lens.html#a40800c9a46859d1adc08c85cde651a63',1,'Lens']]],
-  ['field_5fint_5fprof_5fgal_5fslope',['field_int_prof_gal_slope',['../class_lens.html#ae19437c6aa8ed6e4d6d21af019183032',1,'Lens']]],
-  ['field_5fint_5fprof_5fgal_5ftype',['field_int_prof_gal_type',['../class_lens.html#a09931ec7177c796d09f8d22ad65b6b64',1,'Lens']]],
-  ['field_5fint_5fprof_5ftype',['field_int_prof_type',['../class_lens.html#a6dd53bcce6a1ecbcf74d56a2b0c32999',1,'Lens']]],
-  ['field_5fmass_5ffunc_5ftype',['field_mass_func_type',['../class_lens.html#a8d3db244e8497719f8bbe6ea8872f5e7',1,'Lens']]],
-  ['field_5fmin_5fmass',['field_min_mass',['../class_lens.html#ac3903d36853c12631663059f76f2514a',1,'Lens']]],
-  ['field_5fnplanes_5fcurrent',['field_Nplanes_current',['../class_lens.html#a1103f8e8304b81777509570008f6b6d9',1,'Lens']]],
-  ['field_5fnplanes_5foriginal',['field_Nplanes_original',['../class_lens.html#a003f6a190bef4100f215ab8b03fb81bb',1,'Lens']]],
-  ['field_5fplane_5fredshifts',['field_plane_redshifts',['../class_lens.html#a99075fcd27cf66a8a7b43733a5aac46f',1,'Lens']]],
-  ['field_5fplane_5fredshifts_5foriginal',['field_plane_redshifts_original',['../class_lens.html#a1cbee2387eb3f889d0df4a29d0bdd939',1,'Lens']]],
-  ['field_5fplanes',['field_planes',['../class_lens.html#a85c18485711f90be9a2f01bef430a7af',1,'Lens']]],
-  ['field_5fprof_5finternal_5fslope',['field_prof_internal_slope',['../class_lens.html#aabed301ff9d4624a239104a05ab7329f',1,'Lens']]],
   ['fieldofview',['fieldofview',['../class_lens.html#aee17d6e92bea425de358a9381ad6280b',1,'Lens']]],
-  ['flag_5ffield_5fgal_5fon',['flag_field_gal_on',['../class_lens.html#a1194026274756ed52f67bea9ac389115',1,'Lens']]],
   ['flag_5fmoka_5fanalyze',['flag_MOKA_analyze',['../class_lens_halo_mass_map.html#ac9c631785aa3b2d1d756e359250c2602',1,'LensHaloMassMap']]],
-  ['flag_5fswitch_5fdeflection_5foff',['flag_switch_deflection_off',['../class_lens.html#a472351bf62dbe60802c762c0772fdb13',1,'Lens']]],
-  ['flag_5fswitch_5ffield_5foff',['flag_switch_field_off',['../class_lens.html#aae82cc063ac8aac2c8fa102a1ff6b451',1,'Lens']]],
-  ['flag_5fswitch_5fmain_5fhalo_5fon',['flag_switch_main_halo_on',['../class_lens.html#a5a0fa4dae220979e359a8186b2e81366',1,'Lens']]],
-  ['fratio',['fratio',['../class_lens_halo_base_n_s_i_e.html#adf8dc56e30c743638e996cfef2759327',1,'LensHaloBaseNSIE::fratio()'],['../class_lens_halo_real_n_s_i_e.html#ad5b2d23ccf59add995299c843082014c',1,'LensHaloRealNSIE::fratio()']]],
+  ['fratio',['fratio',['../class_lens_halo_base_n_s_i_e.html#adf8dc56e30c743638e996cfef2759327',1,'LensHaloBaseNSIE']]],
   ['ftable',['ftable',['../class_lens_halo_n_f_w.html#ad69ef65ce813a404b34a0fe20a6cf9cd',1,'LensHaloNFW::ftable()'],['../class_lens_halo_hernquist.html#a37730f6dd16cbf6e7a1e3287180bbcb5',1,'LensHaloHernquist::ftable()'],['../class_lens_halo_jaffe.html#adf948e7ce2d417b64c562f8042aca837',1,'LensHaloJaffe::ftable()']]]
 ];

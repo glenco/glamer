@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,8 +87,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_source_pixelled-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SourcePixelled Class Reference</div>  </div>
@@ -111,15 +109,15 @@ Collaboration diagram for SourcePixelled:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_source_pixelled__coll__graph.png" border="0" usemap="#_source_pixelled_coll__map" alt="Collaboration graph"/></div>
 <map name="_source_pixelled_coll__map" id="_source_pixelled_coll__map">
-<area shape="rect" id="node2" href="class_source.html" title="Base class for all sources. " alt="" coords="43,323,106,351"/><area shape="rect" id="node6" href="struct_point__2d.html" title="Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over..." alt="" coords="151,117,224,145"/></map>
+<area shape="rect" id="node2" href="class_source.html" title="Base class for all sources. " alt="" coords="28,99,91,127"/><area shape="rect" id="node4" href="struct_point__2d.html" title="Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over..." alt="" coords="23,6,96,34"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abb581e29376a574fa13be8e2b2491ef3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_pixelled.html#abb581e29376a574fa13be8e2b2491ef3">SourcePixelled</a> (PosType my_z, PosType *center, int Npixels, PosType resolution, PosType *arr_val)</td></tr>
 <tr class="separator:abb581e29376a574fa13be8e2b2491ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f48cb7748c14d87b07f4324d62a5f06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_pixelled.html#a6f48cb7748c14d87b07f4324d62a5f06">SourcePixelled</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;gal_map, PosType z, PosType factor=1.)</td></tr>
-<tr class="memdesc:a6f48cb7748c14d87b07f4324d62a5f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_source_pixelled.html" title="Class for sources described by an array of pixels. ">SourcePixelled</a> from a <a class="el" href="class_pixel_map.html">PixelMap</a> image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation.  <a href="#a6f48cb7748c14d87b07f4324d62a5f06">More...</a><br /></td></tr>
+<tr class="memitem:a6f48cb7748c14d87b07f4324d62a5f06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_pixelled.html#a6f48cb7748c14d87b07f4324d62a5f06">SourcePixelled</a> (const PixelMap &amp;gal_map, PosType z, PosType factor=1.)</td></tr>
+<tr class="memdesc:a6f48cb7748c14d87b07f4324d62a5f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_source_pixelled.html" title="Class for sources described by an array of pixels. ">SourcePixelled</a> from a PixelMap image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation.  <a href="#a6f48cb7748c14d87b07f4324d62a5f06">More...</a><br /></td></tr>
 <tr class="separator:a6f48cb7748c14d87b07f4324d62a5f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4451d53b33146bf613a10841bbb90ebc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4451d53b33146bf613a10841bbb90ebc"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SourcePixelled</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params)</td></tr>
@@ -230,54 +228,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a6dc3d4f4cd3dd89d336443f6c57f2920 inherit pub_methods_class_source"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the integral of the sed multiplied by the filter curve.  <a href="#a6dc3d4f4cd3dd89d336443f6c57f2920">More...</a><br /></td></tr>
 <tr class="separator:a6dc3d4f4cd3dd89d336443f6c57f2920 inherit pub_methods_class_source"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a515d620315a1ab04f8a07aa426bb4659"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a515d620315a1ab04f8a07aa426bb4659"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>assignParams</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params)</td></tr>
-<tr class="separator:a515d620315a1ab04f8a07aa426bb4659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01b748057485c006a98e8640b6e426ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01b748057485c006a98e8640b6e426ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calcEll</b> ()</td></tr>
-<tr class="separator:a01b748057485c006a98e8640b6e426ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa09bd974a5cea5c66f82dcd8d87767a8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa09bd974a5cea5c66f82dcd8d87767a8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calcSize</b> ()</td></tr>
-<tr class="separator:aa09bd974a5cea5c66f82dcd8d87767a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3addae6c5089fe1ff58f53b6f1a9911e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3addae6c5089fe1ff58f53b6f1a9911e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calcCentroid</b> ()</td></tr>
-<tr class="separator:a3addae6c5089fe1ff58f53b6f1a9911e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a193019ae266c0faa6ab434e12682b794"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a193019ae266c0faa6ab434e12682b794"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>calcTotalFlux</b> ()</td></tr>
-<tr class="separator:a193019ae266c0faa6ab434e12682b794"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a8663fb9e8045c273a796e6fd47b78c63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8663fb9e8045c273a796e6fd47b78c63"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>resolution</b></td></tr>
-<tr class="separator:a8663fb9e8045c273a796e6fd47b78c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a482683f6be0839f7e1d62ec21f2cda55"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a482683f6be0839f7e1d62ec21f2cda55"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>range</b></td></tr>
-<tr class="separator:a482683f6be0839f7e1d62ec21f2cda55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae363c1a7c2fe0b18e86053e34f703e97"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae363c1a7c2fe0b18e86053e34f703e97"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>Npixels</b></td></tr>
-<tr class="separator:ae363c1a7c2fe0b18e86053e34f703e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a420acba22e453cbf7b959ce8c2a6f304"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a420acba22e453cbf7b959ce8c2a6f304"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>flux</b></td></tr>
-<tr class="separator:a420acba22e453cbf7b959ce8c2a6f304"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7db18711968c23f6e785dc0d71df62dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7db18711968c23f6e785dc0d71df62dc"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>quad</b> [2][2]</td></tr>
-<tr class="separator:a7db18711968c23f6e785dc0d71df62dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affc1c7856432d48ea52e990b8b6976f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affc1c7856432d48ea52e990b8b6976f0"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>ell</b> [2]</td></tr>
-<tr class="separator:affc1c7856432d48ea52e990b8b6976f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd2fb68a08a386a510f284b71055ef8b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acd2fb68a08a386a510f284b71055ef8b"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
-<tr class="separator:acd2fb68a08a386a510f284b71055ef8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9da189f0419ad5a5640d88100ad77a06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9da189f0419ad5a5640d88100ad77a06"></a>
-PosType&#160;</td><td class="memItemRight" valign="bottom"><b>centroid</b> [2]</td></tr>
-<tr class="separator:a9da189f0419ad5a5640d88100ad77a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6167654cc1fddd8f645fb4084c487396"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6167654cc1fddd8f645fb4084c487396"></a>
-std::valarray&lt; PosType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>values</b></td></tr>
-<tr class="separator:a6167654cc1fddd8f645fb4084c487396"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_source"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_source')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_source.html">Source</a></td></tr>
@@ -370,7 +320,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>sb_limit</b></td><
         <tr>
           <td class="memname">SourcePixelled::SourcePixelled </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td>
+          <td class="paramtype">const PixelMap &amp;&#160;</td>
           <td class="paramname"><em>gal_map</em>, </td>
         </tr>
         <tr>
@@ -393,7 +343,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>sb_limit</b></td><
       </table>
 </div><div class="memdoc">
 
-<p>Creates a <a class="el" href="class_source_pixelled.html" title="Class for sources described by an array of pixels. ">SourcePixelled</a> from a <a class="el" href="class_pixel_map.html">PixelMap</a> image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation. </p>
+<p>Creates a <a class="el" href="class_source_pixelled.html" title="Class for sources described by an array of pixels. ">SourcePixelled</a> from a PixelMap image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">gal_map</td><td>Input image and information </td></tr>
@@ -412,7 +362,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>sb_limit</b></td><
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 23 2018 18:42:05 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 14 2019 17:36:00 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

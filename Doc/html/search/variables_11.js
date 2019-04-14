@@ -1,14 +1,11 @@
 var searchData=
 [
   ['s_5ftree',['s_tree',['../struct_grid.html#abeda62e6b854e898781e85abd5a8e751',1,'Grid']]],
-  ['sed',['sed',['../class_sun_info.html#a633a19b76df568a9a86b24740d51b854',1,'SunInfo']]],
   ['set',['set',['../class_lens.html#a09c7b4946959331f7dc5aed93053727c',1,'Lens']]],
   ['shouldnotrefine',['ShouldNotRefine',['../struct_image_info.html#a6805f96f6d6d529c9029078c1f88b7f3',1,'ImageInfo']]],
-  ['sigma',['sigma',['../class_lens_halo_base_n_s_i_e.html#a5feba036c611a6ee7c1185a6accaa059',1,'LensHaloBaseNSIE::sigma()'],['../class_lens_halo_real_n_s_i_e.html#a3e5b1c58a0e49787473551bf3ee2d893',1,'LensHaloRealNSIE::sigma()']]],
-  ['sigma_5fback_5ftab',['sigma_back_Tab',['../class_lens.html#ad963ae7c23eea7058cdbda3047410ec5',1,'Lens']]],
+  ['sigma',['sigma',['../class_lens_halo_base_n_s_i_e.html#a5feba036c611a6ee7c1185a6accaa059',1,'LensHaloBaseNSIE']]],
   ['sigma_5fcrit',['Sigma_crit',['../class_lens_halo_base_n_s_i_e.html#a33d53271cadc2ee33dae091f5d62b193',1,'LensHaloBaseNSIE']]],
   ['sigma_5funiform',['Sigma_uniform',['../class_lens_halo_uniform.html#aae2357921b039fb4ee17a5fb550c3f5c',1,'LensHaloUniform']]],
-  ['sim_5fangular_5fradius',['sim_angular_radius',['../class_lens.html#ab6ba17daa2f78ea510a018f7daa01703',1,'Lens']]],
   ['source_5ffk',['source_fK',['../class_source_b_l_r.html#ac018820b96553984c6d0f75c797a46af',1,'SourceBLR']]],
   ['source_5fgauss_5fr2',['source_gauss_r2',['../class_source_gaussian.html#ae6c0a11469909a9f24341abca4bb1851',1,'SourceGaussian']]],
   ['source_5finclination',['source_inclination',['../class_source_b_l_r.html#ab51562fa1f5abbea73489dae99b68a5d',1,'SourceBLR']]],

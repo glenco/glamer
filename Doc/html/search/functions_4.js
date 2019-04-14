@@ -5,7 +5,7 @@ var searchData=
   ['d_5fcoordist_5fdw',['d_coorDist_dw',['../class_c_o_s_m_o_l_o_g_y.html#a6171c341ed78ef882228b6997dd01806',1,'COSMOLOGY']]],
   ['d_5fcoordist_5fdw1',['d_coorDist_dw1',['../class_c_o_s_m_o_l_o_g_y.html#aa231e6f4c75546761adeb08a99ad22d4',1,'COSMOLOGY']]],
   ['data',['data',['../class_utilities_1_1_mixed_vector.html#afbfbe2858f269d2cab55fdb386ffd03a',1,'Utilities::MixedVector::data()'],['../class_utilities_1_1_mixed_vector.html#a7f3cff33bce7b8850b2e533deb66ce96',1,'Utilities::MixedVector::data() const '],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#aca312cb2ace3b9ebd931f2c59750957c',1,'Utilities::MixedVector&lt; BaseT * &gt;::data()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a8f7e6f03aa6d876ea6a7c3a0d50af9bb',1,'Utilities::MixedVector&lt; BaseT * &gt;::data() const ']]],
-  ['deflect_5ftranslated',['deflect_translated',['../group___fit_lens_l2.html#ga69fd0f447bf612175bab7ec3e4e5b358',1,'LensHaloAnaNSIE']]],
+  ['dataframe',['DataFrame',['../class_utilities_1_1_i_o_1_1_data_frame.html#a2cd4490952c836013180e0f89daf2c7e',1,'Utilities::IO::DataFrame']]],
   ['delete_5fcontainer',['delete_container',['../namespace_utilities.html#ab5fbd0455bb23cf8290252d8ddef0874',1,'Utilities']]],
   ['delta_5fc',['delta_c',['../class_c_o_s_m_o_l_o_g_y.html#acd5b22a7333ee716cdac9b32ef99df73',1,'COSMOLOGY']]],
   ['deltao_5fwrapper',['Deltao_wrapper',['../group__cosmolib.html#ga36f0e57ad4cbd7effd3a8962f2a3ed11',1,'Deltao_wrapper(double m, void *params):&#160;cosmo.cpp'],['../group__cosmolib.html#ga36f0e57ad4cbd7effd3a8962f2a3ed11',1,'Deltao_wrapper(double m, void *params):&#160;cosmo.cpp']]],
@@ -18,18 +18,10 @@ var searchData=
   ['divide_5fimages_5fkist',['divide_images_kist',['../group___image_finding_l2.html#ga000476cfc3aa55d3b896ceff5d89ff9f',1,'divide_images_kist(TreeHndl i_tree, std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages):&#160;divide_images.cpp'],['../group___image_finding_l2.html#ga000476cfc3aa55d3b896ceff5d89ff9f',1,'divide_images_kist(TreeHndl i_tree, std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages):&#160;divide_images.cpp']]],
   ['dmoddb',['dmoddb',['../class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0',1,'LensHaloNFW']]],
   ['double_5fsort_5fpoints',['double_sort_points',['../namespace_utilities.html#a484765a953bdbceb52b23f6790d59cf2',1,'Utilities']]],
-  ['doubleflip',['doubleFlip',['../class_pixel_map.html#ab4374615054f16ae30b67251c4cd9d9a',1,'PixelMap']]],
   ['down',['down',['../class_q_biterator.html#a90861741630eb5bcad4ee156d528c065',1,'QBiterator::down()'],['../class_tree_struct_1_1iterator.html#a83e1c2a0387b3671cd2f7b765f7e1cb5',1,'TreeStruct::iterator::down()']]],
-  ['drawbox',['drawBox',['../class_pixel_map.html#a9706dfb86aec046bea4193ed1228c463',1,'PixelMap']]],
-  ['drawcircle',['drawcircle',['../class_pixel_map.html#a185bcea843ddf3affbafedc4b8e38663',1,'PixelMap']]],
-  ['drawdisk',['drawdisk',['../class_pixel_map.html#a35b538005ba390938559ad30292db360',1,'PixelMap']]],
-  ['drawgrid',['drawgrid',['../class_pixel_map.html#a6290c8218f90b09fa1d5cbfb12754d79',1,'PixelMap']]],
-  ['drawline',['drawline',['../class_pixel_map.html#a3fa04d37418e344fd4e8bb28bb20ce29',1,'PixelMap']]],
-  ['drawsquare',['drawSquare',['../class_pixel_map.html#a206014c2f116d207ac67330b3ed796fd',1,'PixelMap']]],
   ['drdz_5fdark_5fwrapper',['drdz_dark_wrapper',['../group__cosmolib.html#ga69e9d67183f1e38c08b920b3a8b522b7',1,'drdz_dark_wrapper(double x, void *params):&#160;cosmo.cpp'],['../group__cosmolib.html#ga69e9d67183f1e38c08b920b3a8b522b7',1,'drdz_dark_wrapper(double x, void *params):&#160;cosmo.cpp']]],
   ['drdz_5fwrapper',['drdz_wrapper',['../group__cosmolib.html#ga4f1640a6826396a30f7788ef935e168f',1,'drdz_wrapper(double x, void *params):&#160;cosmo.cpp'],['../group__cosmolib.html#ga4f1640a6826396a30f7788ef935e168f',1,'drdz_wrapper(double x, void *params):&#160;cosmo.cpp']]],
   ['drradius',['DRradius',['../group__cosmolib.html#ga53a32f5a595308acf1839a82204357bf',1,'COSMOLOGY']]],
   ['drradius2',['DRradius2',['../group__cosmolib.html#gab5b37657376b1e61ea22e226f3b51577',1,'COSMOLOGY']]],
-  ['dsigdm',['dsigdM',['../group__cosmolib.html#ga761624ec8999ee2743b9687e08e25e23',1,'COSMOLOGY']]],
-  ['duplicate',['duplicate',['../class_pixel_map.html#abf48a8ec99723d1475a68ad86a71af8d',1,'PixelMap']]]
+  ['dsigdm',['dsigdM',['../group__cosmolib.html#ga761624ec8999ee2743b9687e08e25e23',1,'COSMOLOGY']]]
 ];

@@ -8,9 +8,8 @@ var searchData=
   ['halonumberdensity',['haloNumberDensity',['../group__cosmolib.html#gaefccbf1c35cbd2b9a732411483544e4e',1,'COSMOLOGY']]],
   ['halonumberdensityonsky',['haloNumberDensityOnSky',['../group__cosmolib.html#ga1127b68c89a89284d80837b3bd9567d5',1,'COSMOLOGY']]],
   ['halonumberinbufferedcone',['haloNumberInBufferedCone',['../group__cosmolib.html#ga9807e0a14dfeb53f396ac16caac30f89',1,'COSMOLOGY']]],
-  ['halos',['halos',['../struct_lens_1_1_sub_structure_info.html#aabcce0f177b66cb43066b1edc0cb9717',1,'Lens::SubStructureInfo::halos()'],['../class_make_particle_lenses.html#a443665691944437629a0bfaf360db54c',1,'MakeParticleLenses::halos()']]],
-  ['hermite',['Hermite',['../class_source_shapelets.html#a8a86106e9b1230f30a3ca16d528e4b9b',1,'SourceShapelets']]],
+  ['halos',['halos',['../class_make_particle_lenses.html#a443665691944437629a0bfaf360db54c',1,'MakeParticleLenses']]],
   ['high_20level_20routines',['High Level Routines',['../group___high_level.html',1,'']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities']]]
+  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities']]],
+  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]]
 ];

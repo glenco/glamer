@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['bandinfo',['BandInfo',['../class_band_info.html',1,'']]],
-  ['beam',['Beam',['../struct_beam.html',1,'']]],
-  ['branch',['Branch',['../struct_branch.html',1,'']]],
-  ['branchnb',['BranchNB',['../struct_branch_n_b.html',1,'']]],
-  ['branchv',['BranchV',['../struct_tree_simple_vec_1_1_branch_v.html',1,'TreeSimpleVec']]]
+  ['causticdatastore',['CausticDataStore',['../class_caustic_data_store.html',1,'']]],
+  ['clenshawcurtis',['ClenshawCurtis',['../struct_i_s_o_p_1_1_rules_1_1_clenshaw_curtis.html',1,'ISOP::Rules']]],
+  ['cosmology',['COSMOLOGY',['../class_c_o_s_m_o_l_o_g_y.html',1,'']]]
 ];
