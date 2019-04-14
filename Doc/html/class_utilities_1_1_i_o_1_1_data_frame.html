@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>GLAMERDOC++: SunInfo Class Reference</title>
+<title>GLAMERDOC++: Utilities::IO::DataFrame&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,59 +83,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_utilities.html">Utilities</a></li><li class="navelem"><b>IO</b></li><li class="navelem"><a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html">DataFrame</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="class_sun_info-members.html">List of all members</a>  </div>
+<a href="class_utilities_1_1_i_o_1_1_data_frame-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">SunInfo Class Reference</div>  </div>
+<div class="title">Utilities::IO::DataFrame&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Class that contains information about the solar SED and magnitudes.  
- <a href="class_sun_info.html#details">More...</a></p>
+<p>class for impoting data from a csv file and allowing label string lookup like a data frame.  
+ <a href="class_utilities_1_1_i_o_1_1_data_frame.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="bands__etc_8h_source.html">bands_etc.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="utilities__slsim_8h_source.html">utilities_slsim.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4ad3c5bb030cbacd1050e6be829706a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ad3c5bb030cbacd1050e6be829706a2"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sun_info.html#a4ad3c5bb030cbacd1050e6be829706a2">AbsMag</a> (Band band)</td></tr>
-<tr class="memdesc:a4ad3c5bb030cbacd1050e6be829706a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">absolute magnitude of the sun <br /></td></tr>
-<tr class="separator:a4ad3c5bb030cbacd1050e6be829706a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46760b124f5edd65af29f8367c3492fb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sun_info.html#a46760b124f5edd65af29f8367c3492fb">mag</a> (Band band, double z, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo)</td></tr>
-<tr class="memdesc:a46760b124f5edd65af29f8367c3492fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">k-corrected apparent magnitude  <a href="#a46760b124f5edd65af29f8367c3492fb">More...</a><br /></td></tr>
-<tr class="separator:a46760b124f5edd65af29f8367c3492fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a837198c62ebb1bca1c9628e79213591b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sun_info.html#a837198c62ebb1bca1c9628e79213591b">flux</a> (Band band, double z, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo)</td></tr>
-<tr class="memdesc:a837198c62ebb1bca1c9628e79213591b"><td class="mdescLeft">&#160;</td><td class="mdescRight">k-corrected flux in ergs/cm^2/s/Hz at center of band  <a href="#a837198c62ebb1bca1c9628e79213591b">More...</a><br /></td></tr>
-<tr class="separator:a837198c62ebb1bca1c9628e79213591b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd4490952c836013180e0f89daf2c7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html#a2cd4490952c836013180e0f89daf2c7e">DataFrame</a> (std::string datafile, size_t MaxNumber=1000000, char comment_char= '#', char deliniator= ',')</td></tr>
+<tr class="separator:a2cd4490952c836013180e0f89daf2c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b8c3e5f3fafc479709bef5c02478e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31b8c3e5f3fafc479709bef5c02478e0"></a>
+std::vector&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html#a31b8c3e5f3fafc479709bef5c02478e0">operator[]</a> (std::string label)</td></tr>
+<tr class="memdesc:a31b8c3e5f3fafc479709bef5c02478e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns column by name <br /></td></tr>
+<tr class="separator:a31b8c3e5f3fafc479709bef5c02478e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf795901114a834c197b4396ac4d94a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf795901114a834c197b4396ac4d94a2"></a>
+std::vector&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html#aaf795901114a834c197b4396ac4d94a2">operator[]</a> (int i)</td></tr>
+<tr class="memdesc:aaf795901114a834c197b4396ac4d94a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns column by number <br /></td></tr>
+<tr class="separator:aaf795901114a834c197b4396ac4d94a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8497d0e0900c986279a690556db1408a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8497d0e0900c986279a690556db1408a"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html#a8497d0e0900c986279a690556db1408a">labels</a> () const </td></tr>
+<tr class="memdesc:a8497d0e0900c986279a690556db1408a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns labels of the columns from the data file <br /></td></tr>
+<tr class="separator:a8497d0e0900c986279a690556db1408a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac42ebc37649c07155e36ba495f0acd67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac42ebc37649c07155e36ba495f0acd67"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_rows</b> ()</td></tr>
+<tr class="separator:ac42ebc37649c07155e36ba495f0acd67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e606678fdab38abc516297e1b1da1fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e606678fdab38abc516297e1b1da1fa"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_columns</b> ()</td></tr>
+<tr class="separator:a7e606678fdab38abc516297e1b1da1fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class that contains information about the solar SED and magnitudes. </p>
-<p>This is a very primative version that does not do the proper k-corretion </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a837198c62ebb1bca1c9628e79213591b"></a>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class Utilities::IO::DataFrame&lt; T &gt;</h3>
+
+<p>class for impoting data from a csv file and allowing label string lookup like a data frame. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a2cd4490952c836013180e0f89daf2c7e"></a>
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double SunInfo::flux </td>
+          <td class="memname"><a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html">Utilities::IO::DataFrame</a>&lt; T &gt;::<a class="el" href="class_utilities_1_1_i_o_1_1_data_frame.html">DataFrame</a> </td>
           <td>(</td>
-          <td class="paramtype">Band&#160;</td>
-          <td class="paramname"><em>band</em>, </td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>datafile</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>z</em>, </td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>MaxNumber</em> = <code>1000000</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;&#160;</td>
-          <td class="paramname"><em>cosmo</em>&#160;</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>comment_char</em> = <code>'#'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>deliniator</em> = <code>','</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -143,51 +170,26 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-
-<p>k-corrected flux in ergs/cm^2/s/Hz at center of band </p>
-<p>k-corrected flux in ergs/s/cm^2/Hz </p>
-
-</div>
-</div>
-<a class="anchor" id="a46760b124f5edd65af29f8367c3492fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double SunInfo::mag </td>
-          <td>(</td>
-          <td class="paramtype">Band&#160;</td>
-          <td class="paramname"><em>band</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>z</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;&#160;</td>
-          <td class="paramname"><em>cosmo</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>k-corrected apparent magnitude </p>
-<p>k-corrected apparent magnitude, very crudely done without integration of spectrum </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">datafile</td><td>input catalog file in csv format </td></tr>
+    <tr><td class="paramname">MaxNumber</td><td>maximum number of entries read </td></tr>
+    <tr><td class="paramname">comment_char</td><td>comment charactor for header </td></tr>
+    <tr><td class="paramname">deliniator</td><td>deliniator between values </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>SLsimLib/include/<a class="el" href="bands__etc_8h_source.html">bands_etc.h</a></li>
-<li>SLsimLib/Source/bands_etc.cpp</li>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>SLsimLib/include/<a class="el" href="utilities__slsim_8h_source.html">utilities_slsim.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
