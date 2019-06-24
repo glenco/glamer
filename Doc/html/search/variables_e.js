@@ -3,7 +3,7 @@ var searchData=
   ['pa',['pa',['../class_lens_halo_base_n_s_i_e.html#a17effb924199316b21362fc4eb7646d9',1,'LensHaloBaseNSIE']]],
   ['particles',['particles',['../struct_q_branch_n_b.html#af28dd7c579a35b6dc44be0e038067468',1,'QBranchNB::particles()'],['../struct_branch_n_b.html#a1dcccbca6f9e700359d056d586045750',1,'BranchNB::particles()']]],
   ['periodic_5fbuffer',['periodic_buffer',['../class_tree_quad_particles.html#a5f75730cb3056cdd66896ff5d9cb5b63',1,'TreeQuadParticles']]],
-  ['perturb_5fbeta',['perturb_beta',['../class_lens_halo_base_n_s_i_e.html#a1cdebe487ba8bdfa09b1823509d8fc55',1,'LensHaloBaseNSIE::perturb_beta()'],['../class_lens_halo_uniform.html#a06c2a27fef6bb1569f40424345f47c2a',1,'LensHaloUniform::perturb_beta()']]],
+  ['perturb_5fbeta',['perturb_beta',['../class_lens_halo_base_n_s_i_e.html#a1cdebe487ba8bdfa09b1823509d8fc55',1,'LensHaloBaseNSIE']]],
   ['perturb_5fmodes',['perturb_modes',['../class_lens_halo_base_n_s_i_e.html#acefee206ed66c2fb925e348ba7cd4909',1,'LensHaloBaseNSIE']]],
   ['pointlist',['pointlist',['../struct_tree_struct.html#acacd06c4536d377fd43239cb03e46a02',1,'TreeStruct']]],
   ['points',['points',['../struct_old_image_info.html#a4099d4306ac1e520ef879b310f018b3e',1,'OldImageInfo']]],

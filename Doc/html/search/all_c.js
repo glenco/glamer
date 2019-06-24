@@ -1,7 +1,7 @@
 var searchData=
 [
   ['mag',['mag',['../class_sun_info.html#a46760b124f5edd65af29f8367c3492fb',1,'SunInfo']]],
-  ['magnification',['magnification',['../struct_grid_map.html#aabd48c3a3ececcc1cdcf0eb6b229257a',1,'GridMap']]],
+  ['magnification',['magnification',['../struct_grid.html#a8943eef16b3727903fcef118db897a7a',1,'Grid::magnification()'],['../struct_grid_map.html#aabd48c3a3ececcc1cdcf0eb6b229257a',1,'GridMap::magnification()']]],
   ['main_5fstars_5fimf_5ftype',['main_stars_imf_type',['../class_lens_halo.html#a313dec21cf741b6eb58c6512db63c17e',1,'LensHalo']]],
   ['make_5fisop_5fmap',['make_isop_map',['../namespace_i_s_o_p.html#a07d82f756fba7181eadb5aafb33183a1',1,'ISOP']]],
   ['make_5ftables',['make_tables',['../class_lens_halo_n_f_w.html#aec09e889c8b03d29b5d0be6c0711f274',1,'LensHaloNFW::make_tables()'],['../class_lens_halo_hernquist.html#ac820dddb76afcd136b86d66dce4d419b',1,'LensHaloHernquist::make_tables()'],['../class_lens_halo_jaffe.html#a003d4229f6c14f97b84eed5966d31c50',1,'LensHaloJaffe::make_tables()']]],
@@ -12,6 +12,7 @@ var searchData=
   ['map_5fimagesisop',['map_imagesISOP',['../group___image_finding.html#ga70bbca22cc631872b33de04441c20b99',1,'ImageFinding']]],
   ['mapcausticcurves',['mapCausticCurves',['../namespace_image_finding.html#a98d48e2de32898ac9b73c252e0ad2607',1,'ImageFinding']]],
   ['mapcriticalcurves',['mapCriticalCurves',['../namespace_image_finding.html#aa3186a3ec810f8f68f57f7b6bfdf762d',1,'ImageFinding']]],
+  ['mapsurfacebrightness',['MapSurfaceBrightness',['../struct_grid.html#a797067dc0d3104916e78b36f6d4d0dd6',1,'Grid::MapSurfaceBrightness(PixelMap &amp;map)'],['../struct_grid.html#ad98811bdf4d3b3baded53966291654e0',1,'Grid::MapSurfaceBrightness(double resolution)']]],
   ['mass_5fnorm_5ffactor',['mass_norm_factor',['../class_lens_halo.html#a43de5eba625d4c78e85e2fdb8bbeaa0e',1,'LensHalo']]],
   ['massby1dintegation',['MassBy1DIntegation',['../class_lens_halo.html#aeac398d7784e8a879eebeb2174349d61',1,'LensHalo']]],
   ['massby2dintegation',['MassBy2DIntegation',['../class_lens_halo.html#a7184a202e39fac7cf8f7d0436abdc982',1,'LensHalo']]],
@@ -27,6 +28,7 @@ var searchData=
   ['mixedvector_3c_20lenshalo_20_2a_20_3e',['MixedVector&lt; LensHalo * &gt;',['../class_utilities_1_1_mixed_vector.html',1,'Utilities']]],
   ['mokamap',['MOKAmap',['../struct_m_o_k_amap.html',1,'']]],
   ['mosterstellarmassfraction',['MosterStellarMassFraction',['../class_h_a_l_o_calculator.html#a3852ec6628d11c11d36c7ef9ffcd01a5',1,'HALOCalculator']]],
+  ['moveinmainhalo',['moveinMainHalo',['../class_lens.html#aa8a8bbd818794bc97ee6d3f842e82e54',1,'Lens']]],
   ['mpctoasec',['MpcToAsec',['../class_lens_halo_base_n_s_i_e.html#a5630de40317ef02e8cf7df86910cc34a',1,'LensHaloBaseNSIE']]],
   ['multigridsmoother',['MultiGridSmoother',['../class_multi_grid_smoother.html',1,'MultiGridSmoother'],['../class_multi_grid_smoother.html#ad45d83237961c0395a13d4626f4406d1',1,'MultiGridSmoother::MultiGridSmoother()']]],
   ['multimass',['MultiMass',['../class_tree_force.html#a5a03e820fcfde1a984937c59977e52c2',1,'TreeForce']]],

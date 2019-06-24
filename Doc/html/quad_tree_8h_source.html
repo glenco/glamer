@@ -1188,79 +1188,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;           );</div>
 <div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;  ~TreeQuadHalos();</div>
 <div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;  </div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;  <span class="keywordtype">void</span> force2D(PosType <span class="keyword">const</span> *ray,PosType *alpha,KappaType *kappa,KappaType *gamma</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;                       ,KappaType *phi) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;  </div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;  <span class="keywordtype">void</span> force2D_recur(<span class="keyword">const</span> PosType *ray,PosType *alpha,KappaType *kappa</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;                             ,KappaType *gamma,KappaType *phi);</div>
-<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;  </div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;  <span class="keywordtype">void</span> neighbors(PosType ray[],PosType rmax,std::list&lt;IndexType&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;  <span class="keywordtype">void</span> neighbors(PosType ray[],PosType rmax,std::vector&lt;LensHalo *&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;  </div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;  <span class="keywordtype">void</span> printParticlesInBranch(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> number);</div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;  </div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;  <span class="keywordtype">void</span> printBranchs(<span class="keywordtype">int</span> level = -1);</div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;  </div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;  </div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;  PosType **xp;</div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;  <span class="keywordtype">bool</span> MultiMass;</div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;  <span class="keywordtype">bool</span> MultiRadius;</div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;  <span class="keywordtype">float</span> *masses;</div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;  <span class="keywordtype">float</span> *sizes;</div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;  </div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;  IndexType Nparticles;</div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;  PosType sigma_background;</div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;  <span class="keywordtype">int</span> Nbucket;</div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;  </div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;  PosType force_theta;</div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;  </div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;  <a class="code" href="struct_q_tree_n_b.html">QTreeNB&lt;PosType *&gt;</a> * tree;</div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;  IndexType *index;</div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;  </div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;  <span class="comment">//bool haloON;</span></div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;  <a class="code" href="class_lens_halo.html">LensHalo</a> **halos;</div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;  </div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;  PosType realray[2];</div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;  <span class="keywordtype">int</span> incell,incell2;</div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;  </div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;  <span class="keywordtype">bool</span> periodic_buffer;</div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;  PosType inv_screening_scale2;</div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;  PosType original_xl;  <span class="comment">// x-axis size of simulation used for peridic buffering.  Requrement that it top branch be square my make it differ from the size of top branch.</span></div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;  PosType original_yl;  <span class="comment">// x-axis size of simulation used for peridic buffering.</span></div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;  </div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;  <a class="code" href="struct_q_tree_n_b.html">QTreeNB&lt;PosType *&gt;</a> * BuildQTreeNB(PosType **xp,IndexType Nparticles,IndexType *particles);</div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;  <span class="keywordtype">void</span> _BuildQTreeNB(IndexType nparticles,IndexType *particles);</div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;  </div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">short</span> WhichQuad(PosType *x,<a class="code" href="struct_q_branch_n_b.html">QBranchNB</a> &amp;branch);</div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;  </div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;  <span class="comment">//inline bool atLeaf();</span></div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> inbox(<span class="keyword">const</span> PosType *ray,<span class="keyword">const</span> PosType *p1,<span class="keyword">const</span> PosType *p2){</div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;    <span class="keywordflow">return</span> (ray[0]&gt;=p1[0])*(ray[0]&lt;=p2[0])*(ray[1]&gt;=p1[1])*(ray[1]&lt;=p2[1]);</div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;  }</div>
-<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;  <span class="comment">//int cutbox(PosType *ray,PosType *p1,PosType *p2,float rmax);</span></div>
-<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;  </div>
-<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;  <span class="keywordtype">void</span> CalcMoments();</div>
-<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;  <span class="keywordtype">void</span> rotate_coordinates(PosType **coord);</div>
-<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;  </div>
-<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;  <span class="comment">//QTreeNBHndl rotate_simulation(PosType **xp,IndexType Nparticles,IndexType *particles</span></div>
-<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;  <span class="comment">//                              ,PosType **coord,PosType theta,float *rsph,float *mass</span></div>
-<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;  <span class="comment">//                              ,bool MultiRadius,bool MultiMass);</span></div>
-<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;  <span class="comment">//QTreeNBHndl rotate_project(PosType **xp,IndexType Nparticles,IndexType *particles</span></div>
-<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;  <span class="comment">//                           ,PosType **coord,PosType theta,float *rsph,float *mass</span></div>
-<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;  <span class="comment">//                           ,bool MultiRadius,bool MultiMass);</span></div>
-<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;  <span class="keywordtype">void</span> cuttoffscale(<a class="code" href="struct_q_tree_n_b.html">QTreeNB&lt;PosType *&gt;</a> * tree,PosType *theta);</div>
-<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;  </div>
-<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;  <span class="keywordtype">void</span> walkTree_recur(<a class="code" href="struct_q_branch_n_b.html">QBranchNB</a> *branch,PosType <span class="keyword">const</span> *ray,PosType *alpha,KappaType *kappa,KappaType *gamma,KappaType *phi);</div>
-<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;  <span class="keywordtype">void</span> walkTree_iter(<a class="code" href="class_q_biterator.html">QBiterator&lt;PosType *&gt;</a> &amp;treeit, PosType <span class="keyword">const</span> *ray,PosType *alpha,KappaType *kappa</div>
-<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;                     ,KappaType *gamma,KappaType *phi) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;  </div>
-<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;  PosType phiintconst;</div>
-<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;  </div>
-<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;};</div>
-<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;</div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a>;</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;  <span class="keywordtype">void</span> force2D(PosType <span class="keyword">const</span> *ray,PosType *alpha,KappaType *kappa,KappaType *gamma</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;                       ,KappaType *phi) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;  </div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;  <span class="keywordtype">void</span> force2D_recur(<span class="keyword">const</span> PosType *ray,PosType *alpha,KappaType *kappa</div>
+<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;                             ,KappaType *gamma,KappaType *phi);</div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;  </div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;  <span class="keywordtype">void</span> neighbors(PosType ray[],PosType rmax,std::list&lt;IndexType&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;  <span class="keywordtype">void</span> neighbors(PosType ray[],PosType rmax,std::vector&lt;LensHalo *&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;  </div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;  <span class="keywordtype">void</span> printParticlesInBranch(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> number);</div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;  </div>
+<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;  <span class="keywordtype">void</span> printBranchs(<span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;  </div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;  </div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;  PosType **xp;</div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;  <span class="keywordtype">bool</span> MultiMass;</div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;  <span class="keywordtype">bool</span> MultiRadius;</div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;  <span class="keywordtype">float</span> *masses;</div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;  <span class="keywordtype">float</span> *sizes;</div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;  </div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;  IndexType Nparticles;</div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;  PosType sigma_background;</div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;  <span class="keywordtype">int</span> Nbucket;</div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;  </div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;  PosType force_theta;</div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;  </div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;  <a class="code" href="struct_q_tree_n_b.html">QTreeNB&lt;PosType *&gt;</a> * tree;</div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;  IndexType *index;</div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;  </div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;  <span class="comment">//bool haloON;</span></div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;  <a class="code" href="class_lens_halo.html">LensHalo</a> **halos;</div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;  </div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;  PosType realray[2];</div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;  <span class="keywordtype">int</span> incell,incell2;</div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;  </div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;  <span class="keywordtype">bool</span> periodic_buffer;</div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;  PosType inv_screening_scale2;</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;  PosType original_xl;  <span class="comment">// x-axis size of simulation used for peridic buffering.  Requrement that it top branch be square my make it differ from the size of top branch.</span></div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;  PosType original_yl;  <span class="comment">// x-axis size of simulation used for peridic buffering.</span></div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;  </div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;  <a class="code" href="struct_q_tree_n_b.html">QTreeNB&lt;PosType *&gt;</a> * BuildQTreeNB(PosType **xp,IndexType Nparticles,IndexType *particles);</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;  <span class="keywordtype">void</span> _BuildQTreeNB(IndexType nparticles,IndexType *particles);</div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;  </div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">short</span> WhichQuad(PosType *x,<a class="code" href="struct_q_branch_n_b.html">QBranchNB</a> &amp;branch);</div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;  </div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;  <span class="comment">//inline bool atLeaf();</span></div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> inbox(<span class="keyword">const</span> PosType *ray,<span class="keyword">const</span> PosType *p1,<span class="keyword">const</span> PosType *p2){</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;    <span class="keywordflow">return</span> (ray[0]&gt;=p1[0])*(ray[0]&lt;=p2[0])*(ray[1]&gt;=p1[1])*(ray[1]&lt;=p2[1]);</div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;  }</div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;  <span class="comment">//int cutbox(PosType *ray,PosType *p1,PosType *p2,float rmax);</span></div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;  </div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;  <span class="keywordtype">void</span> CalcMoments();</div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;  <span class="keywordtype">void</span> rotate_coordinates(PosType **coord);</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;  </div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;  <span class="comment">//QTreeNBHndl rotate_simulation(PosType **xp,IndexType Nparticles,IndexType *particles</span></div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;  <span class="comment">//                              ,PosType **coord,PosType theta,float *rsph,float *mass</span></div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;  <span class="comment">//                              ,bool MultiRadius,bool MultiMass);</span></div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;  <span class="comment">//QTreeNBHndl rotate_project(PosType **xp,IndexType Nparticles,IndexType *particles</span></div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;  <span class="comment">//                           ,PosType **coord,PosType theta,float *rsph,float *mass</span></div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;  <span class="comment">//                           ,bool MultiRadius,bool MultiMass);</span></div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;  <span class="keywordtype">void</span> cuttoffscale(<a class="code" href="struct_q_tree_n_b.html">QTreeNB&lt;PosType *&gt;</a> * tree,PosType *theta);</div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;  </div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;  <span class="keywordtype">void</span> walkTree_recur(<a class="code" href="struct_q_branch_n_b.html">QBranchNB</a> *branch,PosType <span class="keyword">const</span> *ray,PosType *alpha,KappaType *kappa,KappaType *gamma,KappaType *phi);</div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;  <span class="keywordtype">void</span> walkTree_iter(<a class="code" href="class_q_biterator.html">QBiterator&lt;PosType *&gt;</a> &amp;treeit, PosType <span class="keyword">const</span> *ray,PosType *alpha,KappaType *kappa</div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;                     ,KappaType *gamma,KappaType *phi) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;  </div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;  PosType phiintconst;</div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;  </div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;};</div>
 <div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;</div>
-<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* QUAD_TREE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;</div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* QUAD_TREE_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="struct_q_tree_n_b_html_a5388e2412ed4d27d057161992b953c23"><div class="ttname"><a href="struct_q_tree_n_b.html#a5388e2412ed4d27d057161992b953c23">QTreeNB::xxp</a></div><div class="ttdeci">PType * xxp</div><div class="ttdoc">Array of particle positions. </div><div class="ttdef"><b>Definition:</b> qTreeNB.h:125</div></div>
 <div class="ttc" id="struct_q_branch_n_b_html_a36d4a809606c720155e01578281f4b27"><div class="ttname"><a href="struct_q_branch_n_b.html#a36d4a809606c720155e01578281f4b27">QBranchNB::rcrit_angle</a></div><div class="ttdeci">PosType rcrit_angle</div><div class="ttdoc">the critical distance below which a branch is opened in the </div><div class="ttdef"><b>Definition:</b> qTreeNB.h:81</div></div>
 <div class="ttc" id="class_tree_quad_particles_html_aa8969c0e591c62ef85368ed74c9056e0"><div class="ttname"><a href="class_tree_quad_particles.html#aa8969c0e591c62ef85368ed74c9056e0">TreeQuadParticles::rotate_coordinates</a></div><div class="ttdeci">void rotate_coordinates(PosType **coord)</div><div class="ttdoc">simple rotates the coordinates in the xp array </div><div class="ttdef"><b>Definition:</b> quadTree.h:634</div></div>
@@ -1280,6 +1281,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="class_tree_quad_particles_html_a36f365617a5f5d375d6d6cd248b219cb"><div class="ttname"><a href="class_tree_quad_particles.html#a36f365617a5f5d375d6d6cd248b219cb">TreeQuadParticles::~TreeQuadParticles</a></div><div class="ttdeci">~TreeQuadParticles()</div><div class="ttdoc">Particle positions and other data are not destroyed. </div><div class="ttdef"><b>Definition:</b> quadTree.h:279</div></div>
 <div class="ttc" id="struct_q_branch_n_b_html_ab7e5b2d4f10dbe58834d2b360357503f"><div class="ttname"><a href="struct_q_branch_n_b.html#ab7e5b2d4f10dbe58834d2b360357503f">QBranchNB::quad</a></div><div class="ttdeci">PosType quad[3]</div><div class="ttdoc">quadropole moment of branch </div><div class="ttdef"><b>Definition:</b> qTreeNB.h:77</div></div>
 <div class="ttc" id="struct_q_branch_n_b_html"><div class="ttname"><a href="struct_q_branch_n_b.html">QBranchNB</a></div><div class="ttdoc">Box representing a branch in a tree. It has four children. Used in QTreeNB which is used in TreeQuad...</div><div class="ttdef"><b>Definition:</b> qTreeNB.h:28</div></div>
+<div class="ttc" id="class_lens_plane_tree_html"><div class="ttname"><a href="class_lens_plane_tree.html">LensPlaneTree</a></div><div class="ttdoc">A LensPlane with a TreeQuad on it to calculate the deflection caused by field lenses. </div><div class="ttdef"><b>Definition:</b> planes.h:31</div></div>
 <div class="ttc" id="struct_q_branch_n_b_html_abe0512cd38817fb1bb5c2ee764049ffe"><div class="ttname"><a href="struct_q_branch_n_b.html#abe0512cd38817fb1bb5c2ee764049ffe">QBranchNB::level</a></div><div class="ttdeci">int level</div><div class="ttdoc">level in tree </div><div class="ttdef"><b>Definition:</b> qTreeNB.h:58</div></div>
 <div class="ttc" id="class_tree_quad_particles_html_a8beb1c5083a06ab39634330614805c37"><div class="ttname"><a href="class_tree_quad_particles.html#a8beb1c5083a06ab39634330614805c37">TreeQuadParticles::neighbors</a></div><div class="ttdeci">void neighbors(PosType ray[], PosType rmax, std::list&lt; IndexType &gt; &amp;neighbors) const </div><div class="ttdoc">find all points within rmax of ray in 2D </div><div class="ttdef"><b>Definition:</b> quadTree.h:710</div></div>
 <div class="ttc" id="class_q_biterator_html"><div class="ttname"><a href="class_q_biterator.html">QBiterator</a></div><div class="ttdoc">A iterator class fore TreeStruct that allows for movement through the tree without changing anything ...</div><div class="ttdef"><b>Definition:</b> qTreeNB.h:169</div></div>
@@ -1290,7 +1292,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 14 2019 17:39:05 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 24 2019 10:15:21 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

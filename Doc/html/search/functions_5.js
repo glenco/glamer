@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['einsteinarea',['EinsteinArea',['../struct_grid_map.html#a644d249c180301b75d8f41b728d15be3',1,'GridMap']]],
+  ['einsteinarea',['EinsteinArea',['../struct_grid.html#ad0e3264a5d705fe646e4320388a7722c',1,'Grid::EinsteinArea()'],['../struct_grid_map.html#a644d249c180301b75d8f41b728d15be3',1,'GridMap::EinsteinArea()']]],
   ['einsteinradii',['EinsteinRadii',['../class_lens_halo_mass_map.html#ad330f696152521defd2b08f8cebe6b1b',1,'LensHaloMassMap']]],
   ['elliptic',['Elliptic',['../class_elliptic.html#a8753f2219a9ad3137cdb36cf0726be9d',1,'Elliptic']]],
   ['ellipticradiusnsie',['ellipticRadiusNSIE',['../group__function.html#ga84aa15948a8af02d1bbcd5fc44de746c',1,'ellipticRadiusNSIE(PosType const *x, PosType f, PosType pa):&#160;nsie.cpp'],['../group__function.html#ga84aa15948a8af02d1bbcd5fc44de746c',1,'ellipticRadiusNSIE(PosType const *x, PosType f, PosType pa):&#160;nsie.cpp']]],

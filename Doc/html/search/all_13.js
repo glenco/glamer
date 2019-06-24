@@ -15,6 +15,7 @@ var searchData=
   ['treenbstruct',['TreeNBStruct',['../struct_tree_n_b_struct.html',1,'']]],
   ['treequadparticles',['TreeQuadParticles',['../class_tree_quad_particles.html',1,'TreeQuadParticles&lt; PType &gt;'],['../class_tree_quad_particles.html#a318fe2ca82e8e8297d20b53a12c22356',1,'TreeQuadParticles::TreeQuadParticles()']]],
   ['treequadparticles_3c_20particletype_3c_20float_20_3e_20_3e',['TreeQuadParticles&lt; ParticleType&lt; float &gt; &gt;',['../class_tree_quad_particles.html',1,'']]],
+  ['treequadparticles_3c_20particletype_3c_20t_20_3e_20_3e',['TreeQuadParticles&lt; ParticleType&lt; T &gt; &gt;',['../class_tree_quad_particles.html',1,'']]],
   ['treequadparticles_3c_20startype_20_3e',['TreeQuadParticles&lt; StarType &gt;',['../class_tree_quad_particles.html',1,'']]],
   ['treesimple',['TreeSimple',['../class_tree_simple.html',1,'']]],
   ['treesimplevec',['TreeSimpleVec',['../class_tree_simple_vec.html',1,'TreeSimpleVec&lt; T &gt;'],['../class_tree_simple_vec.html#af1dbf59aff92eb82962d32d0d13ad51d',1,'TreeSimpleVec::TreeSimpleVec()']]],

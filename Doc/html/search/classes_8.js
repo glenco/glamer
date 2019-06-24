@@ -12,6 +12,7 @@ var searchData=
   ['lenshalonfw',['LensHaloNFW',['../class_lens_halo_n_f_w.html',1,'']]],
   ['lenshaloparticles',['LensHaloParticles',['../class_lens_halo_particles.html',1,'']]],
   ['lenshaloparticles_3c_20particletype_3c_20float_20_3e_20_3e',['LensHaloParticles&lt; ParticleType&lt; float &gt; &gt;',['../class_lens_halo_particles.html',1,'']]],
+  ['lenshaloparticles_3c_20particletype_3c_20t_20_3e_20_3e',['LensHaloParticles&lt; ParticleType&lt; T &gt; &gt;',['../class_lens_halo_particles.html',1,'']]],
   ['lenshalopowerlaw',['LensHaloPowerLaw',['../class_lens_halo_power_law.html',1,'']]],
   ['lenshalopseudonfw',['LensHaloPseudoNFW',['../class_lens_halo_pseudo_n_f_w.html',1,'']]],
   ['lenshalouniform',['LensHaloUniform',['../class_lens_halo_uniform.html',1,'']]],

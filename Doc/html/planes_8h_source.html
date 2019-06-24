@@ -122,56 +122,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_lens_plane_tree.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> : <span class="keyword">public</span> <a class="code" href="class_lens_plane.html">LensPlane</a>{</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a>(<a class="code" href="class_lens_halo.html">LensHaloHndl</a> *my_halos,IndexType Nhalos,PosType my_sigma_background,PosType my_inv_screening_scale = 0);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; ~<a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; <span class="keywordtype">void</span> force(PosType *alpha,KappaType *kappa,KappaType *gamma,KappaType *phi,PosType *xx);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">void</span> closestHalos(PosType *xx,std::list&lt;LensHalo *&gt; neighbors){</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a>(<span class="keyword">const</span> <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> &amp;p);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a>(<a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> &amp;&amp;p){</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::swap(*<span class="keyword">this</span>,p);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; ~<a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; <span class="keywordtype">void</span> addHalo(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; <span class="keywordtype">void</span> removeHalo(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; std::vector&lt;LensHalo*&gt; getHalos();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; std::vector&lt;const LensHalo*&gt; getHalos() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens_plane_tree.html#a4466569c78397bc0e6e6867f22502499">getNeighborHalos</a>(PosType ray[],PosType rmax,std::vector&lt;LensHalo*&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; std::vector&lt;LensHalo*&gt; halos;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; TreeQuadHalos * halo_tree;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_lens_plane_singular.html">   60</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> : <span class="keyword">public</span> <a class="code" href="class_lens_plane.html">LensPlane</a>{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a>(<a class="code" href="class_lens_halo.html">LensHaloHndl</a> *my_halos, IndexType Nhalos);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; ~<a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a>();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens_plane_singular.html#aae11773b4960c738d6a653813bb78957">force</a>(PosType *alpha,KappaType *kappa,KappaType *gamma,KappaType *phi,PosType *xx);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_lens_plane_singular.html#a652f60c8d63b55c34fd9c11a614aacf6">addHalo</a>(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keywordtype">void</span> removeHalo(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; std::vector&lt;LensHalo*&gt; getHalos();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; std::vector&lt;const LensHalo*&gt; getHalos() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">void</span> getNeighborHalos(PosType ray[],PosType rmax,std::vector&lt;LensHalo*&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; std::vector&lt;LensHalo*&gt; halos;  </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PLANES_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> &amp; operator=(<span class="keyword">const</span> <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> &amp;p);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> &amp; operator=(<a class="code" href="class_lens_plane_tree.html">LensPlaneTree</a> &amp;&amp;p);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; <span class="keywordtype">void</span> force(PosType *alpha,KappaType *kappa,KappaType *gamma,KappaType *phi,PosType *xx);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; <span class="keywordtype">void</span> addHalo(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <span class="keywordtype">void</span> removeHalo(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; std::vector&lt;LensHalo*&gt; getHalos();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; std::vector&lt;const LensHalo*&gt; getHalos() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens_plane_tree.html#a4466569c78397bc0e6e6867f22502499">getNeighborHalos</a>(PosType ray[],PosType rmax,std::vector&lt;LensHalo*&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; std::vector&lt;LensHalo*&gt; halos;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; TreeQuadHalos * halo_tree;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_lens_plane_singular.html">   63</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> : <span class="keyword">public</span> <a class="code" href="class_lens_plane.html">LensPlane</a>{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a>(<a class="code" href="class_lens_halo.html">LensHaloHndl</a> *my_halos, IndexType Nhalos);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a>(<span class="keyword">const</span> <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> &amp;p){</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    halos = p.halos;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a>(<a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> &amp;&amp;p){</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::swap(halos,p.halos);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  ~<a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> &amp; operator=(<span class="keyword">const</span> <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> &amp;p){</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span>(&amp;p != <span class="keyword">this</span>){</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      halos = p.halos;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> &amp; operator=(<a class="code" href="class_lens_plane_singular.html">LensPlaneSingular</a> &amp;&amp;p){</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span>(&amp;p != <span class="keyword">this</span>){</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      std::swap(halos,p.halos);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens_plane_singular.html#aae11773b4960c738d6a653813bb78957">force</a>(PosType *alpha,KappaType *kappa,KappaType *gamma,KappaType *phi,PosType *xx);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_lens_plane_singular.html#a652f60c8d63b55c34fd9c11a614aacf6">addHalo</a>(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; <span class="keywordtype">void</span> removeHalo(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; std::vector&lt;LensHalo*&gt; getHalos();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; std::vector&lt;const LensHalo*&gt; getHalos() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span> getNeighborHalos(PosType ray[],PosType rmax,std::vector&lt;LensHalo*&gt; &amp;neighbors) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; std::vector&lt;LensHalo*&gt; halos;  </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* PLANES_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="class_lens_plane_html"><div class="ttname"><a href="class_lens_plane.html">LensPlane</a></div><div class="ttdoc">Base class representing a plane in redshift onto which lenses are placed. </div><div class="ttdef"><b>Definition:</b> planes.h:15</div></div>
 <div class="ttc" id="class_lens_halo_html"><div class="ttname"><a href="class_lens_halo.html">LensHalo</a></div><div class="ttdoc">A base class for all types of lensing halos. </div><div class="ttdef"><b>Definition:</b> lens_halos.h:43</div></div>
-<div class="ttc" id="class_lens_plane_singular_html"><div class="ttname"><a href="class_lens_plane_singular.html">LensPlaneSingular</a></div><div class="ttdoc">A LensPlane with a list of LensHalo&#39;s in it. </div><div class="ttdef"><b>Definition:</b> planes.h:60</div></div>
+<div class="ttc" id="class_lens_plane_singular_html"><div class="ttname"><a href="class_lens_plane_singular.html">LensPlaneSingular</a></div><div class="ttdoc">A LensPlane with a list of LensHalo&#39;s in it. </div><div class="ttdef"><b>Definition:</b> planes.h:63</div></div>
 <div class="ttc" id="class_lens_plane_tree_html"><div class="ttname"><a href="class_lens_plane_tree.html">LensPlaneTree</a></div><div class="ttdoc">A LensPlane with a TreeQuad on it to calculate the deflection caused by field lenses. </div><div class="ttdef"><b>Definition:</b> planes.h:31</div></div>
-<div class="ttc" id="class_lens_plane_singular_html_a652f60c8d63b55c34fd9c11a614aacf6"><div class="ttname"><a href="class_lens_plane_singular.html#a652f60c8d63b55c34fd9c11a614aacf6">LensPlaneSingular::addHalo</a></div><div class="ttdeci">void addHalo(LensHalo *halo)</div><div class="ttdoc">It is assumed that the position of halo is in physical Mpc. </div><div class="ttdef"><b>Definition:</b> planes.cpp:124</div></div>
-<div class="ttc" id="class_lens_plane_tree_html_a4466569c78397bc0e6e6867f22502499"><div class="ttname"><a href="class_lens_plane_tree.html#a4466569c78397bc0e6e6867f22502499">LensPlaneTree::getNeighborHalos</a></div><div class="ttdeci">void getNeighborHalos(PosType ray[], PosType rmax, std::vector&lt; LensHalo * &gt; &amp;neighbors) const </div><div class="ttdoc">Get the halos on this plane that are wthin rmax of ray[]. </div><div class="ttdef"><b>Definition:</b> planes.cpp:49</div></div>
-<div class="ttc" id="class_lens_plane_singular_html_aae11773b4960c738d6a653813bb78957"><div class="ttname"><a href="class_lens_plane_singular.html#aae11773b4960c738d6a653813bb78957">LensPlaneSingular::force</a></div><div class="ttdeci">void force(PosType *alpha, KappaType *kappa, KappaType *gamma, KappaType *phi, PosType *xx)</div><div class="ttdoc">returns the lensing quantities of a ray in physical coordinates </div><div class="ttdef"><b>Definition:</b> planes.cpp:75</div></div>
+<div class="ttc" id="class_lens_plane_singular_html_a652f60c8d63b55c34fd9c11a614aacf6"><div class="ttname"><a href="class_lens_plane_singular.html#a652f60c8d63b55c34fd9c11a614aacf6">LensPlaneSingular::addHalo</a></div><div class="ttdeci">void addHalo(LensHalo *halo)</div><div class="ttdoc">It is assumed that the position of halo is in physical Mpc. </div><div class="ttdef"><b>Definition:</b> planes.cpp:163</div></div>
+<div class="ttc" id="class_lens_plane_tree_html_a4466569c78397bc0e6e6867f22502499"><div class="ttname"><a href="class_lens_plane_tree.html#a4466569c78397bc0e6e6867f22502499">LensPlaneTree::getNeighborHalos</a></div><div class="ttdeci">void getNeighborHalos(PosType ray[], PosType rmax, std::vector&lt; LensHalo * &gt; &amp;neighbors) const </div><div class="ttdoc">Get the halos on this plane that are wthin rmax of ray[]. </div><div class="ttdef"><b>Definition:</b> planes.cpp:88</div></div>
+<div class="ttc" id="class_lens_plane_singular_html_aae11773b4960c738d6a653813bb78957"><div class="ttname"><a href="class_lens_plane_singular.html#aae11773b4960c738d6a653813bb78957">LensPlaneSingular::force</a></div><div class="ttdeci">void force(PosType *alpha, KappaType *kappa, KappaType *gamma, KappaType *phi, PosType *xx)</div><div class="ttdoc">returns the lensing quantities of a ray in physical coordinates </div><div class="ttdef"><b>Definition:</b> planes.cpp:114</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 14 2019 17:39:05 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 24 2019 10:15:21 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
