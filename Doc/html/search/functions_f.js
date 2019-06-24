@@ -26,7 +26,7 @@ var searchData=
   ['print_5fused',['print_used',['../class_input_params.html#a78ce440be9715bf94050370c65c2dc6e',1,'InputParams']]],
   ['printbranchs',['printBranchs',['../class_tree_quad_particles.html#a8ee2bbb09a422b3a1ee217e86101ca5c',1,'TreeQuadParticles']]],
   ['printcosmology',['PrintCosmology',['../group__cosmolib.html#gad7c516a20dddc33a45b2f3537d67d32a',1,'COSMOLOGY::PrintCosmology()'],['../class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04',1,'Lens::PrintCosmology()']]],
-  ['printcsv',['printCSV',['../class_lens_halo_base_n_s_i_e.html#a090910cd86cb64a2728f4c1bdbfa723e',1,'LensHaloBaseNSIE::printCSV()'],['../class_lens_halo.html#a5f8ebb324b88486fc401134dbb5404ab',1,'LensHalo::printCSV()']]],
+  ['printcsv',['printCSV',['../class_lens_halo.html#a5f8ebb324b88486fc401134dbb5404ab',1,'LensHalo']]],
   ['printfile',['printfile',['../class_caustic_data_store.html#a21e78436b2b8aeee93da0c6f16ba949a',1,'CausticDataStore']]],
   ['printimageinfo',['PrintImageInfo',['../struct_image_info.html#a06b2ce2fd6df2e4b326035e598c68150',1,'ImageInfo']]],
   ['printmultilens',['printMultiLens',['../class_lens.html#a39c41fbb1d57645660161259c6352d85',1,'Lens']]],

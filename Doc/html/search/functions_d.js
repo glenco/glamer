@@ -14,6 +14,6 @@ var searchData=
   ['nfw_5fvr',['NFW_Vr',['../class_n_f_w___utility.html#a319d740c16b22216b206f1546a13f025',1,'NFW_Utility']]],
   ['nintegratef',['nintegrateF',['../namespace_utilities.html#afb7f32cbe2c0f17c06a106dee6726e98',1,'Utilities']]],
   ['nndistance',['NNDistance',['../class_tree_simple.html#a2fd070f22fb700337f8cc0fd76d1820f',1,'TreeSimple']]],
-  ['nparams',['Nparams',['../class_lens_halo_base_n_s_i_e.html#a5798c54f27c02d790f2033f674973ab6',1,'LensHaloBaseNSIE::Nparams()'],['../class_input_params.html#ab482c105c366784215168c57d480b61c',1,'InputParams::Nparams()'],['../class_lens_halo.html#a687244171b30f97529c981a546055d2f',1,'LensHalo::Nparams()']]],
+  ['nparams',['Nparams',['../class_input_params.html#ab482c105c366784215168c57d480b61c',1,'InputParams::Nparams()'],['../class_lens_halo.html#a687244171b30f97529c981a546055d2f',1,'LensHalo::Nparams()']]],
   ['npow',['npow',['../group__cosmolib.html#ga1a219b0653373af634a484e693ae55cc',1,'COSMOLOGY']]]
 ];

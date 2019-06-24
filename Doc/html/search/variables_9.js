@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kappa_5fbackground',['kappa_background',['../class_tree_force.html#acdb57d9d285c3718886c04229dd09dfc',1,'TreeForce']]]
+  ['level',['level',['../struct_q_branch_n_b.html#abe0512cd38817fb1bb5c2ee764049ffe',1,'QBranchNB::level()'],['../struct_branch_n_b.html#a0bd9c789ed18b3be0c504d09befb5c46',1,'BranchNB::level()'],['../struct_tree_simple_vec_1_1_branch_v.html#adeb400cb206862217803e1f90103334d',1,'TreeSimpleVec::BranchV::level()']]]
 ];

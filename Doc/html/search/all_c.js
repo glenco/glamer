@@ -29,7 +29,6 @@ var searchData=
   ['mokamap',['MOKAmap',['../struct_m_o_k_amap.html',1,'']]],
   ['mosterstellarmassfraction',['MosterStellarMassFraction',['../class_h_a_l_o_calculator.html#a3852ec6628d11c11d36c7ef9ffcd01a5',1,'HALOCalculator']]],
   ['moveinmainhalo',['moveinMainHalo',['../class_lens.html#aa8a8bbd818794bc97ee6d3f842e82e54',1,'Lens']]],
-  ['mpctoasec',['MpcToAsec',['../class_lens_halo_base_n_s_i_e.html#a5630de40317ef02e8cf7df86910cc34a',1,'LensHaloBaseNSIE']]],
   ['multigridsmoother',['MultiGridSmoother',['../class_multi_grid_smoother.html',1,'MultiGridSmoother'],['../class_multi_grid_smoother.html#ad45d83237961c0395a13d4626f4406d1',1,'MultiGridSmoother::MultiGridSmoother()']]],
   ['multimass',['MultiMass',['../class_tree_force.html#a5a03e820fcfde1a984937c59977e52c2',1,'TreeForce']]],
   ['multiplier',['multiplier',['../class_source_multi_ana_galaxy.html#a73cba06a8e4c42c40e69050ad74d955b',1,'SourceMultiAnaGalaxy']]],

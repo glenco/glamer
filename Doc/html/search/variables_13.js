@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uniform_5fmag',['uniform_mag',['../struct_image_info.html#a1616e105dc88b753b19af72860f9feb6',1,'ImageInfo']]]
+  ['xxp',['xxp',['../struct_q_tree_n_b.html#a5388e2412ed4d27d057161992b953c23',1,'QTreeNB']]]
 ];

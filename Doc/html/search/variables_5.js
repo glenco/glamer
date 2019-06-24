@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['fieldofview',['fieldofview',['../class_lens.html#aee17d6e92bea425de358a9381ad6280b',1,'Lens']]],
-  ['flag_5fmoka_5fanalyze',['flag_MOKA_analyze',['../class_lens_halo_mass_map.html#ac9c631785aa3b2d1d756e359250c2602',1,'LensHaloMassMap']]],
-  ['fratio',['fratio',['../class_lens_halo_base_n_s_i_e.html#adf8dc56e30c743638e996cfef2759327',1,'LensHaloBaseNSIE']]],
-  ['ftable',['ftable',['../class_lens_halo_n_f_w.html#ad69ef65ce813a404b34a0fe20a6cf9cd',1,'LensHaloNFW::ftable()'],['../class_lens_halo_hernquist.html#a37730f6dd16cbf6e7a1e3287180bbcb5',1,'LensHaloHernquist::ftable()'],['../class_lens_halo_jaffe.html#adf948e7ce2d417b64c562f8042aca837',1,'LensHaloJaffe::ftable()']]]
+  ['gamma',['gamma',['../class_c_o_s_m_o_l_o_g_y.html#a67962681b52d8ba6014df3e499ed8e76',1,'COSMOLOGY']]],
+  ['gridrange',['gridrange',['../struct_image_info.html#a5d3715102970807fdf3a0eea2b72176b',1,'ImageInfo::gridrange()'],['../struct_old_image_info.html#addc33c5ce2613cfee4e937424b8555f8',1,'OldImageInfo::gridrange()']]]
 ];

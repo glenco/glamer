@@ -20,7 +20,6 @@ var searchData=
   ['dirtyfof',['DirtyFoF',['../group___image_finding_l2.html#ga48107c0fed9a62e11a567ecf7067914f',1,'DirtyFoF(std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages, double linkinglength):&#160;dirtycode.cpp'],['../group___image_finding_l2.html#ga48107c0fed9a62e11a567ecf7067914f',1,'DirtyFoF(std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages, PosType linkinglength):&#160;dirtycode.cpp']]],
   ['displaypos',['displayPos',['../class_lens_halo.html#a81938111b0d90611edcff8b2d4dd8432',1,'LensHalo']]],
   ['divide_5fimages_5fkist',['divide_images_kist',['../group___image_finding_l2.html#ga000476cfc3aa55d3b896ceff5d89ff9f',1,'divide_images_kist(TreeHndl i_tree, std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages):&#160;divide_images.cpp'],['../group___image_finding_l2.html#ga000476cfc3aa55d3b896ceff5d89ff9f',1,'divide_images_kist(TreeHndl i_tree, std::vector&lt; ImageInfo &gt; &amp;imageinfo, int *Nimages):&#160;divide_images.cpp']]],
-  ['dl',['Dl',['../class_lens_halo_base_n_s_i_e.html#ae378061c2f3f54fc4b1ab9defc8c218e',1,'LensHaloBaseNSIE']]],
   ['dlds',['DlDs',['../class_source.html#a88f6a999b022ef1b9e17289b33629c6d',1,'Source']]],
   ['dmoddb',['dmoddb',['../class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0',1,'LensHaloNFW']]],
   ['dndlnk',['dndlnk',['../class_c_o_s_m_o_l_o_g_y.html#a745ec67ee0dd926d7a7077fadf2e0623',1,'COSMOLOGY']]],

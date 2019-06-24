@@ -11,7 +11,7 @@ var searchData=
   ['randomsourcewithincaustic',['RandomSourceWithinCaustic',['../group___low_level.html#ga0917887fd5dfd73b104d4f1e845b0a35',1,'ImageFinding::CriticalCurve']]],
   ['ray',['RAY',['../struct_r_a_y.html',1,'']]],
   ['rayshooterinternal',['rayshooterInternal',['../class_lens.html#a711067d75213f4e6bc0f8a5606faf66a',1,'Lens']]],
-  ['rcore',['rcore',['../class_lens_halo_base_n_s_i_e.html#ade9a3968a01e749705e745fd8240ab57',1,'LensHaloBaseNSIE']]],
+  ['rcore',['rcore',['../class_lens_halo_real_n_s_i_e.html#a3459fe0ce3588c7a52a4d1c37a9e7f55',1,'LensHaloRealNSIE']]],
   ['rcrit_5fangle',['rcrit_angle',['../struct_q_branch_n_b.html#a36d4a809606c720155e01578281f4b27',1,'QBranchNB']]],
   ['rcurve',['rcurve',['../group__cosmolib.html#gae84694beffbb4ee4775dea2f6397109e',1,'COSMOLOGY']]],
   ['readfilenames',['ReadFileNames',['../namespace_utilities.html#abc7be26dfecdca30048dd4d3842077a2',1,'Utilities']]],
@@ -30,6 +30,7 @@ var searchData=
   ['remove_5fstars',['remove_stars',['../class_lens_halo.html#a9368e432b10b667b960631e436183171',1,'LensHalo']]],
   ['removeintersections',['RemoveIntersections',['../namespace_utilities.html#a02302245829df0b35aca33fc6415cb96',1,'Utilities']]],
   ['removeleaffromtree',['RemoveLeafFromTree',['../group___low_level.html#ga5258c95f4de87c75e74ce9d4e59e888e',1,'TreeStruct']]],
+  ['reorient',['reorient',['../class_lens_halo_disk.html#a7395242b513238bd5a5546791604786e',1,'LensHaloDisk']]],
   ['replacemainhalo',['replaceMainHalo',['../class_lens.html#aba7e1b3c66565092fdc7555dc4704896',1,'Lens']]],
   ['replacemainhalos',['replaceMainHalos',['../class_lens.html#a0cfbb73f3ff13e43beccb50d18a89af4',1,'Lens']]],
   ['require',['require',['../class_input_params.html#a10dfa461e998fc06d836b9db6bed33c0',1,'InputParams']]],
@@ -46,6 +47,7 @@ var searchData=
   ['revertsourceplane',['RevertSourcePlane',['../class_lens.html#af4c16d98618b2a26e75c2673af2058c2',1,'Lens']]],
   ['rho_5fcrit_5fcomoving',['rho_crit_comoving',['../group__cosmolib.html#ga4a02991085bd43b036aec6c8d7313386',1,'COSMOLOGY']]],
   ['rmax',['rmax',['../struct_q_branch_n_b.html#ad786fedfa32eeabc465a4e68df8d3f20',1,'QBranchNB']]],
+  ['rmax_5fcalc',['rmax_calc',['../class_lens_halo_real_n_s_i_e.html#a277e6c93788c290fcf7c9bbbd32b0ce6',1,'LensHaloRealNSIE']]],
   ['rmax_5fto_5frsize_5fratio',['Rmax_to_Rsize_ratio',['../class_lens_halo.html#abe2665d12192e49e464127dd3b78a96d',1,'LensHalo']]],
   ['rmaxnsie',['rmaxNSIE',['../group__function.html#ga13041999963a2b670474d93f2eb8b18f',1,'rmaxNSIE(PosType sigma, PosType mass, PosType f, PosType rc):&#160;nsie.cpp'],['../group__function.html#ga13041999963a2b670474d93f2eb8b18f',1,'rmaxNSIE(PosType sigma, PosType mass, PosType f, PosType rc):&#160;nsie.cpp']]],
   ['rotate',['rotate',['../class_lens_halo_particles.html#a6d2a87ae29ff2a1840ffced17599d8a9',1,'LensHaloParticles::rotate()'],['../struct_point__3d.html#aac8bbd830a9852bbbdb3e6c794483a3e',1,'Point_3d::rotate()']]],
@@ -53,6 +55,5 @@ var searchData=
   ['rotated',['rotated',['../struct_point__2d.html#a436419aa18be50591e6fda8a035b9598',1,'Point_2d']]],
   ['rotation',['rotation',['../namespace_utilities.html#a31db9f78433a6de800437aedfd1b2eb5',1,'Utilities::rotation(float *xout, float *xin, PosType theta)'],['../namespace_utilities.html#a8ad140aa2e74c584b82ff6416ff16622',1,'Utilities::rotation(PosType *xout, PosType const *xin, PosType theta)']]],
   ['rscale',['rscale',['../class_lens_halo.html#ad0138e93c3a165ae25cd42bea42c4c4b',1,'LensHalo']]],
-  ['rsize',['Rsize',['../class_lens_halo_base_n_s_i_e.html#a24a408a0870d5f6a8a8d1222929337a4',1,'LensHaloBaseNSIE']]],
   ['rsph',['rsph',['../class_tree_force.html#a77be3597cacacfb4c108a32cf3eeed1f',1,'TreeForce']]]
 ];
