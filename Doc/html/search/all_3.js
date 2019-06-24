@@ -34,7 +34,7 @@ var searchData=
   ['convert_5fback',['Convert_back',['../class_observation.html#a2bca5d38e3c6f5e867fafd0b1e4f46bb',1,'Observation']]],
   ['convex_5fhull',['convex_hull',['../namespace_utilities.html#acd4dccd3d5a6b05220a4060b921cf318',1,'Utilities::convex_hull(std::vector&lt; T &gt; &amp;P, std::vector&lt; T &gt; &amp;hull_out)'],['../namespace_utilities.html#a3ffe5233ee836b82577a661cd137075d',1,'Utilities::convex_hull(std::vector&lt; T &gt; &amp;P, std::vector&lt; size_t &gt; &amp;hull_index)'],['../namespace_utilities.html#a6997f6bfc95f466039c9652c6c50274f',1,'Utilities::convex_hull(std::vector&lt; Point * &gt; &amp;P)'],['../namespace_utilities.html#a0699a4c75e3899f853dee3fe6a442a25',1,'Utilities::convex_hull(std::vector&lt; double * &gt; &amp;P)']]],
   ['convexhullarea',['ConvexHullArea',['../namespace_utilities.html#a865c4f1f38a91d8b3d4e07fdfea16bd0',1,'Utilities']]],
-  ['coordist',['coorDist',['../group__cosmolib.html#ga473d62a2811982f00e7308adf73ed06f',1,'COSMOLOGY']]],
+  ['coordist',['coorDist',['../group__cosmolib.html#ga8648a12f8d8894769443f8d40766732e',1,'COSMOLOGY']]],
   ['copy',['copy',['../struct_image_info.html#a472c9b003198bae49743e7dbf6ce4b84',1,'ImageInfo']]],
   ['correlationfunction',['CorrelationFunction',['../class_c_o_s_m_o_l_o_g_y.html#adeb92b72113231a46a0a51e4ab73c0af',1,'COSMOLOGY']]],
   ['cosmo_5fcompare',['cosmo_compare',['../group__cosmolib.html#ga77aae9d83e68fa0140b64f4a8dbc12b0',1,'cosmo.cpp']]],

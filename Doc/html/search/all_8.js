@@ -10,6 +10,5 @@ var searchData=
   ['halonumberinbufferedcone',['haloNumberInBufferedCone',['../group__cosmolib.html#ga9807e0a14dfeb53f396ac16caac30f89',1,'COSMOLOGY']]],
   ['halos',['halos',['../class_make_particle_lenses.html#a443665691944437629a0bfaf360db54c',1,'MakeParticleLenses']]],
   ['high_20level_20routines',['High Level Routines',['../group___high_level.html',1,'']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]]
+  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities::HilbertCurve'],['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve::HilbertCurve()']]]
 ];
