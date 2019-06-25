@@ -10,38 +10,50 @@ third party requirements:  git, cmake, C++11 compatible compiler
 
 cloning the code: (requires git on you machine)
 
-`git clone https://github.com/glenco/glamer.git`  
-`cd glamer`  
-`git clone https://github.com/glenco/NR.git`  
-`git clone https://github.com/glenco/CosmoLib.git`  
-`git clone https://github.com/glenco/SLsimLib.git`  
-`ls`  
-`CMakeLists.txt		NR			examples`  
+```
+git clone https://github.com/glenco/glamer.git
+cd glamer
+git clone https://github.com/glenco/NR.git
+git clone https://github.com/glenco/CosmoLib.git
+git clone https://github.com/glenco/SLsimLib.git  
+ls
+CMakeLists.txt		NR			examples`  
 `CosmoLib		SLsimLib`  
+```
 
 Now creating a makefile or IDE project (requires cmake on your machine)
 There are also libraries such as fftw, cfitsio, and ccfits that the installation might require or might be optional.  See the wiki page for this project for details.
 
-`mkdir build`  
-`cd build`  
+```
+mkdir build
+cd build
+```
 
 To make a makefile:
-`cmake ..`  
+```
+cmake ..
+```
 Makefile will be in the build directory.
 
 To make a xcode project on a Mac:  
-`cmake .. -G Xcode`  
-`open GLAMER.xcodeproj/`
+```
+cmake .. -G Xcode
+open GLAMER.xcodeproj/
+```
 
 Projects for other IDEs such as Eclipse can also be created. See cmake documentation for details.
 
 You can now change some of the compiling options.  
 To list the settings:  
-`cmake .. -L`  
+```
+cmake .. -L
+```
 To change the maximum number of threads used for example:  
-`cmake .. -DN_THREADS=20`  
+```
+cmake .. -DN_THREADS=20
+```  
 
-The wiki for this project should have more information on installing GLAMER and trouble shooting.  The documentation for the GLAMER code is at http://glenco.github.io/glamer/Doc/html/.
+The wiki for this project should have more information on installing GLAMER and trouble shooting.  The documentation for the GLAMER code is at [GLAMERDOC++](http://glenco.github.io/glamer/Doc/html/).
 
 You then must compile the library through your IDE of choice or by
 `make all`.
