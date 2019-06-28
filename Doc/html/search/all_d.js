@@ -1,7 +1,6 @@
 var searchData=
 [
   ['n',['n',['../class_c_o_s_m_o_l_o_g_y.html#ae36601fd4a4eae5059470813b68b1095',1,'COSMOLOGY']]],
-  ['n_5fthreads',['N_THREADS',['../group___deflection_l2.html#gab60b5074c740fd36061f48f90d1a0b21',1,'internal_rayshooter_multi.cpp']]],
   ['nbig_5fparticles',['Nbig_particles',['../struct_q_branch_n_b.html#af570b2c9d94ec7bdfbe2dd7fa226a735',1,'QBranchNB']]],
   ['nbranches',['Nbranches',['../struct_tree_n_b_struct.html#ad9b56e97c0893defc1eb67f8af279e71',1,'TreeNBStruct::Nbranches()'],['../class_tree_simple_vec.html#a16dcf35790fe3e9cf45a87f1363d0b60',1,'TreeSimpleVec::Nbranches()']]],
   ['ndimensions',['Ndimensions',['../struct_tree_n_b_struct.html#a0a83f70f52022b1c0f48797008e02946',1,'TreeNBStruct::Ndimensions()'],['../class_tree_simple_vec.html#adad8d653a11fa9754de41463e5a5c848',1,'TreeSimpleVec::Ndimensions()']]],
@@ -9,7 +8,6 @@ var searchData=
   ['nearestneighbors',['NearestNeighbors',['../class_tree_simple_vec.html#a1b60bd3d296df8aa00825b5657be8902',1,'TreeSimpleVec']]],
   ['neighbors',['neighbors',['../class_tree_quad_particles.html#a513cbc01e141c887c1e3109d4fcbe275',1,'TreeQuadParticles']]],
   ['newbranchnb',['NewBranchNB',['../class_tree_simple.html#a155fe08dba52e39388c12461c6efc304',1,'TreeSimple']]],
-  ['newpointarray',['NewPointArray',['../group___constructor_l2.html#ga2316507faa1da8a433ac26f6c2e9fa93',1,'NewPointArray(unsigned long N):&#160;Tree.cpp'],['../group___constructor_l2.html#ga2316507faa1da8a433ac26f6c2e9fa93',1,'NewPointArray(unsigned long N):&#160;Tree.cpp']]],
   ['nfw_5fconcentration',['NFW_Concentration',['../class_n_f_w___utility.html#ab9d4efae34d0856e4383fe3d2f187ada',1,'NFW_Utility']]],
   ['nfw_5fdeltac',['NFW_deltac',['../class_n_f_w___utility.html#ae2d3957bf42f0b00a9313600b5967f3e',1,'NFW_Utility']]],
   ['nfw_5fm',['NFW_M',['../class_n_f_w___utility.html#a1f1b3e41d2e04994145018f35ddcc59d',1,'NFW_Utility']]],
@@ -23,7 +21,7 @@ var searchData=
   ['nnu',['Nnu',['../class_c_o_s_m_o_l_o_g_y.html#a25cde82a4dc5500b22211a07860049a2',1,'COSMOLOGY']]],
   ['nparams',['Nparams',['../class_input_params.html#a009125f2fd0dd24f2477feb6fb1217be',1,'InputParams::Nparams()'],['../class_lens_halo.html#a314019a0eac186c6fc7aca2e466ffd46',1,'LensHalo::Nparams()']]],
   ['npoints',['Npoints',['../struct_old_image_info.html#afc6290e2f1a4e1fc6229e36d03a2c24a',1,'OldImageInfo::Npoints()'],['../struct_branch.html#aedf2f62cd44e29a4e9ce35d150278be6',1,'Branch::npoints()']]],
-  ['npow',['npow',['../group__cosmolib.html#ga1a219b0653373af634a484e693ae55cc',1,'COSMOLOGY']]],
+  ['npow',['npow',['../class_c_o_s_m_o_l_o_g_y.html#a1a219b0653373af634a484e693ae55cc',1,'COSMOLOGY']]],
   ['nsie_2ecpp',['nsie.cpp',['../nsie_8cpp.html',1,'']]],
   ['ntable',['NTABLE',['../class_lens_halo_n_f_w.html#aaf3791f1b4431e07500151c68a613ac1',1,'LensHaloNFW::NTABLE()'],['../class_lens_halo_hernquist.html#a29032c5e325a6c745aa74378ceeba009',1,'LensHaloHernquist::NTABLE()'],['../class_lens_halo_jaffe.html#a029dbf90de13d84cd603915ae0eb0c2c',1,'LensHaloJaffe::NTABLE()']]]
 ];

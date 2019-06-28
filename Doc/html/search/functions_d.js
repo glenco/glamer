@@ -4,7 +4,6 @@ var searchData=
   ['nearestneighbors',['NearestNeighbors',['../class_tree_simple_vec.html#a1b60bd3d296df8aa00825b5657be8902',1,'TreeSimpleVec']]],
   ['neighbors',['neighbors',['../class_tree_quad_particles.html#a513cbc01e141c887c1e3109d4fcbe275',1,'TreeQuadParticles']]],
   ['newbranchnb',['NewBranchNB',['../class_tree_simple.html#a155fe08dba52e39388c12461c6efc304',1,'TreeSimple']]],
-  ['newpointarray',['NewPointArray',['../group___constructor_l2.html#ga2316507faa1da8a433ac26f6c2e9fa93',1,'NewPointArray(unsigned long N):&#160;Tree.cpp'],['../group___constructor_l2.html#ga2316507faa1da8a433ac26f6c2e9fa93',1,'NewPointArray(unsigned long N):&#160;Tree.cpp']]],
   ['nfw_5fconcentration',['NFW_Concentration',['../class_n_f_w___utility.html#ab9d4efae34d0856e4383fe3d2f187ada',1,'NFW_Utility']]],
   ['nfw_5fdeltac',['NFW_deltac',['../class_n_f_w___utility.html#ae2d3957bf42f0b00a9313600b5967f3e',1,'NFW_Utility']]],
   ['nfw_5fm',['NFW_M',['../class_n_f_w___utility.html#a1f1b3e41d2e04994145018f35ddcc59d',1,'NFW_Utility']]],
@@ -15,5 +14,5 @@ var searchData=
   ['nintegratef',['nintegrateF',['../namespace_utilities.html#afb7f32cbe2c0f17c06a106dee6726e98',1,'Utilities']]],
   ['nndistance',['NNDistance',['../class_tree_simple.html#a679035c518472da2b5ee4349f6098a02',1,'TreeSimple']]],
   ['nparams',['Nparams',['../class_input_params.html#a009125f2fd0dd24f2477feb6fb1217be',1,'InputParams::Nparams()'],['../class_lens_halo.html#a314019a0eac186c6fc7aca2e466ffd46',1,'LensHalo::Nparams()']]],
-  ['npow',['npow',['../group__cosmolib.html#ga1a219b0653373af634a484e693ae55cc',1,'COSMOLOGY']]]
+  ['npow',['npow',['../class_c_o_s_m_o_l_o_g_y.html#a1a219b0653373af634a484e693ae55cc',1,'COSMOLOGY']]]
 ];

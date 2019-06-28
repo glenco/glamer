@@ -12,6 +12,7 @@ var searchData=
   ['sourcemultianagalaxy',['SourceMultiAnaGalaxy',['../class_source_multi_ana_galaxy.html',1,'']]],
   ['sourcemultishapelets',['SourceMultiShapelets',['../class_source_multi_shapelets.html',1,'']]],
   ['sourceoverzier',['SourceOverzier',['../class_source_overzier.html',1,'']]],
+  ['sourceoverzierplus',['SourceOverzierPlus',['../class_source_overzier_plus.html',1,'']]],
   ['sourcepixelled',['SourcePixelled',['../class_source_pixelled.html',1,'']]],
   ['sourcesersic',['SourceSersic',['../class_source_sersic.html',1,'']]],
   ['sourceshapelets',['SourceShapelets',['../class_source_shapelets.html',1,'']]],

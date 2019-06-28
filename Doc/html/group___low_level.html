@@ -62,8 +62,6 @@ $(function() {
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Low Level Routines</div>  </div>
 </div><!--header-->
@@ -71,102 +69,11 @@ $(function() {
 
 <p>These are routines that should never really be used by a user.  
 <a href="#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga0917887fd5dfd73b104d4f1e845b0a35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___low_level.html#ga0917887fd5dfd73b104d4f1e845b0a35">ImageFinding::CriticalCurve::RandomSourceWithinCaustic</a> (int N, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;y, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;rng)</td></tr>
-<tr class="memdesc:ga0917887fd5dfd73b104d4f1e845b0a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a vector of random point within the caustic. It is more efficient to call this once for many point rather than repeatedly one at a time.  <a href="#ga0917887fd5dfd73b104d4f1e845b0a35">More...</a><br /></td></tr>
-<tr class="separator:ga0917887fd5dfd73b104d4f1e845b0a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5258c95f4de87c75e74ce9d4e59e888e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___low_level.html#ga5258c95f4de87c75e74ce9d4e59e888e">TreeStruct::RemoveLeafFromTree</a> (<a class="el" href="class_tree_struct_1_1iterator.html">TreeStruct::iterator</a> &amp;current, unsigned long *Npoints)</td></tr>
-<tr class="separator:ga5258c95f4de87c75e74ce9d4e59e888e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>These are routines that should never really be used by a user. </p>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ga0917887fd5dfd73b104d4f1e845b0a35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0917887fd5dfd73b104d4f1e845b0a35">&#9670;&nbsp;</a></span>RandomSourceWithinCaustic()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ImageFinding::CriticalCurve::RandomSourceWithinCaustic </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>N</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;&#160;</td>
-          <td class="paramname"><em>rng</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns a vector of random point within the caustic. It is more efficient to call this once for many point rather than repeatedly one at a time. </p>
-<p>step for walking tree by iteration instead of recursion</p>
-<p>bool TreeStruct::TreeWalkStep(bool allowDescent){</p>
-<p>if(allowDescent &amp;&amp; current-&gt;child1 != NULL){ moveToChild(1); return true; } if(allowDescent &amp;&amp; current-&gt;child2 != NULL){ moveToChild(2); return true; }</p>
-<p>if(current-&gt;brother != NULL){ current = current-&gt;brother; return true; }</p>
-<p>return false; } </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">N</td><td>number of points needed </td></tr>
-    <tr><td class="paramname">y</td><td>output vector of points </td></tr>
-    <tr><td class="paramname">rng</td><td>random number generator </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ga5258c95f4de87c75e74ce9d4e59e888e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5258c95f4de87c75e74ce9d4e59e888e">&#9670;&nbsp;</a></span>RemoveLeafFromTree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_point.html">Point</a> * TreeStruct::RemoveLeafFromTree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_tree_struct_1_1iterator.html">TreeStruct::iterator</a> &amp;&#160;</td>
-          <td class="paramname"><em>current</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned long *&#160;</td>
-          <td class="paramname"><em>Npoints</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Removes current from a tree if it is a leaf. Will not remove root of tree.</p>
-<p>on output: Current is left at the father of the leaf that was removed. All the points in the leaf that was removed are in its father so the father might be a leaf without Nbucket points. The -&gt;leaf pointer of these points are reassigned to the father.</p>
-<p>returns: Pointer to first in list of points that were reassigned. *Npoints = number of points reassigned. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 26 2019 19:20:00 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 28 2019 11:59:02 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.15
 </small></address>
