@@ -28,7 +28,7 @@ var searchData=
   ['replacemainhalo',['replaceMainHalo',['../class_lens.html#aba7e1b3c66565092fdc7555dc4704896',1,'Lens']]],
   ['replacemainhalos',['replaceMainHalos',['../class_lens.html#a0cfbb73f3ff13e43beccb50d18a89af4',1,'Lens']]],
   ['require',['require',['../class_input_params.html#aee63b091ac4a836112d6c215236d9ded',1,'InputParams']]],
-  ['reset',['ReSet',['../class_source_sersic.html#adaf1a358f45154424064abb3f49a4247',1,'SourceSersic::ReSet()'],['../class_h_a_l_o_calculator.html#a329d639e50df9362d11cc71ff73b1a5e',1,'HALOCalculator::reset()']]],
+  ['reset',['reset',['../class_h_a_l_o_calculator.html#a329d639e50df9362d11cc71ff73b1a5e',1,'HALOCalculator::reset()'],['../class_source_sersic.html#adaf1a358f45154424064abb3f49a4247',1,'SourceSersic::ReSet()']]],
   ['resetfieldhalos',['resetFieldHalos',['../class_lens.html#ae4151410075a47b095f2f716055b1c69',1,'Lens']]],
   ['resetfieldnplanes',['resetFieldNplanes',['../class_lens.html#a1f2196496f170af2ee0a410ba064e2fa',1,'Lens']]],
   ['resetgamma',['resetGamma',['../class_lens_halo_uniform.html#ad6dce181768c824d1a45781b5c65148a',1,'LensHaloUniform']]],

@@ -33,7 +33,7 @@ var searchData=
   ['getfluxratio',['getFluxRatio',['../class_quasar_l_f.html#a0214421005b6673bda512174bee60500',1,'QuasarLF']]],
   ['getformationredshift',['getFormationRedshift',['../class_h_a_l_o_calculator.html#a635b935a7dd6fcf735c230c6dde4658c',1,'HALOCalculator']]],
   ['getformationtime',['getFormationTime',['../class_h_a_l_o_calculator.html#a7460b456a7c22c2b04625f0554024655',1,'HALOCalculator']]],
-  ['getfov',['getfov',['../class_lens.html#a4269648ebbcbfcb1df353a92a5da2710',1,'Lens::getfov()'],['../class_source_multi_ana_galaxy.html#ab18393e0b1db63070f4fe31c6faf31d2',1,'SourceMultiAnaGalaxy::getFOV()']]],
+  ['getfov',['getFOV',['../class_source_multi_ana_galaxy.html#ab18393e0b1db63070f4fe31c6faf31d2',1,'SourceMultiAnaGalaxy::getFOV()'],['../class_lens.html#a4269648ebbcbfcb1df353a92a5da2710',1,'Lens::getfov()']]],
   ['getfstars',['getFstars',['../class_lens_halo.html#afc4f95b1d57d79e67623ab73ce6b03b5',1,'LensHalo']]],
   ['gethighestres',['getHighestRes',['../class_multi_grid_smoother.html#a9e39dd049930a7757ff295999ef54336',1,'MultiGridSmoother']]],
   ['gethubble',['getHubble',['../class_c_o_s_m_o_l_o_g_y.html#a47a4706dd653ddc9ecab61e661572332',1,'COSMOLOGY']]],
