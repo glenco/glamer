@@ -20,9 +20,17 @@ var searchData=
   ['dndlnk',['dndlnk',['../class_c_o_s_m_o_l_o_g_y.html#a745ec67ee0dd926d7a7077fadf2e0623',1,'COSMOLOGY']]],
   ['doc_2eh',['doc.h',['../doc_8h.html',1,'']]],
   ['double_5fsort_5fpoints',['double_sort_points',['../namespace_utilities.html#a484765a953bdbceb52b23f6790d59cf2',1,'Utilities']]],
+  ['doubleflip',['doubleFlip',['../class_pixel_map.html#ab4374615054f16ae30b67251c4cd9d9a',1,'PixelMap']]],
   ['down',['down',['../class_q_biterator.html#a90861741630eb5bcad4ee156d528c065',1,'QBiterator::down()'],['../class_tree_struct_1_1iterator.html#a83e1c2a0387b3671cd2f7b765f7e1cb5',1,'TreeStruct::iterator::down()']]],
+  ['drawbox',['drawBox',['../class_pixel_map.html#a9706dfb86aec046bea4193ed1228c463',1,'PixelMap']]],
+  ['drawcircle',['drawcircle',['../class_pixel_map.html#a185bcea843ddf3affbafedc4b8e38663',1,'PixelMap']]],
+  ['drawdisk',['drawdisk',['../class_pixel_map.html#a35b538005ba390938559ad30292db360',1,'PixelMap']]],
+  ['drawgrid',['drawgrid',['../class_pixel_map.html#a6290c8218f90b09fa1d5cbfb12754d79',1,'PixelMap']]],
+  ['drawline',['drawline',['../class_pixel_map.html#a3fa04d37418e344fd4e8bb28bb20ce29',1,'PixelMap']]],
+  ['drawsquare',['drawSquare',['../class_pixel_map.html#a206014c2f116d207ac67330b3ed796fd',1,'PixelMap']]],
   ['drradius',['DRradius',['../class_c_o_s_m_o_l_o_g_y.html#a53a32f5a595308acf1839a82204357bf',1,'COSMOLOGY']]],
   ['drradius2',['DRradius2',['../class_c_o_s_m_o_l_o_g_y.html#ab5b37657376b1e61ea22e226f3b51577',1,'COSMOLOGY']]],
   ['dsigdm',['dsigdM',['../class_c_o_s_m_o_l_o_g_y.html#a761624ec8999ee2743b9687e08e25e23',1,'COSMOLOGY']]],
+  ['duplicate',['duplicate',['../class_pixel_map.html#abf48a8ec99723d1475a68ad86a71af8d',1,'PixelMap']]],
   ['documentation',['Documentation',['../index.html',1,'']]]
 ];

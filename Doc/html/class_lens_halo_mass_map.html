@@ -102,8 +102,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acdd3adc8b69ac53df41ec4ea71e52f51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_mass_map.html#acdd3adc8b69ac53df41ec4ea71e52f51">LensHaloMassMap</a> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params, <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;lenscosmo)</td></tr>
 <tr class="memdesc:acdd3adc8b69ac53df41ec4ea71e52f51"><td class="mdescLeft">&#160;</td><td class="mdescRight">allocates and reads the MOKA map in  <a href="#acdd3adc8b69ac53df41ec4ea71e52f51">More...</a><br /></td></tr>
 <tr class="separator:acdd3adc8b69ac53df41ec4ea71e52f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c739955c1a83669c482632bf1e6adc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_mass_map.html#a96c739955c1a83669c482632bf1e6adc">LensHaloMassMap</a> (const PixelMap &amp;MassMap, double massconvertion, double redshift, int pixel_map_zeropad, bool my_zeromean, <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;lenscosmo)</td></tr>
-<tr class="memdesc:a96c739955c1a83669c482632bf1e6adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_lens_halo.html" title="A base class for all types of lensing &quot;halos&quot; which are any mass distribution that cause lensing.">LensHalo</a> from a PixelMap representing the mass.  <a href="#a96c739955c1a83669c482632bf1e6adc">More...</a><br /></td></tr>
+<tr class="memitem:a96c739955c1a83669c482632bf1e6adc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_mass_map.html#a96c739955c1a83669c482632bf1e6adc">LensHaloMassMap</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;MassMap, double massconvertion, double redshift, int pixel_map_zeropad, bool my_zeromean, <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;lenscosmo)</td></tr>
+<tr class="memdesc:a96c739955c1a83669c482632bf1e6adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="class_lens_halo.html" title="A base class for all types of lensing &quot;halos&quot; which are any mass distribution that cause lensing.">LensHalo</a> from a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> representing the mass.  <a href="#a96c739955c1a83669c482632bf1e6adc">More...</a><br /></td></tr>
 <tr class="separator:a96c739955c1a83669c482632bf1e6adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57550679541258e9d015e52eea1e09d6"><td class="memItemLeft" align="right" valign="top"><a id="a57550679541258e9d015e52eea1e09d6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LensHaloMassMap</b> (const <a class="el" href="class_lens_halo_mass_map.html">LensHaloMassMap</a> &amp;h)</td></tr>
@@ -149,7 +149,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a94ae7e7e4e71b54e4c89afa324e29f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads in the fits file for the MOKA or mass map and saves it in the structure map <br /></td></tr>
 <tr class="separator:a94ae7e7e4e71b54e4c89afa324e29f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd36198d985f3c66ce5883ed18559c0d"><td class="memItemLeft" align="right" valign="top"><a id="acd36198d985f3c66ce5883ed18559c0d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_mass_map.html#acd36198d985f3c66ce5883ed18559c0d">setMap</a> (const PixelMap &amp;inputmap, double convertionfactor, double z)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_mass_map.html#acd36198d985f3c66ce5883ed18559c0d">setMap</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;inputmap, double convertionfactor, double z)</td></tr>
 <tr class="memdesc:acd36198d985f3c66ce5883ed18559c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads in the fits file for the MOKA or mass map and saves it in the structure map <br /></td></tr>
 <tr class="separator:acd36198d985f3c66ce5883ed18559c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa890ed7562990f4794cd5041cf391293"><td class="memItemLeft" align="right" valign="top"><a id="aa890ed7562990f4794cd5041cf391293"></a>
@@ -752,7 +752,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>Nmod</b> 
         <tr>
           <td class="memname">LensHaloMassMap::LensHaloMassMap </td>
           <td>(</td>
-          <td class="paramtype">const PixelMap &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td>
           <td class="paramname"><em>MassMap</em>, </td>
         </tr>
         <tr>
@@ -793,7 +793,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>Nmod</b> 
       </table>
 </div><div class="memdoc">
 
-<p>Create a <a class="el" href="class_lens_halo.html" title="A base class for all types of lensing &quot;halos&quot; which are any mass distribution that cause lensing.">LensHalo</a> from a PixelMap representing the mass. </p>
+<p>Create a <a class="el" href="class_lens_halo.html" title="A base class for all types of lensing &quot;halos&quot; which are any mass distribution that cause lensing.">LensHalo</a> from a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> representing the mass. </p>
 <p>This is especially useful for representing the visible stars from an image in the lens model.constructor for making lens halo directly from a mass map </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1070,7 +1070,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>Nmod</b> 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 28 2019 11:59:02 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 28 2019 13:35:43 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.15
 </small></address>

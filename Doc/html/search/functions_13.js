@@ -3,6 +3,7 @@ var searchData=
   ['takeoutcurrent',['TakeOutCurrent',['../struct_point_list.html#a5582e98ded628b2e47642c679fb5faa2',1,'PointList']]],
   ['test',['test',['../class_lens_halo.html#a9b357894d8d644741be0cec08e45bb30',1,'LensHalo']]],
   ['test_5faverage_5fgt',['test_average_gt',['../class_lens_halo.html#accfed225ceb5c6684ac983ae89adfebd',1,'LensHalo']]],
+  ['threshold',['threshold',['../class_pixel_map.html#a81fb4e5d1904d31b147b294086448ce8',1,'PixelMap']]],
   ['time',['time',['../class_c_o_s_m_o_l_o_g_y.html#a866c9bce49f640d8f1b975913b18ba2c',1,'COSMOLOGY']]],
   ['to_5fnumeric',['to_numeric',['../namespace_utilities.html#a1a6368539a2249ac91796f3ff043e39d',1,'Utilities']]],
   ['tophatvariance',['TopHatVariance',['../class_c_o_s_m_o_l_o_g_y.html#a8e5d5ef9af8ea10bf8e1800ebcac5c09',1,'COSMOLOGY']]],
