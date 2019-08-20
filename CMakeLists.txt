@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.10)
+cmake_minimum_required(VERSION 3.0.0)
 
 ####
 # project settings
@@ -10,7 +10,7 @@ set(GLAMER_VERSION_MAJOR 0)
 set(GLAMER_VERSION_MINOR 1)
 
 set(GLAMER_VERSION ${GLAMER_VERSION_MAJOR}.${GLAMER_VERSION_MINOR})
-
+set (CMAKE_CXX_STANDARD 11)
 
 ####
 # module settings
