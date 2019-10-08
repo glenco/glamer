@@ -3,7 +3,7 @@ var searchData=
   ['lens_20manipulation',['Lens Manipulation',['../group___change_lens.html',1,'']]],
   ['lens_20fitting',['Lens Fitting',['../group___fit_lens.html',1,'']]],
   ['lens_20fitting',['Lens Fitting',['../group___fit_lens_l2.html',1,'']]],
-  ['labels',['labels',['../class_utilities_1_1_i_o_1_1_data_frame.html#a51c61972eea11e78b5b270602ddc0e71',1,'Utilities::IO::DataFrame']]],
+  ['labels',['labels',['../class_utilities_1_1_i_o_1_1_data_frame.html#a8497d0e0900c986279a690556db1408a',1,'Utilities::IO::DataFrame']]],
   ['lambda_5fcentral',['lambda_central',['../class_band_info.html#a9a1e3191cac3a878a9597a1d2cfa0286',1,'BandInfo']]],
   ['length',['length',['../struct_point__2d.html#a2f00580a369bf9deeb9bb73957c67027',1,'Point_2d::length()'],['../struct_point__3d.html#afc60098f1c0852ac981905fff96b3f7e',1,'Point_3d::length()']]],
   ['length_5fsqr',['length_sqr',['../struct_point__2d.html#a7cbb6a3fafe2582851216f237caafb4b',1,'Point_2d']]],
@@ -33,8 +33,8 @@ var searchData=
   ['loadfitsimages',['LoadFitsImages',['../namespace_utilities.html#a74edb07bfa2d5cee2ef5450f0998ff57',1,'Utilities::LoadFitsImages(std::string dir, const std::string &amp;filespec, std::vector&lt; PixelMap &gt; &amp;images, int maxN, double resolution=-1, bool verbose=false)'],['../namespace_utilities.html#ad3f190fa0f0cac4eb4b7c981d5131e5d',1,'Utilities::LoadFitsImages(std::string dir, std::vector&lt; std::string &gt; filespecs, std::vector&lt; std::string &gt; file_non_specs, std::vector&lt; PixelMap &gt; &amp;images, std::vector&lt; std::string &gt; &amp;names, int maxN, double resolution=-1, bool verbose=false)']]],
   ['lobattokronrod',['LobattoKronrod',['../struct_i_s_o_p_1_1_rules_1_1_lobatto_kronrod.html',1,'ISOP::Rules']]],
   ['locate',['locate',['../namespace_utilities.html#a7bd6a986fd81b85b290cd9ab0034e3f8',1,'Utilities::locate(const std::vector&lt; T &gt; &amp;v, const T x)'],['../namespace_utilities.html#af07d27fc678946de3bc659e5d7f9feda',1,'Utilities::locate(const std::vector&lt; T &gt; &amp;v, F x, std::function&lt; bool(F, const T &amp;)&gt; less_than)'],['../namespace_utilities.html#acc053736fab41bd2807991e8dfcab129',1,'Utilities::locate(const std::vector&lt; T &gt; &amp;v, const std::vector&lt; size_t &gt; &amp;sorted_index, T value, size_t &amp;rank)']]],
-  ['locatez',['locateZ',['../class_source_multi_shapelets.html#a1087d18747846cc7290228b8344e4794',1,'SourceMultiShapelets']]],
+  ['locatez',['locateZ',['../class_source_multi_shapelets.html#a98cd7c4f5f4dda4c6b7dcbdc74168c7f',1,'SourceMultiShapelets']]],
   ['log_5fpolar_5fgrid',['log_polar_grid',['../namespace_utilities.html#a606f4aebc622ae58090979fda604d1fc',1,'Utilities']]],
   ['low_20level_20routines',['Low Level Routines',['../group___low_level.html',1,'']]],
-  ['lumdist',['lumDist',['../class_c_o_s_m_o_l_o_g_y.html#a7004548cdca13a33f3bc6d811f80bc8e',1,'COSMOLOGY']]]
+  ['lumdist',['lumDist',['../class_c_o_s_m_o_l_o_g_y.html#af438a75b834ac9278a605e149fec1f3d',1,'COSMOLOGY']]]
 ];
