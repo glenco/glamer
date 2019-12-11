@@ -20,6 +20,7 @@ var searchData=
   ['match_5fnfw',['match_nfw',['../class_n_f_w___utility.html#a2698ec2984a756004a4dbb080b63c70a',1,'NFW_Utility']]],
   ['maxrm',['maxrm',['../class_lens_halo_n_f_w.html#a87747a7b1ca624f4fb8630e59f69dea7',1,'LensHaloNFW::maxrm()'],['../class_lens_halo_hernquist.html#a3f2e647ea4094ec541b22297266e6cf4',1,'LensHaloHernquist::maxrm()'],['../class_lens_halo_jaffe.html#a5dcce014105956d1e790ba680438f6c1',1,'LensHaloJaffe::maxrm()']]],
   ['maxrsph',['maxrsph',['../struct_q_branch_n_b.html#a24bce67bfb8a3388c8657c1cd06143a8',1,'QBranchNB']]],
+  ['median',['median',['../namespace_utilities.html#a1ec52aba262343bc391860a37da4d472',1,'Utilities']]],
   ['mhat',['mhat',['../class_lens_halo_pseudo_n_f_w.html#ae9c7781165b1c6499fcf960092ba120c',1,'LensHaloPseudoNFW']]],
   ['mid_20level_20routines',['Mid Level Routines',['../group___mid_level.html',1,'']]],
   ['mixedvector',['MixedVector',['../class_utilities_1_1_mixed_vector.html',1,'Utilities']]],

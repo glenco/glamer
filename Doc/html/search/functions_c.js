@@ -15,6 +15,7 @@ var searchData=
   ['massby1dintegation',['MassBy1DIntegation',['../class_lens_halo.html#aeac398d7784e8a879eebeb2174349d61',1,'LensHalo']]],
   ['massby2dintegation',['MassBy2DIntegation',['../class_lens_halo.html#a7184a202e39fac7cf8f7d0436abdc982',1,'LensHalo']]],
   ['match_5fnfw',['match_nfw',['../class_n_f_w___utility.html#a2698ec2984a756004a4dbb080b63c70a',1,'NFW_Utility']]],
+  ['median',['median',['../namespace_utilities.html#a1ec52aba262343bc391860a37da4d472',1,'Utilities']]],
   ['mhat',['mhat',['../class_lens_halo_pseudo_n_f_w.html#ae9c7781165b1c6499fcf960092ba120c',1,'LensHaloPseudoNFW']]],
   ['mixedvector',['MixedVector',['../class_utilities_1_1_mixed_vector.html#a273ae7ad4804f8bf3e6063cfbfb3f14a',1,'Utilities::MixedVector::MixedVector()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a82e9f8959ec30422795b2d8ad874e5ec',1,'Utilities::MixedVector&lt; BaseT * &gt;::MixedVector()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#af8a762657a2cd8c85c20a31fbef2e0a1',1,'Utilities::MixedVector&lt; BaseT * &gt;::MixedVector(const MixedVector&lt; BaseT * &gt; &amp;other)']]],
   ['mosterstellarmassfraction',['MosterStellarMassFraction',['../class_h_a_l_o_calculator.html#a3852ec6628d11c11d36c7ef9ffcd01a5',1,'HALOCalculator']]],

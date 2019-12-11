@@ -8,7 +8,6 @@ var searchData=
   ['sourceblrsph1',['SourceBLRSph1',['../class_source_b_l_r_sph1.html',1,'']]],
   ['sourceblrsph2',['SourceBLRSph2',['../class_source_b_l_r_sph2.html',1,'']]],
   ['sourcefunctor',['SourceFunctor',['../struct_source_functor.html',1,'']]],
-  ['sourcegaussian',['SourceGaussian',['../class_source_gaussian.html',1,'']]],
   ['sourcemultianagalaxy',['SourceMultiAnaGalaxy',['../class_source_multi_ana_galaxy.html',1,'']]],
   ['sourcemultishapelets',['SourceMultiShapelets',['../class_source_multi_shapelets.html',1,'']]],
   ['sourceoverzier',['SourceOverzier',['../class_source_overzier.html',1,'']]],

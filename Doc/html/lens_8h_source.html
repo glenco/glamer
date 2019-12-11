@@ -295,408 +295,399 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; <span class="keyword">template</span>&lt;<span class="keyword">typename</span> HaloType&gt;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; HaloType* getMainHalo(std::size_t i);</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
-<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="class_lens.html#a7a8ed89e743c26f14ab8e3992fa3118a">  326</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens.html#a7a8ed89e743c26f14ab8e3992fa3118a">rayshooter</a>(<a class="code" href="struct_r_a_y.html">RAY</a> &amp;ray){</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <a class="code" href="struct_point.html">Point</a> im(ray.<a class="code" href="struct_r_a_y.html#a72cfa36f89cc4fff02d65c3d52223585">x</a>);</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <a class="code" href="struct_point.html">Point</a> so;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    im.image = &amp;so;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    rayshooterInternal(1,&amp;im);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    ray = im;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  }</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; <span class="keywordtype">void</span> rayshooterInternal(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> Npoints, <a class="code" href="struct_point.html">Point</a> *i_points, <span class="keywordtype">bool</span> RSIverbose = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordtype">void</span> info_rayshooter(<a class="code" href="struct_point.html">Point</a> *i_point</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                      ,std::vector&lt;Point_2d&gt; &amp; ang_positions</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                      ,std::vector&lt;KappaType&gt; &amp; kappa_on_planes</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                      ,std::vector&lt;std::vector&lt;LensHalo*&gt;&gt; &amp; halo_neighbors</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                      ,<a class="code" href="class_lens_halo.html">LensHalo</a> **halo_max</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                      ,KappaType &amp;kappa_max</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                      ,KappaType gamma_max[]</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                      ,PosType rmax,<span class="keywordtype">short</span> mode = 0  </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                      ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                                       );</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; <span class="comment">// methods used for use with implanted sources</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; <span class="keywordtype">short</span> ResetSourcePlane(PosType z,<span class="keywordtype">bool</span> nearest=<span class="keyword">false</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> GalID=0, PosType *xx=NULL,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;</div>
-<div class="line"><a name="l00352"></a><span class="lineno"><a class="line" href="class_lens.html#af4c16d98618b2a26e75c2673af2058c2">  352</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_lens.html#af4c16d98618b2a26e75c2673af2058c2">RevertSourcePlane</a>(){ toggle_source_plane = <span class="keyword">false</span>;}</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; <span class="comment">//void ImplantSource(unsigned long index,CosmoHndl cosmo);</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; PosType getSourceZ(){</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keywordflow">if</span>(toggle_source_plane){</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;   <span class="keywordflow">return</span> zs_implant;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }<span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;   <span class="keywordflow">return</span> plane_redshifts.back();</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; }</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; PosType getZmax()<span class="keyword"> const</span>{<span class="keywordflow">return</span> plane_redshifts.back();}</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordtype">void</span> rayshooter(<a class="code" href="struct_r_a_y.html">RAY</a> &amp;ray);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; <span class="keywordtype">void</span> rayshooterInternal(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> Npoints, <a class="code" href="struct_point.html">Point</a> *i_points, <span class="keywordtype">bool</span> RSIverbose = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keywordtype">void</span> info_rayshooter(<a class="code" href="struct_point.html">Point</a> *i_point</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                      ,std::vector&lt;Point_2d&gt; &amp; ang_positions</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                      ,std::vector&lt;KappaType&gt; &amp; kappa_on_planes</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                      ,std::vector&lt;std::vector&lt;LensHalo*&gt;&gt; &amp; halo_neighbors</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                      ,<a class="code" href="class_lens_halo.html">LensHalo</a> **halo_max</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                      ,KappaType &amp;kappa_max</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                      ,KappaType gamma_max[]</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                      ,PosType rmax,<span class="keywordtype">short</span> mode = 0  </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                      ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                                       );</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; <span class="comment">// methods used for use with implanted sources</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; <span class="keywordtype">short</span> ResetSourcePlane(PosType z,<span class="keywordtype">bool</span> nearest=<span class="keyword">false</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> GalID=0, PosType *xx=NULL,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="class_lens.html#af4c16d98618b2a26e75c2673af2058c2">  345</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_lens.html#af4c16d98618b2a26e75c2673af2058c2">RevertSourcePlane</a>(){ toggle_source_plane = <span class="keyword">false</span>;}</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; <span class="comment">//void ImplantSource(unsigned long index,CosmoHndl cosmo);</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; PosType getSourceZ(){</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="keywordflow">if</span>(toggle_source_plane){</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   <span class="keywordflow">return</span> zs_implant;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   <span class="keywordflow">return</span> plane_redshifts.back();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; PosType getZmax()<span class="keyword"> const</span>{<span class="keywordflow">return</span> plane_redshifts.back();}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
+<div class="line"><a name="l00358"></a><span class="lineno"><a class="line" href="class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04">  358</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04">PrintCosmology</a>() { cosmo.<a class="code" href="class_c_o_s_m_o_l_o_g_y.html#ad7c516a20dddc33a45b2f3537d67d32a">PrintCosmology</a>(); }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno"><a class="line" href="class_lens.html#adf1e3adf5df9c3d8f07e1a9d0a45b5c2">  361</a></span>&#160; PosType <a class="code" href="class_lens.html#adf1e3adf5df9c3d8f07e1a9d0a45b5c2">getSigmaCrit</a>(PosType zsource)<span class="keyword"> const</span>{ <span class="keywordflow">return</span> cosmo.<a class="code" href="class_c_o_s_m_o_l_o_g_y.html#a4f556223f13459f4f3b4e0491762ded7">SigmaCrit</a>(getZlens(), zsource); }</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
-<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04">  365</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04">PrintCosmology</a>() { cosmo.<a class="code" href="class_c_o_s_m_o_l_o_g_y.html#ad7c516a20dddc33a45b2f3537d67d32a">PrintCosmology</a>(); }</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno"><a class="line" href="class_lens.html#adf1e3adf5df9c3d8f07e1a9d0a45b5c2">  368</a></span>&#160; PosType <a class="code" href="class_lens.html#adf1e3adf5df9c3d8f07e1a9d0a45b5c2">getSigmaCrit</a>(PosType zsource)<span class="keyword"> const</span>{ <span class="keywordflow">return</span> cosmo.<a class="code" href="class_c_o_s_m_o_l_o_g_y.html#a4f556223f13459f4f3b4e0491762ded7">SigmaCrit</a>(getZlens(), zsource); }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">  372</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp; <a class="code" href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">getCosmo</a>(){<span class="keywordflow">return</span> cosmo;}</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  </div>
-<div class="line"><a name="l00375"></a><span class="lineno"><a class="line" href="class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9">  375</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9">TurnFieldOff</a>() { flag_switch_field_off = true ; }</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <span class="keywordtype">void</span> TurnFieldOn() { flag_switch_field_off = false ; }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  </div>
-<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="class_lens.html#a67d35eb74d359f504ec7088e128b1cdf">  379</a></span>&#160;  PosType <a class="code" href="class_lens.html#a67d35eb74d359f504ec7088e128b1cdf">getFieldMinMass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> field_min_mass ; }</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="comment">// get the field_Off value :</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="keywordtype">bool</span> getfieldOff()<span class="keyword"> const </span>{<span class="keywordflow">return</span> flag_switch_field_off ;}</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <span class="keywordtype">void</span> GenerateFieldHalos(<span class="keywordtype">double</span> min_mass </div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                          ,MassFuncType mass_function </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                          ,<span class="keywordtype">double</span> field_of_view  </div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                          ,<span class="keywordtype">int</span> Nplanes           </div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                          ,LensHaloType halo_type = nfw_lens  </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                          ,GalaxyLensHaloType galaxy_type = null_gal  </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                          ,<span class="keywordtype">double</span> buffer = 1.0 </div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                          ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                );</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  </div>
-<div class="line"><a name="l00398"></a><span class="lineno"><a class="line" href="class_lens.html#a2e312accd9681ad7e131b5530ca2affd">  398</a></span>&#160;  Lens &amp; <a class="code" href="class_lens.html#a2e312accd9681ad7e131b5530ca2affd">operator=</a>(Lens &amp;&amp;lens){</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    fieldofview = lens.<a class="code" href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">fieldofview</a>;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    seed = lens.seed;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    init_seed = lens.init_seed;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    cosmo = lens.cosmo;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    toggle_source_plane = lens.toggle_source_plane;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    dDs_implant = lens.dDs_implant;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    zs_implant = lens.zs_implant;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    Ds_implant = lens.Ds_implant;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    index_of_new_sourceplane = lens.index_of_new_sourceplane;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    zsource = lens.zsource;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    NZSamples = lens.NZSamples;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    zbins = lens.zbins;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    NhalosbinZ = lens.NhalosbinZ;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    Nhaloestot_Tab = lens.Nhaloestot_Tab;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    aveNhalosField = lens.aveNhalosField;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    Logm = lens.Logm;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    NhalosbinMass = lens.NhalosbinMass;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    sigma_back_Tab = lens.sigma_back_Tab;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    </div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    flag_switch_deflection_off = lens.flag_switch_deflection_off;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    flag_switch_lensing_off = lens.flag_switch_lensing_off;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    </div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    Dl = lens.Dl;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    dDl = lens.dDl;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    plane_redshifts = lens.plane_redshifts;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    charge = lens.charge;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    flag_switch_field_off = lens.flag_switch_field_off;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    </div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    field_halos = lens.field_halos;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    field_Nplanes_original = lens.field_Nplanes_original;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    field_Nplanes_current = lens.field_Nplanes_current;</div>
+<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">  365</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp; <a class="code" href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">getCosmo</a>(){<span class="keywordflow">return</span> cosmo;}</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  </div>
+<div class="line"><a name="l00368"></a><span class="lineno"><a class="line" href="class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9">  368</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9">TurnFieldOff</a>() { flag_switch_field_off = true ; }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="keywordtype">void</span> TurnFieldOn() { flag_switch_field_off = false ; }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  </div>
+<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="class_lens.html#a67d35eb74d359f504ec7088e128b1cdf">  372</a></span>&#160;  PosType <a class="code" href="class_lens.html#a67d35eb74d359f504ec7088e128b1cdf">getFieldMinMass</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> field_min_mass ; }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="comment">// get the field_Off value :</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  <span class="keywordtype">bool</span> getfieldOff()<span class="keyword"> const </span>{<span class="keywordflow">return</span> flag_switch_field_off ;}</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="keywordtype">void</span> GenerateFieldHalos(<span class="keywordtype">double</span> min_mass </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                          ,MassFuncType mass_function </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                          ,<span class="keywordtype">double</span> field_of_view  </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                          ,<span class="keywordtype">int</span> Nplanes           </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                          ,LensHaloType halo_type = nfw_lens  </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                          ,GalaxyLensHaloType galaxy_type = null_gal  </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                          ,<span class="keywordtype">double</span> buffer = 1.0 </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                          ,<span class="keywordtype">bool</span> verbose = <span class="keyword">false</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                );</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  </div>
+<div class="line"><a name="l00391"></a><span class="lineno"><a class="line" href="class_lens.html#a2e312accd9681ad7e131b5530ca2affd">  391</a></span>&#160;  Lens &amp; <a class="code" href="class_lens.html#a2e312accd9681ad7e131b5530ca2affd">operator=</a>(Lens &amp;&amp;lens){</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    fieldofview = lens.<a class="code" href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">fieldofview</a>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    seed = lens.seed;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    init_seed = lens.init_seed;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    cosmo = lens.cosmo;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    toggle_source_plane = lens.toggle_source_plane;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    dDs_implant = lens.dDs_implant;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    zs_implant = lens.zs_implant;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    Ds_implant = lens.Ds_implant;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    index_of_new_sourceplane = lens.index_of_new_sourceplane;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    zsource = lens.zsource;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    NZSamples = lens.NZSamples;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    zbins = lens.zbins;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    NhalosbinZ = lens.NhalosbinZ;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    Nhaloestot_Tab = lens.Nhaloestot_Tab;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    aveNhalosField = lens.aveNhalosField;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    Logm = lens.Logm;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    NhalosbinMass = lens.NhalosbinMass;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    sigma_back_Tab = lens.sigma_back_Tab;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    </div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    flag_switch_deflection_off = lens.flag_switch_deflection_off;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    flag_switch_lensing_off = lens.flag_switch_lensing_off;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    Dl = lens.Dl;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    dDl = lens.dDl;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    plane_redshifts = lens.plane_redshifts;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    charge = lens.charge;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    flag_switch_field_off = lens.flag_switch_field_off;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    field_halos = lens.field_halos;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    field_Nplanes_original = lens.field_Nplanes_original;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    field_Nplanes_current = lens.field_Nplanes_current;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    </div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    field_plane_redshifts = lens.field_plane_redshifts;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    field_plane_redshifts_original = lens.field_plane_redshifts_original;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    field_Dl = lens.field_Dl;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    field_Dl_original = lens.field_Dl_original;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    substructure = lens.substructure;</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    field_plane_redshifts = lens.field_plane_redshifts;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    field_plane_redshifts_original = lens.field_plane_redshifts_original;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    field_Dl = lens.field_Dl;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    field_Dl_original = lens.field_Dl_original;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    substructure = lens.substructure;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    WasInsertSubStructuresCalled = lens.WasInsertSubStructuresCalled;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    field_mass_func_type = lens.field_mass_func_type;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    mass_func_PL_slope = lens.mass_func_PL_slope;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    field_min_mass = lens.field_min_mass;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    field_int_prof_type = lens.field_int_prof_type;</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    field_prof_internal_slope = lens.field_prof_internal_slope;</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    </div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    WasInsertSubStructuresCalled = lens.WasInsertSubStructuresCalled;</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    field_mass_func_type = lens.field_mass_func_type;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    mass_func_PL_slope = lens.mass_func_PL_slope;</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    field_min_mass = lens.field_min_mass;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    field_int_prof_type = lens.field_int_prof_type;</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    field_prof_internal_slope = lens.field_prof_internal_slope;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    flag_field_gal_on = lens.flag_field_gal_on;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    field_int_prof_gal_type = lens.field_int_prof_gal_type;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    field_int_prof_gal_slope = lens.field_int_prof_gal_slope;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    redshift_planes_file = lens.redshift_planes_file;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    read_redshift_planes = lens.read_redshift_planes;</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    </div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    flag_field_gal_on = lens.flag_field_gal_on;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    field_int_prof_gal_type = lens.field_int_prof_gal_type;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    field_int_prof_gal_slope = lens.field_int_prof_gal_slope;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    </div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    redshift_planes_file = lens.redshift_planes_file;</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    read_redshift_planes = lens.read_redshift_planes;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    field_input_sim_file = lens.field_input_sim_file;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    field_input_sim_format = lens.field_input_sim_format;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    sim_input_flag = lens.sim_input_flag;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    read_sim_file = lens.read_sim_file;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    field_buffer = lens.field_buffer;</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    field_input_sim_file = lens.field_input_sim_file;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    field_input_sim_format = lens.field_input_sim_format;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    </div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    sim_input_flag = lens.sim_input_flag;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    read_sim_file = lens.read_sim_file;</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    field_buffer = lens.field_buffer;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    </div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    flag_switch_main_halo_on = lens.flag_switch_main_halo_on;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    </div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    main_plane_redshifts = lens.main_plane_redshifts;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    main_Dl = lens.main_Dl;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    </div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    main_halo_type = lens.main_halo_type;</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    main_galaxy_halo_type = lens.main_galaxy_halo_type;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    pixel_map_input_file = lens.pixel_map_input_file;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    pixel_map_on = lens.pixel_map_on;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    pixel_map_zeropad = lens.pixel_map_zeropad;</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    pixel_map_zeromean = lens.pixel_map_zeromean;</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    </div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    central_point_sphere = lens.central_point_sphere;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    sim_angular_radius = lens.sim_angular_radius;</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    inv_ang_screening_scale = lens.inv_ang_screening_scale;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    </div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    std::swap(lensing_planes,lens.lensing_planes);</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    std::swap(field_planes,lens.field_planes);</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    swap(main_halos,lens.main_halos);  </div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    std::swap(main_planes,lens.main_planes);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    </div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  }</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;  Lens(Lens &amp;&amp;lens){</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    *<span class="keyword">this</span> = std::move(lens);</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;  }</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;  </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;  Lens &amp; operator=(<span class="keyword">const</span> Lens &amp;lens);   <span class="comment">// block copy</span></div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;  Lens(<span class="keyword">const</span> Lens &amp;lens);</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;  </div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00496"></a><span class="lineno"><a class="line" href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">  496</a></span>&#160;  PosType <a class="code" href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">fieldofview</a>;</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; GLAMER_TEST_FRIEND(LensTest)</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; <span class="comment">// seed for random field generation</span></div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; long *seed;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  </div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;  <span class="keywordtype">long</span> init_seed;</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  <span class="comment">//InputParams init_params;</span></div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  </div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  <span class="comment">// the cosmology</span></div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> cosmo;</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; <span class="keywordtype">void</span> readCosmology(<a class="code" href="class_input_params.html">InputParams</a>&amp; params);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; <span class="keywordtype">void</span> assignParams(<a class="code" href="class_input_params.html">InputParams</a>&amp; params,<span class="keywordtype">bool</span> verbose = false);</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;  <span class="keywordtype">void</span> defaultParams(PosType zsource,<span class="keywordtype">bool</span> verbose = true);</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; <span class="keywordtype">bool</span> toggle_source_plane;</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; PosType dDs_implant;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; PosType zs_implant,Ds_implant;</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; <span class="keywordtype">int</span> index_of_new_sourceplane;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; PosType zsource;</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; </div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; <span class="keywordtype">void</span> quicksort(<a class="code" href="class_lens_halo.html">LensHaloHndl</a> *halo,PosType **pos,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> N);</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; <span class="keywordtype">void</span> buildPlanes(<a class="code" href="class_input_params.html">InputParams</a>&amp; params, <span class="keywordtype">bool</span> verbose);</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160; </div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; <span class="keywordtype">void</span> setFieldDist();</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; <span class="keywordtype">void</span> setFieldDistFromFile();</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; <span class="keywordtype">void</span> setupFieldPlanes();</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  <span class="keywordtype">void</span> ComputeHalosDistributionVariables ();</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    flag_switch_main_halo_on = lens.flag_switch_main_halo_on;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    main_plane_redshifts = lens.main_plane_redshifts;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    main_Dl = lens.main_Dl;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    main_halo_type = lens.main_halo_type;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    main_galaxy_halo_type = lens.main_galaxy_halo_type;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    pixel_map_input_file = lens.pixel_map_input_file;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    pixel_map_on = lens.pixel_map_on;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    pixel_map_zeropad = lens.pixel_map_zeropad;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    pixel_map_zeromean = lens.pixel_map_zeromean;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    central_point_sphere = lens.central_point_sphere;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    sim_angular_radius = lens.sim_angular_radius;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    inv_ang_screening_scale = lens.inv_ang_screening_scale;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    </div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    std::swap(lensing_planes,lens.lensing_planes);</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    std::swap(field_planes,lens.field_planes);</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    swap(main_halos,lens.main_halos);  </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    std::swap(main_planes,lens.main_planes);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    </div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;  }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;  Lens(Lens &amp;&amp;lens){</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    *<span class="keyword">this</span> = std::move(lens);</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;  }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;  </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;  Lens &amp; operator=(<span class="keyword">const</span> Lens &amp;lens);   <span class="comment">// block copy</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  Lens(<span class="keyword">const</span> Lens &amp;lens);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;  </div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00489"></a><span class="lineno"><a class="line" href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">  489</a></span>&#160;  PosType <a class="code" href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">fieldofview</a>;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; GLAMER_TEST_FRIEND(LensTest)</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; <span class="comment">// seed for random field generation</span></div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; long *seed;</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;  </div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;  <span class="keywordtype">long</span> init_seed;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  <span class="comment">//InputParams init_params;</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;  </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;  <span class="comment">// the cosmology</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> cosmo;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; <span class="keywordtype">void</span> readCosmology(<a class="code" href="class_input_params.html">InputParams</a>&amp; params);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; <span class="keywordtype">void</span> assignParams(<a class="code" href="class_input_params.html">InputParams</a>&amp; params,<span class="keywordtype">bool</span> verbose = false);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  <span class="keywordtype">void</span> defaultParams(PosType zsource,<span class="keywordtype">bool</span> verbose = true);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; <span class="keywordtype">bool</span> toggle_source_plane;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; PosType dDs_implant;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; PosType zs_implant,Ds_implant;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; <span class="keywordtype">int</span> index_of_new_sourceplane;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; PosType zsource;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; <span class="keywordtype">void</span> quicksort(<a class="code" href="class_lens_halo.html">LensHaloHndl</a> *halo,PosType **pos,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> N);</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; <span class="keywordtype">void</span> buildPlanes(<a class="code" href="class_input_params.html">InputParams</a>&amp; params, <span class="keywordtype">bool</span> verbose);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; <span class="keywordtype">void</span> setFieldDist();</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; <span class="keywordtype">void</span> setFieldDistFromFile();</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; <span class="keywordtype">void</span> setupFieldPlanes();</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;  <span class="keywordtype">void</span> ComputeHalosDistributionVariables ();</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;  </div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;  enum DM_Light_Division {All_DM,Moster};</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; <span class="keywordtype">void</span> createFieldHalos(<span class="keywordtype">bool</span> verbose,DM_Light_Division division = Moster);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;  </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; <span class="keywordtype">void</span> readInputSimFileMillennium(<span class="keywordtype">bool</span> verbose,DM_Light_Division division = Moster);</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;  </div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  enum DM_Light_Division {All_DM,Moster};</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; <span class="keywordtype">void</span> createFieldHalos(<span class="keywordtype">bool</span> verbose,DM_Light_Division division = Moster);</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;  </div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160; <span class="keywordtype">void</span> readInputSimFileMillennium(<span class="keywordtype">bool</span> verbose,DM_Light_Division division = Moster);</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;  </div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160; <span class="keywordtype">void</span> readInputSimFileMultiDarkHalos(<span class="keywordtype">bool</span> verbose,DM_Light_Division division = Moster);</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;  </div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  <span class="keywordtype">void</span> readInputSimFileObservedGalaxies(<span class="keywordtype">bool</span> verbose);</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;  </div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; <span class="keywordtype">void</span> createFieldPlanes(<span class="keywordtype">bool</span> verbose);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160; <span class="keywordtype">void</span> createMainHalos(<a class="code" href="class_input_params.html">InputParams</a>&amp; params);</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; <span class="keywordtype">void</span> createMainPlanes();</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; <span class="keywordtype">void</span> addMainHaloToPlane(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;  <span class="keywordtype">void</span> addMainHaloToNearestPlane(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; <span class="keywordtype">void</span> combinePlanes(<span class="keywordtype">bool</span> verbose);</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  <span class="comment">/* Variables used by buildPlanes, createFieldHalos, and createFieldPlanes */</span></div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  </div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> Nzbins = 64 ;</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> Nmassbin=64;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  <span class="keywordtype">int</span> NZSamples = 50;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  <span class="comment">// table for redshift bins for mass function</span></div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  std::vector&lt;PosType&gt; zbins ;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  <span class="comment">// table of number of halos per redshift bins for mass function</span></div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  std::vector&lt;PosType&gt; NhalosbinZ ;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;  std::vector&lt;PosType&gt; Nhaloestot_Tab ;</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;  PosType aveNhalosField ;</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;  std::vector&lt;PosType&gt; Logm;</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  <span class="comment">//std::size_t Nhalos ;</span></div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;<span class="comment"></span>  std::vector&lt;std::vector&lt;PosType&gt;&gt; NhalosbinMass;</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;  std::vector&lt;PosType&gt; sigma_back_Tab;</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  </div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;  <span class="comment">/* ----- */</span></div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  </div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  <span class="comment">// get the adress of field_plane_redshifts</span></div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;  std::vector&lt;PosType&gt; &amp; get_field_plane_redshifts () { <span class="keywordflow">return</span> field_plane_redshifts ; }</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;  </div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;  <span class="keywordtype">size_t</span> getNFieldHalos()<span class="keyword"> const </span>{<span class="keywordflow">return</span> field_halos.size();}</div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;  <span class="keywordtype">size_t</span> getNSubHalos()<span class="keyword"> const </span>{<span class="keywordflow">return</span> substructure.halos.size();}</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;  </div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;<span class="keyword">private</span>: <span class="comment">/* force calculation */</span></div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160; <span class="keywordtype">bool</span> flag_switch_deflection_off;</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; <span class="keywordtype">bool</span> flag_switch_lensing_off;</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160; std::vector&lt;LensPlane *&gt; lensing_planes;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160; std::vector&lt;PosType&gt; Dl;</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160; std::vector&lt;PosType&gt; dDl;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; std::vector&lt;PosType&gt; plane_redshifts;</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160; PosType charge;</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160; </div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="keyword">private</span>: <span class="comment">/* field */</span></div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160; <span class="keywordtype">bool</span> flag_switch_field_off;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160; </div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;  std::vector&lt;LensHalo*&gt; field_halos;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  std::size_t field_Nplanes_original;</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;  std::size_t field_Nplanes_current;</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  </div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160; std::vector&lt;LensPlane*&gt; field_planes;</div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  std::vector&lt;PosType&gt; field_plane_redshifts;</div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;  std::vector&lt;PosType&gt; field_plane_redshifts_original;</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  std::vector&lt;PosType&gt; field_Dl;</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  std::vector&lt;PosType&gt; field_Dl_original;</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  </div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  <span class="keyword">struct </span>SubStructureInfo{</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    <span class="comment">// things for substructures</span></div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;<span class="comment"></span>    std::vector&lt;LensHalo*&gt; halos;</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    <a class="code" href="class_lens_plane.html">LensPlane</a> *plane;</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    PosType Rregion = 0;</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    PosType Mmax = 0;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    PosType Mmin = 0;</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    PosType alpha = 0;</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    PosType Ndensity = 0;</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <a class="code" href="struct_point__2d.html">Point_2d</a> center;</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    PosType rho_tidal = 0;</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;    <span class="comment">// Added quantities for the resetting of the substructure</span></div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;    <span class="comment">// (when WasInsertSubStructuresCalled = MAYBE) :</span></div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;    PosType redshift = 0;</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;    <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  };</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  </div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  SubStructureInfo substructure;</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  </div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;  Boo WasInsertSubStructuresCalled = NO ;</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;  </div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160; <span class="comment">//PosType **halo_pos;</span></div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160; MassFuncType field_mass_func_type;</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160; PosType mass_func_PL_slope;</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; PosType field_min_mass;</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160; LensHaloType field_int_prof_type;</div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160; PosType field_prof_internal_slope;</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160; </div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; <span class="keywordtype">bool</span> flag_field_gal_on;</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; GalaxyLensHaloType field_int_prof_gal_type;</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;  PosType field_int_prof_gal_slope;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160; <span class="comment">// mass fraction in the host galaxy</span></div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160; <span class="comment">//PosType field_galaxy_mass_fraction;</span></div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160; </div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; std::string redshift_planes_file;</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160; <span class="keywordtype">bool</span> read_redshift_planes;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; std::string field_input_sim_file;</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;  HaloCatFormats field_input_sim_format;</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;  </div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160; <span class="keywordtype">bool</span> sim_input_flag;</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160; <span class="comment">//std::string input_gal_file;</span></div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160; <span class="comment">//bool gal_input_flag;</span></div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; <span class="keywordtype">bool</span> read_sim_file;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160; <span class="keywordtype">void</span> readInputSimFileMultiDarkHalos(<span class="keywordtype">bool</span> verbose,DM_Light_Division division = Moster);</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;  </div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;  <span class="keywordtype">void</span> readInputSimFileObservedGalaxies(<span class="keywordtype">bool</span> verbose);</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;  </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; <span class="keywordtype">void</span> createFieldPlanes(<span class="keywordtype">bool</span> verbose);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; <span class="keywordtype">void</span> createMainHalos(<a class="code" href="class_input_params.html">InputParams</a>&amp; params);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; <span class="keywordtype">void</span> createMainPlanes();</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; <span class="keywordtype">void</span> addMainHaloToPlane(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;  <span class="keywordtype">void</span> addMainHaloToNearestPlane(<a class="code" href="class_lens_halo.html">LensHalo</a>* halo);</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; <span class="keywordtype">void</span> combinePlanes(<span class="keywordtype">bool</span> verbose);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;  <span class="comment">/* Variables used by buildPlanes, createFieldHalos, and createFieldPlanes */</span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;  </div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> Nzbins = 64 ;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">int</span> Nmassbin=64;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  <span class="keywordtype">int</span> NZSamples = 50;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  <span class="comment">// table for redshift bins for mass function</span></div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;  std::vector&lt;PosType&gt; zbins ;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;  <span class="comment">// table of number of halos per redshift bins for mass function</span></div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;  std::vector&lt;PosType&gt; NhalosbinZ ;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  std::vector&lt;PosType&gt; Nhaloestot_Tab ;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  PosType aveNhalosField ;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  std::vector&lt;PosType&gt; Logm;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;  <span class="comment">//std::size_t Nhalos ;</span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="comment"></span>  std::vector&lt;std::vector&lt;PosType&gt;&gt; NhalosbinMass;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;  std::vector&lt;PosType&gt; sigma_back_Tab;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;  </div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;  <span class="comment">/* ----- */</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  </div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  <span class="comment">// get the adress of field_plane_redshifts</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  std::vector&lt;PosType&gt; &amp; get_field_plane_redshifts () { <span class="keywordflow">return</span> field_plane_redshifts ; }</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;  </div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  <span class="keywordtype">size_t</span> getNFieldHalos()<span class="keyword"> const </span>{<span class="keywordflow">return</span> field_halos.size();}</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  <span class="keywordtype">size_t</span> getNSubHalos()<span class="keyword"> const </span>{<span class="keywordflow">return</span> substructure.halos.size();}</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  </div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;<span class="keyword">private</span>: <span class="comment">/* force calculation */</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160; <span class="keywordtype">bool</span> flag_switch_deflection_off;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; <span class="keywordtype">bool</span> flag_switch_lensing_off;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160; </div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160; std::vector&lt;LensPlane *&gt; lensing_planes;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; std::vector&lt;PosType&gt; Dl;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; std::vector&lt;PosType&gt; dDl;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160; std::vector&lt;PosType&gt; plane_redshifts;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160; PosType charge;</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160; </div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="keyword">private</span>: <span class="comment">/* field */</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160; <span class="keywordtype">bool</span> flag_switch_field_off;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; </div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;  std::vector&lt;LensHalo*&gt; field_halos;</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  std::size_t field_Nplanes_original;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  std::size_t field_Nplanes_current;</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;  </div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160; std::vector&lt;LensPlane*&gt; field_planes;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;  std::vector&lt;PosType&gt; field_plane_redshifts;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;  std::vector&lt;PosType&gt; field_plane_redshifts_original;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  std::vector&lt;PosType&gt; field_Dl;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;  std::vector&lt;PosType&gt; field_Dl_original;</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;  </div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;  <span class="keyword">struct </span>SubStructureInfo{</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    <span class="comment">// things for substructures</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;<span class="comment"></span>    std::vector&lt;LensHalo*&gt; halos;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    <a class="code" href="class_lens_plane.html">LensPlane</a> *plane;</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    PosType Rregion = 0;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;    PosType Mmax = 0;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;    PosType Mmin = 0;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;    PosType alpha = 0;</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;    PosType Ndensity = 0;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;    <a class="code" href="struct_point__2d.html">Point_2d</a> center;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;    PosType rho_tidal = 0;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;    <span class="comment">// Added quantities for the resetting of the substructure</span></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;    <span class="comment">// (when WasInsertSubStructuresCalled = MAYBE) :</span></div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    PosType redshift = 0;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;    <span class="keywordtype">bool</span> verbose = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  };</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  </div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;  SubStructureInfo substructure;</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;  </div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;  Boo WasInsertSubStructuresCalled = NO ;</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;  </div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160; <span class="comment">//PosType **halo_pos;</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160; </div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160; MassFuncType field_mass_func_type;</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; PosType mass_func_PL_slope;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160; PosType field_min_mass;</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160; LensHaloType field_int_prof_type;</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160; PosType field_prof_internal_slope;</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; <span class="keywordtype">bool</span> flag_field_gal_on;</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160; GalaxyLensHaloType field_int_prof_gal_type;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;  PosType field_int_prof_gal_slope;</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160; <span class="comment">// mass fraction in the host galaxy</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; <span class="comment">//PosType field_galaxy_mass_fraction;</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160; </div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160; std::string redshift_planes_file;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160; <span class="keywordtype">bool</span> read_redshift_planes;</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; std::string field_input_sim_file;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  HaloCatFormats field_input_sim_format;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;  </div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160; <span class="keywordtype">bool</span> sim_input_flag;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160; <span class="comment">//std::string input_gal_file;</span></div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160; <span class="comment">//bool gal_input_flag;</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; <span class="keywordtype">bool</span> read_sim_file;</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160; </div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160; PosType field_buffer;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160; </div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;<span class="keyword">private</span>: <span class="comment">/* main */</span></div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; <span class="keywordtype">bool</span> flag_switch_main_halo_on;</div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160; </div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160; PosType field_buffer;</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160; </div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;<span class="keyword">private</span>: <span class="comment">/* main */</span></div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160; <span class="keywordtype">bool</span> flag_switch_main_halo_on;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160; </div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160; <a class="code" href="class_utilities_1_1_mixed_vector.html">Utilities::MixedVector&lt;LensHalo*&gt;</a> main_halos;</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160; std::vector&lt;LensPlane*&gt; main_planes;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160; std::vector&lt;PosType&gt; main_plane_redshifts;</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160; std::vector&lt;PosType&gt; main_Dl;</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160; </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160; LensHaloType main_halo_type;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160; GalaxyLensHaloType main_galaxy_halo_type;</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160; </div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;<span class="keyword">private</span>: <span class="comment">/* input */</span></div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; std::string pixel_map_input_file;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160; </div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  <span class="keywordtype">short</span> pixel_map_on;</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  <span class="keywordtype">int</span> pixel_map_zeropad;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  <span class="keywordtype">bool</span> pixel_map_zeromean;</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160; <span class="keywordtype">void</span> readPixelizedDensity();</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160; <a class="code" href="class_utilities_1_1_mixed_vector.html">Utilities::MixedVector&lt;LensHalo*&gt;</a> main_halos;</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160; std::vector&lt;LensPlane*&gt; main_planes;</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160; std::vector&lt;PosType&gt; main_plane_redshifts;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160; std::vector&lt;PosType&gt; main_Dl;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160; </div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160; LensHaloType main_halo_type;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160; GalaxyLensHaloType main_galaxy_halo_type;</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160; </div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;<span class="keyword">private</span>: <span class="comment">/* input */</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160; std::string pixel_map_input_file;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160; </div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;  <span class="keywordtype">short</span> pixel_map_on;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;  <span class="keywordtype">int</span> pixel_map_zeropad;</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  <span class="keywordtype">bool</span> pixel_map_zeromean;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160; <span class="keywordtype">void</span> readPixelizedDensity();</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  </div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  <a class="code" href="class_utilities_1_1_geometry_1_1_spherical_point.html">Utilities::Geometry::SphericalPoint</a> central_point_sphere;</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  PosType sim_angular_radius;</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  PosType inv_ang_screening_scale;</div>
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  </div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;  <a class="code" href="class_utilities_1_1_geometry_1_1_spherical_point.html">Utilities::Geometry::SphericalPoint</a> central_point_sphere;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  PosType sim_angular_radius;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  PosType inv_ang_screening_scale;</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;  </div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;};</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;</div>
-<div class="line"><a name="l00742"></a><span class="lineno"><a class="line" href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">  742</a></span>&#160;<span class="keyword">inline</span> std::size_t <a class="code" href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">Lens::getNMainHalos</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">size</a>();</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;}</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> HaloType&gt;</div>
-<div class="line"><a name="l00748"></a><span class="lineno"><a class="line" href="class_lens.html#a99272fce19fad415cf95b2b496681bb2">  748</a></span>&#160;<span class="keyword">inline</span> std::size_t <a class="code" href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">Lens::getNMainHalos</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">size</a>&lt;HaloType&gt;();</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;}</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;</div>
-<div class="line"><a name="l00753"></a><span class="lineno"><a class="line" href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">  753</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_lens_halo.html">LensHalo</a>* <a class="code" href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">Lens::getMainHalo</a>(std::size_t i)</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;{</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a9fcf946ef58281ffa6a56b8cd226d867">at</a>(i);</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;};</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;</div>
+<div class="line"><a name="l00735"></a><span class="lineno"><a class="line" href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">  735</a></span>&#160;<span class="keyword">inline</span> std::size_t <a class="code" href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">Lens::getNMainHalos</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">size</a>();</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;}</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> HaloType&gt;</div>
+<div class="line"><a name="l00741"></a><span class="lineno"><a class="line" href="class_lens.html#a99272fce19fad415cf95b2b496681bb2">  741</a></span>&#160;<span class="keyword">inline</span> std::size_t <a class="code" href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">Lens::getNMainHalos</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">size</a>&lt;HaloType&gt;();</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;}</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
+<div class="line"><a name="l00746"></a><span class="lineno"><a class="line" href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">  746</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="class_lens_halo.html">LensHalo</a>* <a class="code" href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">Lens::getMainHalo</a>(std::size_t i)</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;{</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a9fcf946ef58281ffa6a56b8cd226d867">at</a>(i);</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;}</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> HaloType&gt;</div>
+<div class="line"><a name="l00752"></a><span class="lineno"><a class="line" href="class_lens.html#afbff81a6b811293718d2f58665b81571">  752</a></span>&#160;<span class="keyword">inline</span> HaloType* <a class="code" href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">Lens::getMainHalo</a>(std::size_t i)</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;{</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  <span class="keywordflow">if</span>(main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">size</a>&lt;HaloType&gt;() == 0 ) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a9fcf946ef58281ffa6a56b8cd226d867">at</a>&lt;HaloType&gt;(i);</div>
 <div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;}</div>
 <div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;</div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> HaloType&gt;</div>
-<div class="line"><a name="l00759"></a><span class="lineno"><a class="line" href="class_lens.html#afbff81a6b811293718d2f58665b81571">  759</a></span>&#160;<span class="keyword">inline</span> HaloType* <a class="code" href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">Lens::getMainHalo</a>(std::size_t i)</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;{</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;  <span class="keywordflow">if</span>(main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">size</a>&lt;HaloType&gt;() == 0 ) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160; <span class="keywordflow">return</span> main_halos.<a class="code" href="class_utilities_1_1_mixed_vector.html#a9fcf946ef58281ffa6a56b8cd226d867">at</a>&lt;HaloType&gt;(i);</div>
-<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;}</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;<span class="keyword">typedef</span> Lens* <a class="code" href="class_lens.html">LensHndl</a>;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MULTIPLANE_H_ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="keyword">typedef</span> Lens* <a class="code" href="class_lens.html">LensHndl</a>;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MULTIPLANE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;</div>
 <div class="ttc" id="class_lens_html_a5d549b1f217ff1a5c8246ffe845036b9"><div class="ttname"><a href="class_lens.html#a5d549b1f217ff1a5c8246ffe845036b9">Lens::insertMainHalos</a></div><div class="ttdeci">void insertMainHalos(std::vector&lt; T &gt; &amp;my_halos, bool addplanes, bool verbose)</div><div class="ttdoc">Inserts a sequense of main lens halos and adds them to the existing ones. Then all lensing planes are...</div><div class="ttdef"><b>Definition:</b> lens.h:228</div></div>
 <div class="ttc" id="struct_r_a_y_html"><div class="ttname"><a href="struct_r_a_y.html">RAY</a></div><div class="ttdoc">Simple representaion of a light path giving position on the image and source planes and lensing quant...</div><div class="ttdef"><b>Definition:</b> point.h:227</div></div>
-<div class="ttc" id="class_lens_html_adf1e3adf5df9c3d8f07e1a9d0a45b5c2"><div class="ttname"><a href="class_lens.html#adf1e3adf5df9c3d8f07e1a9d0a45b5c2">Lens::getSigmaCrit</a></div><div class="ttdeci">PosType getSigmaCrit(PosType zsource) const </div><div class="ttdoc">returns the critical density at the main lens in Msun/ Mpc^2 for a source at zsource ...</div><div class="ttdef"><b>Definition:</b> lens.h:368</div></div>
+<div class="ttc" id="class_lens_html_adf1e3adf5df9c3d8f07e1a9d0a45b5c2"><div class="ttname"><a href="class_lens.html#adf1e3adf5df9c3d8f07e1a9d0a45b5c2">Lens::getSigmaCrit</a></div><div class="ttdeci">PosType getSigmaCrit(PosType zsource) const </div><div class="ttdoc">returns the critical density at the main lens in Msun/ Mpc^2 for a source at zsource ...</div><div class="ttdef"><b>Definition:</b> lens.h:361</div></div>
 <div class="ttc" id="class_lens_html_a0cfbb73f3ff13e43beccb50d18a89af4"><div class="ttname"><a href="class_lens.html#a0cfbb73f3ff13e43beccb50d18a89af4">Lens::replaceMainHalos</a></div><div class="ttdeci">void replaceMainHalos(std::vector&lt; T &gt; &amp;my_halos, bool verbose)</div><div class="ttdoc">Inserts a sequense of main lens halos and remove all previous ones. </div><div class="ttdef"><b>Definition:</b> lens.h:252</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a9fcf946ef58281ffa6a56b8cd226d867"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a9fcf946ef58281ffa6a56b8cd226d867">Utilities::MixedVector::at</a></div><div class="ttdeci">BaseT &amp; at(std::size_t i)</div><div class="ttdoc">indexed access with bounds checking </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:445</div></div>
 <div class="ttc" id="class_lens_plane_html"><div class="ttname"><a href="class_lens_plane.html">LensPlane</a></div><div class="ttdoc">Base class representing a plane in redshift onto which lenses are placed. </div><div class="ttdef"><b>Definition:</b> planes.h:15</div></div>
 <div class="ttc" id="struct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">A point on the source or image plane that contains a position and the lensing quantities. </div><div class="ttdef"><b>Definition:</b> point.h:173</div></div>
-<div class="ttc" id="class_lens_html_a5576b59d2f70c1d0f0a798b8a92a4f81"><div class="ttname"><a href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">Lens::getCosmo</a></div><div class="ttdeci">const COSMOLOGY &amp; getCosmo()</div><div class="ttdoc">returns a const reference to the cosmology so that constant functions can be used, but the cosmological parameters cannot be changed. </div><div class="ttdef"><b>Definition:</b> lens.h:372</div></div>
-<div class="ttc" id="class_lens_html_a6e65d6c8d5c97e4024d7002eb8cc7d04"><div class="ttname"><a href="class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04">Lens::PrintCosmology</a></div><div class="ttdeci">void PrintCosmology()</div><div class="ttdoc">print the cosmological parameters </div><div class="ttdef"><b>Definition:</b> lens.h:365</div></div>
+<div class="ttc" id="class_lens_html_a5576b59d2f70c1d0f0a798b8a92a4f81"><div class="ttname"><a href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">Lens::getCosmo</a></div><div class="ttdeci">const COSMOLOGY &amp; getCosmo()</div><div class="ttdoc">returns a const reference to the cosmology so that constant functions can be used, but the cosmological parameters cannot be changed. </div><div class="ttdef"><b>Definition:</b> lens.h:365</div></div>
+<div class="ttc" id="class_lens_html_a6e65d6c8d5c97e4024d7002eb8cc7d04"><div class="ttname"><a href="class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04">Lens::PrintCosmology</a></div><div class="ttdeci">void PrintCosmology()</div><div class="ttdoc">print the cosmological parameters </div><div class="ttdef"><b>Definition:</b> lens.h:358</div></div>
 <div class="ttc" id="class_c_o_s_m_o_l_o_g_y_html_aa2635b4eed3bef6f5b8d63126a53201e"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#aa2635b4eed3bef6f5b8d63126a53201e">COSMOLOGY::angDist</a></div><div class="ttdeci">double angDist(double zo, double z) const </div><div class="ttdoc">The angular size distance in units Mpc. </div><div class="ttdef"><b>Definition:</b> cosmo.cpp:682</div></div>
 <div class="ttc" id="struct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:37</div></div>
-<div class="ttc" id="class_lens_html_a7a8ed89e743c26f14ab8e3992fa3118a"><div class="ttname"><a href="class_lens.html#a7a8ed89e743c26f14ab8e3992fa3118a">Lens::rayshooter</a></div><div class="ttdeci">void rayshooter(RAY &amp;ray)</div><div class="ttdoc">Using to shoot a single ray. </div><div class="ttdef"><b>Definition:</b> lens.h:326</div></div>
 <div class="ttc" id="class_c_o_s_m_o_l_o_g_y_html_ad7c516a20dddc33a45b2f3537d67d32a"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#ad7c516a20dddc33a45b2f3537d67d32a">COSMOLOGY::PrintCosmology</a></div><div class="ttdeci">void PrintCosmology(short physical=0) const </div><div class="ttdoc">Print cosmological parameters. </div><div class="ttdef"><b>Definition:</b> cosmo.cpp:333</div></div>
 <div class="ttc" id="class_lens_halo_html"><div class="ttname"><a href="class_lens_halo.html">LensHalo</a></div><div class="ttdoc">A base class for all types of lensing "halos" which are any mass distribution that cause lensing...</div><div class="ttdef"><b>Definition:</b> lens_halos.h:43</div></div>
 <div class="ttc" id="class_lens_html_a2b74d034213c2da2c21b99156afd946a"><div class="ttname"><a href="class_lens.html#a2b74d034213c2da2c21b99156afd946a">Lens::getAngDistLens</a></div><div class="ttdeci">PosType getAngDistLens() const </div><div class="ttdoc">Angular size distance (Mpc) to first main lens plane. </div><div class="ttdef"><b>Definition:</b> lens.h:114</div></div>
-<div class="ttc" id="class_lens_html_aee17d6e92bea425de358a9381ad6280b"><div class="ttname"><a href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">Lens::fieldofview</a></div><div class="ttdeci">PosType fieldofview</div><div class="ttdoc">field of view in square degrees </div><div class="ttdef"><b>Definition:</b> lens.h:496</div></div>
+<div class="ttc" id="class_lens_html_aee17d6e92bea425de358a9381ad6280b"><div class="ttname"><a href="class_lens.html#aee17d6e92bea425de358a9381ad6280b">Lens::fieldofview</a></div><div class="ttdeci">PosType fieldofview</div><div class="ttdoc">field of view in square degrees </div><div class="ttdef"><b>Definition:</b> lens.h:489</div></div>
 <div class="ttc" id="class_utilities_1_1_geometry_1_1_spherical_point_html"><div class="ttname"><a href="class_utilities_1_1_geometry_1_1_spherical_point.html">Utilities::Geometry::SphericalPoint</a></div><div class="ttdoc">represents a point in spherical coordinates theta = 0 is equator </div><div class="ttdef"><b>Definition:</b> geometry.h:28</div></div>
 <div class="ttc" id="class_lens_html_aba7e1b3c66565092fdc7555dc4704896"><div class="ttname"><a href="class_lens.html#aba7e1b3c66565092fdc7555dc4704896">Lens::replaceMainHalo</a></div><div class="ttdeci">void replaceMainHalo(const T &amp;halo_in, bool addplanes, bool verbose=false)</div><div class="ttdoc">Inserts a single main lens halo and deletes all previous ones. Then all lensing planes are updated ac...</div><div class="ttdef"><b>Definition:</b> lens.h:196</div></div>
-<div class="ttc" id="class_lens_html_a67d35eb74d359f504ec7088e128b1cdf"><div class="ttname"><a href="class_lens.html#a67d35eb74d359f504ec7088e128b1cdf">Lens::getFieldMinMass</a></div><div class="ttdeci">PosType getFieldMinMass() const </div><div class="ttdoc">get the field min mass : </div><div class="ttdef"><b>Definition:</b> lens.h:379</div></div>
+<div class="ttc" id="class_lens_html_a67d35eb74d359f504ec7088e128b1cdf"><div class="ttname"><a href="class_lens.html#a67d35eb74d359f504ec7088e128b1cdf">Lens::getFieldMinMass</a></div><div class="ttdeci">PosType getFieldMinMass() const </div><div class="ttdoc">get the field min mass : </div><div class="ttdef"><b>Definition:</b> lens.h:372</div></div>
 <div class="ttc" id="class_lens_html_aa8a8bbd818794bc97ee6d3f842e82e54"><div class="ttname"><a href="class_lens.html#aa8a8bbd818794bc97ee6d3f842e82e54">Lens::moveinMainHalo</a></div><div class="ttdeci">void moveinMainHalo(T &amp;halo_in, bool addplanes, bool verbose=false)</div><div class="ttdoc">This has the same effect as insertMainHalo(), but the halo is not copied, it is moved. </div><div class="ttdef"><b>Definition:</b> lens.h:175</div></div>
 <div class="ttc" id="class_c_o_s_m_o_l_o_g_y_html_a4f556223f13459f4f3b4e0491762ded7"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#a4f556223f13459f4f3b4e0491762ded7">COSMOLOGY::SigmaCrit</a></div><div class="ttdeci">double SigmaCrit(double zlens, double zsource) const </div><div class="ttdoc">The lensing critical density in Msun / Mpc^2. </div><div class="ttdef"><b>Definition:</b> cosmo.cpp:1517</div></div>
 <div class="ttc" id="class_lens_html_a257e43a2bc0266e2bcca852907d62fd0"><div class="ttname"><a href="class_lens.html#a257e43a2bc0266e2bcca852907d62fd0">Lens::getfov</a></div><div class="ttdeci">PosType getfov() const </div><div class="ttdoc">field of view in square degrees </div><div class="ttdef"><b>Definition:</b> lens.h:87</div></div>
 <div class="ttc" id="class_lens_html"><div class="ttname"><a href="class_lens.html">Lens</a></div><div class="ttdoc">A class to represents a lens with multiple planes. </div><div class="ttdef"><b>Definition:</b> lens.h:71</div></div>
-<div class="ttc" id="class_lens_html_adbe47fad91453ed6b5e12d0f573d9514"><div class="ttname"><a href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">Lens::getNMainHalos</a></div><div class="ttdeci">std::size_t getNMainHalos() const </div><div class="ttdoc">get number of main halos </div><div class="ttdef"><b>Definition:</b> lens.h:742</div></div>
-<div class="ttc" id="class_lens_html_a40ef8e31f5a9d3ada238db9c8a8babe9"><div class="ttname"><a href="class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9">Lens::TurnFieldOff</a></div><div class="ttdeci">void TurnFieldOff()</div><div class="ttdoc">set flag_switch_field_off, turn the field On/Off : </div><div class="ttdef"><b>Definition:</b> lens.h:375</div></div>
-<div class="ttc" id="class_lens_html_aecc7754f42783ebe2f3d7a8074591322"><div class="ttname"><a href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">Lens::getMainHalo</a></div><div class="ttdeci">LensHalo * getMainHalo(std::size_t i)</div><div class="ttdoc">get single main halo </div><div class="ttdef"><b>Definition:</b> lens.h:753</div></div>
+<div class="ttc" id="class_lens_html_adbe47fad91453ed6b5e12d0f573d9514"><div class="ttname"><a href="class_lens.html#adbe47fad91453ed6b5e12d0f573d9514">Lens::getNMainHalos</a></div><div class="ttdeci">std::size_t getNMainHalos() const </div><div class="ttdoc">get number of main halos </div><div class="ttdef"><b>Definition:</b> lens.h:735</div></div>
+<div class="ttc" id="class_lens_html_a40ef8e31f5a9d3ada238db9c8a8babe9"><div class="ttname"><a href="class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9">Lens::TurnFieldOff</a></div><div class="ttdeci">void TurnFieldOff()</div><div class="ttdoc">set flag_switch_field_off, turn the field On/Off : </div><div class="ttdef"><b>Definition:</b> lens.h:368</div></div>
+<div class="ttc" id="class_lens_html_aecc7754f42783ebe2f3d7a8074591322"><div class="ttname"><a href="class_lens.html#aecc7754f42783ebe2f3d7a8074591322">Lens::getMainHalo</a></div><div class="ttdeci">LensHalo * getMainHalo(std::size_t i)</div><div class="ttdoc">get single main halo </div><div class="ttdef"><b>Definition:</b> lens.h:746</div></div>
 <div class="ttc" id="namespace_utilities_html_ab5fbd0455bb23cf8290252d8ddef0874"><div class="ttname"><a href="namespace_utilities.html#ab5fbd0455bb23cf8290252d8ddef0874">Utilities::delete_container</a></div><div class="ttdeci">void delete_container(Container &amp;c)</div><div class="ttdoc">delete the objects that are pointed to in a container of pointers </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:922</div></div>
 <div class="ttc" id="class_lens_html_a3ce0e1a7a39c3ead31199d65f8661f24"><div class="ttname"><a href="class_lens.html#a3ce0e1a7a39c3ead31199d65f8661f24">Lens::getZlens</a></div><div class="ttdeci">PosType getZlens() const </div><div class="ttdoc">Redshift of first main lens plane. </div><div class="ttdef"><b>Definition:</b> lens.h:104</div></div>
 <div class="ttc" id="class_lens_html_ac83c23a4a6b9e4a55ee6599558c97d98"><div class="ttname"><a href="class_lens.html#ac83c23a4a6b9e4a55ee6599558c97d98">Lens::getNplanes</a></div><div class="ttdeci">int getNplanes() const </div><div class="ttdoc">the total number of lens planes </div><div class="ttdef"><b>Definition:</b> lens.h:84</div></div>
-<div class="ttc" id="class_lens_html_af4c16d98618b2a26e75c2673af2058c2"><div class="ttname"><a href="class_lens.html#af4c16d98618b2a26e75c2673af2058c2">Lens::RevertSourcePlane</a></div><div class="ttdeci">void RevertSourcePlane()</div><div class="ttdoc">Revert the source redshift to the value it was when the Lens was created. </div><div class="ttdef"><b>Definition:</b> lens.h:352</div></div>
+<div class="ttc" id="class_lens_html_af4c16d98618b2a26e75c2673af2058c2"><div class="ttname"><a href="class_lens.html#af4c16d98618b2a26e75c2673af2058c2">Lens::RevertSourcePlane</a></div><div class="ttdeci">void RevertSourcePlane()</div><div class="ttdoc">Revert the source redshift to the value it was when the Lens was created. </div><div class="ttdef"><b>Definition:</b> lens.h:345</div></div>
 <div class="ttc" id="class_input_params_html"><div class="ttname"><a href="class_input_params.html">InputParams</a></div><div class="ttdoc">Structure for reading and writing parameters to and from a parameter file as well as a container for ...</div><div class="ttdef"><b>Definition:</b> InputParams.h:96</div></div>
 <div class="ttc" id="class_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology...</div><div class="ttdef"><b>Definition:</b> cosmo.h:49</div></div>
-<div class="ttc" id="struct_r_a_y_html_a72cfa36f89cc4fff02d65c3d52223585"><div class="ttname"><a href="struct_r_a_y.html#a72cfa36f89cc4fff02d65c3d52223585">RAY::x</a></div><div class="ttdeci">Point_2d x</div><div class="ttdoc">image position </div><div class="ttdef"><b>Definition:</b> point.h:275</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html_a1b9ea49fdf5e6e04e22eba13ce197f9a"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html#a1b9ea49fdf5e6e04e22eba13ce197f9a">Utilities::MixedVector::size</a></div><div class="ttdeci">std::size_t size() const </div><div class="ttdoc">number of all elements </div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:480</div></div>
 <div class="ttc" id="class_lens_html_a09c7b4946959331f7dc5aed93053727c"><div class="ttname"><a href="class_lens.html#a09c7b4946959331f7dc5aed93053727c">Lens::set</a></div><div class="ttdeci">bool set</div><div class="ttdoc">marks if the lens has been setup. </div><div class="ttdef"><b>Definition:</b> lens.h:81</div></div>
-<div class="ttc" id="class_lens_html_a2e312accd9681ad7e131b5530ca2affd"><div class="ttname"><a href="class_lens.html#a2e312accd9681ad7e131b5530ca2affd">Lens::operator=</a></div><div class="ttdeci">Lens &amp; operator=(Lens &amp;&amp;lens)</div><div class="ttdef"><b>Definition:</b> lens.h:398</div></div>
+<div class="ttc" id="class_lens_html_a2e312accd9681ad7e131b5530ca2affd"><div class="ttname"><a href="class_lens.html#a2e312accd9681ad7e131b5530ca2affd">Lens::operator=</a></div><div class="ttdeci">Lens &amp; operator=(Lens &amp;&amp;lens)</div><div class="ttdef"><b>Definition:</b> lens.h:391</div></div>
 <div class="ttc" id="class_utilities_1_1_mixed_vector_html"><div class="ttname"><a href="class_utilities_1_1_mixed_vector.html">Utilities::MixedVector&lt; LensHalo * &gt;</a></div></div>
 <div class="ttc" id="class_lens_html_a177ee7cbb406d835865edd855b556d63"><div class="ttname"><a href="class_lens.html#a177ee7cbb406d835865edd855b556d63">Lens::insertMainHalo</a></div><div class="ttdeci">void insertMainHalo(const T &amp;halo_in, bool addplanes, bool verbose=false)</div><div class="ttdoc">inserts a single main lens halo and adds it to the existing ones </div><div class="ttdef"><b>Definition:</b> lens.h:152</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2019 16:52:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Dec 11 2019 16:21:48 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
