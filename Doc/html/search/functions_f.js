@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['paste',['paste',['../class_pixel_map.html#a007c98640a772347dd2e728d78e17ec1',1,'PixelMap']]],
   ['phi_5fh',['phi_h',['../class_lens_halo_jaffe.html#a081cb42540744ca510139fa101af0099',1,'LensHaloJaffe']]],
   ['pixelmap',['PixelMap',['../class_pixel_map.html#ac284147e8e2b7aa5bf44f16dfb327956',1,'PixelMap::PixelMap(const PixelMap &amp;pmap, double res_ratio)'],['../class_pixel_map.html#a74ed2fba8e634543912eed915b84f67c',1,'PixelMap::PixelMap(const PixelMap &amp;pmap, const double *center, std::size_t Npixels)'],['../class_pixel_map.html#ac8f828ed897cf21b6c58fbc662799a9e',1,'PixelMap::PixelMap(const double *center, std::size_t Npixels, double resolution)'],['../class_pixel_map.html#ab47c999c5606d71fded6719a422435b7',1,'PixelMap::PixelMap(const double *center, std::size_t Nx, std::size_t Ny, double resolution)'],['../class_pixel_map.html#abbb6324ef72a652a01be316198e6708d',1,'PixelMap::PixelMap(std::string fitsfilename, double resolution=-1)']]],
   ['point',['Point',['../struct_point.html#ad92f2337b839a94ce97dcdb439b4325a',1,'Point']]],
@@ -18,6 +19,7 @@ var searchData=
   ['powerehv2',['powerEHv2',['../class_c_o_s_m_o_l_o_g_y.html#ac9475a8c3cbaf9f92b52c352d576b121',1,'COSMOLOGY']]],
   ['powerlawdfdm',['powerlawdfdm',['../class_c_o_s_m_o_l_o_g_y.html#a2e68907f8e9866c5f353ec9bd88e07db',1,'COSMOLOGY']]],
   ['powerloc',['powerloc',['../class_c_o_s_m_o_l_o_g_y.html#a1616ae2b54a9045667251ec6e73e5ce3',1,'COSMOLOGY']]],
+  ['preprocessfftwmap',['PreProcessFFTWMap',['../struct_lens_map.html#aa3adde0cb3de40785353369e4a9b9063',1,'LensMap::PreProcessFFTWMap(float zerosize, T Wphi_of_k, bool do_alpha=true)'],['../struct_lens_map.html#acb8a896dbda50a54dcb0662bb8dc7cb7',1,'LensMap::PreProcessFFTWMap(T Wphi_of_k, bool do_alpha=true)'],['../struct_m_o_k_amap.html#af727bfd358c85542536abf46e21a24a1',1,'MOKAmap::PreProcessFFTWMap()']]],
   ['prevpower',['prevpower',['../namespace_utilities.html#abe61342a713adf7115f351e3342a2b79',1,'Utilities']]],
   ['print',['Print',['../struct_point.html#a3f9b1af89673b440408017d620bfc0d7',1,'Point::Print()'],['../class_c_o_s_m_o_l_o_g_y.html#a9765ee93bdedf497b6088b48b74e02e4',1,'COSMOLOGY::print()'],['../class_input_params.html#a56b3e9cfe97a2b34041dc14d7f7c23ab',1,'InputParams::print()'],['../struct_branch.html#a5a07d166792af57c2c9d024efed0c5bc',1,'Branch::print()']]],
   ['print_5funused',['print_unused',['../class_input_params.html#a9284789f68aad3e89ed6abcc331cea80',1,'InputParams']]],
@@ -28,7 +30,7 @@ var searchData=
   ['printcosmology',['PrintCosmology',['../class_c_o_s_m_o_l_o_g_y.html#ad7c516a20dddc33a45b2f3537d67d32a',1,'COSMOLOGY::PrintCosmology()'],['../class_lens.html#a6e65d6c8d5c97e4024d7002eb8cc7d04',1,'Lens::PrintCosmology()']]],
   ['printcsv',['printCSV',['../class_lens_halo.html#a5f8ebb324b88486fc401134dbb5404ab',1,'LensHalo']]],
   ['printfile',['printfile',['../class_caustic_data_store.html#a21e78436b2b8aeee93da0c6f16ba949a',1,'CausticDataStore']]],
-  ['printfits',['printFITS',['../class_pixel_map.html#ac10164b75aad43110aca109f96b437ff',1,'PixelMap']]],
+  ['printfits',['printFITS',['../class_pixel_map.html#af14f5bd5a72ceb53673075842891453f',1,'PixelMap']]],
   ['printimageinfo',['PrintImageInfo',['../struct_image_info.html#a06b2ce2fd6df2e4b326035e598c68150',1,'ImageInfo']]],
   ['printmultilens',['printMultiLens',['../class_lens.html#a39c41fbb1d57645660161259c6352d85',1,'Lens']]],
   ['printparticlesinbranch',['printParticlesInBranch',['../class_tree_quad_particles.html#a7b15d8c65bded2dcc42904c6be780ce8',1,'TreeQuadParticles']]],

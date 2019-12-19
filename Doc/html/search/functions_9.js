@@ -11,7 +11,7 @@ var searchData=
   ['initfrommassfunc',['initFromMassFunc',['../class_lens_halo.html#a8b31bdf68c61572e7a32dc3da6b139c8',1,'LensHalo::initFromMassFunc()'],['../class_lens_halo_n_f_w.html#a228966c2dd97f08cb94b7541880d6d3d',1,'LensHaloNFW::initFromMassFunc()'],['../class_lens_halo_pseudo_n_f_w.html#a943a817b3f07b719a7becccd302d833e',1,'LensHaloPseudoNFW::initFromMassFunc()'],['../class_lens_halo_power_law.html#a2265529c633a4ac00ab06eaebe3c9c18',1,'LensHaloPowerLaw::initFromMassFunc()'],['../class_lens_halo_dummy.html#ae775b683ce68dec913a90116f19cf471',1,'LensHaloDummy::initFromMassFunc()']]],
   ['inputparams',['InputParams',['../class_input_params.html#a96e724a0dd6be6682bbbf5498c1746e9',1,'InputParams::InputParams()'],['../class_input_params.html#a08aa8b40523e8c5ace7ee14bcec66cba',1,'InputParams::InputParams(std::string paramfile)']]],
   ['insertmainhalo',['insertMainHalo',['../class_lens.html#a177ee7cbb406d835865edd855b556d63',1,'Lens']]],
-  ['insertmainhalos',['insertMainHalos',['../class_lens.html#a5d549b1f217ff1a5c8246ffe845036b9',1,'Lens']]],
+  ['insertmainhalos',['insertMainHalos',['../class_lens.html#af7403e6372cd1a396fb098cbd1d824cc',1,'Lens']]],
   ['insertsubstructures',['insertSubstructures',['../class_lens.html#a0324de1e5d25474e42cff1633be9eb1a',1,'Lens']]],
   ['integratefilter',['integrateFilter',['../class_source.html#a01f88323bd6901f46f7ae204f357d722',1,'Source']]],
   ['integratefiltersed',['integrateFilterSed',['../class_source.html#a6dc3d4f4cd3dd89d336443f6c57f2920',1,'Source']]],

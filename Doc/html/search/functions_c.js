@@ -9,6 +9,7 @@ var searchData=
   ['map_5fimages',['map_images',['../namespace_image_finding.html#a2abeafd5d8401246c3a4ed2dc79989c3',1,'ImageFinding']]],
   ['map_5fimages_5ffixedgrid',['map_images_fixedgrid',['../namespace_image_finding.html#aa7596607b563fc41789b2db5a2277a2c',1,'ImageFinding']]],
   ['map_5fimagesisop',['map_imagesISOP',['../namespace_image_finding.html#a70bbca22cc631872b33de04441c20b99',1,'ImageFinding']]],
+  ['map_5fvariables',['map_variables',['../class_lens_halo.html#a81b1a30f1fe716a34799469554693f6e',1,'LensHalo']]],
   ['mapcausticcurves',['mapCausticCurves',['../namespace_image_finding.html#a98d48e2de32898ac9b73c252e0ad2607',1,'ImageFinding']]],
   ['mapcriticalcurves',['mapCriticalCurves',['../namespace_image_finding.html#aa3186a3ec810f8f68f57f7b6bfdf762d',1,'ImageFinding']]],
   ['mapsurfacebrightness',['MapSurfaceBrightness',['../struct_grid.html#a797067dc0d3104916e78b36f6d4d0dd6',1,'Grid::MapSurfaceBrightness(PixelMap &amp;map)'],['../struct_grid.html#ad98811bdf4d3b3baded53966291654e0',1,'Grid::MapSurfaceBrightness(double resolution)']]],
@@ -21,5 +22,6 @@ var searchData=
   ['mosterstellarmassfraction',['MosterStellarMassFraction',['../class_h_a_l_o_calculator.html#a3852ec6628d11c11d36c7ef9ffcd01a5',1,'HALOCalculator']]],
   ['moveinmainhalo',['moveinMainHalo',['../class_lens.html#aa8a8bbd818794bc97ee6d3f842e82e54',1,'Lens']]],
   ['multigridsmoother',['MultiGridSmoother',['../class_multi_grid_smoother.html#ad45d83237961c0395a13d4626f4406d1',1,'MultiGridSmoother']]],
-  ['multiplier',['multiplier',['../class_source_multi_ana_galaxy.html#a73cba06a8e4c42c40e69050ad74d955b',1,'SourceMultiAnaGalaxy']]]
+  ['multiplier',['multiplier',['../class_source_multi_ana_galaxy.html#a73cba06a8e4c42c40e69050ad74d955b',1,'SourceMultiAnaGalaxy']]],
+  ['myread',['Myread',['../struct_lens_map.html#a4e5f0a2b7660a21d925c57bcb887cc5c',1,'LensMap']]]
 ];

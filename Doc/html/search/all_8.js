@@ -9,7 +9,8 @@ var searchData=
   ['halonumberdensityonsky',['haloNumberDensityOnSky',['../class_c_o_s_m_o_l_o_g_y.html#a1127b68c89a89284d80837b3bd9567d5',1,'COSMOLOGY']]],
   ['halonumberinbufferedcone',['haloNumberInBufferedCone',['../class_c_o_s_m_o_l_o_g_y.html#a9807e0a14dfeb53f396ac16caac30f89',1,'COSMOLOGY']]],
   ['halos',['halos',['../class_make_particle_lenses.html#a443665691944437629a0bfaf360db54c',1,'MakeParticleLenses']]],
+  ['highestsurfacebrightnessray',['highestSurfaceBrightnessRay',['../struct_image_info.html#ac6a5cfe6e64a1a3b9dab07957678611c',1,'ImageInfo']]],
   ['high_20level_20routines',['High Level Routines',['../group___high_level.html',1,'']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]]
+  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]],
+  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities']]]
 ];

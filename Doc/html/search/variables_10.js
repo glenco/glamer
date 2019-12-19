@@ -14,5 +14,6 @@ var searchData=
   ['source_5ftau',['source_tau',['../class_source_b_l_r.html#acb238f6da46a44564cc4099ce7248b41',1,'SourceBLR']]],
   ['source_5fx',['source_x',['../class_source.html#a48ab18beedb3237d02841cc213e4d4df',1,'Source']]],
   ['star_5ffstars',['star_fstars',['../class_lens_halo.html#ac7311b734e9dc9161bd45179ea7eee9a',1,'LensHalo']]],
-  ['star_5fsigma',['star_Sigma',['../class_lens_halo.html#ae60e512a990463f98f491f76425fe602',1,'LensHalo']]]
+  ['star_5fsigma',['star_Sigma',['../class_lens_halo.html#ae60e512a990463f98f491f76425fe602',1,'LensHalo']]],
+  ['surface_5fdensity',['surface_density',['../struct_lens_map.html#a56f291d46a4321ed9402bff4fb7d22f1',1,'LensMap::surface_density()'],['../struct_m_o_k_amap.html#aff6e7b73ead075f0f59ecaa1b813e885',1,'MOKAmap::surface_density()']]]
 ];

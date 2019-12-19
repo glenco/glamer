@@ -3,7 +3,7 @@ var searchData=
   ['absmag',['AbsMag',['../class_sun_info.html#a4ad3c5bb030cbacd1050e6be829706a2',1,'SunInfo']]],
   ['adaptivesmooth',['AdaptiveSmooth',['../namespace_utilities.html#a1faf43d7dba91cb2697307c22249bc12',1,'Utilities::AdaptiveSmooth(const std::valarray&lt; double &gt; &amp;map_in, size_t Nx, size_t Ny, double value)'],['../namespace_utilities.html#a144a1a0d2b8ea76c952f10b4a5f45369',1,'Utilities::AdaptiveSmooth(const std::vector&lt; double &gt; &amp;map_in, size_t Nx, size_t Ny, double value)']]],
   ['add',['add',['../class_input_params.html#a1634bebf74a595b8a2469da315c6f91b',1,'InputParams']]],
-  ['add_5fcolumn',['add_column',['../class_utilities_1_1_i_o_1_1_data_frame.html#a46fd013c7701abbec6aeed04e085fd4e',1,'Utilities::IO::DataFrame']]],
+  ['add_5fcolumn',['add_column',['../class_utilities_1_1_data_frame.html#aebad772c1a4bf3d181903c405840934e',1,'Utilities::DataFrame']]],
   ['add_5fparticles',['add_particles',['../class_multi_grid_smoother.html#a717e96f65e41a5e43b781bc8fa11968f',1,'MultiGridSmoother']]],
   ['addcrits',['addcrits',['../class_caustic_data_store.html#a8b60ed3a01aea83747f3dd5c07f93dab',1,'CausticDataStore']]],
   ['addcurve',['AddCurve',['../class_pixel_map.html#a4a336288dac5dbd9c54702afcdc7b2b0',1,'PixelMap']]],

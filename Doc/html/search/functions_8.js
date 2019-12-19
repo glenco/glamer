@@ -6,5 +6,6 @@ var searchData=
   ['halonumberdensity',['haloNumberDensity',['../class_c_o_s_m_o_l_o_g_y.html#aefccbf1c35cbd2b9a732411483544e4e',1,'COSMOLOGY']]],
   ['halonumberdensityonsky',['haloNumberDensityOnSky',['../class_c_o_s_m_o_l_o_g_y.html#a1127b68c89a89284d80837b3bd9567d5',1,'COSMOLOGY']]],
   ['halonumberinbufferedcone',['haloNumberInBufferedCone',['../class_c_o_s_m_o_l_o_g_y.html#a9807e0a14dfeb53f396ac16caac30f89',1,'COSMOLOGY']]],
+  ['highestsurfacebrightnessray',['highestSurfaceBrightnessRay',['../struct_image_info.html#ac6a5cfe6e64a1a3b9dab07957678611c',1,'ImageInfo']]],
   ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]]
 ];

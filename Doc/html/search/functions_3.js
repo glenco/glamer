@@ -8,8 +8,7 @@ var searchData=
   ['centerofmass',['CenterOfMass',['../class_lens_halo_particles.html#a5b60131204bd264e6ceb0bc1852f27fb',1,'LensHaloParticles']]],
   ['changeband',['changeBand',['../class_source_overzier.html#aa5c8cdf97bb6660a33d1ac27e0d5fe52',1,'SourceOverzier::changeBand()'],['../class_source_overzier_plus.html#ab6164374500d1a48af7403640ca8853c',1,'SourceOverzierPlus::changeBand()']]],
   ['changefilter',['changeFilter',['../class_source.html#a24792a230ec1b4155cb028c19a142046',1,'Source']]],
-  ['checkcosmology',['checkCosmology',['../class_lens_halo_mass_map.html#afb6416d108ed824204166b6c7d763eb0',1,'LensHaloMassMap']]],
-  ['clean',['Clean',['../class_pixel_map.html#a19dbe3bb64c468cf7666226c20185ed1',1,'PixelMap']]],
+  ['check_5fdirectory',['check_directory',['../namespace_utilities_1_1_i_o.html#ad361d43d9a51c81897c51286e7851318',1,'Utilities::IO']]],
   ['clear',['clear',['../class_utilities_1_1_mixed_vector.html#a6d724134c9bacc0b9e1f6a3c615cffd3',1,'Utilities::MixedVector::clear()'],['../class_utilities_1_1_mixed_vector.html#ad4598bd250d5c20f5f00dc52e42f45cf',1,'Utilities::MixedVector::clear()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a5e07bf6f3d7b4ae2c30a94461ed12b98',1,'Utilities::MixedVector&lt; BaseT * &gt;::clear()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a407e89145f29f7cba1af9aa9b9569e99',1,'Utilities::MixedVector&lt; BaseT * &gt;::clear()']]],
   ['clearallmarks',['ClearAllMarks',['../struct_grid.html#a3942b5f9d22c55c2b1cc9619991f1412',1,'Grid']]],
   ['clearmainhalo',['clearMainHalo',['../class_lens.html#ad3fc4fa967bf6f74cfc0bdf257bc0f30',1,'Lens']]],
@@ -36,6 +35,7 @@ var searchData=
   ['correlationfunction',['CorrelationFunction',['../class_c_o_s_m_o_l_o_g_y.html#adeb92b72113231a46a0a51e4ab73c0af',1,'COSMOLOGY']]],
   ['cosmology',['COSMOLOGY',['../class_c_o_s_m_o_l_o_g_y.html#a17551a1bbbd8b43038e51da26a6d89aa',1,'COSMOLOGY']]],
   ['count_5fislands',['count_islands',['../class_pixel_map.html#a722c37ca591f7de045d141174899241c',1,'PixelMap']]],
+  ['countcolumns',['CountColumns',['../namespace_utilities_1_1_i_o.html#a20a28f18b459ed427b0a3a8500e302fc',1,'Utilities::IO']]],
   ['critareaorder',['CritAreaOrder',['../class_caustic_data_store.html#a0551fc7b7a892ec97885d2f1695f48a2',1,'CausticDataStore']]],
   ['critradiusorder',['CritRadiusOrder',['../class_caustic_data_store.html#a55f1ae0bd681780623dfda1c31610f29',1,'CausticDataStore']]],
   ['cylindricalcut',['cylindricalCut',['../class_make_particle_lenses.html#a55fa4825f80d5020b01691f66012d713',1,'MakeParticleLenses']]]

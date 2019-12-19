@@ -19,7 +19,7 @@ var searchData=
   ['innerborder',['innerborder',['../struct_image_info.html#a6fb8f305b3e9c94f2aba9c401a5493f1',1,'ImageInfo::innerborder()'],['../struct_old_image_info.html#adb96b3f7b0a637c7e96cf68c56a70e22',1,'OldImageInfo::innerborder()']]],
   ['inputparams',['InputParams',['../class_input_params.html',1,'InputParams'],['../class_input_params.html#a96e724a0dd6be6682bbbf5498c1746e9',1,'InputParams::InputParams()'],['../class_input_params.html#a08aa8b40523e8c5ace7ee14bcec66cba',1,'InputParams::InputParams(std::string paramfile)']]],
   ['insertmainhalo',['insertMainHalo',['../class_lens.html#a177ee7cbb406d835865edd855b556d63',1,'Lens']]],
-  ['insertmainhalos',['insertMainHalos',['../class_lens.html#a5d549b1f217ff1a5c8246ffe845036b9',1,'Lens']]],
+  ['insertmainhalos',['insertMainHalos',['../class_lens.html#af7403e6372cd1a396fb098cbd1d824cc',1,'Lens']]],
   ['insertsubstructures',['insertSubstructures',['../class_lens.html#a0324de1e5d25474e42cff1633be9eb1a',1,'Lens']]],
   ['installing_20glamer',['Installing GLAMER',['../install.html',1,'']]],
   ['integratefilter',['integrateFilter',['../class_source.html#a01f88323bd6901f46f7ae204f357d722',1,'Source']]],
