@@ -22,7 +22,7 @@ CMakeLists.txt		NR			examples`
 ```
 
 Now creating a makefile or IDE project (requires cmake on your machine)
-There are also libraries such as fftw, cfitsio, and ccfits that the installation might require or might be optional.  See the wiki page for this project for details.
+There are also libraries such as fftw and cfitsio that the installation might requires.  See the wiki page for this project for details.
 
 ```
 mkdir build
