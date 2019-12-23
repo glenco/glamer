@@ -11,6 +11,5 @@ var searchData=
   ['halos',['halos',['../class_make_particle_lenses.html#a443665691944437629a0bfaf360db54c',1,'MakeParticleLenses']]],
   ['highestsurfacebrightnessray',['highestSurfaceBrightnessRay',['../struct_image_info.html#ac6a5cfe6e64a1a3b9dab07957678611c',1,'ImageInfo']]],
   ['high_20level_20routines',['High Level Routines',['../group___high_level.html',1,'']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve']]],
-  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities']]]
+  ['hilbertcurve',['HilbertCurve',['../class_utilities_1_1_hilbert_curve.html',1,'Utilities::HilbertCurve'],['../class_utilities_1_1_hilbert_curve.html#a3506c62830c56c37d6a612889ba4c417',1,'Utilities::HilbertCurve::HilbertCurve()']]]
 ];
