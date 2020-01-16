@@ -30,7 +30,7 @@ include(GLAMER)
 find_package(Threads)
 
 if(ENABLE_FITS)
-	find_package(cfitsio REQUIRED)
+	find_package(CFITSIO REQUIRED)
 endif()
 
 if(ENABLE_FFTW)
