@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 2.8.10)
 
 ####
 # project settings
@@ -10,7 +10,7 @@ set(GLAMER_VERSION_MAJOR 0)
 set(GLAMER_VERSION_MINOR 1)
 
 set(GLAMER_VERSION ${GLAMER_VERSION_MAJOR}.${GLAMER_VERSION_MINOR})
-set (CMAKE_CXX_STANDARD 11)
+#set (CMAKE_CXX_STANDARD 11)
 
 ####
 # module settings
@@ -30,7 +30,7 @@ include(GLAMER)
 find_package(Threads)
 
 if(ENABLE_FITS)
-	find_package(CCfits REQUIRED)
+	find_package(CFITSIO REQUIRED)
 endif()
 
 if(ENABLE_FFTW)
@@ -80,8 +80,8 @@ set(GLAMER_LIBRARIES SLsimLib CosmoLib NR ${CMAKE_THREAD_LIBS_INIT})
 set(GLAMER_DEFINITIONS )
 
 if(ENABLE_FITS)
-	list(APPEND GLAMER_INCLUDE_DIRS ${CCFITS_INCLUDE_DIRS})
-	list(APPEND GLAMER_LIBRARIES ${CCFITS_LIBRARIES})
+	list(APPEND GLAMER_INCLUDE_DIRS ${CFITSIO_INCLUDE_DIRS})
+	list(APPEND GLAMER_LIBRARIES ${CFITSIO_LIBRARIES})
 endif()
 
 if(ENABLE_FFTW)
