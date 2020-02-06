@@ -30,9 +30,7 @@ include(GLAMER)
 find_package(Threads)
 
 if(ENABLE_FITS)
-	##find_package(cfitsio REQUIRED)
 	find_package(CFITSIO REQUIRED)
-	include_directories(${CFITSIO_INCLUDE_DIRS})
 endif()
 
 if(ENABLE_FFTW)
