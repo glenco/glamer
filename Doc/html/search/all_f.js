@@ -31,7 +31,7 @@ var searchData=
   ['preprocessfftwmap',['PreProcessFFTWMap',['../struct_m_o_k_amap.html#af727bfd358c85542536abf46e21a24a1',1,'MOKAmap']]],
   ['prev',['prev',['../struct_q_branch_n_b.html#ae6ada2bd564b1be351ecbf1bb6c2eab2',1,'QBranchNB::prev()'],['../struct_branch_n_b.html#a466e287cc03f291a34fe95a1f498a428',1,'BranchNB::prev()'],['../struct_tree_simple_vec_1_1_branch_v.html#ad493eead0df977dafd5ae4a07f82b54a',1,'TreeSimpleVec::BranchV::prev()']]],
   ['prevpower',['prevpower',['../namespace_utilities.html#abe61342a713adf7115f351e3342a2b79',1,'Utilities']]],
-  ['print',['print',['../class_c_o_s_m_o_l_o_g_y.html#a293d89de4b3501c5c3da1c3ac87c8fdb',1,'COSMOLOGY::print()'],['../class_input_params.html#ab12499bdfe87a47837ba9f2d73ffecd6',1,'InputParams::print()'],['../struct_branch.html#a5a07d166792af57c2c9d024efed0c5bc',1,'Branch::print()'],['../struct_point.html#a3f9b1af89673b440408017d620bfc0d7',1,'Point::Print()']]],
+  ['print',['Print',['../struct_point.html#a3f9b1af89673b440408017d620bfc0d7',1,'Point::Print()'],['../class_c_o_s_m_o_l_o_g_y.html#a293d89de4b3501c5c3da1c3ac87c8fdb',1,'COSMOLOGY::print()'],['../class_input_params.html#ab12499bdfe87a47837ba9f2d73ffecd6',1,'InputParams::print()'],['../struct_branch.html#a5a07d166792af57c2c9d024efed0c5bc',1,'Branch::print()']]],
   ['print_5funused',['print_unused',['../class_input_params.html#a1e78eec9e10c6bec1d68660e29c381fe',1,'InputParams']]],
   ['print_5fused',['print_used',['../class_input_params.html#accec2e5a02dc77ebbc9200c7f8a069f3',1,'InputParams']]],
   ['printascii',['printASCII',['../class_pixel_map.html#af1f20cbcd83cacd6e18e30b9861e6f55',1,'PixelMap']]],
