@@ -94,8 +94,8 @@ Collaboration diagram for LensHaloParticles&lt; PType &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0e42070ac8593aa7f83f5de726c322fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a0e42070ac8593aa7f83f5de726c322fb">LensHaloParticles</a> (const std::string &amp;simulation_filename, SimFileFormat format, PosType redshift, int Nsmooth, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, bool my_multimass, PosType MinPSize, bool verbose=false)</td></tr>
-<tr class="separator:a0e42070ac8593aa7f83f5de726c322fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a360597b187b7ec037bb6c79b811e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a64a360597b187b7ec037bb6c79b811e9">LensHaloParticles</a> (const std::string &amp;simulation_filename, SimFileFormat format, PosType redshift, int Nsmooth, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, bool my_multimass, PosType MinPSize, PosType rescale_mass=1.0, bool verbose=false)</td></tr>
+<tr class="separator:a64a360597b187b7ec037bb6c79b811e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44b985231f84d0e2c8bd9fa35ba2b7fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a44b985231f84d0e2c8bd9fa35ba2b7fc">LensHaloParticles</a> (std::vector&lt; PType &gt; &amp;pvector, float redshift, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, float MinPSize, bool verbose=false)</td></tr>
 <tr class="separator:a44b985231f84d0e2c8bd9fa35ba2b7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c31d8d5f869a0280a83113a85d5607d"><td class="memItemLeft" align="right" valign="top"><a id="a0c31d8d5f869a0280a83113a85d5607d"></a>
@@ -117,6 +117,10 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getN</b> () const</
 <a class="el" href="struct_point__3d.html">Point_3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a5b60131204bd264e6ceb0bc1852f27fb">CenterOfMass</a> ()</td></tr>
 <tr class="memdesc:a5b60131204bd264e6ceb0bc1852f27fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">get current center of mass in input coordinates <br /></td></tr>
 <tr class="separator:a5b60131204bd264e6ceb0bc1852f27fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f055f6c37e1cedb5104c907e159fd6f"><td class="memItemLeft" align="right" valign="top"><a id="a0f055f6c37e1cedb5104c907e159fd6f"></a>
+<a class="el" href="struct_point__3d.html">Point_3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a0f055f6c37e1cedb5104c907e159fd6f">DensestPoint</a> ()</td></tr>
+<tr class="memdesc:a0f055f6c37e1cedb5104c907e159fd6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the densistt point in input coordinates <br /></td></tr>
+<tr class="separator:a0f055f6c37e1cedb5104c907e159fd6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fbe0f1a990d0e8c070e4f79b5c831b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a4fbe0f1a990d0e8c070e4f79b5c831b8">readPositionFileASCII</a> (const std::string &amp;filename)</td></tr>
 <tr class="memdesc:a4fbe0f1a990d0e8c070e4f79b5c831b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads number of particle and particle positons into Npoint and xp from a ASCII file.  <a href="#a4fbe0f1a990d0e8c070e4f79b5c831b8">More...</a><br /></td></tr>
 <tr class="separator:a4fbe0f1a990d0e8c070e4f79b5c831b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -556,6 +560,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a08e7a2adc2e0fcd9be5dbd40be1be230"><td class="memItemLeft" align="right" valign="top"><a id="a08e7a2adc2e0fcd9be5dbd40be1be230"></a>
 <a class="el" href="struct_point__3d.html">Point_3d</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mcenter</b></td></tr>
 <tr class="separator:a08e7a2adc2e0fcd9be5dbd40be1be230"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c48538608447de920e68330e65db55"><td class="memItemLeft" align="right" valign="top"><a id="a92c48538608447de920e68330e65db55"></a>
+<a class="el" href="struct_point__3d.html">Point_3d</a>&#160;</td><td class="memItemRight" valign="bottom"><b>densest_point</b></td></tr>
+<tr class="separator:a92c48538608447de920e68330e65db55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af258c24e430a22a319fbaa3c6ebb539c"><td class="memItemLeft" align="right" valign="top"><a id="af258c24e430a22a319fbaa3c6ebb539c"></a>
 PType *&#160;</td><td class="memItemRight" valign="bottom"><b>pp</b></td></tr>
 <tr class="separator:af258c24e430a22a319fbaa3c6ebb539c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -719,8 +726,8 @@ class LensHaloParticles&lt; PType &gt;</h3>
 <p>Input format: ASCII - a table of three floats for positions in comoving Mpc (no h factor). The lines "# nparticles ...." and "# mass ...." must be in header at the top of the file. # is otherwise a comment character. Only one type of particle in a single input file.</p>
 <p>More input formats will be added in the future. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0e42070ac8593aa7f83f5de726c322fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e42070ac8593aa7f83f5de726c322fb">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[1/4]</span></h2>
+<a id="a64a360597b187b7ec037bb6c79b811e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a360597b187b7ec037bb6c79b811e9">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -784,6 +791,12 @@ template&lt;typename PType &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>rescale_mass</em> = <code>1.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
         </tr>
@@ -805,6 +818,7 @@ template&lt;typename PType &gt; </div>
     <tr><td class="paramname">recenter</td><td>center on center of mass </td></tr>
     <tr><td class="paramname">my_multimass</td><td>set to true is particles have different sizes </td></tr>
     <tr><td class="paramname">MinPSize</td><td>minimum particle size </td></tr>
+    <tr><td class="paramname">rescale_mass</td><td>rescale particle masses </td></tr>
   </table>
   </dd>
 </dl>
@@ -1294,7 +1308,7 @@ template&lt;typename PType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 23 2020 16:06:42 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 27 2020 13:44:32 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.15
 </small></address>

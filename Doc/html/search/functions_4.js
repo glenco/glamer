@@ -10,6 +10,7 @@ var searchData=
   ['delta_5fc',['delta_c',['../class_c_o_s_m_o_l_o_g_y.html#a40e4182a5b1ad349790b412e38928d2d',1,'COSMOLOGY']]],
   ['deltavir',['DeltaVir',['../class_c_o_s_m_o_l_o_g_y.html#a0483cae597332064632dcafe551ab791',1,'COSMOLOGY']]],
   ['densest_5fparticle',['densest_particle',['../class_make_particle_lenses.html#af2890c8549b7a386c724337e3d718031',1,'MakeParticleLenses']]],
+  ['densestpoint',['DensestPoint',['../class_lens_halo_particles.html#a0f055f6c37e1cedb5104c907e159fd6f',1,'LensHaloParticles']]],
   ['dgrowth',['Dgrowth',['../class_c_o_s_m_o_l_o_g_y.html#a812ab4ab014e260f1befb71185413091',1,'COSMOLOGY']]],
   ['displaypos',['displayPos',['../class_lens_halo.html#a81938111b0d90611edcff8b2d4dd8432',1,'LensHalo']]],
   ['dmoddb',['dmoddb',['../class_lens_halo_n_f_w.html#ad38e1cd1d96550571ec6c5ff104c4ba0',1,'LensHaloNFW']]],
