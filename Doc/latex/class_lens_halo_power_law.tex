@@ -1,0 +1,102 @@
+\hypertarget{class_lens_halo_power_law}{}\doxysection{Lens\+Halo\+Power\+Law Class Reference}
+\label{class_lens_halo_power_law}\index{LensHaloPowerLaw@{LensHaloPowerLaw}}
+
+
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with truncated power-\/law mass profiles.  
+
+
+
+
+{\ttfamily \#include $<$lens\+\_\+halos.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Power\+Law\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_lens_halo_power_law__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Power\+Law\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_lens_halo_power_law__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lens_halo_power_law_a8826cfc3939a54e8518ef85d93077cd4}{Lens\+Halo\+Power\+Law}} (float my\+\_\+mass, float my\+\_\+\+Rsize, Pos\+Type my\+\_\+zlens, Pos\+Type my\+\_\+beta, float my\+\_\+fratio, float my\+\_\+pa, int my\+\_\+stars\+\_\+N, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, Ellip\+Method my\+\_\+ellip\+\_\+method=Pseudo)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_power_law_a2265529c633a4ac00ab06eaebe3c9c18}{init\+From\+Mass\+Func}} (float my\+\_\+mass, float my\+\_\+\+Rsize, float my\+\_\+rscale, Pos\+Type my\+\_\+slope, long $\ast$seed)
+\begin{DoxyCompactList}\small\item\em set the slope of the surface density profile \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with truncated power-\/law mass profiles. 
+
+The truncation is in 2d not 3d. $ \Sigma \propto r^{-\beta} $ so beta would usually be positive.
+
+The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa is always more accurate than the deflection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lens_halo_power_law_a8826cfc3939a54e8518ef85d93077cd4}\label{class_lens_halo_power_law_a8826cfc3939a54e8518ef85d93077cd4}} 
+\index{LensHaloPowerLaw@{LensHaloPowerLaw}!LensHaloPowerLaw@{LensHaloPowerLaw}}
+\index{LensHaloPowerLaw@{LensHaloPowerLaw}!LensHaloPowerLaw@{LensHaloPowerLaw}}
+\doxysubsubsection{\texorpdfstring{LensHaloPowerLaw()}{LensHaloPowerLaw()}}
+{\footnotesize\ttfamily Lens\+Halo\+Power\+Law\+::\+Lens\+Halo\+Power\+Law (\begin{DoxyParamCaption}\item[{float}]{my\+\_\+mass,  }\item[{float}]{my\+\_\+\+Rsize,  }\item[{Pos\+Type}]{my\+\_\+zlens,  }\item[{Pos\+Type}]{my\+\_\+beta,  }\item[{float}]{my\+\_\+fratio,  }\item[{float}]{my\+\_\+pa,  }\item[{int}]{my\+\_\+stars\+\_\+N,  }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{cosmo,  }\item[{Ellip\+Method}]{my\+\_\+ellip\+\_\+method = {\ttfamily Pseudo} }\end{DoxyParamCaption})}
+
+
+
+constructor 
+
+xmax needs to be in initialized before the mass\+\_\+norm\+\_\+factor for Pseudo ellip method is calculated via set\+\_\+norm\+\_\+factor()
+
+translate fratio\textquotesingle{}s needed for kappa into fratio used for potential
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+mass} & mass of halo in solar masses \\
+\hline
+{\em my\+\_\+\+Rsize} & maximum radius of halo in Mpc \\
+\hline
+{\em my\+\_\+zlens} & redshift of halo \\
+\hline
+{\em my\+\_\+beta} & logarithmic slop of surface density, kappa \textbackslash{}propto r$^\wedge$\{-\/beta\} \\
+\hline
+{\em my\+\_\+fratio} & axis ratio in asymetric case \\
+\hline
+{\em my\+\_\+pa} & position angle \\
+\hline
+{\em my\+\_\+stars\+\_\+N} & number of stars, not yet implanted \\
+\hline
+{\em my\+\_\+ellip\+\_\+method} & ellipticizing method \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_power_law_a2265529c633a4ac00ab06eaebe3c9c18}\label{class_lens_halo_power_law_a2265529c633a4ac00ab06eaebe3c9c18}} 
+\index{LensHaloPowerLaw@{LensHaloPowerLaw}!initFromMassFunc@{initFromMassFunc}}
+\index{initFromMassFunc@{initFromMassFunc}!LensHaloPowerLaw@{LensHaloPowerLaw}}
+\doxysubsubsection{\texorpdfstring{initFromMassFunc()}{initFromMassFunc()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Power\+Law\+::init\+From\+Mass\+Func (\begin{DoxyParamCaption}\item[{float}]{my\+\_\+mass,  }\item[{float}]{my\+\_\+\+Rsize,  }\item[{float}]{my\+\_\+rscale,  }\item[{Pos\+Type}]{my\+\_\+slope,  }\item[{long $\ast$}]{seed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+set the slope of the surface density profile 
+
+get slope initialize from a mass function 
+
+Reimplemented from \mbox{\hyperlink{class_lens_halo_a8b31bdf68c61572e7a32dc3da6b139c8}{Lens\+Halo}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/lens\+\_\+halos.\+h\item 
+S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+halos.\+cpp\end{DoxyCompactItemize}

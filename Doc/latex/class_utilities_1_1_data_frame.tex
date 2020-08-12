@@ -1,0 +1,68 @@
+\hypertarget{class_utilities_1_1_data_frame}{}\doxysection{Utilities\+::Data\+Frame$<$ T $>$ Class Template Reference}
+\label{class_utilities_1_1_data_frame}\index{Utilities::DataFrame$<$ T $>$@{Utilities::DataFrame$<$ T $>$}}
+
+
+class for impoting data from a csv file and allowing label string lookup like a data frame.  
+
+
+
+
+{\ttfamily \#include $<$utilities\+\_\+slsim.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utilities_1_1_data_frame_ab7431f0ee7fa99758e14953e25ea6b9e}{Data\+Frame}} (std\+::string datafile, size\+\_\+t Max\+Number=1000000, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{})
+\item 
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_a2c1bfb0f1c876a4e59160ff04266d690}\label{class_utilities_1_1_data_frame_a2c1bfb0f1c876a4e59160ff04266d690}} 
+std\+::vector$<$ T $>$ \& \mbox{\hyperlink{class_utilities_1_1_data_frame_a2c1bfb0f1c876a4e59160ff04266d690}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::string \&label)
+\begin{DoxyCompactList}\small\item\em returns column by name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_aebad772c1a4bf3d181903c405840934e}\label{class_utilities_1_1_data_frame_aebad772c1a4bf3d181903c405840934e}} 
+void \mbox{\hyperlink{class_utilities_1_1_data_frame_aebad772c1a4bf3d181903c405840934e}{add\+\_\+column}} (const std\+::string \&name, const std\+::vector$<$ T $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em add a column to the data frame. This does a copy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_ae4df8d4b84bf0e3d094023b08d9d43e7}\label{class_utilities_1_1_data_frame_ae4df8d4b84bf0e3d094023b08d9d43e7}} 
+std\+::vector$<$ T $>$ \& \mbox{\hyperlink{class_utilities_1_1_data_frame_ae4df8d4b84bf0e3d094023b08d9d43e7}{operator\mbox{[}$\,$\mbox{]}}} (int i)
+\begin{DoxyCompactList}\small\item\em returns column by number \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_ae90452dec09815b2ea9f7dd1bbcfb6d6}\label{class_utilities_1_1_data_frame_ae90452dec09815b2ea9f7dd1bbcfb6d6}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_utilities_1_1_data_frame_ae90452dec09815b2ea9f7dd1bbcfb6d6}{labels}} () const
+\begin{DoxyCompactList}\small\item\em returns labels of the columns from the data file \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_acd9c07b81400fa7e9a105a33bf833f59}\label{class_utilities_1_1_data_frame_acd9c07b81400fa7e9a105a33bf833f59}} 
+size\+\_\+t {\bfseries number\+\_\+of\+\_\+rows} ()
+\item 
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_aaa9e678c431ddd5881f154fccb599e59}\label{class_utilities_1_1_data_frame_aaa9e678c431ddd5881f154fccb599e59}} 
+size\+\_\+t {\bfseries number\+\_\+of\+\_\+columns} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Utilities\+::\+Data\+Frame$<$ T $>$}
+
+class for impoting data from a csv file and allowing label string lookup like a data frame. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_utilities_1_1_data_frame_ab7431f0ee7fa99758e14953e25ea6b9e}\label{class_utilities_1_1_data_frame_ab7431f0ee7fa99758e14953e25ea6b9e}} 
+\index{Utilities::DataFrame$<$ T $>$@{Utilities::DataFrame$<$ T $>$}!DataFrame@{DataFrame}}
+\index{DataFrame@{DataFrame}!Utilities::DataFrame$<$ T $>$@{Utilities::DataFrame$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DataFrame()}{DataFrame()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_utilities_1_1_data_frame}{Utilities\+::\+Data\+Frame}}$<$ T $>$\+::\mbox{\hyperlink{class_utilities_1_1_data_frame}{Data\+Frame}} (\begin{DoxyParamCaption}\item[{std\+::string}]{datafile,  }\item[{size\+\_\+t}]{Max\+Number = {\ttfamily 1000000},  }\item[{char}]{comment\+\_\+char = {\ttfamily \textquotesingle{}\#\textquotesingle{}},  }\item[{char}]{deliniator = {\ttfamily \textquotesingle{},\textquotesingle{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em datafile} & input catalog file in csv format \\
+\hline
+{\em Max\+Number} & maximum number of entries read \\
+\hline
+{\em comment\+\_\+char} & comment charactor for header \\
+\hline
+{\em deliniator} & deliniator between values \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/utilities\+\_\+slsim.\+h\end{DoxyCompactItemize}

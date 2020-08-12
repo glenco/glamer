@@ -1,0 +1,103 @@
+\hypertarget{class_lens_halo_pseudo_n_f_w}{}\doxysection{Lens\+Halo\+Pseudo\+N\+FW Class Reference}
+\label{class_lens_halo_pseudo_n_f_w}\index{LensHaloPseudoNFW@{LensHaloPseudoNFW}}
+
+
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with a double power-\/law mass profile.  
+
+
+
+
+{\ttfamily \#include $<$lens\+\_\+halos.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Pseudo\+N\+FW\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_lens_halo_pseudo_n_f_w__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Pseudo\+N\+FW\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{class_lens_halo_pseudo_n_f_w__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_aa575a8223d58064bb6a4ff182728bf74}\label{class_lens_halo_pseudo_n_f_w_aa575a8223d58064bb6a4ff182728bf74}} 
+\mbox{\hyperlink{class_lens_halo_pseudo_n_f_w_aa575a8223d58064bb6a4ff182728bf74}{Lens\+Halo\+Pseudo\+N\+FW}} ()
+\begin{DoxyCompactList}\small\item\em shell constructor, should be avoided \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lens_halo_pseudo_n_f_w_a2e0a4781d38a9cebca71e26d2855d259}{Lens\+Halo\+Pseudo\+N\+FW}} (float my\+\_\+mass, float my\+\_\+\+Rsize, Pos\+Type my\+\_\+zlens, float my\+\_\+rscale, Pos\+Type my\+\_\+beta, float my\+\_\+fratio, float my\+\_\+pa, int my\+\_\+stars\+\_\+N, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, Ellip\+Method my\+\_\+ellip\+\_\+method=Pseudo)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_a40844cb3d12a0028b0c95c04bb10d834}\label{class_lens_halo_pseudo_n_f_w_a40844cb3d12a0028b0c95c04bb10d834}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_pseudo_n_f_w_a40844cb3d12a0028b0c95c04bb10d834}{mhat}} (Pos\+Type y, Pos\+Type beta) const
+\begin{DoxyCompactList}\small\item\em Auxiliary function for Pseudo\+N\+FW profile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_a1d7bf3b4016846fd1a8a9a47c1c16997}\label{class_lens_halo_pseudo_n_f_w_a1d7bf3b4016846fd1a8a9a47c1c16997}} 
+Pos\+Type {\bfseries gfunction} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_a2315731cb8f04955e511ea49cc51428c}\label{class_lens_halo_pseudo_n_f_w_a2315731cb8f04955e511ea49cc51428c}} 
+void \mbox{\hyperlink{class_lens_halo_pseudo_n_f_w_a2315731cb8f04955e511ea49cc51428c}{set\+\_\+slope}} (Pos\+Type my\+\_\+slope)
+\begin{DoxyCompactList}\small\item\em set the slope of the surface density profile \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_ad7e3fe8f3cd6be7b4851bc09091d47be}\label{class_lens_halo_pseudo_n_f_w_ad7e3fe8f3cd6be7b4851bc09091d47be}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_pseudo_n_f_w_ad7e3fe8f3cd6be7b4851bc09091d47be}{get\+\_\+slope}} ()
+\begin{DoxyCompactList}\small\item\em initialize from a mass function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_a943a817b3f07b719a7becccd302d833e}\label{class_lens_halo_pseudo_n_f_w_a943a817b3f07b719a7becccd302d833e}} 
+void \mbox{\hyperlink{class_lens_halo_pseudo_n_f_w_a943a817b3f07b719a7becccd302d833e}{init\+From\+Mass\+Func}} (float my\+\_\+mass, float my\+\_\+\+Rsize, float my\+\_\+rscale, Pos\+Type my\+\_\+slope, long $\ast$seed)
+\begin{DoxyCompactList}\small\item\em set Rsize \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with a double power-\/law mass profile. 
+
+Spherical halos with $ \Sigma \propto 1/(1 + r/r_s )^\beta $ so beta would usually be positive.
+
+An N\+FW profile is approximated beta = 2 .
+
+The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa is always more accurate than the deflection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lens_halo_pseudo_n_f_w_a2e0a4781d38a9cebca71e26d2855d259}\label{class_lens_halo_pseudo_n_f_w_a2e0a4781d38a9cebca71e26d2855d259}} 
+\index{LensHaloPseudoNFW@{LensHaloPseudoNFW}!LensHaloPseudoNFW@{LensHaloPseudoNFW}}
+\index{LensHaloPseudoNFW@{LensHaloPseudoNFW}!LensHaloPseudoNFW@{LensHaloPseudoNFW}}
+\doxysubsubsection{\texorpdfstring{LensHaloPseudoNFW()}{LensHaloPseudoNFW()}}
+{\footnotesize\ttfamily Lens\+Halo\+Pseudo\+N\+F\+W\+::\+Lens\+Halo\+Pseudo\+N\+FW (\begin{DoxyParamCaption}\item[{float}]{my\+\_\+mass,  }\item[{float}]{my\+\_\+\+Rsize,  }\item[{Pos\+Type}]{my\+\_\+zlens,  }\item[{float}]{my\+\_\+concentration,  }\item[{Pos\+Type}]{my\+\_\+beta,  }\item[{float}]{my\+\_\+fratio,  }\item[{float}]{my\+\_\+pa,  }\item[{int}]{my\+\_\+stars\+\_\+N,  }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{cosmo,  }\item[{Ellip\+Method}]{my\+\_\+ellip\+\_\+method = {\ttfamily Pseudo} }\end{DoxyParamCaption})}
+
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+mass} & mass in solar masses \\
+\hline
+{\em my\+\_\+\+Rsize} & maximum radius in Mpc \\
+\hline
+{\em my\+\_\+zlens} & redshift \\
+\hline
+{\em my\+\_\+concentration} & Rsize/rscale \\
+\hline
+{\em my\+\_\+beta} & large r slope, see class description \\
+\hline
+{\em my\+\_\+fratio} & axis ratio \\
+\hline
+{\em my\+\_\+pa} & position angle \\
+\hline
+{\em my\+\_\+stars\+\_\+N} & number of stars, not yet implanted \\
+\hline
+{\em my\+\_\+ellip\+\_\+method} & ellipticizing method \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/lens\+\_\+halos.\+h\item 
+S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+halos.\+cpp\end{DoxyCompactItemize}

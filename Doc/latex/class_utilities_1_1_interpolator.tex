@@ -1,0 +1,145 @@
+\hypertarget{class_utilities_1_1_interpolator}{}\doxysection{Utilities\+::Interpolator$<$ T $>$ Class Template Reference}
+\label{class_utilities_1_1_interpolator}\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+
+
+Bilinear interpolation class for interpolating from a 2D uniform grid.  
+
+
+
+
+{\ttfamily \#include $<$Tree.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_utilities_1_1_interpolator_aa5194f7e3a272f7b294d1f6fffe18566}{Interpolator}} (Pos\+Type const $\ast$x, int Npixels, Pos\+Type my\+\_\+range, Pos\+Type $\ast$my\+\_\+center)
+\item 
+\mbox{\hyperlink{class_utilities_1_1_interpolator_a99d5c01176af0812964e38808f0c8e5e}{Interpolator}} (Pos\+Type const $\ast$x, int my\+\_\+\+Nx, Pos\+Type my\+\_\+range\+\_\+x, int my\+\_\+\+Ny, Pos\+Type my\+\_\+range\+\_\+y, Pos\+Type $\ast$my\+\_\+center)
+\item 
+\mbox{\hyperlink{class_utilities_1_1_interpolator_a30c17226c7d7569013bf5b81dbaca9a0}{Interpolator}} (int Npixels, Pos\+Type my\+\_\+range, Pos\+Type $\ast$my\+\_\+center, const T $\ast$map)
+\item 
+Pos\+Type \mbox{\hyperlink{class_utilities_1_1_interpolator_a27da40380d53ba60335e59e355cedda8}{interpolate}} (T \&map)
+\item 
+Pos\+Type \mbox{\hyperlink{class_utilities_1_1_interpolator_accd5780be0ab014fb7c9a75b4818a2a0}{interpolate}} (Pos\+Type $\ast$x, T \&map)
+\begin{DoxyCompactList}\small\item\em reinitializes to a new position \end{DoxyCompactList}\item 
+Pos\+Type \mbox{\hyperlink{class_utilities_1_1_interpolator_a0c9c08c364923dbd7ce24f00bc5bd6b9}{operator()}} (Pos\+Type $\ast$x)
+\item 
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_a8cdb29594aadf03181b9fe8e0b689989}\label{class_utilities_1_1_interpolator_a8cdb29594aadf03181b9fe8e0b689989}} 
+void {\bfseries test} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Utilities\+::\+Interpolator$<$ T $>$}
+
+Bilinear interpolation class for interpolating from a 2D uniform grid. 
+
+Out of bounds points return 0. map is a i dimensional array representing a 2 dimensional map.
+
+Later calls can use interpolator(map) for the same point in the same coordinate system to save time in calculating the indexes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_aa5194f7e3a272f7b294d1f6fffe18566}\label{class_utilities_1_1_interpolator_aa5194f7e3a272f7b294d1f6fffe18566}} 
+\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}!Interpolator@{Interpolator}}
+\index{Interpolator@{Interpolator}!Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Interpolator()}{Interpolator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_utilities_1_1_interpolator}{Utilities\+::\+Interpolator}}$<$ T $>$\+::\mbox{\hyperlink{class_utilities_1_1_interpolator}{Interpolator}} (\begin{DoxyParamCaption}\item[{Pos\+Type const $\ast$}]{x,  }\item[{int}]{Npixels,  }\item[{Pos\+Type}]{my\+\_\+range,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & position of point \\
+\hline
+{\em Npixels} & Number of pixels in one dimension \\
+\hline
+{\em my\+\_\+range} & Range of map in same units as x\mbox{[}\mbox{]} \\
+\hline
+{\em my\+\_\+center} & Center of map in same units as x\mbox{[}\mbox{]} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_a99d5c01176af0812964e38808f0c8e5e}\label{class_utilities_1_1_interpolator_a99d5c01176af0812964e38808f0c8e5e}} 
+\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}!Interpolator@{Interpolator}}
+\index{Interpolator@{Interpolator}!Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Interpolator()}{Interpolator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_utilities_1_1_interpolator}{Utilities\+::\+Interpolator}}$<$ T $>$\+::\mbox{\hyperlink{class_utilities_1_1_interpolator}{Interpolator}} (\begin{DoxyParamCaption}\item[{Pos\+Type const $\ast$}]{x,  }\item[{int}]{my\+\_\+\+Nx,  }\item[{Pos\+Type}]{my\+\_\+range\+\_\+x,  }\item[{int}]{my\+\_\+\+Ny,  }\item[{Pos\+Type}]{my\+\_\+range\+\_\+y,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for case when region is a rectangle and not a square. Array must be indexed i = ix + iy $\ast$ Nx 
+\begin{DoxyParams}{Parameters}
+{\em x} & position of point \\
+\hline
+{\em my\+\_\+\+Nx} & Number of pixels in x dimension \\
+\hline
+{\em my\+\_\+range\+\_\+x} & Range of map in x in same units as x\mbox{[}\mbox{]} \\
+\hline
+{\em my\+\_\+\+Ny} & Number of pixels in y dimension \\
+\hline
+{\em my\+\_\+range\+\_\+y} & Range of map in y in same units as x\mbox{[}\mbox{]} \\
+\hline
+{\em my\+\_\+center} & Center of map in same units as x\mbox{[}\mbox{]} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_a30c17226c7d7569013bf5b81dbaca9a0}\label{class_utilities_1_1_interpolator_a30c17226c7d7569013bf5b81dbaca9a0}} 
+\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}!Interpolator@{Interpolator}}
+\index{Interpolator@{Interpolator}!Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Interpolator()}{Interpolator()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_utilities_1_1_interpolator}{Utilities\+::\+Interpolator}}$<$ T $>$\+::\mbox{\hyperlink{class_utilities_1_1_interpolator}{Interpolator}} (\begin{DoxyParamCaption}\item[{int}]{Npixels,  }\item[{Pos\+Type}]{my\+\_\+range,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center,  }\item[{const T $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This constructor takes the map as a pointer to an array of values and stores it. The resulting object can then be used with the () operator as a function. Warning\+: Be sure to distroy the object before distroying map. 
+\begin{DoxyParams}{Parameters}
+{\em Npixels} & Number of pixels in one dimension \\
+\hline
+{\em my\+\_\+range} & Range of map in same units as x\mbox{[}\mbox{]} \\
+\hline
+{\em my\+\_\+center} & Center of map in same units as x\mbox{[}\mbox{]} \\
+\hline
+{\em map} & One dimensional array of fundamental type \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_accd5780be0ab014fb7c9a75b4818a2a0}\label{class_utilities_1_1_interpolator_accd5780be0ab014fb7c9a75b4818a2a0}} 
+\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{interpolate()}{interpolate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Pos\+Type \mbox{\hyperlink{class_utilities_1_1_interpolator}{Utilities\+::\+Interpolator}}$<$ T $>$\+::interpolate (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{x,  }\item[{T \&}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+reinitializes to a new position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & position of point \\
+\hline
+{\em map} & map that supports the \mbox{[}\mbox{]} operator \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_a27da40380d53ba60335e59e355cedda8}\label{class_utilities_1_1_interpolator_a27da40380d53ba60335e59e355cedda8}} 
+\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{interpolate()}{interpolate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Pos\+Type \mbox{\hyperlink{class_utilities_1_1_interpolator}{Utilities\+::\+Interpolator}}$<$ T $>$\+::interpolate (\begin{DoxyParamCaption}\item[{T \&}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Does interpolation of map at point that object was constructed with or last called with. Can use any map type that has a \mbox{[}\mbox{]} operator that returns a Pos\+Type. 
+\begin{DoxyParams}{Parameters}
+{\em map} & map that supports the \mbox{[}\mbox{]} operator \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utilities_1_1_interpolator_a0c9c08c364923dbd7ce24f00bc5bd6b9}\label{class_utilities_1_1_interpolator_a0c9c08c364923dbd7ce24f00bc5bd6b9}} 
+\index{Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!Utilities::Interpolator$<$ T $>$@{Utilities::Interpolator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+Pos\+Type \mbox{\hyperlink{class_utilities_1_1_interpolator}{Utilities\+::\+Interpolator}}$<$ T $>$\+::operator() (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Does interpolation of store map at point x. Only for use with the second constructor. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/Tree.\+h\end{DoxyCompactItemize}

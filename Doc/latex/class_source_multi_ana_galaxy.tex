@@ -1,0 +1,208 @@
+\hypertarget{class_source_multi_ana_galaxy}{}\doxysection{Source\+Multi\+Ana\+Galaxy Class Reference}
+\label{class_source_multi_ana_galaxy}\index{SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}}
+
+
+\mbox{\hyperlink{class_source}{Source}} that represents an analytic galaxy surface brightness model. It encapsulates a Overzier\+Source which is a model from R.\+Overzier et al. 2012 with a bulge and a disk.  
+
+
+
+
+{\ttfamily \#include $<$source\+Ana\+Galaxy.\+h$>$}
+
+
+
+Inheritance diagram for Source\+Multi\+Ana\+Galaxy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_source_multi_ana_galaxy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Source\+Multi\+Ana\+Galaxy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_source_multi_ana_galaxy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_source_multi_ana_galaxy_a52a45b0c440af9c951a1940d4b598d99}{Source\+Multi\+Ana\+Galaxy}} (Pos\+Type mag, Pos\+Type mag\+\_\+bulge, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, Pos\+Type my\+\_\+z, Pos\+Type $\ast$my\+\_\+theta, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_source}{Source}} model for a single analytic galaxy model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_source_multi_ana_galaxy_a355987aff9cd7b78a5b46d1a691ddd50}{Source\+Multi\+Ana\+Galaxy}} (\mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} $\ast$my\+\_\+galaxy)
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_afd8eb720a8b9a5d2d4b475af621ce957}\label{class_source_multi_ana_galaxy_afd8eb720a8b9a5d2d4b475af621ce957}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_ana_galaxy_afd8eb720a8b9a5d2d4b475af621ce957}{Surface\+Brightness}} (Pos\+Type $\ast$x)
+\begin{DoxyCompactList}\small\item\em Surface brightness of current galaxy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a545da808b0f5c47660316f893ee24542}\label{class_source_multi_ana_galaxy_a545da808b0f5c47660316f893ee24542}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_ana_galaxy_a545da808b0f5c47660316f893ee24542}{get\+Total\+Flux}} () const
+\begin{DoxyCompactList}\small\item\em Total flux coming from the current galaxy in erg/sec/\+Hz/cm$^\wedge$2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a7134be94fedb1a9aebeba6091fc4dbb6}\label{class_source_multi_ana_galaxy_a7134be94fedb1a9aebeba6091fc4dbb6}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a7134be94fedb1a9aebeba6091fc4dbb6}{print\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Print info on current source parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_ab9f31a9f65af18b9ce009ba4e9332d63}\label{class_source_multi_ana_galaxy_ab9f31a9f65af18b9ce009ba4e9332d63}} 
+void {\bfseries Add\+A\+Galaxy} (\mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} $\ast$my\+\_\+galaxy)
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a350f1d3ce9163e1049c5c8cc4e14be48}\label{class_source_multi_ana_galaxy_a350f1d3ce9163e1049c5c8cc4e14be48}} 
+\mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} \& \mbox{\hyperlink{class_source_multi_ana_galaxy_a350f1d3ce9163e1049c5c8cc4e14be48}{set\+Index}} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Used to change the \char`\"{}current\char`\"{} source that is returned when the surface brightness is subsequently called. It also returns a reference to the particular Overzier\+Source source model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_ac537e35d11eed137a1ac3ff43da0faa8}\label{class_source_multi_ana_galaxy_ac537e35d11eed137a1ac3ff43da0faa8}} 
+\mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} \& \mbox{\hyperlink{class_source_multi_ana_galaxy_ac537e35d11eed137a1ac3ff43da0faa8}{operator\mbox{[}$\,$\mbox{]}}} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em The indexing operator can be used to change the \char`\"{}current\char`\"{} source that is returned when the surface brightness is subsequently called. It also returns a reference to the particular Overzier\+Source source model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a68f335321dbc5871b24fffdfe58dae56}\label{class_source_multi_ana_galaxy_a68f335321dbc5871b24fffdfe58dae56}} 
+const \mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (std\+::size\+\_\+t i) const
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_afde1aac8d5880ff9a3f15b793d6cdc00}\label{class_source_multi_ana_galaxy_afde1aac8d5880ff9a3f15b793d6cdc00}} 
+\mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} \& {\bfseries Current\+Galaxy} ()
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a9d90be8db058d7ff5638ca5031c56d9e}\label{class_source_multi_ana_galaxy_a9d90be8db058d7ff5638ca5031c56d9e}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_ana_galaxy_a9d90be8db058d7ff5638ca5031c56d9e}{getZ}} () const
+\begin{DoxyCompactList}\small\item\em Return redshift of current source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a85acd8692042eb78760d60a0afdbb7a9}\label{class_source_multi_ana_galaxy_a85acd8692042eb78760d60a0afdbb7a9}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_ana_galaxy_a85acd8692042eb78760d60a0afdbb7a9}{get\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a8a2ddae89ef5ff1765fff679a8ddb8e1}\label{class_source_multi_ana_galaxy_a8a2ddae89ef5ff1765fff679a8ddb8e1}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a8a2ddae89ef5ff1765fff679a8ddb8e1}{setZ}} (Pos\+Type my\+\_\+z)
+\begin{DoxyCompactList}\small\item\em Set redshift of current source. Only changes the redshift while leaving position fixed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_ad2823aa8f0ab9e91edadeb9cf60dc83f}\label{class_source_multi_ana_galaxy_ad2823aa8f0ab9e91edadeb9cf60dc83f}} 
+void {\bfseries reset\+Band} (Band my\+\_\+band)
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a22f46858ee8d44ec59e5d591ab2ee3fb}\label{class_source_multi_ana_galaxy_a22f46858ee8d44ec59e5d591ab2ee3fb}} 
+unsigned long {\bfseries get\+ID} ()
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a5f143f1facb63b7bebb14edbf3c211a7}\label{class_source_multi_ana_galaxy_a5f143f1facb63b7bebb14edbf3c211a7}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_multi_ana_galaxy_a5f143f1facb63b7bebb14edbf3c211a7}{get\+Theta}} ()
+\begin{DoxyCompactList}\small\item\em Return angular position of current source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a35f23a787c77d92fdbd45f3fef1ee520}\label{class_source_multi_ana_galaxy_a35f23a787c77d92fdbd45f3fef1ee520}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a35f23a787c77d92fdbd45f3fef1ee520}{set\+Theta}} (Pos\+Type my\+\_\+theta\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Set angular position of current source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a3414215995674b62e299ca772834c159}\label{class_source_multi_ana_galaxy_a3414215995674b62e299ca772834c159}} 
+void {\bfseries set\+Theta} (Pos\+Type my\+\_\+x, Pos\+Type my\+\_\+y)
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_ab710e027fc6cf29e156e8d8eb8cf9166}\label{class_source_multi_ana_galaxy_ab710e027fc6cf29e156e8d8eb8cf9166}} 
+void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a2003038ca3d977f3074e3b4c48e36446}\label{class_source_multi_ana_galaxy_a2003038ca3d977f3074e3b4c48e36446}} 
+std\+::size\+\_\+t {\bfseries get\+Number\+Of\+Galaxies} () const
+\item 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a73cba06a8e4c42c40e69050ad74d955b}{multiplier}} (Pos\+Type z, Pos\+Type mag\+\_\+cut, int Multiplicity, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
+\begin{DoxyCompactList}\small\item\em Artificially increase the number of sources to increase the incidence of strong lenses. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_ac03498bdd801f210d48e820afcc3ba32}\label{class_source_multi_ana_galaxy_ac03498bdd801f210d48e820afcc3ba32}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_ac03498bdd801f210d48e820afcc3ba32}{sort\+In\+Redshift}} ()
+\begin{DoxyCompactList}\small\item\em Sort the sources by redshift in assending order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a66452aeb918ee03c54a953cfc1aa224e}\label{class_source_multi_ana_galaxy_a66452aeb918ee03c54a953cfc1aa224e}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a66452aeb918ee03c54a953cfc1aa224e}{sort\+In\+Mag}} (Band tmp\+\_\+band)
+\begin{DoxyCompactList}\small\item\em Sort the sources by magnitude in assending order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_aedbadc65941c45b631111f682056a88d}\label{class_source_multi_ana_galaxy_aedbadc65941c45b631111f682056a88d}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_aedbadc65941c45b631111f682056a88d}{sort\+In\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Sort the sources by magnitude in assending order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_ab18393e0b1db63070f4fe31c6faf31d2}\label{class_source_multi_ana_galaxy_ab18393e0b1db63070f4fe31c6faf31d2}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_ana_galaxy_ab18393e0b1db63070f4fe31c6faf31d2}{get\+F\+OV}} ()
+\begin{DoxyCompactList}\small\item\em returns field-\/of-\/view in deg$^\wedge$2 assuming region is square \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a5aeb198e7522d35f30a0853afe6ea82d}\label{class_source_multi_ana_galaxy_a5aeb198e7522d35f30a0853afe6ea82d}} 
+std\+::size\+\_\+t \mbox{\hyperlink{class_source_multi_ana_galaxy_a5aeb198e7522d35f30a0853afe6ea82d}{findclosestonsky}} (Pos\+Type theta\mbox{[}$\,$\mbox{]}, float $\ast$radius)
+\begin{DoxyCompactList}\small\item\em Finds the closest source to the position theta\mbox{[}\mbox{]} on the sky in Cartesian distance. Returns the index of that source and its distance from theta\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a47c824e5a125491a669db95a17d240e8}\label{class_source_multi_ana_galaxy_a47c824e5a125491a669db95a17d240e8}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a47c824e5a125491a669db95a17d240e8}{findclosestonsky}} (Pos\+Type theta\mbox{[}$\,$\mbox{]}, std\+::vector$<$ float $>$ \&radius, std\+::vector$<$ size\+\_\+t $>$ \&indexes)
+\begin{DoxyCompactList}\small\item\em finds closest sources to theta on umlensed sky. \char`\"{}radius\char`\"{} should have a size equal ti the number wanted \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a0e1ab20eca008085a346a2234ada0e17}\label{class_source_multi_ana_galaxy_a0e1ab20eca008085a346a2234ada0e17}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a0e1ab20eca008085a346a2234ada0e17}{findonsky}} (Pos\+Type theta\mbox{[}$\,$\mbox{]}, float radius, std\+::list$<$ size\+\_\+t $>$ \&indexes)
+\begin{DoxyCompactList}\small\item\em finds objects within radios of theta\mbox{[}\mbox{]} on umlensed sky. ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a66751bce29c2fdeb0a9360515acdc5ea}\label{class_source_multi_ana_galaxy_a66751bce29c2fdeb0a9360515acdc5ea}} 
+void \mbox{\hyperlink{class_source_multi_ana_galaxy_a66751bce29c2fdeb0a9360515acdc5ea}{findnear}} (Pos\+Type theta\mbox{[}$\,$\mbox{]}, float radius, std\+::list$<$ size\+\_\+t $>$ \&indexes, Pos\+Type z\+\_\+range\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em finds objects within radios of theta\mbox{[}\mbox{]} on unlensed sky and within a redshift range. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_source}{Source}} that represents an analytic galaxy surface brightness model. It encapsulates a Overzier\+Source which is a model from R.\+Overzier et al. 2012 with a bulge and a disk. 
+
+
+\begin{DoxyPre}
+  Input parameters are only needed if the third constructor is used so that an input catalog is read
+  Input Parameters:\end{DoxyPre}
+
+
+
+\begin{DoxyPre}  source\_input\_galaxy\_file       file with catalog of galaxies
+  source\_band             Band that these sources are to be observed in. Must be one of the following SDSS\_U,SDSS\_G,SDSS\_R,SDSS\_I,SDSS\_Z,J,H,Ks,IRAC1,IRAC2
+  source\_band
+  source\_mag\_limit        magnitude limit
+  source\_sb\_limit         Minimum surface brightness limit for truncating sources.  By default it is 30. mag/sq. arcsec\end{DoxyPre}
+
+
+
+\begin{DoxyPre}*\end{DoxyPre}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a52a45b0c440af9c951a1940d4b598d99}\label{class_source_multi_ana_galaxy_a52a45b0c440af9c951a1940d4b598d99}} 
+\index{SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}!SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}}
+\index{SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}!SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}}
+\doxysubsubsection{\texorpdfstring{SourceMultiAnaGalaxy()}{SourceMultiAnaGalaxy()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Source\+Multi\+Ana\+Galaxy\+::\+Source\+Multi\+Ana\+Galaxy (\begin{DoxyParamCaption}\item[{Pos\+Type}]{mag,  }\item[{Pos\+Type}]{mag\+\_\+bulge,  }\item[{Pos\+Type}]{Reff,  }\item[{Pos\+Type}]{Rdisk,  }\item[{Pos\+Type}]{PA,  }\item[{Pos\+Type}]{inclination,  }\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type $\ast$}]{my\+\_\+theta,  }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_source}{Source}} model for a single analytic galaxy model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mag} & Total magnitude \\
+\hline
+{\em mag\+\_\+bulge} & magnitude of Bulge \\
+\hline
+{\em Reff} & Bulge half light radius (arcs) \\
+\hline
+{\em Rdisk} & disk scale hight (arcs) \\
+\hline
+{\em PA} & Position angle (radians) \\
+\hline
+{\em inclination} & inclination of disk (radians) \\
+\hline
+{\em my\+\_\+z} & redshift of source \\
+\hline
+{\em my\+\_\+theta} & position on the sky \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a355987aff9cd7b78a5b46d1a691ddd50}\label{class_source_multi_ana_galaxy_a355987aff9cd7b78a5b46d1a691ddd50}} 
+\index{SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}!SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}}
+\index{SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}!SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}}
+\doxysubsubsection{\texorpdfstring{SourceMultiAnaGalaxy()}{SourceMultiAnaGalaxy()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Source\+Multi\+Ana\+Galaxy\+::\+Source\+Multi\+Ana\+Galaxy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source_overzier_plus}{Source\+Overzier\+Plus}} $\ast$}]{my\+\_\+galaxy }\end{DoxyParamCaption})}
+
+Constructor for passing in a pointer to the galaxy model or a list of galaxies instead of constructing it internally. Useful when there is a list of pre-\/allocated sources. The redshifts and sky positions need to be set separately. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_source_multi_ana_galaxy_a73cba06a8e4c42c40e69050ad74d955b}\label{class_source_multi_ana_galaxy_a73cba06a8e4c42c40e69050ad74d955b}} 
+\index{SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}!multiplier@{multiplier}}
+\index{multiplier@{multiplier}!SourceMultiAnaGalaxy@{SourceMultiAnaGalaxy}}
+\doxysubsubsection{\texorpdfstring{multiplier()}{multiplier()}}
+{\footnotesize\ttfamily void Source\+Multi\+Ana\+Galaxy\+::multiplier (\begin{DoxyParamCaption}\item[{Pos\+Type}]{z,  }\item[{Pos\+Type}]{mag\+\_\+cut,  }\item[{int}]{multiplicity,  }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran }\end{DoxyParamCaption})}
+
+
+
+Artificially increase the number of sources to increase the incidence of strong lenses. 
+
+Sources above the limiting redshift and below the limiting magnitude are copied and given random position angles, inclinations and positions within the field of view. The field of view is determined directly from the range of already existing source positions. The field is assumed to be rectangular. 
+\begin{DoxyParams}{Parameters}
+{\em z} & limiting redshift, only sources above this redshift are copied \\
+\hline
+{\em mag\+\_\+cut} & limiting magnitude, only sources with magnitudes below this limit will be copied \\
+\hline
+{\em multiplicity} & the number of times each of these sources should be multiplied \\
+\hline
+{\em ran} & random number seed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/source\+Ana\+Galaxy.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/source\+Ana\+Galaxy.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,247 @@
+\hypertarget{struct_grid_map}{}\doxysection{Grid\+Map Struct Reference}
+\label{struct_grid_map}\index{GridMap@{GridMap}}
+
+
+A simplified version of the \mbox{\hyperlink{struct_grid}{Grid}} structure for making non-\/adaptive maps of the lensing quantities (kappa, gamma, etc...)  
+
+
+
+
+{\ttfamily \#include $<$gridmap.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_grid_map_aad8a0873c4dac82c434100643227d601}{Grid\+Map}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, unsigned long N1d, const double center\mbox{[}2\mbox{]}, double range)
+\begin{DoxyCompactList}\small\item\em Constructor for initializing square grid. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_grid_map_aea36490f8b993d04ddb1f987a30871f6}{Grid\+Map}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, unsigned long Nx, const Pos\+Type center\mbox{[}2\mbox{]}, Pos\+Type rangeX, Pos\+Type rangeY)
+\begin{DoxyCompactList}\small\item\em Constructor for initializing rectangular grid. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_ae7f26ca8df0d66e02553dec0f628f684}\label{struct_grid_map_ae7f26ca8df0d66e02553dec0f628f684}} 
+void \mbox{\hyperlink{struct_grid_map_ae7f26ca8df0d66e02553dec0f628f684}{Re\+Initialize\+Grid}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
+\begin{DoxyCompactList}\small\item\em reshoot the rays for example when the source plane has been changed \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}{Refresh\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
+\begin{DoxyCompactList}\small\item\em Recalculate surface brightness at every point without changing the positions of the gridmap or any lens properties. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_grid_map_ab668b2cff39b656fcf3a4e2df290f638}{Add\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
+\begin{DoxyCompactList}\small\item\em Recalculate surface brightness just like Grid\+Map\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_af55353b1d0ba3890de6f1c5456840bd8}\label{struct_grid_map_af55353b1d0ba3890de6f1c5456840bd8}} 
+void {\bfseries Clear\+Surface\+Brightnesses} ()
+\item 
+\mbox{\Hypertarget{struct_grid_map_a17a5a2f995d57fcbcba8e74f96f6e5b6}\label{struct_grid_map_a17a5a2f995d57fcbcba8e74f96f6e5b6}} 
+size\+\_\+t {\bfseries get\+Number\+Of\+Points} () const
+\item 
+\mbox{\Hypertarget{struct_grid_map_a1378437640a32f87e245da4c7b263022}\label{struct_grid_map_a1378437640a32f87e245da4c7b263022}} 
+int \mbox{\hyperlink{struct_grid_map_a1378437640a32f87e245da4c7b263022}{get\+Init\+Ngrid}} ()
+\begin{DoxyCompactList}\small\item\em return initial number of grid points in each direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_a757a6f8419587022795df0bced6131ec}\label{struct_grid_map_a757a6f8419587022795df0bced6131ec}} 
+double \mbox{\hyperlink{struct_grid_map_a757a6f8419587022795df0bced6131ec}{get\+X\+Range}} ()
+\begin{DoxyCompactList}\small\item\em return initial range of gridded region. This is the distance from the first ray in a row to the last (unlike \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_adfb260b81a1c34dfa090f8f3dfd7904c}\label{struct_grid_map_adfb260b81a1c34dfa090f8f3dfd7904c}} 
+double {\bfseries get\+Y\+Range} ()
+\item 
+\mbox{\Hypertarget{struct_grid_map_a27a1ac9c5e97b87d2ddfd29260ed4cea}\label{struct_grid_map_a27a1ac9c5e97b87d2ddfd29260ed4cea}} 
+double \mbox{\hyperlink{struct_grid_map_a27a1ac9c5e97b87d2ddfd29260ed4cea}{get\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em resolution in radians, this is range / (N-\/1) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_aed55e0cb0283537108615b228dbb057a}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, Lensing\+Variable lensvar)
+\begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_a0d1e721790ac12b240e73d9a699384f9}{write\+Pixel\+Map\+Uniform}} (Lensing\+Variable lensvar)
+\begin{DoxyCompactList}\small\item\em make pixel map of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_grid_map_a4ea8dbd5fd0a8c672b33fbe6ff6787ad}{write\+Pixel\+Map\+Uniform}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map, Lensing\+Variable lensvar)
+\item 
+void \mbox{\hyperlink{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}{write\+Fits\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, Lensing\+Variable lensvar, std\+::string filename)
+\item 
+\mbox{\Hypertarget{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}\label{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}} 
+void \mbox{\hyperlink{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}{write\+Fits\+Uniform}} (Lensing\+Variable lensvar, std\+::string filename)
+\begin{DoxyCompactList}\small\item\em this will make a fits map of the grid as is. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_a4aa568491f3d6a527782d840e3cfc4d3}{get\+Pixel\+Map}} (int res) const
+\begin{DoxyCompactList}\small\item\em returns a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_grid_map_ac87d83cc6f0e3f08d9a0393e3720c5f9}{get\+Pixel\+Map}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map) const
+\begin{DoxyCompactList}\small\item\em surface brightness map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}\label{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}} 
+Pos\+Type \mbox{\hyperlink{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}{Einstein\+Area}} () const
+\begin{DoxyCompactList}\small\item\em returns the area (radians$^\wedge$2) of the region with negative magnification at resolution of fixed grid \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_a9ee258972a6f83896ba50cd3a5e044e7}\label{struct_grid_map_a9ee258972a6f83896ba50cd3a5e044e7}} 
+Pos\+Type \mbox{\hyperlink{struct_grid_map_a9ee258972a6f83896ba50cd3a5e044e7}{magnification}} () const
+\begin{DoxyCompactList}\small\item\em flux weighted magnification with current surface brightness averaged on the image plane \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_ae31b368c185625e84e69cb65b2cc6f1f}\label{struct_grid_map_ae31b368c185625e84e69cb65b2cc6f1f}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries get\+Center} ()
+\item 
+\mbox{\Hypertarget{struct_grid_map_a57584c918879952a0b9b327f399b8754}\label{struct_grid_map_a57584c918879952a0b9b327f399b8754}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{struct_grid_map_a73b0fe1404063813ddc428175219ca29}\label{struct_grid_map_a73b0fe1404063813ddc428175219ca29}} 
+{\bfseries Grid\+Map} (\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&\&grid)
+\item 
+\mbox{\Hypertarget{struct_grid_map_a5b6b17cdeee551654f223a7f7fc0ac51}\label{struct_grid_map_a5b6b17cdeee551654f223a7f7fc0ac51}} 
+\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \& {\bfseries operator=} (\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&\&grid)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simplified version of the \mbox{\hyperlink{struct_grid}{Grid}} structure for making non-\/adaptive maps of the lensing quantities (kappa, gamma, etc...) 
+
+Grip\+Map is faster and uses less memory than \mbox{\hyperlink{struct_grid}{Grid}}. It does not construct the tree structures for the points and thus cannot be used for adaptive mapping or image finding. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_grid_map_aad8a0873c4dac82c434100643227d601}\label{struct_grid_map_aad8a0873c4dac82c434100643227d601}} 
+\index{GridMap@{GridMap}!GridMap@{GridMap}}
+\index{GridMap@{GridMap}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{GridMap()}{GridMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Grid\+Map\+::\+Grid\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{unsigned long}]{N1d,  }\item[{const double}]{center\mbox{[}2\mbox{]},  }\item[{double}]{range }\end{DoxyParamCaption})}
+
+
+
+Constructor for initializing square grid. 
+
+Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}. 
+\begin{DoxyParams}{Parameters}
+{\em lens} & lens model for initializing grid \\
+\hline
+{\em N1d} & Initial number of grid points in each dimension. \\
+\hline
+{\em center} & Center of grid. \\
+\hline
+{\em range} & Full width of grid in whatever units will be used. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_aea36490f8b993d04ddb1f987a30871f6}\label{struct_grid_map_aea36490f8b993d04ddb1f987a30871f6}} 
+\index{GridMap@{GridMap}!GridMap@{GridMap}}
+\index{GridMap@{GridMap}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{GridMap()}{GridMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Grid\+Map\+::\+Grid\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{unsigned long}]{Nx,  }\item[{const Pos\+Type}]{my\+\_\+center\mbox{[}2\mbox{]},  }\item[{Pos\+Type}]{rangeX,  }\item[{Pos\+Type}]{rangeY }\end{DoxyParamCaption})}
+
+
+
+Constructor for initializing rectangular grid. 
+
+Cells of grid will always be square with initial resolution range\+X/(Nx-\/1). The Y range may not be exactly rangeY, but will be the nearest value that is a whole number of cells.
+
+Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}. 
+\begin{DoxyParams}{Parameters}
+{\em lens} & lens model for initializing grid \\
+\hline
+{\em Nx} & Initial number of grid points in X dimension. \\
+\hline
+{\em my\+\_\+center} & Center of grid. \\
+\hline
+{\em rangeX} & Full width of grid in x direction in whatever units will be used. \\
+\hline
+{\em rangeY} & Full width of grid in y direction in whatever units will be used. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_grid_map_ab668b2cff39b656fcf3a4e2df290f638}\label{struct_grid_map_ab668b2cff39b656fcf3a4e2df290f638}} 
+\index{GridMap@{GridMap}!AddSurfaceBrightnesses@{AddSurfaceBrightnesses}}
+\index{AddSurfaceBrightnesses@{AddSurfaceBrightnesses}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{AddSurfaceBrightnesses()}{AddSurfaceBrightnesses()}}
+{\footnotesize\ttfamily double Grid\+Map\+::\+Add\+Surface\+Brightnesses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source\+Hndl}}}]{source }\end{DoxyParamCaption})}
+
+
+
+Recalculate surface brightness just like Grid\+Map\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. 
+
+returns the sum of the surface brightnesses from the new source \mbox{\Hypertarget{struct_grid_map_a4aa568491f3d6a527782d840e3cfc4d3}\label{struct_grid_map_a4aa568491f3d6a527782d840e3cfc4d3}} 
+\index{GridMap@{GridMap}!getPixelMap@{getPixelMap}}
+\index{getPixelMap@{getPixelMap}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{getPixelMap()}{getPixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::get\+Pixel\+Map (\begin{DoxyParamCaption}\item[{int}]{res }\end{DoxyParamCaption}) const}
+
+
+
+returns a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution 
+
+Output a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface brightness with same res as the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}. \mbox{\Hypertarget{struct_grid_map_ac87d83cc6f0e3f08d9a0393e3720c5f9}\label{struct_grid_map_ac87d83cc6f0e3f08d9a0393e3720c5f9}} 
+\index{GridMap@{GridMap}!getPixelMap@{getPixelMap}}
+\index{getPixelMap@{getPixelMap}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{getPixelMap()}{getPixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grid\+Map\+::get\+Pixel\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map }\end{DoxyParamCaption}) const}
+
+
+
+surface brightness map 
+
+update a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution. The map must have precisely the right size and center to match or an exception will be thrown. Constructing the map with \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} get\+Pixel\+Map(int res) will insure that it does. \mbox{\Hypertarget{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}\label{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}} 
+\index{GridMap@{GridMap}!RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}}
+\index{RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{RefreshSurfaceBrightnesses()}{RefreshSurfaceBrightnesses()}}
+{\footnotesize\ttfamily double Grid\+Map\+::\+Refresh\+Surface\+Brightnesses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source\+Hndl}}}]{source }\end{DoxyParamCaption})}
+
+
+
+Recalculate surface brightness at every point without changing the positions of the gridmap or any lens properties. 
+
+Recalculate the surface brightness at all points on the gridmap. This is useful when changing the source model while preserving changes in the grid. Both i\+\_\+tree and s\+\_\+tree are both changed although only s\+\_\+tree shows up here.
+
+returns the sum of the surface brightnesses \mbox{\Hypertarget{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}\label{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}} 
+\index{GridMap@{GridMap}!writeFitsUniform@{writeFitsUniform}}
+\index{writeFitsUniform@{writeFitsUniform}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writeFitsUniform()}{writeFitsUniform()}}
+{\footnotesize\ttfamily void Grid\+Map\+::write\+Fits\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{Lensing\+Variable}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em center} & center of image \\
+\hline
+{\em Nx} & number of pixels in image in on dimension \\
+\hline
+{\em Ny} & number of pixels in image in on dimension \\
+\hline
+{\em lensvar} & which quantity is to be displayed \\
+\hline
+{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_aed55e0cb0283537108615b228dbb057a}\label{struct_grid_map_aed55e0cb0283537108615b228dbb057a}} 
+\index{GridMap@{GridMap}!writePixelMapUniform@{writePixelMapUniform}}
+\index{writePixelMapUniform@{writePixelMapUniform}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
+
+
+
+Make a Pixel map of the without distribution the pixels. 
+
+This will be faster than \mbox{\hyperlink{struct_grid_a4d91a7428c0994afbdd4b4a69877dc19}{Grid\+::write\+Pixel\+Map()}} and \mbox{\hyperlink{struct_grid_a8815d0d3b3bec110d580340ff40621bf}{Grid\+::write\+Fits()}}. But it puts each grid pixel in one pixelmap pixel and if there are two grid pixels in one pixelmap pixel it uses one at random. This is meant for uniform maps to make equal sized Pixel\+Maps. 
+\begin{DoxyParams}{Parameters}
+{\em center} & center of image \\
+\hline
+{\em Nx} & number of pixels in image in on dimension \\
+\hline
+{\em Ny} & number of pixels in image in on dimension \\
+\hline
+{\em lensvar} & which quantity is to be displayed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_a0d1e721790ac12b240e73d9a699384f9}\label{struct_grid_map_a0d1e721790ac12b240e73d9a699384f9}} 
+\index{GridMap@{GridMap}!writePixelMapUniform@{writePixelMapUniform}}
+\index{writePixelMapUniform@{writePixelMapUniform}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
+
+
+
+make pixel map of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lensvar} & which quantity is to be displayed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_a4ea8dbd5fd0a8c672b33fbe6ff6787ad}\label{struct_grid_map_a4ea8dbd5fd0a8c672b33fbe6ff6787ad}} 
+\index{GridMap@{GridMap}!writePixelMapUniform@{writePixelMapUniform}}
+\index{writePixelMapUniform@{writePixelMapUniform}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Grid\+Map\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map,  }\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lensvar} & which quantity is to be displayed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/gridmap.\+h\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/gridmap.\+cpp\end{DoxyCompactItemize}

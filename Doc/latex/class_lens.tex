@@ -1,0 +1,426 @@
+\hypertarget{class_lens}{}\doxysection{Lens Class Reference}
+\label{class_lens}\index{Lens@{Lens}}
+
+
+A class to represents a lens with multiple planes.  
+
+
+
+
+{\ttfamily \#include $<$lens.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_acc69ae46a84f55e9f89633d0e4182230}\label{class_lens_acc69ae46a84f55e9f89633d0e4182230}} 
+\mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}} (long $\ast$seed, Pos\+Type z\+\_\+source, Cosmo\+Param\+Set cosmoset, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Creates an empty lens. Main halos and field halos need to be inserted by hand from the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a7d35c838440ad6d526e402492be04fc3}\label{class_lens_a7d35c838440ad6d526e402492be04fc3}} 
+{\bfseries Lens} (long $\ast$seed, Pos\+Type z\+\_\+source, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, bool verbose=false)
+\item 
+\mbox{\Hypertarget{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}\label{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}} 
+int \mbox{\hyperlink{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}{get\+Nplanes}} () const
+\begin{DoxyCompactList}\small\item\em the total number of lens planes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a4269648ebbcbfcb1df353a92a5da2710}\label{class_lens_a4269648ebbcbfcb1df353a92a5da2710}} 
+Pos\+Type \mbox{\hyperlink{class_lens_a4269648ebbcbfcb1df353a92a5da2710}{getfov}} () const
+\begin{DoxyCompactList}\small\item\em field of view in square degrees \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_ac32d8eedc7ff362eed924f1dacea54ad}\label{class_lens_ac32d8eedc7ff362eed924f1dacea54ad}} 
+void {\bfseries setfov} (Pos\+Type fov)
+\item 
+\mbox{\Hypertarget{class_lens_a1f2196496f170af2ee0a410ba064e2fa}\label{class_lens_a1f2196496f170af2ee0a410ba064e2fa}} 
+void \mbox{\hyperlink{class_lens_a1f2196496f170af2ee0a410ba064e2fa}{reset\+Field\+Nplanes}} (std\+::size\+\_\+t field\+\_\+\+Nplanes, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em reset the number of planes, but keep the field halos and main lens \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_ae4151410075a47b095f2f716055b1c69}{reset\+Field\+Halos}} (bool verbose=false)
+\item 
+\mbox{\Hypertarget{class_lens_a39c41fbb1d57645660161259c6352d85}\label{class_lens_a39c41fbb1d57645660161259c6352d85}} 
+void \mbox{\hyperlink{class_lens_a39c41fbb1d57645660161259c6352d85}{print\+Multi\+Lens}} ()
+\begin{DoxyCompactList}\small\item\em print the main parameters of the lens \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_ac96bfac69304667e16af07feb20843f8}\label{class_lens_ac96bfac69304667e16af07feb20843f8}} 
+Pos\+Type \mbox{\hyperlink{class_lens_ac96bfac69304667e16af07feb20843f8}{get\+Zlens}} () const
+\begin{DoxyCompactList}\small\item\em Redshift of first main lens plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a9b720d302cc40cc8dc820b98e766339e}\label{class_lens_a9b720d302cc40cc8dc820b98e766339e}} 
+Pos\+Type \mbox{\hyperlink{class_lens_a9b720d302cc40cc8dc820b98e766339e}{get\+Ang\+Dist\+Lens}} () const
+\begin{DoxyCompactList}\small\item\em Angular size distance (Mpc) to first main lens plane. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a4b21ff2601808978cc0783a53c305c43}\label{class_lens_a4b21ff2601808978cc0783a53c305c43}} 
+\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities\+::\+Geometry\+::\+Spherical\+Point}} {\bfseries get\+Center} () const
+\item 
+\mbox{\Hypertarget{class_lens_a01b0553693fdcff5a9cafc8f6c49e387}\label{class_lens_a01b0553693fdcff5a9cafc8f6c49e387}} 
+void \mbox{\hyperlink{class_lens_a01b0553693fdcff5a9cafc8f6c49e387}{clear\+Main\+Halos}} (bool verbose=false)
+\begin{DoxyCompactList}\small\item\em remove all main halos \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_ad3fc4fa967bf6f74cfc0bdf257bc0f30}\label{class_lens_ad3fc4fa967bf6f74cfc0bdf257bc0f30}} 
+{\footnotesize template$<$typename Halo\+Type $>$ }\\void \mbox{\hyperlink{class_lens_ad3fc4fa967bf6f74cfc0bdf257bc0f30}{clear\+Main\+Halo}} (bool verbose=false)
+\begin{DoxyCompactList}\small\item\em remaove all main halo of given type \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a177ee7cbb406d835865edd855b556d63}\label{class_lens_a177ee7cbb406d835865edd855b556d63}} 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_lens_a177ee7cbb406d835865edd855b556d63}{insert\+Main\+Halo}} (const T \&halo\+\_\+in, bool addplanes, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em inserts a single main lens halo and adds it to the existing ones \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}{movein\+Main\+Halo}} (T \&halo\+\_\+in, bool addplanes, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em This has the same effect as \mbox{\hyperlink{class_lens_a177ee7cbb406d835865edd855b556d63}{insert\+Main\+Halo()}}, but the halo is not copied, it is moved. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_lens_aba7e1b3c66565092fdc7555dc4704896}{replace\+Main\+Halo}} (const T \&halo\+\_\+in, bool addplanes, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Inserts a single main lens halo and deletes all previous ones. Then all lensing planes are updated accordingly. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_lens_af7403e6372cd1a396fb098cbd1d824cc}{insert\+Main\+Halos}} (std\+::vector$<$ T $>$ \&my\+\_\+halos, bool addplanes, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Inserts a sequense of main lens halos and adds them to the existing ones. Then all lensing planes are updated accordingly. If addplanes is true new planes will be added otherwise the halo is added to the nearest plane and a plane is added only if none exited on entry. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_lens_a0cfbb73f3ff13e43beccb50d18a89af4}{replace\+Main\+Halos}} (std\+::vector$<$ T $>$ \&my\+\_\+halos, bool verbose)
+\begin{DoxyCompactList}\small\item\em Inserts a sequense of main lens halos and remove all previous ones. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_a0324de1e5d25474e42cff1633be9eb1a}{insert\+Substructures}} (Pos\+Type Rregion, Pos\+Type center\mbox{[}$\,$\mbox{]}, Pos\+Type Number\+Density, Pos\+Type Mass\+\_\+min, Pos\+Type Mass\+\_\+max, Pos\+Type redshift, Pos\+Type alpha, Pos\+Type density\+\_\+contrast, bool verbose)
+\begin{DoxyCompactList}\small\item\em inserts a sequence of main lens halos and adds them to the existing ones \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_afff453e42293b1dddda27c7bdebc36db}{reset\+Substructure}} (bool verbose=false)
+\begin{DoxyCompactList}\small\item\em This function will randomize the substructure without changing the region, mass function, etc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_ad5edcf261950dab5a8d3339626b01eed}\label{class_lens_ad5edcf261950dab5a8d3339626b01eed}} 
+std\+::size\+\_\+t \mbox{\hyperlink{class_lens_ad5edcf261950dab5a8d3339626b01eed}{get\+N\+Main\+Halos}} () const
+\begin{DoxyCompactList}\small\item\em get number of main halos \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a44cfbf61d32fcad6120af5a472132391}\label{class_lens_a44cfbf61d32fcad6120af5a472132391}} 
+{\footnotesize template$<$typename Halo\+Type $>$ }\\std\+::size\+\_\+t \mbox{\hyperlink{class_lens_a44cfbf61d32fcad6120af5a472132391}{get\+N\+Main\+Halos}} () const
+\begin{DoxyCompactList}\small\item\em get number of main halos of given type \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_aecc7754f42783ebe2f3d7a8074591322}\label{class_lens_aecc7754f42783ebe2f3d7a8074591322}} 
+\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ \mbox{\hyperlink{class_lens_aecc7754f42783ebe2f3d7a8074591322}{get\+Main\+Halo}} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em get single main halo \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_afbff81a6b811293718d2f58665b81571}\label{class_lens_afbff81a6b811293718d2f58665b81571}} 
+{\footnotesize template$<$typename Halo\+Type $>$ }\\Halo\+Type $\ast$ \mbox{\hyperlink{class_lens_afbff81a6b811293718d2f58665b81571}{get\+Main\+Halo}} (std\+::size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em get single main halo of given type \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_a7a8ed89e743c26f14ab8e3992fa3118a}{rayshooter}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&ray)
+\begin{DoxyCompactList}\small\item\em Using to shoot a single ray. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_a711067d75213f4e6bc0f8a5606faf66a}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+points, bool R\+S\+Iverbose=false)
+\item 
+void \mbox{\hyperlink{class_lens_a789442c6d34aad5a578b2042c65f0903}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$$\ast$halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, short mode=0, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Collects information about the halos and kappa contributions along the light path. \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{class_lens_a41a7645662d9c26b1c2c4373826348c1}{Reset\+Source\+Plane}} (Pos\+Type z, bool nearest=false, unsigned long Gal\+ID=0, Pos\+Type $\ast$xx=N\+U\+LL, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em reset the redshift of the source plane \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_af4c16d98618b2a26e75c2673af2058c2}\label{class_lens_af4c16d98618b2a26e75c2673af2058c2}} 
+void \mbox{\hyperlink{class_lens_af4c16d98618b2a26e75c2673af2058c2}{Revert\+Source\+Plane}} ()
+\begin{DoxyCompactList}\small\item\em Revert the source redshift to the value it was when the \mbox{\hyperlink{class_lens}{Lens}} was created. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_af77f423ad5bbf4d7256673256a601037}\label{class_lens_af77f423ad5bbf4d7256673256a601037}} 
+Pos\+Type {\bfseries get\+SourceZ} ()
+\item 
+\mbox{\Hypertarget{class_lens_a45fd74bb5f5ffc4ee1610db34bb96def}\label{class_lens_a45fd74bb5f5ffc4ee1610db34bb96def}} 
+Pos\+Type {\bfseries get\+Zmax} () const
+\item 
+\mbox{\Hypertarget{class_lens_a6e65d6c8d5c97e4024d7002eb8cc7d04}\label{class_lens_a6e65d6c8d5c97e4024d7002eb8cc7d04}} 
+void \mbox{\hyperlink{class_lens_a6e65d6c8d5c97e4024d7002eb8cc7d04}{Print\+Cosmology}} ()
+\begin{DoxyCompactList}\small\item\em print the cosmological parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a53108c7002e0cb4ce7064d43c5efdb0e}\label{class_lens_a53108c7002e0cb4ce7064d43c5efdb0e}} 
+Pos\+Type \mbox{\hyperlink{class_lens_a53108c7002e0cb4ce7064d43c5efdb0e}{get\+Sigma\+Crit}} (Pos\+Type zsource) const
+\begin{DoxyCompactList}\small\item\em returns the critical density at the main lens in Msun/ Mpc$^\wedge$2 for a source at zsource \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}\label{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}} 
+const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \& \mbox{\hyperlink{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}{get\+Cosmo}} ()
+\begin{DoxyCompactList}\small\item\em returns a const reference to the cosmology so that constant functions can be used, but the cosmological parameters cannot be changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a40ef8e31f5a9d3ada238db9c8a8babe9}\label{class_lens_a40ef8e31f5a9d3ada238db9c8a8babe9}} 
+void \mbox{\hyperlink{class_lens_a40ef8e31f5a9d3ada238db9c8a8babe9}{Turn\+Field\+Off}} ()
+\begin{DoxyCompactList}\small\item\em set flag\+\_\+switch\+\_\+field\+\_\+off, turn the field On/\+Off \+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a15b527844992bbd710bb5bee3c7e55f3}\label{class_lens_a15b527844992bbd710bb5bee3c7e55f3}} 
+void {\bfseries Turn\+Field\+On} ()
+\item 
+\mbox{\Hypertarget{class_lens_a3769e1aec46d81eab053a7de55f464cc}\label{class_lens_a3769e1aec46d81eab053a7de55f464cc}} 
+Pos\+Type \mbox{\hyperlink{class_lens_a3769e1aec46d81eab053a7de55f464cc}{get\+Field\+Min\+Mass}} () const
+\begin{DoxyCompactList}\small\item\em get the field min mass \+: \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_a6a6ea256727745b13b6df8258cfa7ec0}\label{class_lens_a6a6ea256727745b13b6df8258cfa7ec0}} 
+bool {\bfseries getfield\+Off} () const
+\item 
+void \mbox{\hyperlink{class_lens_a6503364df69f159ab0f6b80acc26761c}{Generate\+Field\+Halos}} (double min\+\_\+mass, Mass\+Func\+Type mass\+\_\+function, double field\+\_\+of\+\_\+view, int Nplanes, Lens\+Halo\+Type halo\+\_\+type=nfw\+\_\+lens, Galaxy\+Lens\+Halo\+Type galaxy\+\_\+type=null\+\_\+gal, double buffer=1.\+0, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Add random halos to the light cone according to standard structure formation theory. A new realization of the light-\/cone can be made with \mbox{\hyperlink{class_lens_ae4151410075a47b095f2f716055b1c69}{Lens\+::reset\+Field\+Halos()}} after this function is called once. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lens}{Lens}} \& \mbox{\hyperlink{class_lens_a2e312accd9681ad7e131b5530ca2affd}{operator=}} (\mbox{\hyperlink{class_lens}{Lens}} \&\&lens)
+\item 
+\mbox{\Hypertarget{class_lens_a557f940236f66e88f8a3b73efbb7c2bc}\label{class_lens_a557f940236f66e88f8a3b73efbb7c2bc}} 
+{\bfseries Lens} (\mbox{\hyperlink{class_lens}{Lens}} \&\&lens)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_a09c7b4946959331f7dc5aed93053727c}\label{class_lens_a09c7b4946959331f7dc5aed93053727c}} 
+bool \mbox{\hyperlink{class_lens_a09c7b4946959331f7dc5aed93053727c}{set}}
+\begin{DoxyCompactList}\small\item\em marks if the lens has been setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_aee17d6e92bea425de358a9381ad6280b}\label{class_lens_aee17d6e92bea425de358a9381ad6280b}} 
+Pos\+Type \mbox{\hyperlink{class_lens_aee17d6e92bea425de358a9381ad6280b}{fieldofview}}
+\begin{DoxyCompactList}\small\item\em field of view in square degrees \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class to represents a lens with multiple planes. 
+
+
+\begin{DoxyPre}
+ The rays are traced through multiple deflections.  On each plane there is a deflection
+ solver.  An \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e}{LensHaloAnaNSIE}} or \mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}} can be put on one of the planes.  The other planes can be
+ populated with random field\_halos drawn from a mass function or they can be retrieved from an
+ external catalog.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   Input Parameters (variable names):\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   main\_halo\_on -\/-\/ 0: no major lens present; 1: there is a major lens present
+   main\_halo\_type -\/-\/ profile type for the main DM lens halo
+    0 or nolens, 1 or NFW, 2 or PseudoNFW, 3 or PowerLaw, 4 or NSIE, 5 or AnaLens, 6 or UniLens, 7 or MOKALens, 8 or DummyLens
+   main\_galaxy\_halo\_type -\/-\/ profile typ for the main galaxy lens halo 0 or none, 1 or NSIE
+   redshift\_planes\_file -\/-\/ asci file with the redshifts of the lensing planes, if not set then created internaly
+   flag\_switch\_field\_off -\/-\/ false: field halos are created, true: no field halos are created; default is false\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   if field\_off == false, i.e. there are field halos then also the following are used:
+   field\_Nplanes -\/-\/ number of field planes
+   field\_fov -\/-\/ field of view of the light cone, filled with field halos
+   field\_internal\_profile -\/-\/ profile type of the DM field lens halos
+    0 or nolens, 1 or NFW, 2 or PseudoNFW, 3 or PowerLaw, 4 or NSIE, 5 or AnaLens, 6 or UniLens, 7 or MOKALens, 8 or DummyLens, 9 or Hernquist, 10 or Jaffe
+   field\_prof\_internal\_slope\_pl -\/-\/ slope of the surface density for power law
+   field\_prof\_internal\_slope\_pnfw -\/-\/ slope of the surface density for pseudo nfw profiles
+   field\_internal\_profile\_galaxy -\/-\/ profile type of the galaxy field halos; if not set, no galaxies are used
+    0 or none, 1 or NSIE\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   field\_input\_sim\_file -\/-\/ filename of the Millennium simulation data to be read in and used to populate the light cone with field halos\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   if field\_input\_sim\_file is  \_not\_ set, then the field halos are generated from a mass function and the following are used:
+   field\_mass\_func\_type -\/-\/ type of the halo mass function
+    PS (0), ST (1), and power law (2)
+   mass\_func\_PL\_slope -\/-\/ slope of the mass function in the power law case; default is -\/1/6
+   field\_min\_mass -\/-\/ minimum mass for the generated field halos
+   field\_buffer -\/-\/ a constant physical size buffer, padding every lens plane to increase its surface\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   zsource -\/-\/ source redshift
+   flag\_switch\_deflection\_off -\/-\/ false: deflection is on, but kappa and gamma may be calculated, true: deflection is off; default is false
+   flag\_switch\_lensing\_off -\/-\/ false: lensing is on, true: lensing is off (no alpha, kappa or gamma); default is false\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   \# Cosmology -\/ Any cosmological parameters that are not set will have default values\end{DoxyPre}
+
+
+
+\begin{DoxyPre}  Omega\_matter -\/-\/ Total mass (baryons + dark matter) in the units of the critical density, optional
+  Omega\_lambda -\/-\/ Density in a cosmological constant, if not set it will be = 1 -\/ Omega\_matter
+  Omega\_baryon -\/-\/ Density in baryons
+  Omega\_neutrino -\/-\/ Density in neutrinos
+  hubble -\/-\/ Hubble parameter in units of 100 km/s/Mpc
+  sigm\_8 -\/-\/ normalization of power spectrum\end{DoxyPre}
+
+
+
+\begin{DoxyPre} \end{DoxyPre}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_a6503364df69f159ab0f6b80acc26761c}\label{class_lens_a6503364df69f159ab0f6b80acc26761c}} 
+\index{Lens@{Lens}!GenerateFieldHalos@{GenerateFieldHalos}}
+\index{GenerateFieldHalos@{GenerateFieldHalos}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{GenerateFieldHalos()}{GenerateFieldHalos()}}
+{\footnotesize\ttfamily void Lens\+::\+Generate\+Field\+Halos (\begin{DoxyParamCaption}\item[{double}]{min\+\_\+mass,  }\item[{Mass\+Func\+Type}]{mass\+\_\+function,  }\item[{double}]{field\+\_\+of\+\_\+view,  }\item[{int}]{Nplanes,  }\item[{Lens\+Halo\+Type}]{halo\+\_\+type = {\ttfamily nfw\+\_\+lens},  }\item[{Galaxy\+Lens\+Halo\+Type}]{galaxy\+\_\+type = {\ttfamily null\+\_\+gal},  }\item[{double}]{buffer = {\ttfamily 1.0},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Add random halos to the light cone according to standard structure formation theory. A new realization of the light-\/cone can be made with \mbox{\hyperlink{class_lens_ae4151410075a47b095f2f716055b1c69}{Lens\+::reset\+Field\+Halos()}} after this function is called once. 
+
+The cone is filled up until the redshift of the current zsource that is stored in the \mbox{\hyperlink{class_lens}{Lens}} class. The field is a circular on the sky. There is no clustering of the halos. 
+\begin{DoxyParams}{Parameters}
+{\em min\+\_\+mass} & minimum mass of halos \\
+\hline
+{\em mass\+\_\+function} & type of mass function \\
+\hline
+{\em field\+\_\+of\+\_\+view} & in square degrees \\
+\hline
+{\em Nplanes} & number of lens planes \\
+\hline
+{\em halo\+\_\+type} & type of halo \\
+\hline
+{\em galaxy\+\_\+type} & type of galaxy, if null\+\_\+gal no galaxy \\
+\hline
+{\em buffer} & buffer in Mpc for cone \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a789442c6d34aad5a578b2042c65f0903}\label{class_lens_a789442c6d34aad5a578b2042c65f0903}} 
+\index{Lens@{Lens}!info\_rayshooter@{info\_rayshooter}}
+\index{info\_rayshooter@{info\_rayshooter}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{info\_rayshooter()}{info\_rayshooter()}}
+{\footnotesize\ttfamily void Lens\+::info\+\_\+rayshooter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{i\+\_\+point,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{ang\+\_\+positions,  }\item[{std\+::vector$<$ Kappa\+Type $>$ \&}]{kappa\+\_\+on\+\_\+planes,  }\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&}]{halo\+\_\+neighbors,  }\item[{\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$$\ast$}]{halo\+\_\+max,  }\item[{Kappa\+Type \&}]{kappa\+\_\+max,  }\item[{Kappa\+Type}]{gamma\+\_\+max\mbox{[}$\,$\mbox{]},  }\item[{Pos\+Type}]{rmax,  }\item[{short}]{mode = {\ttfamily 0},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Collects information about the halos and kappa contributions along the light path. 
+
+Information on the nearest halos is collected where nearest is defined by rmax and mode. When mode == 2 the unlensed angular coordinates are used to evaluate proximity not the lensed ones. 
+\begin{DoxyParams}{Parameters}
+{\em i\+\_\+point} & point to be shot, must have image point linked \\
+\hline
+{\em ang\+\_\+positions} & angular positions on each plane \\
+\hline
+{\em kappa\+\_\+on\+\_\+planes} & convergence on each plane \\
+\hline
+{\em halo\+\_\+neighbors} & neighboring halos within rmax of ray on each plane \\
+\hline
+{\em rmax} & distance from ray on each plane, units depend on mode parameter \\
+\hline
+{\em mode} & 0\+:physical distance, 1\+: comoving distance, 2\+: angular distance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_af7403e6372cd1a396fb098cbd1d824cc}\label{class_lens_af7403e6372cd1a396fb098cbd1d824cc}} 
+\index{Lens@{Lens}!insertMainHalos@{insertMainHalos}}
+\index{insertMainHalos@{insertMainHalos}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{insertMainHalos()}{insertMainHalos()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Lens\+::insert\+Main\+Halos (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{my\+\_\+halos,  }\item[{bool}]{addplanes,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a sequense of main lens halos and adds them to the existing ones. Then all lensing planes are updated accordingly. If addplanes is true new planes will be added otherwise the halo is added to the nearest plane and a plane is added only if none exited on entry. 
+
+The angular position of the halo should be preserved, but the x coordinates may change The halos are copied so the input halos can be destoyed without affecting the \mbox{\hyperlink{class_lens}{Lens}}. \mbox{\Hypertarget{class_lens_a0324de1e5d25474e42cff1633be9eb1a}\label{class_lens_a0324de1e5d25474e42cff1633be9eb1a}} 
+\index{Lens@{Lens}!insertSubstructures@{insertSubstructures}}
+\index{insertSubstructures@{insertSubstructures}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{insertSubstructures()}{insertSubstructures()}}
+{\footnotesize\ttfamily void Lens\+::insert\+Substructures (\begin{DoxyParamCaption}\item[{Pos\+Type}]{Rregion,  }\item[{Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{Pos\+Type}]{Number\+Density,  }\item[{Pos\+Type}]{Mass\+\_\+min,  }\item[{Pos\+Type}]{Mass\+\_\+max,  }\item[{Pos\+Type}]{redshift,  }\item[{Pos\+Type}]{alpha,  }\item[{Pos\+Type}]{density\+\_\+contrast,  }\item[{bool}]{verbose }\end{DoxyParamCaption})}
+
+
+
+inserts a sequence of main lens halos and adds them to the existing ones 
+
+replaces existing main halos with a single main halo replaces existing main halos with a sequence of main halos
+
+Add substructures to the lens.
+
+This method is meant for inserting substructure to a main lens. All the substructure will be at one redshift. The mass function follows a power law. The density of substructures is constant within a circular region. The tidal truncation is controlled through the parameter density\+\_\+contrast which is the average density within the substructures orbit in units of the average density to the universe at the redshift where they are places. For example density\+\_\+contrast=200 would give them the truncation radius appropriate at R\+\_\+200.
+
+
+\begin{DoxyItemize}
+\item I\+N\+S\+E\+RT S\+UB S\+T\+R\+U\+C\+T\+U\+RE $\ast$ /// 
+\end{DoxyItemize}
+\begin{DoxyParams}{Parameters}
+{\em Rregion} & radius of region in which substructures are inserted (radians) \\
+\hline
+{\em center} & center of region in which the substructures are inserted (radians) \\
+\hline
+{\em Number\+Density} & number density per radian$^\wedge$2 of all substructures \\
+\hline
+{\em Mass\+\_\+min} & minimum mass of substructures \\
+\hline
+{\em Mass\+\_\+max} & maximum mass of substructures \\
+\hline
+{\em redshift} & redshift of substructures \\
+\hline
+{\em alpha} & index of mass function (d\+N/dm \textbackslash{}propto m$^\wedge$alpha) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}\label{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}} 
+\index{Lens@{Lens}!moveinMainHalo@{moveinMainHalo}}
+\index{moveinMainHalo@{moveinMainHalo}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{moveinMainHalo()}{moveinMainHalo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Lens\+::movein\+Main\+Halo (\begin{DoxyParamCaption}\item[{T \&}]{halo\+\_\+in,  }\item[{bool}]{addplanes,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This has the same effect as \mbox{\hyperlink{class_lens_a177ee7cbb406d835865edd855b556d63}{insert\+Main\+Halo()}}, but the halo is not copied, it is moved. 
+
+The \mbox{\hyperlink{class_lens}{Lens}} will take possession of the halo and will destroy it when it is destroyed. This is to avoid copying halos that take up a lot of memory and require a lot of time to copy like \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles()}}. \mbox{\Hypertarget{class_lens_a2e312accd9681ad7e131b5530ca2affd}\label{class_lens_a2e312accd9681ad7e131b5530ca2affd}} 
+\index{Lens@{Lens}!operator=@{operator=}}
+\index{operator=@{operator=}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_lens}{Lens}}\& Lens\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens}} \&\&}]{lens }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Mixed\+Vector cannot be copyed\mbox{\Hypertarget{class_lens_a7a8ed89e743c26f14ab8e3992fa3118a}\label{class_lens_a7a8ed89e743c26f14ab8e3992fa3118a}} 
+\index{Lens@{Lens}!rayshooter@{rayshooter}}
+\index{rayshooter@{rayshooter}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{rayshooter()}{rayshooter()}}
+{\footnotesize\ttfamily void Lens\+::rayshooter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{ray }\end{DoxyParamCaption})}
+
+
+
+Using to shoot a single ray. 
+
+This function calculates the deflection, shear, convergence, rotation and time-\/delay of rays in parallel.
+
+ray.\+x should be set to the image position. The kappa,gamma,deflection, time-\/delay and source position will be calculated at that image point. \mbox{\Hypertarget{class_lens_a711067d75213f4e6bc0f8a5606faf66a}\label{class_lens_a711067d75213f4e6bc0f8a5606faf66a}} 
+\index{Lens@{Lens}!rayshooterInternal@{rayshooterInternal}}
+\index{rayshooterInternal@{rayshooterInternal}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}}
+{\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{i\+\_\+points,  }\item[{bool}]{R\+S\+I\+Verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Npoints} & number of points to be shot \\
+\hline
+{\em i\+\_\+points} & point on the image plane \\
+\hline
+{\em R\+S\+I\+Verbose} & verbose option \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_aba7e1b3c66565092fdc7555dc4704896}\label{class_lens_aba7e1b3c66565092fdc7555dc4704896}} 
+\index{Lens@{Lens}!replaceMainHalo@{replaceMainHalo}}
+\index{replaceMainHalo@{replaceMainHalo}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{replaceMainHalo()}{replaceMainHalo()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Lens\+::replace\+Main\+Halo (\begin{DoxyParamCaption}\item[{const T \&}]{halo\+\_\+in,  }\item[{bool}]{addplanes,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a single main lens halo and deletes all previous ones. Then all lensing planes are updated accordingly. 
+
+Note that this does delete all the halos that were there. \mbox{\Hypertarget{class_lens_a0cfbb73f3ff13e43beccb50d18a89af4}\label{class_lens_a0cfbb73f3ff13e43beccb50d18a89af4}} 
+\index{Lens@{Lens}!replaceMainHalos@{replaceMainHalos}}
+\index{replaceMainHalos@{replaceMainHalos}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{replaceMainHalos()}{replaceMainHalos()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Lens\+::replace\+Main\+Halos (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{my\+\_\+halos,  }\item[{bool}]{verbose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserts a sequense of main lens halos and remove all previous ones. 
+
+Note that this does delete the halos that were there. Then all lensing planes are updated accordingly. \mbox{\Hypertarget{class_lens_ae4151410075a47b095f2f716055b1c69}\label{class_lens_ae4151410075a47b095f2f716055b1c69}} 
+\index{Lens@{Lens}!resetFieldHalos@{resetFieldHalos}}
+\index{resetFieldHalos@{resetFieldHalos}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{resetFieldHalos()}{resetFieldHalos()}}
+{\footnotesize\ttfamily void Lens\+::reset\+Field\+Halos (\begin{DoxyParamCaption}\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+keep the main lens and the number of planes constant, but generate new field halos. This function will also erase the substructure halos so they need to be regenerated using \mbox{\hyperlink{class_lens_afff453e42293b1dddda27c7bdebc36db}{reset\+Substructure()}} if they are desired . \mbox{\Hypertarget{class_lens_a41a7645662d9c26b1c2c4373826348c1}\label{class_lens_a41a7645662d9c26b1c2c4373826348c1}} 
+\index{Lens@{Lens}!ResetSourcePlane@{ResetSourcePlane}}
+\index{ResetSourcePlane@{ResetSourcePlane}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{ResetSourcePlane()}{ResetSourcePlane()}}
+{\footnotesize\ttfamily short Lens\+::\+Reset\+Source\+Plane (\begin{DoxyParamCaption}\item[{Pos\+Type}]{z,  }\item[{bool}]{nearest = {\ttfamily false},  }\item[{unsigned long}]{Gal\+ID = {\ttfamily 0},  }\item[{Pos\+Type $\ast$}]{xx = {\ttfamily NULL},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+reset the redshift of the source plane 
+
+Changes the maximum redshift that the rays are shot to. Warning\+: Grids that have already been made with this \mbox{\hyperlink{class_lens}{Lens}} will not have this new source redshift.
+
+The multilens must have been initially constructed with a source redshift that is higher than this redshift. This is used to rayshoot to a source whose line of sight passes through the simulation volume. The source can be at higher redshift than the simulation volume.
+
+To revert the source redshift to its original value use \mbox{\hyperlink{class_lens_af4c16d98618b2a26e75c2673af2058c2}{Lens\+::\+Revert\+Source\+Plane()}}. 
+\begin{DoxyParams}{Parameters}
+{\em z} & redshift of implanted source \\
+\hline
+{\em nearest} & If true, set the source plane to the nearest (in coordinate distance) lensing plane that was created already. This can be used to avoid self-\/lensing by the halo of the source. If the source is at higher redshift than the simulation volume the source will be at its real redshift. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_afff453e42293b1dddda27c7bdebc36db}\label{class_lens_afff453e42293b1dddda27c7bdebc36db}} 
+\index{Lens@{Lens}!resetSubstructure@{resetSubstructure}}
+\index{resetSubstructure@{resetSubstructure}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{resetSubstructure()}{resetSubstructure()}}
+{\footnotesize\ttfamily void Lens\+::reset\+Substructure (\begin{DoxyParamCaption}\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+This function will randomize the substructure without changing the region, mass function, etc. 
+
+The \mbox{\hyperlink{class_lens_a0324de1e5d25474e42cff1633be9eb1a}{Lens\+::insert\+Substructures()}} function must have been called on this instance of the \mbox{\hyperlink{class_lens}{Lens}} before.
+
+
+\begin{DoxyItemize}
+\item R\+E\+S\+ET S\+UB S\+T\+R\+U\+C\+T\+U\+RE $\ast$ /// 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/lens.\+h\item 
+S\+Lsim\+Lib/\+Full\+Range/internal\+\_\+rayshooter\+\_\+multi.\+cpp\item 
+S\+Lsim\+Lib/\+Multi\+Plane/lens.\+cpp\item 
+S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+multi\+\_\+dark.\+cpp\end{DoxyCompactItemize}

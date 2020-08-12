@@ -1,0 +1,288 @@
+\hypertarget{struct_tree_struct}{}\doxysection{Tree\+Struct Struct Reference}
+\label{struct_tree_struct}\index{TreeStruct@{TreeStruct}}
+
+
+Tree\+: Exported struct.  
+
+
+
+
+{\ttfamily \#include $<$Tree.\+h$>$}
+
+
+
+Collaboration diagram for Tree\+Struct\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{struct_tree_struct__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_tree_struct_1_1iterator}{iterator}}
+\begin{DoxyCompactList}\small\item\em A iterator class fore \mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}} that allows for movement through the tree without changing anything in the tree itself. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_tree_struct_a20fc537aab17f735ce8c6bac7d95af87}{Tree\+Struct}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$xp, unsigned long Npoints, short my\+\_\+median\+\_\+cut=1, Pos\+Type buffer=0.\+0)
+\begin{DoxyCompactList}\small\item\em Build a complete tree from a list of points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_tree_struct_a578ff026e90846de685d2bee12c2d27b}{Tree\+Struct}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$xp, unsigned long npoints, Pos\+Type boundary\+\_\+p1\mbox{[}2\mbox{]}, Pos\+Type boundary\+\_\+p2\mbox{[}2\mbox{]}, Pos\+Type center\mbox{[}2\mbox{]}, int Nbucket)
+\begin{DoxyCompactList}\small\item\em Make a new tree and the linked list of points in it. Does not build the tree structure. The other constructor should be used to build the whole tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_tree_struct_a8d2b2eb45f2bc3b172177929f97dee01}\label{struct_tree_struct_a8d2b2eb45f2bc3b172177929f97dee01}} 
+\mbox{\hyperlink{struct_tree_struct_a8d2b2eb45f2bc3b172177929f97dee01}{$\sim$\+Tree\+Struct}} ()
+\begin{DoxyCompactList}\small\item\em Free tree and the linked list of points in it. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_tree_struct_a49b6885009f3adc0e9e5200d9de091aa}\label{struct_tree_struct_a49b6885009f3adc0e9e5200d9de091aa}} 
+\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} {\bfseries begin} () const
+\item 
+\mbox{\Hypertarget{struct_tree_struct_ad6925efe0946917391afd5858d4b068e}\label{struct_tree_struct_ad6925efe0946917391afd5858d4b068e}} 
+\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} {\bfseries end} () const
+\item 
+\mbox{\Hypertarget{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}\label{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}} 
+\mbox{\hyperlink{struct_branch}{Branch}} $\ast$ \mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top}} ()
+\begin{DoxyCompactList}\small\item\em root branch \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}{Find\+All\+Box\+Neighbors\+Kist}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$point, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighbors) const
+\begin{DoxyCompactList}\small\item\em Finds all the leaves that are neighboring a point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_tree_struct_a68145b23b953f705f127410bb125fc79}{Points\+Within\+Ellip\+Kist}} (const Pos\+Type $\ast$center, float rmax, float rmin, float posangle, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist) const
+\begin{DoxyCompactList}\small\item\em Finds points within an ellipse. \end{DoxyCompactList}\item 
+Pos\+Type \mbox{\hyperlink{struct_tree_struct_a43e87679f878529623577aae8af1288b}{Points\+Within\+Kist}} (const Pos\+Type $\ast$center, Pos\+Type rmax, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist, short markpoints) const
+\begin{DoxyCompactList}\small\item\em Finds all points in tree that lie within rmax of the point ray\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_tree_struct_a36a2c24eb61beee51be40c0624b459dd}{Points\+Within\+Kist\+\_\+iter}} (const Pos\+Type $\ast$center, float rmin, float rmax, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist) const
+\begin{DoxyCompactList}\small\item\em Finds all points within a circle. Much simpler, iterative algorithm. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_tree_struct_ad5a40088ed454c0fb84073653e317a4f}{Nearest\+Neighbor\+Kist}} (const Pos\+Type $\ast$center, int Nneighbors, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist) const
+\begin{DoxyCompactList}\small\item\em Finds nearest neighbor points to ray. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_tree_struct_acec8b0dc4a3a18fda4f3feef690923ca}\label{struct_tree_struct_acec8b0dc4a3a18fda4f3feef690923ca}} 
+bool {\bfseries Test} ()
+\item 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}{Remove\+Leaf\+From\+Tree}} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current, unsigned long $\ast$Npoints)
+\item 
+\mbox{\Hypertarget{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}\label{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}} 
+void \mbox{\hyperlink{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}{Fill\+Tree}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$xp, unsigned long Npoints)
+\begin{DoxyCompactList}\small\item\em Fill a tree with points. The previous tree structure will be destroyed. Used for refilling. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_tree_struct_aa57c8f27fb818e4c45e75cfda1cee0ec}\label{struct_tree_struct_aa57c8f27fb818e4c45e75cfda1cee0ec}} 
+int \mbox{\hyperlink{struct_tree_struct_aa57c8f27fb818e4c45e75cfda1cee0ec}{Add\+Points\+To\+Tree}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$xpoint, unsigned long Nadd)
+\begin{DoxyCompactList}\small\item\em Expands tree by adding points. \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{struct_tree_struct_a22011842bc8af6c0770f23e4cf192a87}{empty\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Empty tree of all point leaving a tree with an empty root. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_tree_struct_a427822306514170bb89a5d529a6cb565}{Rebuild\+Tree\+From\+List}} ()
+\begin{DoxyCompactList}\small\item\em Rebuilds the tree from the points that are already in the tree-\/$>$pointlist. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_tree_struct_aa07ffc0660e4f26705e9ebe38bd53957}\label{struct_tree_struct_aa07ffc0660e4f26705e9ebe38bd53957}} 
+bool {\bfseries is\+Empty} ()
+\item 
+\mbox{\Hypertarget{struct_tree_struct_afc7d7d8b0b849f94f90c3aaa6dd37f0f}\label{struct_tree_struct_afc7d7d8b0b849f94f90c3aaa6dd37f0f}} 
+unsigned long {\bfseries get\+Nbranches} ()
+\item 
+\mbox{\Hypertarget{struct_tree_struct_a1681e1caa459748eab374612e92cc2e9}\label{struct_tree_struct_a1681e1caa459748eab374612e92cc2e9}} 
+void {\bfseries print\+Tree} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current)
+\item 
+\mbox{\Hypertarget{struct_tree_struct_acc821cf873426c96b9f43fa0427ce0a0}\label{struct_tree_struct_acc821cf873426c96b9f43fa0427ce0a0}} 
+void {\bfseries check\+Tree} ()
+\item 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_tree_struct_a230c70e5a72e2ae2d30ff3cc159a3e87}{Find\+Box\+Point}} (const Pos\+Type $\ast$ray) const
+\item 
+\mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}} $\ast$ \mbox{\hyperlink{struct_tree_struct_aa926ddaf09634063e0d4da15290a6dbc}{spawn}} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current)
+\begin{DoxyCompactList}\small\item\em Spawn a subtree with current as its top. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_tree_struct_a05a6a26bae725392d290cdfa0220e7f0}{\+\_\+\+Find\+Leaf}} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current, const Pos\+Type $\ast$ray, unsigned long Nadd=0) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_tree_struct_acacd06c4536d377fd43239cb03e46a02}\label{struct_tree_struct_acacd06c4536d377fd43239cb03e46a02}} 
+\mbox{\hyperlink{struct_point_list}{Point\+List}} $\ast$ \mbox{\hyperlink{struct_tree_struct_acacd06c4536d377fd43239cb03e46a02}{pointlist}}
+\begin{DoxyCompactList}\small\item\em list of points \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_tree_struct_adc9ac615fe5048e81da2e7be2cf7975f}\label{struct_tree_struct_adc9ac615fe5048e81da2e7be2cf7975f}} 
+static std\+::mutex {\bfseries mutex}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tree\+: Exported struct. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_tree_struct_a20fc537aab17f735ce8c6bac7d95af87}\label{struct_tree_struct_a20fc537aab17f735ce8c6bac7d95af87}} 
+\index{TreeStruct@{TreeStruct}!TreeStruct@{TreeStruct}}
+\index{TreeStruct@{TreeStruct}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{TreeStruct()}{TreeStruct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Tree\+Struct\+::\+Tree\+Struct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{xp,  }\item[{unsigned long}]{Npoints,  }\item[{short}]{my\+\_\+median\+\_\+cut = {\ttfamily 1},  }\item[{Pos\+Type}]{buffer = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+
+
+Build a complete tree from a list of points. 
+
+median\+\_\+cut determines how the cells are subdivided if ==0 equal volume cuts, Warning this option causes an error if ==1 pseudo-\/median point cuts, never cuts through a point, but near the median $<${\ttfamily } $>$ \mbox{\Hypertarget{struct_tree_struct_a578ff026e90846de685d2bee12c2d27b}\label{struct_tree_struct_a578ff026e90846de685d2bee12c2d27b}} 
+\index{TreeStruct@{TreeStruct}!TreeStruct@{TreeStruct}}
+\index{TreeStruct@{TreeStruct}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{TreeStruct()}{TreeStruct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Tree\+Struct\+::\+Tree\+Struct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{xp,  }\item[{unsigned long}]{npoints,  }\item[{Pos\+Type}]{boundary\+\_\+p1\mbox{[}2\mbox{]},  }\item[{Pos\+Type}]{boundary\+\_\+p2\mbox{[}2\mbox{]},  }\item[{Pos\+Type}]{center\mbox{[}2\mbox{]},  }\item[{int}]{my\+\_\+\+Nbucket }\end{DoxyParamCaption})}
+
+
+
+Make a new tree and the linked list of points in it. Does not build the tree structure. The other constructor should be used to build the whole tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xp} & array of points to be added to the tree \\
+\hline
+{\em npoints} & number of points \\
+\hline
+{\em boundary\+\_\+p1} & bottom left hand corner of root \\
+\hline
+{\em boundary\+\_\+p2} & upper right hand corner of root \\
+\hline
+{\em center} & center of root (this could be the center of mass) \\
+\hline
+{\em my\+\_\+\+Nbucket} & maximum number of points allowed in a leaf \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_tree_struct_a05a6a26bae725392d290cdfa0220e7f0}\label{struct_tree_struct_a05a6a26bae725392d290cdfa0220e7f0}} 
+\index{TreeStruct@{TreeStruct}!\_FindLeaf@{\_FindLeaf}}
+\index{\_FindLeaf@{\_FindLeaf}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{\_FindLeaf()}{\_FindLeaf()}}
+{\footnotesize\ttfamily void Tree\+Struct\+::\+\_\+\+Find\+Leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&}]{current,  }\item[{const Pos\+Type $\ast$}]{ray,  }\item[{unsigned long}]{Nadd = {\ttfamily 0} }\end{DoxyParamCaption}) const}
+
+Finds the leaf the ray is in and adds Nadd to all of is parent leaves \mbox{\Hypertarget{struct_tree_struct_a22011842bc8af6c0770f23e4cf192a87}\label{struct_tree_struct_a22011842bc8af6c0770f23e4cf192a87}} 
+\index{TreeStruct@{TreeStruct}!emptyTree@{emptyTree}}
+\index{emptyTree@{emptyTree}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{emptyTree()}{emptyTree()}}
+{\footnotesize\ttfamily short Tree\+Struct\+::empty\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Empty tree of all point leaving a tree with an empty root. 
+
+The points are freed, but the list structure is not destroyed.
+
+Fill\+Tree can then be used to regenerate tree. \mbox{\Hypertarget{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}\label{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}} 
+\index{TreeStruct@{TreeStruct}!FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}}
+\index{FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{FindAllBoxNeighborsKist()}{FindAllBoxNeighborsKist()}}
+{\footnotesize\ttfamily void Tree\+Struct\+::\+Find\+All\+Box\+Neighbors\+Kist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{point,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{neighbors }\end{DoxyParamCaption}) const}
+
+
+
+Finds all the leaves that are neighboring a point. 
+
+Points outside of grid have no box neighbors Warning\+: Does not take empty leaves into account. \mbox{\Hypertarget{struct_tree_struct_a230c70e5a72e2ae2d30ff3cc159a3e87}\label{struct_tree_struct_a230c70e5a72e2ae2d30ff3cc159a3e87}} 
+\index{TreeStruct@{TreeStruct}!FindBoxPoint@{FindBoxPoint}}
+\index{FindBoxPoint@{FindBoxPoint}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{FindBoxPoint()}{FindBoxPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Tree\+Struct\+::\+Find\+Box\+Point (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{ray }\end{DoxyParamCaption}) const}
+
+return a pointer to the point that is in the same box as ray\mbox{[}2\mbox{]} if Nbuck $>$ 1 the head of the point array is returned
+
+Memory \mbox{\Hypertarget{struct_tree_struct_ad5a40088ed454c0fb84073653e317a4f}\label{struct_tree_struct_ad5a40088ed454c0fb84073653e317a4f}} 
+\index{TreeStruct@{TreeStruct}!NearestNeighborKist@{NearestNeighborKist}}
+\index{NearestNeighborKist@{NearestNeighborKist}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{NearestNeighborKist()}{NearestNeighborKist()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Tree\+Struct\+::\+Nearest\+Neighbor\+Kist (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{center,  }\item[{int}]{Nneighbors,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{neighborkist }\end{DoxyParamCaption}) const}
+
+
+
+Finds nearest neighbor points to ray. 
+
+This is a kludge that relies on Nearest\+Neighbor which uses a List and translates the list to a kist. Could be rewritten.
+
+Warning\+: The number of neighbor points in neighborkist will be less than Nneighbors when the number of points in the tree is less than Nneighbors \mbox{\Hypertarget{struct_tree_struct_a68145b23b953f705f127410bb125fc79}\label{struct_tree_struct_a68145b23b953f705f127410bb125fc79}} 
+\index{TreeStruct@{TreeStruct}!PointsWithinEllipKist@{PointsWithinEllipKist}}
+\index{PointsWithinEllipKist@{PointsWithinEllipKist}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{PointsWithinEllipKist()}{PointsWithinEllipKist()}}
+{\footnotesize\ttfamily void Tree\+Struct\+::\+Points\+Within\+Ellip\+Kist (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{center,  }\item[{float}]{rmax,  }\item[{float}]{rmin,  }\item[{float}]{posangle,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{neighborkist }\end{DoxyParamCaption}) const}
+
+
+
+Finds points within an ellipse. 
+
+This becomes less efficient when the ellipse is very elongated. Could be improved by incorporating the test of it being in the ellipse into the tree walk.
+
+The 
+\begin{DoxyParams}{Parameters}
+{\em center} & center of ellipse \\
+\hline
+{\em rmax} & major axis \\
+\hline
+{\em rmin} & minor axis \\
+\hline
+{\em posangle} & position angle of major axis, smallest angle between the x-\/axis and the long axis \\
+\hline
+{\em neighborkist} & output neighbor kist, will be emptied if it contains anything on entry \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_tree_struct_a43e87679f878529623577aae8af1288b}\label{struct_tree_struct_a43e87679f878529623577aae8af1288b}} 
+\index{TreeStruct@{TreeStruct}!PointsWithinKist@{PointsWithinKist}}
+\index{PointsWithinKist@{PointsWithinKist}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{PointsWithinKist()}{PointsWithinKist()}}
+{\footnotesize\ttfamily Pos\+Type Tree\+Struct\+::\+Points\+Within\+Kist (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{center,  }\item[{Pos\+Type}]{rmax,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{neighborkist,  }\item[{short}]{markpoints }\end{DoxyParamCaption}) const}
+
+
+
+Finds all points in tree that lie within rmax of the point ray\mbox{[}\mbox{]}. 
+
+markpoints = 0 does not change in\+\_\+image variable in any point, gives a list of neighbors = 1 makes in\+\_\+image=Y\+ES for all points and their images in image, gives no list of neighbors = -\/1 makes in\+\_\+image=NO for all points in image to reset, gives no list of neighbors
+
+Returns the largest gridsize of the points within the circle. Note that this is the gridsize stored in the point. If finding points on the source plane the i\+\_\+point-\/$>$gridsize must be set to the same as the image point to get the largest gridsize on the image plane. 
+\begin{DoxyParams}{Parameters}
+{\em center} & center of circle \\
+\hline
+{\em rmax} & radius of circle \\
+\hline
+{\em neighborkist} & output neighbor kist, will be emptied if it contains anything on entry \\
+\hline
+{\em markpoints} & see comment \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_tree_struct_a36a2c24eb61beee51be40c0624b459dd}\label{struct_tree_struct_a36a2c24eb61beee51be40c0624b459dd}} 
+\index{TreeStruct@{TreeStruct}!PointsWithinKist\_iter@{PointsWithinKist\_iter}}
+\index{PointsWithinKist\_iter@{PointsWithinKist\_iter}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{PointsWithinKist\_iter()}{PointsWithinKist\_iter()}}
+{\footnotesize\ttfamily void Tree\+Struct\+::\+Points\+Within\+Kist\+\_\+iter (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{center,  }\item[{float}]{rmin,  }\item[{float}]{rmax,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{neighborkist }\end{DoxyParamCaption}) const}
+
+
+
+Finds all points within a circle. Much simpler, iterative algorithm. 
+
+\mbox{\Hypertarget{struct_tree_struct_a427822306514170bb89a5d529a6cb565}\label{struct_tree_struct_a427822306514170bb89a5d529a6cb565}} 
+\index{TreeStruct@{TreeStruct}!RebuildTreeFromList@{RebuildTreeFromList}}
+\index{RebuildTreeFromList@{RebuildTreeFromList}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{RebuildTreeFromList()}{RebuildTreeFromList()}}
+{\footnotesize\ttfamily void Tree\+Struct\+::\+Rebuild\+Tree\+From\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Rebuilds the tree from the points that are already in the tree-\/$>$pointlist. 
+
+This is not the best function because it copies all the points \mbox{\Hypertarget{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}\label{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}} 
+\index{TreeStruct@{TreeStruct}!RemoveLeafFromTree@{RemoveLeafFromTree}}
+\index{RemoveLeafFromTree@{RemoveLeafFromTree}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{RemoveLeafFromTree()}{RemoveLeafFromTree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Tree\+Struct\+::\+Remove\+Leaf\+From\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&}]{current,  }\item[{unsigned long $\ast$}]{Npoints }\end{DoxyParamCaption})}
+
+Removes current from a tree if it is a leaf. Will not remove root of tree.
+
+on output\+: Current is left at the father of the leaf that was removed. All the points in the leaf that was removed are in its father so the father might be a leaf without Nbucket points. The -\/$>$leaf pointer of these points are reassigned to the father.
+
+returns\+: Pointer to first in list of points that were reassigned. $\ast$\+Npoints = number of points reassigned. \mbox{\Hypertarget{struct_tree_struct_aa926ddaf09634063e0d4da15290a6dbc}\label{struct_tree_struct_aa926ddaf09634063e0d4da15290a6dbc}} 
+\index{TreeStruct@{TreeStruct}!spawn@{spawn}}
+\index{spawn@{spawn}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}} $\ast$ Tree\+Struct\+::spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&}]{current }\end{DoxyParamCaption})}
+
+
+
+Spawn a subtree with current as its top. 
+
+The new tree contains all of the tree below the current. Warning\+:\+: Adding points to the new tree will not update the parent tree so it can become dangerously out of sync. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/Tree.\+h\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/\mbox{\hyperlink{_kist_driver_8cpp}{Kist\+Driver.\+cpp}}\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/Tree.\+cpp\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/tree\+\_\+maintenance.\+cpp\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/Tree\+Driver.\+cpp\end{DoxyCompactItemize}

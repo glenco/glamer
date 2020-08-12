@@ -1,0 +1,200 @@
+\hypertarget{class_source_overzier}{}\doxysection{Source\+Overzier Class Reference}
+\label{class_source_overzier}\index{SourceOverzier@{SourceOverzier}}
+
+
+Structure for holding parameters for one or more galaxy images according to the Overzier model.  
+
+
+
+
+{\ttfamily \#include $<$overzier\+\_\+source.\+h$>$}
+
+
+
+Inheritance diagram for Source\+Overzier\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_source_overzier__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Source\+Overzier\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=165pt]{class_source_overzier__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_source_overzier_a0068fa5742c422eea19c68019a97cce7}{Source\+Overzier}} (Pos\+Type mag, Pos\+Type mag\+\_\+bulge, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, unsigned long my\+\_\+id, Pos\+Type my\+\_\+z=0, const Pos\+Type $\ast$theta=0)
+\begin{DoxyCompactList}\small\item\em sets everything to zero \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_a4842b38897163579d0c150699a390fbf}\label{class_source_overzier_a4842b38897163579d0c150699a390fbf}} 
+{\bfseries Source\+Overzier} (const \mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \&s)
+\item 
+\mbox{\Hypertarget{class_source_overzier_ac3caee66c301733c2f04d303ec11674f}\label{class_source_overzier_ac3caee66c301733c2f04d303ec11674f}} 
+\mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \&s)
+\item 
+\mbox{\Hypertarget{class_source_overzier_a7d7d5af6bee27ef57eee0520def38133}\label{class_source_overzier_a7d7d5af6bee27ef57eee0520def38133}} 
+void \mbox{\hyperlink{class_source_overzier_a7d7d5af6bee27ef57eee0520def38133}{set\+Internals}} (Pos\+Type mag, Pos\+Type BtoT, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, unsigned long my\+\_\+id, Pos\+Type my\+\_\+z=0, const Pos\+Type $\ast$my\+\_\+theta=0)
+\begin{DoxyCompactList}\small\item\em Sets internal variables. If default constructor is used this must be called before the surface brightness function. \end{DoxyCompactList}\item 
+virtual Pos\+Type \mbox{\hyperlink{class_source_overzier_a3ab6be6e44d689db4f56ad3d20836337}{Surface\+Brightness}} (Pos\+Type $\ast$x)
+\begin{DoxyCompactList}\small\item\em Surface brightness in erg/cm$^\wedge$2/sec/rad$^\wedge$2/\+Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_a97dd6c8d2da66f2145cc46cfd5b0c8a7}\label{class_source_overzier_a97dd6c8d2da66f2145cc46cfd5b0c8a7}} 
+Pos\+Type {\bfseries get\+Total\+Flux} () const
+\item 
+\mbox{\Hypertarget{class_source_overzier_a22f7979b54fe2d1791bc8e5f9d58ca09}\label{class_source_overzier_a22f7979b54fe2d1791bc8e5f9d58ca09}} 
+void {\bfseries print\+Source} ()
+\item 
+\mbox{\Hypertarget{class_source_overzier_ace6642446410adac99ad287f3b59d27a}\label{class_source_overzier_ace6642446410adac99ad287f3b59d27a}} 
+unsigned long \mbox{\hyperlink{class_source_overzier_ace6642446410adac99ad287f3b59d27a}{get\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Halo ID. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_ab4ce092f3bcd95e3e72c6565de2ec90f}\label{class_source_overzier_ab4ce092f3bcd95e3e72c6565de2ec90f}} 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_ab4ce092f3bcd95e3e72c6565de2ec90f}{get\+Mag}} () const
+\begin{DoxyCompactList}\small\item\em get magnitude of whole galaxy. Which band this is in depends on which was passed in the constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_ae859748d0650b57f47795ca8bab8993c}\label{class_source_overzier_ae859748d0650b57f47795ca8bab8993c}} 
+Pos\+Type {\bfseries get\+Mag} (Band band) const
+\item 
+\mbox{\Hypertarget{class_source_overzier_ac1dc90a3611ac7171a0c08c3e51061ee}\label{class_source_overzier_ac1dc90a3611ac7171a0c08c3e51061ee}} 
+Pos\+Type {\bfseries get\+Mag\+Bulge} () const
+\item 
+\mbox{\Hypertarget{class_source_overzier_a36c94c7fc2a7120de482fcb024b5906b}\label{class_source_overzier_a36c94c7fc2a7120de482fcb024b5906b}} 
+Pos\+Type {\bfseries get\+Mag\+Bulge} (Band band) const
+\item 
+\mbox{\Hypertarget{class_source_overzier_a9547542b16a2ff54f7d412a65f2066cd}\label{class_source_overzier_a9547542b16a2ff54f7d412a65f2066cd}} 
+virtual void \mbox{\hyperlink{class_source_overzier_a9547542b16a2ff54f7d412a65f2066cd}{set\+Mag}} (Band band, Pos\+Type my\+\_\+mag)
+\begin{DoxyCompactList}\small\item\em magnitude in specific band \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_af7377809553f01370c275c83c01be9ac}\label{class_source_overzier_af7377809553f01370c275c83c01be9ac}} 
+virtual void \mbox{\hyperlink{class_source_overzier_af7377809553f01370c275c83c01be9ac}{set\+Mag\+Bulge}} (Band band, Pos\+Type my\+\_\+mag)
+\begin{DoxyCompactList}\small\item\em magnitude in specific band \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_a847f6effa8ec2e70376cfbca012e9c40}\label{class_source_overzier_a847f6effa8ec2e70376cfbca012e9c40}} 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_a847f6effa8ec2e70376cfbca012e9c40}{get\+Reff}} () const
+\begin{DoxyCompactList}\small\item\em bulge half light radius in arcseconds \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_ab687a54269392789df8e7116f86dbb7d}\label{class_source_overzier_ab687a54269392789df8e7116f86dbb7d}} 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_ab687a54269392789df8e7116f86dbb7d}{get\+Rdisk}} () const
+\begin{DoxyCompactList}\small\item\em disk scale height in arcseconds \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_ac8c60b5ab9d1c2b96708558599825ea6}\label{class_source_overzier_ac8c60b5ab9d1c2b96708558599825ea6}} 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_ac8c60b5ab9d1c2b96708558599825ea6}{get\+BtoT}} () const
+\begin{DoxyCompactList}\small\item\em the bulge to total flux ratio \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_a0b3ab19d4e0555037d2dc33adf7c7fd5}\label{class_source_overzier_a0b3ab19d4e0555037d2dc33adf7c7fd5}} 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_a0b3ab19d4e0555037d2dc33adf7c7fd5}{get\+PA}} () const
+\begin{DoxyCompactList}\small\item\em position angle in radians \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_a8246cc258e3628b75d07a7de5aa8648d}\label{class_source_overzier_a8246cc258e3628b75d07a7de5aa8648d}} 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_a8246cc258e3628b75d07a7de5aa8648d}{get\+Inclination}} () const
+\begin{DoxyCompactList}\small\item\em inclination in radians \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_a7eb2d11593d758d3e5ff527f2838c837}\label{class_source_overzier_a7eb2d11593d758d3e5ff527f2838c837}} 
+float {\bfseries get\+S\+E\+Dtype} () const
+\item 
+\mbox{\Hypertarget{class_source_overzier_a51406addd17f50a6f16e691df71c975d}\label{class_source_overzier_a51406addd17f50a6f16e691df71c975d}} 
+void {\bfseries set\+S\+E\+Dtype} (float s)
+\item 
+\mbox{\Hypertarget{class_source_overzier_aa5c8cdf97bb6660a33d1ac27e0d5fe52}\label{class_source_overzier_aa5c8cdf97bb6660a33d1ac27e0d5fe52}} 
+virtual void \mbox{\hyperlink{class_source_overzier_aa5c8cdf97bb6660a33d1ac27e0d5fe52}{change\+Band}} (Band band)
+\begin{DoxyCompactList}\small\item\em change the working band \end{DoxyCompactList}\item 
+Pos\+Type \mbox{\hyperlink{class_source_overzier_a6feb922edd104dd20122a7c58b3b3cce}{get\+Min\+Size}} (Pos\+Type f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_source_overzier_a6da175ef50174f31a898ba1efbe3b3ac}\label{class_source_overzier_a6da175ef50174f31a898ba1efbe3b3ac}} 
+static Pos\+Type $\ast$ {\bfseries getx} (\mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \&sourceo)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_source_overzier_ae5701a548b5e2e9997c6b2d8e7022720}\label{class_source_overzier_ae5701a548b5e2e9997c6b2d8e7022720}} 
+void {\bfseries renormalize\+\_\+current} ()
+\item 
+\mbox{\Hypertarget{class_source_overzier_aa3413103bad61ab8c9a160ef760e8f8d}\label{class_source_overzier_aa3413103bad61ab8c9a160ef760e8f8d}} 
+void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_source_overzier_a8322ab35065725810cdc70ccfc1b43aa}\label{class_source_overzier_a8322ab35065725810cdc70ccfc1b43aa}} 
+float {\bfseries sedtype} = -\/1
+\item 
+\mbox{\Hypertarget{class_source_overzier_a4746ce72ff652bc1fad9cc8b3ab818da}\label{class_source_overzier_a4746ce72ff652bc1fad9cc8b3ab818da}} 
+unsigned long \mbox{\hyperlink{class_source_overzier_a4746ce72ff652bc1fad9cc8b3ab818da}{halo\+ID}}
+\begin{DoxyCompactList}\small\item\em halo\+ID \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_overzier_ac9c5b19facd30c94a6ba9dab96d7cd62}\label{class_source_overzier_ac9c5b19facd30c94a6ba9dab96d7cd62}} 
+Params {\bfseries current}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure for holding parameters for one or more galaxy images according to the Overzier model. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_source_overzier_a0068fa5742c422eea19c68019a97cce7}\label{class_source_overzier_a0068fa5742c422eea19c68019a97cce7}} 
+\index{SourceOverzier@{SourceOverzier}!SourceOverzier@{SourceOverzier}}
+\index{SourceOverzier@{SourceOverzier}!SourceOverzier@{SourceOverzier}}
+\doxysubsubsection{\texorpdfstring{SourceOverzier()}{SourceOverzier()}}
+{\footnotesize\ttfamily Source\+Overzier\+::\+Source\+Overzier (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{Pos\+Type}]{mag\+\_\+bulge,  }\item[{Pos\+Type}]{Reff,  }\item[{Pos\+Type}]{Rdisk,  }\item[{Pos\+Type}]{PA,  }\item[{Pos\+Type}]{inclination,  }\item[{unsigned long}]{my\+\_\+id,  }\item[{Pos\+Type}]{my\+\_\+z = {\ttfamily 0},  }\item[{const Pos\+Type $\ast$}]{theta = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+sets everything to zero 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+mag} & Total magnitude \\
+\hline
+{\em mag\+\_\+bulge} & magnitude of bulge \\
+\hline
+{\em Reff} & Bulge half light radius (arcs) \\
+\hline
+{\em Rdisk} & disk scale hight (arcs) \\
+\hline
+{\em PA} & Position angle (radians) \\
+\hline
+{\em inclination} & inclination of disk (radians) \\
+\hline
+{\em my\+\_\+id} & id number \\
+\hline
+{\em my\+\_\+z} & optional redshift \\
+\hline
+{\em theta} & optional angular position on the sky \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_source_overzier_a6feb922edd104dd20122a7c58b3b3cce}\label{class_source_overzier_a6feb922edd104dd20122a7c58b3b3cce}} 
+\index{SourceOverzier@{SourceOverzier}!getMinSize@{getMinSize}}
+\index{getMinSize@{getMinSize}!SourceOverzier@{SourceOverzier}}
+\doxysubsubsection{\texorpdfstring{getMinSize()}{getMinSize()}}
+{\footnotesize\ttfamily Pos\+Type Source\+Overzier\+::get\+Min\+Size (\begin{DoxyParamCaption}\item[{Pos\+Type}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns minimum of the radii at which disk and bulge have a surf. brightness equal to a fraction f of the central one T\+O\+DO\+: Fabio\+: Needs to be tested and improved (Bulge is so steep in the center that output values are very small) \mbox{\Hypertarget{class_source_overzier_a3ab6be6e44d689db4f56ad3d20836337}\label{class_source_overzier_a3ab6be6e44d689db4f56ad3d20836337}} 
+\index{SourceOverzier@{SourceOverzier}!SurfaceBrightness@{SurfaceBrightness}}
+\index{SurfaceBrightness@{SurfaceBrightness}!SourceOverzier@{SourceOverzier}}
+\doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
+{\footnotesize\ttfamily Pos\+Type Source\+Overzier\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Surface brightness in erg/cm$^\wedge$2/sec/rad$^\wedge$2/\+Hz. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & position in radians \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Source}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{class_source_overzier_plus_aebbc4d39449422a61635b6afc18531f1}{Source\+Overzier\+Plus}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/overzier\+\_\+source.\+h\item 
+S\+Lsim\+Lib/\+Source/overzier.\+cpp\end{DoxyCompactItemize}

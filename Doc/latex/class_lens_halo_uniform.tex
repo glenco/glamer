@@ -1,0 +1,163 @@
+\hypertarget{class_lens_halo_uniform}{}\doxysection{Lens\+Halo\+Uniform Class Reference}
+\label{class_lens_halo_uniform}\index{LensHaloUniform@{LensHaloUniform}}
+
+
+A uniform surface density and shear lens.  
+
+
+
+
+{\ttfamily \#include $<$uniform\+\_\+lens.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Uniform\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{class_lens_halo_uniform__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Uniform\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_lens_halo_uniform__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{Lens\+Halo\+Uniform}} (double zlens, double Sigma, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&Shear, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo)
+\begin{DoxyCompactList}\small\item\em Direct constructor without any stars. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}\label{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}} 
+float \mbox{\hyperlink{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}{get\+Sigma}} () const
+\begin{DoxyCompactList}\small\item\em surface density in Msun/\+Mpc$^\wedge$2 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}\label{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}{get\+Shear}} () const
+\begin{DoxyCompactList}\small\item\em shear in Msun/\+Mpc$^\wedge$2 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}{reset\+Gamma}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&Shear)
+\begin{DoxyCompactList}\small\item\em reset the shear keeping the redshift of the plane fixed \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}{reset\+Kappa}} (double Sigma)
+\begin{DoxyCompactList}\small\item\em reset the convergence keeping the redshift of the plane fixed \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}{force\+\_\+halo}} (Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, Pos\+Type const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+\begin{DoxyCompactList}\small\item\em returns the lensing quantities of a ray in center of mass coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_uniform_a674f1f9d1026f2a8ab1c180dd74d0d5e}\label{class_lens_halo_uniform_a674f1f9d1026f2a8ab1c180dd74d0d5e}} 
+{\bfseries Lens\+Halo\+Uniform} (const \mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}} \&h)
+\item 
+\mbox{\Hypertarget{class_lens_halo_uniform_af97bbc880f038e183da118550ef6c217}\label{class_lens_halo_uniform_af97bbc880f038e183da118550ef6c217}} 
+\mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}} \&h)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}\label{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}{lens\+\_\+expand}} (Pos\+Type $\ast$mod, Pos\+Type const $\ast$x, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+\begin{DoxyCompactList}\small\item\em first two are shear \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_uniform_ae352d5e7cf782e2afaaf0ddbb3003425}\label{class_lens_halo_uniform_ae352d5e7cf782e2afaaf0ddbb3003425}} 
+Pos\+Type {\bfseries perturb\+\_\+modes} \mbox{[}3\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A uniform surface density and shear lens. 
+
+Note the units of the input shear and surface density are not Sigma\+\_\+crit\textquotesingle{}s. This lens will extend to infinity in the angular directions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}\label{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}} 
+\index{LensHaloUniform@{LensHaloUniform}!LensHaloUniform@{LensHaloUniform}}
+\index{LensHaloUniform@{LensHaloUniform}!LensHaloUniform@{LensHaloUniform}}
+\doxysubsubsection{\texorpdfstring{LensHaloUniform()}{LensHaloUniform()}}
+{\footnotesize\ttfamily Lens\+Halo\+Uniform\+::\+Lens\+Halo\+Uniform (\begin{DoxyParamCaption}\item[{double}]{zlens,  }\item[{double}]{Sigma,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{Shear,  }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{cosmo }\end{DoxyParamCaption})}
+
+
+
+Direct constructor without any stars. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zlens} & lens redshift \\
+\hline
+{\em Sigma} & surface density of lens in Msun/\+Mpc$^\wedge$2 \\
+\hline
+{\em Shear} & shear in M\+\_\+sun/\+Mpc$^\wedge$2 ie gamma $\ast$ Sigma\+\_\+crit \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}\label{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}} 
+\index{LensHaloUniform@{LensHaloUniform}!force\_halo@{force\_halo}}
+\index{force\_halo@{force\_halo}!LensHaloUniform@{LensHaloUniform}}
+\doxysubsubsection{\texorpdfstring{force\_halo()}{force\_halo()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Uniform\+::force\+\_\+halo (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi,  }\item[{Pos\+Type const $\ast$}]{xcm,  }\item[{bool}]{subtract\+\_\+point = {\ttfamily false},  }\item[{Pos\+Type}]{screening = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+returns the lensing quantities of a ray in center of mass coordinates. 
+
+Warning\+: This adds to input value of alpha, kappa, gamma, and phi. They need to be zeroed out if the contribution of just this halo is wanted. 
+\begin{DoxyParams}{Parameters}
+{\em alpha} & deflection solar mass/\+Mpc \\
+\hline
+{\em kappa} & surface density in Msun/\+Mpc$^\wedge$2 (?) \\
+\hline
+{\em gamma} & three components of shear \\
+\hline
+{\em phi} & potential in solar masses \\
+\hline
+{\em xcm} & position relative to center (Mpc?) \\
+\hline
+{\em subtract\+\_\+point} & if true contribution from a point mass is subtracted \\
+\hline
+{\em screening} & the factor by which to scale the mass for screening of the point mass subtraction \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_lens_halo_a460de105e52520a328d5912455c02fdd}{Lens\+Halo}}.
+
+\mbox{\Hypertarget{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}\label{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}} 
+\index{LensHaloUniform@{LensHaloUniform}!resetGamma@{resetGamma}}
+\index{resetGamma@{resetGamma}!LensHaloUniform@{LensHaloUniform}}
+\doxysubsubsection{\texorpdfstring{resetGamma()}{resetGamma()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Uniform\+::reset\+Gamma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{Shear }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+reset the shear keeping the redshift of the plane fixed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Shear} & Shear in units of critical density Msun/\+Mpc$^\wedge$2, ie gamma $\ast$ Sigma\+\_\+crit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}\label{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}} 
+\index{LensHaloUniform@{LensHaloUniform}!resetKappa@{resetKappa}}
+\index{resetKappa@{resetKappa}!LensHaloUniform@{LensHaloUniform}}
+\doxysubsubsection{\texorpdfstring{resetKappa()}{resetKappa()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Uniform\+::reset\+Kappa (\begin{DoxyParamCaption}\item[{double}]{Sigma }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+reset the convergence keeping the redshift of the plane fixed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Sigma} & Surface density in Msun/\+Mpc$^\wedge$2, ie kappa $\ast$ Sigma\+\_\+crit \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/uniform\+\_\+lens.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/readfiles\+\_\+uni.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,279 @@
+\hypertarget{class_input_params}{}\doxysection{Input\+Params Class Reference}
+\label{class_input_params}\index{InputParams@{InputParams}}
+
+
+Structure for reading and writing parameters to and from a parameter file as well as a container for passing the parameters to other classes and functions.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Params.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_input_params_a96e724a0dd6be6682bbbf5498c1746e9}\label{class_input_params_a96e724a0dd6be6682bbbf5498c1746e9}} 
+\mbox{\hyperlink{class_input_params_a96e724a0dd6be6682bbbf5498c1746e9}{Input\+Params}} ()
+\begin{DoxyCompactList}\small\item\em The constructor creates an empty map of input params. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_input_params_a08aa8b40523e8c5ace7ee14bcec66cba}{Input\+Params}} (std\+::string paramfile)
+\begin{DoxyCompactList}\small\item\em The constructor reads in all the lines from the parameter file and stores the labels and values of each parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}} (std\+::string label, bool \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_a33181b2f21d79674a586f6f7c1c0909b}{get}} (std\+::string label, std\+::string \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_a53ad0ad600042b3ff203af6f7fb3d1b3}{get}} (std\+::string label, Mass\+Func\+Type \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_acdd4073884cb851d86fe776949532c41}{get}} (std\+::string label, Lens\+Halo\+Type \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_a4f2b90465c088218311ddc9e7014eef8}{get}} (std\+::string label, Halo\+Cat\+Formats \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_a94ceef54bbd4685dbacc8dba5e048cc2}{get}} (std\+::string label, Galaxy\+Lens\+Halo\+Type \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_afa7c788fa488f30784d817bcb73587e4}{get}} (std\+::string label, Clump\+Internal \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_a0864b4990619f06387620c231dab83cf}{get}} (std\+::string label, Band \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_ad2feaa3320f932f24dc540e2a50119eb}{get}} (std\+::string label, I\+M\+Ftype \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_params_ada9f2c7b45ede7ad82e2b92bba8b7d8c}{get}} (std\+::string label, Ellip\+Method \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Number $>$ }\\bool \mbox{\hyperlink{class_input_params_aed3c1e721d11361f34a646c13ef696da}{get}} (std\+::string label, Number \&value) const
+\begin{DoxyCompactList}\small\item\em Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned and the value is set to the default value of the numerical type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_input_params_a96b0e61d991d69becd7cdaf8ab3b58b7}{get}} (std\+::string label, const T \&def=T()) const
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_input_params_aee63b091ac4a836112d6c215236d9ded}{require}} (std\+::string label) const
+\item 
+\mbox{\Hypertarget{class_input_params_aa0cc0292e129427337329b50920f25a2}\label{class_input_params_aa0cc0292e129427337329b50920f25a2}} 
+bool {\bfseries exist} (std\+::string label) const
+\item 
+\mbox{\Hypertarget{class_input_params_ab12499bdfe87a47837ba9f2d73ffecd6}\label{class_input_params_ab12499bdfe87a47837ba9f2d73ffecd6}} 
+void \mbox{\hyperlink{class_input_params_ab12499bdfe87a47837ba9f2d73ffecd6}{print}} () const
+\begin{DoxyCompactList}\small\item\em Print all parameters and values to stdout. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_params_accec2e5a02dc77ebbc9200c7f8a069f3}\label{class_input_params_accec2e5a02dc77ebbc9200c7f8a069f3}} 
+void \mbox{\hyperlink{class_input_params_accec2e5a02dc77ebbc9200c7f8a069f3}{print\+\_\+used}} () const
+\begin{DoxyCompactList}\small\item\em Print parameters and values that have been accessed within the code to stdout. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_params_a1e78eec9e10c6bec1d68660e29c381fe}\label{class_input_params_a1e78eec9e10c6bec1d68660e29c381fe}} 
+void \mbox{\hyperlink{class_input_params_a1e78eec9e10c6bec1d68660e29c381fe}{print\+\_\+unused}} () const
+\begin{DoxyCompactList}\small\item\em Print parameters and values that where read in but not accessed within the code to stdout. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_params_a009125f2fd0dd24f2477feb6fb1217be}\label{class_input_params_a009125f2fd0dd24f2477feb6fb1217be}} 
+std\+::size\+\_\+t \mbox{\hyperlink{class_input_params_a009125f2fd0dd24f2477feb6fb1217be}{Nparams}} () const
+\begin{DoxyCompactList}\small\item\em Returns total number of parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_params_a5a9e313d156c953d24246ea153f29417}\label{class_input_params_a5a9e313d156c953d24246ea153f29417}} 
+void \mbox{\hyperlink{class_input_params_a5a9e313d156c953d24246ea153f29417}{Print\+To\+File}} (std\+::string \mbox{\hyperlink{class_input_params_ad8c9f2e704a99105af6768950613161b}{filename}}, bool strip\+\_\+unused=false) const
+\begin{DoxyCompactList}\small\item\em Print all parameters to a file in the format needed for an input parameter file. Unused parameters can be stripped with the optional second argument. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_params_ad8c9f2e704a99105af6768950613161b}\label{class_input_params_ad8c9f2e704a99105af6768950613161b}} 
+std\+::string \mbox{\hyperlink{class_input_params_ad8c9f2e704a99105af6768950613161b}{filename}} () const
+\begin{DoxyCompactList}\small\item\em Return name of the parameter file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}{put}} (std\+::string label, std\+::string value, std\+::string comment=std\+::string())
+\item 
+{\footnotesize template$<$typename Number $>$ }\\void \mbox{\hyperlink{class_input_params_a93306d790e5337bd576d12ac1d55ba01}{put}} (std\+::string label, Number value, std\+::string comment=std\+::string())
+\item 
+void \mbox{\hyperlink{class_input_params_ae5679ef61b65b9ab211f87a775025ab1}{read\+M\+O\+KA}} ()
+\begin{DoxyCompactList}\small\item\em Read input parameters from a M\+O\+KA F\+I\+TS header. This function reads the F\+I\+TS file given by the M\+O\+K\+A\+\_\+input\+\_\+file parameter and uses the values found in its header to set various input parameters such as z\+\_\+lens, z\+\_\+source, Omega\+\_\+matter, ... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_input_params}{Input\+Params}} \mbox{\hyperlink{class_input_params_ae4df821522f3ee935379efe3f8ce38a5}{sample}} ()
+\begin{DoxyCompactList}\small\item\em Lists all acceptable input parameters with description. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_input_params_a1634bebf74a595b8a2469da315c6f91b}{add}} (std\+::string label, std\+::string value=std\+::string(), std\+::string comment=std\+::string())
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_input_params_ab2161a3230bd886a70f9cc5717f4edf2}\label{class_input_params_ab2161a3230bd886a70f9cc5717f4edf2}} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{class_input_params}{Input\+Params}} const \&params)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure for reading and writing parameters to and from a parameter file as well as a container for passing the parameters to other classes and functions. 
+
+The constructor reads in all parameters in the parameter file. They can then be accessed with the get functions. There should be no interaction with the parameter file except through the \mbox{\hyperlink{class_input_params}{Input\+Params}} structure. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_input_params_a08aa8b40523e8c5ace7ee14bcec66cba}\label{class_input_params_a08aa8b40523e8c5ace7ee14bcec66cba}} 
+\index{InputParams@{InputParams}!InputParams@{InputParams}}
+\index{InputParams@{InputParams}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{InputParams()}{InputParams()}}
+{\footnotesize\ttfamily Input\+Params\+::\+Input\+Params (\begin{DoxyParamCaption}\item[{std\+::string}]{paramfile }\end{DoxyParamCaption})}
+
+
+
+The constructor reads in all the lines from the parameter file and stores the labels and values of each parameter. 
+
+If a parameter is provided that should not exist an error message is printed 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_params_a1634bebf74a595b8a2469da315c6f91b}\label{class_input_params_a1634bebf74a595b8a2469da315c6f91b}} 
+\index{InputParams@{InputParams}!add@{add}}
+\index{add@{add}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Input\+Params\+::add (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{std\+::string}]{value = {\ttfamily std\+:\+:string()},  }\item[{std\+::string}]{comment = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+add a new parameter with default value and comment
+
+Add a given parameter with default value and comment. \mbox{\Hypertarget{class_input_params_a0864b4990619f06387620c231dab83cf}\label{class_input_params_a0864b4990619f06387620c231dab83cf}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Band \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Main\+Lens\+Type entries in the parameter file must be E\+U\+C\+\_\+\+V\+IS,E\+U\+C\+\_\+Y,E\+U\+C\+\_\+J,E\+U\+C\+\_\+H,S\+D\+S\+S\+\_\+U,S\+D\+S\+S\+\_\+G,S\+D\+S\+S\+\_\+R,S\+D\+S\+S\+\_\+I,S\+D\+S\+S\+\_\+Z,J,H,Ks,I\+R\+A\+C1,I\+R\+A\+C2,F435W,F606W,F775W,F850\+LP,F814W,F110W,F160W \mbox{\Hypertarget{class_input_params_a5f816c8401a291a24f9208f00ff4812c}\label{class_input_params_a5f816c8401a291a24f9208f00ff4812c}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{bool \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+bool entries in the parameter file must be 0,1,true or false. \mbox{\Hypertarget{class_input_params_afa7c788fa488f30784d817bcb73587e4}\label{class_input_params_afa7c788fa488f30784d817bcb73587e4}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Clump\+Internal \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Main\+Lens\+Type entries in the parameter file must be 0 through 2 or N\+FW, Power\+Law, or Point\+Mass. \mbox{\Hypertarget{class_input_params_a96b0e61d991d69becd7cdaf8ab3b58b7}\label{class_input_params_a96b0e61d991d69becd7cdaf8ab3b58b7}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{const T \&}]{def = {\ttfamily T()} }\end{DoxyParamCaption}) const}
+
+Return a parameter value. \mbox{\Hypertarget{class_input_params_ada9f2c7b45ede7ad82e2b92bba8b7d8c}\label{class_input_params_ada9f2c7b45ede7ad82e2b92bba8b7d8c}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Ellip\+Method \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Main\+Lens\+Type entries in the parameter file must be Fourier,Pseudo,Schramm or Keeton \mbox{\Hypertarget{class_input_params_a94ceef54bbd4685dbacc8dba5e048cc2}\label{class_input_params_a94ceef54bbd4685dbacc8dba5e048cc2}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Galaxy\+Lens\+Halo\+Type \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Galaxy\+Lens\+Type entries in the parameter file must be 0 or none, 1 or N\+S\+IE \mbox{\Hypertarget{class_input_params_a4f2b90465c088218311ddc9e7014eef8}\label{class_input_params_a4f2b90465c088218311ddc9e7014eef8}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Halo\+Cat\+Formats \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Main\+Lens\+Type entries in the parameter file must be 0 through 2 or N\+FW, Power\+Law, or Point\+Mass. \mbox{\Hypertarget{class_input_params_ad2feaa3320f932f24dc540e2a50119eb}\label{class_input_params_ad2feaa3320f932f24dc540e2a50119eb}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{I\+M\+Ftype \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Main\+Lens\+Type entries in the parameter file must be One,Mono,Broken\+Power\+Law,Salpeter,Single\+Power\+Law,Kroupa or Chabrier \mbox{\Hypertarget{class_input_params_acdd4073884cb851d86fe776949532c41}\label{class_input_params_acdd4073884cb851d86fe776949532c41}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Lens\+Halo\+Type \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Main\+Lens\+Type entries in the parameter file must needs to be 0 or nolens, 1 or N\+FW, 2 or Pseudo\+N\+FW, 3 or Power\+Law, 4 or N\+S\+IE, 5 or Ana\+Lens, 6 or Uni\+Lens, 7 or M\+O\+K\+A\+Lens, 8 or Dummy\+Lens \mbox{\Hypertarget{class_input_params_a53ad0ad600042b3ff203af6f7fb3d1b3}\label{class_input_params_a53ad0ad600042b3ff203af6f7fb3d1b3}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Mass\+Func\+Type \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not \char`\"{}match\char`\"{} the type of value false will also be returned and a warning printed to stdout. 
+
+Mass\+Func\+Type entries in the parameter file must be 0 through 2 or PS (Press \& Schechter), ST (Sheth \& Torman) or Power\+Law (Power-\/law). \mbox{\Hypertarget{class_input_params_aed3c1e721d11361f34a646c13ef696da}\label{class_input_params_aed3c1e721d11361f34a646c13ef696da}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily template$<$typename Number $>$ \\
+bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Number \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned and the value is set to the default value of the numerical type. 
+
+The entry in the parameter file must have a numerical value. If it does not, an exception message is printed and false is returned. \mbox{\Hypertarget{class_input_params_a33181b2f21d79674a586f6f7c1c0909b}\label{class_input_params_a33181b2f21d79674a586f6f7c1c0909b}} 
+\index{InputParams@{InputParams}!get@{get}}
+\index{get@{get}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{std\+::string \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Assigns to \char`\"{}value\char`\"{} the value of the parameter called \char`\"{}label\char`\"{}. If this parameter label does not appear in the parameter file false is returned. 
+
+If there is an entry in the parameter file this function will always return it in string format -\/ no type checking. \mbox{\Hypertarget{class_input_params_a93306d790e5337bd576d12ac1d55ba01}\label{class_input_params_a93306d790e5337bd576d12ac1d55ba01}} 
+\index{InputParams@{InputParams}!put@{put}}
+\index{put@{put}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Number $>$ \\
+void Input\+Params\+::put (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{Number}]{value,  }\item[{std\+::string}]{comment = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})}
+
+Add a new parameter to the parameter list. \mbox{\Hypertarget{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}\label{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}} 
+\index{InputParams@{InputParams}!put@{put}}
+\index{put@{put}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Input\+Params\+::put (\begin{DoxyParamCaption}\item[{std\+::string}]{label,  }\item[{std\+::string}]{value,  }\item[{std\+::string}]{comment = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})}
+
+Add a new parameter to the parameter list. \mbox{\Hypertarget{class_input_params_ae5679ef61b65b9ab211f87a775025ab1}\label{class_input_params_ae5679ef61b65b9ab211f87a775025ab1}} 
+\index{InputParams@{InputParams}!readMOKA@{readMOKA}}
+\index{readMOKA@{readMOKA}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{readMOKA()}{readMOKA()}}
+{\footnotesize\ttfamily void Input\+Params\+::read\+M\+O\+KA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read input parameters from a M\+O\+KA F\+I\+TS header. This function reads the F\+I\+TS file given by the M\+O\+K\+A\+\_\+input\+\_\+file parameter and uses the values found in its header to set various input parameters such as z\+\_\+lens, z\+\_\+source, Omega\+\_\+matter, ... 
+
+This method needs E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS to be defined. \mbox{\Hypertarget{class_input_params_aee63b091ac4a836112d6c215236d9ded}\label{class_input_params_aee63b091ac4a836112d6c215236d9ded}} 
+\index{InputParams@{InputParams}!require@{require}}
+\index{require@{require}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{require()}{require()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T Input\+Params\+::require (\begin{DoxyParamCaption}\item[{std\+::string}]{label }\end{DoxyParamCaption}) const}
+
+Return a parameter value or throw an error. \mbox{\Hypertarget{class_input_params_ae4df821522f3ee935379efe3f8ce38a5}\label{class_input_params_ae4df821522f3ee935379efe3f8ce38a5}} 
+\index{InputParams@{InputParams}!sample@{sample}}
+\index{sample@{sample}!InputParams@{InputParams}}
+\doxysubsubsection{\texorpdfstring{sample()}{sample()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_input_params}{Input\+Params}} Input\+Params\+::sample (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Lists all acceptable input parameters with description. 
+
+return sample input parameters 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/Input\+Params.\+h\item 
+S\+Lsim\+Lib/\+Input\+Parameters/input\+\_\+params\+\_\+list.\+cpp\item 
+S\+Lsim\+Lib/\+Input\+Parameters/Input\+Params.\+cpp\end{DoxyCompactItemize}

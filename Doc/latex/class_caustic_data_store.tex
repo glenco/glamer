@@ -1,0 +1,110 @@
+\hypertarget{class_caustic_data_store}{}\doxysection{Caustic\+Data\+Store Class Reference}
+\label{class_caustic_data_store}\index{CausticDataStore@{CausticDataStore}}
+
+
+A class for holding, printing and reading the information about the caustics and critical curves in an image.  
+
+
+
+
+{\ttfamily \#include $<$causticdata.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_caustic_data_store_a729ccd3080f6e2aef77b44d36b7a4d90}\label{class_caustic_data_store_a729ccd3080f6e2aef77b44d36b7a4d90}} 
+\mbox{\hyperlink{class_caustic_data_store_a729ccd3080f6e2aef77b44d36b7a4d90}{Caustic\+Data\+Store}} (std\+::string filename, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em A class used within \mbox{\hyperlink{class_caustic_data_store}{Caustic\+Data\+Store}} class to store information on a caustic and critical curve pair. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_ada547e47f0971479f103f34084c86a38}\label{class_caustic_data_store_ada547e47f0971479f103f34084c86a38}} 
+\mbox{\hyperlink{class_caustic_data_store_ada547e47f0971479f103f34084c86a38}{Caustic\+Data\+Store}} (std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&crticurve\+\_\+vec)
+\begin{DoxyCompactList}\small\item\em creates an empty object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_aea986a4b66286ddff8a2bd28db3c8856}\label{class_caustic_data_store_aea986a4b66286ddff8a2bd28db3c8856}} 
+{\bfseries Caustic\+Data\+Store} (const \mbox{\hyperlink{class_caustic_data_store}{Caustic\+Data\+Store}} \&input)
+\item 
+\mbox{\Hypertarget{class_caustic_data_store_a8b60ed3a01aea83747f3dd5c07f93dab}\label{class_caustic_data_store_a8b60ed3a01aea83747f3dd5c07f93dab}} 
+void \mbox{\hyperlink{class_caustic_data_store_a8b60ed3a01aea83747f3dd5c07f93dab}{addcrits}} (std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&crticurve\+\_\+vec)
+\begin{DoxyCompactList}\small\item\em add some critical curves to the store \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_a50bcf499a049df108639291bc5f60de5}\label{class_caustic_data_store_a50bcf499a049df108639291bc5f60de5}} 
+double {\bfseries get\+Total\+Crit\+Area} ()
+\item 
+\mbox{\Hypertarget{class_caustic_data_store_a15feb98eca3874285a8a19d37c37cbcd}\label{class_caustic_data_store_a15feb98eca3874285a8a19d37c37cbcd}} 
+double {\bfseries get\+Total\+Caustic\+Area} ()
+\item 
+\mbox{\Hypertarget{class_caustic_data_store_a21e78436b2b8aeee93da0c6f16ba949a}\label{class_caustic_data_store_a21e78436b2b8aeee93da0c6f16ba949a}} 
+void \mbox{\hyperlink{class_caustic_data_store_a21e78436b2b8aeee93da0c6f16ba949a}{printfile}} (std\+::string filename, std\+::string paramfile, double fieldofview, double minscale)
+\begin{DoxyCompactList}\small\item\em print to a file, Produces a file that can be later read with the constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_ae0d65edce38cde2dcc40ac0dc2ad37f8}\label{class_caustic_data_store_ae0d65edce38cde2dcc40ac0dc2ad37f8}} 
+void \mbox{\hyperlink{class_caustic_data_store_ae0d65edce38cde2dcc40ac0dc2ad37f8}{resize}} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em change the number of cautics in the object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_ac8bc92714c43fb450230563b2d81142a}\label{class_caustic_data_store_ac8bc92714c43fb450230563b2d81142a}} 
+size\+\_\+t {\bfseries number\+Of\+Caustics} ()
+\item 
+\mbox{\Hypertarget{class_caustic_data_store_a0536b721cd44f4792771cdd97efcb1e4}\label{class_caustic_data_store_a0536b721cd44f4792771cdd97efcb1e4}} 
+Caustic\+Structure \& \mbox{\hyperlink{class_caustic_data_store_a0536b721cd44f4792771cdd97efcb1e4}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em returns in no particular order \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_a0551fc7b7a892ec97885d2f1695f48a2}\label{class_caustic_data_store_a0551fc7b7a892ec97885d2f1695f48a2}} 
+Caustic\+Structure \& \mbox{\hyperlink{class_caustic_data_store_a0551fc7b7a892ec97885d2f1695f48a2}{Crit\+Area\+Order}} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em returns the Caustic\+Structure with n\textquotesingle{}th largest cirtical curve area \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_ac8f8b1f614c3c129d5704bcea0a63e96}\label{class_caustic_data_store_ac8f8b1f614c3c129d5704bcea0a63e96}} 
+Caustic\+Structure \& \mbox{\hyperlink{class_caustic_data_store_ac8f8b1f614c3c129d5704bcea0a63e96}{Caustic\+Area\+Order}} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em returns the Caustic\+Structure with n\textquotesingle{}th largest caustic curve area \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_a55f1ae0bd681780623dfda1c31610f29}\label{class_caustic_data_store_a55f1ae0bd681780623dfda1c31610f29}} 
+Caustic\+Structure \& \mbox{\hyperlink{class_caustic_data_store_a55f1ae0bd681780623dfda1c31610f29}{Crit\+Radius\+Order}} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em returns the Caustic\+Structure with n\textquotesingle{}th largest critical curve radius \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_ab10371febcb0711a23facd2f4d68b481}\label{class_caustic_data_store_ab10371febcb0711a23facd2f4d68b481}} 
+size\+\_\+t \mbox{\hyperlink{class_caustic_data_store_ab10371febcb0711a23facd2f4d68b481}{get\+Nth\+Index\+Crit\+Area}} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em returns the index of the n\textquotesingle{}th largest critical curve area \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_a312b623a9e9e70feccc6e36f2e75eba2}\label{class_caustic_data_store_a312b623a9e9e70feccc6e36f2e75eba2}} 
+size\+\_\+t \mbox{\hyperlink{class_caustic_data_store_a312b623a9e9e70feccc6e36f2e75eba2}{get\+Nth\+Index\+Caust\+Area}} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em returns the index of the n\textquotesingle{}th largest caustic curve area \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_ac463d3a05cb37ea8df9f054c9343a1c7}\label{class_caustic_data_store_ac463d3a05cb37ea8df9f054c9343a1c7}} 
+size\+\_\+t \mbox{\hyperlink{class_caustic_data_store_ac463d3a05cb37ea8df9f054c9343a1c7}{get\+Nth\+Index\+Crit\+Radius}} (size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em returns the index of the n\textquotesingle{}th largest critical curve radius \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_caustic_data_store_a91868af09af4cb0bfdc42a2bead539a6}{init\+\_\+for\+\_\+random}} (short type, double limit=0.\+0)
+\begin{DoxyCompactList}\small\item\em sort caustics by size of critical curve radius from largest to smallest \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_aa67c75f4c385145e5a1b063064277720}\label{class_caustic_data_store_aa67c75f4c385145e5a1b063064277720}} 
+int \mbox{\hyperlink{class_caustic_data_store_aa67c75f4c385145e5a1b063064277720}{Random\+Lens}} (\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
+\begin{DoxyCompactList}\small\item\em Returns the index for a caustic that is chosen randomly in proportion to area of its critical curve or caustic depending on how \mbox{\hyperlink{class_caustic_data_store_a91868af09af4cb0bfdc42a2bead539a6}{init\+\_\+for\+\_\+random()}} was set. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_acfc1a5b559f95ce1963b6501dc406031}\label{class_caustic_data_store_acfc1a5b559f95ce1963b6501dc406031}} 
+bool \mbox{\hyperlink{class_caustic_data_store_acfc1a5b559f95ce1963b6501dc406031}{find\+Nearest\+Crit}} (Pos\+Type $\ast$x, long \&index)
+\begin{DoxyCompactList}\small\item\em Finds the nearest critical curve to the point x\mbox{[}\mbox{]}. If that point is within the largest radius of the critical curve it returns true. If there are no caustics index = -\/1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_caustic_data_store_a88abdc889f5b71d3b8df1008f9bf1877}\label{class_caustic_data_store_a88abdc889f5b71d3b8df1008f9bf1877}} 
+bool \mbox{\hyperlink{class_caustic_data_store_a88abdc889f5b71d3b8df1008f9bf1877}{find\+Nearest\+Crit}} (Pos\+Type $\ast$x, long \&index, Crit\+Type type)
+\begin{DoxyCompactList}\small\item\em Finds the nearest critical curve to the point x\mbox{[}\mbox{]} of type \textquotesingle{}type\textquotesingle{}. There are two bool types\+: found returns true if any neighbour was found, found\+\_\+type is true if a neighbour with correct Crit\+Type \char`\"{}type\char`\"{} was found. If there are no caustics of Crit\+Type \char`\"{}type\char`\"{} index will be set to -\/1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_caustic_data_store_adcf5faf894623619cb00d63c155cef29}\label{class_caustic_data_store_adcf5faf894623619cb00d63c155cef29}} 
+std\+::vector$<$ Caustic\+Structure $>$ {\bfseries data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class for holding, printing and reading the information about the caustics and critical curves in an image. 
+
+Information about individual caustics/critical curves are stored in a Caustic\+Structure class that can be obtaine with the \mbox{[}\mbox{]} operator. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_caustic_data_store_a91868af09af4cb0bfdc42a2bead539a6}\label{class_caustic_data_store_a91868af09af4cb0bfdc42a2bead539a6}} 
+\index{CausticDataStore@{CausticDataStore}!init\_for\_random@{init\_for\_random}}
+\index{init\_for\_random@{init\_for\_random}!CausticDataStore@{CausticDataStore}}
+\doxysubsubsection{\texorpdfstring{init\_for\_random()}{init\_for\_random()}}
+{\footnotesize\ttfamily size\+\_\+t Caustic\+Data\+Store\+::init\+\_\+for\+\_\+random (\begin{DoxyParamCaption}\item[{short}]{type,  }\item[{double}]{limit = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+
+
+sort caustics by size of critical curve radius from largest to smallest 
+
+sort caustics by size of critical curve area from largest to smallest sort caustics by size of caustic curve area from largest to smallest initialize for selection with \mbox{\hyperlink{class_caustic_data_store_aa67c75f4c385145e5a1b063064277720}{Caustic\+Data\+Store\+::\+Random\+Lens()}} 
+\begin{DoxyParams}{Parameters}
+{\em type} & select according to\+: (1) critical curve area, (2) caustic curve area \\
+\hline
+{\em limit} & minimum accepted area \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/causticdata.\+h\item 
+S\+Lsim\+Lib/\+Input\+Parameters/causticdata.\+cpp\end{DoxyCompactItemize}

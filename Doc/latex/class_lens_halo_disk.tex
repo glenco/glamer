@@ -1,0 +1,95 @@
+\hypertarget{class_lens_halo_disk}{}\doxysection{Lens\+Halo\+Disk$<$ T $>$ Class Template Reference}
+\label{class_lens_halo_disk}\index{LensHaloDisk$<$ T $>$@{LensHaloDisk$<$ T $>$}}
+
+
+Creates a exponential disk out of particles.  
+
+
+
+
+{\ttfamily \#include $<$disk.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Disk$<$ T $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{class_lens_halo_disk__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Disk$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_lens_halo_disk__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lens_halo_disk_a67f57cb9d8ae287d948efeee3be962bb}{Lens\+Halo\+Disk}} (double mass, double disk\+\_\+scale, double Rperp, double mass\+\_\+res, float my\+\_\+\+PA, float my\+\_\+inclination, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran, float redshift, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, int Nsmooth=64)
+\item 
+\mbox{\Hypertarget{class_lens_halo_disk_a4b8bbc4385f4e11d544aa5dd18994311}\label{class_lens_halo_disk_a4b8bbc4385f4e11d544aa5dd18994311}} 
+{\bfseries Lens\+Halo\+Disk} (\mbox{\hyperlink{class_lens_halo_disk}{Lens\+Halo\+Disk}} \&\&h)
+\item 
+\mbox{\Hypertarget{class_lens_halo_disk_aca4abbb79c6b00bc580f5c9f8ee81b9d}\label{class_lens_halo_disk_aca4abbb79c6b00bc580f5c9f8ee81b9d}} 
+\mbox{\hyperlink{class_lens_halo_disk}{Lens\+Halo\+Disk}} \& {\bfseries operator=} (\mbox{\hyperlink{class_lens_halo_disk}{Lens\+Halo\+Disk}} \&\&h)
+\item 
+\mbox{\Hypertarget{class_lens_halo_disk_a7395242b513238bd5a5546791604786e}\label{class_lens_halo_disk_a7395242b513238bd5a5546791604786e}} 
+void \mbox{\hyperlink{class_lens_halo_disk_a7395242b513238bd5a5546791604786e}{reorient}} (float my\+\_\+inclination, float my\+\_\+\+PA)
+\begin{DoxyCompactList}\small\item\em Reorient the disk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_disk_acc77a9dec1025e4c9671b726c8125a88}\label{class_lens_halo_disk_acc77a9dec1025e4c9671b726c8125a88}} 
+float \mbox{\hyperlink{class_lens_halo_disk_acc77a9dec1025e4c9671b726c8125a88}{get\+Inclination}} ()
+\begin{DoxyCompactList}\small\item\em inclination in radians, 0 is face on \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_disk_a83cbc1ac0a53458f122b77d939d62b72}\label{class_lens_halo_disk_a83cbc1ac0a53458f122b77d939d62b72}} 
+float \mbox{\hyperlink{class_lens_halo_disk_a83cbc1ac0a53458f122b77d939d62b72}{get\+PA}} ()
+\begin{DoxyCompactList}\small\item\em postion angle in radians, \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T = float$>$\newline
+class Lens\+Halo\+Disk$<$ T $>$}
+
+Creates a exponential disk out of particles. 
+
+The disk is created out of particles and the smoothing done by nearest-\/N neighbour B-\/spline smoothing as if they came from a simulation, but they are placed more regularly so that the surface density is relatively smooth. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lens_halo_disk_a67f57cb9d8ae287d948efeee3be962bb}\label{class_lens_halo_disk_a67f57cb9d8ae287d948efeee3be962bb}} 
+\index{LensHaloDisk$<$ T $>$@{LensHaloDisk$<$ T $>$}!LensHaloDisk@{LensHaloDisk}}
+\index{LensHaloDisk@{LensHaloDisk}!LensHaloDisk$<$ T $>$@{LensHaloDisk$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{LensHaloDisk()}{LensHaloDisk()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_lens_halo_disk}{Lens\+Halo\+Disk}}$<$ T $>$\+::\mbox{\hyperlink{class_lens_halo_disk}{Lens\+Halo\+Disk}} (\begin{DoxyParamCaption}\item[{double}]{mass,  }\item[{double}]{disk\+\_\+scale,  }\item[{double}]{Rperp,  }\item[{double}]{mass\+\_\+res,  }\item[{float}]{my\+\_\+\+PA,  }\item[{float}]{my\+\_\+inclination,  }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran,  }\item[{float}]{redshift,  }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{cosmo,  }\item[{int}]{Nsmooth = {\ttfamily 64} }\end{DoxyParamCaption})}
+
+set up base Lenshalo
+
+(1-\/x);
+\begin{DoxyParams}{Parameters}
+{\em mass} & mass of disk \\
+\hline
+{\em disk\+\_\+scale} & scale hight of disk \\
+\hline
+{\em Rperp} & vertical scale hight of disk \\
+\hline
+{\em mass\+\_\+res} & mass resolution, mass of particles \\
+\hline
+{\em my\+\_\+\+PA} & position angle in radians \\
+\hline
+{\em my\+\_\+inclination} & inclination of disk in radians, 0 is face on \\
+\hline
+{\em ran} & random number generator \\
+\hline
+{\em Nsmooth} & number of neighbors used in smoothing \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/disk.\+h\end{DoxyCompactItemize}

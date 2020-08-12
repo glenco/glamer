@@ -1,0 +1,179 @@
+\hypertarget{class_lens_halo_ana_n_s_i_e}{}\doxysection{Lens\+Halo\+Ana\+N\+S\+IE Class Reference}
+\label{class_lens_halo_ana_n_s_i_e}\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+
+
+A N\+S\+IE lens with distortions in shape, substructures and stars included.  
+
+
+
+
+{\ttfamily \#include $<$analytic\+\_\+lens.\+h$>$}
+
+
+
+Inherits Lens\+Halo\+Base\+N\+S\+IE.
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a3cc039df27df2e67ba59cc5b1c77dc28}\label{class_lens_halo_ana_n_s_i_e_a3cc039df27df2e67ba59cc5b1c77dc28}} 
+\mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a3cc039df27df2e67ba59cc5b1c77dc28}{$\sim$\+Lens\+Halo\+Ana\+N\+S\+IE}} ()
+\begin{DoxyCompactList}\small\item\em Creates a Ana\+Lens which initially has no mass, Use Find\+Lens\+Simple() to give it mass. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a577400731336b30a8adfa6ec796eaefd}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+\begin{DoxyCompactList}\small\item\em Reads in a parameter file and sets up an analytic lens. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a0553d79a26afda8c2cd61b927383ccc8}\label{class_lens_halo_ana_n_s_i_e_a0553d79a26afda8c2cd61b927383ccc8}} 
+double {\bfseries Fraction\+Within\+Re} (double range\+In\+Rei)
+\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_acbb2b7060d088092baa396b214ca2890}\label{class_lens_halo_ana_n_s_i_e_acbb2b7060d088092baa396b214ca2890}} 
+void {\bfseries Print\+Lens} (bool show\+\_\+substruct, bool show\+\_\+stars)
+\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a7f20a04409e5b5ce166338b049b18d85}\label{class_lens_halo_ana_n_s_i_e_a7f20a04409e5b5ce166338b049b18d85}} 
+void \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a7f20a04409e5b5ce166338b049b18d85}{set\+Cosmology}} (const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo)
+\begin{DoxyCompactList}\small\item\em Sets parameters within Base\+Lens that depend on the source redshift -\/ Dl,Sigma\+\_\+crit,etc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a14add6096297f4101a371e10e88519c2}\label{class_lens_halo_ana_n_s_i_e_a14add6096297f4101a371e10e88519c2}} 
+void {\bfseries Randomize\+Host} (long $\ast$seed, bool tables)
+\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_ae5b7e39d305656f88af3095003ec89bc}\label{class_lens_halo_ana_n_s_i_e_ae5b7e39d305656f88af3095003ec89bc}} 
+void {\bfseries Randomize\+Sigma} (long $\ast$seed, bool tables)
+\item 
+void \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_aaedbc0e3e2f8ba8a1a8a7ed157d8b4dc}{Randomly\+Distort\+Lens}} (long $\ast$seed, int Nmodes)
+\item 
+void \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a11cabb5821841128af1c0de089885a66}{Aligned\+Randomly\+Distort\+Lens}} (long $\ast$seed, double theta, int n)
+\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_af74f285221f1742db7e5ffb5ffc65346}\label{class_lens_halo_ana_n_s_i_e_af74f285221f1742db7e5ffb5ffc65346}} 
+void {\bfseries Randomize\+Substructure} (double range\+In\+Rei, long $\ast$seed)
+\item 
+void \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a60a38e5e8611aabb700d797687e74cc6}{Randomize\+Substructure2}} (double range\+In\+Rei, long $\ast$seed)
+\item 
+void \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_aa1926b8a125e9be3135b75f59edcd6d7}{Randomize\+Substructure3}} (double range\+In\+Rei, long $\ast$seed)
+\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_aff437e77aa2b3ecb4ba738fa868b8d7f}\label{class_lens_halo_ana_n_s_i_e_aff437e77aa2b3ecb4ba738fa868b8d7f}} 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_aff437e77aa2b3ecb4ba738fa868b8d7f}{get\+\_\+sigma}} ()
+\begin{DoxyCompactList}\small\item\em get the velocity dispersion \end{DoxyCompactList}\item 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_ac2b2223c2dbed1b06a9f351d04d4ca58}{get\+\_\+fratio}} ()
+\begin{DoxyCompactList}\small\item\em get the N\+S\+IE radius \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a907ba8df7ef6ac8350f0787af7187821}\label{class_lens_halo_ana_n_s_i_e_a907ba8df7ef6ac8350f0787af7187821}} 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a907ba8df7ef6ac8350f0787af7187821}{get\+\_\+pa}} ()
+\begin{DoxyCompactList}\small\item\em get the position angle \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a5ddd5d77225bfe35f05b2a03a6017574}\label{class_lens_halo_ana_n_s_i_e_a5ddd5d77225bfe35f05b2a03a6017574}} 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e_a5ddd5d77225bfe35f05b2a03a6017574}{get\+\_\+rcore}} ()
+\begin{DoxyCompactList}\small\item\em get the core radius \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A N\+S\+IE lens with distortions in shape, substructures and stars included. 
+
+The lens consists of a \char`\"{}host\char`\"{} lens which is a non-\/singular isothermal ellipsoid (N\+S\+IE) plus axial distortion modes, substructures and stars. \mbox{\hyperlink{class_lens_halo_ana_n_s_i_e}{Lens\+Halo\+Ana\+N\+S\+IE}} differs from a Lens\+Halo\+Base\+N\+S\+IE in that there are additional functions for fitting the lens to image positions and for giving the lens random substructures and distortions.
+
+
+\begin{DoxyPre}
+  Input Parameters:\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   **** NSIE parameters
+   main\_sigma                  Velocity dispersion of host NSIE.
+  main\_core                   Core size
+  main\_axis\_ratio             Axis ratio of mass
+  main\_pos\_angle              Position angle in radiants
+  main\_z\_lens                 Redshift of lens\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   **** Distortion parameters
+  main\_NDistortionModes       Number of distortion modes to be used.  If zero the other distortion parameters are not needed.
+  main\_perturb\_beta
+  kappa\_peturb
+  gamma\_peturb
+  monopole\_peturb
+  quadrapole\_peturb
+  hexopole\_peturb
+  octopole\_peturb\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   **** Substructure parameters
+  main\_sub\_Ndensity      Number density of substructures.  They are distributed uniformly.  If zero the other substructure parameters are not needed.
+  main\_sub\_beta               Logarithmic slope of the internal clump profile.  Used if main\_sub\_type == powerlaw
+  main\_sub\_alpha              Logarithmic slope of the mass function.
+  main\_sub\_Rsize               Maximum radius of most massive substructure (see Metcalf \& Amara 2012)
+  main\_sub\_mass\_max               Maximum mass
+  main\_sub\_mass\_min               Minimum mass
+  main\_sub\_type               Mass profile of clumps -\/ 0 or nfw,1 or powerlaw, 2 or pointmass\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   **** Stars parameters
+  main\_stars\_N                 Total number of stars that will be used in the simulation.  If zero the other star parameters are not needed.
+  main\_stars\_fraction                 Fraction of surface density in stars.
+  main\_stars\_mass             Mass of stars.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}  The stars are not initially present.  They must be implanted later.
+*\end{DoxyPre}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a11cabb5821841128af1c0de089885a66}\label{class_lens_halo_ana_n_s_i_e_a11cabb5821841128af1c0de089885a66}} 
+\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}!AlignedRandomlyDistortLens@{AlignedRandomlyDistortLens}}
+\index{AlignedRandomlyDistortLens@{AlignedRandomlyDistortLens}!LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+\doxysubsubsection{\texorpdfstring{AlignedRandomlyDistortLens()}{AlignedRandomlyDistortLens()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Ana\+N\+S\+I\+E\+::\+Aligned\+Randomly\+Distort\+Lens (\begin{DoxyParamCaption}\item[{long $\ast$}]{seed,  }\item[{double}]{theta,  }\item[{int}]{Npole }\end{DoxyParamCaption})}
+
+\textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
+
+make a random realization of the perturbations to the lens the normalization is such that the rms maximum surface density of the k-\/th mode is rms\mbox{[}i\mbox{]} times the surface density of the host at the Einstein radius if it were a S\+IS, if beta=1 this is true at all radii. This is for randomly distorting a mode but maintaining its alignment with the ellipticity for example. \mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a577400731336b30a8adfa6ec796eaefd}\label{class_lens_halo_ana_n_s_i_e_a577400731336b30a8adfa6ec796eaefd}} 
+\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}!assignParams@{assignParams}}
+\index{assignParams@{assignParams}!LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+\doxysubsubsection{\texorpdfstring{assignParams()}{assignParams()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Ana\+N\+S\+I\+E\+::assign\+Params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_params}{Input\+Params}} \&}]{params }\end{DoxyParamCaption})}
+
+
+
+Reads in a parameter file and sets up an analytic lens. 
+
+Sets many parameters within the lens model, source model and force calculation. \mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_ac2b2223c2dbed1b06a9f351d04d4ca58}\label{class_lens_halo_ana_n_s_i_e_ac2b2223c2dbed1b06a9f351d04d4ca58}} 
+\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}!get\_fratio@{get\_fratio}}
+\index{get\_fratio@{get\_fratio}!LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+\doxysubsubsection{\texorpdfstring{get\_fratio()}{get\_fratio()}}
+{\footnotesize\ttfamily virtual Pos\+Type Lens\+Halo\+Ana\+N\+S\+I\+E\+::get\+\_\+fratio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+get the N\+S\+IE radius 
+
+get the axis ratio \mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_a60a38e5e8611aabb700d797687e74cc6}\label{class_lens_halo_ana_n_s_i_e_a60a38e5e8611aabb700d797687e74cc6}} 
+\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}!RandomizeSubstructure2@{RandomizeSubstructure2}}
+\index{RandomizeSubstructure2@{RandomizeSubstructure2}!LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+\doxysubsubsection{\texorpdfstring{RandomizeSubstructure2()}{RandomizeSubstructure2()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Ana\+N\+S\+I\+E\+::\+Randomize\+Substructure2 (\begin{DoxyParamCaption}\item[{double}]{range\+In\+Rei,  }\item[{long $\ast$}]{seed }\end{DoxyParamCaption})}
+
+\textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens \mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_aa1926b8a125e9be3135b75f59edcd6d7}\label{class_lens_halo_ana_n_s_i_e_aa1926b8a125e9be3135b75f59edcd6d7}} 
+\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}!RandomizeSubstructure3@{RandomizeSubstructure3}}
+\index{RandomizeSubstructure3@{RandomizeSubstructure3}!LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+\doxysubsubsection{\texorpdfstring{RandomizeSubstructure3()}{RandomizeSubstructure3()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Ana\+N\+S\+I\+E\+::\+Randomize\+Substructure3 (\begin{DoxyParamCaption}\item[{double}]{range\+In\+Rei,  }\item[{long $\ast$}]{seed }\end{DoxyParamCaption})}
+
+\textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
+
+get a random population of substructures This version does not scale to Einstein\+\_\+ro and sigma \mbox{\Hypertarget{class_lens_halo_ana_n_s_i_e_aaedbc0e3e2f8ba8a1a8a7ed157d8b4dc}\label{class_lens_halo_ana_n_s_i_e_aaedbc0e3e2f8ba8a1a8a7ed157d8b4dc}} 
+\index{LensHaloAnaNSIE@{LensHaloAnaNSIE}!RandomlyDistortLens@{RandomlyDistortLens}}
+\index{RandomlyDistortLens@{RandomlyDistortLens}!LensHaloAnaNSIE@{LensHaloAnaNSIE}}
+\doxysubsubsection{\texorpdfstring{RandomlyDistortLens()}{RandomlyDistortLens()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Ana\+N\+S\+I\+E\+::\+Randomly\+Distort\+Lens (\begin{DoxyParamCaption}\item[{long $\ast$}]{seed,  }\item[{int}]{Nmodes }\end{DoxyParamCaption})}
+
+\textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
+
+
+\begin{DoxyItemize}
+\item make a random realization of the perturbations to the lens the normalization is such that the rms maximum surface density of the k-\/th mode is rms\mbox{[}i\mbox{]} times the surface density of the host at the Einstein radius if it were a S\+IS, if beta=1 this is true at all radii. each mode is randomly oriented 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/analytic\+\_\+lens.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/base\+\_\+analens.\+cpp\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/randomize\+\_\+lens.\+cpp\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/readfiles\+\_\+ana.\+cpp\item 
+S\+Lsim\+Lib/\+Fitlens/fitlens.\+cpp\end{DoxyCompactItemize}

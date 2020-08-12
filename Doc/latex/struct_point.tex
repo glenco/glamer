@@ -1,0 +1,124 @@
+\hypertarget{struct_point}{}\doxysection{Point Struct Reference}
+\label{struct_point}\index{Point@{Point}}
+
+
+A point on the source or image plane that contains a position and the lensing quantities.  
+
+
+
+
+{\ttfamily \#include $<$point.\+h$>$}
+
+
+
+Inheritance diagram for Point\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=135pt]{struct_point__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Point\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{struct_point__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}} ()
+\item 
+\mbox{\Hypertarget{struct_point_a69ecba98c9dc7f67d945f3409a64854d}\label{struct_point_a69ecba98c9dc7f67d945f3409a64854d}} 
+{\bfseries Point} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+\mbox{\Hypertarget{struct_point_a72bf21739b3bd019375bfdc062182385}\label{struct_point_a72bf21739b3bd019375bfdc062182385}} 
+{\bfseries Point} (Pos\+Type x, Pos\+Type y)
+\item 
+\mbox{\Hypertarget{struct_point_a3f9b1af89673b440408017d620bfc0d7}\label{struct_point_a3f9b1af89673b440408017d620bfc0d7}} 
+void \mbox{\hyperlink{struct_point_a3f9b1af89673b440408017d620bfc0d7}{Print}} ()
+\begin{DoxyCompactList}\small\item\em print out all member data for testing purposes \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_point_a2bc31f4109f4ce0abeb7dc7e9b9ca6a0}\label{struct_point_a2bc31f4109f4ce0abeb7dc7e9b9ca6a0}} 
+bool \mbox{\hyperlink{struct_point_a2bc31f4109f4ce0abeb7dc7e9b9ca6a0}{inverted}} ()
+\begin{DoxyCompactList}\small\item\em returns true if the image is double inverted, At very low magnification this can fail. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_point_af0b2ba223c93d37f8ea6dd9e08f1a71b}\label{struct_point_af0b2ba223c93d37f8ea6dd9e08f1a71b}} 
+static bool {\bfseries orderX} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p1, \mbox{\hyperlink{struct_point}{Point}} $\ast$p2)
+\item 
+\mbox{\Hypertarget{struct_point_a21a0ed0fb808787b6ab1a6ff4c2963ab}\label{struct_point_a21a0ed0fb808787b6ab1a6ff4c2963ab}} 
+static bool {\bfseries order\+Xrev} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p1, \mbox{\hyperlink{struct_point}{Point}} $\ast$p2)
+\item 
+\mbox{\Hypertarget{struct_point_a75aa3c578447595ec20747ff138a3cf8}\label{struct_point_a75aa3c578447595ec20747ff138a3cf8}} 
+static bool {\bfseries orderY} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p1, \mbox{\hyperlink{struct_point}{Point}} $\ast$p2)
+\item 
+\mbox{\Hypertarget{struct_point_a1eb5ddb56a9240aa582384852a36dc7b}\label{struct_point_a1eb5ddb56a9240aa582384852a36dc7b}} 
+static bool {\bfseries order\+Yrev} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p1, \mbox{\hyperlink{struct_point}{Point}} $\ast$p2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_point_aad6b85eedd96a3bf76988d456c25096c}\label{struct_point_aad6b85eedd96a3bf76988d456c25096c}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries next}
+\item 
+\mbox{\Hypertarget{struct_point_a8e57e68c1e881d3550cc13849083a6d2}\label{struct_point_a8e57e68c1e881d3550cc13849083a6d2}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries prev}
+\item 
+\mbox{\Hypertarget{struct_point_a2d1f7cff5a741d62d1aec1d74f466fbc}\label{struct_point_a2d1f7cff5a741d62d1aec1d74f466fbc}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries image}
+\item 
+\mbox{\Hypertarget{struct_point_a97f9b06ad4c8302f7bac8c9c5ba385fd}\label{struct_point_a97f9b06ad4c8302f7bac8c9c5ba385fd}} 
+unsigned long {\bfseries id}
+\item 
+\mbox{\Hypertarget{struct_point_acc9669b9508b0dba6bd1bfa64c041166}\label{struct_point_acc9669b9508b0dba6bd1bfa64c041166}} 
+unsigned long {\bfseries head}
+\item 
+\mbox{\Hypertarget{struct_point_a2cab51b81898117c2d3409d1e6a1b0cb}\label{struct_point_a2cab51b81898117c2d3409d1e6a1b0cb}} 
+Boo {\bfseries in\+\_\+image}
+\item 
+\mbox{\Hypertarget{struct_point_a23127e258344140bb056e5aeab9c580a}\label{struct_point_a23127e258344140bb056e5aeab9c580a}} 
+Kappa\+Type {\bfseries kappa}
+\item 
+\mbox{\Hypertarget{struct_point_a45993ed495837c93510e2ba2d2412e1b}\label{struct_point_a45993ed495837c93510e2ba2d2412e1b}} 
+Kappa\+Type {\bfseries gamma} \mbox{[}3\mbox{]}
+\item 
+\mbox{\Hypertarget{struct_point_a9adee48677aef467b8268a49ab05a22a}\label{struct_point_a9adee48677aef467b8268a49ab05a22a}} 
+double {\bfseries dt}
+\item 
+\mbox{\Hypertarget{struct_point_ad20ebbcb4f0ac814f4036340c814e427}\label{struct_point_ad20ebbcb4f0ac814f4036340c814e427}} 
+Kappa\+Type {\bfseries invmag} = 1
+\item 
+\mbox{\Hypertarget{struct_point_a1cdcb056a8f1d39721bad3504c317c27}\label{struct_point_a1cdcb056a8f1d39721bad3504c317c27}} 
+double {\bfseries gridsize}
+\item 
+\mbox{\Hypertarget{struct_point_a15551aac8f3f2f0bf27ca03f192be705}\label{struct_point_a15551aac8f3f2f0bf27ca03f192be705}} 
+float {\bfseries surface\+\_\+brightness}
+\item 
+\mbox{\Hypertarget{struct_point_a4c92c06174e375a23c7c5e088ee61028}\label{struct_point_a4c92c06174e375a23c7c5e088ee61028}} 
+\mbox{\hyperlink{struct_branch}{Branch}} $\ast$ {\bfseries leaf}
+\item 
+\mbox{\Hypertarget{struct_point_aed2ffe59548d2850b27cd58424ecf597}\label{struct_point_aed2ffe59548d2850b27cd58424ecf597}} 
+bool {\bfseries flag}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A point on the source or image plane that contains a position and the lensing quantities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_point_ad92f2337b839a94ce97dcdb439b4325a}\label{struct_point_ad92f2337b839a94ce97dcdb439b4325a}} 
+\index{Point@{Point}!Point@{Point}}
+\index{Point@{Point}!Point@{Point}}
+\doxysubsubsection{\texorpdfstring{Point()}{Point()}}
+{\footnotesize\ttfamily Point\+::\+Point (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gives each branch a unique number even if branches are destroed. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/point.\+h\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/Tree.\+cpp\end{DoxyCompactItemize}

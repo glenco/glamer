@@ -1,0 +1,119 @@
+\hypertarget{struct_point_list}{}\doxysection{Point\+List Struct Reference}
+\label{struct_point_list}\index{PointList@{PointList}}
+
+
+link list for points, uses the linking pointers within the \mbox{\hyperlink{struct_point}{Point}} type unlike Kist  
+
+
+
+
+{\ttfamily \#include $<$List1.\+h$>$}
+
+
+
+Collaboration diagram for Point\+List\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{struct_point_list__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_point_list_a07ace5cd1857899a61b4cff75b077a7b}\label{struct_point_list_a07ace5cd1857899a61b4cff75b077a7b}} 
+unsigned long {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{struct_point_list_a607c20b4eb784b4a366f75cd5a982e0e}\label{struct_point_list_a607c20b4eb784b4a366f75cd5a982e0e}} 
+bool {\bfseries Is\+Top} (Point\+List\+::iterator \&it) const
+\item 
+\mbox{\Hypertarget{struct_point_list_a3cc23aba34406267888fafaa699fc500}\label{struct_point_list_a3cc23aba34406267888fafaa699fc500}} 
+bool {\bfseries Is\+Bottom} (Point\+List\+::iterator \&it) const
+\item 
+\mbox{\Hypertarget{struct_point_list_aee2b52d7c90b5e0ab96176b6542b1669}\label{struct_point_list_aee2b52d7c90b5e0ab96176b6542b1669}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries Top} () const
+\item 
+\mbox{\Hypertarget{struct_point_list_acb082d41c7f6083b64fcd85855cb5252}\label{struct_point_list_acb082d41c7f6083b64fcd85855cb5252}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries Bottom} () const
+\item 
+\mbox{\Hypertarget{struct_point_list_a7d83a5eaf17a6555c429a04826c2d2fe}\label{struct_point_list_a7d83a5eaf17a6555c429a04826c2d2fe}} 
+void {\bfseries Empty\+List} ()
+\item 
+\mbox{\Hypertarget{struct_point_list_aa914dac7f50a4c7fc34ec09123c1b32c}\label{struct_point_list_aa914dac7f50a4c7fc34ec09123c1b32c}} 
+void {\bfseries Insert\+After\+Current} (iterator \&current, double $\ast$x, unsigned long id, \mbox{\hyperlink{struct_point}{Point}} $\ast$image)
+\item 
+\mbox{\Hypertarget{struct_point_list_a26bb5665c55fa6c7efa6983206e09d11}\label{struct_point_list_a26bb5665c55fa6c7efa6983206e09d11}} 
+void {\bfseries Insert\+Before\+Current} (iterator \&current, double $\ast$x, unsigned long id, \mbox{\hyperlink{struct_point}{Point}} $\ast$image)
+\item 
+\mbox{\Hypertarget{struct_point_list_a20f63a8cb97f0b93b1371bff36d0a551}\label{struct_point_list_a20f63a8cb97f0b93b1371bff36d0a551}} 
+void {\bfseries Insert\+Point\+After\+Current} (iterator \&current, \mbox{\hyperlink{struct_point}{Point}} $\ast$)
+\item 
+\mbox{\Hypertarget{struct_point_list_ad93b95884e1daddea4e3ab42c01aa24d}\label{struct_point_list_ad93b95884e1daddea4e3ab42c01aa24d}} 
+void {\bfseries Insert\+Point\+Before\+Current} (iterator \&current, \mbox{\hyperlink{struct_point}{Point}} $\ast$)
+\item 
+\mbox{\Hypertarget{struct_point_list_a5830d28e23f051b2b47580a56761f9ea}\label{struct_point_list_a5830d28e23f051b2b47580a56761f9ea}} 
+void {\bfseries Move\+Current\+To\+Bottom} (iterator \&current)
+\item 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_point_list_a5582e98ded628b2e47642c679fb5faa2}{Take\+Out\+Current}} (iterator \&current)
+\item 
+\mbox{\Hypertarget{struct_point_list_acf0005c1a05fcbb4bf482ad66562bc70}\label{struct_point_list_acf0005c1a05fcbb4bf482ad66562bc70}} 
+void {\bfseries Insert\+List\+After\+Current} (iterator \&current, \mbox{\hyperlink{struct_point_list}{Point\+List}} $\ast$list2)
+\item 
+\mbox{\Hypertarget{struct_point_list_a8c02b0806973604825f3cc13937938f2}\label{struct_point_list_a8c02b0806973604825f3cc13937938f2}} 
+void {\bfseries Insert\+List\+Before\+Current} (iterator \&current, \mbox{\hyperlink{struct_point_list}{Point\+List}} $\ast$list2)
+\item 
+\mbox{\Hypertarget{struct_point_list_a45c743dcb81f1b925411a241d7e03b1a}\label{struct_point_list_a45c743dcb81f1b925411a241d7e03b1a}} 
+void {\bfseries Merge\+Lists} (\mbox{\hyperlink{struct_point_list}{Point\+List}} $\ast$list2)
+\item 
+\mbox{\Hypertarget{struct_point_list_a1be4e9acffa3de20e6879bd8f2e9b508}\label{struct_point_list_a1be4e9acffa3de20e6879bd8f2e9b508}} 
+void {\bfseries Shift\+List} (iterator \&current)
+\item 
+\mbox{\Hypertarget{struct_point_list_a9820ae8cd535dab518615e137791373c}\label{struct_point_list_a9820ae8cd535dab518615e137791373c}} 
+void {\bfseries Fill\+List} (double $\ast$$\ast$x, unsigned long N, unsigned long idmin)
+\item 
+\mbox{\Hypertarget{struct_point_list_a8d9c805756ef67df989dd57b5419e933}\label{struct_point_list_a8d9c805756ef67df989dd57b5419e933}} 
+void {\bfseries Print\+List} ()
+\item 
+\mbox{\Hypertarget{struct_point_list_a3383be1d7066f80979eb89314215cc64}\label{struct_point_list_a3383be1d7066f80979eb89314215cc64}} 
+void {\bfseries setN} (unsigned long N)
+\item 
+\mbox{\Hypertarget{struct_point_list_a68c6e03c4a8554d0acd97a7f71ae64c3}\label{struct_point_list_a68c6e03c4a8554d0acd97a7f71ae64c3}} 
+void {\bfseries set\+Top} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p)
+\item 
+\mbox{\Hypertarget{struct_point_list_ac7ceff27b788b51a3df69c0f7ed11e26}\label{struct_point_list_ac7ceff27b788b51a3df69c0f7ed11e26}} 
+void {\bfseries set\+Bottom} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_point_list_a3d0ed94c20287dc9d55a357c61318978}\label{struct_point_list_a3d0ed94c20287dc9d55a357c61318978}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries top}
+\item 
+\mbox{\Hypertarget{struct_point_list_a5061a1b3a607ec347113dcfb330358e6}\label{struct_point_list_a5061a1b3a607ec347113dcfb330358e6}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries bottom}
+\item 
+\mbox{\Hypertarget{struct_point_list_a0b52384bc7e5cdb914c95f97788d8274}\label{struct_point_list_a0b52384bc7e5cdb914c95f97788d8274}} 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ {\bfseries current}
+\item 
+\mbox{\Hypertarget{struct_point_list_a2095e25d0117cee7dd7d16a183b96eb0}\label{struct_point_list_a2095e25d0117cee7dd7d16a183b96eb0}} 
+unsigned long {\bfseries Npoints}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+link list for points, uses the linking pointers within the \mbox{\hyperlink{struct_point}{Point}} type unlike Kist 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_point_list_a5582e98ded628b2e47642c679fb5faa2}\label{struct_point_list_a5582e98ded628b2e47642c679fb5faa2}} 
+\index{PointList@{PointList}!TakeOutCurrent@{TakeOutCurrent}}
+\index{TakeOutCurrent@{TakeOutCurrent}!PointList@{PointList}}
+\doxysubsubsection{\texorpdfstring{TakeOutCurrent()}{TakeOutCurrent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Point\+List\+::\+Take\+Out\+Current (\begin{DoxyParamCaption}\item[{iterator \&}]{it }\end{DoxyParamCaption})}
+
+takes out current point and set current to point previous 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/List1.\+h\item 
+S\+Lsim\+Lib/include/point.\+h\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/\+List/list.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,442 @@
+\hypertarget{namespace_image_finding}{}\doxysection{Image\+Finding Namespace Reference}
+\label{namespace_image_finding}\index{ImageFinding@{ImageFinding}}
+
+
+The \mbox{\hyperlink{namespace_image_finding}{Image\+Finding}} namespace is for functions related to finding and mapping images.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{find\+\_\+images\+\_\+kist}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, Pos\+Type initial\+\_\+size, bool splitimages, short edge\+\_\+refinement, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Finds images given a source position and size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_a507eaa67f4a10db4985c818d96311ec7}{find\+\_\+image\+\_\+simple}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type z\+\_\+source, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&image\+\_\+x, Pos\+Type xtol2, Pos\+Type \&fret)
+\begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_a4df229d3fd4cccd2a4ae17fa7edfa258}{find\+\_\+images\+\_\+microlens}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, double $\ast$y\+\_\+source, double r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, double initial\+\_\+size, double mu\+\_\+min, bool splitimages, short edge\+\_\+refinement, bool verbose)
+\begin{DoxyCompactList}\small\item\em Finds images given a source position and size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_ae87006a0aa4fab4fda4f60f6689f0ec3}{find\+\_\+images\+\_\+microlens\+\_\+exper}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, Pos\+Type initial\+\_\+size, Pos\+Type mu\+\_\+min, bool splitimages, short edge\+\_\+refinement, bool verbose)
+\begin{DoxyCompactList}\small\item\em experimental version of find\+\_\+image\+\_\+microlens() \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_aa1d61941f50776c7133ead2f5ea87117}{image\+\_\+finder\+\_\+kist}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, short splitparities, short true\+\_\+images)
+\begin{DoxyCompactList}\small\item\em Finds images for a given source position and size. Not meant for high level user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}{find\+\_\+crit}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, std\+::vector$<$ Critical\+Curve $>$ \&crtcurve, int $\ast$Ncrits, double resolution, double invmag\+\_\+min=0.\+0, bool verbose=false, bool test=false)
+\begin{DoxyCompactList}\small\item\em Finds critical curves and caustics. \end{DoxyCompactList}\item 
+Crit\+Type \mbox{\hyperlink{namespace_image_finding_ac423dd72b206974de345741c56783d61}{find\+\_\+pseudo}} (\mbox{\hyperlink{struct_image_info}{Image\+Info}} \&pseudocurve, \mbox{\hyperlink{struct_image_info}{Image\+Info}} \&negimage, Pos\+Type pseudolimit, \mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, Pos\+Type resolution, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&paritypoints, bool T\+E\+ST=false)
+\item 
+void \mbox{\hyperlink{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}{find\+\_\+contour}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, std\+::vector$<$ Critical\+Curve $>$ \&contour, int $\ast$Ncrits, Pos\+Type resolution, bool $\ast$orderingsuccess, bool ordercurve, bool dividecurves, double contour\+\_\+value, Lensing\+Variable contour\+\_\+type, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em Finds iso kappa contours. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_image_finding_a2a5f16f9082f1c14ba6f22625366975e}\label{namespace_image_finding_a2a5f16f9082f1c14ba6f22625366975e}} 
+void {\bfseries print\+Critical\+Curves} (std\+::string filename, const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&critcurves)
+\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{namespace_image_finding_aa3186a3ec810f8f68f57f7b6bfdf762d}{map\+Critical\+Curves}} (const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&critcurves, int Nx)
+\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{namespace_image_finding_a98d48e2de32898ac9b73c252e0ad2607}{map\+Caustic\+Curves}} (const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&critcurves, int Nx)
+\item 
+void \mbox{\hyperlink{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}{map\+\_\+images}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double xmax, double xmin, double initial\+\_\+size, Exit\+Criterion criterion, bool Find\+Center, bool divide\+\_\+images)
+\begin{DoxyCompactList}\small\item\em Find images and refine them based on their surface brightness distribution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}{map\+\_\+images\+\_\+fixedgrid}} (\mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double xmax, bool divide\+\_\+images, bool find\+\_\+borders)
+\begin{DoxyCompactList}\small\item\em Find the images without any additional grid refinement or ray shooting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_a70bbca22cc631872b33de04441c20b99}{map\+\_\+images\+I\+S\+OP}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double rmax, double res\+\_\+min, double initial\+\_\+size, Exit\+Criterion criterion, bool divide\+\_\+images, bool int\+\_\+on=true, bool verbos=false)
+\begin{DoxyCompactList}\small\item\em Find images and refine them based on their surface brightness distribution. \end{DoxyCompactList}\item 
+short \mbox{\hyperlink{namespace_image_finding_a35b9df4dfdcc34aee973719535ec8778}{find\+\_\+peaks}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, Pos\+Type r\+Einstein\+Min, Pos\+Type kappa\+\_\+max, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, int $\ast$Nimages)
+\begin{DoxyCompactList}\small\item\em Refines the grid based on the convergence so that high density regions have high resolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{namespace_image_finding}{Image\+Finding}} namespace is for functions related to finding and mapping images. 
+
+Find a image position for a source position.
+
+This routine finds the image position by minimizing the seporation on the source plane with Powell\textquotesingle{}s method of minimization. This will not find all images. For that you must use another routine. In the weak lensing regiam this should be sufficient.
+
+Warning\+: This is not thread safe because it uses global variable in the Image\+Finding\+::\+Temporary namespace. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}\label{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}} 
+\index{ImageFinding@{ImageFinding}!find\_contour@{find\_contour}}
+\index{find\_contour@{find\_contour}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_contour()}{find\_contour()}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+contour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{std\+::vector$<$ Critical\+Curve $>$ \&}]{crtcurve,  }\item[{int $\ast$}]{Ncrits,  }\item[{Pos\+Type}]{resolution,  }\item[{bool $\ast$}]{orderingsuccess,  }\item[{bool}]{ordercurve,  }\item[{bool}]{dividecurves,  }\item[{double}]{contour\+\_\+value,  }\item[{Lensing\+Variable}]{contour\+\_\+type,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Finds iso kappa contours. 
+
+Finding 
+\begin{DoxyParams}{Parameters}
+{\em lens} & The lens model. \\
+\hline
+{\em grid} & The grid. It must be initialized. \\
+\hline
+{\em crtcurve} & Structure to hold critical curve. Must be pre-\/allocated with max\+Ncrit elements. Stored in critcurve\mbox{[}i\mbox{]}.imagekist. \\
+\hline
+{\em Ncrits} & The number of critical curves found. \\
+\hline
+{\em resolution} & The target resolution that the critical curve is mapped on the image plane. \\
+\hline
+{\em orderingsuccess} & true if ordering was successful. \\
+\hline
+{\em ordercurve} & Order the curve so that it can be drawn or used to find the winding number. \\
+\hline
+{\em dividecurves} & Divide the critical curves into seporate curves by whether they are attached \\
+\hline
+{\em contour\+\_\+value} & value at which the contour is wanted \\
+\hline
+{\em contour\+\_\+type} & K\+A\+P\+PA, I\+N\+V\+M\+AG or D\+E\+L\+A\+YT \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}\label{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}} 
+\index{ImageFinding@{ImageFinding}!find\_crit@{find\_crit}}
+\index{find\_crit@{find\_crit}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_crit()}{find\_crit()}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+crit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{std\+::vector$<$ Critical\+Curve $>$ \&}]{crtcurve,  }\item[{int $\ast$}]{Ncrits,  }\item[{double}]{resolution,  }\item[{double}]{invmag\+\_\+min = {\ttfamily 0.0},  }\item[{bool}]{verbose = {\ttfamily false},  }\item[{bool}]{T\+E\+ST = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Finds critical curves and caustics. 
+
+Finding
+
+The critical curve is found by refining the edges of regions of negative magnification. If there are no regions of negative magnification in the original grid the grid is refined around the point of highest kappa. If there are other points of high kappa that are not of interest one should be careful that the region of interest is not missed. For this reason critical curves that are smaller than the grid resolution (could be un-\/uniform) are not guaranteed to be found.
+
+After the borders of the negative regions are found the code looks for radial and pseudo caustics within the island. It usually finds at least one, but if there are more than one per island some might be missed.
+
+All the critical curve / caustic pairs are classified as radial, tangential or pseudo. small enough radial critical curve could be miss classified as a pseudo caustic. Structure to hold critical curve. Must be pre-\/
+
+make some figures
+
+make some figures
+
+make some figures
+
+make some figures
+\begin{DoxyParams}{Parameters}
+{\em lens} & The lens model. \\
+\hline
+{\em grid} & The grid. It must be initialized. \\
+\hline
+{\em crtcurve} & Structure to hold critical curve. \\
+\hline
+{\em Ncrits} & The number of critical curves found. \\
+\hline
+{\em resolution} & The target resolution that the critical curve is mapped on the image plane. \\
+\hline
+{\em invmag\+\_\+min} & finds regions with 1/magnification $<$ invmag\+\_\+min, set to zero for caustics \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_a507eaa67f4a10db4985c818d96311ec7}\label{namespace_image_finding_a507eaa67f4a10db4985c818d96311ec7}} 
+\index{ImageFinding@{ImageFinding}!find\_image\_simple@{find\_image\_simple}}
+\index{find\_image\_simple@{find\_image\_simple}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_image\_simple()}{find\_image\_simple()}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+image\+\_\+simple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{z\+\_\+source,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{image\+\_\+x,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{fret }\end{DoxyParamCaption})}
+
+
+
+Find the image position of a source without grid refinement. 
+
+This uses Powell\textquotesingle{}s algorithm to minimise the distance between the source point of an image and the desired source point. No grid is necessary. This should be fast, but will miss multiple images. This is useful for finding the position of weakly lensed images or the rough region where a grid should be put down for a strong lens. 
+\begin{DoxyParams}{Parameters}
+{\em lens} & lens to be shot through \\
+\hline
+{\em y\+\_\+source} & input position of source (radians) \\
+\hline
+{\em z\+\_\+source} & redshift of source \\
+\hline
+{\em image\+\_\+x} & output image position (radians) \\
+\hline
+{\em ytol2} & target tolerance in source position squared \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}\label{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}} 
+\index{ImageFinding@{ImageFinding}!find\_images\_kist@{find\_images\_kist}}
+\index{find\_images\_kist@{find\_images\_kist}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_images\_kist()}{find\_images\_kist()}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+images\+\_\+kist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{Pos\+Type $\ast$}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{unsigned long $\ast$}]{Nimagepoints,  }\item[{Pos\+Type}]{initial\+\_\+size,  }\item[{bool}]{splitimages,  }\item[{short}]{edge\+\_\+refinement,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Finds images given a source position and size. 
+
+Finding
+
+find\+\_\+images\+\_\+kist returns finite refined images in images\mbox{[}0...$\ast$\+Nimages-\/1\mbox{]}.imagekist It starts with a large source and reduces down to the right size refining at each step. It should not miss any image larger than $\sim$ munin$\ast$r\+\_\+source linear size, but seems to do much better than that. It does nothing with the surface brightnesses.
+
+The routine can follow three different strategies for refining each image controlled by edge\+\_\+refinement.
+
+edge\+\_\+refinement
+\begin{DoxyItemize}
+\item 0 does not do edge refinement, Every pixel in every image is refined until the criterion is met. The image(s) are found again after each refinement which can make it slower.
+\item 1 uses refine\+\_\+edge(). After an initial refinement of all the pixels in the image(s) the code switches to refining only the edges of the images. The images are found after each refinement.
+\item 2 uses refine\+\_\+edge2() Same as 1, but the images are not found after each refinement. This can make the
+\item any other number does no additional refinement after telescoping routine run much faster, but has the disadvantage that the number of images will not change during the final stage of refinement. This is the setting generally recommended. 
+\end{DoxyItemize}
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+source} & contains the lens/es and source/sources position of source center \\
+\hline
+{\em r\+\_\+source} & radius of source \\
+\hline
+{\em grid} & grid provided to routine \\
+\hline
+{\em Nimages} & number of images found \\
+\hline
+{\em imageinfo} & information on each image \\
+\hline
+{\em Nimagepoints} & number of points in final images \\
+\hline
+{\em initial\+\_\+size} & Initial size of source for telescoping, 0 to start from the initial grid size. \\
+\hline
+{\em splitimages} & true each image is refined to target accuracy, otherwise all images are treated as one \\
+\hline
+{\em edge\+\_\+refinement} & see comment \\
+\hline
+{\em verbose} & verbose \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_a4df229d3fd4cccd2a4ae17fa7edfa258}\label{namespace_image_finding_a4df229d3fd4cccd2a4ae17fa7edfa258}} 
+\index{ImageFinding@{ImageFinding}!find\_images\_microlens@{find\_images\_microlens}}
+\index{find\_images\_microlens@{find\_images\_microlens}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_images\_microlens()}{find\_images\_microlens()}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+images\+\_\+microlens (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{double $\ast$}]{y\+\_\+source,  }\item[{double}]{r\+\_\+source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{unsigned long $\ast$}]{Nimagepoints,  }\item[{double}]{initial\+\_\+size,  }\item[{double}]{mu\+\_\+min,  }\item[{bool}]{splitimages,  }\item[{short}]{edge\+\_\+refinement,  }\item[{bool}]{verbose }\end{DoxyParamCaption})}
+
+
+
+Finds images given a source position and size. 
+
+Finding
+
+\mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist}} returns finite refined images in images\mbox{[}0...$\ast$\+Nimages-\/1\mbox{]}.imagekist It starts with a large source and reduces down to the right size refining at each step. It should not miss any image larger than $\sim$ munin$\ast$r\+\_\+source linear size, but seems to do much better than that. It does nothing with the surface brightnesses.
+
+The routine can follow three different strategies for refining each image controlled by edge\+\_\+refinement.
+
+edge\+\_\+refinement
+\begin{DoxyItemize}
+\item 0 does not do edge refinement, Every pixel in every image is refined until the criterion is met. The image(s) are found again after each refinement which can make it slower.
+\item 1 uses refine\+\_\+edge(). After an initial refinement of all the pixels in the image(s) the code switches to refining only the edges of the images. The images are found after each refinement.
+\item 2 uses refine\+\_\+edge2() Same as 1, but the images are not found after each refinement. This can make the routine run much faster, but has the disadvantage that the number of images will not change during the final stage of refinement. This is the setting generally recommended.
+\end{DoxyItemize}
+
+When finding a finite sized source these quantities are generally not required and slow down the routine. 
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+source} & contains the lens/es and source/sources position of source center \\
+\hline
+{\em r\+\_\+source} & radius of source \\
+\hline
+{\em grid} & grid provided to routine \\
+\hline
+{\em Nimages} & number of images found \\
+\hline
+{\em imageinfo} & information on each image \\
+\hline
+{\em Nimagepoints} & number of points in final images \\
+\hline
+{\em initial\+\_\+size} & Initial size of source for telescoping, 0 to start from the initial grid size. \\
+\hline
+{\em splitimages} & true each image is refined to target accuracy, otherwise all images are treated as one \\
+\hline
+{\em edge\+\_\+refinement} & see comment \\
+\hline
+{\em verbose} & verbose \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_ae87006a0aa4fab4fda4f60f6689f0ec3}\label{namespace_image_finding_ae87006a0aa4fab4fda4f60f6689f0ec3}} 
+\index{ImageFinding@{ImageFinding}!find\_images\_microlens\_exper@{find\_images\_microlens\_exper}}
+\index{find\_images\_microlens\_exper@{find\_images\_microlens\_exper}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_images\_microlens\_exper()}{find\_images\_microlens\_exper()}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+images\+\_\+microlens\+\_\+exper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{Pos\+Type $\ast$}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{unsigned long $\ast$}]{Nimagepoints,  }\item[{Pos\+Type}]{initial\+\_\+size,  }\item[{Pos\+Type}]{mu\+\_\+min,  }\item[{bool}]{splitimages,  }\item[{short}]{edge\+\_\+refinement,  }\item[{bool}]{verbose }\end{DoxyParamCaption})}
+
+
+
+experimental version of find\+\_\+image\+\_\+microlens() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+source} & contains the lens/es and source/sources position of source center \\
+\hline
+{\em r\+\_\+source} & radius of source \\
+\hline
+{\em grid} & grid provided to routine \\
+\hline
+{\em Nimages} & number of images found \\
+\hline
+{\em imageinfo} & information on each image \\
+\hline
+{\em Nimagepoints} & number of points in final images \\
+\hline
+{\em initial\+\_\+size} & Initial size of source for telescoping, 0 to start from the initial grid size. \\
+\hline
+{\em splitimages} & T\+R\+UE each image is refined to target accuracy, otherwise all images are treated as one \\
+\hline
+{\em edge\+\_\+refinement} & see comment \\
+\hline
+{\em verbose} & verbose \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_a35b9df4dfdcc34aee973719535ec8778}\label{namespace_image_finding_a35b9df4dfdcc34aee973719535ec8778}} 
+\index{ImageFinding@{ImageFinding}!find\_peaks@{find\_peaks}}
+\index{find\_peaks@{find\_peaks}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_peaks()}{find\_peaks()}}
+{\footnotesize\ttfamily short Image\+Finding\+::find\+\_\+peaks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{Pos\+Type}]{r\+Einstein\+Min,  }\item[{Pos\+Type}]{kappa\+\_\+max,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{int $\ast$}]{Nimages }\end{DoxyParamCaption})}
+
+
+
+Refines the grid based on the convergence so that high density regions have high resolution. 
+
+Finding
+
+No source is used in this process. The code acts as if all the mass is in S\+IS halos iteratively increasing the resolution and kappa threshhold until the desired resolution is found. 
+\begin{DoxyParams}{Parameters}
+{\em lens} & \mbox{\hyperlink{class_lens}{Lens}} model \\
+\hline
+{\em grid} & \mbox{\hyperlink{struct_grid}{Grid}} to be refined. It must be initialized. \\
+\hline
+{\em r\+Einstein\+Min} & the Einstein radius of the smallest lens that should be resolved, sets resolution target \\
+\hline
+{\em kappa\+\_\+max} & highest kappa to be refined to, 1 or 2 is probably good enough \\
+\hline
+{\em imageinfo} & the image \\
+\hline
+{\em Nimages} & number of peaks \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_ac423dd72b206974de345741c56783d61}\label{namespace_image_finding_ac423dd72b206974de345741c56783d61}} 
+\index{ImageFinding@{ImageFinding}!find\_pseudo@{find\_pseudo}}
+\index{find\_pseudo@{find\_pseudo}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_pseudo()}{find\_pseudo()}}
+{\footnotesize\ttfamily Crit\+Type Image\+Finding\+::find\+\_\+pseudo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_image_info}{Image\+Info}} \&}]{pseudocurve,  }\item[{\mbox{\hyperlink{struct_image_info}{Image\+Info}} \&}]{negimage,  }\item[{Pos\+Type}]{pseudolimit,  }\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{Pos\+Type}]{resolution,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&}]{paritypoints,  }\item[{bool}]{T\+E\+ST = {\ttfamily false} }\end{DoxyParamCaption})}
+
+remove all but the points below tmp\+\_\+pseudolimit\mbox{\Hypertarget{namespace_image_finding_aa1d61941f50776c7133ead2f5ea87117}\label{namespace_image_finding_aa1d61941f50776c7133ead2f5ea87117}} 
+\index{ImageFinding@{ImageFinding}!image\_finder\_kist@{image\_finder\_kist}}
+\index{image\_finder\_kist@{image\_finder\_kist}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{image\_finder\_kist()}{image\_finder\_kist()}}
+{\footnotesize\ttfamily void Image\+Finding\+::image\+\_\+finder\+\_\+kist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{Pos\+Type $\ast$}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{unsigned long $\ast$}]{Nimagepoints,  }\item[{short}]{splitparities,  }\item[{short}]{true\+\_\+images }\end{DoxyParamCaption})}
+
+
+
+Finds images for a given source position and size. Not meant for high level user. 
+
+image points are put into imageinfo\mbox{[}\mbox{]}.imagekist imageinfo\mbox{[}\mbox{]}.points and imageinfo\mbox{[}\mbox{]}.Npoints are not changed
+
+splitparities= 0 don\textquotesingle{}t split attached negative and positive parity images = 1 do split parities N\+O\+TE\+: this is now obsolete = -\/1 doesn\textquotesingle{}t slit into images at all , also does not find borders or change in\+\_\+image markers true\+\_\+images = 1 gives just the points that are in the image = 0 if there are not enough points in images this will include close points to be refined
+
+side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0 \mbox{\Hypertarget{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}\label{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}} 
+\index{ImageFinding@{ImageFinding}!map\_images@{map\_images}}
+\index{map\_images@{map\_images}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{map\_images()}{map\_images()}}
+{\footnotesize\ttfamily void Image\+Finding\+::map\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{class_source}{Source}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{double}]{xmax,  }\item[{double}]{xmin,  }\item[{double}]{initial\+\_\+size,  }\item[{Exit\+Criterion}]{criterion,  }\item[{bool}]{Find\+Center,  }\item[{bool}]{divide\+\_\+images }\end{DoxyParamCaption})}
+
+
+
+Find images and refine them based on their surface brightness distribution. 
+
+Finding Uses \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()}} to initially find and refine images and then uses a surface brightness based criterion to refine the most important parts of the lens.
+
+map\+\_\+images is intended for mapping images of sources more complicated than simple circles. 
+\begin{DoxyParams}{Parameters}
+{\em lens} & model \\
+\hline
+{\em grid} & Tree of grid points \\
+\hline
+{\em Nimages} & number of images found \\
+\hline
+{\em imageinfo} & information on each image \\
+\hline
+{\em xmax} & Maximum size of source on image plane. The entire source must be within this distance from source-\/$>$get\+Theta()\mbox{[}\mbox{]} \\
+\hline
+{\em xmin} & The smallest scale of the source measured on the lens plane. The more accurate these 2 parameters are the less likely it is that an image will be missed. \\
+\hline
+{\em initial\+\_\+size} & Initial size of source for telescoping, 0 to start from the initial grid size. If $<$ 0 no telescoping is used and only the already existing points are used to to initiate the image finding. \\
+\hline
+{\em criterion} & see data type \\
+\hline
+{\em Find\+Center} & if the center of the source is not known this can be set to true and it will attempt to find the center, find the size of the source and determine if there is more than one source The entire source must be within xmax of source-\/$>$get\+Theta() because this is the only region that will be scanned. \\
+\hline
+{\em divide\+\_\+images} & if true will divide images and apply the exit criterion to them separately. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}\label{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}} 
+\index{ImageFinding@{ImageFinding}!map\_images\_fixedgrid@{map\_images\_fixedgrid}}
+\index{map\_images\_fixedgrid@{map\_images\_fixedgrid}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{map\_images\_fixedgrid()}{map\_images\_fixedgrid()}}
+{\footnotesize\ttfamily void Image\+Finding\+::map\+\_\+images\+\_\+fixedgrid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{double}]{xmax,  }\item[{bool}]{divide\+\_\+images,  }\item[{bool}]{find\+\_\+borders }\end{DoxyParamCaption})}
+
+
+
+Find the images without any additional grid refinement or ray shooting. 
+
+Finding The images and surface brighnesses are found. This will be much faster than \mbox{\hyperlink{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}{map\+\_\+images()}}, but will miss images that are not resolved on the current grid.
+
+The surface brightnesses on all of the grid are refreshed. The images centroids and gridranges are maintained. 
+\begin{DoxyParams}{Parameters}
+{\em grid} & Tree of grid points \\
+\hline
+{\em Nimages} & number of images found \\
+\hline
+{\em imageinfo} & information on each image \\
+\hline
+{\em xmax} & Maximum size of source on image plane. The entire source must be within this distance from source-\/$>$get\+Theta()\mbox{[}\mbox{]}. Decreasing it will make the code run faster. Making xmax much bigger than the grid boundaries will check all points for surface brightness. \\
+\hline
+{\em divide\+\_\+images} & if true will divide images. \\
+\hline
+{\em find\+\_\+borders} & if true will find the inner and outer borders of each image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_a70bbca22cc631872b33de04441c20b99}\label{namespace_image_finding_a70bbca22cc631872b33de04441c20b99}} 
+\index{ImageFinding@{ImageFinding}!map\_imagesISOP@{map\_imagesISOP}}
+\index{map\_imagesISOP@{map\_imagesISOP}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{map\_imagesISOP()}{map\_imagesISOP()}}
+{\footnotesize\ttfamily void Image\+Finding\+::map\+\_\+images\+I\+S\+OP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{class_source}{Source}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{double}]{rmax,  }\item[{double}]{res\+\_\+min,  }\item[{double}]{initial\+\_\+size,  }\item[{Exit\+Criterion}]{criterion,  }\item[{bool}]{divide\+\_\+images,  }\item[{bool}]{int\+\_\+on = {\ttfamily true},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Find images and refine them based on their surface brightness distribution. 
+
+Finding Uses \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()}} to initially find and refine images and then using I\+F\+\_\+routines\+::\+Integrate\+Flux\+In\+Cell(). If cells cannot be integrated refiments are madebased on a surface brightness based criterion to refine the most important parts of the lens.
+
+map\+\_\+images is intended for mapping images of sources more complicated than simple circles. 
+\begin{DoxyParams}{Parameters}
+{\em lens} & model \\
+\hline
+{\em grid} & Tree of grid points \\
+\hline
+{\em Nimages} & number of images found \\
+\hline
+{\em imageinfo} & information on each image \\
+\hline
+{\em rmax} & Maximum size of source on souce plane. The entire source must be within this distance from source-\/$>$get\+Theta()\mbox{[}\mbox{]} \\
+\hline
+{\em res\+\_\+min} & requred resolution of image, typically the pixel size of the final image \\
+\hline
+{\em initial\+\_\+size} & Initial size of source for telescoping, 0 to start from the initial grid size. If $<$ 0 no telescoping is used and only the already existing points are used to to initiate the image finding. \\
+\hline
+{\em criterion} & see data type \\
+\hline
+{\em divide\+\_\+images} & if true will divide images and apply the exit criterion to them separately. \\
+\hline
+{\em int\+\_\+on} & if true the flux in each cell is integrated, if false the surface brightness at the center point of the cell is used \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_a98d48e2de32898ac9b73c252e0ad2607}\label{namespace_image_finding_a98d48e2de32898ac9b73c252e0ad2607}} 
+\index{ImageFinding@{ImageFinding}!mapCausticCurves@{mapCausticCurves}}
+\index{mapCausticCurves@{mapCausticCurves}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{mapCausticCurves()}{mapCausticCurves()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Image\+Finding\+::map\+Caustic\+Curves (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&}]{critcurves,  }\item[{int}]{Nx }\end{DoxyParamCaption})}
+
+\textbackslash{}breaf Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) 
+\begin{DoxyParams}{Parameters}
+{\em critcurves} & list of critical curves \\
+\hline
+{\em Nx} & number of pixels to each size \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_aa3186a3ec810f8f68f57f7b6bfdf762d}\label{namespace_image_finding_aa3186a3ec810f8f68f57f7b6bfdf762d}} 
+\index{ImageFinding@{ImageFinding}!mapCriticalCurves@{mapCriticalCurves}}
+\index{mapCriticalCurves@{mapCriticalCurves}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{mapCriticalCurves()}{mapCriticalCurves()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Image\+Finding\+::map\+Critical\+Curves (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&}]{critcurves,  }\item[{int}]{Nx }\end{DoxyParamCaption})}
+
+\textbackslash{}breaf Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) 
+\begin{DoxyParams}{Parameters}
+{\em critcurves} & list of critical curves \\
+\hline
+{\em Nx} & number of pixels to each size \\
+\hline
+\end{DoxyParams}

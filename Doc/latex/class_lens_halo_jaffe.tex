@@ -1,0 +1,142 @@
+\hypertarget{class_lens_halo_jaffe}{}\doxysection{Lens\+Halo\+Jaffe Class Reference}
+\label{class_lens_halo_jaffe}\index{LensHaloJaffe@{LensHaloJaffe}}
+
+
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with truncated Jaffe mass profiles.  
+
+
+
+
+{\ttfamily \#include $<$lens\+\_\+halos.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Jaffe\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_lens_halo_jaffe__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Jaffe\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_lens_halo_jaffe__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_ab7c12d2af88ba8a3f44b044291e18e24}\label{class_lens_halo_jaffe_ab7c12d2af88ba8a3f44b044291e18e24}} 
+{\bfseries Lens\+Halo\+Jaffe} (float my\+\_\+mass, float my\+\_\+\+Rsize, Pos\+Type my\+\_\+zlens, float my\+\_\+rscale, float my\+\_\+fratio, float my\+\_\+pa, int my\+\_\+stars\+\_\+N, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, Ellip\+Method my\+\_\+ellip\+\_\+method=Pseudo)
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a26787b0c1af312ab0c945fb17e9bf7f5}\label{class_lens_halo_jaffe_a26787b0c1af312ab0c945fb17e9bf7f5}} 
+void \mbox{\hyperlink{class_lens_halo_jaffe_a26787b0c1af312ab0c945fb17e9bf7f5}{set\+\_\+rscale}} (float my\+\_\+rscale)
+\begin{DoxyCompactList}\small\item\em set scale radius \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_acb9d824007f9964f45061497be9153e3}\label{class_lens_halo_jaffe_acb9d824007f9964f45061497be9153e3}} 
+Pos\+Type {\bfseries ffunction} (Pos\+Type x) const
+\item 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_jaffe_a316fe036f3a7973bd8c54361690eefc9}{gfunction}} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a698a0bb3fd7934d4e3a9901258c33e2f}\label{class_lens_halo_jaffe_a698a0bb3fd7934d4e3a9901258c33e2f}} 
+Pos\+Type {\bfseries hfunction} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a633baa96897bfe90eea6567192da9d56}\label{class_lens_halo_jaffe_a633baa96897bfe90eea6567192da9d56}} 
+Pos\+Type {\bfseries g2function} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a823c2a15a187cc7d3387801da967d5ce}\label{class_lens_halo_jaffe_a823c2a15a187cc7d3387801da967d5ce}} 
+Pos\+Type {\bfseries bfunction} (Pos\+Type x)
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_ad45e93537a9b1fc2f88f51fc76a09be3}\label{class_lens_halo_jaffe_ad45e93537a9b1fc2f88f51fc76a09be3}} 
+Pos\+Type {\bfseries dbfunction} (Pos\+Type x)
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a015be5569f5c645c929edb37e5d71c13}\label{class_lens_halo_jaffe_a015be5569f5c645c929edb37e5d71c13}} 
+Pos\+Type {\bfseries ddbfunction} (Pos\+Type x)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a003d4229f6c14f97b84eed5966d31c50}\label{class_lens_halo_jaffe_a003d4229f6c14f97b84eed5966d31c50}} 
+void \mbox{\hyperlink{class_lens_halo_jaffe_a003d4229f6c14f97b84eed5966d31c50}{make\+\_\+tables}} ()
+\begin{DoxyCompactList}\small\item\em make the specific tables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a9ecbbbcae14c13150df73043c2072b51}\label{class_lens_halo_jaffe_a9ecbbbcae14c13150df73043c2072b51}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_jaffe_a9ecbbbcae14c13150df73043c2072b51}{Interpolate\+From\+Table}} (Pos\+Type $\ast$table, Pos\+Type y) const
+\begin{DoxyCompactList}\small\item\em interpolates from the specific tables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_ad1465c260dcbe09b03738f8cb4cf3556}\label{class_lens_halo_jaffe_ad1465c260dcbe09b03738f8cb4cf3556}} 
+void \mbox{\hyperlink{class_lens_halo_jaffe_ad1465c260dcbe09b03738f8cb4cf3556}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+\begin{DoxyCompactList}\small\item\em read in parameters from a parameterfile in \mbox{\hyperlink{class_input_params}{Input\+Params}} params \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a8a029f70ac374f3194acff4649101218}\label{class_lens_halo_jaffe_a8a029f70ac374f3194acff4649101218}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_jaffe_a8a029f70ac374f3194acff4649101218}{alpha\+\_\+h}} (Pos\+Type x) const
+\begin{DoxyCompactList}\small\item\em r $\vert$alpha(r)$\vert$ PI Sigma\+\_\+crit / Mass \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_ac50dda16c0a7d9f8688672ccd41021c2}\label{class_lens_halo_jaffe_ac50dda16c0a7d9f8688672ccd41021c2}} 
+Kappa\+Type {\bfseries kappa\+\_\+h} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a104f3e4562ef10c7c7408244106c4365}\label{class_lens_halo_jaffe_a104f3e4562ef10c7c7408244106c4365}} 
+Kappa\+Type {\bfseries gamma\+\_\+h} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a2f3bc130a490a244a2915c0abbbcdf2d}\label{class_lens_halo_jaffe_a2f3bc130a490a244a2915c0abbbcdf2d}} 
+Kappa\+Type \mbox{\hyperlink{class_lens_halo_jaffe_a2f3bc130a490a244a2915c0abbbcdf2d}{phi\+\_\+h}} (Pos\+Type x) const
+\begin{DoxyCompactList}\small\item\em std\+::cout $<$$<$ \char`\"{}no analytic expression defined yet for Jaffe profile, take numerical\char`\"{} $<$$<$ std\+::endl; \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_ad1cd1493b904c318bde4203a9528608c}\label{class_lens_halo_jaffe_ad1cd1493b904c318bde4203a9528608c}} 
+Kappa\+Type {\bfseries phi\+\_\+int} (Pos\+Type x) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a029dbf90de13d84cd603915ae0eb0c2c}\label{class_lens_halo_jaffe_a029dbf90de13d84cd603915ae0eb0c2c}} 
+static const long \mbox{\hyperlink{class_lens_halo_jaffe_a029dbf90de13d84cd603915ae0eb0c2c}{N\+T\+A\+B\+LE}} = 100000
+\begin{DoxyCompactList}\small\item\em table size \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a5dcce014105956d1e790ba680438f6c1}\label{class_lens_halo_jaffe_a5dcce014105956d1e790ba680438f6c1}} 
+static const Pos\+Type \mbox{\hyperlink{class_lens_halo_jaffe_a5dcce014105956d1e790ba680438f6c1}{maxrm}} = 100.\+0
+\begin{DoxyCompactList}\small\item\em maximum Rsize/rscale \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_ad6ef75a88688994c6b22c1e45879a33f}\label{class_lens_halo_jaffe_ad6ef75a88688994c6b22c1e45879a33f}} 
+static int \mbox{\hyperlink{class_lens_halo_jaffe_ad6ef75a88688994c6b22c1e45879a33f}{count}} = 0
+\begin{DoxyCompactList}\small\item\em keeps track of how many time the tables are created, default is just once \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_adf948e7ce2d417b64c562f8042aca837}\label{class_lens_halo_jaffe_adf948e7ce2d417b64c562f8042aca837}} 
+static Pos\+Type $\ast$ \mbox{\hyperlink{class_lens_halo_jaffe_adf948e7ce2d417b64c562f8042aca837}{ftable}} = N\+U\+LL
+\begin{DoxyCompactList}\small\item\em tables for lensing properties specific functions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a19873fcd503278198521722e36f0b931}\label{class_lens_halo_jaffe_a19873fcd503278198521722e36f0b931}} 
+static Pos\+Type $\ast$ {\bfseries gtable} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a0ce2d72f3828fd31a462b4a60c1a24e4}\label{class_lens_halo_jaffe_a0ce2d72f3828fd31a462b4a60c1a24e4}} 
+static Pos\+Type $\ast$ {\bfseries g2table} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a9eeca8de26f41f7e8db275eddfda2eb3}\label{class_lens_halo_jaffe_a9eeca8de26f41f7e8db275eddfda2eb3}} 
+static Pos\+Type $\ast$ {\bfseries htable}
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_af761716af3b1220187f40dfb1e4938c6}\label{class_lens_halo_jaffe_af761716af3b1220187f40dfb1e4938c6}} 
+static Pos\+Type $\ast$ {\bfseries xtable} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_jaffe_a79026d623310652d1785c1edad4716c1}\label{class_lens_halo_jaffe_a79026d623310652d1785c1edad4716c1}} 
+static Pos\+Type $\ast$ {\bfseries xgtable} = N\+U\+LL
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with truncated Jaffe mass profiles. 
+
+The profile is $ \rho \propto \left( \frac{r}{r_s} \right)^{-2} \left( 1 + \frac{r}{r_s} \right)^{-2} $ so beta would usually be negative. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_jaffe_a316fe036f3a7973bd8c54361690eefc9}\label{class_lens_halo_jaffe_a316fe036f3a7973bd8c54361690eefc9}} 
+\index{LensHaloJaffe@{LensHaloJaffe}!gfunction@{gfunction}}
+\index{gfunction@{gfunction}!LensHaloJaffe@{LensHaloJaffe}}
+\doxysubsubsection{\texorpdfstring{gfunction()}{gfunction()}}
+{\footnotesize\ttfamily Pos\+Type Lens\+Halo\+Jaffe\+::gfunction (\begin{DoxyParamCaption}\item[{Pos\+Type}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Created on\+: July 30, 2013 Author\+: D. Leier 
+
+Reimplemented from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/lens\+\_\+halos.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/jaffe\+\_\+lens.\+cpp\item 
+S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+halos.\+cpp\end{DoxyCompactItemize}

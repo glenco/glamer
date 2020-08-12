@@ -1,0 +1,177 @@
+\hypertarget{class_lens_halo_mass_map}{}\doxysection{Lens\+Halo\+Mass\+Map Class Reference}
+\label{class_lens_halo_mass_map}\index{LensHaloMassMap@{LensHaloMassMap}}
+
+
+A class that includes the M\+O\+KA lens map.  
+
+
+
+
+{\ttfamily \#include $<$M\+O\+K\+Alens.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Mass\+Map\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_lens_halo_mass_map__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Mass\+Map\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_lens_halo_mass_map__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a4a005c50d34dbee9842317725ec02ce1}\label{class_lens_halo_mass_map_a4a005c50d34dbee9842317725ec02ce1}} 
+\mbox{\hyperlink{class_lens_halo_mass_map_a4a005c50d34dbee9842317725ec02ce1}{Lens\+Halo\+Mass\+Map}} (const std\+::string \&filename, Pixel\+Map\+Type maptype, int pixel\+\_\+map\+\_\+zeropad, bool my\+\_\+zeromean, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&lenscosmo)
+\begin{DoxyCompactList}\small\item\em loads a mass map from a given filename \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lens_halo_mass_map_a96c739955c1a83669c482632bf1e6adc}{Lens\+Halo\+Mass\+Map}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&Mass\+Map, double massconvertion, double redshift, int pixel\+\_\+map\+\_\+zeropad, bool my\+\_\+zeromean, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&lenscosmo)
+\begin{DoxyCompactList}\small\item\em Create a \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} from a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} representing the mass. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a57550679541258e9d015e52eea1e09d6}\label{class_lens_halo_mass_map_a57550679541258e9d015e52eea1e09d6}} 
+{\bfseries Lens\+Halo\+Mass\+Map} (const \mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}} \&h)
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a31effd77c48e9b0880705d0af2b38aaa}\label{class_lens_halo_mass_map_a31effd77c48e9b0880705d0af2b38aaa}} 
+{\bfseries Lens\+Halo\+Mass\+Map} (\mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}} \&\&h)
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a2cc4b60b6ea38f91f132df1f7cd80271}\label{class_lens_halo_mass_map_a2cc4b60b6ea38f91f132df1f7cd80271}} 
+\mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}} \& {\bfseries operator=} (\mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}} \&h)
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_ab5dac9417721ecab9939b7a3a3230340}\label{class_lens_halo_mass_map_ab5dac9417721ecab9939b7a3a3230340}} 
+\mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}} \& {\bfseries operator=} (\mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}} \&\&h)
+\item 
+void \mbox{\hyperlink{class_lens_halo_mass_map_a143fceb361040d085a606556b98c92c0}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+\item 
+void \mbox{\hyperlink{class_lens_halo_mass_map_afb6416d108ed824204166b6c7d763eb0}{check\+Cosmology}} ()
+\begin{DoxyCompactList}\small\item\em checks the cosmology against the M\+O\+KA map parameters \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_abb4b8843f63d1fd8caede20cc15e353c}\label{class_lens_halo_mass_map_abb4b8843f63d1fd8caede20cc15e353c}} 
+void {\bfseries save\+Image} (bool saveprofile=true)
+\item 
+void \mbox{\hyperlink{class_lens_halo_mass_map_a7539cfc750a26eda61672263a2f75eb4}{force\+\_\+halo}} (double $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, double const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+\begin{DoxyCompactList}\small\item\em Routine for obtaining the deflection and other lensing quantities for a M\+O\+KA map (M\+O\+K\+A\+Lens\+Halo), for just one ray!! \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a7041f1df1e40dfb7434f5a70792eba6e}\label{class_lens_halo_mass_map_a7041f1df1e40dfb7434f5a70792eba6e}} 
+void {\bfseries get\+Dims} ()
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a94ae7e7e4e71b54e4c89afa324e29f24}\label{class_lens_halo_mass_map_a94ae7e7e4e71b54e4c89afa324e29f24}} 
+void \mbox{\hyperlink{class_lens_halo_mass_map_a94ae7e7e4e71b54e4c89afa324e29f24}{read\+Map}} ()
+\begin{DoxyCompactList}\small\item\em reads in the fits file for the M\+O\+KA or mass map and saves it in the structure map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_acd36198d985f3c66ce5883ed18559c0d}\label{class_lens_halo_mass_map_acd36198d985f3c66ce5883ed18559c0d}} 
+void \mbox{\hyperlink{class_lens_halo_mass_map_acd36198d985f3c66ce5883ed18559c0d}{set\+Map}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&inputmap, double convertionfactor, double z)
+\begin{DoxyCompactList}\small\item\em reads in the fits file for the M\+O\+KA or mass map and saves it in the structure map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_aa890ed7562990f4794cd5041cf391293}\label{class_lens_halo_mass_map_aa890ed7562990f4794cd5041cf391293}} 
+void \mbox{\hyperlink{class_lens_halo_mass_map_aa890ed7562990f4794cd5041cf391293}{write\+Image}} (std\+::string fn)
+\begin{DoxyCompactList}\small\item\em write the fits file of the new M\+O\+KA map from the structure map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a678e3f2d53a0850b93c65142d2a373b8}\label{class_lens_halo_mass_map_a678e3f2d53a0850b93c65142d2a373b8}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_mass_map_a678e3f2d53a0850b93c65142d2a373b8}{get\+Center}} () const
+\begin{DoxyCompactList}\small\item\em return center in physical Mpc \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_ac9236e51a98fd875e0f98da79744dd63}\label{class_lens_halo_mass_map_ac9236e51a98fd875e0f98da79744dd63}} 
+double \mbox{\hyperlink{class_lens_halo_mass_map_ac9236e51a98fd875e0f98da79744dd63}{get\+Range\+Rad}} () const
+\begin{DoxyCompactList}\small\item\em return range of input map in rad \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a221862169c8e050b04ce49758b091b7f}\label{class_lens_halo_mass_map_a221862169c8e050b04ce49758b091b7f}} 
+double \mbox{\hyperlink{class_lens_halo_mass_map_a221862169c8e050b04ce49758b091b7f}{get\+Range\+Mpc}} () const
+\begin{DoxyCompactList}\small\item\em return range of input map in physical Mpc \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a61bc6072d02b4bde2a71228476c0f558}\label{class_lens_halo_mass_map_a61bc6072d02b4bde2a71228476c0f558}} 
+size\+\_\+t \mbox{\hyperlink{class_lens_halo_mass_map_a61bc6072d02b4bde2a71228476c0f558}{getN}} () const
+\begin{DoxyCompactList}\small\item\em /// return number of pixels on a side in original map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_aeaea36f2eae141c1cbd67157c30c31d0}\label{class_lens_halo_mass_map_aeaea36f2eae141c1cbd67157c30c31d0}} 
+size\+\_\+t \mbox{\hyperlink{class_lens_halo_mass_map_aeaea36f2eae141c1cbd67157c30c31d0}{get\+Nx}} () const
+\begin{DoxyCompactList}\small\item\em return number of pixels on a x-\/axis side in original map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_a447b6fa6e3eb58ebb6df8b13fbc37381}\label{class_lens_halo_mass_map_a447b6fa6e3eb58ebb6df8b13fbc37381}} 
+size\+\_\+t \mbox{\hyperlink{class_lens_halo_mass_map_a447b6fa6e3eb58ebb6df8b13fbc37381}{get\+Ny}} () const
+\begin{DoxyCompactList}\small\item\em return number of pixels on a y-\/axis side in original map \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_aeedbc785fa2dd6f7bad9907a577cd0ce}\label{class_lens_halo_mass_map_aeedbc785fa2dd6f7bad9907a577cd0ce}} 
+std\+::string {\bfseries M\+O\+K\+A\+\_\+input\+\_\+file}
+\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_ac9c631785aa3b2d1d756e359250c2602}\label{class_lens_halo_mass_map_ac9c631785aa3b2d1d756e359250c2602}} 
+int \mbox{\hyperlink{class_lens_halo_mass_map_ac9c631785aa3b2d1d756e359250c2602}{flag\+\_\+\+M\+O\+K\+A\+\_\+analyze}}
+\begin{DoxyCompactList}\small\item\em if $>$=1 (true), do analyzis only; if = 0 (false) change units to internal G\+L\+A\+M\+ER units and prepare for ray-\/shooting \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_mass_map_ab89a86b5e50ca6e3a3555475b0929ea4}\label{class_lens_halo_mass_map_ab89a86b5e50ca6e3a3555475b0929ea4}} 
+int {\bfseries flag\+\_\+background\+\_\+field}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class that includes the M\+O\+KA lens map. 
+
+A class, where the lens is represented by a M\+O\+KA cluster in the form of a \mbox{\hyperlink{struct_m_o_k_amap}{M\+O\+K\+Amap}} object (see the description of \mbox{\hyperlink{struct_m_o_k_amap}{M\+O\+K\+Amap}}). It can either be used with the \mbox{\hyperlink{class_lens}{Lens}} model or by itself.
+
+Note\+: To use this class requires setting the E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS compiler flag and linking the cfits library. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lens_halo_mass_map_a96c739955c1a83669c482632bf1e6adc}\label{class_lens_halo_mass_map_a96c739955c1a83669c482632bf1e6adc}} 
+\index{LensHaloMassMap@{LensHaloMassMap}!LensHaloMassMap@{LensHaloMassMap}}
+\index{LensHaloMassMap@{LensHaloMassMap}!LensHaloMassMap@{LensHaloMassMap}}
+\doxysubsubsection{\texorpdfstring{LensHaloMassMap()}{LensHaloMassMap()}}
+{\footnotesize\ttfamily Lens\+Halo\+Mass\+Map\+::\+Lens\+Halo\+Mass\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{Mass\+Map,  }\item[{double}]{massconvertion,  }\item[{double}]{redshift,  }\item[{int}]{pixel\+\_\+map\+\_\+zeropad,  }\item[{bool}]{my\+\_\+zeromean,  }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{lenscosmo }\end{DoxyParamCaption})}
+
+
+
+Create a \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} from a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} representing the mass. 
+
+This is especially useful for representing the visible stars from an image in the lens model. constructor for making lens halo directly from a mass map 
+\begin{DoxyParams}{Parameters}
+{\em Mass\+Map} & mass map in solar mass units \\
+\hline
+{\em massconvertion} & convertion factor from pixel units to solar masses \\
+\hline
+{\em redshift} & redshift of lens \\
+\hline
+{\em pixel\+\_\+map\+\_\+zeropad} & factor by which to zero pad in F\+F\+Ts, ex. 4 \\
+\hline
+{\em my\+\_\+zeromean} & if true, subtracts average density \\
+\hline
+{\em lenscosmo} & cosmology \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_mass_map_a143fceb361040d085a606556b98c92c0}\label{class_lens_halo_mass_map_a143fceb361040d085a606556b98c92c0}} 
+\index{LensHaloMassMap@{LensHaloMassMap}!assignParams@{assignParams}}
+\index{assignParams@{assignParams}!LensHaloMassMap@{LensHaloMassMap}}
+\doxysubsubsection{\texorpdfstring{assignParams()}{assignParams()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Mass\+Map\+::assign\+Params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_params}{Input\+Params}} \&}]{params }\end{DoxyParamCaption})}
+
+Sets many parameters within the M\+O\+KA lens model not really used\mbox{\Hypertarget{class_lens_halo_mass_map_afb6416d108ed824204166b6c7d763eb0}\label{class_lens_halo_mass_map_afb6416d108ed824204166b6c7d763eb0}} 
+\index{LensHaloMassMap@{LensHaloMassMap}!checkCosmology@{checkCosmology}}
+\index{checkCosmology@{checkCosmology}!LensHaloMassMap@{LensHaloMassMap}}
+\doxysubsubsection{\texorpdfstring{checkCosmology()}{checkCosmology()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Mass\+Map\+::check\+Cosmology (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+checks the cosmology against the M\+O\+KA map parameters 
+
+checks that cosmology in the header of the input fits map is the same as the one set \mbox{\Hypertarget{class_lens_halo_mass_map_a7539cfc750a26eda61672263a2f75eb4}\label{class_lens_halo_mass_map_a7539cfc750a26eda61672263a2f75eb4}} 
+\index{LensHaloMassMap@{LensHaloMassMap}!force\_halo@{force\_halo}}
+\index{force\_halo@{force\_halo}!LensHaloMassMap@{LensHaloMassMap}}
+\doxysubsubsection{\texorpdfstring{force\_halo()}{force\_halo()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Mass\+Map\+::force\+\_\+halo (\begin{DoxyParamCaption}\item[{double $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi,  }\item[{double const $\ast$}]{xx,  }\item[{bool}]{subtract\+\_\+point = {\ttfamily false},  }\item[{Pos\+Type}]{screening = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Routine for obtaining the deflection and other lensing quantities for a M\+O\+KA map (M\+O\+K\+A\+Lens\+Halo), for just one ray!! 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_lens_halo_a460de105e52520a328d5912455c02fdd}{Lens\+Halo}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/M\+O\+K\+Alens.\+h\item 
+S\+Lsim\+Lib/\+Multi\+Plane/M\+O\+K\+Afits.\+cpp\item 
+S\+Lsim\+Lib/\+Multi\+Plane/M\+O\+K\+Alens.\+cpp\end{DoxyCompactItemize}

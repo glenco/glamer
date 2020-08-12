@@ -1,0 +1,217 @@
+\hypertarget{class_observation}{}\doxysection{Observation Class Reference}
+\label{class_observation}\index{Observation@{Observation}}
+
+
+It creates a realistic image from the output of a ray-\/tracing simulation.  
+
+
+
+
+{\ttfamily \#include $<$image\+\_\+processing.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_observation_a69a026d1fbd9aa9dcda07462405c4c13}{Observation}} (Telescope tel\+\_\+name, size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Creates an observation setup that mimics a known instrument. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_observation_a0cece1cfe9dd6dcc6a90d982489ac9f3}{Observation}} (float diameter, float transmission, float exp\+\_\+time, int exp\+\_\+num, float back\+\_\+mag, float ron, size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, float seeing=0.)
+\item 
+\mbox{\hyperlink{class_observation_a07772e1c614392b5be56b6492cb489e0}{Observation}} (float diameter, float transmission, float exp\+\_\+time, int exp\+\_\+num, float back\+\_\+mag, float ron, std\+::string psf\+\_\+file, size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, float oversample=1.)
+\item 
+\mbox{\Hypertarget{class_observation_a0f6693414f2003d757cfc5973a40d20c}\label{class_observation_a0f6693414f2003d757cfc5973a40d20c}} 
+float {\bfseries get\+Exp\+Time} ()
+\item 
+\mbox{\Hypertarget{class_observation_a3b4253267314e71cf2e75835cb0f11aa}\label{class_observation_a3b4253267314e71cf2e75835cb0f11aa}} 
+int {\bfseries get\+Exp\+Num} ()
+\item 
+\mbox{\Hypertarget{class_observation_a8072a479a6761be58ec83166aa0e07d2}\label{class_observation_a8072a479a6761be58ec83166aa0e07d2}} 
+float {\bfseries get\+Back\+Mag} ()
+\item 
+\mbox{\Hypertarget{class_observation_a2c251fcdd66d66bbe7762804430c47ab}\label{class_observation_a2c251fcdd66d66bbe7762804430c47ab}} 
+float {\bfseries get\+Diameter} ()
+\item 
+\mbox{\Hypertarget{class_observation_ac61e087a5c5b398b7e5a6f6263081fe8}\label{class_observation_ac61e087a5c5b398b7e5a6f6263081fe8}} 
+float {\bfseries get\+Transmission} ()
+\item 
+\mbox{\Hypertarget{class_observation_a83ae3ee058932699d1837b659cb2363a}\label{class_observation_a83ae3ee058932699d1837b659cb2363a}} 
+float \mbox{\hyperlink{class_observation_a83ae3ee058932699d1837b659cb2363a}{get\+Ron}} ()
+\begin{DoxyCompactList}\small\item\em read-\/out noise in electrons/pixel \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observation_a20056bc896d02bc6af58c79f426888f4}\label{class_observation_a20056bc896d02bc6af58c79f426888f4}} 
+float \mbox{\hyperlink{class_observation_a20056bc896d02bc6af58c79f426888f4}{get\+Seeing}} ()
+\begin{DoxyCompactList}\small\item\em seeing in arcsecs \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observation_a7aecf380751c0e1beb8dacade5d97476}\label{class_observation_a7aecf380751c0e1beb8dacade5d97476}} 
+float {\bfseries get\+Zeropoint} ()
+\item 
+\mbox{\Hypertarget{class_observation_ae131689cbe5050683ebeb2008e9b5313}\label{class_observation_ae131689cbe5050683ebeb2008e9b5313}} 
+float \mbox{\hyperlink{class_observation_ae131689cbe5050683ebeb2008e9b5313}{get\+Pixel\+Size}} ()
+\begin{DoxyCompactList}\small\item\em pixel size in radians \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_observation_a34dd759b292705dac56eef7a4f725c5f}{get\+Background\+Noise}} (float resolution, unit\+Type unit=counts\+\_\+x\+\_\+sec)
+\item 
+\mbox{\Hypertarget{class_observation_a412a97389c1a93b85ffdd64002fe3cb6}\label{class_observation_a412a97389c1a93b85ffdd64002fe3cb6}} 
+std\+::valarray$<$ double $>$ {\bfseries get\+P\+SF} ()
+\item 
+void \mbox{\hyperlink{class_observation_aca23de5f751fb53b8d36d7ae54a9ac6d}{set\+P\+SF}} (std\+::string psf\+\_\+file, float os=1.)
+\begin{DoxyCompactList}\small\item\em Reads in and sets the P\+SF from a fits file. If the pixel size of the fits is different (smaller) than the one of the telescope, it must be specified. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_observation_a564a3f0dff88f3777b71884d3c241d01}{set\+Noise\+Correlation}} (std\+::string nc\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Read in and set the noise correlation function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_observation_accd8b11115f77fb041c7d6a666af861b}{Convert}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map, bool psf, bool noise, long $\ast$seed, unit\+Type unit=counts\+\_\+x\+\_\+sec)
+\begin{DoxyCompactList}\small\item\em Converts the input map to a realistic image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observation_a4cde9a90965ec7da65bc0855497b81c6}\label{class_observation_a4cde9a90965ec7da65bc0855497b81c6}} 
+double \mbox{\hyperlink{class_observation_a4cde9a90965ec7da65bc0855497b81c6}{flux\+\_\+convertion\+\_\+factor}} ()
+\begin{DoxyCompactList}\small\item\em returns factor by which code image units need to be multiplied by to get flux units \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observation_a2bca5d38e3c6f5e867fafd0b1e4f46bb}\label{class_observation_a2bca5d38e3c6f5e867fafd0b1e4f46bb}} 
+void \mbox{\hyperlink{class_observation_a2bca5d38e3c6f5e867fafd0b1e4f46bb}{Convert\+\_\+back}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map)
+\begin{DoxyCompactList}\small\item\em Converts an observed image to the units of the lensing simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_observation_a670be0f361abb519391ff0c30c907c1d}\label{class_observation_a670be0f361abb519391ff0c30c907c1d}} 
+void {\bfseries set\+Exp\+Time} (float time)
+\item 
+\mbox{\Hypertarget{class_observation_a693467edd8ef8876f061e98bafe714c6}\label{class_observation_a693467edd8ef8876f061e98bafe714c6}} 
+size\+\_\+t {\bfseries get\+Nx} ()
+\item 
+\mbox{\Hypertarget{class_observation_aead4a78a6408725025690d556185c2ce}\label{class_observation_aead4a78a6408725025690d556185c2ce}} 
+size\+\_\+t {\bfseries get\+Ny} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It creates a realistic image from the output of a ray-\/tracing simulation. 
+
+It translates pixel values in observed units (counts/sec), applies P\+SF and noise. Input must be in ergs/(s$\ast$cm$^\wedge$2$\ast$\+Hz$\ast$hplanck). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_observation_a69a026d1fbd9aa9dcda07462405c4c13}\label{class_observation_a69a026d1fbd9aa9dcda07462405c4c13}} 
+\index{Observation@{Observation}!Observation@{Observation}}
+\index{Observation@{Observation}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{Observation()}{Observation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{Telescope}]{tel\+\_\+name,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Creates an observation setup that mimics a known instrument. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}\mbox{\Hypertarget{class_observation_a0cece1cfe9dd6dcc6a90d982489ac9f3}\label{class_observation_a0cece1cfe9dd6dcc6a90d982489ac9f3}} 
+\index{Observation@{Observation}!Observation@{Observation}}
+\index{Observation@{Observation}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{Observation()}{Observation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{float}]{diameter,  }\item[{float}]{transmission,  }\item[{float}]{exp\+\_\+time,  }\item[{int}]{exp\+\_\+num,  }\item[{float}]{back\+\_\+mag,  }\item[{float}]{ron,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y,  }\item[{float}]{seeing = {\ttfamily 0.} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Creates a custom observation setup with parameters decided by the user.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em diameter} & Diameter of telescope (in cm) (Collecting area is pi/4.$\ast$diameter$^\wedge$2) \\
+\hline
+{\em transmission} & Total transmission of the telescope (/int T(\textbackslash{}lambda)/\textbackslash{}lambda d\textbackslash{}lambda) \\
+\hline
+{\em exp\+\_\+time} & Total exposure time \\
+\hline
+{\em exp\+\_\+num} & Number of exposures \\
+\hline
+{\em back\+\_\+mag} & Flux due to background and/or sky in mag/arcsec$^\wedge$2 \\
+\hline
+{\em ron} & Read-\/out noise in electrons/pixel \\
+\hline
+{\em seeing} & F\+W\+HM in arcsecs of the image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_observation_a07772e1c614392b5be56b6492cb489e0}\label{class_observation_a07772e1c614392b5be56b6492cb489e0}} 
+\index{Observation@{Observation}!Observation@{Observation}}
+\index{Observation@{Observation}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{Observation()}{Observation()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{float}]{diameter,  }\item[{float}]{transmission,  }\item[{float}]{exp\+\_\+time,  }\item[{int}]{exp\+\_\+num,  }\item[{float}]{back\+\_\+mag,  }\item[{float}]{ron,  }\item[{std\+::string}]{psf\+\_\+file,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y,  }\item[{float}]{oversample = {\ttfamily 1.} }\end{DoxyParamCaption})}
+
+Creates a custom observation setup with parameters decided by the user. Allows for the use of a psf fits image.
+
+
+\begin{DoxyParams}{Parameters}
+{\em diameter} & Diameter of telescope (in cm) (Collecting area is pi/4.$\ast$diameter$^\wedge$2) \\
+\hline
+{\em transmission} & Total transmission of the telescope (/int T(\textbackslash{}lambda)/\textbackslash{}lambda d\textbackslash{}lambda) \\
+\hline
+{\em exp\+\_\+time} & Total exposure time \\
+\hline
+{\em exp\+\_\+num} & Number of exposures \\
+\hline
+{\em back\+\_\+mag} & Flux due to background and/or sky in mag/arcsec$^\wedge$2 \\
+\hline
+{\em ron} & Read-\/out noise in electrons/pixel \\
+\hline
+{\em psf\+\_\+file} & Input P\+SF image \\
+\hline
+{\em oversample} & Oversampling rate of the P\+SF image \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_observation_accd8b11115f77fb041c7d6a666af861b}\label{class_observation_accd8b11115f77fb041c7d6a666af861b}} 
+\index{Observation@{Observation}!Convert@{Convert}}
+\index{Convert@{Convert}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{Convert()}{Convert()}}
+{\footnotesize\ttfamily void Observation\+::\+Convert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map,  }\item[{bool}]{psf,  }\item[{bool}]{noise,  }\item[{long $\ast$}]{seed,  }\item[{unit\+Type}]{unit = {\ttfamily counts\+\_\+x\+\_\+sec} }\end{DoxyParamCaption})}
+
+
+
+Converts the input map to a realistic image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Input map in photons/(cm$^\wedge$2$\ast$\+Hz) \\
+\hline
+{\em psf} & Decides if the psf smoothing is applied \\
+\hline
+{\em noise} & Decides if noise is added \\
+\hline
+{\em unit} & Decides units of output (if flux, output is in 10$\ast$$\ast$(-\/0.\+4$\ast$mag)) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_observation_a34dd759b292705dac56eef7a4f725c5f}\label{class_observation_a34dd759b292705dac56eef7a4f725c5f}} 
+\index{Observation@{Observation}!getBackgroundNoise@{getBackgroundNoise}}
+\index{getBackgroundNoise@{getBackgroundNoise}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{getBackgroundNoise()}{getBackgroundNoise()}}
+{\footnotesize\ttfamily float Observation\+::get\+Background\+Noise (\begin{DoxyParamCaption}\item[{float}]{resolution,  }\item[{unit\+Type}]{unit = {\ttfamily counts\+\_\+x\+\_\+sec} }\end{DoxyParamCaption})}
+
+Outputs rms of noise counts due to background and instrument in the unit decided by the user \mbox{\Hypertarget{class_observation_a564a3f0dff88f3777b71884d3c241d01}\label{class_observation_a564a3f0dff88f3777b71884d3c241d01}} 
+\index{Observation@{Observation}!setNoiseCorrelation@{setNoiseCorrelation}}
+\index{setNoiseCorrelation@{setNoiseCorrelation}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{setNoiseCorrelation()}{setNoiseCorrelation()}}
+{\footnotesize\ttfamily void Observation\+::set\+Noise\+Correlation (\begin{DoxyParamCaption}\item[{std\+::string}]{nc\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Read in and set the noise correlation function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nc\+\_\+file} & name of fits file with noise correlation function in pixel units \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_observation_aca23de5f751fb53b8d36d7ae54a9ac6d}\label{class_observation_aca23de5f751fb53b8d36d7ae54a9ac6d}} 
+\index{Observation@{Observation}!setPSF@{setPSF}}
+\index{setPSF@{setPSF}!Observation@{Observation}}
+\doxysubsubsection{\texorpdfstring{setPSF()}{setPSF()}}
+{\footnotesize\ttfamily void Observation\+::set\+P\+SF (\begin{DoxyParamCaption}\item[{std\+::string}]{psf\+\_\+file,  }\item[{float}]{os = {\ttfamily 1.} }\end{DoxyParamCaption})}
+
+
+
+Reads in and sets the P\+SF from a fits file. If the pixel size of the fits is different (smaller) than the one of the telescope, it must be specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em psf\+\_\+file} & name of fits file with psf \\
+\hline
+{\em os} & over sampling factor \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/image\+\_\+processing.\+h\item 
+S\+Lsim\+Lib/\+Image\+Processing/observation.\+cpp\end{DoxyCompactItemize}

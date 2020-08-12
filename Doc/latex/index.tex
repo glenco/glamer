@@ -1,0 +1,69 @@
+\label{index_mainpage}%
+\Hypertarget{index_mainpage}%
+
+
+{\itshape G\+L\+A\+M\+ER} is a flexible computer code for doing simulations of gravitational lensing and modelling of gravitational lenses.
+
+This page describes the steps to doing a simple simulation and where in the documentation to find further information. The installation and usage of {\itshape G\+L\+A\+M\+ER} is described on the \mbox{\hyperlink{install}{installation page}}. If you would like to obtain the code, please see the \mbox{\hyperlink{copying}{appropriate section}}.
+
+The code can be made available to you through Git\+Hub.\+com upon request. Requests should be sent to Ben Metcalf at \href{mailto:robertbenton.metcalf@unibo.it}{\texttt{ robertbenton.\+metcalf@unibo.\+it}}.\hypertarget{index_autotoc_md13}{}\doxysection{Getting started}\label{index_autotoc_md13}
+{\ttfamily G\+L\+A\+M\+ER} is in the form of a C++ library that can be linked into your code. ~\newline
+ For instructions on installing and linking the library see \href{http://metcalf1.bo.astro.it/wiki/projects/glamer/GLAMER.html}{\texttt{ here}}
+
+An overview of how the code is structured follows.\hypertarget{index_autotoc_md14}{}\doxysection{Read in Parameters}\label{index_autotoc_md14}
+Originally all objects where constructed from a parameter file through the \mbox{\hyperlink{class_input_params}{Input\+Params}} class. Many of these constructors still exist, but this method has been deprecated. It is recommended that the classes be constructed from their other constructors now.\hypertarget{index_autotoc_md15}{}\doxysection{Cosmology}\label{index_autotoc_md15}
+First you must create an instance of the {\ttfamily \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}}} class. This is taken as an argument to many of the constructors and contains functions for calculating cosmological quantities. Several standard cosmological parameters sets are available or a new set can be chosen.\hypertarget{index_autotoc_md16}{}\doxysection{Lens\+Halo classes}\label{index_autotoc_md16}
+To represent the mass that causes the lensing one or more {\ttfamily \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}} objects must be constructed. A full list of Lens\+Halos can be found \href{file:///Users/bmetcalf/Glamer/Doc/html/classes.html}{\texttt{ here}}. Some examples are\+:
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo_n_f_w}{Lens\+Halo\+N\+FW}}} -\/ a N\+FW halo
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo_mass_map}{Lens\+Halo\+Mass\+Map}}} -\/ a mass sheet represented with a pixelized map
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}} -\/ a mass distribution represented by particles or point masses possibly from a simulation
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo_real_n_s_i_e}{Lens\+Halo\+Real\+N\+S\+IE}}} -\/ a non-\/singular isothermal elliptical lens
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo_power_law}{Lens\+Halo\+Power\+Law}}} -\/ a lens with a power-\/law mass profile
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}}} -\/ to create a uniform shear and/or convergence\hypertarget{index_autotoc_md17}{}\doxysection{Source Class}\label{index_autotoc_md17}
+Sources represent anything that produces a visible image in front of, within or behind the lens. ~\newline
+
+
+Some of them are\+:
+
+{\ttfamily \mbox{\hyperlink{class_source_uniform}{Source\+Uniform}}} \+: Makes the source a uniform surface brightness circle
+
+{\ttfamily Source\+Gaussian} \+: \mbox{\hyperlink{class_source}{Source}} with a Gaussian profile
+
+{\ttfamily \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}}} \+: a source made from a shapelet decomposition
+
+{\ttfamily \mbox{\hyperlink{class_source_sersic}{Source\+Sersic}}} \+: a source with a Sersic profile
+
+{\ttfamily \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}}} \+: a source made from a pixelized image of an object\hypertarget{index_autotoc_md18}{}\doxysection{Lens class}\label{index_autotoc_md18}
+The lens class contains the Lens\+Halos and keeps the information about the light-\/cone. ~\newline
+
+
+{\ttfamily \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}s are inserted into the {\ttfamily \mbox{\hyperlink{class_lens}{Lens}}} object with there redshift and angular position. Once it is created the {\ttfamily \mbox{\hyperlink{class_lens}{Lens}}} owns copies of the {\ttfamily \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}s. (Large Lens\+Halos can be moved into the \mbox{\hyperlink{class_lens}{Lens}} using a move copy to avoid too much memory use.)
+
+{\ttfamily \mbox{\hyperlink{class_lens_a41a7645662d9c26b1c2c4373826348c1}{Lens\+::\+Reset\+Source\+Plane()}}} is used to change the redshift of the source plane. It can be at lower redshift than some or all of the Lens\+Halos.
+
+{\itshape Main halos} are ones that are inserted into the lens. Field halos are those that are generated within the \mbox{\hyperlink{class_lens}{Lens}} as a population throughout the light cone. These are stored differently within the {\ttfamily \mbox{\hyperlink{class_lens}{Lens}}}.\hypertarget{index_autotoc_md19}{}\doxysection{Grid \& Grid\+Map}\label{index_autotoc_md19}
+The {\ttfamily \mbox{\hyperlink{struct_grid}{Grid}}} structure contains the image points and their source points along with other information. Without further grid refinement the \mbox{\hyperlink{struct_grid}{Grid}} can be used to make a map of deflection, convergence, shear or time-\/delay. {\ttfamily \mbox{\hyperlink{struct_grid}{Grid}}} contains functions for outputting these. If no further grid refinement is desired for image or caustic finding, the {\ttfamily \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}} structure can be used which requires significantly less memory overhead and is faster.
+
+When a {\ttfamily \mbox{\hyperlink{struct_grid}{Grid}}} is constructed the initial grid of rays are shot. If no more refinement is needed the {\ttfamily \mbox{\hyperlink{class_lens}{Lens}}} is no longer needed. If source plane is changed a new {\ttfamily \mbox{\hyperlink{struct_grid}{Grid}}} needs to be constructed for that source plane.
+
+To change the source plane surface brightness use {\ttfamily \mbox{\hyperlink{struct_grid_aae2b3f9fe8cc6a464852e3441f22d8a9}{Grid\+::\+Refresh\+Surface\+Brightnesses}} ()}. This takes a {\ttfamily \mbox{\hyperlink{class_source}{Source}}} object.\hypertarget{index_autotoc_md20}{}\doxysection{Image finding and Grid refinement}\label{index_autotoc_md20}
+The mean functions used for image finding are
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()}}}
+\item {\ttfamily \mbox{\hyperlink{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}{Image\+Finding\+::map\+\_\+images\+\_\+fixedgrid}}} and
+\item {\ttfamily \mbox{\hyperlink{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}{Image\+Finding\+::map\+\_\+images()}}}. And for finding critical curves / caustics
+\item {\ttfamily \mbox{\hyperlink{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}{Image\+Finding\+::find\+\_\+crit()}}}
+\end{DoxyItemize}
+
+These take a {\ttfamily \mbox{\hyperlink{struct_grid}{Grid}}} and a {\ttfamily \mbox{\hyperlink{class_lens}{Lens}}} object. The found images are then stored in an array of {\ttfamily \mbox{\hyperlink{struct_image_info}{Image\+Info}}} structures.\hypertarget{index_autotoc_md21}{}\doxysection{Observational effects}\label{index_autotoc_md21}
+The {\ttfamily \mbox{\hyperlink{class_observation}{Observation}}} class is used to simulate pdf, noise, etc.\hypertarget{index_autotoc_md22}{}\doxysection{Pixel\+Map class}\label{index_autotoc_md22}
+A {\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}} is an all purpose class to represent regular grids such as images and mass maps. It also allows for input / output with fits files.\hypertarget{index_autotoc_md23}{}\doxysection{Output}\label{index_autotoc_md23}
+The {\ttfamily \mbox{\hyperlink{struct_grid}{Grid}}} has some direct output functions for making maps that do not depend on sources (kappa, gamma, etc.). The \mbox{\hyperlink{struct_image_info}{Image\+Info}} structure has information about the images found and contains a linked list of all the points within the image. Each point contains information about the kappa, gamma, source position, time-\/delay and in some cases the the surface brightness at that image position. 

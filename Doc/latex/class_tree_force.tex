@@ -1,0 +1,166 @@
+\hypertarget{class_tree_force}{}\doxysection{Tree\+Force Class Reference}
+\label{class_tree_force}\index{TreeForce@{TreeForce}}
+
+
+Object used to calculate the force or deflection caused by a collection of \char`\"{}particles\char`\"{} by the tree method.  
+
+
+
+
+{\ttfamily \#include $<$force\+Tree.\+h$>$}
+
+
+
+Inheritance diagram for Tree\+Force\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{class_tree_force__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tree\+Force\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{class_tree_force__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tree_force_adeabe49704610a41cadfa7f04db796a1}{Tree\+Force}} (Pos\+Type $\ast$$\ast$xp, Index\+Type Npoints, float $\ast$\mbox{\hyperlink{class_tree_force_aaf5bfc6384c6717f967d888fbd7fcb24}{masses}}, float $\ast$\mbox{\hyperlink{class_tree_force_a77be3597cacacfb4c108a32cf3eeed1f}{rsph}}, bool Multimass, bool Multisize, Pos\+Type my\+\_\+kappa\+\_\+background=0, int bucket=5, int dimensions=2, bool median=false, Pos\+Type theta=0.\+1)
+\item 
+\mbox{\hyperlink{class_tree_force_a1fceae859e1c8badda8437c88cb175f6}{Tree\+Force}} (Pos\+Type $\ast$$\ast$xp, Index\+Type Npoints, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$my\+\_\+halos, bool Multisize=true, Pos\+Type my\+\_\+kappa\+\_\+bk=0.\+0, int bucket=5, int dimensions=2, bool median=false, Pos\+Type theta=0.\+1)
+\item 
+\mbox{\Hypertarget{class_tree_force_af9939e82b46c3b59952adb71a6f4406f}\label{class_tree_force_af9939e82b46c3b59952adb71a6f4406f}} 
+float $\ast$ \mbox{\hyperlink{class_tree_force_af9939e82b46c3b59952adb71a6f4406f}{Calculate\+S\+P\+Hsmoothing}} (int N)
+\begin{DoxyCompactList}\small\item\em calculated sph smoothing and store them in the tree, also provide pointer to them \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_force_a40975fd223310857fe6e4efae50190eb}\label{class_tree_force_a40975fd223310857fe6e4efae50190eb}} 
+void {\bfseries Calc\+Moments} ()
+\item 
+\mbox{\Hypertarget{class_tree_force_a4e124dae6aa348df5e7398d68e20d0ec}\label{class_tree_force_a4e124dae6aa348df5e7398d68e20d0ec}} 
+void \mbox{\hyperlink{class_tree_force_a4e124dae6aa348df5e7398d68e20d0ec}{rotate\+\_\+coordinates}} (Pos\+Type $\ast$$\ast$coord)
+\begin{DoxyCompactList}\small\item\em simple rotates the coordinates in the xp array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_force_a155b70e1721702765af6cbe8934b24c1}\label{class_tree_force_a155b70e1721702765af6cbe8934b24c1}} 
+virtual Pos\+Type {\bfseries alpha\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma)
+\item 
+\mbox{\Hypertarget{class_tree_force_a0d2fe0bb9b78246e50fd35e66cbe8bdb}\label{class_tree_force_a0d2fe0bb9b78246e50fd35e66cbe8bdb}} 
+virtual Pos\+Type {\bfseries kappa\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma)
+\item 
+\mbox{\Hypertarget{class_tree_force_a98070fc4a2184a177bf3b7e97dd2b894}\label{class_tree_force_a98070fc4a2184a177bf3b7e97dd2b894}} 
+virtual Pos\+Type {\bfseries gamma\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma)
+\item 
+\mbox{\Hypertarget{class_tree_force_a2989d4456b539884016138e58654d531}\label{class_tree_force_a2989d4456b539884016138e58654d531}} 
+virtual Pos\+Type {\bfseries phi\+\_\+o} (Pos\+Type r2, Pos\+Type sigma)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}{init}}
+\begin{DoxyCompactList}\small\item\em calculate the deflection and lensing properties \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_force_a5a03e820fcfde1a984937c59977e52c2}\label{class_tree_force_a5a03e820fcfde1a984937c59977e52c2}} 
+bool \mbox{\hyperlink{class_tree_force_a5a03e820fcfde1a984937c59977e52c2}{Multi\+Mass}}
+\begin{DoxyCompactList}\small\item\em true if particles have different masses. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_force_ade43422c62af1a47f78f725e4151cf6a}\label{class_tree_force_ade43422c62af1a47f78f725e4151cf6a}} 
+bool \mbox{\hyperlink{class_tree_force_ade43422c62af1a47f78f725e4151cf6a}{Multi\+Radius}}
+\begin{DoxyCompactList}\small\item\em true if particles have different sizes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_force_aaf5bfc6384c6717f967d888fbd7fcb24}\label{class_tree_force_aaf5bfc6384c6717f967d888fbd7fcb24}} 
+float $\ast$ \mbox{\hyperlink{class_tree_force_aaf5bfc6384c6717f967d888fbd7fcb24}{masses}}
+\begin{DoxyCompactList}\small\item\em Array of particle masses. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_force_a77be3597cacacfb4c108a32cf3eeed1f}\label{class_tree_force_a77be3597cacacfb4c108a32cf3eeed1f}} 
+float $\ast$ \mbox{\hyperlink{class_tree_force_a77be3597cacacfb4c108a32cf3eeed1f}{rsph}}
+\begin{DoxyCompactList}\small\item\em Array of particle sizes. \end{DoxyCompactList}\item 
+Pos\+Type \mbox{\hyperlink{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}{kappa\+\_\+background}}
+\item 
+\mbox{\Hypertarget{class_tree_force_a4d44a298e6b04054c902990de1582b0d}\label{class_tree_force_a4d44a298e6b04054c902990de1582b0d}} 
+Pos\+Type {\bfseries force\+\_\+theta}
+\item 
+\mbox{\Hypertarget{class_tree_force_acee047b1b2f495f91199d90196d965ef}\label{class_tree_force_acee047b1b2f495f91199d90196d965ef}} 
+bool {\bfseries halo\+ON}
+\item 
+\mbox{\Hypertarget{class_tree_force_a59b5d567288269bf067f824ed2083e5b}\label{class_tree_force_a59b5d567288269bf067f824ed2083e5b}} 
+\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ {\bfseries halos}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Object used to calculate the force or deflection caused by a collection of \char`\"{}particles\char`\"{} by the tree method. 
+
+The particles can be point masses or have multiple sizes in which case they have a Gaussian profile. They can also have the same mass or multiple masses.
+
+xp\mbox{[}\mbox{]}\mbox{[}\mbox{]}, masses\mbox{[}\mbox{]} and rsph\mbox{[}\mbox{]} need to be allocated before a \mbox{\hyperlink{class_tree_force}{Tree\+Force}} is constructed and de-\/allocated after it is destructed. If the boolean flags are set to false these arrays need only be one element long. Multiple Tree\+Forces can be made from the same particles. Do not rotate the particles without reconstructing a \mbox{\hyperlink{class_tree_force}{Tree\+Force}}.
+
+Most of the code in the earlier Tree\+N\+B\+Force.\+c is duplicated here as private methods and a few public ones.
+
+The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa is always more accurate than the deflection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_tree_force_adeabe49704610a41cadfa7f04db796a1}\label{class_tree_force_adeabe49704610a41cadfa7f04db796a1}} 
+\index{TreeForce@{TreeForce}!TreeForce@{TreeForce}}
+\index{TreeForce@{TreeForce}!TreeForce@{TreeForce}}
+\doxysubsubsection{\texorpdfstring{TreeForce()}{TreeForce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Tree\+Force\+::\+Tree\+Force (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$$\ast$}]{xp,  }\item[{Index\+Type}]{Npoints,  }\item[{float $\ast$}]{masses,  }\item[{float $\ast$}]{rsph,  }\item[{bool}]{Multimass,  }\item[{bool}]{Multisize,  }\item[{Pos\+Type}]{my\+\_\+kappa\+\_\+background = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{int}]{dimensions = {\ttfamily 2},  }\item[{bool}]{median = {\ttfamily false},  }\item[{Pos\+Type}]{theta = {\ttfamily 0.1} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+kappa\+\_\+background} & background kappa that is subtracted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_tree_force_a1fceae859e1c8badda8437c88cb175f6}\label{class_tree_force_a1fceae859e1c8badda8437c88cb175f6}} 
+\index{TreeForce@{TreeForce}!TreeForce@{TreeForce}}
+\index{TreeForce@{TreeForce}!TreeForce@{TreeForce}}
+\doxysubsubsection{\texorpdfstring{TreeForce()}{TreeForce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Tree\+Force\+::\+Tree\+Force (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$$\ast$}]{xp,  }\item[{Index\+Type}]{Npoints,  }\item[{\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$}]{my\+\_\+halos,  }\item[{bool}]{Multisize = {\ttfamily true},  }\item[{Pos\+Type}]{my\+\_\+kappa\+\_\+bk = {\ttfamily 0.0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{int}]{dimension = {\ttfamily 2},  }\item[{bool}]{median = {\ttfamily false},  }\item[{Pos\+Type}]{theta = {\ttfamily 0.1} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em xp} & positions of the halos xp\mbox{[}0..Npoints-\/1\mbox{]}\mbox{[}0..1 or 2\mbox{]} \\
+\hline
+{\em Npoints} & number of halos \\
+\hline
+{\em my\+\_\+halos} & array with internal properties of halos \\
+\hline
+{\em Multisize} & flag false if only one halo size and structure should be used, default is true \\
+\hline
+{\em my\+\_\+kappa\+\_\+bk} & Background convergence to be subtracted \\
+\hline
+{\em bucket} & maximum number of halos in a leaf of the tree \\
+\hline
+{\em dimension} & 2 or 3, dimension of tree, default 2 \\
+\hline
+{\em median} & If true will divide branches at the median position of the particles, if false an equal area cut is used, default false \\
+\hline
+{\em theta} & Opening angle used in tree force calculation \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}\label{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}} 
+\index{TreeForce@{TreeForce}!init@{init}}
+\index{init@{init}!TreeForce@{TreeForce}}
+\doxysubsubsection{\texorpdfstring{init}{init}}
+{\footnotesize\ttfamily bool Tree\+Force\+::init\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+calculate the deflection and lensing properties 
+
+provides a way to change the profiles of the particles, by default Gaussian \mbox{\Hypertarget{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}\label{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}} 
+\index{TreeForce@{TreeForce}!kappa\_background@{kappa\_background}}
+\index{kappa\_background@{kappa\_background}!TreeForce@{TreeForce}}
+\doxysubsubsection{\texorpdfstring{kappa\_background}{kappa\_background}}
+{\footnotesize\ttfamily Pos\+Type Tree\+Force\+::kappa\+\_\+background\hspace{0.3cm}{\ttfamily [protected]}}
+
+A uniform mass sheet in units of mass\+\_\+scale/\+Mpc$^\wedge$2 used to subtract of the contribution of the particles to the mean density of the universe 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/force\+Tree.\+h\item 
+S\+Lsim\+Lib/\+Tree\+Code/force\+Tree.\+cpp\end{DoxyCompactItemize}

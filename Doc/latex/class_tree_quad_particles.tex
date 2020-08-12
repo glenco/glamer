@@ -1,0 +1,253 @@
+\hypertarget{class_tree_quad_particles}{}\doxysection{Tree\+Quad\+Particles$<$ P\+Type $>$ Class Template Reference}
+\label{class_tree_quad_particles}\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+
+
+\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} is a class for calculating the deflection, kappa and gamma by tree method.  
+
+
+
+
+{\ttfamily \#include $<$quad\+Tree.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tree_quad_particles_a318fe2ca82e8e8297d20b53a12c22356}{Tree\+Quad\+Particles}} (P\+Type $\ast$xpt, Index\+Type Npoints, float mass\+\_\+fixed=-\/1, float size\+\_\+fixed=-\/1, Pos\+Type my\+\_\+sigma\+\_\+background=0, int bucket=5, Pos\+Type theta\+\_\+force=0.\+1, bool my\+\_\+periodic\+\_\+buffer=false, Pos\+Type my\+\_\+inv\+\_\+screening\+\_\+scale=0)
+\begin{DoxyCompactList}\small\item\em Constructor meant for point particles, simulation particles. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}\label{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}} 
+\mbox{\hyperlink{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}{$\sim$\+Tree\+Quad\+Particles}} ()
+\begin{DoxyCompactList}\small\item\em Particle positions and other data are not destroyed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}{force2D}} (Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi) const
+\begin{DoxyCompactList}\small\item\em Force2D calculates the defection, convergence and shear using the plane-\/lens approximation. The tree is walked iteratively. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{force2\+D\+\_\+recur}} (const Pos\+Type $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+\begin{DoxyCompactList}\small\item\em Force2\+D\+\_\+recur calculates the defection, convergence and shear using the plane-\/lens approximation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{neighbors}} (Pos\+Type ray\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, std\+::list$<$ Index\+Type $>$ \&neighbors) const
+\begin{DoxyCompactList}\small\item\em find all points within rmax of ray in 2D \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_particles_a7b15d8c65bded2dcc42904c6be780ce8}{print\+Particles\+In\+Branch}} (unsigned long number)
+\item 
+void \mbox{\hyperlink{class_tree_quad_particles_a8ee2bbb09a422b3a1ee217e86101ca5c}{print\+Branchs}} (int level=-\/1)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a18a139099b5a424ecd14401e144c85f8}\label{class_tree_quad_particles_a18a139099b5a424ecd14401e144c85f8}} 
+\mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ P\+Type $>$ $\ast$ {\bfseries Build\+Q\+Tree\+NB} (P\+Type $\ast$xp, Index\+Type Nparticles, Index\+Type $\ast$particles)
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}\label{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}} 
+void \mbox{\hyperlink{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}{\+\_\+\+Build\+Q\+Tree\+NB}} (Index\+Type nparticles, Index\+Type $\ast$particles)
+\begin{DoxyCompactList}\small\item\em tree must be created and first branch must be set before start \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_particles_ac27b91f7fe87d968e566880dcac0b2fa}\label{class_tree_quad_particles_ac27b91f7fe87d968e566880dcac0b2fa}} 
+short \mbox{\hyperlink{class_tree_quad_particles_ac27b91f7fe87d968e566880dcac0b2fa}{Which\+Quad}} (Pos\+Type $\ast$x, \mbox{\hyperlink{struct_q_branch_n_b}{Q\+Branch\+NB}} \&branch)
+\begin{DoxyCompactList}\small\item\em returns an index for which of the four quadrangles of the branch the point x\mbox{[}\mbox{]} is in \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a2134085f64e2dbec0105a98c2389d84b}\label{class_tree_quad_particles_a2134085f64e2dbec0105a98c2389d84b}} 
+bool {\bfseries inbox} (const Pos\+Type $\ast$ray, const Pos\+Type $\ast$p1, const Pos\+Type $\ast$p2)
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_aa42ea0a1de106434ed30cddc5a3c7a48}\label{class_tree_quad_particles_aa42ea0a1de106434ed30cddc5a3c7a48}} 
+void {\bfseries Calc\+Moments} ()
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_aa8969c0e591c62ef85368ed74c9056e0}\label{class_tree_quad_particles_aa8969c0e591c62ef85368ed74c9056e0}} 
+void \mbox{\hyperlink{class_tree_quad_particles_aa8969c0e591c62ef85368ed74c9056e0}{rotate\+\_\+coordinates}} (Pos\+Type $\ast$$\ast$coord)
+\begin{DoxyCompactList}\small\item\em simple rotates the coordinates in the xp array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a0aef8159a977ac8f798504ad4f9a5c60}\label{class_tree_quad_particles_a0aef8159a977ac8f798504ad4f9a5c60}} 
+Pos\+Type {\bfseries alpha\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma) const
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a52160c779c263aedc21c588b12e8ab84}\label{class_tree_quad_particles_a52160c779c263aedc21c588b12e8ab84}} 
+Pos\+Type {\bfseries kappa\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma) const
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a1524165cc4ec17a1fd0b7d3ad27ce0e9}\label{class_tree_quad_particles_a1524165cc4ec17a1fd0b7d3ad27ce0e9}} 
+Pos\+Type {\bfseries gamma\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma) const
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_ac7231dc562a8eac3d501fc6b0b27aa83}\label{class_tree_quad_particles_ac7231dc562a8eac3d501fc6b0b27aa83}} 
+Pos\+Type {\bfseries phi\+\_\+h} (Pos\+Type r2s2, Pos\+Type sigma) const
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_af7200d098fa16eac65e76aad3d6a157f}\label{class_tree_quad_particles_af7200d098fa16eac65e76aad3d6a157f}} 
+void {\bfseries b\+\_\+spline\+\_\+profile} (Pos\+Type $\ast$xcm, Pos\+Type r, Pos\+Type Mass, Pos\+Type size, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi) const
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a2c57349cc56d1540a25b84542bcc782b}\label{class_tree_quad_particles_a2c57349cc56d1540a25b84542bcc782b}} 
+void {\bfseries exponential\+\_\+profile} (Pos\+Type $\ast$xcm, Pos\+Type rcm2, Pos\+Type Mass, Pos\+Type size, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi) const
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_ae5c1f6cb48b3637f20f77fc701691134}\label{class_tree_quad_particles_ae5c1f6cb48b3637f20f77fc701691134}} 
+void {\bfseries cuttoffscale} (\mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ P\+Type $>$ $\ast$tree, Pos\+Type $\ast$theta)
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_af0899fe38113ee767abc237a9cb5fe92}\label{class_tree_quad_particles_af0899fe38113ee767abc237a9cb5fe92}} 
+void {\bfseries walk\+Tree\+\_\+recur} (\mbox{\hyperlink{struct_q_branch_n_b}{Q\+Branch\+NB}} $\ast$branch, Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a804c718c5cc6ef8b1c579df949a0ad06}\label{class_tree_quad_particles_a804c718c5cc6ef8b1c579df949a0ad06}} 
+void {\bfseries walk\+Tree\+\_\+iter} (\mbox{\hyperlink{class_q_biterator}{Q\+Biterator}}$<$ P\+Type $>$ \&treeit, Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a18d0c559cd15085a25100229b482b673}\label{class_tree_quad_particles_a18d0c559cd15085a25100229b482b673}} 
+P\+Type $\ast$ {\bfseries xxp}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a1d39e9cd5db41665bee974fea07b7ba6}\label{class_tree_quad_particles_a1d39e9cd5db41665bee974fea07b7ba6}} 
+bool {\bfseries Multi\+Mass}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a57ad161cbe749c9ae85a200f55c5dbaa}\label{class_tree_quad_particles_a57ad161cbe749c9ae85a200f55c5dbaa}} 
+double {\bfseries mass\+\_\+fixed} = 0.\+0
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a165074b075b73866e3441cf2a05736b0}\label{class_tree_quad_particles_a165074b075b73866e3441cf2a05736b0}} 
+bool {\bfseries Multi\+Radius}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a841d3c4ad9049be5671952dfc7780577}\label{class_tree_quad_particles_a841d3c4ad9049be5671952dfc7780577}} 
+double {\bfseries size\+\_\+fixed} = 0.\+0
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a5e1d3bdc792a44cf492add668f47c67d}\label{class_tree_quad_particles_a5e1d3bdc792a44cf492add668f47c67d}} 
+Index\+Type {\bfseries Nparticles}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a24b878d222a6df0fe18c7877809ff52c}\label{class_tree_quad_particles_a24b878d222a6df0fe18c7877809ff52c}} 
+Pos\+Type {\bfseries sigma\+\_\+background}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_aac73179e5c5add53f1ba8fa7a7ad4230}\label{class_tree_quad_particles_aac73179e5c5add53f1ba8fa7a7ad4230}} 
+int {\bfseries Nbucket}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a4f5cbb67d1bb7e1618630b5166ec4cb8}\label{class_tree_quad_particles_a4f5cbb67d1bb7e1618630b5166ec4cb8}} 
+Pos\+Type {\bfseries force\+\_\+theta}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a5b30c3a6131651cde2eb414624d2f630}\label{class_tree_quad_particles_a5b30c3a6131651cde2eb414624d2f630}} 
+\mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ P\+Type $>$ $\ast$ {\bfseries tree}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_ac5656b85b96c449514e14b2c83520afe}\label{class_tree_quad_particles_ac5656b85b96c449514e14b2c83520afe}} 
+Index\+Type $\ast$ {\bfseries index}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a783a707714b0de1e1a138e1a7713d9dd}\label{class_tree_quad_particles_a783a707714b0de1e1a138e1a7713d9dd}} 
+Pos\+Type {\bfseries realray} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a76ff3d822e57d45f3ca9140f1a4d1f48}\label{class_tree_quad_particles_a76ff3d822e57d45f3ca9140f1a4d1f48}} 
+int {\bfseries incell}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_add222c602bbd06fa327beb705e58c900}\label{class_tree_quad_particles_add222c602bbd06fa327beb705e58c900}} 
+int {\bfseries incell2}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a5f75730cb3056cdd66896ff5d9cb5b63}\label{class_tree_quad_particles_a5f75730cb3056cdd66896ff5d9cb5b63}} 
+bool \mbox{\hyperlink{class_tree_quad_particles_a5f75730cb3056cdd66896ff5d9cb5b63}{periodic\+\_\+buffer}}
+\begin{DoxyCompactList}\small\item\em if true there is one layer of peridic buffering \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_particles_ad9e4611628c5aa5bac14c5d41581fa93}\label{class_tree_quad_particles_ad9e4611628c5aa5bac14c5d41581fa93}} 
+Pos\+Type {\bfseries inv\+\_\+screening\+\_\+scale2}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a7c8da4dab50529ba62c5e4281b233910}\label{class_tree_quad_particles_a7c8da4dab50529ba62c5e4281b233910}} 
+Pos\+Type {\bfseries original\+\_\+xl}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a4e294462cf7aa6298b989d871bcbe75a}\label{class_tree_quad_particles_a4e294462cf7aa6298b989d871bcbe75a}} 
+Pos\+Type {\bfseries original\+\_\+yl}
+\item 
+\mbox{\Hypertarget{class_tree_quad_particles_a162365e67fffc37d5616bdc52e82c124}\label{class_tree_quad_particles_a162365e67fffc37d5616bdc52e82c124}} 
+Pos\+Type {\bfseries phiintconst}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename P\+Type$>$\newline
+class Tree\+Quad\+Particles$<$ P\+Type $>$}
+
+\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} is a class for calculating the deflection, kappa and gamma by tree method. 
+
+\mbox{\hyperlink{simple_tree_8h_source}{simple\+Tree.\+h}}
+
+Created on\+: Oct 14, 2011 Author\+: bmetcalf \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} is evolved from \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}} and \mbox{\hyperlink{class_tree_force}{Tree\+Force}}. It splits each cell into four equal area subcells instead of being a binary tree like \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}}. When the \char`\"{}particles\char`\"{} are given sizes the tree is built in such a way the large particles are stored in branches that are no smaller than their size. In this way particles are stored on all levels of the tree and not just in the leaves. This improves efficiency when particles of a wide range of sizes overlap in 2D.
+
+The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa is always more accurate than the deflection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_tree_quad_particles_a318fe2ca82e8e8297d20b53a12c22356}\label{class_tree_quad_particles_a318fe2ca82e8e8297d20b53a12c22356}} 
+\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!TreeQuadParticles@{TreeQuadParticles}}
+\index{TreeQuadParticles@{TreeQuadParticles}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+\doxysubsubsection{\texorpdfstring{TreeQuadParticles()}{TreeQuadParticles()}}
+{\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
+\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} (\begin{DoxyParamCaption}\item[{P\+Type $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{float}]{mass\+\_\+fixed = {\ttfamily -\/1},  }\item[{float}]{size\+\_\+fixed = {\ttfamily -\/1},  }\item[{Pos\+Type}]{my\+\_\+sigma\+\_\+background = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{Pos\+Type}]{theta\+\_\+force = {\ttfamily 0.1},  }\item[{bool}]{my\+\_\+periodic\+\_\+buffer = {\ttfamily false},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+screening\+\_\+scale = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Constructor meant for point particles, simulation particles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+sigma\+\_\+background} & background kappa that is subtracted \\
+\hline
+{\em my\+\_\+periodic\+\_\+buffer} & if true a periodic buffer will be imposed in the force calulation. See documentation on \mbox{\hyperlink{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}{Tree\+Quad\+Particles\+::force2\+D()}} for details. See note for \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{Tree\+Quad\+Particles\+::force2\+D\+\_\+recur()}}. \\
+\hline
+{\em my\+\_\+inv\+\_\+screening\+\_\+scale} & the inverse of the square of the sreening length. See note for \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{Tree\+Quad\+Particles\+::force2\+D\+\_\+recur()}}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}\label{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}} 
+\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!force2D@{force2D}}
+\index{force2D@{force2D}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+\doxysubsubsection{\texorpdfstring{force2D()}{force2D()}}
+{\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::force2D (\begin{DoxyParamCaption}\item[{Pos\+Type const $\ast$}]{ray,  }\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi }\end{DoxyParamCaption}) const}
+
+
+
+Force2D calculates the defection, convergence and shear using the plane-\/lens approximation. The tree is walked iteratively. 
+
+\begin{DoxyVerb}The output alpha[] is in units of mass_scale/Mpc, ie it needs to be
+divided by Sigma_crit and multiplied by mass_scale to be the deflection
+in the lens equation expressed on the lens plane or multiplied by
+4*pi*G*mass_scale to get the deflection angle caused by the plane lens.
+
+kappa and gamma need to by multiplied by mass_scale/Sigma_crit to get
+the traditional units for these where Sigma_crit are in the mass/units(ray)^2
+NB : the units of sigma_backgound need to be mass/units(ray)^2
+\end{DoxyVerb}
+
+
+If periodic\+\_\+buffer == true a periodic buffer is included. The ray is calculated as if there where identical copies of it on the borders of the tree\textquotesingle{}s root branch. This is not the same thing as periodic boundary conditions, because there are not an infinite number of copies in all direction as for the D\+FT force solver.
+
+If inv\+\_\+screening\+\_\+scale2 != 0 the mass of cells are reduced by a factor of exp(-\/$\vert$ray -\/ center of mass$\vert$$^\wedge$2$\ast$inv\+\_\+screening\+\_\+scale2) which screens the large scale geometry of the simulation on the sky. This is useful when the region is rectangular instead of circular. \mbox{\Hypertarget{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}\label{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}} 
+\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!force2D\_recur@{force2D\_recur}}
+\index{force2D\_recur@{force2D\_recur}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+\doxysubsubsection{\texorpdfstring{force2D\_recur()}{force2D\_recur()}}
+{\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::force2\+D\+\_\+recur (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{ray,  }\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi }\end{DoxyParamCaption})}
+
+
+
+Force2\+D\+\_\+recur calculates the defection, convergence and shear using the plane-\/lens approximation. 
+
+This function should do the same work as \mbox{\hyperlink{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}{Tree\+Quad\+Particles\+::force2\+D()}} except it is done recursively instead of iteratively. This is done to enable multi-\/threading of the force calculation. \begin{DoxyVerb} The output alpha[] is in units of mass_scale/Mpc, ie it needs to be
+ divided by Sigma_crit and multiplied by mass_scale to be the deflection
+ in the lens equation expressed on the lens plane or multiplied by
+ 4*pi*G*mass_scale to get the deflection angle caused by the plane lens.
+
+ kappa and gamma need to by multiplied by mass_scale/Sigma_crit to get
+ the traditional units for these where Sigma_crit are in the mass/units(ray)^2
+ NB : the units of sigma_backgound need to be mass/units(ray)^2
+\end{DoxyVerb}
+
+
+If periodic\+\_\+buffer == true a periodic buffer is included. The ray is calculated as if there where identical copies of it on the borders of the tree\textquotesingle{}s root branch. This is not the same thing as periodic boundary conditions, because there are not an infinite number of copies in all direction as for the D\+FT force solver.
+
+If inv\+\_\+screening\+\_\+scale2 != 0 the mass of cells are reduced by a factor of exp(-\/$\vert$ray -\/ center of mass$\vert$$^\wedge$2$\ast$inv\+\_\+screening\+\_\+scale2) which screens the large scale geometry of the simulation on the sky. This is useful when the region is rectangular instead of circular. \mbox{\Hypertarget{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}\label{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}} 
+\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::neighbors (\begin{DoxyParamCaption}\item[{Pos\+Type}]{ray\mbox{[}$\,$\mbox{]},  }\item[{Pos\+Type}]{rmax,  }\item[{std\+::list$<$ Index\+Type $>$ \&}]{neighbors }\end{DoxyParamCaption}) const}
+
+
+
+find all points within rmax of ray in 2D 
+
+Returns the halos that are within rmax of ray\mbox{[}\mbox{]}. \mbox{\Hypertarget{class_tree_quad_particles_a8ee2bbb09a422b3a1ee217e86101ca5c}\label{class_tree_quad_particles_a8ee2bbb09a422b3a1ee217e86101ca5c}} 
+\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!printBranchs@{printBranchs}}
+\index{printBranchs@{printBranchs}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+\doxysubsubsection{\texorpdfstring{printBranchs()}{printBranchs()}}
+{\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::print\+Branchs (\begin{DoxyParamCaption}\item[{int}]{level = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+Prints to stdout the borders of each branch in the tree below level. If level $<$ 0 or not specified the whole tree will be printed. \mbox{\Hypertarget{class_tree_quad_particles_a7b15d8c65bded2dcc42904c6be780ce8}\label{class_tree_quad_particles_a7b15d8c65bded2dcc42904c6be780ce8}} 
+\index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!printParticlesInBranch@{printParticlesInBranch}}
+\index{printParticlesInBranch@{printParticlesInBranch}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
+\doxysubsubsection{\texorpdfstring{printParticlesInBranch()}{printParticlesInBranch()}}
+{\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::print\+Particles\+In\+Branch (\begin{DoxyParamCaption}\item[{unsigned long}]{number }\end{DoxyParamCaption})}
+
+This is a diagnostic routine that prints the position of every point in a given branch of the tree. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/quad\+Tree.\+h\end{DoxyCompactItemize}

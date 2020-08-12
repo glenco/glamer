@@ -1,0 +1,116 @@
+\hypertarget{class_source_pixelled}{}\doxysection{Source\+Pixelled Class Reference}
+\label{class_source_pixelled}\index{SourcePixelled@{SourcePixelled}}
+
+
+Class for sources described by an array of pixels.  
+
+
+
+
+{\ttfamily \#include $<$source.\+h$>$}
+
+
+
+Inheritance diagram for Source\+Pixelled\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{class_source_pixelled__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Source\+Pixelled\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=164pt]{class_source_pixelled__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_source_pixelled_abb581e29376a574fa13be8e2b2491ef3}{Source\+Pixelled}} (Pos\+Type my\+\_\+z, Pos\+Type $\ast$center, int Npixels, Pos\+Type resolution, Pos\+Type $\ast$arr\+\_\+val)
+\item 
+\mbox{\hyperlink{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}{Source\+Pixelled}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&gal\+\_\+map, Pos\+Type z, Pos\+Type factor=1.)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}} from a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_pixelled_a5166077c4140daf9287c92fb09429164}\label{class_source_pixelled_a5166077c4140daf9287c92fb09429164}} 
+Pos\+Type \mbox{\hyperlink{class_source_pixelled_a5166077c4140daf9287c92fb09429164}{Surface\+Brightness}} (Pos\+Type $\ast$y)
+\begin{DoxyCompactList}\small\item\em Surface brightness of source in grid coordinates not source centered coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_pixelled_aa3f02fe4c3867a0b47d41f5d0ee6e472}\label{class_source_pixelled_aa3f02fe4c3867a0b47d41f5d0ee6e472}} 
+void {\bfseries print\+Source} ()
+\item 
+\mbox{\Hypertarget{class_source_pixelled_afe0e39a9da3794d856d14f61fda62d64}\label{class_source_pixelled_afe0e39a9da3794d856d14f61fda62d64}} 
+Pos\+Type {\bfseries get\+Total\+Flux} () const
+\item 
+\mbox{\Hypertarget{class_source_pixelled_ad3c9c58bb428c090e7aaca7088a47b72}\label{class_source_pixelled_ad3c9c58bb428c090e7aaca7088a47b72}} 
+Pos\+Type \mbox{\hyperlink{class_source_pixelled_ad3c9c58bb428c090e7aaca7088a47b72}{get\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_pixelled_a36e56dc93b056f683ba282b9d5ac4a82}\label{class_source_pixelled_a36e56dc93b056f683ba282b9d5ac4a82}} 
+Pos\+Type $\ast$ {\bfseries get\+Ell} ()
+\item 
+\mbox{\Hypertarget{class_source_pixelled_a40fa2831df933b60663b676e8b3de0fd}\label{class_source_pixelled_a40fa2831df933b60663b676e8b3de0fd}} 
+Pos\+Type {\bfseries get\+Quad} (int i, int j)
+\item 
+\mbox{\Hypertarget{class_source_pixelled_a7d94f09eee1f51b0031dfe05f57de375}\label{class_source_pixelled_a7d94f09eee1f51b0031dfe05f57de375}} 
+Pos\+Type {\bfseries get\+Size} ()
+\item 
+\mbox{\Hypertarget{class_source_pixelled_a2b874fae3582498cf64b46cf7249c983}\label{class_source_pixelled_a2b874fae3582498cf64b46cf7249c983}} 
+Pos\+Type $\ast$ {\bfseries get\+Centroid} ()
+\item 
+\mbox{\Hypertarget{class_source_pixelled_ae3f7e00522f90d5dc31d2f19e2f6a29d}\label{class_source_pixelled_ae3f7e00522f90d5dc31d2f19e2f6a29d}} 
+Pos\+Type {\bfseries get\+Mag} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for sources described by an array of pixels. 
+
+The sources are created as a square array of pixels of dimension Npixels x Npixels and pixel size equal to resolution. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_source_pixelled_abb581e29376a574fa13be8e2b2491ef3}\label{class_source_pixelled_abb581e29376a574fa13be8e2b2491ef3}} 
+\index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
+\index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
+\doxysubsubsection{\texorpdfstring{SourcePixelled()}{SourcePixelled()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Source\+Pixelled\+::\+Source\+Pixelled (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center,  }\item[{int}]{my\+\_\+\+Npixels,  }\item[{Pos\+Type}]{my\+\_\+resolution,  }\item[{Pos\+Type $\ast$}]{arr\+\_\+val }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+z} & redshift of the source \\
+\hline
+{\em my\+\_\+center} & center (in rad) \\
+\hline
+{\em my\+\_\+\+Npixels} & number of pixels per side \\
+\hline
+{\em my\+\_\+resolution} & resolution (in rad) \\
+\hline
+{\em arr\+\_\+val} & array of pixel values (must be of size = Npixels$\ast$\+Npixels) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}\label{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}} 
+\index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
+\index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
+\doxysubsubsection{\texorpdfstring{SourcePixelled()}{SourcePixelled()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Source\+Pixelled\+::\+Source\+Pixelled (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{gal\+\_\+map,  }\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{factor = {\ttfamily 1.} }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}} from a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gal\+\_\+map} & Input image and information \\
+\hline
+{\em my\+\_\+z} & redshift of the source \\
+\hline
+{\em factor} & optional rescaling factor for the flux \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/source.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/source.\+cpp\end{DoxyCompactItemize}

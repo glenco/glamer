@@ -1,0 +1,141 @@
+\hypertarget{class_lens_halo_hernquist}{}\doxysection{Lens\+Halo\+Hernquist Class Reference}
+\label{class_lens_halo_hernquist}\index{LensHaloHernquist@{LensHaloHernquist}}
+
+
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with truncated Hernquist mass profiles.  
+
+
+
+
+{\ttfamily \#include $<$lens\+\_\+halos.\+h$>$}
+
+
+
+Inheritance diagram for Lens\+Halo\+Hernquist\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_lens_halo_hernquist__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lens\+Halo\+Hernquist\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{class_lens_halo_hernquist__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lens_halo_hernquist_a5d6ab71c92e47f4a96b7b5317eab869a}{Lens\+Halo\+Hernquist}} (float my\+\_\+mass, float my\+\_\+\+Rsize, Pos\+Type my\+\_\+zlens, float my\+\_\+rscale, float my\+\_\+fratio, float my\+\_\+pa, int my\+\_\+stars\+\_\+N, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, Ellip\+Method my\+\_\+ellip\+\_\+method=Pseudo)
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a3ebc4ccf9ad2eca26cd2214aec3d44e0}\label{class_lens_halo_hernquist_a3ebc4ccf9ad2eca26cd2214aec3d44e0}} 
+Pos\+Type {\bfseries ffunction} (Pos\+Type x) const
+\item 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_hernquist_a1491829eee1286de1462eb6884e9d5e2}{gfunction}} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a01c78b434bb9fc3d7b9474ea134fa9f2}\label{class_lens_halo_hernquist_a01c78b434bb9fc3d7b9474ea134fa9f2}} 
+Pos\+Type {\bfseries hfunction} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a50c28ab97afc45fb3b3218b703c897ca}\label{class_lens_halo_hernquist_a50c28ab97afc45fb3b3218b703c897ca}} 
+Pos\+Type {\bfseries g2function} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a0e19eda35b79bbb4684c567bd5cb1b67}\label{class_lens_halo_hernquist_a0e19eda35b79bbb4684c567bd5cb1b67}} 
+void \mbox{\hyperlink{class_lens_halo_hernquist_a0e19eda35b79bbb4684c567bd5cb1b67}{set\+\_\+rscale}} (float my\+\_\+rscale)
+\begin{DoxyCompactList}\small\item\em set scale radius \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_ac820dddb76afcd136b86d66dce4d419b}\label{class_lens_halo_hernquist_ac820dddb76afcd136b86d66dce4d419b}} 
+void \mbox{\hyperlink{class_lens_halo_hernquist_ac820dddb76afcd136b86d66dce4d419b}{make\+\_\+tables}} ()
+\begin{DoxyCompactList}\small\item\em make the specific tables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a18f6d0097262dd679d75a2d02197d234}\label{class_lens_halo_hernquist_a18f6d0097262dd679d75a2d02197d234}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_hernquist_a18f6d0097262dd679d75a2d02197d234}{Interpolate\+From\+Table}} (Pos\+Type $\ast$table, Pos\+Type y) const
+\begin{DoxyCompactList}\small\item\em interpolates from the specific tables \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a1ea363266acb627ade9453f030ffdaf1}\label{class_lens_halo_hernquist_a1ea363266acb627ade9453f030ffdaf1}} 
+void \mbox{\hyperlink{class_lens_halo_hernquist_a1ea363266acb627ade9453f030ffdaf1}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+\begin{DoxyCompactList}\small\item\em read in parameters from a parameterfile in \mbox{\hyperlink{class_input_params}{Input\+Params}} params \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a56952beb7007848f3d2c0c11f4f886c6}\label{class_lens_halo_hernquist_a56952beb7007848f3d2c0c11f4f886c6}} 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_hernquist_a56952beb7007848f3d2c0c11f4f886c6}{alpha\+\_\+h}} (Pos\+Type x) const
+\begin{DoxyCompactList}\small\item\em r $\vert$alpha(r)$\vert$ PI Sigma\+\_\+crit / Mass \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a759c536c22bd433a8bcebb6facc9a235}\label{class_lens_halo_hernquist_a759c536c22bd433a8bcebb6facc9a235}} 
+Kappa\+Type {\bfseries kappa\+\_\+h} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_aa96eb383a1046d9ec6d92b176005bbdd}\label{class_lens_halo_hernquist_aa96eb383a1046d9ec6d92b176005bbdd}} 
+Kappa\+Type {\bfseries gamma\+\_\+h} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a9801968a2e8f54cb6cb661ae4ab4e86b}\label{class_lens_halo_hernquist_a9801968a2e8f54cb6cb661ae4ab4e86b}} 
+Kappa\+Type {\bfseries phi\+\_\+h} (Pos\+Type x) const
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a46b9be9bf865e6d36f8fb3c8ce2cafe2}\label{class_lens_halo_hernquist_a46b9be9bf865e6d36f8fb3c8ce2cafe2}} 
+Kappa\+Type {\bfseries phi\+\_\+int} (Pos\+Type x) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a29032c5e325a6c745aa74378ceeba009}\label{class_lens_halo_hernquist_a29032c5e325a6c745aa74378ceeba009}} 
+static const long \mbox{\hyperlink{class_lens_halo_hernquist_a29032c5e325a6c745aa74378ceeba009}{N\+T\+A\+B\+LE}} = 100000
+\begin{DoxyCompactList}\small\item\em table size \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a3f2e647ea4094ec541b22297266e6cf4}\label{class_lens_halo_hernquist_a3f2e647ea4094ec541b22297266e6cf4}} 
+static const Pos\+Type \mbox{\hyperlink{class_lens_halo_hernquist_a3f2e647ea4094ec541b22297266e6cf4}{maxrm}} = 100.\+0
+\begin{DoxyCompactList}\small\item\em maximum Rsize/rscale \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a60261378cc1bd91088ff75a1106dc2aa}\label{class_lens_halo_hernquist_a60261378cc1bd91088ff75a1106dc2aa}} 
+static int \mbox{\hyperlink{class_lens_halo_hernquist_a60261378cc1bd91088ff75a1106dc2aa}{count}} = 0
+\begin{DoxyCompactList}\small\item\em keeps track of how many time the tables are created, default is just once \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a37730f6dd16cbf6e7a1e3287180bbcb5}\label{class_lens_halo_hernquist_a37730f6dd16cbf6e7a1e3287180bbcb5}} 
+static Pos\+Type $\ast$ \mbox{\hyperlink{class_lens_halo_hernquist_a37730f6dd16cbf6e7a1e3287180bbcb5}{ftable}} = N\+U\+LL
+\begin{DoxyCompactList}\small\item\em tables for lensing properties specific functions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a22bc533f8b939672be3692fdfebb8cbf}\label{class_lens_halo_hernquist_a22bc533f8b939672be3692fdfebb8cbf}} 
+static Pos\+Type $\ast$ {\bfseries gtable} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a2872c01a7a5d92f4108f642b4996324f}\label{class_lens_halo_hernquist_a2872c01a7a5d92f4108f642b4996324f}} 
+static Pos\+Type $\ast$ {\bfseries g2table} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_a43568e828017f0ee48e28974c4767b59}\label{class_lens_halo_hernquist_a43568e828017f0ee48e28974c4767b59}} 
+static Pos\+Type $\ast$ {\bfseries htable} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_adaa19117e44ed8969a6403e750a6cd35}\label{class_lens_halo_hernquist_adaa19117e44ed8969a6403e750a6cd35}} 
+static Pos\+Type $\ast$ {\bfseries xtable} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{class_lens_halo_hernquist_ae8ef7a6b9a0699ebfc89ebee0441b2ef}\label{class_lens_halo_hernquist_ae8ef7a6b9a0699ebfc89ebee0441b2ef}} 
+static Pos\+Type $\ast$ {\bfseries xgtable} = N\+U\+LL
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class for calculating the deflection, kappa and gamma caused by a collection of halos with truncated Hernquist mass profiles. 
+
+The profile is $ \rho \propto \left( \frac{r}{r_s} \right)^{-1} \left( 1 + \frac{r}{r_s} \right)^{-3} $. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_lens_halo_hernquist_a5d6ab71c92e47f4a96b7b5317eab869a}\label{class_lens_halo_hernquist_a5d6ab71c92e47f4a96b7b5317eab869a}} 
+\index{LensHaloHernquist@{LensHaloHernquist}!LensHaloHernquist@{LensHaloHernquist}}
+\index{LensHaloHernquist@{LensHaloHernquist}!LensHaloHernquist@{LensHaloHernquist}}
+\doxysubsubsection{\texorpdfstring{LensHaloHernquist()}{LensHaloHernquist()}}
+{\footnotesize\ttfamily Lens\+Halo\+Hernquist\+::\+Lens\+Halo\+Hernquist (\begin{DoxyParamCaption}\item[{float}]{my\+\_\+mass,  }\item[{float}]{my\+\_\+\+Rsize,  }\item[{Pos\+Type}]{my\+\_\+zlens,  }\item[{float}]{my\+\_\+rscale,  }\item[{float}]{my\+\_\+fratio,  }\item[{float}]{my\+\_\+pa,  }\item[{int}]{my\+\_\+stars\+\_\+N,  }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{cosmo,  }\item[{Ellip\+Method}]{my\+\_\+ellip\+\_\+method = {\ttfamily Pseudo} }\end{DoxyParamCaption})}
+
+If the axis ratio given in the parameter file is set to 1 all ellipticizing routines are skipped.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_hernquist_a1491829eee1286de1462eb6884e9d5e2}\label{class_lens_halo_hernquist_a1491829eee1286de1462eb6884e9d5e2}} 
+\index{LensHaloHernquist@{LensHaloHernquist}!gfunction@{gfunction}}
+\index{gfunction@{gfunction}!LensHaloHernquist@{LensHaloHernquist}}
+\doxysubsubsection{\texorpdfstring{gfunction()}{gfunction()}}
+{\footnotesize\ttfamily Pos\+Type Lens\+Halo\+Hernquist\+::gfunction (\begin{DoxyParamCaption}\item[{Pos\+Type}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Created on\+: June 5, 2013 Author\+: D. Leier 
+
+Reimplemented from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/lens\+\_\+halos.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/hernquist\+\_\+lens.\+cpp\item 
+S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+halos.\+cpp\end{DoxyCompactItemize}

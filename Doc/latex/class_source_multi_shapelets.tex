@@ -1,0 +1,123 @@
+\hypertarget{class_source_multi_shapelets}{}\doxysection{Source\+Multi\+Shapelets Class Reference}
+\label{class_source_multi_shapelets}\index{SourceMultiShapelets@{SourceMultiShapelets}}
+
+
+Class for reading in and handling an array of \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}}, made on the model of \mbox{\hyperlink{class_source_multi_ana_galaxy}{Source\+Multi\+Ana\+Galaxy}} Galaxies are read from files in a predifined directory and put into a std\+::vector that allows sorting in redshift and magnitude. An individual object can be get via Current\+Galaxy() or the overloaded operator \mbox{[}\mbox{]}.  
+
+
+
+
+{\ttfamily \#include $<$source\+Ana\+Galaxy.\+h$>$}
+
+
+
+Inheritance diagram for Source\+Multi\+Shapelets\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{class_source_multi_shapelets__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Source\+Multi\+Shapelets\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{class_source_multi_shapelets__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_ac3b00e4babca2fb1e9bf691472c41576}\label{class_source_multi_shapelets_ac3b00e4babca2fb1e9bf691472c41576}} 
+\mbox{\hyperlink{class_source_multi_shapelets_ac3b00e4babca2fb1e9bf691472c41576}{Source\+Multi\+Shapelets}} (std\+::string \&my\+\_\+shapelets\+\_\+folder, Band my\+\_\+band, double my\+\_\+mag\+\_\+limit, double my\+\_\+sb\+\_\+limit=-\/1)
+\begin{DoxyCompactList}\small\item\em Reads in sources from a catalog. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}\label{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}} 
+void \mbox{\hyperlink{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}{sort\+In\+Redshift}} ()
+\begin{DoxyCompactList}\small\item\em Sort the sources by redshift in assending order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a28afc8b0f860c5d3001a3d03ee05406d}\label{class_source_multi_shapelets_a28afc8b0f860c5d3001a3d03ee05406d}} 
+void \mbox{\hyperlink{class_source_multi_shapelets_a28afc8b0f860c5d3001a3d03ee05406d}{sort\+In\+Mag}} ()
+\begin{DoxyCompactList}\small\item\em Sort the sources by magnitude in assending order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a8e170c4b250e94d00aaec67f90847af6}\label{class_source_multi_shapelets_a8e170c4b250e94d00aaec67f90847af6}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_shapelets_a8e170c4b250e94d00aaec67f90847af6}{Surface\+Brightness}} (Pos\+Type $\ast$x)
+\begin{DoxyCompactList}\small\item\em Surface brightness of current galaxy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a26d51973009981c38826db004ae7b65f}\label{class_source_multi_shapelets_a26d51973009981c38826db004ae7b65f}} 
+void \mbox{\hyperlink{class_source_multi_shapelets_a26d51973009981c38826db004ae7b65f}{print\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Print info on current source parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a27c5357cfa34e7b38eb8408e404a8c15}\label{class_source_multi_shapelets_a27c5357cfa34e7b38eb8408e404a8c15}} 
+std\+::size\+\_\+t {\bfseries get\+Number\+Of\+Galaxies} () const
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a4249206f033ae4a5ce92e378ef2f9478}\label{class_source_multi_shapelets_a4249206f033ae4a5ce92e378ef2f9478}} 
+std\+::size\+\_\+t \mbox{\hyperlink{class_source_multi_shapelets_a4249206f033ae4a5ce92e378ef2f9478}{size}} () const
+\begin{DoxyCompactList}\small\item\em number of galaxies \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a38f2e85b8283a3988162f12ee3827ebf}\label{class_source_multi_shapelets_a38f2e85b8283a3988162f12ee3827ebf}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_shapelets_a38f2e85b8283a3988162f12ee3827ebf}{get\+Total\+Flux}} () const
+\begin{DoxyCompactList}\small\item\em Total flux coming from the current galaxy in erg/sec/\+Hz/cm$^\wedge$2. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a03543768a4dface9c741366f4cc98c82}\label{class_source_multi_shapelets_a03543768a4dface9c741366f4cc98c82}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_multi_shapelets_a03543768a4dface9c741366f4cc98c82}{get\+Theta}} ()
+\begin{DoxyCompactList}\small\item\em Return angular position of current source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a4046c8da25755b0184651b56b568272e}\label{class_source_multi_shapelets_a4046c8da25755b0184651b56b568272e}} 
+void \mbox{\hyperlink{class_source_multi_shapelets_a4046c8da25755b0184651b56b568272e}{set\+Theta}} (Pos\+Type my\+\_\+theta\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Set angular position of current source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_af79a6f9e0bc9462fba0a5fbcf983b7ce}\label{class_source_multi_shapelets_af79a6f9e0bc9462fba0a5fbcf983b7ce}} 
+void {\bfseries set\+Theta} (Pos\+Type my\+\_\+x, Pos\+Type my\+\_\+y)
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a8d4cfd1cb64ced39a0ce6e4d145b0d77}\label{class_source_multi_shapelets_a8d4cfd1cb64ced39a0ce6e4d145b0d77}} 
+void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a6c3a8a631309805fe5a4e51b90b04236}\label{class_source_multi_shapelets_a6c3a8a631309805fe5a4e51b90b04236}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_shapelets_a6c3a8a631309805fe5a4e51b90b04236}{getZ}} () const
+\begin{DoxyCompactList}\small\item\em Return redshift of current source. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_ab75ce2e0a17b6b516d1e869c4432a37a}\label{class_source_multi_shapelets_ab75ce2e0a17b6b516d1e869c4432a37a}} 
+Pos\+Type \mbox{\hyperlink{class_source_multi_shapelets_ab75ce2e0a17b6b516d1e869c4432a37a}{get\+Radius}} () const
+\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& \mbox{\hyperlink{class_source_multi_shapelets_a0d1f8507b2965eec94cf49b15c1c347e}{set\+Index}} (std\+::size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a43416bf122df50216eb0bf96c8566b01}\label{class_source_multi_shapelets_a43416bf122df50216eb0bf96c8566b01}} 
+size\+\_\+t {\bfseries get\+Index} () const
+\item 
+\mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& \mbox{\hyperlink{class_source_multi_shapelets_ab8b343474559268b16f901f7ed4d2230}{operator\mbox{[}$\,$\mbox{]}}} (std\+::size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_aa64de2da96a2b1d4033a56ee7fbc4209}\label{class_source_multi_shapelets_aa64de2da96a2b1d4033a56ee7fbc4209}} 
+\mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& {\bfseries back} ()
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a6b9db7a1cc7d9fee86cd77fec992e3fa}\label{class_source_multi_shapelets_a6b9db7a1cc7d9fee86cd77fec992e3fa}} 
+const \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (std\+::size\+\_\+t i) const
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a4da7d18eb99896152f37f6bb94aff7ec}\label{class_source_multi_shapelets_a4da7d18eb99896152f37f6bb94aff7ec}} 
+\mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& {\bfseries Current\+Galaxy} ()
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_ab119d7e6a52bbb83ae9da7d70b4a797f}\label{class_source_multi_shapelets_ab119d7e6a52bbb83ae9da7d70b4a797f}} 
+\mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& \mbox{\hyperlink{class_source_multi_shapelets_ab119d7e6a52bbb83ae9da7d70b4a797f}{set\+Band}} (Band b)
+\begin{DoxyCompactList}\small\item\em Sets the active band for all the objects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}\label{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}} 
+int \mbox{\hyperlink{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}{locateZ}} (Pos\+Type z) const
+\begin{DoxyCompactList}\small\item\em If the sources are already sorted by redshift this will find the index of the first galaxy with redshift above z. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class for reading in and handling an array of \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}}, made on the model of \mbox{\hyperlink{class_source_multi_ana_galaxy}{Source\+Multi\+Ana\+Galaxy}} Galaxies are read from files in a predifined directory and put into a std\+::vector that allows sorting in redshift and magnitude. An individual object can be get via Current\+Galaxy() or the overloaded operator \mbox{[}\mbox{]}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_source_multi_shapelets_ab8b343474559268b16f901f7ed4d2230}\label{class_source_multi_shapelets_ab8b343474559268b16f901f7ed4d2230}} 
+\index{SourceMultiShapelets@{SourceMultiShapelets}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!SourceMultiShapelets@{SourceMultiShapelets}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}}\& Source\+Multi\+Shapelets\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The indexing operator can be used to change the \char`\"{}current\char`\"{} source that is returned when the surface brightness is subsequently called. \mbox{\Hypertarget{class_source_multi_shapelets_a0d1f8507b2965eec94cf49b15c1c347e}\label{class_source_multi_shapelets_a0d1f8507b2965eec94cf49b15c1c347e}} 
+\index{SourceMultiShapelets@{SourceMultiShapelets}!setIndex@{setIndex}}
+\index{setIndex@{setIndex}!SourceMultiShapelets@{SourceMultiShapelets}}
+\doxysubsubsection{\texorpdfstring{setIndex()}{setIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}}\& Source\+Multi\+Shapelets\+::set\+Index (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Used to change the \char`\"{}current\char`\"{} source that is returned when the surface brightness is subsequently called. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/source\+Ana\+Galaxy.\+h\item 
+S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/source.\+cpp\end{DoxyCompactItemize}
