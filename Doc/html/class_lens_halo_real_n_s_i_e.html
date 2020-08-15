@@ -709,7 +709,8 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a non-singular isothermal elliptical lens. </p>
-<p>This is a true NSIE lens rather than an expansion that approximates one. </p>
+<p>This is a true NSIE lens rather than an expansion that approximates one.</p>
+<p>The maximum radius is set by requireing the total mass to match the input mass. At radii larger than this radius the halo is treated as a point mass. In the case of an ellipitcal halo there is a transition region between these to match the solutions without a discontinuity. In this region the lensing quanties have small corrections which do not correspond to a realistic mass distribution. If the halo is expected to be sampled at or beyond the maxiumum radius you should consider using a Truncated NonSingular Isotherma Ellipsoid (&lsquo;<a class="el" href="class_lens_halo_t_n_s_i_e.html" title="Truncated non-singular isothermal ellipsoid.">LensHaloTNSIE</a>&rsquo;) which more naturally deals with the finite truncation. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab1de0a12f32ed0ec0abd4bdef5abab37"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab1de0a12f32ed0ec0abd4bdef5abab37">&#9670;&nbsp;</a></span>LensHaloRealNSIE()</h2>
@@ -780,7 +781,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
     <tr><td class="paramname">my_mass</td><td>mass, sets truncation radius </td></tr>
     <tr><td class="paramname">my_zlens</td><td>redshift </td></tr>
     <tr><td class="paramname">my_sigma</td><td>in km/s </td></tr>
-    <tr><td class="paramname">my_rcore</td><td>in units of R_einstein </td></tr>
+    <tr><td class="paramname">my_rcore</td><td>core radius </td></tr>
     <tr><td class="paramname">my_fratio</td><td>axis ratio </td></tr>
     <tr><td class="paramname">my_pa</td><td>postion angle </td></tr>
   </table>
@@ -904,7 +905,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 12 2020 19:43:30 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Aug 15 2020 18:53:01 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

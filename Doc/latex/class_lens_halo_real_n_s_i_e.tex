@@ -20,8 +20,7 @@ Inheritance diagram for Lens\+Halo\+Real\+N\+S\+IE\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Lens\+Halo\+Real\+N\+S\+IE\+:
-\nopagebreak
+Collaboration diagram for Lens\+Halo\+Real\+N\+S\+IE\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -115,7 +114,9 @@ static std\+::vector$<$ double $>$ {\bfseries Fofq\+\_\+table}
 \doxysubsection{Detailed Description}
 Represents a non-\/singular isothermal elliptical lens. 
 
-This is a true N\+S\+IE lens rather than an expansion that approximates one. 
+This is a true N\+S\+IE lens rather than an expansion that approximates one.
+
+The maximum radius is set by requireing the total mass to match the input mass. At radii larger than this radius the halo is treated as a point mass. In the case of an ellipitcal halo there is a transition region between these to match the solutions without a discontinuity. In this region the lensing quanties have small corrections which do not correspond to a realistic mass distribution. If the halo is expected to be sampled at or beyond the maxiumum radius you should consider using a Truncated Non\+Singular Isotherma Ellipsoid (`\mbox{\hyperlink{class_lens_halo_t_n_s_i_e}{Lens\+Halo\+T\+N\+S\+IE}}') which more naturally deals with the finite truncation. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_lens_halo_real_n_s_i_e_ab1de0a12f32ed0ec0abd4bdef5abab37}\label{class_lens_halo_real_n_s_i_e_ab1de0a12f32ed0ec0abd4bdef5abab37}} 
@@ -136,7 +137,7 @@ sqrt(fratio); // mass/distance(physical);
 \hline
 {\em my\+\_\+sigma} & in km/s \\
 \hline
-{\em my\+\_\+rcore} & in units of R\+\_\+einstein \\
+{\em my\+\_\+rcore} & core radius \\
 \hline
 {\em my\+\_\+fratio} & axis ratio \\
 \hline
