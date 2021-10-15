@@ -1,16 +1,24 @@
-cmake_minimum_required(VERSION 2.8.10)
+cmake_minimum_required(VERSION 3.0.0)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 ####
 # project settings
 ####
 
+#set(CMAKE_C_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc")
+#set(CMAKE_CXX_COMPILER "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++")
+
 project(GLAMER)
 
 set(GLAMER_VERSION_MAJOR 0)
-set(GLAMER_VERSION_MINOR 1)
+set(GLAMER_VERSION_MINOR 3)
 
 set(GLAMER_VERSION ${GLAMER_VERSION_MAJOR}.${GLAMER_VERSION_MINOR})
 #set (CMAKE_CXX_STANDARD 11)
+
 
 ####
 # module settings
@@ -19,6 +27,7 @@ set(GLAMER_VERSION ${GLAMER_VERSION_MAJOR}.${GLAMER_VERSION_MINOR})
 set(GLAMER_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GLAMER_MODULE_PATH}")
+
 
 include(GLAMER)
 
@@ -77,7 +86,7 @@ set(GLAMER_INCLUDE_DIRS
 
 set(GLAMER_LIBRARIES SLsimLib CosmoLib NR ${CMAKE_THREAD_LIBS_INIT})
 
-set(GLAMER_DEFINITIONS )
+set(GLAMER_DEFINITIONS)
 
 if(ENABLE_FITS)
 	list(APPEND GLAMER_INCLUDE_DIRS ${CFITSIO_INCLUDE_DIRS})
