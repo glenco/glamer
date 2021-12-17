@@ -11,7 +11,8 @@ Base class for all sources.
 
 
 
-Inheritance diagram for Source\+:\nopagebreak
+Inheritance diagram for Source\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,8 +31,8 @@ Collaboration diagram for Source\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_source_a660c0a4b8b8f8402568bef86f2cb2fbb}\label{class_source_a660c0a4b8b8f8402568bef86f2cb2fbb}} 
-\mbox{\hyperlink{class_source_a660c0a4b8b8f8402568bef86f2cb2fbb}{Source}} ()
+\mbox{\Hypertarget{class_source_acf598c610085c775dda8e4855b4b9b99}\label{class_source_acf598c610085c775dda8e4855b4b9b99}} 
+\mbox{\hyperlink{class_source_acf598c610085c775dda8e4855b4b9b99}{Source}} (Pos\+Type r, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} x, Pos\+Type z, Pos\+Type S\+Blimit=100)
 \begin{DoxyCompactList}\small\item\em shell constructor \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_a5c888b0601eaa7568764fb8b051a6d29}\label{class_source_a5c888b0601eaa7568764fb8b051a6d29}} 
 {\bfseries Source} (const \mbox{\hyperlink{class_source}{Source}} \&s)
@@ -39,9 +40,8 @@ Collaboration diagram for Source\+:\nopagebreak
 \mbox{\Hypertarget{class_source_a094287d2e19ef3fb710e14a1bba7bba9}\label{class_source_a094287d2e19ef3fb710e14a1bba7bba9}} 
 \mbox{\hyperlink{class_source}{Source}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source}{Source}} \&s)
 \item 
-\mbox{\Hypertarget{class_source_a9fed241b660fcfed6bd22a2aafcf8358}\label{class_source_a9fed241b660fcfed6bd22a2aafcf8358}} 
 virtual Pos\+Type \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Surface\+Brightness}} (Pos\+Type $\ast$y)=0
-\begin{DoxyCompactList}\small\item\em Surface brightness of source in grid coordinates not source centered coordinates. \end{DoxyCompactList}\item 
+\item 
 \mbox{\Hypertarget{class_source_abbaa352cb424a6e910c733d94edfcee7}\label{class_source_abbaa352cb424a6e910c733d94edfcee7}} 
 virtual Pos\+Type {\bfseries get\+Total\+Flux} () const =0
 \item 
@@ -54,41 +54,35 @@ Pos\+Type \mbox{\hyperlink{class_source_acd55331528174d417db0d9480f20e2ad}{get\+
 \mbox{\Hypertarget{class_source_a82bb3177c8fd486e75e1d909c2b814f2}\label{class_source_a82bb3177c8fd486e75e1d909c2b814f2}} 
 Pos\+Type \mbox{\hyperlink{class_source_a82bb3177c8fd486e75e1d909c2b814f2}{get\+S\+Blimit\+\_\+magarcsec}} ()
 \begin{DoxyCompactList}\small\item\em Gets sb\+\_\+limit in mag/arcsec$^\wedge$2. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a71fa50f5fb3302e88d8f7a30a162e303}\label{class_source_a71fa50f5fb3302e88d8f7a30a162e303}} 
-virtual Pos\+Type \mbox{\hyperlink{class_source_a71fa50f5fb3302e88d8f7a30a162e303}{getZ}} () const
+\mbox{\Hypertarget{class_source_a6deb99f07cb87642b83b20ff294791be}\label{class_source_a6deb99f07cb87642b83b20ff294791be}} 
+Pos\+Type \mbox{\hyperlink{class_source_a6deb99f07cb87642b83b20ff294791be}{getZ}} () const
 \begin{DoxyCompactList}\small\item\em Redshift of source. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a5f17ba930023342079dc59b4dba5b660}\label{class_source_a5f17ba930023342079dc59b4dba5b660}} 
-virtual void {\bfseries setZ} (Pos\+Type my\+\_\+z)
+\mbox{\Hypertarget{class_source_a842ec846bb2a550ec85692820ff5a4fc}\label{class_source_a842ec846bb2a550ec85692820ff5a4fc}} 
+void {\bfseries setZ} (Pos\+Type my\+\_\+z)
 \item 
-\mbox{\Hypertarget{class_source_ab048fa38d3698407f776a30784a6f3f4}\label{class_source_ab048fa38d3698407f776a30784a6f3f4}} 
-virtual Pos\+Type \mbox{\hyperlink{class_source_ab048fa38d3698407f776a30784a6f3f4}{get\+Radius}} () const
+\mbox{\Hypertarget{class_source_a3b7965ae771388ca9a9c6cc2d389f6df}\label{class_source_a3b7965ae771388ca9a9c6cc2d389f6df}} 
+Pos\+Type \mbox{\hyperlink{class_source_a3b7965ae771388ca9a9c6cc2d389f6df}{get\+Radius}} () const
 \begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a650ef2fbab5b1c1a12b71e67ecea95a9}\label{class_source_a650ef2fbab5b1c1a12b71e67ecea95a9}} 
-virtual void \mbox{\hyperlink{class_source_a650ef2fbab5b1c1a12b71e67ecea95a9}{set\+Radius}} (Pos\+Type my\+\_\+radius)
+\mbox{\Hypertarget{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}\label{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}} 
+void \mbox{\hyperlink{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}{set\+Radius}} (Pos\+Type my\+\_\+radius)
 \begin{DoxyCompactList}\small\item\em Reset the radius of the source in radians. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a6a584977a04e64fd925a8ace5452da9f}\label{class_source_a6a584977a04e64fd925a8ace5452da9f}} 
-virtual \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_a6a584977a04e64fd925a8ace5452da9f}{get\+Theta}} ()
+\mbox{\Hypertarget{class_source_a689dbf4ee16f1fcd01d0cffa2d4bab69}\label{class_source_a689dbf4ee16f1fcd01d0cffa2d4bab69}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_a689dbf4ee16f1fcd01d0cffa2d4bab69}{get\+Theta}} ()
 \begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a9a8f59b36e8520d6c7d58bca15385f0c}\label{class_source_a9a8f59b36e8520d6c7d58bca15385f0c}} 
-virtual void \mbox{\hyperlink{class_source_a9a8f59b36e8520d6c7d58bca15385f0c}{get\+Theta}} (Pos\+Type $\ast$x) const
+\mbox{\Hypertarget{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}\label{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}} 
+void \mbox{\hyperlink{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}{get\+Theta}} (Pos\+Type $\ast$x) const
 \begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a0f775462097d9fdb00b15ad05224e677}\label{class_source_a0f775462097d9fdb00b15ad05224e677}} 
-virtual void \mbox{\hyperlink{class_source_a0f775462097d9fdb00b15ad05224e677}{get\+Theta}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x) const
+\mbox{\Hypertarget{class_source_a40fe53b39a6ef0b73564b0934055b850}\label{class_source_a40fe53b39a6ef0b73564b0934055b850}} 
+void \mbox{\hyperlink{class_source_a40fe53b39a6ef0b73564b0934055b850}{get\+Theta}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x) const
 \begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_ad976ff892b05e9570c4bda44f217937a}\label{class_source_ad976ff892b05e9570c4bda44f217937a}} 
-virtual void \mbox{\hyperlink{class_source_ad976ff892b05e9570c4bda44f217937a}{set\+Theta}} (Pos\+Type $\ast$xx)
+\mbox{\Hypertarget{class_source_a1b8f8e62e6be79c15cc50fce2d2804d5}\label{class_source_a1b8f8e62e6be79c15cc50fce2d2804d5}} 
+void \mbox{\hyperlink{class_source_a1b8f8e62e6be79c15cc50fce2d2804d5}{set\+Theta}} (Pos\+Type $\ast$xx)
 \begin{DoxyCompactList}\small\item\em Reset the position of the source in radians. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a5dd8e239b9042e267b33d428a33fead7}\label{class_source_a5dd8e239b9042e267b33d428a33fead7}} 
-virtual void {\bfseries set\+Theta} (Pos\+Type my\+\_\+x, Pos\+Type my\+\_\+y)
+\mbox{\Hypertarget{class_source_a33e4b6e912458b10a6758b4bf6c5d74e}\label{class_source_a33e4b6e912458b10a6758b4bf6c5d74e}} 
+void {\bfseries set\+Theta} (Pos\+Type my\+\_\+x, Pos\+Type my\+\_\+y)
 \item 
-\mbox{\Hypertarget{class_source_ab5cc374ca8c4d993eb1d32d4bb59c8e0}\label{class_source_ab5cc374ca8c4d993eb1d32d4bb59c8e0}} 
-virtual void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
-\item 
-\mbox{\Hypertarget{class_source_ac4cf2504ca5876a3b3f1234e9ea9d44e}\label{class_source_ac4cf2504ca5876a3b3f1234e9ea9d44e}} 
-virtual Pos\+Type \mbox{\hyperlink{class_source_ac4cf2504ca5876a3b3f1234e9ea9d44e}{get\+Dl\+Ds}} ()
-\begin{DoxyCompactList}\small\item\em In the case of a single plane lens, the ratio of angular size distances. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_ae17b96b128c34abfbce6cf5ab8a90d42}\label{class_source_ae17b96b128c34abfbce6cf5ab8a90d42}} 
-virtual void {\bfseries set\+Dl\+Ds} (Pos\+Type my\+\_\+\+Dl\+Ds)
+\mbox{\Hypertarget{class_source_aebeecaad23b66497f0d3b3483cbd6cf7}\label{class_source_aebeecaad23b66497f0d3b3483cbd6cf7}} 
+void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
 \item 
 \mbox{\Hypertarget{class_source_ab46f439fc0e9c1ecba446770816aee57}\label{class_source_ab46f439fc0e9c1ecba446770816aee57}} 
 void \mbox{\hyperlink{class_source_ab46f439fc0e9c1ecba446770816aee57}{set\+S\+Blimit}} (float limit)
@@ -100,7 +94,7 @@ Pos\+Type \mbox{\hyperlink{class_source_a24792a230ec1b4155cb028c19a142046}{chang
 \begin{DoxyCompactList}\small\item\em Calculates the difference in magnitude when changing the observing filter. \end{DoxyCompactList}\item 
 Pos\+Type \mbox{\hyperlink{class_source_a01f88323bd6901f46f7ae204f357d722}{integrate\+Filter}} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil)
 \begin{DoxyCompactList}\small\item\em Calculates the integral of the filter curve given as an array of (x,y) values. \end{DoxyCompactList}\item 
-Pos\+Type \mbox{\hyperlink{class_source_a6dc3d4f4cd3dd89d336443f6c57f2920}{integrate\+Filter\+Sed}} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil, std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+sed, std\+::vector$<$ Pos\+Type $>$ sed)
+Pos\+Type \mbox{\hyperlink{class_source_ac64731db1d6be651ad589c78c549610d}{integrate\+Filter\+S\+ED}} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil, std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+sed, std\+::vector$<$ Pos\+Type $>$ sed)
 \begin{DoxyCompactList}\small\item\em Calculates the integral of the sed multiplied by the filter curve. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -111,24 +105,21 @@ static Pos\+Type $\ast$ {\bfseries getx} (\mbox{\hyperlink{class_source}{Source}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_source_aac03ff10c0b03c6446e712694bd45e73}\label{class_source_aac03ff10c0b03c6446e712694bd45e73}} 
-virtual void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)=0
+\mbox{\Hypertarget{class_source_a565c099349f8e451a22b2583419d1082}\label{class_source_a565c099349f8e451a22b2583419d1082}} 
+virtual void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_source_a1b7065306ca3b7c878eb06a8189b4e03}\label{class_source_a1b7065306ca3b7c878eb06a8189b4e03}} 
 Pos\+Type \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\+\_\+r}}
-\begin{DoxyCompactList}\small\item\em total source size, ie no flux outside this radius \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em charactoristic source size \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_a48ab18beedb3237d02841cc213e4d4df}\label{class_source_a48ab18beedb3237d02841cc213e4d4df}} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\+\_\+x}}
 \begin{DoxyCompactList}\small\item\em center of source \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_a94d904125980e7e4e668755692f15f9c}\label{class_source_a94d904125980e7e4e668755692f15f9c}} 
 Pos\+Type \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}
 \begin{DoxyCompactList}\small\item\em redshift of source \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a88f6a999b022ef1b9e17289b33629c6d}\label{class_source_a88f6a999b022ef1b9e17289b33629c6d}} 
-Pos\+Type \mbox{\hyperlink{class_source_a88f6a999b022ef1b9e17289b33629c6d}{Dl\+Ds}}
-\begin{DoxyCompactList}\small\item\em Dl / Ds -- needed for the blr source models. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_a55461e57bbcd058f2839de16b2a656c1}\label{class_source_a55461e57bbcd058f2839de16b2a656c1}} 
 Pos\+Type {\bfseries sb\+\_\+limit}
 \end{DoxyCompactItemize}
@@ -169,15 +160,27 @@ Calculates the difference in magnitude when changing the observing filter.
 
 Calculates the integral of the filter curve given as an array of (x,y) values. 
 
-\mbox{\Hypertarget{class_source_a6dc3d4f4cd3dd89d336443f6c57f2920}\label{class_source_a6dc3d4f4cd3dd89d336443f6c57f2920}} 
-\index{Source@{Source}!integrateFilterSed@{integrateFilterSed}}
-\index{integrateFilterSed@{integrateFilterSed}!Source@{Source}}
-\doxysubsubsection{\texorpdfstring{integrateFilterSed()}{integrateFilterSed()}}
-{\footnotesize\ttfamily Pos\+Type Source\+::integrate\+Filter\+Sed (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Pos\+Type $>$}]{wavel\+\_\+fil,  }\item[{std\+::vector$<$ Pos\+Type $>$}]{fil,  }\item[{std\+::vector$<$ Pos\+Type $>$}]{wavel\+\_\+sed,  }\item[{std\+::vector$<$ Pos\+Type $>$}]{sed }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_source_ac64731db1d6be651ad589c78c549610d}\label{class_source_ac64731db1d6be651ad589c78c549610d}} 
+\index{Source@{Source}!integrateFilterSED@{integrateFilterSED}}
+\index{integrateFilterSED@{integrateFilterSED}!Source@{Source}}
+\doxysubsubsection{\texorpdfstring{integrateFilterSED()}{integrateFilterSED()}}
+{\footnotesize\ttfamily Pos\+Type Source\+::integrate\+Filter\+S\+ED (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Pos\+Type $>$}]{wavel\+\_\+fil,  }\item[{std\+::vector$<$ Pos\+Type $>$}]{fil,  }\item[{std\+::vector$<$ Pos\+Type $>$}]{wavel\+\_\+sed,  }\item[{std\+::vector$<$ Pos\+Type $>$}]{sed }\end{DoxyParamCaption})}
 
 
 
 Calculates the integral of the sed multiplied by the filter curve. 
+
+\mbox{\Hypertarget{class_source_a9fed241b660fcfed6bd22a2aafcf8358}\label{class_source_a9fed241b660fcfed6bd22a2aafcf8358}} 
+\index{Source@{Source}!SurfaceBrightness@{SurfaceBrightness}}
+\index{SurfaceBrightness@{SurfaceBrightness}!Source@{Source}}
+\doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
+{\footnotesize\ttfamily virtual Pos\+Type Source\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Surface brightness of source in grid coordinates not source centered coordinates.
+
+The units shuld be ergs / s / Hz / cm$^\wedge$2 / hplanck 
+
+Implemented in \mbox{\hyperlink{class_source_b_l_r_sph2_a383aaa68add7b1193d624b9d88576db1}{Source\+B\+L\+R\+Sph2}}, \mbox{\hyperlink{class_source_b_l_r_sph1_a671b96b2650fb7c300462495adea8b99}{Source\+B\+L\+R\+Sph1}}, \mbox{\hyperlink{class_source_b_l_r_disk_aebc3b7fa42d44dc5362bf58a2707edbe}{Source\+B\+L\+R\+Disk}}, \mbox{\hyperlink{class_source_point_a7be2be24409b4488b326fb3adf021dac}{Source\+Point}}, \mbox{\hyperlink{class_source_uniform_aa22f9134afb8d19e6d1ad7b57630ffe9}{Source\+Uniform}}, \mbox{\hyperlink{class_source_shapelets_afe80c365e550701f09cd827c8b291433}{Source\+Shapelets}}, \mbox{\hyperlink{class_source_pixelled_a5166077c4140daf9287c92fb09429164}{Source\+Pixelled}}, \mbox{\hyperlink{class_source_overzier_plus_aebbc4d39449422a61635b6afc18531f1}{Source\+Overzier\+Plus}}, \mbox{\hyperlink{class_source_multi_shapelets_a8e170c4b250e94d00aaec67f90847af6}{Source\+Multi\+Shapelets}}, \mbox{\hyperlink{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}{Source\+Sersic}}, \mbox{\hyperlink{class_source_multi_ana_galaxy_afd8eb720a8b9a5d2d4b475af621ce957}{Source\+Multi\+Ana\+Galaxy}}, and \mbox{\hyperlink{class_source_overzier_a3ab6be6e44d689db4f56ad3d20836337}{Source\+Overzier}}.
 
 
 

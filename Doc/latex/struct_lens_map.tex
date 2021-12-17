@@ -28,8 +28,8 @@ Collaboration diagram for Lens\+Map\+:\nopagebreak
 \mbox{\hyperlink{struct_lens_map}{Lens\+Map}} \& {\bfseries operator=} (\mbox{\hyperlink{struct_lens_map}{Lens\+Map}} \&\&m)
 \item 
 \mbox{\Hypertarget{struct_lens_map_aaf40fc79305c8279315a79a78c2a7969}\label{struct_lens_map_aaf40fc79305c8279315a79a78c2a7969}} 
-double {\bfseries x\+\_\+resolution} ()
-\item 
+double \mbox{\hyperlink{struct_lens_map_aaf40fc79305c8279315a79a78c2a7969}{x\+\_\+resolution}} ()
+\begin{DoxyCompactList}\small\item\em resolution in Mpc \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_lens_map_a4568b767ae40249a73a6c35c8f4fde8f}\label{struct_lens_map_a4568b767ae40249a73a6c35c8f4fde8f}} 
 double {\bfseries y\+\_\+resolution} ()
 \item 
@@ -41,6 +41,41 @@ double {\bfseries y\+\_\+range} ()
 \item 
 \mbox{\Hypertarget{struct_lens_map_ab9a49f1c5f20b0ef1fb8314d5767bb4b}\label{struct_lens_map_ab9a49f1c5f20b0ef1fb8314d5767bb4b}} 
 bool {\bfseries evaluate} (const double $\ast$x, float \&sigma, float $\ast$gamma, double $\ast$alpha)
+\item 
+\mbox{\Hypertarget{struct_lens_map_a5d1d65c52bb87cf53c2c4e035a8dcc0c}\label{struct_lens_map_a5d1d65c52bb87cf53c2c4e035a8dcc0c}} 
+{\bfseries Lens\+Map} (std\+::string fits\+\_\+input\+\_\+file, double ang\+Dist)
+\item 
+\mbox{\Hypertarget{struct_lens_map_a473194bfbf830c18f993cb1704769c15}\label{struct_lens_map_a473194bfbf830c18f993cb1704769c15}} 
+void \mbox{\hyperlink{struct_lens_map_a473194bfbf830c18f993cb1704769c15}{read}} (std\+::string input\+\_\+fits, double ang\+Dist)
+\begin{DoxyCompactList}\small\item\em read an entire map \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a4e5f0a2b7660a21d925c57bcb887cc5c}\label{struct_lens_map_a4e5f0a2b7660a21d925c57bcb887cc5c}} 
+void \mbox{\hyperlink{struct_lens_map_a4e5f0a2b7660a21d925c57bcb887cc5c}{Myread}} (std\+::string fits\+\_\+input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em read from a file that has been generated with \mbox{\hyperlink{struct_lens_map_ab5420fee6ae287a89107d6b27f2dced5}{Lens\+Map\+::write()}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a756c8cfc07cf5674f42678466bbe056f}\label{struct_lens_map_a756c8cfc07cf5674f42678466bbe056f}} 
+void \mbox{\hyperlink{struct_lens_map_a756c8cfc07cf5674f42678466bbe056f}{read\+\_\+header}} (std\+::string input\+\_\+fits, double ang\+Dist)
+\begin{DoxyCompactList}\small\item\em read only header information \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a0b05178fa65738ec4db3f31eb753eb7a}\label{struct_lens_map_a0b05178fa65738ec4db3f31eb753eb7a}} 
+void \mbox{\hyperlink{struct_lens_map_a0b05178fa65738ec4db3f31eb753eb7a}{read\+\_\+sub}} (\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{C\+P\+F\+I\+T\+S\+\_\+\+R\+E\+AD}} \&cpfits, std\+::vector$<$ long $>$ \&first, std\+::vector$<$ long $>$ \&last, double Dist)
+\begin{DoxyCompactList}\small\item\em read a subsection of the fits map \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_lens_map_ab5420fee6ae287a89107d6b27f2dced5}{write}} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em write the fits file of the maps of all the lensing quantities. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_ab39a14e5779146779330e7a68275cc05}\label{struct_lens_map_ab39a14e5779146779330e7a68275cc05}} 
+void \mbox{\hyperlink{struct_lens_map_ab39a14e5779146779330e7a68275cc05}{write}} (std\+::string filename, Lensing\+Variable quant)
+\begin{DoxyCompactList}\small\item\em meant to output directly in angulare units and lensing quantities \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}\label{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}} 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{Process\+F\+F\+Ts}} (float zerosize, T Wphi\+\_\+of\+\_\+k, my\+\_\+fftw\+\_\+plan \&plan\+\_\+padded, bool do\+\_\+alpha=true)
+\begin{DoxyCompactList}\small\item\em a thread safe version of Process\+F\+F\+Ts \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a9dd9f0dddce3f510300df967f883c1a2}\label{struct_lens_map_a9dd9f0dddce3f510300df967f883c1a2}} 
+{\footnotesize template$<$class T $>$ }\\void {\bfseries Process\+F\+F\+Ts} (T Wphi\+\_\+of\+\_\+k, my\+\_\+fftw\+\_\+plan \&plan, bool do\+\_\+alpha=true)
+\item 
+\mbox{\Hypertarget{struct_lens_map_a1c27e3aa557dc6d38497fdcde0de68fa}\label{struct_lens_map_a1c27e3aa557dc6d38497fdcde0de68fa}} 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{struct_lens_map_a1c27e3aa557dc6d38497fdcde0de68fa}{Process\+F\+F\+Ts}} (float zerosize, T Wphi\+\_\+of\+\_\+k, bool do\+\_\+alpha=true)
+\begin{DoxyCompactList}\small\item\em pre-\/process surface mass density map computing deflection angles and shear in F\+FT, generalized to work with rectangular maps \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a6c1523fe1ebfa23711947e74bf516c33}\label{struct_lens_map_a6c1523fe1ebfa23711947e74bf516c33}} 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{struct_lens_map_a6c1523fe1ebfa23711947e74bf516c33}{Process\+F\+F\+Ts}} (T Wphi\+\_\+of\+\_\+k, bool do\+\_\+alpha=true)
+\begin{DoxyCompactList}\small\item\em no padding \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_lens_map_a9f45ba26ffb2321ad1222c13643c9d72}\label{struct_lens_map_a9f45ba26ffb2321ad1222c13643c9d72}} 
+void {\bfseries make\+\_\+fftw\+\_\+plans} (my\+\_\+fftw\+\_\+plan \&plans, double zerosize)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -92,6 +127,19 @@ The M\+O\+KA map structure, containing all quantities that define it.
 The M\+O\+KA map, that is read in from the fits file. Its components include the lensing properties, as well as the cosmology, the size of the field of view, the redshifts of the lens and source, the properties of the cluster, etc.
 
 Note\+: To use this class requires setting the E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS compiler flag and linking the cfits library. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_lens_map_ab5420fee6ae287a89107d6b27f2dced5}\label{struct_lens_map_ab5420fee6ae287a89107d6b27f2dced5}} 
+\index{LensMap@{LensMap}!write@{write}}
+\index{write@{write}!LensMap@{LensMap}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void Lens\+Map\+::write (\begin{DoxyParamCaption}\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+
+
+write the fits file of the maps of all the lensing quantities. 
+
+Unlike the read operations this will not have the h factors in everything so when reading from a file created by is you should set h to 1 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

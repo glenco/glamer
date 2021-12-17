@@ -26,9 +26,11 @@ bool \mbox{\hyperlink{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851
 \begin{DoxyCompactList}\small\item\em check if the directory does not exist \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_1_1_i_o_a16055c8e93e716d382c1ab590ae8af50}{Read\+A\+S\+C\+II}} (std\+::vector$<$ T $>$ \&data, std\+::string filename, int \&columns, int \&rows, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, int skiplines=0, size\+\_\+t Max\+Nrows=std\+::numeric\+\_\+limits$<$ size\+\_\+t $>$\+::max(), bool verbose=true)
 \begin{DoxyCompactList}\small\item\em This function will read in all the numbers from a multi-\/column ,space seporated A\+S\+C\+II data file. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{namespace_utilities_1_1_i_o_a4931f36d4d621bdf463c120716dd31b2}{Read\+C\+S\+Vnumerical1}} (std\+::string filename, std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, std\+::vector$<$ std\+::string $>$ \&column\+\_\+names, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{})
+{\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{namespace_utilities_1_1_i_o_a8597a573645e6a6ad34d10f6e2012f5f}{Read\+C\+S\+Vnumerical1}} (std\+::string filename, std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, std\+::vector$<$ std\+::string $>$ \&column\+\_\+names, size\+\_\+t Max\+Number=100000000, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{}, std\+::string replace=\char`\"{}\textbackslash{}\textbackslash{}N\char`\"{}, std\+::function$<$ bool(std\+::vector$<$ T $>$ \&)$>$ accept=\mbox{[}$\,$\mbox{]}(std\+::vector$<$ T $>$ \&v)\{return true;\})
 \begin{DoxyCompactList}\small\item\em Read numerical data from a csv file with a header. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{namespace_utilities_1_1_i_o_a7045d3ffccee66ce8abfabc5d05c735b}{Read\+C\+S\+Vnumerical2}} (std\+::string filename, std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, std\+::vector$<$ std\+::string $>$ \&column\+\_\+names, size\+\_\+t Nmax=1000000, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{}, bool header=true)
+{\footnotesize template$<$typename T $>$ }\\size\+\_\+t \mbox{\hyperlink{namespace_utilities_1_1_i_o_a886b91155319834d24830299427a5487}{Read\+C\+S\+Vrange}} (std\+::string filename, std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&ranges, std\+::vector$<$ std\+::string $>$ \&column\+\_\+names, size\+\_\+t Max\+Number=100000000, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{}, std\+::string replace=\char`\"{}\textbackslash{}\textbackslash{}N\char`\"{}, std\+::function$<$ bool(std\+::vector$<$ T $>$ \&)$>$ accept=\mbox{[}$\,$\mbox{]}(std\+::vector$<$ T $>$ \&v)\{return true;\})
+\item 
+{\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{namespace_utilities_1_1_i_o_a87af057cfa24bbecad73674659de0011}{Read\+C\+S\+Vnumerical2}} (std\+::string filename, std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, std\+::vector$<$ std\+::string $>$ \&column\+\_\+names, size\+\_\+t Nmax=1000000, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{}, bool header=true, std\+::string reject=\char`\"{}\char`\"{})
 \begin{DoxyCompactList}\small\item\em Read numerical data from a csv file with a header. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_1_1_i_o_acf2176f27ea6d9eb5430f8862d226b6c}{write\+C\+SV}} (const std\+::string filename, const std\+::vector$<$ std\+::string $>$ header, std\+::vector$<$ T $\ast$ $>$ \&data)
 \begin{DoxyCompactList}\small\item\em write a C\+SV data file for some data vectors \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -126,12 +128,12 @@ This function will read in all the numbers from a multi-\/column ,space seporate
 
 It will skip the comment lines if they are at the head of the file. The number of columns and rows are returned. The entry at row r and column c will be stored at data\mbox{[}c + column$\ast$r\mbox{]}.
 
-This function is not particularly fast for large amounts of data. If the number of roaws is large it would be best to use data.\+reserve() to set the capacity of data large enough that no rellocation of memory occurs. \mbox{\Hypertarget{namespace_utilities_1_1_i_o_a4931f36d4d621bdf463c120716dd31b2}\label{namespace_utilities_1_1_i_o_a4931f36d4d621bdf463c120716dd31b2}} 
+This function is not particularly fast for large amounts of data. If the number of roaws is large it would be best to use data.\+reserve() to set the capacity of data large enough that no rellocation of memory occurs. \mbox{\Hypertarget{namespace_utilities_1_1_i_o_a8597a573645e6a6ad34d10f6e2012f5f}\label{namespace_utilities_1_1_i_o_a8597a573645e6a6ad34d10f6e2012f5f}} 
 \index{Utilities::IO@{Utilities::IO}!ReadCSVnumerical1@{ReadCSVnumerical1}}
 \index{ReadCSVnumerical1@{ReadCSVnumerical1}!Utilities::IO@{Utilities::IO}}
 \doxysubsubsection{\texorpdfstring{ReadCSVnumerical1()}{ReadCSVnumerical1()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-int Utilities\+::\+I\+O\+::\+Read\+C\+S\+Vnumerical1 (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{data,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{column\+\_\+names,  }\item[{char}]{comment\+\_\+char = {\ttfamily \textquotesingle{}\#\textquotesingle{}},  }\item[{char}]{deliniator = {\ttfamily \textquotesingle{},\textquotesingle{}} }\end{DoxyParamCaption})}
+int Utilities\+::\+I\+O\+::\+Read\+C\+S\+Vnumerical1 (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{data,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{column\+\_\+names,  }\item[{size\+\_\+t}]{Max\+Number = {\ttfamily 100000000},  }\item[{char}]{comment\+\_\+char = {\ttfamily \textquotesingle{}\#\textquotesingle{}},  }\item[{char}]{deliniator = {\ttfamily \textquotesingle{},\textquotesingle{}},  }\item[{std\+::string}]{replace = {\ttfamily \char`\"{}\textbackslash{}\textbackslash{}N\char`\"{}},  }\item[{std\+::function$<$ bool(std\+::vector$<$ T $>$ \&)$>$}]{accept = {\ttfamily \mbox{[}\mbox{]}(std\+:\+:vector$<$T$>$~\&v)\{return~true;\}} }\end{DoxyParamCaption})}
 
 
 
@@ -139,9 +141,13 @@ Read numerical data from a csv file with a header.
 
 It will skip the comment lines if they are at the head of the file. The number of columns and rows are returned. The entries will be stored at data\mbox{[}column\mbox{]}\mbox{[}row\mbox{]}.
 
-Comments must only be before the data. There must be a line with the column lines after the comments and before the data.
+Comments must only be before the data. There must be a line with the column names after the comments and before the data.
 
-This function is not particularly fast for large amounts of data. If the number of rows is large it would be best to use data.\+reserve() to set the capacity of data large enough that no rellocation of memory occurs. 
+This function is not particularly fast for large amounts of data. If the number of rows is large it would be best to use data.\+reserve() to set the capacity of data large enough that no rellocation of memory occurs.
+
+The accept function can be used to limit the amount of data added. If there is an object, a, used to make this selection this can be done like \mbox{[}\&a\mbox{]}(str\+::vector$<$\+T$>$ \&v\}\{return a.\+itsok(v\mbox{[}3\mbox{]},v\mbox{[}4\mbox{]});\} where v corresponds to a row in the data file in order. return to first data line
+
+clean blank spaces
 \begin{DoxyParams}{Parameters}
 {\em filename} & file name to be read \\
 \hline
@@ -149,17 +155,23 @@ This function is not particularly fast for large amounts of data. If the number 
 \hline
 {\em column\+\_\+names} & list of column names \\
 \hline
+{\em Max\+Number} & maximum number of entries read \\
+\hline
 {\em comment\+\_\+char} & comment charactor for header \\
 \hline
 {\em deliniator} & deliniator between values \\
 \hline
+{\em replace} & replace this string with zero \\
+\hline
+{\em accept} & function that determines if a row should be accepted \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespace_utilities_1_1_i_o_a7045d3ffccee66ce8abfabc5d05c735b}\label{namespace_utilities_1_1_i_o_a7045d3ffccee66ce8abfabc5d05c735b}} 
+\mbox{\Hypertarget{namespace_utilities_1_1_i_o_a87af057cfa24bbecad73674659de0011}\label{namespace_utilities_1_1_i_o_a87af057cfa24bbecad73674659de0011}} 
 \index{Utilities::IO@{Utilities::IO}!ReadCSVnumerical2@{ReadCSVnumerical2}}
 \index{ReadCSVnumerical2@{ReadCSVnumerical2}!Utilities::IO@{Utilities::IO}}
 \doxysubsubsection{\texorpdfstring{ReadCSVnumerical2()}{ReadCSVnumerical2()}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
-int Utilities\+::\+I\+O\+::\+Read\+C\+S\+Vnumerical2 (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{data,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{column\+\_\+names,  }\item[{size\+\_\+t}]{Nmax = {\ttfamily 1000000},  }\item[{char}]{comment\+\_\+char = {\ttfamily \textquotesingle{}\#\textquotesingle{}},  }\item[{char}]{deliniator = {\ttfamily \textquotesingle{},\textquotesingle{}},  }\item[{bool}]{header = {\ttfamily true} }\end{DoxyParamCaption})}
+int Utilities\+::\+I\+O\+::\+Read\+C\+S\+Vnumerical2 (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{data,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{column\+\_\+names,  }\item[{size\+\_\+t}]{Nmax = {\ttfamily 1000000},  }\item[{char}]{comment\+\_\+char = {\ttfamily \textquotesingle{}\#\textquotesingle{}},  }\item[{char}]{deliniator = {\ttfamily \textquotesingle{},\textquotesingle{}},  }\item[{bool}]{header = {\ttfamily true},  }\item[{std\+::string}]{reject = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
 
 
 
@@ -171,7 +183,7 @@ It will skip the comment lines if they are at the head of the file. The number o
 
 Comments must only be before the data. Then if header==true there should be a line of column names. If header!=true there are non column names.
 
-This function is not particularly fast for large amounts of data. If the number of rows is large it would be best to use data.\+reserve() to set the capacity of data large enough that no rellocation of memory occurs. 
+This function is not particularly fast for large amounts of data. If the number of rows is large it would be best to use data.\+reserve() to set the capacity of data large enough that no rellocation of memory occurs. clean blank spaces
 \begin{DoxyParams}{Parameters}
 {\em filename} & file name to be read \\
 \hline
@@ -184,6 +196,36 @@ This function is not particularly fast for large amounts of data. If the number 
 {\em deliniator} & deliniator between values \\
 \hline
 {\em header} & false if there are no column names \\
+\hline
+{\em reject} & reject lines with this entry after striping black space \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_utilities_1_1_i_o_a886b91155319834d24830299427a5487}\label{namespace_utilities_1_1_i_o_a886b91155319834d24830299427a5487}} 
+\index{Utilities::IO@{Utilities::IO}!ReadCSVrange@{ReadCSVrange}}
+\index{ReadCSVrange@{ReadCSVrange}!Utilities::IO@{Utilities::IO}}
+\doxysubsubsection{\texorpdfstring{ReadCSVrange()}{ReadCSVrange()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+size\+\_\+t Utilities\+::\+I\+O\+::\+Read\+C\+S\+Vrange (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&}]{ranges,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{column\+\_\+names,  }\item[{size\+\_\+t}]{Max\+Number = {\ttfamily 100000000},  }\item[{char}]{comment\+\_\+char = {\ttfamily \textquotesingle{}\#\textquotesingle{}},  }\item[{char}]{deliniator = {\ttfamily \textquotesingle{},\textquotesingle{}},  }\item[{std\+::string}]{replace = {\ttfamily \char`\"{}\textbackslash{}\textbackslash{}N\char`\"{}},  }\item[{std\+::function$<$ bool(std\+::vector$<$ T $>$ \&)$>$}]{accept = {\ttfamily \mbox{[}\mbox{]}(std\+:\+:vector$<$T$>$~\&v)\{return~true;\}} }\end{DoxyParamCaption})}
+
+Finds ranges return to first data line
+
+clean blank spaces
+\begin{DoxyParams}{Parameters}
+{\em filename} & file name to be read \\
+\hline
+{\em ranges} & output data \\
+\hline
+{\em column\+\_\+names} & list of column names \\
+\hline
+{\em Max\+Number} & maximum number of entries read \\
+\hline
+{\em comment\+\_\+char} & comment charactor for header \\
+\hline
+{\em deliniator} & deliniator between values \\
+\hline
+{\em replace} & replace this string with zero \\
+\hline
+{\em accept} & function that determines if a row should be accepted \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{namespace_utilities_1_1_i_o_af6ab01d1aec34ac1000f3551d43a76fa}\label{namespace_utilities_1_1_i_o_af6ab01d1aec34ac1000f3551d43a76fa}} 

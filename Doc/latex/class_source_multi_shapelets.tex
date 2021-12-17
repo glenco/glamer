@@ -30,9 +30,10 @@ Collaboration diagram for Source\+Multi\+Shapelets\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_source_multi_shapelets_ac3b00e4babca2fb1e9bf691472c41576}\label{class_source_multi_shapelets_ac3b00e4babca2fb1e9bf691472c41576}} 
-\mbox{\hyperlink{class_source_multi_shapelets_ac3b00e4babca2fb1e9bf691472c41576}{Source\+Multi\+Shapelets}} (std\+::string \&my\+\_\+shapelets\+\_\+folder, Band my\+\_\+band, double my\+\_\+mag\+\_\+limit, double my\+\_\+sb\+\_\+limit=-\/1)
+\mbox{\hyperlink{class_source_multi_shapelets_a80d196f47eb9a7d1ef5959d53e0ad321}{Source\+Multi\+Shapelets}} (const std\+::string \&my\+\_\+shapelets\+\_\+folder, Band my\+\_\+band, double my\+\_\+max\+\_\+mag\+\_\+limit, double my\+\_\+min\+\_\+mag\+\_\+limit, double my\+\_\+sb\+\_\+limit=-\/1, double maximum\+\_\+radius=1.\+0e100)
 \begin{DoxyCompactList}\small\item\em Reads in sources from a catalog. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_source_multi_shapelets_a93c5def0201879f90b53c31621f8ab7c}{input}} (const std\+::string \&my\+\_\+shapelets\+\_\+folder, Band my\+\_\+band, double my\+\_\+max\+\_\+mag\+\_\+limit, double my\+\_\+min\+\_\+mag\+\_\+limit, double my\+\_\+sb\+\_\+limit=-\/1, double maximum\+\_\+radius=1.\+0e100)
+\item 
 \mbox{\Hypertarget{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}\label{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}} 
 void \mbox{\hyperlink{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}{sort\+In\+Redshift}} ()
 \begin{DoxyCompactList}\small\item\em Sort the sources by redshift in assending order. \end{DoxyCompactList}\item 
@@ -70,8 +71,8 @@ void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\
 Pos\+Type \mbox{\hyperlink{class_source_multi_shapelets_a6c3a8a631309805fe5a4e51b90b04236}{getZ}} () const
 \begin{DoxyCompactList}\small\item\em Return redshift of current source. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_multi_shapelets_ab75ce2e0a17b6b516d1e869c4432a37a}\label{class_source_multi_shapelets_ab75ce2e0a17b6b516d1e869c4432a37a}} 
-Pos\+Type \mbox{\hyperlink{class_source_multi_shapelets_ab75ce2e0a17b6b516d1e869c4432a37a}{get\+Radius}} () const
-\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+Radius} () const
+\item 
 \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& \mbox{\hyperlink{class_source_multi_shapelets_a0d1f8507b2965eec94cf49b15c1c347e}{set\+Index}} (std\+::size\+\_\+t i)
 \item 
 \mbox{\Hypertarget{class_source_multi_shapelets_a43416bf122df50216eb0bf96c8566b01}\label{class_source_multi_shapelets_a43416bf122df50216eb0bf96c8566b01}} 
@@ -93,7 +94,16 @@ const \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& {\bfseries
 \begin{DoxyCompactList}\small\item\em Sets the active band for all the objects. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}\label{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}} 
 int \mbox{\hyperlink{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}{locateZ}} (Pos\+Type z) const
-\begin{DoxyCompactList}\small\item\em If the sources are already sorted by redshift this will find the index of the first galaxy with redshift above z. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em If the sources are already sorted by redshift this will find the index of the first galaxy with redshift above z. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_afb81b31d50795b0c2c65a2f0d1c3996b}\label{class_source_multi_shapelets_afb81b31d50795b0c2c65a2f0d1c3996b}} 
+int {\bfseries get\+Current\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_source_multi_shapelets_a3ba6d4d905037148fe89701f262895af}\label{class_source_multi_shapelets_a3ba6d4d905037148fe89701f262895af}} 
+std\+::vector$<$ \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} $>$ {\bfseries galaxies}
+\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -102,7 +112,56 @@ Class for reading in and handling an array of \mbox{\hyperlink{class_source_shap
 
 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_source_multi_shapelets_a80d196f47eb9a7d1ef5959d53e0ad321}\label{class_source_multi_shapelets_a80d196f47eb9a7d1ef5959d53e0ad321}} 
+\index{SourceMultiShapelets@{SourceMultiShapelets}!SourceMultiShapelets@{SourceMultiShapelets}}
+\index{SourceMultiShapelets@{SourceMultiShapelets}!SourceMultiShapelets@{SourceMultiShapelets}}
+\doxysubsubsection{\texorpdfstring{SourceMultiShapelets()}{SourceMultiShapelets()}}
+{\footnotesize\ttfamily Source\+Multi\+Shapelets\+::\+Source\+Multi\+Shapelets (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{my\+\_\+shapelets\+\_\+folder,  }\item[{Band}]{my\+\_\+band,  }\item[{double}]{my\+\_\+max\+\_\+mag\+\_\+limit,  }\item[{double}]{my\+\_\+min\+\_\+mag\+\_\+limit,  }\item[{double}]{my\+\_\+sb\+\_\+limit = {\ttfamily -\/1},  }\item[{double}]{maximum\+\_\+radius = {\ttfamily 1.0e100} }\end{DoxyParamCaption})}
+
+
+
+Reads in sources from a catalog. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+shapelets\+\_\+folder} & directory where shapelet files are located \\
+\hline
+{\em my\+\_\+band} & band that will be used as default \\
+\hline
+{\em my\+\_\+max\+\_\+mag\+\_\+limit} & magnitude limit in that band \\
+\hline
+{\em my\+\_\+min\+\_\+mag\+\_\+limit} & magnitude limit in that band \\
+\hline
+{\em my\+\_\+sb\+\_\+limit} & surface brightness limit \\
+\hline
+{\em maximum\+\_\+radius} & maximum radius (as defined in shapelet expansion) in radians \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_source_multi_shapelets_a93c5def0201879f90b53c31621f8ab7c}\label{class_source_multi_shapelets_a93c5def0201879f90b53c31621f8ab7c}} 
+\index{SourceMultiShapelets@{SourceMultiShapelets}!input@{input}}
+\index{input@{input}!SourceMultiShapelets@{SourceMultiShapelets}}
+\doxysubsubsection{\texorpdfstring{input()}{input()}}
+{\footnotesize\ttfamily void Source\+Multi\+Shapelets\+::input (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{my\+\_\+shapelets\+\_\+folder,  }\item[{Band}]{my\+\_\+band,  }\item[{double}]{my\+\_\+max\+\_\+mag\+\_\+limit,  }\item[{double}]{my\+\_\+min\+\_\+mag\+\_\+limit,  }\item[{double}]{my\+\_\+sb\+\_\+limit = {\ttfamily -\/1},  }\item[{double}]{maximum\+\_\+radius = {\ttfamily 1.0e100} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+shapelets\+\_\+folder} & directory where shapelet files are located \\
+\hline
+{\em my\+\_\+band} & band that will be used as default \\
+\hline
+{\em my\+\_\+max\+\_\+mag\+\_\+limit} & magnitude limit in that band \\
+\hline
+{\em my\+\_\+min\+\_\+mag\+\_\+limit} & magnitude limit in that band \\
+\hline
+{\em my\+\_\+sb\+\_\+limit} & surface brightness limit \\
+\hline
+{\em maximum\+\_\+radius} & maximum radius (as defined in shapelet expansion) in radians \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_source_multi_shapelets_ab8b343474559268b16f901f7ed4d2230}\label{class_source_multi_shapelets_ab8b343474559268b16f901f7ed4d2230}} 
 \index{SourceMultiShapelets@{SourceMultiShapelets}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!SourceMultiShapelets@{SourceMultiShapelets}}

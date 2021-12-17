@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Structure to contain both source and image trees. It is not yet used, but may be useful.  
+<p>Structure to contain both source and image trees.  
  <a href="struct_grid.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="grid__maintenance_8h_source.html">grid_maintenance.h</a>&gt;</code></p>
@@ -80,9 +80,9 @@ Collaboration diagram for Grid:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct_grid__coll__graph.png" border="0" usemap="#_grid_coll__map" alt="Collaboration graph"/></div>
 <map name="_grid_coll__map" id="_grid_coll__map">
-<area shape="rect" title="Structure to contain both source and image trees. It is not yet used, but may be useful." alt="" coords="23,199,70,225"/>
-<area shape="rect" href="struct_tree_struct.html" title="Tree: Exported struct." alt="" coords="5,95,88,121"/>
-<area shape="rect" href="struct_point_list.html" title="link list for points, uses the linking pointers within the Point type unlike Kist" alt="" coords="10,5,83,32"/>
+<area shape="rect" title="Structure to contain both source and image trees." alt="" coords="24,205,70,233"/>
+<area shape="rect" href="struct_tree_struct.html" title="Tree: Exported struct." alt="" coords="5,97,89,125"/>
+<area shape="rect" href="struct_point_list.html" title="link list for points, uses the linking pointers within the Point type unlike Kist" alt="" coords="11,5,83,33"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -96,7 +96,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a892ed0bb5f45b92505d8d82cfe408c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3661d0a7f998caaaf8627d7a67072116"><td class="memItemLeft" align="right" valign="top"><a id="a3661d0a7f998caaaf8627d7a67072116"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#a3661d0a7f998caaaf8627d7a67072116">~Grid</a> ()</td></tr>
-<tr class="memdesc:a3661d0a7f998caaaf8627d7a67072116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees. It is not yet used, but may be useful.">Grid</a>. Frees all memory. <br /></td></tr>
+<tr class="memdesc:a3661d0a7f998caaaf8627d7a67072116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a>. Frees all memory. <br /></td></tr>
 <tr class="separator:a3661d0a7f998caaaf8627d7a67072116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa24da72593941193758c4a98ee860b19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#aa24da72593941193758c4a98ee860b19">ReInitializeGrid</a> (<a class="el" href="class_lens.html">LensHndl</a> lens)</td></tr>
 <tr class="memdesc:aa24da72593941193758c4a98ee860b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitializes the grid so that it is back to the original coarse grid, but if the lens has changed the source positions will be updated.  <a href="struct_grid.html#aa24da72593941193758c4a98ee860b19">More...</a><br /></td></tr>
@@ -120,6 +120,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:acd3c8aa66053c2a4ef071f877c0ff214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculate surface brightness just like Grid::RefreshSurfaceBrightness but the new source is added to any sources that were already there. <br  />
   <a href="struct_grid.html#acd3c8aa66053c2a4ef071f877c0ff214">More...</a><br /></td></tr>
 <tr class="separator:acd3c8aa66053c2a4ef071f877c0ff214"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76402d3ee2fe5127cc42990ced7cb967"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#a76402d3ee2fe5127cc42990ced7cb967">mark_point_source_images</a> (<a class="el" href="struct_point__2d.html">Point_2d</a> y_source, PosType r_source_max, PosType luminosity, bool verbose=false)</td></tr>
+<tr class="separator:a76402d3ee2fe5127cc42990ced7cb967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25db542a5491a1b59f3c36278b830407"><td class="memItemLeft" align="right" valign="top"><a id="a25db542a5491a1b59f3c36278b830407"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#a25db542a5491a1b59f3c36278b830407">ClearSurfaceBrightnesses</a> ()</td></tr>
 <tr class="memdesc:a25db542a5491a1b59f3c36278b830407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the surface brightness and in_image flag in every point on image and source planes to zero (false) <br /></td></tr>
@@ -200,6 +202,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="memitem:aa8dd246a0f9e9c1f606d425989e742ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#aa8dd246a0f9e9c1f606d425989e742ac">writeFitsUniform</a> (const PosType center[], size_t Nx, size_t Ny, LensingVariable lensvar, std::string filename)</td></tr>
 <tr class="memdesc:aa8dd246a0f9e9c1f606d425989e742ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output a fits map of the without distribution the pixels.  <a href="struct_grid.html#aa8dd246a0f9e9c1f606d425989e742ac">More...</a><br /></td></tr>
 <tr class="separator:aa8dd246a0f9e9c1f606d425989e742ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4f4aff30be66ff79365f4ea810cc5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#abc4f4aff30be66ff79365f4ea810cc5e">find_images</a> (PosType *y_source, PosType r_source, int &amp;Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, unsigned long &amp;Nimagepoints)</td></tr>
+<tr class="memdesc:abc4f4aff30be66ff79365f4ea810cc5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds images for a given source position and size. It seporates images of different pairities.  <a href="struct_grid.html#abc4f4aff30be66ff79365f4ea810cc5e">More...</a><br /></td></tr>
+<tr class="separator:abc4f4aff30be66ff79365f4ea810cc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a292378167185b8eb18245060b21a13c6"><td class="memItemLeft" align="right" valign="top"><a id="a292378167185b8eb18245060b21a13c6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Grid</b> (<a class="el" href="struct_grid.html">Grid</a> &amp;&amp;grid)</td></tr>
 <tr class="separator:a292378167185b8eb18245060b21a13c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,8 +213,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="separator:a225f3c122c472daa49a8686005325c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae31b9263380798f393f967f2d087a7da"><td class="memItemLeft" align="right" valign="top"><a id="ae31b9263380798f393f967f2d087a7da"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#ae31b9263380798f393f967f2d087a7da">magnification</a> () const</td></tr>
-<tr class="memdesc:ae31b9263380798f393f967f2d087a7da"><td class="mdescLeft">&#160;</td><td class="mdescRight">flux weighted magnification <br /></td></tr>
+<tr class="memdesc:ae31b9263380798f393f967f2d087a7da"><td class="mdescLeft">&#160;</td><td class="mdescRight">flux weighted local magnification that does not take multiple imaging into effect <br /></td></tr>
 <tr class="separator:ae31b9263380798f393f967f2d087a7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82dbe23796c30a73ffa72df0948a9f70"><td class="memItemLeft" align="right" valign="top"><a id="a82dbe23796c30a73ffa72df0948a9f70"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>UnlensedFlux</b> () const</td></tr>
+<tr class="separator:a82dbe23796c30a73ffa72df0948a9f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0962ac5a92a9cb07f9e70a31a32bc53"><td class="memItemLeft" align="right" valign="top"><a id="af0962ac5a92a9cb07f9e70a31a32bc53"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>LensedFlux</b> () const</td></tr>
+<tr class="separator:af0962ac5a92a9cb07f9e70a31a32bc53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfddf45465203922ce4ac592da07bb0"><td class="memItemLeft" align="right" valign="top"><a id="aedfddf45465203922ce4ac592da07bb0"></a>
+<a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#aedfddf45465203922ce4ac592da07bb0">centroid</a> () const</td></tr>
+<tr class="memdesc:aedfddf45465203922ce4ac592da07bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">centroid of flux <br /></td></tr>
+<tr class="separator:aedfddf45465203922ce4ac592da07bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -223,7 +238,7 @@ Public Attributes</h2></td></tr>
 <tr class="separator:abeda62e6b854e898781e85abd5a8e751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Structure to contain both source and image trees. It is not yet used, but may be useful. </p>
+<div class="textblock"><p>Structure to contain both source and image trees. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a830c6822b5e6a6b022d11923dfebcefc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a830c6822b5e6a6b022d11923dfebcefc">&#9670;&nbsp;</a></span>Grid() <span class="overload">[1/2]</span></h2>
@@ -264,7 +279,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor for initializing square grid. </p>
-<p>Note: Deflection solver must be specified before creating a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees. It is not yet used, but may be useful.">Grid</a>. </p>
+<p>Note: Deflection solver must be specified before creating a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lens</td><td>lens model for initializing grid </td></tr>
@@ -323,7 +338,7 @@ Public Attributes</h2></td></tr>
 
 <p>Constructor for initializing rectangular grid. </p>
 <p>Cells of grid will always be square with initial resolution rangeX/(Nx-1). The Y range may not be exactly rangeY, but will be the nearest value that is a whole number of cells.</p>
-<p>Note: Deflection solver must be specified before creating a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees. It is not yet used, but may be useful.">Grid</a>. </p>
+<p>Note: Deflection solver must be specified before creating a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lens</td><td>lens model for initializing grid </td></tr>
@@ -360,6 +375,58 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abc4f4aff30be66ff79365f4ea810cc5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc4f4aff30be66ff79365f4ea810cc5e">&#9670;&nbsp;</a></span>find_images()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Grid::find_images </td>
+          <td>(</td>
+          <td class="paramtype">PosType *&#160;</td>
+          <td class="paramname"><em>y_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>r_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>Nimages</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>imageinfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long &amp;&#160;</td>
+          <td class="paramname"><em>Nimagepoints</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds images for a given source position and size. It seporates images of different pairities. </p>
+<p>No grid refinement is done. If the images is not initially found no nearest neighbor points are returned.</p>
+<p>image points are put into imageinfo[].imagekist imageinfo[].points and imageinfo[].Npoints are not changed</p>
+<p>side-effects : Will make in_image = true for all image points if splitparities == 0</p>
+<p>&lt;<code></code> &gt; </p>
+
+</div>
+</div>
 <a id="a4b84bc9acf6cbeff3a6da1f3dca202e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b84bc9acf6cbeff3a6da1f3dca202e1">&#9670;&nbsp;</a></span>getNumberOfPoints()</h2>
 
@@ -377,6 +444,54 @@ Public Attributes</h2></td></tr>
 
 <p>Returns number of points on image plane. </p>
 <p>Finding </p>
+
+</div>
+</div>
+<a id="a76402d3ee2fe5127cc42990ced7cb967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76402d3ee2fe5127cc42990ced7cb967">&#9670;&nbsp;</a></span>mark_point_source_images()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Grid::mark_point_source_images </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
+          <td class="paramname"><em>y_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>r_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>luminosity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>\breaf This function finds all the images for a circular source of radius r_source, then finds the points within each image that are closest to the center and then markes each surface brightness. Only one pixel per image gets flux. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">y_source</td><td>angular position of source, </td></tr>
+    <tr><td class="paramname">r_source</td><td>points outside this radius on the source plane will not be considered as in the image </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -530,7 +645,7 @@ Public Attributes</h2></td></tr>
 
 <p>Recalculate surface brightness at every point without changing the positions of the grid or any lens properties. </p>
 <p>Finding Recalculate the surface brightness at all points on the grid. This is useful when changing the source model while preserving changes in the grid. Both i_tree and s_tree are both changed although only s_tree shows up here.</p>
-<p>returns the sum of the surface brightnesses </p>
+<p>returns total flux </p>
 
 </div>
 </div>
@@ -1186,7 +1301,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:40 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:26 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

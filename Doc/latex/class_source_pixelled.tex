@@ -34,9 +34,8 @@ Collaboration diagram for Source\+Pixelled\+:\nopagebreak
 \item 
 \mbox{\hyperlink{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}{Source\+Pixelled}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&gal\+\_\+map, Pos\+Type z, Pos\+Type factor=1.)
 \begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}} from a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_pixelled_a5166077c4140daf9287c92fb09429164}\label{class_source_pixelled_a5166077c4140daf9287c92fb09429164}} 
 Pos\+Type \mbox{\hyperlink{class_source_pixelled_a5166077c4140daf9287c92fb09429164}{Surface\+Brightness}} (Pos\+Type $\ast$y)
-\begin{DoxyCompactList}\small\item\em Surface brightness of source in grid coordinates not source centered coordinates. \end{DoxyCompactList}\item 
+\item 
 \mbox{\Hypertarget{class_source_pixelled_aa3f02fe4c3867a0b47d41f5d0ee6e472}\label{class_source_pixelled_aa3f02fe4c3867a0b47d41f5d0ee6e472}} 
 void {\bfseries print\+Source} ()
 \item 
@@ -44,8 +43,8 @@ void {\bfseries print\+Source} ()
 Pos\+Type {\bfseries get\+Total\+Flux} () const
 \item 
 \mbox{\Hypertarget{class_source_pixelled_ad3c9c58bb428c090e7aaca7088a47b72}\label{class_source_pixelled_ad3c9c58bb428c090e7aaca7088a47b72}} 
-Pos\+Type \mbox{\hyperlink{class_source_pixelled_ad3c9c58bb428c090e7aaca7088a47b72}{get\+Radius}} () const
-\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+Radius} () const
+\item 
 \mbox{\Hypertarget{class_source_pixelled_a36e56dc93b056f683ba282b9d5ac4a82}\label{class_source_pixelled_a36e56dc93b056f683ba282b9d5ac4a82}} 
 Pos\+Type $\ast$ {\bfseries get\+Ell} ()
 \item 
@@ -108,6 +107,21 @@ Creates a \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}} from a \mbo
 {\em factor} & optional rescaling factor for the flux \\
 \hline
 \end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_source_pixelled_a5166077c4140daf9287c92fb09429164}\label{class_source_pixelled_a5166077c4140daf9287c92fb09429164}} 
+\index{SourcePixelled@{SourcePixelled}!SurfaceBrightness@{SurfaceBrightness}}
+\index{SurfaceBrightness@{SurfaceBrightness}!SourcePixelled@{SourcePixelled}}
+\doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
+{\footnotesize\ttfamily Pos\+Type Source\+Pixelled\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Surface brightness of source in grid coordinates not source centered coordinates.
+
+The units shuld be ergs / s / Hz / cm$^\wedge$2 / hplanck 
+
+Implements \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Source}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

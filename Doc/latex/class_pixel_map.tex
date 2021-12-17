@@ -22,17 +22,23 @@ Takes image structure and pixelizes the flux into regular pixel grid which then 
 \item 
 \mbox{\hyperlink{class_pixel_map_a74ed2fba8e634543912eed915b84f67c}{Pixel\+Map}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap, const double $\ast$center, std\+::size\+\_\+t Npixels)
 \begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} from a square region of a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}. If the region exceeds the boundaries of the original map, the new map is completed with zeros. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map_ac8f828ed897cf21b6c58fbc662799a9e}{Pixel\+Map}} (const double $\ast$center, std\+::size\+\_\+t Npixels, double resolution)
+\mbox{\hyperlink{class_pixel_map_a8f02a00ebc4eeef60aef2b363f5aa880}{Pixel\+Map}} (const double $\ast$center, std\+::size\+\_\+t Npixels, double resolution, Pixel\+Map\+Units u=ndef)
 \begin{DoxyCompactList}\small\item\em make square \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map_ab47c999c5606d71fded6719a422435b7}{Pixel\+Map}} (const double $\ast$center, std\+::size\+\_\+t Nx, std\+::size\+\_\+t Ny, double resolution)
+\mbox{\hyperlink{class_pixel_map_aeac294bc5c760171c226095e5ffebe5f}{Pixel\+Map}} (const double $\ast$center, std\+::size\+\_\+t Nx, std\+::size\+\_\+t Ny, double resolution, Pixel\+Map\+Units u=ndef)
 \begin{DoxyCompactList}\small\item\em make rectangular \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with square pixels \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map_abbb6324ef72a652a01be316198e6708d}{Pixel\+Map}} (std\+::string fitsfilename, double resolution=-\/1)
+\mbox{\hyperlink{class_pixel_map_ab4e159db7dd869260237bdf20ca21602}{Pixel\+Map}} (std\+::string fitsfilename, double resolution=-\/1, Pixel\+Map\+Units u=ndef)
 \begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} reading in a fits file Infos about resolution, Npixels and center are read from the header. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a85b879cd2561ca7841b578dd27d8e5ed}\label{class_pixel_map_a85b879cd2561ca7841b578dd27d8e5ed}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&other)
 \item 
 \mbox{\Hypertarget{class_pixel_map_a78ee7b2086e0b799b27459c3756feae9}\label{class_pixel_map_a78ee7b2086e0b799b27459c3756feae9}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& {\bfseries operator=} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&\&other)
+\item 
+\mbox{\Hypertarget{class_pixel_map_a90592a7eacdd607bc79e743900d95186}\label{class_pixel_map_a90592a7eacdd607bc79e743900d95186}} 
+void {\bfseries Change\+Units} (Pixel\+Map\+Units u)
+\item 
+\mbox{\Hypertarget{class_pixel_map_a581cfb9901116acc68714eb0936eaea3}\label{class_pixel_map_a581cfb9901116acc68714eb0936eaea3}} 
+Pixel\+Map\+Units {\bfseries get\+Units} () const
 \item 
 \mbox{\Hypertarget{class_pixel_map_ac75d2f1940bdcd6161cc796e1aab11e6}\label{class_pixel_map_ac75d2f1940bdcd6161cc796e1aab11e6}} 
 bool {\bfseries valid} () const
@@ -82,6 +88,9 @@ Pos\+Type {\bfseries Add\+Source} (\mbox{\hyperlink{class_source}{Source}} \&sou
 \mbox{\Hypertarget{class_pixel_map_a8df2e6d19e06a0e2dc2a8e0449fa62ea}\label{class_pixel_map_a8df2e6d19e06a0e2dc2a8e0449fa62ea}} 
 Pos\+Type \mbox{\hyperlink{class_pixel_map_a8df2e6d19e06a0e2dc2a8e0449fa62ea}{Add\+Source}} (\mbox{\hyperlink{class_source}{Source}} \&source, int oversample)
 \begin{DoxyCompactList}\small\item\em Add a source to the pixel map by oversamples the source so that oversample$^\wedge$2 points within each pixel are averaged. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_a25c7d70b334c841921a991021f8a8217}\label{class_pixel_map_a25c7d70b334c841921a991021f8a8217}} 
+void {\bfseries Add\+Point\+Source} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, double flux)
+\item 
 void \mbox{\hyperlink{class_pixel_map_a9087887d2f53766161f09fb1b043cd76}{copy\+\_\+in}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap)
 \begin{DoxyCompactList}\small\item\em copy a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} into this one. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_pixel_map_a007c98640a772347dd2e728d78e17ec1}{paste}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap)
@@ -124,8 +133,8 @@ void \mbox{\hyperlink{class_pixel_map_af1f20cbcd83cacd6e18e30b9861e6f55}{print\+
 \mbox{\Hypertarget{class_pixel_map_a6907a422586159e5f0884306e308d3ec}\label{class_pixel_map_a6907a422586159e5f0884306e308d3ec}} 
 void \mbox{\hyperlink{class_pixel_map_a6907a422586159e5f0884306e308d3ec}{print\+A\+S\+C\+I\+Ito\+File}} (std\+::string filename) const
 \begin{DoxyCompactList}\small\item\em Print an A\+S\+C\+II table of all the pixel values. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pixel_map_af14f5bd5a72ceb53673075842891453f}\label{class_pixel_map_af14f5bd5a72ceb53673075842891453f}} 
-void \mbox{\hyperlink{class_pixel_map_af14f5bd5a72ceb53673075842891453f}{print\+F\+I\+TS}} (std\+::string filename, bool verbose=false)
+\mbox{\Hypertarget{class_pixel_map_aba0dc186ee8952f6e51e6cf0d784fd51}\label{class_pixel_map_aba0dc186ee8952f6e51e6cf0d784fd51}} 
+void \mbox{\hyperlink{class_pixel_map_aba0dc186ee8952f6e51e6cf0d784fd51}{print\+F\+I\+TS}} (std\+::string filename, bool Xflip=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Output the pixel map as a fits file. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a729210170d6ee3c2bba9134f20354b5c}\label{class_pixel_map_a729210170d6ee3c2bba9134f20354b5c}} 
 void {\bfseries print\+F\+I\+TS} (std\+::string filename, std\+::vector$<$ std\+::tuple$<$ std\+::string, double, std\+::string $>$$>$ \&extra\+\_\+header\+\_\+info, bool verbose)
@@ -148,21 +157,33 @@ double {\bfseries operator()} (std\+::size\+\_\+t i) const
 \mbox{\Hypertarget{class_pixel_map_a2c05567e272f06d157e54480bb7235f1}\label{class_pixel_map_a2c05567e272f06d157e54480bb7235f1}} 
 double {\bfseries operator()} (std\+::size\+\_\+t i, std\+::size\+\_\+t j) const
 \item 
+\mbox{\Hypertarget{class_pixel_map_ac3b9fdf6f6fbdba16daa323357e99531}\label{class_pixel_map_ac3b9fdf6f6fbdba16daa323357e99531}} 
+double \& {\bfseries operator()} (std\+::size\+\_\+t i, std\+::size\+\_\+t j)
+\item 
 \mbox{\Hypertarget{class_pixel_map_ae9d31ce7fb07d7b11d9f7e5d4685d634}\label{class_pixel_map_ae9d31ce7fb07d7b11d9f7e5d4685d634}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& \mbox{\hyperlink{class_pixel_map_ae9d31ce7fb07d7b11d9f7e5d4685d634}{operator+=}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Add the values of another \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} to this one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_af49565ada428b47b4e9fcc205e55ea95}\label{class_pixel_map_af49565ada428b47b4e9fcc205e55ea95}} 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_af49565ada428b47b4e9fcc205e55ea95}{operator+}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&) const
+\begin{DoxyCompactList}\small\item\em Add two Pixel\+Maps. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a2f81ce7624abffbb85080db357e9f6ca}\label{class_pixel_map_a2f81ce7624abffbb85080db357e9f6ca}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& \mbox{\hyperlink{class_pixel_map_a2f81ce7624abffbb85080db357e9f6ca}{operator-\/=}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Subtract the values of another \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} from this one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_a9dfae4b04c57cb7484bd64b5ca79cc04}\label{class_pixel_map_a9dfae4b04c57cb7484bd64b5ca79cc04}} 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_a9dfae4b04c57cb7484bd64b5ca79cc04}{operator-\/}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&) const
+\begin{DoxyCompactList}\small\item\em Subtract two Pixel\+Maps. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a7bdc36ffcfd2de883be7978daeaa7999}\label{class_pixel_map_a7bdc36ffcfd2de883be7978daeaa7999}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& \mbox{\hyperlink{class_pixel_map_a7bdc36ffcfd2de883be7978daeaa7999}{operator$\ast$=}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Multiply the values of another \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} by this one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_ad3c50a98b838e61f220700fd67227251}\label{class_pixel_map_ad3c50a98b838e61f220700fd67227251}} 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_ad3c50a98b838e61f220700fd67227251}{operator$\ast$}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&a) const
+\begin{DoxyCompactList}\small\item\em Multiply two Pixel\+Maps. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_aa98d4aa3605b759076eef156ebb8d3eb}\label{class_pixel_map_aa98d4aa3605b759076eef156ebb8d3eb}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& {\bfseries operator$\ast$=} (Pos\+Type b)
 \item 
 \mbox{\Hypertarget{class_pixel_map_afe231f0627899a087407b96589f28558}\label{class_pixel_map_afe231f0627899a087407b96589f28558}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_afe231f0627899a087407b96589f28558}{operator$\ast$=}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&m) const
-\begin{DoxyCompactList}\small\item\em eliment wise multiplictioan \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em element wise multiplictioan \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_ae3706a6491650f14200eef64213d1e68}\label{class_pixel_map_ae3706a6491650f14200eef64213d1e68}} 
 std\+::valarray$<$ double $>$ \& {\bfseries data} ()
 \item 
@@ -238,10 +259,29 @@ void \mbox{\hyperlink{class_pixel_map_af80de8d9b91e0ae5bfaef1d5673b30f3}{flipX}}
 \mbox{\Hypertarget{class_pixel_map_ab4374615054f16ae30b67251c4cd9d9a}\label{class_pixel_map_ab4374615054f16ae30b67251c4cd9d9a}} 
 void \mbox{\hyperlink{class_pixel_map_ab4374615054f16ae30b67251c4cd9d9a}{double\+Flip}} ()
 \begin{DoxyCompactList}\small\item\em rotate the image by 180deg or equivalently reflect it through the origin \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_pixel_map_a966d2ce5b9457f5af5c7e0694a9a6de8}{recenter}} (Pos\+Type c\mbox{[}2\mbox{]})
-\begin{DoxyCompactList}\small\item\em recenter the map without changing anything else \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pixel_map_a43e1dc3c823bcefb768639a03b97447a}{recenter}} (Pos\+Type newcenter\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em recenter the map without changing anything else. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}{recenter}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} newcenter)
+\item 
 void \mbox{\hyperlink{class_pixel_map_af4a0ded3c25c693842b399640178d785}{convolve}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&kernel, long center\+\_\+x=0, long center\+\_\+y=0)
-\begin{DoxyCompactList}\small\item\em convolve the image with a kernel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em convolve the image with a kernel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_a3cdbaacdbaa3861f586b9ffcf08d261a}{downsize}} (int n)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with a lower resolution. The value of the pixels are added for the new pixels. If n does not go into the orginial number of pixels evenly the right (top) redge is dropped. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_ab7a48ee6c682d5093629d3ee3fdc9ed5}\label{class_pixel_map_ab7a48ee6c682d5093629d3ee3fdc9ed5}} 
+void \mbox{\hyperlink{class_pixel_map_ab7a48ee6c682d5093629d3ee3fdc9ed5}{addheader}} (std\+::string label, long value, std\+::string comment)
+\begin{DoxyCompactList}\small\item\em add a heaader keyword that will appear in fits output \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_ae4b99a29847382aa69b1c5253872b8cf}\label{class_pixel_map_ae4b99a29847382aa69b1c5253872b8cf}} 
+void {\bfseries addheader} (std\+::string label, size\+\_\+t value, std\+::string comment)
+\item 
+\mbox{\Hypertarget{class_pixel_map_a20de6538770f42e462ca87230224d040}\label{class_pixel_map_a20de6538770f42e462ca87230224d040}} 
+void {\bfseries addheader} (std\+::string label, float value, std\+::string comment)
+\item 
+\mbox{\Hypertarget{class_pixel_map_a6adc56e2fcddd703e2109a56a2dea0c9}\label{class_pixel_map_a6adc56e2fcddd703e2109a56a2dea0c9}} 
+void {\bfseries addheader} (std\+::string label, double value, std\+::string comment)
+\item 
+\mbox{\Hypertarget{class_pixel_map_a3e507bb5498294a211d2477a0e4b950e}\label{class_pixel_map_a3e507bb5498294a211d2477a0e4b950e}} 
+void {\bfseries addheader} (std\+::string label, std\+::string \&value, std\+::string comment)
+\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -251,18 +291,6 @@ static void {\bfseries swap} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&,
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_pixel_map_abf39d14379b868d5b7503f57e5bbc5b8}\label{class_pixel_map_abf39d14379b868d5b7503f57e5bbc5b8}} 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_abf39d14379b868d5b7503f57e5bbc5b8}{operator+}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&, const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&)
-\begin{DoxyCompactList}\small\item\em Add two Pixel\+Maps. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pixel_map_a02f714d566c7bd1f331b4f70e3df1942}\label{class_pixel_map_a02f714d566c7bd1f331b4f70e3df1942}} 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_a02f714d566c7bd1f331b4f70e3df1942}{operator-\/}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&, const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&)
-\begin{DoxyCompactList}\small\item\em Subtract two Pixel\+Maps. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pixel_map_a02dc6d63f0a0438f0bdaf4cbb52205ab}\label{class_pixel_map_a02dc6d63f0a0438f0bdaf4cbb52205ab}} 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_a02dc6d63f0a0438f0bdaf4cbb52205ab}{operator$\ast$}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&, const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&)
-\begin{DoxyCompactList}\small\item\em Multiply two Pixel\+Maps. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pixel_map_a2d215b252bfbbcb73c98734c4b0b2e35}\label{class_pixel_map_a2d215b252bfbbcb73c98734c4b0b2e35}} 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_a2d215b252bfbbcb73c98734c4b0b2e35}{operator$\ast$}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&, Pos\+Type b)
-\begin{DoxyCompactList}\small\item\em Multiply two Pixel\+Maps. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_ad3dd1fcb2d47f249045280520158757d}\label{class_pixel_map_ad3dd1fcb2d47f249045280520158757d}} 
 void {\bfseries swap} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&)
 \end{DoxyCompactItemize}
@@ -306,11 +334,11 @@ Creates a new \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} from a square regio
 {\em my\+\_\+\+Npixels} & center of the region to be duplicated (in rads) size of the region to be duplicated (in pixels) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_pixel_map_ac8f828ed897cf21b6c58fbc662799a9e}\label{class_pixel_map_ac8f828ed897cf21b6c58fbc662799a9e}} 
+\mbox{\Hypertarget{class_pixel_map_a8f02a00ebc4eeef60aef2b363f5aa880}\label{class_pixel_map_a8f02a00ebc4eeef60aef2b363f5aa880}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
-{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{Npixels,  }\item[{double}]{resolution }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{Npixels,  }\item[{double}]{resolution,  }\item[{Pixel\+Map\+Units}]{u = {\ttfamily ndef} }\end{DoxyParamCaption})}
 
 
 
@@ -323,11 +351,11 @@ make square \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}
 {\em resolution} & Number of pixels in one dimension of map. One dimensional range of map in whatever units the point positions are in \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_pixel_map_ab47c999c5606d71fded6719a422435b7}\label{class_pixel_map_ab47c999c5606d71fded6719a422435b7}} 
+\mbox{\Hypertarget{class_pixel_map_aeac294bc5c760171c226095e5ffebe5f}\label{class_pixel_map_aeac294bc5c760171c226095e5ffebe5f}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
-{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{Nx,  }\item[{std\+::size\+\_\+t}]{Ny,  }\item[{double}]{resolution }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{Nx,  }\item[{std\+::size\+\_\+t}]{Ny,  }\item[{double}]{resolution,  }\item[{Pixel\+Map\+Units}]{u = {\ttfamily ndef} }\end{DoxyParamCaption})}
 
 
 
@@ -342,11 +370,11 @@ make rectangular \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with square pixe
 {\em resolution} & Number of pixels in y dimension of map. One dimensional range of map in whatever units the point positions are in \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_pixel_map_abbb6324ef72a652a01be316198e6708d}\label{class_pixel_map_abbb6324ef72a652a01be316198e6708d}} 
+\mbox{\Hypertarget{class_pixel_map_ab4e159db7dd869260237bdf20ca21602}\label{class_pixel_map_ab4e159db7dd869260237bdf20ca21602}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
-{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfilename,  }\item[{double}]{my\+\_\+res = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfilename,  }\item[{double}]{my\+\_\+res = {\ttfamily -\/1},  }\item[{Pixel\+Map\+Units}]{u = {\ttfamily ndef} }\end{DoxyParamCaption})}
 
 
 
@@ -475,7 +503,22 @@ The size, resolution and center of the pixel maps are not changed and do not nee
 
 For a list of pixel indexes this will count and separated islands that are not connected. 
 
-On return, \textquotesingle{}pixel\+\_\+index\textquotesingle{} is ordered into groups and the \textquotesingle{}heads\textquotesingle{} list points to the first elemant in each group plus the end of the list so that heads\mbox{[}i\mbox{]} to heads\mbox{[}i+1\mbox{]} is a group for 0 $<$= i $<$= ngroups. The number of groups is returned which is also heads.\+size() -\/ 1 \mbox{\Hypertarget{class_pixel_map_a185bcea843ddf3affbafedc4b8e38663}\label{class_pixel_map_a185bcea843ddf3affbafedc4b8e38663}} 
+On return, \textquotesingle{}pixel\+\_\+index\textquotesingle{} is ordered into groups and the \textquotesingle{}heads\textquotesingle{} list points to the first elemant in each group plus the end of the list so that heads\mbox{[}i\mbox{]} to heads\mbox{[}i+1\mbox{]} is a group for 0 $<$= i $<$= ngroups. The number of groups is returned which is also heads.\+size() -\/ 1 \mbox{\Hypertarget{class_pixel_map_a3cdbaacdbaa3861f586b9ffcf08d261a}\label{class_pixel_map_a3cdbaacdbaa3861f586b9ffcf08d261a}} 
+\index{PixelMap@{PixelMap}!downsize@{downsize}}
+\index{downsize@{downsize}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{downsize()}{downsize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Pixel\+Map\+::downsize (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with a lower resolution. The value of the pixels are added for the new pixels. If n does not go into the orginial number of pixels evenly the right (top) redge is dropped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & number of pixels each direction added into each new pixel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a185bcea843ddf3affbafedc4b8e38663}\label{class_pixel_map_a185bcea843ddf3affbafedc4b8e38663}} 
 \index{PixelMap@{PixelMap}!drawcircle@{drawcircle}}
 \index{drawcircle@{drawcircle}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{drawcircle()}{drawcircle()}}
@@ -606,19 +649,30 @@ Replace overlaping pixel values with those of the input map.
 
 No attempt is made to interpolate or average the pixels of pmap. No integration is done. If the resolution of input map is higher than the reslution of the map then the pixels values will just be that of the last pixel visited while going through them.
 
-This can be used to sew tiles together into a larger map. \mbox{\Hypertarget{class_pixel_map_a966d2ce5b9457f5af5c7e0694a9a6de8}\label{class_pixel_map_a966d2ce5b9457f5af5c7e0694a9a6de8}} 
+This can be used to sew tiles together into a larger map. \mbox{\Hypertarget{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}\label{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}} 
 \index{PixelMap@{PixelMap}!recenter@{recenter}}
 \index{recenter@{recenter}!PixelMap@{PixelMap}}
-\doxysubsubsection{\texorpdfstring{recenter()}{recenter()}}
-{\footnotesize\ttfamily void Pixel\+Map\+::recenter (\begin{DoxyParamCaption}\item[{Pos\+Type}]{c\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
-
-
-
-recenter the map without changing anything else 
+\doxysubsubsection{\texorpdfstring{recenter()}{recenter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Pixel\+Map\+::recenter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{newcenter }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em c} & new center \\
+{\em newcenter} & in radians \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a43e1dc3c823bcefb768639a03b97447a}\label{class_pixel_map_a43e1dc3c823bcefb768639a03b97447a}} 
+\index{PixelMap@{PixelMap}!recenter@{recenter}}
+\index{recenter@{recenter}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{recenter()}{recenter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Pixel\+Map\+::recenter (\begin{DoxyParamCaption}\item[{Pos\+Type}]{newcenter\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+recenter the map without changing anything else. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newcenter} & in radians \\
 \hline
 \end{DoxyParams}
 

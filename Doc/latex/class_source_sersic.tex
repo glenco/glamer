@@ -11,28 +11,14 @@ Class for sources described by a Sersic profile.
 
 
 
-Inheritance diagram for Source\+Sersic\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=155pt]{class_source_sersic__inherit__graph}
-\end{center}
-\end{figure}
+Inherits Source\+Colored.
 
-
-Collaboration diagram for Source\+Sersic\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=161pt]{class_source_sersic__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_source_sersic_a8c44a9185a4c1c953d7f654b0e88a0e4}{Source\+Sersic}} ()
 \begin{DoxyCompactList}\small\item\em sets values to invalid values \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_source_sersic_a217ce34aa05387cb5e37da7bdbad4721}{Source\+Sersic}} (double my\+\_\+mag, double my\+\_\+\+Reff, double my\+\_\+\+PA, double my\+\_\+index, double my\+\_\+q, double my\+\_\+z, const double $\ast$my\+\_\+theta=0)
+\mbox{\hyperlink{class_source_sersic_a549a6d632e717d0780a03cebc9470555}{Source\+Sersic}} (double my\+\_\+mag, double my\+\_\+\+Reff, double my\+\_\+\+PA, double my\+\_\+index, double my\+\_\+q, double my\+\_\+z)
 \item 
 \mbox{\Hypertarget{class_source_sersic_acdb31477e0d4436365706c272c77f6d3}\label{class_source_sersic_acdb31477e0d4436365706c272c77f6d3}} 
 {\bfseries Source\+Sersic} (const \mbox{\hyperlink{class_source_sersic}{Source\+Sersic}} \&p)
@@ -54,9 +40,6 @@ Pos\+Type {\bfseries get\+Axes\+Ratio} () const
 \mbox{\Hypertarget{class_source_sersic_a604f13d7cbd7be6fecb25243c007ef21}\label{class_source_sersic_a604f13d7cbd7be6fecb25243c007ef21}} 
 Pos\+Type \mbox{\hyperlink{class_source_sersic_a604f13d7cbd7be6fecb25243c007ef21}{get\+Reff}} () const
 \begin{DoxyCompactList}\small\item\em in arcseconds \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_sersic_a99ef9c802ceaef9279621f3d66af0cbc}\label{class_source_sersic_a99ef9c802ceaef9279621f3d66af0cbc}} 
-Pos\+Type {\bfseries get\+Mag} () const
-\item 
 \mbox{\Hypertarget{class_source_sersic_aa07d893adc3282cd9bfb55ab31aa8a33}\label{class_source_sersic_aa07d893adc3282cd9bfb55ab31aa8a33}} 
 Pos\+Type {\bfseries get\+PA} () const
 \item 
@@ -69,22 +52,17 @@ void {\bfseries set\+Axes\+Ratio} (Pos\+Type x)
 \mbox{\Hypertarget{class_source_sersic_ad59e14dd90b7b90cb25d2444b40319bb}\label{class_source_sersic_ad59e14dd90b7b90cb25d2444b40319bb}} 
 void {\bfseries set\+Reff} (Pos\+Type x)
 \item 
-\mbox{\Hypertarget{class_source_sersic_a9b2df024759976715e3e885b6b4e3dd8}\label{class_source_sersic_a9b2df024759976715e3e885b6b4e3dd8}} 
-void {\bfseries set\+Mag} (Pos\+Type x)
-\item 
 \mbox{\Hypertarget{class_source_sersic_a640470235948354c778a9ae550414dd3}\label{class_source_sersic_a640470235948354c778a9ae550414dd3}} 
 void {\bfseries set\+PA} (Pos\+Type x)
 \item 
-\mbox{\Hypertarget{class_source_sersic_a7a9dba4c710c1a314746758da7c3eb5d}\label{class_source_sersic_a7a9dba4c710c1a314746758da7c3eb5d}} 
-Pos\+Type {\bfseries get\+Total\+Flux} () const
+\mbox{\Hypertarget{class_source_sersic_ae2608a1220c3cad5d5062ff82716ee0a}\label{class_source_sersic_ae2608a1220c3cad5d5062ff82716ee0a}} 
+void {\bfseries rotate} (Pos\+Type theta)
 \item 
-\mbox{\Hypertarget{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}\label{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}} 
 Pos\+Type \mbox{\hyperlink{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}{Surface\+Brightness}} (Pos\+Type $\ast$x)
-\begin{DoxyCompactList}\small\item\em Surface brightness of source in grid coordinates not source centered coordinates. \end{DoxyCompactList}\item 
+\item 
 \mbox{\Hypertarget{class_source_sersic_a29319c236ceae18377c529a17bdbfbb3}\label{class_source_sersic_a29319c236ceae18377c529a17bdbfbb3}} 
 void {\bfseries print\+Source} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
 
 
 \doxysubsection{Detailed Description}
@@ -103,11 +81,11 @@ The sources are constructed from magnitude, half light radius Reff, Sersic index
 
 sets values to invalid values 
 
-set to values that hopefully will cause an error if it is used\mbox{\Hypertarget{class_source_sersic_a217ce34aa05387cb5e37da7bdbad4721}\label{class_source_sersic_a217ce34aa05387cb5e37da7bdbad4721}} 
+set to values that hopefully will cause an error if it is used\mbox{\Hypertarget{class_source_sersic_a549a6d632e717d0780a03cebc9470555}\label{class_source_sersic_a549a6d632e717d0780a03cebc9470555}} 
 \index{SourceSersic@{SourceSersic}!SourceSersic@{SourceSersic}}
 \index{SourceSersic@{SourceSersic}!SourceSersic@{SourceSersic}}
 \doxysubsubsection{\texorpdfstring{SourceSersic()}{SourceSersic()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Source\+Sersic\+::\+Source\+Sersic (\begin{DoxyParamCaption}\item[{double}]{my\+\_\+mag,  }\item[{double}]{my\+\_\+\+Reff,  }\item[{double}]{my\+\_\+\+PA,  }\item[{double}]{my\+\_\+index,  }\item[{double}]{my\+\_\+q,  }\item[{double}]{my\+\_\+z,  }\item[{const double $\ast$}]{my\+\_\+theta = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Sersic\+::\+Source\+Sersic (\begin{DoxyParamCaption}\item[{double}]{my\+\_\+mag,  }\item[{double}]{my\+\_\+\+Reff,  }\item[{double}]{my\+\_\+\+PA,  }\item[{double}]{my\+\_\+index,  }\item[{double}]{my\+\_\+q,  }\item[{double}]{my\+\_\+z }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -122,8 +100,6 @@ set to values that hopefully will cause an error if it is used\mbox{\Hypertarget
 {\em my\+\_\+q} & axes ratio \\
 \hline
 {\em my\+\_\+z} & redshift \\
-\hline
-{\em my\+\_\+theta} & optional angular position on the sky \\
 \hline
 \end{DoxyParams}
 
@@ -156,6 +132,18 @@ Reset all the parameters.
 {\em theta} & optional angular position on the sky \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}\label{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}} 
+\index{SourceSersic@{SourceSersic}!SurfaceBrightness@{SurfaceBrightness}}
+\index{SurfaceBrightness@{SurfaceBrightness}!SourceSersic@{SourceSersic}}
+\doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
+{\footnotesize\ttfamily Pos\+Type Source\+Sersic\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Surface brightness of source in grid coordinates not source centered coordinates.
+
+The units shuld be ergs / s / Hz / cm$^\wedge$2 / hplanck 
+
+Implements \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Source}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

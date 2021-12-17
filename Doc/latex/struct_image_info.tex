@@ -38,6 +38,8 @@ Kappa\+Type \mbox{\hyperlink{struct_image_info_aa5e443a2759f5db58ae58b9a15c3583f
 \begin{DoxyCompactList}\small\item\em Computes the inverse magnification averaged over the image, W\+A\+R\+N\+I\+NG\+: This is not always a good measure of the magnification. It is often better to use \mbox{\hyperlink{struct_image_info_a2667589deea2da312dac2800dddf4da4}{Image\+Info\+::area}} and the orginial size of the source near or do a flux waited average. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{struct_image_info_a017a34b6f03c2947a2835e32b71e702e}{closest\+Ray}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&y)
 \begin{DoxyCompactList}\small\item\em finds the ray in the image that is closest to the point y on the source plane \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_image_info_aaef1bff09313cac841ac44e82dac3afd}{closest\+Point}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&y)
+\begin{DoxyCompactList}\small\item\em finds the point in the image that is closest to the point y on the source plane \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_image_info_ac6a5cfe6e64a1a3b9dab07957678611c}\label{struct_image_info_ac6a5cfe6e64a1a3b9dab07957678611c}} 
 \mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{struct_image_info_ac6a5cfe6e64a1a3b9dab07957678611c}{highest\+Surface\+Brightness\+Ray}} ()
 \begin{DoxyCompactList}\small\item\em finds the ray in the image that has the highest surface brightness \end{DoxyCompactList}\item 
@@ -136,7 +138,17 @@ Treating the image as an arc, find its parameters, T\+H\+IS H\+AS N\+OT B\+E\+EN
 
 Computes the inverse magnification averaged over the image, W\+A\+R\+N\+I\+NG\+: This is not always a good measure of the magnification. It is often better to use \mbox{\hyperlink{struct_image_info_a2667589deea2da312dac2800dddf4da4}{Image\+Info\+::area}} and the orginial size of the source near or do a flux waited average. 
 
-Computes the inverse magnification averaged over the image. \mbox{\Hypertarget{struct_image_info_a017a34b6f03c2947a2835e32b71e702e}\label{struct_image_info_a017a34b6f03c2947a2835e32b71e702e}} 
+Computes the inverse magnification averaged over the image. \mbox{\Hypertarget{struct_image_info_aaef1bff09313cac841ac44e82dac3afd}\label{struct_image_info_aaef1bff09313cac841ac44e82dac3afd}} 
+\index{ImageInfo@{ImageInfo}!closestPoint@{closestPoint}}
+\index{closestPoint@{closestPoint}!ImageInfo@{ImageInfo}}
+\doxysubsubsection{\texorpdfstring{closestPoint()}{closestPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Image\+Info\+::closest\+Point (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{y }\end{DoxyParamCaption})}
+
+
+
+finds the point in the image that is closest to the point y on the source plane 
+
+Find the losest ray within the image to the source point y. \mbox{\Hypertarget{struct_image_info_a017a34b6f03c2947a2835e32b71e702e}\label{struct_image_info_a017a34b6f03c2947a2835e32b71e702e}} 
 \index{ImageInfo@{ImageInfo}!closestRay@{closestRay}}
 \index{closestRay@{closestRay}!ImageInfo@{ImageInfo}}
 \doxysubsubsection{\texorpdfstring{closestRay()}{closestRay()}}

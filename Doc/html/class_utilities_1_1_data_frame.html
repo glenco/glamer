@@ -68,6 +68,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_utilities_1_1_data_frame-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Utilities::DataFrame&lt; T &gt; Class Template Reference</div>  </div>
@@ -81,8 +82,14 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab7431f0ee7fa99758e14953e25ea6b9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_data_frame.html#ab7431f0ee7fa99758e14953e25ea6b9e">DataFrame</a> (std::string datafile, size_t MaxNumber=1000000, char comment_char='#', char deliniator=',')</td></tr>
-<tr class="separator:ab7431f0ee7fa99758e14953e25ea6b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb2e762b9cbdfc215657fb1d072faa13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_data_frame.html#afb2e762b9cbdfc215657fb1d072faa13">DataFrame</a> (std::string datafile, size_t MaxNumber=1000000, char comment_char='#', char deliniator=',', std::string replace=&quot;\\N&quot;, std::function&lt; bool(std::vector&lt; T &gt; &amp;)&gt; accept=[](std::vector&lt; T &gt; &amp;v){return true;})</td></tr>
+<tr class="separator:afb2e762b9cbdfc215657fb1d072faa13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26fe619dd3c68308f7045d98383aa478"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_data_frame.html#a26fe619dd3c68308f7045d98383aa478">input</a> (std::string datafile, size_t MaxNumber=1000000, char comment_char='#', char deliniator=',', std::string replace=&quot;\\N&quot;, std::function&lt; bool(std::vector&lt; T &gt; &amp;)&gt; accept=[](std::vector&lt; T &gt; &amp;v){return true;})</td></tr>
+<tr class="separator:a26fe619dd3c68308f7045d98383aa478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad799c4592a94bf8d6234975d69fd43e7"><td class="memItemLeft" align="right" valign="top"><a id="ad799c4592a94bf8d6234975d69fd43e7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_data_frame.html#ad799c4592a94bf8d6234975d69fd43e7">pop</a> (std::string colname)</td></tr>
+<tr class="memdesc:ad799c4592a94bf8d6234975d69fd43e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a column <br /></td></tr>
+<tr class="separator:ad799c4592a94bf8d6234975d69fd43e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c1bfb0f1c876a4e59160ff04266d690"><td class="memItemLeft" align="right" valign="top"><a id="a2c1bfb0f1c876a4e59160ff04266d690"></a>
 std::vector&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_data_frame.html#a2c1bfb0f1c876a4e59160ff04266d690">operator[]</a> (const std::string &amp;label)</td></tr>
 <tr class="memdesc:a2c1bfb0f1c876a4e59160ff04266d690"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns column by name <br /></td></tr>
@@ -99,21 +106,34 @@ std::vector&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom">
 std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilities_1_1_data_frame.html#ae90452dec09815b2ea9f7dd1bbcfb6d6">labels</a> () const</td></tr>
 <tr class="memdesc:ae90452dec09815b2ea9f7dd1bbcfb6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns labels of the columns from the data file <br /></td></tr>
 <tr class="separator:ae90452dec09815b2ea9f7dd1bbcfb6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7a88eb8f91267ceacea04f457f3e94"><td class="memItemLeft" align="right" valign="top"><a id="a4d7a88eb8f91267ceacea04f457f3e94"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>sortby</b> (std::string name)</td></tr>
+<tr class="separator:a4d7a88eb8f91267ceacea04f457f3e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e9daedbc5edf0e0516811f1917f8d85"><td class="memItemLeft" align="right" valign="top"><a id="a8e9daedbc5edf0e0516811f1917f8d85"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>shuffle</b> (<a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran)</td></tr>
+<tr class="separator:a8e9daedbc5edf0e0516811f1917f8d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd9c07b81400fa7e9a105a33bf833f59"><td class="memItemLeft" align="right" valign="top"><a id="acd9c07b81400fa7e9a105a33bf833f59"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_rows</b> ()</td></tr>
 <tr class="separator:acd9c07b81400fa7e9a105a33bf833f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa9e678c431ddd5881f154fccb599e59"><td class="memItemLeft" align="right" valign="top"><a id="aaa9e678c431ddd5881f154fccb599e59"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>number_of_columns</b> ()</td></tr>
 <tr class="separator:aaa9e678c431ddd5881f154fccb599e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:acf7e4aba511949c0cb550d30b8d1cb70"><td class="memItemLeft" align="right" valign="top"><a id="acf7e4aba511949c0cb550d30b8d1cb70"></a>
+std::vector&lt; std::vector&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr class="separator:acf7e4aba511949c0cb550d30b8d1cb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
 class Utilities::DataFrame&lt; T &gt;</h3>
 
 <p>class for impoting data from a csv file and allowing label string lookup like a data frame. </p>
+<p>The accept function can be used to limit the amount of data added. If there is an object, a, used to make this selection this can be done like [&amp;a](str::vector&lt;T&gt; &amp;v}{return a.itsok(v[3],v[4]);} where v corresponds to a row in the data file in order. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab7431f0ee7fa99758e14953e25ea6b9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7431f0ee7fa99758e14953e25ea6b9e">&#9670;&nbsp;</a></span>DataFrame()</h2>
+<a id="afb2e762b9cbdfc215657fb1d072faa13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2e762b9cbdfc215657fb1d072faa13">&#9670;&nbsp;</a></span>DataFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +165,19 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>deliniator</em> = <code>','</code>&#160;</td>
+          <td class="paramname"><em>deliniator</em> = <code>','</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>replace</em> = <code>&quot;\\N&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; bool(std::vector&lt; T &gt; &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>accept</em> = <code>[](std::vector&lt;T&gt;&#160;&amp;v){return&#160;true;}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -165,6 +197,82 @@ template&lt;typename T &gt; </div>
     <tr><td class="paramname">MaxNumber</td><td>maximum number of entries read </td></tr>
     <tr><td class="paramname">comment_char</td><td>comment charactor for header </td></tr>
     <tr><td class="paramname">deliniator</td><td>deliniator between values </td></tr>
+    <tr><td class="paramname">replace</td><td>replace this string with zeros </td></tr>
+    <tr><td class="paramname">accept</td><td>function that determines if a row should be accepted </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a26fe619dd3c68308f7045d98383aa478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26fe619dd3c68308f7045d98383aa478">&#9670;&nbsp;</a></span>input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_utilities_1_1_data_frame.html">Utilities::DataFrame</a>&lt; T &gt;::input </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>datafile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>MaxNumber</em> = <code>1000000</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>comment_char</em> = <code>'#'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>deliniator</em> = <code>','</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>replace</em> = <code>&quot;\\N&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; bool(std::vector&lt; T &gt; &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>accept</em> = <code>[](std::vector&lt;T&gt;&#160;&amp;v){return&#160;true;}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">datafile</td><td>input catalog file in csv format </td></tr>
+    <tr><td class="paramname">MaxNumber</td><td>maximum number of entries read </td></tr>
+    <tr><td class="paramname">comment_char</td><td>comment charactor for header </td></tr>
+    <tr><td class="paramname">deliniator</td><td>deliniator between values </td></tr>
+    <tr><td class="paramname">replace</td><td>replace this string with zeros </td></tr>
+    <tr><td class="paramname">accept</td><td>function that determines if a row should be accepted </td></tr>
   </table>
   </dd>
 </dl>
@@ -177,7 +285,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:40 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

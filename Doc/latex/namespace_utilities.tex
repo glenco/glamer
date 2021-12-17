@@ -2,7 +2,10 @@
 \label{namespace_utilities}\index{Utilities@{Utilities}}
 
 
-convert a Band type to a string name.  
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize} 
 
 
 \doxysubsection*{Namespaces}
@@ -32,7 +35,9 @@ class \mbox{\hyperlink{class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4}{M
 class \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Random\+Numbers\+\_\+\+NR}}
 \begin{DoxyCompactList}\small\item\em This is a class for generating random numbers. It simplifies and fool proofs initialization and allows for multiple independent series of numbers. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_utilities_1_1_shuffled_index}{Shuffled\+Index}}
-\begin{DoxyCompactList}\small\item\em Gives a randomized sequence of numbers from 0 to N-\/1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gives a randomized sequence of numbers from 0 to N-\/1. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utilities_1_1_symmetric_matrix}{Symmetric\+Matrix}}
+\begin{DoxyCompactList}\small\item\em Symetric matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,9 +48,9 @@ void {\bfseries print\+\_\+date} ()
 \item 
 {\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{namespace_utilities_a47aedfd83edf6f6637cc03da5413e94a}{fill\+\_\+logarithmic}} (std\+::vector$<$ T $>$ \&v, size\+\_\+t n, T min, T max)
 \item 
-{\footnotesize template$<$class T $>$ }\\int long \mbox{\hyperlink{namespace_utilities_a7bd6a986fd81b85b290cd9ab0034e3f8}{locate}} (const std\+::vector$<$ T $>$ \&v, const T x)
+{\footnotesize template$<$class T $>$ }\\long \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{locate}} (const std\+::vector$<$ T $>$ \&v, const T x)
 \item 
-{\footnotesize template$<$class T , class F $>$ }\\int \mbox{\hyperlink{namespace_utilities_af07d27fc678946de3bc659e5d7f9feda}{locate}} (const std\+::vector$<$ T $>$ \&v, F x, std\+::function$<$ bool(F, const T \&)$>$ less\+\_\+than)
+{\footnotesize template$<$class T , class F $>$ }\\long \mbox{\hyperlink{namespace_utilities_ab7663a1f094849a77cab564e61fcca49}{locate}} (const std\+::vector$<$ T $>$ \&v, F x, std\+::function$<$ bool(F, const T \&)$>$ less\+\_\+than)
 \item 
 \mbox{\Hypertarget{namespace_utilities_a0cfb54fff515cfd5d684572962f50c66}\label{namespace_utilities_a0cfb54fff515cfd5d684572962f50c66}} 
 {\footnotesize template$<$class T $>$ }\\void {\bfseries locate} (T $\ast$v, unsigned long n, T x, unsigned long $\ast$index)
@@ -131,17 +136,17 @@ void \mbox{\hyperlink{namespace_utilities_a069e88bf3ba4576f526f75cd607954d4}{qui
 \mbox{\Hypertarget{namespace_utilities_afe0f971972428328fbfecb023efa932b}\label{namespace_utilities_afe0f971972428328fbfecb023efa932b}} 
 void {\bfseries quicksort\+Points} (\mbox{\hyperlink{struct_point}{Point}} $\ast$pointarray, double($\ast$func)(\mbox{\hyperlink{struct_point}{Point}} \&), unsigned long N)
 \item 
-\mbox{\Hypertarget{namespace_utilities_acf0c3070a8f69f72a2f32a39f17ca277}\label{namespace_utilities_acf0c3070a8f69f72a2f32a39f17ca277}} 
-void {\bfseries quicksort} (unsigned long $\ast$particles, Pos\+Type $\ast$arr, unsigned long N)
+\mbox{\Hypertarget{namespace_utilities_a616805c8dcc25692640ce161f5d4d6be}\label{namespace_utilities_a616805c8dcc25692640ce161f5d4d6be}} 
+{\footnotesize template$<$typename D $>$ }\\void {\bfseries quicksort} (unsigned long $\ast$particles, D $\ast$arr, unsigned long N)
 \item 
-\mbox{\Hypertarget{namespace_utilities_ae9e7113bef6d90e6e85d0b25eaf06c93}\label{namespace_utilities_ae9e7113bef6d90e6e85d0b25eaf06c93}} 
-void {\bfseries quick\+Partition} (Pos\+Type pivotvalue, unsigned long $\ast$pivotindex, unsigned long $\ast$particles, Pos\+Type $\ast$arr, unsigned long N)
+\mbox{\Hypertarget{namespace_utilities_aa6be6f6a86b7b31f27b6d38ebcb93d6c}\label{namespace_utilities_aa6be6f6a86b7b31f27b6d38ebcb93d6c}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries quick\+Partition} (T pivotvalue, unsigned long $\ast$pivotindex, unsigned long $\ast$particles, T $\ast$arr, unsigned long N)
 \item 
-\mbox{\Hypertarget{namespace_utilities_a16748f779b70435ba98cef668ba62ac4}\label{namespace_utilities_a16748f779b70435ba98cef668ba62ac4}} 
-void {\bfseries quick\+Partition\+Points} (Pos\+Type pivotvalue, unsigned long $\ast$pivotindex, \mbox{\hyperlink{struct_point}{Point}} $\ast$pointsarray, Pos\+Type $\ast$arr, unsigned long N)
+\mbox{\Hypertarget{namespace_utilities_a0087080ad4336acd526aeb64e114176e}\label{namespace_utilities_a0087080ad4336acd526aeb64e114176e}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries quick\+Partition\+Points} (T pivotvalue, unsigned long $\ast$pivotindex, \mbox{\hyperlink{struct_point}{Point}} $\ast$pointarray, T $\ast$arr, unsigned long N)
 \item 
-\mbox{\Hypertarget{namespace_utilities_a9cb92660db855441bddb128d39fb968b}\label{namespace_utilities_a9cb92660db855441bddb128d39fb968b}} 
-void {\bfseries quick\+Partition\+Points} (Pos\+Type pivotvalue, unsigned long $\ast$pivotindex, \mbox{\hyperlink{struct_point}{Point}} $\ast$pointarray, Pos\+Type($\ast$func)(\mbox{\hyperlink{struct_point}{Point}} \&p), unsigned long N)
+\mbox{\Hypertarget{namespace_utilities_aed119e61f1d5a87c46cbc2e4e5e574e1}\label{namespace_utilities_aed119e61f1d5a87c46cbc2e4e5e574e1}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries quick\+Partition\+Points} (T pivotvalue, unsigned long $\ast$pivotindex, \mbox{\hyperlink{struct_point}{Point}} $\ast$pointarray, T($\ast$func)(\mbox{\hyperlink{struct_point}{Point}} \&p), unsigned long N)
 \item 
 \mbox{\Hypertarget{namespace_utilities_a606f4aebc622ae58090979fda604d1fc}\label{namespace_utilities_a606f4aebc622ae58090979fda604d1fc}} 
 void {\bfseries log\+\_\+polar\+\_\+grid} (\mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+points, Pos\+Type rmax, Pos\+Type rmin, Pos\+Type $\ast$center, long Ngrid)
@@ -194,8 +199,8 @@ Pos\+Type \mbox{\hyperlink{namespace_utilities_a2d063fcd59fdf742b8cbf0c57ef29104
 \mbox{\Hypertarget{namespace_utilities_af1cbfc7c5cbcb4525faabc04298eb54d}\label{namespace_utilities_af1cbfc7c5cbcb4525faabc04298eb54d}} 
 Pos\+Type {\bfseries Two\+D\+Interpolator} (Pos\+Type $\ast$map)
 \item 
-\mbox{\Hypertarget{namespace_utilities_aca843ce18cb36d8002f0878719ef7f24}\label{namespace_utilities_aca843ce18cb36d8002f0878719ef7f24}} 
-{\footnotesize template$<$typename T $>$ }\\int {\bfseries cutbox} (const T $\ast$center, Pos\+Type $\ast$p1, Pos\+Type $\ast$p2, float rmax)
+\mbox{\Hypertarget{namespace_utilities_a712b815d57f9f34d4d2e02209bfc1c2b}\label{namespace_utilities_a712b815d57f9f34d4d2e02209bfc1c2b}} 
+{\footnotesize template$<$typename T $>$ }\\int {\bfseries cutbox} (const T $\ast$center, T $\ast$p1, T $\ast$p2, float rmax)
 \item 
 \mbox{\Hypertarget{namespace_utilities_ac985ac1b171f2d550864536530bbac2f}\label{namespace_utilities_ac985ac1b171f2d550864536530bbac2f}} 
 {\footnotesize template$<$int lev$>$ }\\void \mbox{\hyperlink{namespace_utilities_ac985ac1b171f2d550864536530bbac2f}{quicksort\+Points\+\_\+multithread}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$pointarray, Pos\+Type $\ast$arr, unsigned long N, int level=0)
@@ -261,6 +266,12 @@ template$<$$>$ float {\bfseries to\+\_\+numeric$<$ float $>$} (const std\+::stri
 \item 
 \mbox{\Hypertarget{namespace_utilities_a5b3b8518238ba6cedc16d8012904c70f}\label{namespace_utilities_a5b3b8518238ba6cedc16d8012904c70f}} 
 template$<$$>$ double {\bfseries to\+\_\+numeric$<$ double $>$} (const std\+::string \&str)
+\item 
+\mbox{\Hypertarget{namespace_utilities_a32849c92ee172e983b4223072587ae6d}\label{namespace_utilities_a32849c92ee172e983b4223072587ae6d}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Always\+True} (T t)
+\item 
+\mbox{\Hypertarget{namespace_utilities_ab47b3f15baa661c5bb9cfd66acea8758}\label{namespace_utilities_ab47b3f15baa661c5bb9cfd66acea8758}} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Always\+False} (T t)
 \item 
 \mbox{\Hypertarget{namespace_utilities_a5364acb5691c4969be66653956508e6b}\label{namespace_utilities_a5364acb5691c4969be66653956508e6b}} 
 {\footnotesize template$<$class T $>$ }\\void {\bfseries Matrix} (T $\ast$$\ast$matrix, long rows, long cols)
@@ -334,11 +345,21 @@ const double {\bfseries n\+Xbin} =64.
 
 
 \doxysubsection{Detailed Description}
-convert a Band type to a string name. 
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
 
 The \mbox{\hyperlink{namespace_utilities}{Utilities}} namespace contains functions for wide use in many classes that perform generic tasks.
 
-The two functions below are inverses of each other for converting between a 1d array index and a square grid of positions Npixels in the number of point is 1 dimension index is between 0 and Npixels$\ast$\+Npixels-\/1 If x is outside of the region -\/1 is returned. 
+convert a Band type to a string name.
+
+
+\begin{DoxyItemize}
+\item \textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
+\item \textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
+\item The two functions below are inverses of each other for converting between a 1d array index and a square grid of positions Npixels in the number of point is 1 dimension index is between 0 and Npixels$\ast$\+Npixels-\/1 If x is outside of the region -\/1 is returned. 
+\end{DoxyItemize}
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{namespace_utilities_a1faf43d7dba91cb2697307c22249bc12}\label{namespace_utilities_a1faf43d7dba91cb2697307c22249bc12}} 
@@ -540,19 +561,19 @@ returns the index of v that is the largest value that is $<$= value
 {\em rank} & index in sorted\+\_\+index \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespace_utilities_a7bd6a986fd81b85b290cd9ab0034e3f8}\label{namespace_utilities_a7bd6a986fd81b85b290cd9ab0034e3f8}} 
+\mbox{\Hypertarget{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}\label{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}} 
 \index{Utilities@{Utilities}!locate@{locate}}
 \index{locate@{locate}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{locate()}{locate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$class T $>$ \\
-int long Utilities\+::locate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{v,  }\item[{const T}]{x }\end{DoxyParamCaption})}
+long Utilities\+::locate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{v,  }\item[{const T}]{x }\end{DoxyParamCaption})}
 
-Locates the element of the given vector which, together with the following element, brackets the given number. If x is smaller than the smallest entry or larger than the largest, the result is either -\/1 or n-\/1. \mbox{\Hypertarget{namespace_utilities_af07d27fc678946de3bc659e5d7f9feda}\label{namespace_utilities_af07d27fc678946de3bc659e5d7f9feda}} 
+Locates the element of the given vector which, together with the following element, brackets the given number. If x is smaller than the smallest entry or larger than the largest, the result is either -\/1 or n-\/1. \mbox{\Hypertarget{namespace_utilities_ab7663a1f094849a77cab564e61fcca49}\label{namespace_utilities_ab7663a1f094849a77cab564e61fcca49}} 
 \index{Utilities@{Utilities}!locate@{locate}}
 \index{locate@{locate}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{locate()}{locate()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$class T , class F $>$ \\
-int Utilities\+::locate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{v,  }\item[{F}]{x,  }\item[{std\+::function$<$ bool(F, const T \&)$>$}]{less\+\_\+than }\end{DoxyParamCaption})}
+long Utilities\+::locate (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{v,  }\item[{F}]{x,  }\item[{std\+::function$<$ bool(F, const T \&)$>$}]{less\+\_\+than }\end{DoxyParamCaption})}
 
 Locates the element of the given vector which, together with the following element, brackets the given number. If x is smaller than the smallest entry or larger than the largest, the result is either -\/1 or n-\/1. \mbox{\Hypertarget{namespace_utilities_afb7f32cbe2c0f17c06a106dee6726e98}\label{namespace_utilities_afb7f32cbe2c0f17c06a106dee6726e98}} 
 \index{Utilities@{Utilities}!nintegrateF@{nintegrateF}}

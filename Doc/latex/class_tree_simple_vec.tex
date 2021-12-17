@@ -1,8 +1,8 @@
-\hypertarget{class_tree_simple_vec}{}\doxysection{Tree\+Simple\+Vec$<$ T $>$ Class Template Reference}
-\label{class_tree_simple_vec}\index{TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}}
+\hypertarget{class_tree_simple_vec}{}\doxysection{Tree\+Simple\+Vec$<$ T, D $>$ Class Template Reference}
+\label{class_tree_simple_vec}\index{TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}}
 
 
-A tree for doing quick searches in multidimensional space. A pointer to an array of objects type T is provided. If they are in a vector, vector.\+data() can be put in the constructor. The order of objects in the array is not changed. If Mypos is not specified the method Pos\+Type $\ast$ T\+::x() must exist. It is this coordinate that is used for the object\textquotesingle{}s position. Another definition for the position of and object can made by specifying Mypos.  
+A tree for doing quick searches in multidimensional space. A pointer to an array of objects type T is provided. If they are in a vector, vector.\+data() can be put in the constructor. The order of objects in the array is not changed. If Mypos is not specified the method D $\ast$ T\+::x() must exist. It is this coordinate that is used for the object\textquotesingle{}s position. Another definition for the position of and object can made by specifying Mypos.  
 
 
 
@@ -11,11 +11,12 @@ A tree for doing quick searches in multidimensional space. A pointer to an array
 
 
 
-Collaboration diagram for Tree\+Simple\+Vec$<$ T $>$\+:\nopagebreak
+Collaboration diagram for Tree\+Simple\+Vec$<$ T, D $>$\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=239pt]{class_tree_simple_vec__coll__graph}
+\includegraphics[width=249pt]{class_tree_simple_vec__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Classes}
@@ -26,141 +27,144 @@ struct \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_tree_simple_vec_af1dbf59aff92eb82962d32d0d13ad51d}{Tree\+Simple\+Vec}} (T $\ast$xpt, Index\+Type Npoints, int bucket=5, int dimensions=2, bool median=true, Pos\+Type $\ast$($\ast$Mypos)(T \&)=\mbox{[}$\,$\mbox{]}(T \&in)\{return in.\+x;\})
+\mbox{\hyperlink{class_tree_simple_vec_a3c16345dc674e6c70585ad8fd75a8b18}{Tree\+Simple\+Vec}} (T $\ast$xpt, Index\+Type Npoints, int bucket=5, int dimensions=2, bool median=true, D $\ast$($\ast$Mypos)(T \&)=\mbox{[}$\,$\mbox{]}(T \&in)\{return in.\+x;\})
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a68bc857d42c2563f73350ced451af84d}\label{class_tree_simple_vec_a68bc857d42c2563f73350ced451af84d}} 
-void \mbox{\hyperlink{class_tree_simple_vec_a68bc857d42c2563f73350ced451af84d}{Points\+Within\+Circle}} (Pos\+Type center\mbox{[}2\mbox{]}, float radius, std\+::list$<$ unsigned long $>$ \&neighborkist)
+\mbox{\Hypertarget{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}\label{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}} 
+void \mbox{\hyperlink{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}{Points\+Within\+Circle}} (D center\mbox{[}2\mbox{]}, float radius, std\+::list$<$ unsigned long $>$ \&neighborkist)
 \begin{DoxyCompactList}\small\item\em Finds the points within a circle around center and puts their index numbers in a list. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_tree_simple_vec_a4a693b0a1221459592fe40525da7ebab}\label{class_tree_simple_vec_a4a693b0a1221459592fe40525da7ebab}} 
-void \mbox{\hyperlink{class_tree_simple_vec_a4a693b0a1221459592fe40525da7ebab}{Points\+Within\+Ellipse}} (Pos\+Type center\mbox{[}2\mbox{]}, float a\+\_\+max, float a\+\_\+min, float posangle, std\+::list$<$ unsigned long $>$ \&neighborkist)
+\mbox{\Hypertarget{class_tree_simple_vec_a35f2659d431f1ccae4c48f5db4c8eb4d}\label{class_tree_simple_vec_a35f2659d431f1ccae4c48f5db4c8eb4d}} 
+void \mbox{\hyperlink{class_tree_simple_vec_a35f2659d431f1ccae4c48f5db4c8eb4d}{Points\+Within\+Ellipse}} (D center\mbox{[}2\mbox{]}, float a\+\_\+max, float a\+\_\+min, float posangle, std\+::list$<$ unsigned long $>$ \&neighborkist)
 \begin{DoxyCompactList}\small\item\em Finds the points within an ellipse around center and puts their index numbers in a list. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_tree_simple_vec_a1b60bd3d296df8aa00825b5657be8902}{Nearest\+Neighbors}} (Pos\+Type $\ast$ray, int Nneighbors, float $\ast$radius, Index\+Type $\ast$neighbors)
+void \mbox{\hyperlink{class_tree_simple_vec_afefb9e161e470e7b45a9dbde99b84fff}{Nearest\+Neighbors}} (D $\ast$ray, int Nneighbors, float $\ast$radius, Index\+Type $\ast$neighbors)
 \begin{DoxyCompactList}\small\item\em Finds the nearest N neighbors and puts their index numbers in an array, also returns the distance to the Nth neighbor for calculating smoothing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a1188a771866eeaa6b132040a4afdba26}\label{class_tree_simple_vec_a1188a771866eeaa6b132040a4afdba26}} 
+\mbox{\Hypertarget{class_tree_simple_vec_abe1e772101278e336159723df4ffbc32}\label{class_tree_simple_vec_abe1e772101278e336159723df4ffbc32}} 
 void {\bfseries Build\+Tree} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ae7ebc856350266b6699a8de9ad171864}\label{class_tree_simple_vec_ae7ebc856350266b6699a8de9ad171864}} 
+\mbox{\Hypertarget{class_tree_simple_vec_ace9ea7ee4b4cfef3bf0ab715f509fabd}\label{class_tree_simple_vec_ace9ea7ee4b4cfef3bf0ab715f509fabd}} 
 void {\bfseries \+\_\+\+Build\+Tree} (Index\+Type nparticles, Index\+Type $\ast$tmp\+\_\+index)
 \item 
-void \mbox{\hyperlink{class_tree_simple_vec_a65105a08cf9d4c9922672e1022de6348}{\+\_\+\+Points\+Within}} (Pos\+Type $\ast$ray, float $\ast$rmax, std\+::list$<$ unsigned long $>$ \&neighborkist)
+void \mbox{\hyperlink{class_tree_simple_vec_a06807f5aedea8aad3d836b6b56b7b1c6}{\+\_\+\+Points\+Within}} (D $\ast$ray, float $\ast$rmax, std\+::list$<$ unsigned long $>$ \&neighborkist)
 \item 
-void \mbox{\hyperlink{class_tree_simple_vec_a15d8887300259ba921e63467eb5eb1cb}{\+\_\+\+Nearest\+Neighbors}} (Pos\+Type $\ast$ray, int Nneighbors, unsigned long $\ast$neighbors, Pos\+Type $\ast$rneighbors)
+void \mbox{\hyperlink{class_tree_simple_vec_ac71ffe3e4d77b7c17205d797d7429ae6}{\+\_\+\+Nearest\+Neighbors}} (D $\ast$ray, int Nneighbors, unsigned long $\ast$neighbors, D $\ast$rneighbors)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ac152bbd6e831760467333a8c6da4ccaa}\label{class_tree_simple_vec_ac152bbd6e831760467333a8c6da4ccaa}} 
-void \mbox{\hyperlink{class_tree_simple_vec_ac152bbd6e831760467333a8c6da4ccaa}{free\+Tree}} ()
+\mbox{\Hypertarget{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}\label{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}} 
+void \mbox{\hyperlink{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}{free\+Tree}} ()
 \begin{DoxyCompactList}\small\item\em Free all the tree branches. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_tree_simple_vec_aacc0b953df0c8837e2ef9e4ec31542dc}\label{class_tree_simple_vec_aacc0b953df0c8837e2ef9e4ec31542dc}} 
-short {\bfseries empty\+Tree} ()
+\mbox{\Hypertarget{class_tree_simple_vec_aa677d5c211b9f1c08571877016c96a96}\label{class_tree_simple_vec_aa677d5c211b9f1c08571877016c96a96}} 
+short {\bfseries clear\+Tree} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a1693ee34af0aeb5a1b0c09d0c278effc}\label{class_tree_simple_vec_a1693ee34af0aeb5a1b0c09d0c278effc}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a282e161ef74e8a0a61381040355998f9}\label{class_tree_simple_vec_a282e161ef74e8a0a61381040355998f9}} 
 void {\bfseries \+\_\+free\+Tree} (short child)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a90c7a872db3493f34e5bf98ef2978efe}\label{class_tree_simple_vec_a90c7a872db3493f34e5bf98ef2978efe}} 
+\mbox{\Hypertarget{class_tree_simple_vec_ac09ed1dfe5dba4b0b06759a10f237745}\label{class_tree_simple_vec_ac09ed1dfe5dba4b0b06759a10f237745}} 
 bool {\bfseries is\+Empty} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ab23d3a7f65a421b010373a9d28ed4bdf}\label{class_tree_simple_vec_ab23d3a7f65a421b010373a9d28ed4bdf}} 
+\mbox{\Hypertarget{class_tree_simple_vec_ad2593ff3b63746f388c8be9f2c71f58e}\label{class_tree_simple_vec_ad2593ff3b63746f388c8be9f2c71f58e}} 
 bool {\bfseries at\+Top} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a0c2bf6099da6080f63b5f2c0c95c01d8}\label{class_tree_simple_vec_a0c2bf6099da6080f63b5f2c0c95c01d8}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a371cc230dc38f0b50df762a6f4e69e88}\label{class_tree_simple_vec_a371cc230dc38f0b50df762a6f4e69e88}} 
 bool {\bfseries no\+Child} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a61be9948303669590280702c16f58911}\label{class_tree_simple_vec_a61be9948303669590280702c16f58911}} 
+\mbox{\Hypertarget{class_tree_simple_vec_ad5faf224b84baa1c51a0a5a306e20f99}\label{class_tree_simple_vec_ad5faf224b84baa1c51a0a5a306e20f99}} 
 bool {\bfseries off\+End} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_aa081b5771214b40036375cf7bc0270dc}\label{class_tree_simple_vec_aa081b5771214b40036375cf7bc0270dc}} 
+\mbox{\Hypertarget{class_tree_simple_vec_afe1b7cc72c3dcfeba547f4f292066d7d}\label{class_tree_simple_vec_afe1b7cc72c3dcfeba547f4f292066d7d}} 
 void {\bfseries get\+Current} (Index\+Type $\ast$branch\+\_\+index, Index\+Type $\ast$nparticles)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a77353617917eae96eb246ac7921bad17}\label{class_tree_simple_vec_a77353617917eae96eb246ac7921bad17}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a4970357fb08806cdad0cdc1a3a665d7a}\label{class_tree_simple_vec_a4970357fb08806cdad0cdc1a3a665d7a}} 
 unsigned long {\bfseries get\+Nbranches} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a4b5636282c40932ca6beecd49b0f8928}\label{class_tree_simple_vec_a4b5636282c40932ca6beecd49b0f8928}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a7addfa0d1e72741bd3f89724a50fcc6d}\label{class_tree_simple_vec_a7addfa0d1e72741bd3f89724a50fcc6d}} 
 void {\bfseries move\+Top} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a508e06045c86ebc1bf2c3d29752c6cd1}\label{class_tree_simple_vec_a508e06045c86ebc1bf2c3d29752c6cd1}} 
+\mbox{\Hypertarget{class_tree_simple_vec_adcaa0e795840ed6c2d6854cc87bda2c6}\label{class_tree_simple_vec_adcaa0e795840ed6c2d6854cc87bda2c6}} 
 void {\bfseries move\+Up} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a58996009d8fa9ed725d81ded7e007d3c}\label{class_tree_simple_vec_a58996009d8fa9ed725d81ded7e007d3c}} 
+\mbox{\Hypertarget{class_tree_simple_vec_aa80980e4e39eb90e93a5cb2f166dfec4}\label{class_tree_simple_vec_aa80980e4e39eb90e93a5cb2f166dfec4}} 
 void {\bfseries move\+To\+Child} (int child)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a758d5ec00f2dff561c071444d3932555}\label{class_tree_simple_vec_a758d5ec00f2dff561c071444d3932555}} 
-void {\bfseries attach\+Child\+To\+Current} (Index\+Type $\ast$branch\+\_\+index, Index\+Type nparticles, Pos\+Type boundary\+\_\+p1\mbox{[}$\,$\mbox{]}, Pos\+Type boundary\+\_\+p2\mbox{[}$\,$\mbox{]}, int child)
+\mbox{\Hypertarget{class_tree_simple_vec_acb1da0c8de66d3673e179909132d95c6}\label{class_tree_simple_vec_acb1da0c8de66d3673e179909132d95c6}} 
+void {\bfseries attach\+Child\+To\+Current} (Index\+Type $\ast$branch\+\_\+index, Index\+Type nparticles, D boundary\+\_\+p1\mbox{[}$\,$\mbox{]}, D boundary\+\_\+p2\mbox{[}$\,$\mbox{]}, int child)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ab2ac8218c6ac353ad5818792db607721}\label{class_tree_simple_vec_ab2ac8218c6ac353ad5818792db607721}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a4c1859bfc3817e6b835329fb981500e7}\label{class_tree_simple_vec_a4c1859bfc3817e6b835329fb981500e7}} 
 void {\bfseries attach\+Child\+To\+Current} (\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} \&data, int child)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a74aede58fc063cdf754dd0de1ff886aa}\label{class_tree_simple_vec_a74aede58fc063cdf754dd0de1ff886aa}} 
+\mbox{\Hypertarget{class_tree_simple_vec_ae602ee326065c24f8bd3efedaee93e81}\label{class_tree_simple_vec_ae602ee326065c24f8bd3efedaee93e81}} 
 bool {\bfseries Tree\+Walk\+Step} (bool allow\+Descent)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_aa77f6847a7f1e1b3a2c378907163b41a}\label{class_tree_simple_vec_aa77f6847a7f1e1b3a2c378907163b41a}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a7bf5c5aff465dc9bc096b17cadea4506}\label{class_tree_simple_vec_a7bf5c5aff465dc9bc096b17cadea4506}} 
 bool {\bfseries at\+Leaf} ()
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_aea7210066cca2f0eebf53ad8551a6353}\label{class_tree_simple_vec_aea7210066cca2f0eebf53ad8551a6353}} 
-bool {\bfseries inbox} (const Pos\+Type $\ast$center, Pos\+Type $\ast$p1, Pos\+Type $\ast$p2)
+\mbox{\Hypertarget{class_tree_simple_vec_afcd0699377564436f58c1af7d9c2bebd}\label{class_tree_simple_vec_afcd0699377564436f58c1af7d9c2bebd}} 
+bool {\bfseries inbox} (const D $\ast$center, D $\ast$p1, D $\ast$p2)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_af45fbb3eb2a00c5de8ffedb5ea242a1e}\label{class_tree_simple_vec_af45fbb3eb2a00c5de8ffedb5ea242a1e}} 
+\mbox{\Hypertarget{class_tree_simple_vec_af08d8e832758f27964e4d056a3aae279}\label{class_tree_simple_vec_af08d8e832758f27964e4d056a3aae279}} 
 int {\bfseries incell}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a8e1580388fef0f5fd2a6750dbb76e98a}\label{class_tree_simple_vec_a8e1580388fef0f5fd2a6750dbb76e98a}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a6a96ff599fe085dd70f62167b809b239}\label{class_tree_simple_vec_a6a96ff599fe085dd70f62167b809b239}} 
 int {\bfseries incell2}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a70329b1766f9b52168e74538022d55cb}\label{class_tree_simple_vec_a70329b1766f9b52168e74538022d55cb}} 
-Index\+Type $\ast$ {\bfseries index}
+\mbox{\Hypertarget{class_tree_simple_vec_a8d633c93171c1da50b21fbffa37e6bfc}\label{class_tree_simple_vec_a8d633c93171c1da50b21fbffa37e6bfc}} 
+std\+::vector$<$ Index\+Type $>$ {\bfseries index}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ad8b42ba38ac93e25d51fe12222106cb1}\label{class_tree_simple_vec_ad8b42ba38ac93e25d51fe12222106cb1}} 
+\mbox{\Hypertarget{class_tree_simple_vec_afa7b18bda2755cb790648f157dc66c7b}\label{class_tree_simple_vec_afa7b18bda2755cb790648f157dc66c7b}} 
 Index\+Type {\bfseries Nparticles}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ac5decda514ed0e8b803c303c389773c3}\label{class_tree_simple_vec_ac5decda514ed0e8b803c303c389773c3}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a643c0f951db0fd85ee319d1018c54e60}\label{class_tree_simple_vec_a643c0f951db0fd85ee319d1018c54e60}} 
 bool {\bfseries median\+\_\+cut}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a9f767ce03f2beee99c7f7ff8823d8867}\label{class_tree_simple_vec_a9f767ce03f2beee99c7f7ff8823d8867}} 
+\mbox{\Hypertarget{class_tree_simple_vec_adf1fc26a5f415e49a2935f52ef368f4c}\label{class_tree_simple_vec_adf1fc26a5f415e49a2935f52ef368f4c}} 
 int {\bfseries Nbucket}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a8db2a22856221450a10c4e132a07922b}\label{class_tree_simple_vec_a8db2a22856221450a10c4e132a07922b}} 
-Pos\+Type {\bfseries realray} \mbox{[}2\mbox{]}
+\mbox{\Hypertarget{class_tree_simple_vec_ab652a8414b6c0c2eda921702ee2afdbc}\label{class_tree_simple_vec_ab652a8414b6c0c2eda921702ee2afdbc}} 
+D {\bfseries realray} \mbox{[}2\mbox{]}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ab0a8f81f7860cc587165d0d71428fc20}\label{class_tree_simple_vec_ab0a8f81f7860cc587165d0d71428fc20}} 
+\mbox{\Hypertarget{class_tree_simple_vec_ab12580702c34b069979e25336e201ff3}\label{class_tree_simple_vec_ab12580702c34b069979e25336e201ff3}} 
 T $\ast$ {\bfseries points}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_aec8ce5ce9bbc21dfee19ccb4ea6522d4}\label{class_tree_simple_vec_aec8ce5ce9bbc21dfee19ccb4ea6522d4}} 
-Pos\+Type $\ast$($\ast$ {\bfseries position} )(T \&)
+\mbox{\Hypertarget{class_tree_simple_vec_a37ac44b9c6b1877af5f2895eb21d7a56}\label{class_tree_simple_vec_a37ac44b9c6b1877af5f2895eb21d7a56}} 
+D $\ast$($\ast$ {\bfseries position} )(T \&)
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a75d3c256a63f95da0057a12db5623049}\label{class_tree_simple_vec_a75d3c256a63f95da0057a12db5623049}} 
+\mbox{\Hypertarget{class_tree_simple_vec_aaa9f936256ae2b2cfd0020b58737bfbe}\label{class_tree_simple_vec_aaa9f936256ae2b2cfd0020b58737bfbe}} 
+std\+::vector$<$ D $>$ {\bfseries workspace}
+\item 
+\mbox{\Hypertarget{class_tree_simple_vec_a4726fc119de45202077976366bbbc2bc}\label{class_tree_simple_vec_a4726fc119de45202077976366bbbc2bc}} 
 \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} $\ast$ {\bfseries top}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a412d0f6f183c67a5a2ce26982673f461}\label{class_tree_simple_vec_a412d0f6f183c67a5a2ce26982673f461}} 
+\mbox{\Hypertarget{class_tree_simple_vec_a69269746148ca24051c25336c06b44ab}\label{class_tree_simple_vec_a69269746148ca24051c25336c06b44ab}} 
 \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} $\ast$ {\bfseries current}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a16dcf35790fe3e9cf45a87f1363d0b60}\label{class_tree_simple_vec_a16dcf35790fe3e9cf45a87f1363d0b60}} 
-unsigned long \mbox{\hyperlink{class_tree_simple_vec_a16dcf35790fe3e9cf45a87f1363d0b60}{Nbranches}}
+\mbox{\Hypertarget{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}\label{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}} 
+unsigned long \mbox{\hyperlink{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}{Nbranches}}
 \begin{DoxyCompactList}\small\item\em number of branches in tree \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_tree_simple_vec_adad8d653a11fa9754de41463e5a5c848}\label{class_tree_simple_vec_adad8d653a11fa9754de41463e5a5c848}} 
-short \mbox{\hyperlink{class_tree_simple_vec_adad8d653a11fa9754de41463e5a5c848}{Ndimensions}}
+\mbox{\Hypertarget{class_tree_simple_vec_aee0947fb0dc9b75c1a217ba17c9a0d52}\label{class_tree_simple_vec_aee0947fb0dc9b75c1a217ba17c9a0d52}} 
+short \mbox{\hyperlink{class_tree_simple_vec_aee0947fb0dc9b75c1a217ba17c9a0d52}{Ndimensions}}
 \begin{DoxyCompactList}\small\item\em Dimension of tree, 2 or 3. This will dictate how the force is calculated. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$class T$>$\newline
-class Tree\+Simple\+Vec$<$ T $>$}
+\subsubsection*{template$<$typename T, typename D = Pos\+Type$>$\newline
+class Tree\+Simple\+Vec$<$ T, D $>$}
 
-A tree for doing quick searches in multidimensional space. A pointer to an array of objects type T is provided. If they are in a vector, vector.\+data() can be put in the constructor. The order of objects in the array is not changed. If Mypos is not specified the method Pos\+Type $\ast$ T\+::x() must exist. It is this coordinate that is used for the object\textquotesingle{}s position. Another definition for the position of and object can made by specifying Mypos. 
+A tree for doing quick searches in multidimensional space. A pointer to an array of objects type T is provided. If they are in a vector, vector.\+data() can be put in the constructor. The order of objects in the array is not changed. If Mypos is not specified the method D $\ast$ T\+::x() must exist. It is this coordinate that is used for the object\textquotesingle{}s position. Another definition for the position of and object can made by specifying Mypos. 
 
 \mbox{\hyperlink{simple_tree_vec_8h_source}{simple\+Tree\+Vec.\+h}}
 
 Created on\+: Oct 14, 2011 Author\+: bmetcalf 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_tree_simple_vec_af1dbf59aff92eb82962d32d0d13ad51d}\label{class_tree_simple_vec_af1dbf59aff92eb82962d32d0d13ad51d}} 
-\index{TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}!TreeSimpleVec@{TreeSimpleVec}}
-\index{TreeSimpleVec@{TreeSimpleVec}!TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}}
+\mbox{\Hypertarget{class_tree_simple_vec_a3c16345dc674e6c70585ad8fd75a8b18}\label{class_tree_simple_vec_a3c16345dc674e6c70585ad8fd75a8b18}} 
+\index{TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}!TreeSimpleVec@{TreeSimpleVec}}
+\index{TreeSimpleVec@{TreeSimpleVec}!TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}}
 \doxysubsubsection{\texorpdfstring{TreeSimpleVec()}{TreeSimpleVec()}}
-{\footnotesize\ttfamily template$<$class T $>$ \\
-\mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T $>$\+::\mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}} (\begin{DoxyParamCaption}\item[{T $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{int}]{dimensions = {\ttfamily 2},  }\item[{bool}]{median = {\ttfamily true},  }\item[{Pos\+Type $\ast$($\ast$)(T \&)}]{Mypos = {\ttfamily \mbox{[}\mbox{]}(T\&~in)\{return~in.x;\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$typename T , typename D  = Pos\+Type$>$ \\
+\mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T, D $>$\+::\mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}} (\begin{DoxyParamCaption}\item[{T $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{int}]{dimensions = {\ttfamily 2},  }\item[{bool}]{median = {\ttfamily true},  }\item[{D $\ast$($\ast$)(T \&)}]{Mypos = {\ttfamily \mbox{[}\mbox{]}(T\&~in)\{return~in.x;\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -180,26 +184,26 @@ Created on\+: Oct 14, 2011 Author\+: bmetcalf
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_tree_simple_vec_a15d8887300259ba921e63467eb5eb1cb}\label{class_tree_simple_vec_a15d8887300259ba921e63467eb5eb1cb}} 
-\index{TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}!\_NearestNeighbors@{\_NearestNeighbors}}
-\index{\_NearestNeighbors@{\_NearestNeighbors}!TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}}
+\mbox{\Hypertarget{class_tree_simple_vec_ac71ffe3e4d77b7c17205d797d7429ae6}\label{class_tree_simple_vec_ac71ffe3e4d77b7c17205d797d7429ae6}} 
+\index{TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}!\_NearestNeighbors@{\_NearestNeighbors}}
+\index{\_NearestNeighbors@{\_NearestNeighbors}!TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}}
 \doxysubsubsection{\texorpdfstring{\_NearestNeighbors()}{\_NearestNeighbors()}}
-{\footnotesize\ttfamily template$<$class T $>$ \\
-void \mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T $>$\+::\+\_\+\+Nearest\+Neighbors (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{ray,  }\item[{int}]{Nneighbors,  }\item[{unsigned long $\ast$}]{neighbors,  }\item[{Pos\+Type $\ast$}]{rneighbors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily template$<$typename T , typename D $>$ \\
+void \mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T, D $>$\+::\+\_\+\+Nearest\+Neighbors (\begin{DoxyParamCaption}\item[{D $\ast$}]{ray,  }\item[{int}]{Nneighbors,  }\item[{unsigned long $\ast$}]{neighbors,  }\item[{D $\ast$}]{rneighbors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-if ray found in second child go back to first to search for neighbors\mbox{\Hypertarget{class_tree_simple_vec_a65105a08cf9d4c9922672e1022de6348}\label{class_tree_simple_vec_a65105a08cf9d4c9922672e1022de6348}} 
-\index{TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}!\_PointsWithin@{\_PointsWithin}}
-\index{\_PointsWithin@{\_PointsWithin}!TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}}
+if ray found in second child go back to first to search for neighbors\mbox{\Hypertarget{class_tree_simple_vec_a06807f5aedea8aad3d836b6b56b7b1c6}\label{class_tree_simple_vec_a06807f5aedea8aad3d836b6b56b7b1c6}} 
+\index{TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}!\_PointsWithin@{\_PointsWithin}}
+\index{\_PointsWithin@{\_PointsWithin}!TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}}
 \doxysubsubsection{\texorpdfstring{\_PointsWithin()}{\_PointsWithin()}}
-{\footnotesize\ttfamily template$<$class T $>$ \\
-void \mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T $>$\+::\+\_\+\+Points\+Within (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{ray,  }\item[{float $\ast$}]{rmax,  }\item[{std\+::list$<$ unsigned long $>$ \&}]{neighborlist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily template$<$typename T , typename D $>$ \\
+void \mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T, D $>$\+::\+\_\+\+Points\+Within (\begin{DoxyParamCaption}\item[{D $\ast$}]{ray,  }\item[{float $\ast$}]{rmax,  }\item[{std\+::list$<$ unsigned long $>$ \&}]{neighborlist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-Used in Points\+Within\+Kist() to walk tree. \mbox{\Hypertarget{class_tree_simple_vec_a1b60bd3d296df8aa00825b5657be8902}\label{class_tree_simple_vec_a1b60bd3d296df8aa00825b5657be8902}} 
-\index{TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}!NearestNeighbors@{NearestNeighbors}}
-\index{NearestNeighbors@{NearestNeighbors}!TreeSimpleVec$<$ T $>$@{TreeSimpleVec$<$ T $>$}}
+Used in Points\+Within\+Kist() to walk tree. \mbox{\Hypertarget{class_tree_simple_vec_afefb9e161e470e7b45a9dbde99b84fff}\label{class_tree_simple_vec_afefb9e161e470e7b45a9dbde99b84fff}} 
+\index{TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}!NearestNeighbors@{NearestNeighbors}}
+\index{NearestNeighbors@{NearestNeighbors}!TreeSimpleVec$<$ T, D $>$@{TreeSimpleVec$<$ T, D $>$}}
 \doxysubsubsection{\texorpdfstring{NearestNeighbors()}{NearestNeighbors()}}
-{\footnotesize\ttfamily template$<$class T $>$ \\
-void \mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T $>$\+::Nearest\+Neighbors (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{ray,  }\item[{int}]{Nneighbors,  }\item[{float $\ast$}]{radius,  }\item[{Index\+Type $\ast$}]{neighborsout }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily template$<$typename T , typename D $>$ \\
+void \mbox{\hyperlink{class_tree_simple_vec}{Tree\+Simple\+Vec}}$<$ T, D $>$\+::Nearest\+Neighbors (\begin{DoxyParamCaption}\item[{D $\ast$}]{ray,  }\item[{int}]{Nneighbors,  }\item[{float $\ast$}]{radius,  }\item[{Index\+Type $\ast$}]{neighborsout }\end{DoxyParamCaption})}
 
 
 

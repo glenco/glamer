@@ -94,7 +94,8 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="struct_lens_map.html">LensMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="struct_lens_map.html">LensMap</a> &amp;&amp;m)</td></tr>
 <tr class="separator:a5b1fa482c54dbfcd3de7933a8a910f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf40fc79305c8279315a79a78c2a7969"><td class="memItemLeft" align="right" valign="top"><a id="aaf40fc79305c8279315a79a78c2a7969"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>x_resolution</b> ()</td></tr>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#aaf40fc79305c8279315a79a78c2a7969">x_resolution</a> ()</td></tr>
+<tr class="memdesc:aaf40fc79305c8279315a79a78c2a7969"><td class="mdescLeft">&#160;</td><td class="mdescRight">resolution in Mpc <br /></td></tr>
 <tr class="separator:aaf40fc79305c8279315a79a78c2a7969"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4568b767ae40249a73a6c35c8f4fde8f"><td class="memItemLeft" align="right" valign="top"><a id="a4568b767ae40249a73a6c35c8f4fde8f"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>y_resolution</b> ()</td></tr>
@@ -108,6 +109,54 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>y_range</b> ()</td>
 <tr class="memitem:ab9a49f1c5f20b0ef1fb8314d5767bb4b"><td class="memItemLeft" align="right" valign="top"><a id="ab9a49f1c5f20b0ef1fb8314d5767bb4b"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>evaluate</b> (const double *x, float &amp;sigma, float *gamma, double *alpha)</td></tr>
 <tr class="separator:ab9a49f1c5f20b0ef1fb8314d5767bb4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1d65c52bb87cf53c2c4e035a8dcc0c"><td class="memItemLeft" align="right" valign="top"><a id="a5d1d65c52bb87cf53c2c4e035a8dcc0c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LensMap</b> (std::string fits_input_file, double angDist)</td></tr>
+<tr class="separator:a5d1d65c52bb87cf53c2c4e035a8dcc0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a473194bfbf830c18f993cb1704769c15"><td class="memItemLeft" align="right" valign="top"><a id="a473194bfbf830c18f993cb1704769c15"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a473194bfbf830c18f993cb1704769c15">read</a> (std::string input_fits, double angDist)</td></tr>
+<tr class="memdesc:a473194bfbf830c18f993cb1704769c15"><td class="mdescLeft">&#160;</td><td class="mdescRight">read an entire map <br /></td></tr>
+<tr class="separator:a473194bfbf830c18f993cb1704769c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e5f0a2b7660a21d925c57bcb887cc5c"><td class="memItemLeft" align="right" valign="top"><a id="a4e5f0a2b7660a21d925c57bcb887cc5c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a4e5f0a2b7660a21d925c57bcb887cc5c">Myread</a> (std::string fits_input_file)</td></tr>
+<tr class="memdesc:a4e5f0a2b7660a21d925c57bcb887cc5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">read from a file that has been generated with <a class="el" href="struct_lens_map.html#ab5420fee6ae287a89107d6b27f2dced5" title="write the fits file of the maps of all the lensing quantities.">LensMap::write()</a> <br /></td></tr>
+<tr class="separator:a4e5f0a2b7660a21d925c57bcb887cc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756c8cfc07cf5674f42678466bbe056f"><td class="memItemLeft" align="right" valign="top"><a id="a756c8cfc07cf5674f42678466bbe056f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a756c8cfc07cf5674f42678466bbe056f">read_header</a> (std::string input_fits, double angDist)</td></tr>
+<tr class="memdesc:a756c8cfc07cf5674f42678466bbe056f"><td class="mdescLeft">&#160;</td><td class="mdescRight">read only header information <br /></td></tr>
+<tr class="separator:a756c8cfc07cf5674f42678466bbe056f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b05178fa65738ec4db3f31eb753eb7a"><td class="memItemLeft" align="right" valign="top"><a id="a0b05178fa65738ec4db3f31eb753eb7a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a0b05178fa65738ec4db3f31eb753eb7a">read_sub</a> (<a class="el" href="class_c_p_f_i_t_s___r_e_a_d.html">CPFITS_READ</a> &amp;cpfits, std::vector&lt; long &gt; &amp;first, std::vector&lt; long &gt; &amp;last, double Dist)</td></tr>
+<tr class="memdesc:a0b05178fa65738ec4db3f31eb753eb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">read a subsection of the fits map <br /></td></tr>
+<tr class="separator:a0b05178fa65738ec4db3f31eb753eb7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5420fee6ae287a89107d6b27f2dced5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#ab5420fee6ae287a89107d6b27f2dced5">write</a> (std::string filename)</td></tr>
+<tr class="memdesc:ab5420fee6ae287a89107d6b27f2dced5"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the fits file of the maps of all the lensing quantities.  <a href="struct_lens_map.html#ab5420fee6ae287a89107d6b27f2dced5">More...</a><br /></td></tr>
+<tr class="separator:ab5420fee6ae287a89107d6b27f2dced5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab39a14e5779146779330e7a68275cc05"><td class="memItemLeft" align="right" valign="top"><a id="ab39a14e5779146779330e7a68275cc05"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#ab39a14e5779146779330e7a68275cc05">write</a> (std::string filename, LensingVariable quant)</td></tr>
+<tr class="memdesc:ab39a14e5779146779330e7a68275cc05"><td class="mdescLeft">&#160;</td><td class="mdescRight">meant to output directly in angulare units and lensing quantities <br /></td></tr>
+<tr class="separator:ab39a14e5779146779330e7a68275cc05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f78a3b3944e373247f0f59c878c48d0"><td class="memTemplParams" colspan="2"><a id="a3f78a3b3944e373247f0f59c878c48d0"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a3f78a3b3944e373247f0f59c878c48d0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a3f78a3b3944e373247f0f59c878c48d0">ProcessFFTs</a> (float zerosize, T Wphi_of_k, my_fftw_plan &amp;plan_padded, bool do_alpha=true)</td></tr>
+<tr class="memdesc:a3f78a3b3944e373247f0f59c878c48d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">a thread safe version of ProcessFFTs <br /></td></tr>
+<tr class="separator:a3f78a3b3944e373247f0f59c878c48d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dd9f0dddce3f510300df967f883c1a2"><td class="memTemplParams" colspan="2"><a id="a9dd9f0dddce3f510300df967f883c1a2"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a9dd9f0dddce3f510300df967f883c1a2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>ProcessFFTs</b> (T Wphi_of_k, my_fftw_plan &amp;plan, bool do_alpha=true)</td></tr>
+<tr class="separator:a9dd9f0dddce3f510300df967f883c1a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c27e3aa557dc6d38497fdcde0de68fa"><td class="memTemplParams" colspan="2"><a id="a1c27e3aa557dc6d38497fdcde0de68fa"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a1c27e3aa557dc6d38497fdcde0de68fa"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a1c27e3aa557dc6d38497fdcde0de68fa">ProcessFFTs</a> (float zerosize, T Wphi_of_k, bool do_alpha=true)</td></tr>
+<tr class="memdesc:a1c27e3aa557dc6d38497fdcde0de68fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">pre-process surface mass density map computing deflection angles and shear in FFT, generalized to work with rectangular maps <br /></td></tr>
+<tr class="separator:a1c27e3aa557dc6d38497fdcde0de68fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c1523fe1ebfa23711947e74bf516c33"><td class="memTemplParams" colspan="2"><a id="a6c1523fe1ebfa23711947e74bf516c33"></a>
+template&lt;class T &gt; </td></tr>
+<tr class="memitem:a6c1523fe1ebfa23711947e74bf516c33"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_lens_map.html#a6c1523fe1ebfa23711947e74bf516c33">ProcessFFTs</a> (T Wphi_of_k, bool do_alpha=true)</td></tr>
+<tr class="memdesc:a6c1523fe1ebfa23711947e74bf516c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">no padding <br /></td></tr>
+<tr class="separator:a6c1523fe1ebfa23711947e74bf516c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f45ba26ffb2321ad1222c13643c9d72"><td class="memItemLeft" align="right" valign="top"><a id="a9f45ba26ffb2321ad1222c13643c9d72"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>make_fftw_plans</b> (my_fftw_plan &amp;plans, double zerosize)</td></tr>
+<tr class="separator:a9f45ba26ffb2321ad1222c13643c9d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -157,14 +206,36 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>angular_pixel_size<
 <div class="textblock"><p>The MOKA map structure, containing all quantities that define it. </p>
 <p>The MOKA map, that is read in from the fits file. Its components include the lensing properties, as well as the cosmology, the size of the field of view, the redshifts of the lens and source, the properties of the cluster, etc.</p>
 <p>Note: To use this class requires setting the ENABLE_FITS compiler flag and linking the cfits library. </p>
-</div><hr/>The documentation for this struct was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab5420fee6ae287a89107d6b27f2dced5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5420fee6ae287a89107d6b27f2dced5">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LensMap::write </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>write the fits file of the maps of all the lensing quantities. </p>
+<p>Unlike the read operations this will not have the h factors in everything so when reading from a file created by is you should set h to 1 </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>SLsimLib/include/<a class="el" href="multimap_8h_source.html">multimap.h</a></li>
 <li>SLsimLib/MultiPlane/multimap.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:40 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

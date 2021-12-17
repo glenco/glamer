@@ -119,6 +119,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8e33786248bdc48fde6a165b6bfae22f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tree_struct.html#a8e33786248bdc48fde6a165b6bfae22f">FindAllBoxNeighborsKist</a> (<a class="el" href="struct_point.html">Point</a> *point, Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; *neighbors) const</td></tr>
 <tr class="memdesc:a8e33786248bdc48fde6a165b6bfae22f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds all the leaves that are neighboring a point.  <a href="struct_tree_struct.html#a8e33786248bdc48fde6a165b6bfae22f">More...</a><br /></td></tr>
 <tr class="separator:a8e33786248bdc48fde6a165b6bfae22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a777de57567ba5beb60b68caedb39edab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tree_struct.html#a777de57567ba5beb60b68caedb39edab">FindAllBoxNeighborsKist</a> (<a class="el" href="struct_point.html">Point</a> *point, std::vector&lt; <a class="el" href="struct_point.html">Point</a> * &gt; &amp;neighbors) const</td></tr>
+<tr class="memdesc:a777de57567ba5beb60b68caedb39edab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds all the leaves that are neighboring a point.  <a href="struct_tree_struct.html#a777de57567ba5beb60b68caedb39edab">More...</a><br /></td></tr>
+<tr class="separator:a777de57567ba5beb60b68caedb39edab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68145b23b953f705f127410bb125fc79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tree_struct.html#a68145b23b953f705f127410bb125fc79">PointsWithinEllipKist</a> (const PosType *center, float rmax, float rmin, float posangle, Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; *neighborkist) const</td></tr>
 <tr class="memdesc:a68145b23b953f705f127410bb125fc79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds points within an ellipse.  <a href="struct_tree_struct.html#a68145b23b953f705f127410bb125fc79">More...</a><br /></td></tr>
 <tr class="separator:a68145b23b953f705f127410bb125fc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -352,7 +355,7 @@ static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b
 </div>
 </div>
 <a id="a8e33786248bdc48fde6a165b6bfae22f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e33786248bdc48fde6a165b6bfae22f">&#9670;&nbsp;</a></span>FindAllBoxNeighborsKist()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e33786248bdc48fde6a165b6bfae22f">&#9670;&nbsp;</a></span>FindAllBoxNeighborsKist() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,6 +370,37 @@ static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; *&#160;</td>
+          <td class="paramname"><em>neighbors</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds all the leaves that are neighboring a point. </p>
+<p>Points outside of grid have no box neighbors Warning: Does not take empty leaves into account. </p>
+
+</div>
+</div>
+<a id="a777de57567ba5beb60b68caedb39edab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a777de57567ba5beb60b68caedb39edab">&#9670;&nbsp;</a></span>FindAllBoxNeighborsKist() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TreeStruct::FindAllBoxNeighborsKist </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> *&#160;</td>
+          <td class="paramname"><em>point</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_point.html">Point</a> * &gt; &amp;&#160;</td>
           <td class="paramname"><em>neighbors</em>&#160;</td>
         </tr>
         <tr>
@@ -677,7 +711,7 @@ static std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:40 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

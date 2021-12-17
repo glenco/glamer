@@ -11,22 +11,8 @@ Class for sources described by shapelets.
 
 
 
-Inheritance diagram for Source\+Shapelets\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=171pt]{class_source_shapelets__inherit__graph}
-\end{center}
-\end{figure}
+Inherits Source\+Colored.
 
-
-Collaboration diagram for Source\+Shapelets\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=171pt]{class_source_shapelets__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -34,7 +20,7 @@ Collaboration diagram for Source\+Shapelets\+:\nopagebreak
 \item 
 \mbox{\hyperlink{class_source_shapelets_a1fea4bdc79ac976bb83c23f014eac509}{Source\+Shapelets}} (Pos\+Type my\+\_\+z, Pos\+Type my\+\_\+mag, std\+::string shap\+\_\+file, Pos\+Type $\ast$my\+\_\+center=0, Pos\+Type my\+\_\+ang=0.)
 \item 
-\mbox{\hyperlink{class_source_shapelets_aa0e9f5e21d9b7206118fcacc633d4037}{Source\+Shapelets}} (std\+::string shap\+\_\+file, Pos\+Type $\ast$my\+\_\+center=0, Pos\+Type my\+\_\+ang=0.)
+\mbox{\hyperlink{class_source_shapelets_a9a6aafdb5f74d79ba0b0586d1c71f785}{Source\+Shapelets}} (std\+::string shap\+\_\+file, Pos\+Type my\+\_\+ang=0.)
 \item 
 \mbox{\Hypertarget{class_source_shapelets_a6f1f9afd1577f5818d89bab6acdb770e}\label{class_source_shapelets_a6f1f9afd1577f5818d89bab6acdb770e}} 
 {\bfseries Source\+Shapelets} (const \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \&s)
@@ -42,36 +28,28 @@ Collaboration diagram for Source\+Shapelets\+:\nopagebreak
 \mbox{\Hypertarget{class_source_shapelets_a5d9245e92d3e883d880f2abc9f20c4ea}\label{class_source_shapelets_a5d9245e92d3e883d880f2abc9f20c4ea}} 
 \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \&s)
 \item 
+void \mbox{\hyperlink{class_source_shapelets_ad771741455d9277d8ba17106f40a08f0}{rotate}} (Pos\+Type ang)
+\begin{DoxyCompactList}\small\item\em rotate source \end{DoxyCompactList}\item 
 Pos\+Type \mbox{\hyperlink{class_source_shapelets_afe80c365e550701f09cd827c8b291433}{Surface\+Brightness}} (Pos\+Type $\ast$y)
 \item 
 \mbox{\Hypertarget{class_source_shapelets_a1c231c6826fcb29f502dcca011d9c146}\label{class_source_shapelets_a1c231c6826fcb29f502dcca011d9c146}} 
 void {\bfseries print\+Source} ()
 \item 
-\mbox{\Hypertarget{class_source_shapelets_a6332c9c25654230ef715b3e636a52946}\label{class_source_shapelets_a6332c9c25654230ef715b3e636a52946}} 
-Pos\+Type {\bfseries get\+Total\+Flux} () const
-\item 
 \mbox{\Hypertarget{class_source_shapelets_a0653bff61e007e3d322ee19eeb0fa51c}\label{class_source_shapelets_a0653bff61e007e3d322ee19eeb0fa51c}} 
 Pos\+Type \mbox{\hyperlink{class_source_shapelets_a0653bff61e007e3d322ee19eeb0fa51c}{get\+Radius}} () const
-\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_shapelets_af4b540d1c1b8a3070b32a36992eb54f9}\label{class_source_shapelets_af4b540d1c1b8a3070b32a36992eb54f9}} 
-Pos\+Type {\bfseries get\+Mag} () const
+\begin{DoxyCompactList}\small\item\em maximum size \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_source_shapelets_a42997096cb9f622c68602c870db3b273}\label{class_source_shapelets_a42997096cb9f622c68602c870db3b273}} 
+void {\bfseries pepper} (int n, double s, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
 \item 
-\mbox{\Hypertarget{class_source_shapelets_ab2ed8ccac0e48b976e3a222bbc3ad793}\label{class_source_shapelets_ab2ed8ccac0e48b976e3a222bbc3ad793}} 
-Pos\+Type {\bfseries get\+Mag} (Band band) const
-\item 
-\mbox{\Hypertarget{class_source_shapelets_ae1c0d93f2f04ac2f2a15f0a1b72095bd}\label{class_source_shapelets_ae1c0d93f2f04ac2f2a15f0a1b72095bd}} 
-Band {\bfseries get\+Band} () const
-\item 
-\mbox{\Hypertarget{class_source_shapelets_ac4473b92b91e9790a3eeff170c021acd}\label{class_source_shapelets_ac4473b92b91e9790a3eeff170c021acd}} 
-long {\bfseries get\+ID} () const
-\item 
-\mbox{\Hypertarget{class_source_shapelets_a24fbc89c2066eb77200e2e6e5603d4b4}\label{class_source_shapelets_a24fbc89c2066eb77200e2e6e5603d4b4}} 
-float {\bfseries get\+S\+E\+Dtype} () const
-\item 
-\mbox{\Hypertarget{class_source_shapelets_a96136a1a46a9953b91ab3baa98140799}\label{class_source_shapelets_a96136a1a46a9953b91ab3baa98140799}} 
-void {\bfseries set\+Active\+Band} (Band band)
+\mbox{\Hypertarget{class_source_shapelets_a0ee8284e012c2a74acb0fd03c5eeb7c9}\label{class_source_shapelets_a0ee8284e012c2a74acb0fd03c5eeb7c9}} 
+double {\bfseries sub\+\_\+structure\+\_\+sb} (double $\ast$x)
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_source_shapelets_a5491c89818cd3fe72cde85a249b960d1}\label{class_source_shapelets_a5491c89818cd3fe72cde85a249b960d1}} 
+friend {\bfseries Source\+Multi\+Shapelets}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -120,17 +98,15 @@ The sources are created from magnitude, scale radius, and the coefficients of th
 {\em my\+\_\+ang} & rotation angle (in rad) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_source_shapelets_aa0e9f5e21d9b7206118fcacc633d4037}\label{class_source_shapelets_aa0e9f5e21d9b7206118fcacc633d4037}} 
+\mbox{\Hypertarget{class_source_shapelets_a9a6aafdb5f74d79ba0b0586d1c71f785}\label{class_source_shapelets_a9a6aafdb5f74d79ba0b0586d1c71f785}} 
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \doxysubsubsection{\texorpdfstring{SourceShapelets()}{SourceShapelets()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{std\+::string}]{shap\+\_\+file,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center = {\ttfamily 0},  }\item[{Pos\+Type}]{my\+\_\+ang = {\ttfamily 0.} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{std\+::string}]{shap\+\_\+file,  }\item[{Pos\+Type}]{my\+\_\+ang = {\ttfamily 0.} }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
 {\em shap\+\_\+file} & fits file with coefficients in a square array. Mag and redshift are read from the header. \\
-\hline
-{\em my\+\_\+center} & center (in rad) \\
 \hline
 {\em my\+\_\+ang} & rotation angle (in rad) \\
 \hline
@@ -138,6 +114,21 @@ The sources are created from magnitude, scale radius, and the coefficients of th
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_source_shapelets_ad771741455d9277d8ba17106f40a08f0}\label{class_source_shapelets_ad771741455d9277d8ba17106f40a08f0}} 
+\index{SourceShapelets@{SourceShapelets}!rotate@{rotate}}
+\index{rotate@{rotate}!SourceShapelets@{SourceShapelets}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily void Source\+Shapelets\+::rotate (\begin{DoxyParamCaption}\item[{Pos\+Type}]{ang }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+rotate source 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ang} & angle in radians \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_source_shapelets_afe80c365e550701f09cd827c8b291433}\label{class_source_shapelets_afe80c365e550701f09cd827c8b291433}} 
 \index{SourceShapelets@{SourceShapelets}!SurfaceBrightness@{SurfaceBrightness}}
 \index{SurfaceBrightness@{SurfaceBrightness}!SourceShapelets@{SourceShapelets}}

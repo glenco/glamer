@@ -77,9 +77,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a84da40a884b9a6fd16038de225b51dc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#a84da40a884b9a6fd16038de225b51dc7">find_images_kist</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, PosType *y_source, PosType r_source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, unsigned long *Nimagepoints, PosType initial_size, bool splitimages, short edge_refinement, bool verbose=false)</td></tr>
 <tr class="memdesc:a84da40a884b9a6fd16038de225b51dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds images given a source position and size.  <a href="namespace_image_finding.html#a84da40a884b9a6fd16038de225b51dc7">More...</a><br /></td></tr>
 <tr class="separator:a84da40a884b9a6fd16038de225b51dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a507eaa67f4a10db4985c818d96311ec7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#a507eaa67f4a10db4985c818d96311ec7">find_image_simple</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_point__2d.html">Point_2d</a> y_source, PosType z_source, <a class="el" href="struct_point__2d.html">Point_2d</a> &amp;image_x, PosType xtol2, PosType &amp;fret)</td></tr>
-<tr class="memdesc:a507eaa67f4a10db4985c818d96311ec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the image position of a source without grid refinement.  <a href="namespace_image_finding.html#a507eaa67f4a10db4985c818d96311ec7">More...</a><br /></td></tr>
-<tr class="separator:a507eaa67f4a10db4985c818d96311ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4df229d3fd4cccd2a4ae17fa7edfa258"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#a4df229d3fd4cccd2a4ae17fa7edfa258">find_images_microlens</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, double *y_source, double r_source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, unsigned long *Nimagepoints, double initial_size, double mu_min, bool splitimages, short edge_refinement, bool verbose)</td></tr>
 <tr class="memdesc:a4df229d3fd4cccd2a4ae17fa7edfa258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds images given a source position and size.  <a href="namespace_image_finding.html#a4df229d3fd4cccd2a4ae17fa7edfa258">More...</a><br /></td></tr>
 <tr class="separator:a4df229d3fd4cccd2a4ae17fa7edfa258"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,9 +116,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="namespace_image_finding.html" title="The ImageFinding namespace is for functions related to finding and mapping images.">ImageFinding</a> namespace is for functions related to finding and mapping images. </p>
-<p>Find a image position for a source position.</p>
-<p>This routine finds the image position by minimizing the seporation on the source plane with Powell's method of minimization. This will not find all images. For that you must use another routine. In the weak lensing regiam this should be sufficient.</p>
-<p>Warning: This is not thread safe because it uses global variable in the ImageFinding::Temporary namespace. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ada031993e8ed6cfead17ecc83951a197"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada031993e8ed6cfead17ecc83951a197">&#9670;&nbsp;</a></span>find_contour()</h2>
@@ -303,71 +297,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
     <tr><td class="paramname">Ncrits</td><td>The number of critical curves found. </td></tr>
     <tr><td class="paramname">resolution</td><td>The target resolution that the critical curve is mapped on the image plane. </td></tr>
     <tr><td class="paramname">invmag_min</td><td>finds regions with 1/magnification &lt; invmag_min, set to zero for caustics </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a507eaa67f4a10db4985c818d96311ec7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a507eaa67f4a10db4985c818d96311ec7">&#9670;&nbsp;</a></span>find_image_simple()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ImageFinding::find_image_simple </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_lens.html">LensHndl</a>&#160;</td>
-          <td class="paramname"><em>lens</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
-          <td class="paramname"><em>y_source</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>z_source</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a> &amp;&#160;</td>
-          <td class="paramname"><em>image_x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>ytol2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">PosType &amp;&#160;</td>
-          <td class="paramname"><em>fret</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Find the image position of a source without grid refinement. </p>
-<p>This uses Powell's algorithm to minimise the distance between the source point of an image and the desired source point. No grid is necessary. This should be fast, but will miss multiple images. This is useful for finding the position of weakly lensed images or the rough region where a grid should be put down for a strong lens. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lens</td><td>lens to be shot through </td></tr>
-    <tr><td class="paramname">y_source</td><td>input position of source (radians) </td></tr>
-    <tr><td class="paramname">z_source</td><td>redshift of source </td></tr>
-    <tr><td class="paramname">image_x</td><td>output image position (radians) </td></tr>
-    <tr><td class="paramname">ytol2</td><td>target tolerance in source position squared </td></tr>
   </table>
   </dd>
 </dl>
@@ -757,7 +686,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lens</td><td><a class="el" href="class_lens.html" title="A class to represents a lens with multiple planes.">Lens</a> model </td></tr>
-    <tr><td class="paramname">grid</td><td><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees. It is not yet used, but may be useful.">Grid</a> to be refined. It must be initialized. </td></tr>
+    <tr><td class="paramname">grid</td><td><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a> to be refined. It must be initialized. </td></tr>
     <tr><td class="paramname">rEinsteinMin</td><td>the Einstein radius of the smallest lens that should be resolved, sets resolution target </td></tr>
     <tr><td class="paramname">kappa_max</td><td>highest kappa to be refined to, 1 or 2 is probably good enough </td></tr>
     <tr><td class="paramname">imageinfo</td><td>the image </td></tr>
@@ -904,7 +833,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 <p>Finds images for a given source position and size. Not meant for high level user. </p>
 <p>image points are put into imageinfo[].imagekist imageinfo[].points and imageinfo[].Npoints are not changed</p>
 <p>splitparities= 0 don't split attached negative and positive parity images = 1 do split parities NOTE: this is now obsolete = -1 doesn't slit into images at all , also does not find borders or change in_image markers true_images = 1 gives just the points that are in the image = 0 if there are not enough points in images this will include close points to be refined</p>
-<p>side-effects : Will make in_image = true for all image points if splitparities == 0 </p>
+<p>side-effects : Will make in_image = true for all image points if splitparities == 0</p>
+<p>&lt;<code></code> &gt; </p>
 
 </div>
 </div>
@@ -1264,7 +1194,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:40 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

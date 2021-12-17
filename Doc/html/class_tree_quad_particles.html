@@ -102,9 +102,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a18a139099b5a424ecd14401e144c85f8"><td class="memItemLeft" align="right" valign="top"><a id="a18a139099b5a424ecd14401e144c85f8"></a>
-<a class="el" href="struct_q_tree_n_b.html">QTreeNB</a>&lt; PType &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>BuildQTreeNB</b> (PType *xp, IndexType Nparticles, IndexType *particles)</td></tr>
-<tr class="separator:a18a139099b5a424ecd14401e144c85f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a290ef129400e53ebfa5a6fda925901f7"><td class="memItemLeft" align="right" valign="top"><a id="a290ef129400e53ebfa5a6fda925901f7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>BuildQTreeNB</b> (PType *xp, IndexType Nparticles)</td></tr>
+<tr class="separator:a290ef129400e53ebfa5a6fda925901f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a357b6f786c0dc103fe747e382d77c28e"><td class="memItemLeft" align="right" valign="top"><a id="a357b6f786c0dc103fe747e382d77c28e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_particles.html#a357b6f786c0dc103fe747e382d77c28e">_BuildQTreeNB</a> (IndexType nparticles, IndexType *particles)</td></tr>
 <tr class="memdesc:a357b6f786c0dc103fe747e382d77c28e"><td class="mdescLeft">&#160;</td><td class="mdescRight">tree must be created and first branch must be set before start <br /></td></tr>
@@ -180,12 +180,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>Nbucket</b></td></tr>
 <tr class="memitem:a4f5cbb67d1bb7e1618630b5166ec4cb8"><td class="memItemLeft" align="right" valign="top"><a id="a4f5cbb67d1bb7e1618630b5166ec4cb8"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><b>force_theta</b></td></tr>
 <tr class="separator:a4f5cbb67d1bb7e1618630b5166ec4cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b30c3a6131651cde2eb414624d2f630"><td class="memItemLeft" align="right" valign="top"><a id="a5b30c3a6131651cde2eb414624d2f630"></a>
-<a class="el" href="struct_q_tree_n_b.html">QTreeNB</a>&lt; PType &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>tree</b></td></tr>
-<tr class="separator:a5b30c3a6131651cde2eb414624d2f630"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5656b85b96c449514e14b2c83520afe"><td class="memItemLeft" align="right" valign="top"><a id="ac5656b85b96c449514e14b2c83520afe"></a>
-IndexType *&#160;</td><td class="memItemRight" valign="bottom"><b>index</b></td></tr>
-<tr class="separator:ac5656b85b96c449514e14b2c83520afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad889fb83de339c14d18b1d9f3a68050a"><td class="memItemLeft" align="right" valign="top"><a id="ad889fb83de339c14d18b1d9f3a68050a"></a>
+std::unique_ptr&lt; <a class="el" href="struct_q_tree_n_b.html">QTreeNB</a>&lt; PType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tree</b></td></tr>
+<tr class="separator:ad889fb83de339c14d18b1d9f3a68050a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a459fed39c833fae597582b2e547ab40f"><td class="memItemLeft" align="right" valign="top"><a id="a459fed39c833fae597582b2e547ab40f"></a>
+std::vector&lt; IndexType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>index</b></td></tr>
+<tr class="separator:a459fed39c833fae597582b2e547ab40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8bd66a00451c7a2d916633ec898129c"><td class="memItemLeft" align="right" valign="top"><a id="ae8bd66a00451c7a2d916633ec898129c"></a>
+std::vector&lt; PosType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>workspace</b></td></tr>
+<tr class="separator:ae8bd66a00451c7a2d916633ec898129c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a783a707714b0de1e1a138e1a7713d9dd"><td class="memItemLeft" align="right" valign="top"><a id="a783a707714b0de1e1a138e1a7713d9dd"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><b>realray</b> [2]</td></tr>
 <tr class="separator:a783a707714b0de1e1a138e1a7713d9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -511,7 +514,7 @@ template&lt;typename PType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:40 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

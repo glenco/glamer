@@ -125,9 +125,9 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    inclination = my_inclination;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    zpa = my_PA;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Quaternion R = Quaternion::q_z_rotation(zpa)*Quaternion::q_x_rotation(inclination)*qrot_invers;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Quaternion&lt;&gt; R = Quaternion&lt;&gt;::q_z_rotation(zpa)*Quaternion&lt;&gt;::q_x_rotation(inclination)*qrot_invers;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    rotate_all(R);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    qrot_invers = Quaternion::q_x_rotation(-inclination)*Quaternion::q_z_rotation(-zpa);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    qrot_invers = Quaternion&lt;&gt;::q_x_rotation(-inclination)*Quaternion&lt;&gt;::q_z_rotation(-zpa);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// reconstruct LensHaloParticles base class</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">delete</span> <a class="code" href="class_lens_halo_particles.html">LensHaloParticles&lt;ParticleType&lt;T&gt;</a> &gt;::qtree;</div>
@@ -140,8 +140,8 @@ $(function() {
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  std::vector&lt;ParticleType&lt;T&gt; &gt; &amp;particles;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">void</span> rotate_all(Quaternion &amp;R){</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    Quaternion q(1,0,0,0);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">void</span> rotate_all(Quaternion&lt;T&gt; &amp;R){</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    Quaternion&lt;T&gt; q(1,0,0,0);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> &amp;p : particles){</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      q[0] = 0; q[1] = p[0]; q[2] = p[1]; q[3] = p[2];</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      q.RotInplace(R);</div>
@@ -149,7 +149,7 @@ $(function() {
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  Utilities::Geometry::Quaternion qrot_invers;  <span class="comment">// rotation that brings the disk back to face on</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  Utilities::Geometry::Quaternion&lt;T&gt; qrot_invers;  <span class="comment">// rotation that brings the disk back to face on</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">double</span> Rscale;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">double</span> Rhight;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">double</span> zpa;</div>
@@ -219,7 +219,7 @@ $(function() {
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <a class="code" href="class_lens_halo_particles.html">LensHaloParticles&lt;ParticleType&lt;T&gt;</a> &gt;::calculate_smoothing(Nsmooth,particles.data(),particles.size());</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="comment">// rotate particles to required inclination and position angle</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  Quaternion R = Quaternion::q_z_rotation(zpa)*Quaternion::q_x_rotation(inclination);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  Quaternion&lt;T&gt; R = Quaternion&lt;T&gt;::q_z_rotation(zpa) * Quaternion&lt;T&gt;::q_x_rotation(inclination);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  rotate_all(R);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  qrot_invers = R.conj();</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  </div>
@@ -237,18 +237,18 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_tree_quad_particles_html"><div class="ttname"><a href="class_tree_quad_particles.html">TreeQuadParticles</a></div><div class="ttdoc">TreeQuadParticles is a class for calculating the deflection, kappa and gamma by tree method.</div><div class="ttdef"><b>Definition:</b> quadTree.h:45</div></div>
 <div class="ttc" id="astruct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:37</div></div>
-<div class="ttc" id="aclass_utilities_1_1_random_numbers___n_r_html"><div class="ttname"><a href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a></div><div class="ttdoc">This is a class for generating random numbers. It simplifies and fool proofs initialization and allow...</div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:988</div></div>
+<div class="ttc" id="aclass_utilities_1_1_random_numbers___n_r_html"><div class="ttname"><a href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a></div><div class="ttdoc">This is a class for generating random numbers. It simplifies and fool proofs initialization and allow...</div><div class="ttdef"><b>Definition:</b> utilities_slsim.h:1029</div></div>
 <div class="ttc" id="aclass_lens_halo_disk_html_a83cbc1ac0a53458f122b77d939d62b72"><div class="ttname"><a href="class_lens_halo_disk.html#a83cbc1ac0a53458f122b77d939d62b72">LensHaloDisk::getPA</a></div><div class="ttdeci">float getPA()</div><div class="ttdoc">postion angle in radians,</div><div class="ttdef"><b>Definition:</b> disk.h:75</div></div>
 <div class="ttc" id="aclass_lens_halo_disk_html_acc77a9dec1025e4c9671b726c8125a88"><div class="ttname"><a href="class_lens_halo_disk.html#acc77a9dec1025e4c9671b726c8125a88">LensHaloDisk::getInclination</a></div><div class="ttdeci">float getInclination()</div><div class="ttdoc">inclination in radians, 0 is face on</div><div class="ttdef"><b>Definition:</b> disk.h:73</div></div>
 <div class="ttc" id="aclass_lens_halo_disk_html"><div class="ttname"><a href="class_lens_halo_disk.html">LensHaloDisk</a></div><div class="ttdoc">Creates a exponential disk out of particles.</div><div class="ttdef"><b>Definition:</b> disk.h:16</div></div>
-<div class="ttc" id="aclass_lens_halo_particles_html_a68ffd8213507b83300fcad40a0e09df8"><div class="ttname"><a href="class_lens_halo_particles.html#a68ffd8213507b83300fcad40a0e09df8">LensHaloParticles&lt; ParticleType&lt; float &gt; &gt;::set_up</a></div><div class="ttdeci">void set_up(float redshift, const COSMOLOGY &amp;cosmo, Point_2d theta_rotate, bool recenter, bool verbose)</div><div class="ttdef"><b>Definition:</b> particle_halo.h:298</div></div>
-<div class="ttc" id="aclass_lens_halo_particles_html"><div class="ttname"><a href="class_lens_halo_particles.html">LensHaloParticles</a></div><div class="ttdoc">A class that represents the lensing by a collection of simulation particles.</div><div class="ttdef"><b>Definition:</b> particle_halo.h:40</div></div>
+<div class="ttc" id="aclass_lens_halo_particles_html_a68ffd8213507b83300fcad40a0e09df8"><div class="ttname"><a href="class_lens_halo_particles.html#a68ffd8213507b83300fcad40a0e09df8">LensHaloParticles&lt; ParticleType&lt; float &gt; &gt;::set_up</a></div><div class="ttdeci">void set_up(float redshift, const COSMOLOGY &amp;cosmo, Point_2d theta_rotate, bool recenter, bool verbose)</div><div class="ttdef"><b>Definition:</b> particle_halo.h:300</div></div>
+<div class="ttc" id="aclass_lens_halo_particles_html"><div class="ttname"><a href="class_lens_halo_particles.html">LensHaloParticles</a></div><div class="ttdoc">A class that represents the lensing by a collection of simulation particles.</div><div class="ttdef"><b>Definition:</b> particle_halo.h:41</div></div>
 <div class="ttc" id="aclass_lens_halo_disk_html_a67f57cb9d8ae287d948efeee3be962bb"><div class="ttname"><a href="class_lens_halo_disk.html#a67f57cb9d8ae287d948efeee3be962bb">LensHaloDisk::LensHaloDisk</a></div><div class="ttdeci">LensHaloDisk(double mass, double disk_scale, double Rperp, double mass_res, float my_PA, float my_inclination, Utilities::RandomNumbers_NR &amp;ran, float redshift, const COSMOLOGY &amp;cosmo, int Nsmooth=64)</div><div class="ttdef"><b>Definition:</b> disk.h:98</div></div>
 <div class="ttc" id="aclass_lens_halo_disk_html_a7395242b513238bd5a5546791604786e"><div class="ttname"><a href="class_lens_halo_disk.html#a7395242b513238bd5a5546791604786e">LensHaloDisk::reorient</a></div><div class="ttdeci">void reorient(float my_inclination, float my_PA)</div><div class="ttdoc">Reorient the disk.</div><div class="ttdef"><b>Definition:</b> disk.h:60</div></div>
-<div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology.</div><div class="ttdef"><b>Definition:</b> cosmo.h:50</div></div>
+<div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology.</div><div class="ttdef"><b>Definition:</b> cosmo.h:49</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:39 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:26 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

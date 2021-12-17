@@ -44,6 +44,8 @@ class \mbox{\hyperlink{class_tree_struct_1_1iterator}{iterator}}
 \begin{DoxyCompactList}\small\item\em root branch \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}{Find\+All\+Box\+Neighbors\+Kist}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$point, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighbors) const
 \begin{DoxyCompactList}\small\item\em Finds all the leaves that are neighboring a point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_tree_struct_a777de57567ba5beb60b68caedb39edab}{Find\+All\+Box\+Neighbors\+Kist}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$point, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $\ast$ $>$ \&neighbors) const
+\begin{DoxyCompactList}\small\item\em Finds all the leaves that are neighboring a point. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_tree_struct_a68145b23b953f705f127410bb125fc79}{Points\+Within\+Ellip\+Kist}} (const Pos\+Type $\ast$center, float rmax, float rmin, float posangle, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist) const
 \begin{DoxyCompactList}\small\item\em Finds points within an ellipse. \end{DoxyCompactList}\item 
 Pos\+Type \mbox{\hyperlink{struct_tree_struct_a43e87679f878529623577aae8af1288b}{Points\+Within\+Kist}} (const Pos\+Type $\ast$center, Pos\+Type rmax, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist, short markpoints) const
@@ -162,8 +164,18 @@ The points are freed, but the list structure is not destroyed.
 Fill\+Tree can then be used to regenerate tree. \mbox{\Hypertarget{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}\label{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}} 
 \index{TreeStruct@{TreeStruct}!FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}}
 \index{FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}!TreeStruct@{TreeStruct}}
-\doxysubsubsection{\texorpdfstring{FindAllBoxNeighborsKist()}{FindAllBoxNeighborsKist()}}
+\doxysubsubsection{\texorpdfstring{FindAllBoxNeighborsKist()}{FindAllBoxNeighborsKist()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Tree\+Struct\+::\+Find\+All\+Box\+Neighbors\+Kist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{point,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{neighbors }\end{DoxyParamCaption}) const}
+
+
+
+Finds all the leaves that are neighboring a point. 
+
+Points outside of grid have no box neighbors Warning\+: Does not take empty leaves into account. \mbox{\Hypertarget{struct_tree_struct_a777de57567ba5beb60b68caedb39edab}\label{struct_tree_struct_a777de57567ba5beb60b68caedb39edab}} 
+\index{TreeStruct@{TreeStruct}!FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}}
+\index{FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}!TreeStruct@{TreeStruct}}
+\doxysubsubsection{\texorpdfstring{FindAllBoxNeighborsKist()}{FindAllBoxNeighborsKist()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Tree\+Struct\+::\+Find\+All\+Box\+Neighbors\+Kist (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{point,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $\ast$ $>$ \&}]{neighbors }\end{DoxyParamCaption}) const}
 
 
 

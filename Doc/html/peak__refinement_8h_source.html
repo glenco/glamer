@@ -82,27 +82,24 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;grid_maintenance.h&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct_beam.html">   14</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct_beam.html">Beam</a>{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; <span class="keywordtype">double</span> source[2];</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; <span class="keywordtype">double</span> image[2];</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; <span class="keywordtype">double</span> kappa;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keywordtype">double</span> gamma[2];</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;} <a class="code" href="struct_beam.html">Beam</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">typedef</span> <a class="code" href="struct_beam.html">Beam</a> * <a class="code" href="struct_beam.html">BeamHndl</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span>FindImages {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">short</span> find_peaks(<a class="code" href="class_lens.html">LensHndl</a> lens,<a class="code" href="struct_grid.html">GridHndl</a> grid,<span class="keywordtype">double</span> rEinsteinMin,<span class="keywordtype">double</span> kappa_max,std::vector&lt;ImageInfo&gt; &amp;imageinfo, <span class="keywordtype">int</span>* Nimages);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct_beam.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_beam.html">Beam</a>{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  std::vector&lt;Point_2d&gt; x;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  std::vector&lt;KappaType&gt; kappa;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  std::vector&lt;Point_3d&lt;&gt; &gt; gamma;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>FindImages {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">short</span> find_peaks(<a class="code" href="class_lens.html">LensHndl</a> lens,<a class="code" href="struct_grid.html">GridHndl</a> grid,<span class="keywordtype">double</span> rEinsteinMin,<span class="keywordtype">double</span> kappa_max,std::vector&lt;ImageInfo&gt; &amp;imageinfo, <span class="keywordtype">int</span>* Nimages);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astruct_grid_html"><div class="ttname"><a href="struct_grid.html">Grid</a></div><div class="ttdoc">Structure to contain both source and image trees. It is not yet used, but may be useful.</div><div class="ttdef"><b>Definition:</b> grid_maintenance.h:25</div></div>
+<div class="ttc" id="astruct_grid_html"><div class="ttname"><a href="struct_grid.html">Grid</a></div><div class="ttdoc">Structure to contain both source and image trees.</div><div class="ttdef"><b>Definition:</b> grid_maintenance.h:24</div></div>
 <div class="ttc" id="aclass_lens_html"><div class="ttname"><a href="class_lens.html">Lens</a></div><div class="ttdoc">A class to represents a lens with multiple planes.</div><div class="ttdef"><b>Definition:</b> lens.h:71</div></div>
 <div class="ttc" id="astruct_beam_html"><div class="ttname"><a href="struct_beam.html">Beam</a></div><div class="ttdoc">A simplified data structure for use in interface with other codes.</div><div class="ttdef"><b>Definition:</b> peak_refinement.h:14</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 3 2020 17:11:39 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 17 2021 18:30:26 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

@@ -2,7 +2,7 @@
 \label{struct_grid}\index{Grid@{Grid}}
 
 
-Structure to contain both source and image trees. It is not yet used, but may be useful.  
+Structure to contain both source and image trees.  
 
 
 
@@ -11,7 +11,8 @@ Structure to contain both source and image trees. It is not yet used, but may be
 
 
 
-Collaboration diagram for Grid\+:\nopagebreak
+Collaboration diagram for Grid\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -43,6 +44,8 @@ double \mbox{\hyperlink{struct_grid_aae2b3f9fe8cc6a464852e3441f22d8a9}{Refresh\+
 double \mbox{\hyperlink{struct_grid_acd3c8aa66053c2a4ef071f877c0ff214}{Add\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
 \begin{DoxyCompactList}\small\item\em Recalculate surface brightness just like Grid\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. ~\newline
  \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{struct_grid_a76402d3ee2fe5127cc42990ced7cb967}{mark\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source\+\_\+max, Pos\+Type luminosity, bool verbose=false)
+\item 
 \mbox{\Hypertarget{struct_grid_a25db542a5491a1b59f3c36278b830407}\label{struct_grid_a25db542a5491a1b59f3c36278b830407}} 
 double \mbox{\hyperlink{struct_grid_a25db542a5491a1b59f3c36278b830407}{Clear\+Surface\+Brightnesses}} ()
 \begin{DoxyCompactList}\small\item\em Reset the surface brightness and in\+\_\+image flag in every point on image and source planes to zero (false) \end{DoxyCompactList}\item 
@@ -102,6 +105,8 @@ void \mbox{\hyperlink{struct_grid_a063530b0b7c7e5ffe1b85432fcad1498}{write\+Pixe
 \item 
 void \mbox{\hyperlink{struct_grid_aa8dd246a0f9e9c1f606d425989e742ac}{write\+Fits\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, Lensing\+Variable lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Output a fits map of the without distribution the pixels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}{find\+\_\+images}} (Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, int \&Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long \&Nimagepoints)
+\begin{DoxyCompactList}\small\item\em Finds images for a given source position and size. It seporates images of different pairities. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_a292378167185b8eb18245060b21a13c6}\label{struct_grid_a292378167185b8eb18245060b21a13c6}} 
 {\bfseries Grid} (\mbox{\hyperlink{struct_grid}{Grid}} \&\&grid)
 \item 
@@ -110,7 +115,16 @@ void \mbox{\hyperlink{struct_grid_aa8dd246a0f9e9c1f606d425989e742ac}{write\+Fits
 \item 
 \mbox{\Hypertarget{struct_grid_ae31b9263380798f393f967f2d087a7da}\label{struct_grid_ae31b9263380798f393f967f2d087a7da}} 
 Pos\+Type \mbox{\hyperlink{struct_grid_ae31b9263380798f393f967f2d087a7da}{magnification}} () const
-\begin{DoxyCompactList}\small\item\em flux weighted magnification \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em flux weighted local magnification that does not take multiple imaging into effect \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_a82dbe23796c30a73ffa72df0948a9f70}\label{struct_grid_a82dbe23796c30a73ffa72df0948a9f70}} 
+Pos\+Type {\bfseries Unlensed\+Flux} () const
+\item 
+\mbox{\Hypertarget{struct_grid_af0962ac5a92a9cb07f9e70a31a32bc53}\label{struct_grid_af0962ac5a92a9cb07f9e70a31a32bc53}} 
+Pos\+Type {\bfseries Lensed\+Flux} () const
+\item 
+\mbox{\Hypertarget{struct_grid_aedfddf45465203922ce4ac592da07bb0}\label{struct_grid_aedfddf45465203922ce4ac592da07bb0}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{struct_grid_aedfddf45465203922ce4ac592da07bb0}{centroid}} () const
+\begin{DoxyCompactList}\small\item\em centroid of flux \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -123,7 +137,7 @@ Pos\+Type \mbox{\hyperlink{struct_grid_ae31b9263380798f393f967f2d087a7da}{magnif
 
 
 \doxysubsection{Detailed Description}
-Structure to contain both source and image trees. It is not yet used, but may be useful. 
+Structure to contain both source and image trees. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}\label{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}} 
@@ -186,7 +200,23 @@ Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{s
 Recalculate surface brightness just like Grid\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. ~\newline
  
 
-returns the sum of the surface brightnesses from the new source \mbox{\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}\label{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}} 
+returns the sum of the surface brightnesses from the new source \mbox{\Hypertarget{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}\label{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}} 
+\index{Grid@{Grid}!find\_images@{find\_images}}
+\index{find\_images@{find\_images}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}}
+{\footnotesize\ttfamily void Grid\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{int \&}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{unsigned long \&}]{Nimagepoints }\end{DoxyParamCaption})}
+
+
+
+Finds images for a given source position and size. It seporates images of different pairities. 
+
+No grid refinement is done. If the images is not initially found no nearest neighbor points are returned.
+
+image points are put into imageinfo\mbox{[}\mbox{]}.imagekist imageinfo\mbox{[}\mbox{]}.points and imageinfo\mbox{[}\mbox{]}.Npoints are not changed
+
+side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0
+
+$<${\ttfamily } $>$ \mbox{\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}\label{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}} 
 \index{Grid@{Grid}!getNumberOfPoints@{getNumberOfPoints}}
 \index{getNumberOfPoints@{getNumberOfPoints}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{getNumberOfPoints()}{getNumberOfPoints()}}
@@ -196,7 +226,20 @@ returns the sum of the surface brightnesses from the new source \mbox{\Hypertarg
 
 Returns number of points on image plane. 
 
-Finding \mbox{\Hypertarget{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}\label{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}} 
+Finding \mbox{\Hypertarget{struct_grid_a76402d3ee2fe5127cc42990ced7cb967}\label{struct_grid_a76402d3ee2fe5127cc42990ced7cb967}} 
+\index{Grid@{Grid}!mark\_point\_source\_images@{mark\_point\_source\_images}}
+\index{mark\_point\_source\_images@{mark\_point\_source\_images}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{mark\_point\_source\_images()}{mark\_point\_source\_images()}}
+{\footnotesize\ttfamily double Grid\+::mark\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{Pos\+Type}]{luminosity,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\textbackslash{}breaf This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center and then markes each surface brightness. Only one pixel per image gets flux. 
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+source} & angular position of source, \\
+\hline
+{\em r\+\_\+source} & points outside this radius on the source plane will not be considered as in the image \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}\label{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}} 
 \index{Grid@{Grid}!PrunePointsOutside@{PrunePointsOutside}}
 \index{PrunePointsOutside@{PrunePointsOutside}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{PrunePointsOutside()}{PrunePointsOutside()}}
@@ -266,7 +309,7 @@ Recalculate surface brightness at every point without changing the positions of 
 
 Finding Recalculate the surface brightness at all points on the grid. This is useful when changing the source model while preserving changes in the grid. Both i\+\_\+tree and s\+\_\+tree are both changed although only s\+\_\+tree shows up here.
 
-returns the sum of the surface brightnesses \mbox{\Hypertarget{struct_grid_aa24da72593941193758c4a98ee860b19}\label{struct_grid_aa24da72593941193758c4a98ee860b19}} 
+returns total flux \mbox{\Hypertarget{struct_grid_aa24da72593941193758c4a98ee860b19}\label{struct_grid_aa24da72593941193758c4a98ee860b19}} 
 \index{Grid@{Grid}!ReInitializeGrid@{ReInitializeGrid}}
 \index{ReInitializeGrid@{ReInitializeGrid}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{ReInitializeGrid()}{ReInitializeGrid()}}

@@ -41,14 +41,16 @@ double {\bfseries get\+Y\+Range} ()
 \mbox{\Hypertarget{struct_grid_map_a27a1ac9c5e97b87d2ddfd29260ed4cea}\label{struct_grid_map_a27a1ac9c5e97b87d2ddfd29260ed4cea}} 
 double \mbox{\hyperlink{struct_grid_map_a27a1ac9c5e97b87d2ddfd29260ed4cea}{get\+Resolution}} ()
 \begin{DoxyCompactList}\small\item\em resolution in radians, this is range / (N-\/1) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_aed55e0cb0283537108615b228dbb057a}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, Lensing\+Variable lensvar)
-\begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_a0d1e721790ac12b240e73d9a699384f9}{write\+Pixel\+Map\+Uniform}} (Lensing\+Variable lensvar)
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_a5e7ebe491daab61d9256b45036f9bc48}{write\+Pixel\+Map}} (Lensing\+Variable lensvar)
 \begin{DoxyCompactList}\small\item\em make pixel map of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_grid_map_aa524a3cd8243fee4e20e9c17353cd38a}{write\+Fits}} (Lensing\+Variable lensvar, std\+::string filensame)
+\begin{DoxyCompactList}\small\item\em fits output of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_map_a4ea8dbd5fd0a8c672b33fbe6ff6787ad}{write\+Pixel\+Map\+Uniform}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map, Lensing\+Variable lensvar)
 \item 
 void \mbox{\hyperlink{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}{write\+Fits\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, Lensing\+Variable lensvar, std\+::string filename)
 \item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_aed55e0cb0283537108615b228dbb057a}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, Lensing\+Variable lensvar)
+\begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}\label{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}} 
 void \mbox{\hyperlink{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}{write\+Fits\+Uniform}} (Lensing\+Variable lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em this will make a fits map of the grid as is. \end{DoxyCompactList}\item 
@@ -62,6 +64,12 @@ Pos\+Type \mbox{\hyperlink{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}{Ei
 \mbox{\Hypertarget{struct_grid_map_a9ee258972a6f83896ba50cd3a5e044e7}\label{struct_grid_map_a9ee258972a6f83896ba50cd3a5e044e7}} 
 Pos\+Type \mbox{\hyperlink{struct_grid_map_a9ee258972a6f83896ba50cd3a5e044e7}{magnification}} () const
 \begin{DoxyCompactList}\small\item\em flux weighted magnification with current surface brightness averaged on the image plane \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_map_a695c921f43f7c5d8594292296ebda4ce}\label{struct_grid_map_a695c921f43f7c5d8594292296ebda4ce}} 
+Pos\+Type {\bfseries magnification2} () const
+\item 
+\mbox{\Hypertarget{struct_grid_map_adf0c0b5b5e8b6c352d1e9dc306d98aef}\label{struct_grid_map_adf0c0b5b5e8b6c352d1e9dc306d98aef}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{struct_grid_map_adf0c0b5b5e8b6c352d1e9dc306d98aef}{centroid}} () const
+\begin{DoxyCompactList}\small\item\em returns centroid of flux on the grid \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_map_ae31b368c185625e84e69cb65b2cc6f1f}\label{struct_grid_map_ae31b368c185625e84e69cb65b2cc6f1f}} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries get\+Center} ()
 \item 
@@ -173,7 +181,24 @@ Recalculate surface brightness at every point without changing the positions of 
 
 Recalculate the surface brightness at all points on the gridmap. This is useful when changing the source model while preserving changes in the grid. Both i\+\_\+tree and s\+\_\+tree are both changed although only s\+\_\+tree shows up here.
 
-returns the sum of the surface brightnesses \mbox{\Hypertarget{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}\label{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}} 
+returns the sum of the surface brightnesses \mbox{\Hypertarget{struct_grid_map_aa524a3cd8243fee4e20e9c17353cd38a}\label{struct_grid_map_aa524a3cd8243fee4e20e9c17353cd38a}} 
+\index{GridMap@{GridMap}!writeFits@{writeFits}}
+\index{writeFits@{writeFits}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writeFits()}{writeFits()}}
+{\footnotesize\ttfamily void Grid\+Map\+::write\+Fits (\begin{DoxyParamCaption}\item[{Lensing\+Variable}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+
+
+
+fits output of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lensvar} & which quantity is to be displayed \\
+\hline
+{\em filename} & output files \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}\label{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}} 
 \index{GridMap@{GridMap}!writeFitsUniform@{writeFitsUniform}}
 \index{writeFitsUniform@{writeFitsUniform}!GridMap@{GridMap}}
 \doxysubsubsection{\texorpdfstring{writeFitsUniform()}{writeFitsUniform()}}
@@ -192,10 +217,25 @@ returns the sum of the surface brightnesses \mbox{\Hypertarget{struct_grid_map_a
 {\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_a5e7ebe491daab61d9256b45036f9bc48}\label{struct_grid_map_a5e7ebe491daab61d9256b45036f9bc48}} 
+\index{GridMap@{GridMap}!writePixelMap@{writePixelMap}}
+\index{writePixelMap@{writePixelMap}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writePixelMap()}{writePixelMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
+
+
+
+make pixel map of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lensvar} & which quantity is to be displayed \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{struct_grid_map_aed55e0cb0283537108615b228dbb057a}\label{struct_grid_map_aed55e0cb0283537108615b228dbb057a}} 
 \index{GridMap@{GridMap}!writePixelMapUniform@{writePixelMapUniform}}
 \index{writePixelMapUniform@{writePixelMapUniform}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
 
 
@@ -213,25 +253,10 @@ This will be faster than \mbox{\hyperlink{struct_grid_a4d91a7428c0994afbdd4b4a69
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_map_a0d1e721790ac12b240e73d9a699384f9}\label{struct_grid_map_a0d1e721790ac12b240e73d9a699384f9}} 
-\index{GridMap@{GridMap}!writePixelMapUniform@{writePixelMapUniform}}
-\index{writePixelMapUniform@{writePixelMapUniform}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
-
-
-
-make pixel map of lensing quantities at the resolution of the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} 
-
-
-\begin{DoxyParams}{Parameters}
-{\em lensvar} & which quantity is to be displayed \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{struct_grid_map_a4ea8dbd5fd0a8c672b33fbe6ff6787ad}\label{struct_grid_map_a4ea8dbd5fd0a8c672b33fbe6ff6787ad}} 
 \index{GridMap@{GridMap}!writePixelMapUniform@{writePixelMapUniform}}
 \index{writePixelMapUniform@{writePixelMapUniform}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+\doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Grid\+Map\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map,  }\item[{Lensing\+Variable}]{lensvar }\end{DoxyParamCaption})}
 
 

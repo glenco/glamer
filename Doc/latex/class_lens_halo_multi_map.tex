@@ -20,28 +20,31 @@ Inheritance diagram for Lens\+Halo\+Multi\+Map\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Lens\+Halo\+Multi\+Map\+:\nopagebreak
+Collaboration diagram for Lens\+Halo\+Multi\+Map\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=285pt]{class_lens_halo_multi_map__coll__graph}
+\includegraphics[width=240pt]{class_lens_halo_multi_map__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_lens_halo_multi_map_a4965f01ed00e0104445d04d7c57c8011}{Lens\+Halo\+Multi\+Map}} (std\+::string fitsfile, std\+::string dir\+\_\+data, double redshift, double mass\+\_\+unit, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&c, bool write\+\_\+subfields=false, std\+::string dir\+\_\+scratch=\char`\"{}\char`\"{}, bool subtract\+\_\+ave=true, bool single\+\_\+grid\+\_\+mode=false)
+\mbox{\hyperlink{class_lens_halo_multi_map_af28d5f3099d99f8c3b7654f18da6682b}{Lens\+Halo\+Multi\+Map}} (std\+::string fitsfile, std\+::string dir\+\_\+data, double redshift, double mass\+\_\+unit, double npane, int number\+\_\+of\+\_\+subfields, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&c, bool write\+\_\+subfields=false, std\+::string dir\+\_\+scratch=\char`\"{}\char`\"{}, bool subtract\+\_\+ave=true)
 \item 
-void \mbox{\hyperlink{class_lens_halo_multi_map_a55363f47896f67ca3f8615a2c220a752}{submap}} (const std\+::vector$<$ long $>$ \&lower\+\_\+left, const std\+::vector$<$ long $>$ \&upper\+\_\+right)
-\begin{DoxyCompactList}\small\item\em Set highres map be specifying the corners in pixel values. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_a89538fe53ed1bb111d9128cf5d2f8d1b}\label{class_lens_halo_multi_map_a89538fe53ed1bb111d9128cf5d2f8d1b}} 
-void \mbox{\hyperlink{class_lens_halo_multi_map_a89538fe53ed1bb111d9128cf5d2f8d1b}{submap\+Phys}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ll, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ur)
-\begin{DoxyCompactList}\small\item\em Sets the highres smaller map in physical coordinates relative to the center of the original map, periodic boundary conditions apply. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_a8fb981ab98944743d19f53355fdcfcfe}\label{class_lens_halo_multi_map_a8fb981ab98944743d19f53355fdcfcfe}} 
-void {\bfseries submap\+Angular} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ll, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ur)
+\mbox{\Hypertarget{class_lens_halo_multi_map_a63e901455b10a2d3186f38e9829ca34f}\label{class_lens_halo_multi_map_a63e901455b10a2d3186f38e9829ca34f}} 
+void {\bfseries resetsubmap} (int i, const std\+::vector$<$ long $>$ \&lower\+\_\+left)
 \item 
-void \mbox{\hyperlink{class_lens_halo_multi_map_a0480d632182361d89f390c5409d8da80}{force\+\_\+halo}} (double $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, double const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
-\begin{DoxyCompactList}\small\item\em returns the lensing quantities of a ray in center of mass coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}\label{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}} 
+void \mbox{\hyperlink{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}{resetsubmap\+Phys}} (int i, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ll)
+\begin{DoxyCompactList}\small\item\em Sets the least highres smaller map in physical coordinates relative to the center of the original map, periodic boundary conditions apply. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_af3272392f8eb2960c1fb6ceddf67d76a}\label{class_lens_halo_multi_map_af3272392f8eb2960c1fb6ceddf67d76a}} 
+void {\bfseries resetsubmap\+Angular} (int i, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ll)
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a0480d632182361d89f390c5409d8da80}\label{class_lens_halo_multi_map_a0480d632182361d89f390c5409d8da80}} 
+void {\bfseries force\+\_\+halo} (double $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, double const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+\item 
 \mbox{\Hypertarget{class_lens_halo_multi_map_a9fffde8d0920d1037857d6c9aae9c611}\label{class_lens_halo_multi_map_a9fffde8d0920d1037857d6c9aae9c611}} 
 void {\bfseries write\+Image} (std\+::string fn)
 \item 
@@ -54,15 +57,18 @@ void {\bfseries write\+Image} (std\+::string fn)
 \mbox{\Hypertarget{class_lens_halo_multi_map_a17decbf5feed2c78edab1162b13ec4b9}\label{class_lens_halo_multi_map_a17decbf5feed2c78edab1162b13ec4b9}} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_a17decbf5feed2c78edab1162b13ec4b9}{get\+Center\+\_\+lr}} () const
 \begin{DoxyCompactList}\small\item\em center of short range map in physical Mpc \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_a9352dcb71154fe4c367a3c37f742d32c}\label{class_lens_halo_multi_map_a9352dcb71154fe4c367a3c37f742d32c}} 
-\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_a9352dcb71154fe4c367a3c37f742d32c}{get\+Lower\+Left\+\_\+sr}} () const
+\mbox{\Hypertarget{class_lens_halo_multi_map_a35620fb0b5da1a49046fedb0503a58f6}\label{class_lens_halo_multi_map_a35620fb0b5da1a49046fedb0503a58f6}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_a35620fb0b5da1a49046fedb0503a58f6}{get\+Lower\+Left\+\_\+sr}} (int i) const
 \begin{DoxyCompactList}\small\item\em lower left of short range map in physical Mpc \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_ab782970960668a1cde190990e711b9fa}\label{class_lens_halo_multi_map_ab782970960668a1cde190990e711b9fa}} 
-\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_ab782970960668a1cde190990e711b9fa}{get\+Upper\+Right\+\_\+sr}} () const
+\mbox{\Hypertarget{class_lens_halo_multi_map_ac6d882347d9f49f7ba74672f6fa4b2b7}\label{class_lens_halo_multi_map_ac6d882347d9f49f7ba74672f6fa4b2b7}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_ac6d882347d9f49f7ba74672f6fa4b2b7}{get\+Upper\+Right\+\_\+sr}} (int i) const
 \begin{DoxyCompactList}\small\item\em upper right of short range map in physical Mpc \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_a892e987d19a2a0d87b41a41699ac3e36}\label{class_lens_halo_multi_map_a892e987d19a2a0d87b41a41699ac3e36}} 
-\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_a892e987d19a2a0d87b41a41699ac3e36}{get\+Center\+\_\+sr}} () const
+\mbox{\Hypertarget{class_lens_halo_multi_map_a6b899c88e491207990d5b95b5d633591}\label{class_lens_halo_multi_map_a6b899c88e491207990d5b95b5d633591}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_multi_map_a6b899c88e491207990d5b95b5d633591}{get\+Center\+\_\+sr}} (int i) const
 \begin{DoxyCompactList}\small\item\em center of short range map in physical Mpc \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a422b0d05144688192f6bc80b0ea51d3e}\label{class_lens_halo_multi_map_a422b0d05144688192f6bc80b0ea51d3e}} 
+int \mbox{\hyperlink{class_lens_halo_multi_map_a422b0d05144688192f6bc80b0ea51d3e}{Number\+Of\+Short\+Range\+Maps}} ()
+\begin{DoxyCompactList}\small\item\em the number of short range grids \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_halo_multi_map_acc889a0d4e16f6de4d53e7dc6e875545}\label{class_lens_halo_multi_map_acc889a0d4e16f6de4d53e7dc6e875545}} 
 double \mbox{\hyperlink{class_lens_halo_multi_map_acc889a0d4e16f6de4d53e7dc6e875545}{get\+Range\+Mpc\+\_\+lr}} () const
 \begin{DoxyCompactList}\small\item\em return range of long range map in physical Mpc \end{DoxyCompactList}\item 
@@ -117,8 +123,44 @@ const double {\bfseries gfactor} = 5
 \mbox{\Hypertarget{class_lens_halo_multi_map_a4bb15207db4ee11fb1885475d208884e}\label{class_lens_halo_multi_map_a4bb15207db4ee11fb1885475d208884e}} 
 \mbox{\hyperlink{struct_lens_map}{Lens\+Map}} {\bfseries long\+\_\+range\+\_\+map}
 \item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_a3f5123afc9de3581691dbe31c44e2990}\label{class_lens_halo_multi_map_a3f5123afc9de3581691dbe31c44e2990}} 
-\mbox{\hyperlink{struct_lens_map}{Lens\+Map}} {\bfseries short\+\_\+range\+\_\+map}
+\mbox{\Hypertarget{class_lens_halo_multi_map_ac1b79d6859d91b52921dfa7da9bf86e1}\label{class_lens_halo_multi_map_ac1b79d6859d91b52921dfa7da9bf86e1}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_lens_map}{Lens\+Map}} $>$ {\bfseries short\+\_\+range\+\_\+maps}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a1c478f3e241ab0134ba0281e241f3957}\label{class_lens_halo_multi_map_a1c478f3e241ab0134ba0281e241f3957}} 
+static my\+\_\+fftw\+\_\+plan \mbox{\hyperlink{class_lens_halo_multi_map_a1c478f3e241ab0134ba0281e241f3957}{plan\+\_\+short\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em these plans will be shared between all instances of \mbox{\hyperlink{class_lens_halo_multi_map}{Lens\+Halo\+Multi\+Map}} \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_abf1432a4dd4fad9ffd85f871ad1cbf0a}\label{class_lens_halo_multi_map_abf1432a4dd4fad9ffd85f871ad1cbf0a}} 
+static my\+\_\+fftw\+\_\+plan {\bfseries plan\+\_\+long\+\_\+range}
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_ad634d0d53e8c427a9f6246a62b1e5b8b}\label{class_lens_halo_multi_map_ad634d0d53e8c427a9f6246a62b1e5b8b}} 
+static std\+::mutex {\bfseries mutex\+\_\+multimap}
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_aa07e2a41429fb76e4864943a54307327}\label{class_lens_halo_multi_map_aa07e2a41429fb76e4864943a54307327}} 
+static bool {\bfseries plans\+\_\+set\+\_\+up} = false
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a66fc594be6c0802ebf21d691fa98dc50}\label{class_lens_halo_multi_map_a66fc594be6c0802ebf21d691fa98dc50}} 
+static size\+\_\+t {\bfseries nx\+\_\+sub} = 0
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_af2e40602b2f88f63d3fff2e062451020}\label{class_lens_halo_multi_map_af2e40602b2f88f63d3fff2e062451020}} 
+static size\+\_\+t {\bfseries ny\+\_\+sub} = 0
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_ae929e25d6a35aae220a7710e712d1e25}\label{class_lens_halo_multi_map_ae929e25d6a35aae220a7710e712d1e25}} 
+static size\+\_\+t {\bfseries nx\+\_\+long} = 0
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a65acdc0f9637b06a2dd22147130713d7}\label{class_lens_halo_multi_map_a65acdc0f9637b06a2dd22147130713d7}} 
+static size\+\_\+t {\bfseries ny\+\_\+long} = 0
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a38737e3dee6683c2a3809d686bf8c8ad}\label{class_lens_halo_multi_map_a38737e3dee6683c2a3809d686bf8c8ad}} 
+static size\+\_\+t {\bfseries nx\+\_\+sub\+\_\+extended} = 0
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a7ade61d256d54a8b386af57ba18d118b}\label{class_lens_halo_multi_map_a7ade61d256d54a8b386af57ba18d118b}} 
+static size\+\_\+t {\bfseries ny\+\_\+sub\+\_\+extended} = 0
+\item 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a2dc1c4f6586d73940b2fcf478fcd32c8}\label{class_lens_halo_multi_map_a2dc1c4f6586d73940b2fcf478fcd32c8}} 
+static int {\bfseries count}
 \end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
@@ -129,19 +171,25 @@ A lens halo that calculates all lensing qunatities on two grids -\/ a low res lo
 Note\+: To use this class requires setting the E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS compiler flag and linking the cfits library. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_lens_halo_multi_map_a4965f01ed00e0104445d04d7c57c8011}\label{class_lens_halo_multi_map_a4965f01ed00e0104445d04d7c57c8011}} 
+\mbox{\Hypertarget{class_lens_halo_multi_map_af28d5f3099d99f8c3b7654f18da6682b}\label{class_lens_halo_multi_map_af28d5f3099d99f8c3b7654f18da6682b}} 
 \index{LensHaloMultiMap@{LensHaloMultiMap}!LensHaloMultiMap@{LensHaloMultiMap}}
 \index{LensHaloMultiMap@{LensHaloMultiMap}!LensHaloMultiMap@{LensHaloMultiMap}}
 \doxysubsubsection{\texorpdfstring{LensHaloMultiMap()}{LensHaloMultiMap()}}
-{\footnotesize\ttfamily Lens\+Halo\+Multi\+Map\+::\+Lens\+Halo\+Multi\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfile,  }\item[{std\+::string}]{dir\+\_\+data,  }\item[{double}]{redshift,  }\item[{double}]{mass\+\_\+unit,  }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{c,  }\item[{bool}]{write\+\_\+subfields = {\ttfamily false},  }\item[{std\+::string}]{dir\+\_\+scratch = {\ttfamily \char`\"{}\char`\"{}},  }\item[{bool}]{subtract\+\_\+ave = {\ttfamily true},  }\item[{bool}]{single\+\_\+grid\+\_\+mode = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Lens\+Halo\+Multi\+Map\+::\+Lens\+Halo\+Multi\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfile,  }\item[{std\+::string}]{dir\+\_\+data,  }\item[{double}]{redshift,  }\item[{double}]{mass\+\_\+unit,  }\item[{double}]{npane,  }\item[{int}]{number\+\_\+of\+\_\+subfields,  }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{c,  }\item[{bool}]{write\+\_\+subfields = {\ttfamily false},  }\item[{std\+::string}]{dir\+\_\+scratch = {\ttfamily \char`\"{}\char`\"{}},  }\item[{bool}]{subtract\+\_\+ave = {\ttfamily true} }\end{DoxyParamCaption})}
 
 long\+\_\+range\+\_\+file\+\_\+exists = false;
 
 set prefix to subfield maps
+
+set up fftw plans for short range maps
 \begin{DoxyParams}{Parameters}
 {\em fitsfile} & Original fits map of the density \\
 \hline
 {\em mass\+\_\+unit} & should include h factors \\
+\hline
+{\em npane} & number of submaps in full map \\
+\hline
+{\em number\+\_\+of\+\_\+subfields} & number of subfields \\
 \hline
 {\em write\+\_\+subfields} & write subfields to be read if they already exist \\
 \hline
@@ -149,54 +197,8 @@ set prefix to subfield maps
 \hline
 {\em subtract\+\_\+ave} & subtract the average of the full field \\
 \hline
-{\em single\+\_\+grid\+\_\+mode} & don\textquotesingle{}t do the short \& long range decomposition \\
-\hline
 \end{DoxyParams}
 
-
-\doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_lens_halo_multi_map_a0480d632182361d89f390c5409d8da80}\label{class_lens_halo_multi_map_a0480d632182361d89f390c5409d8da80}} 
-\index{LensHaloMultiMap@{LensHaloMultiMap}!force\_halo@{force\_halo}}
-\index{force\_halo@{force\_halo}!LensHaloMultiMap@{LensHaloMultiMap}}
-\doxysubsubsection{\texorpdfstring{force\_halo()}{force\_halo()}}
-{\footnotesize\ttfamily void Lens\+Halo\+Multi\+Map\+::force\+\_\+halo (\begin{DoxyParamCaption}\item[{double $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi,  }\item[{double const $\ast$}]{xcm,  }\item[{bool}]{subtract\+\_\+point = {\ttfamily false},  }\item[{Pos\+Type}]{screening = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-returns the lensing quantities of a ray in center of mass coordinates. 
-
-Warning\+: This adds to input value of alpha, kappa, gamma, and phi. They need to be zeroed out if the contribution of just this halo is wanted. 
-\begin{DoxyParams}{Parameters}
-{\em alpha} & deflection solar mass/\+Mpc \\
-\hline
-{\em kappa} & surface density in Msun/\+Mpc$^\wedge$2 (?) \\
-\hline
-{\em gamma} & three components of shear \\
-\hline
-{\em phi} & potential in solar masses \\
-\hline
-{\em xcm} & position relative to center (Mpc?) \\
-\hline
-{\em subtract\+\_\+point} & if true contribution from a point mass is subtracted \\
-\hline
-{\em screening} & the factor by which to scale the mass for screening of the point mass subtraction \\
-\hline
-\end{DoxyParams}
-
-
-Reimplemented from \mbox{\hyperlink{class_lens_halo_a460de105e52520a328d5912455c02fdd}{Lens\+Halo}}.
-
-\mbox{\Hypertarget{class_lens_halo_multi_map_a55363f47896f67ca3f8615a2c220a752}\label{class_lens_halo_multi_map_a55363f47896f67ca3f8615a2c220a752}} 
-\index{LensHaloMultiMap@{LensHaloMultiMap}!submap@{submap}}
-\index{submap@{submap}!LensHaloMultiMap@{LensHaloMultiMap}}
-\doxysubsubsection{\texorpdfstring{submap()}{submap()}}
-{\footnotesize\ttfamily void Lens\+Halo\+Multi\+Map\+::submap (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ long $>$ \&}]{lower\+\_\+left,  }\item[{const std\+::vector$<$ long $>$ \&}]{upper\+\_\+right }\end{DoxyParamCaption})}
-
-
-
-Set highres map be specifying the corners in pixel values. 
-
-construct file name and have it printed
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

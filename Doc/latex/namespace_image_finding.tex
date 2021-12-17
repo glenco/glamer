@@ -10,8 +10,6 @@ The \mbox{\hyperlink{namespace_image_finding}{Image\+Finding}} namespace is for 
 \item 
 void \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{find\+\_\+images\+\_\+kist}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, Pos\+Type initial\+\_\+size, bool splitimages, short edge\+\_\+refinement, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Finds images given a source position and size. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{namespace_image_finding_a507eaa67f4a10db4985c818d96311ec7}{find\+\_\+image\+\_\+simple}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type z\+\_\+source, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&image\+\_\+x, Pos\+Type xtol2, Pos\+Type \&fret)
-\begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_image_finding_a4df229d3fd4cccd2a4ae17fa7edfa258}{find\+\_\+images\+\_\+microlens}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, double $\ast$y\+\_\+source, double r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, double initial\+\_\+size, double mu\+\_\+min, bool splitimages, short edge\+\_\+refinement, bool verbose)
 \begin{DoxyCompactList}\small\item\em Finds images given a source position and size. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_image_finding_ae87006a0aa4fab4fda4f60f6689f0ec3}{find\+\_\+images\+\_\+microlens\+\_\+exper}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long $\ast$Nimagepoints, Pos\+Type initial\+\_\+size, Pos\+Type mu\+\_\+min, bool splitimages, short edge\+\_\+refinement, bool verbose)
@@ -43,12 +41,6 @@ short \mbox{\hyperlink{namespace_image_finding_a35b9df4dfdcc34aee973719535ec8778
 
 \doxysubsection{Detailed Description}
 The \mbox{\hyperlink{namespace_image_finding}{Image\+Finding}} namespace is for functions related to finding and mapping images. 
-
-Find a image position for a source position.
-
-This routine finds the image position by minimizing the seporation on the source plane with Powell\textquotesingle{}s method of minimization. This will not find all images. For that you must use another routine. In the weak lensing regiam this should be sufficient.
-
-Warning\+: This is not thread safe because it uses global variable in the Image\+Finding\+::\+Temporary namespace. 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}\label{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}} 
@@ -121,29 +113,6 @@ make some figures
 {\em resolution} & The target resolution that the critical curve is mapped on the image plane. \\
 \hline
 {\em invmag\+\_\+min} & finds regions with 1/magnification $<$ invmag\+\_\+min, set to zero for caustics \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{namespace_image_finding_a507eaa67f4a10db4985c818d96311ec7}\label{namespace_image_finding_a507eaa67f4a10db4985c818d96311ec7}} 
-\index{ImageFinding@{ImageFinding}!find\_image\_simple@{find\_image\_simple}}
-\index{find\_image\_simple@{find\_image\_simple}!ImageFinding@{ImageFinding}}
-\doxysubsubsection{\texorpdfstring{find\_image\_simple()}{find\_image\_simple()}}
-{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+image\+\_\+simple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{z\+\_\+source,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{image\+\_\+x,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{fret }\end{DoxyParamCaption})}
-
-
-
-Find the image position of a source without grid refinement. 
-
-This uses Powell\textquotesingle{}s algorithm to minimise the distance between the source point of an image and the desired source point. No grid is necessary. This should be fast, but will miss multiple images. This is useful for finding the position of weakly lensed images or the rough region where a grid should be put down for a strong lens. 
-\begin{DoxyParams}{Parameters}
-{\em lens} & lens to be shot through \\
-\hline
-{\em y\+\_\+source} & input position of source (radians) \\
-\hline
-{\em z\+\_\+source} & redshift of source \\
-\hline
-{\em image\+\_\+x} & output image position (radians) \\
-\hline
-{\em ytol2} & target tolerance in source position squared \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}\label{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}} 
@@ -317,7 +286,9 @@ image points are put into imageinfo\mbox{[}\mbox{]}.imagekist imageinfo\mbox{[}\
 
 splitparities= 0 don\textquotesingle{}t split attached negative and positive parity images = 1 do split parities N\+O\+TE\+: this is now obsolete = -\/1 doesn\textquotesingle{}t slit into images at all , also does not find borders or change in\+\_\+image markers true\+\_\+images = 1 gives just the points that are in the image = 0 if there are not enough points in images this will include close points to be refined
 
-side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0 \mbox{\Hypertarget{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}\label{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}} 
+side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0
+
+$<${\ttfamily } $>$ \mbox{\Hypertarget{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}\label{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}} 
 \index{ImageFinding@{ImageFinding}!map\_images@{map\_images}}
 \index{map\_images@{map\_images}!ImageFinding@{ImageFinding}}
 \doxysubsubsection{\texorpdfstring{map\_images()}{map\_images()}}
