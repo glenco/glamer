@@ -11,8 +11,7 @@ Structure to contain both source and image trees.
 
 
 
-Collaboration diagram for Grid\+:
-\nopagebreak
+Collaboration diagram for Grid\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,7 +33,7 @@ void \mbox{\hyperlink{struct_grid_aa24da72593941193758c4a98ee860b19}{Re\+Initial
 void \mbox{\hyperlink{struct_grid_a0893daf7e7db43564182f7847e8ee73e}{Re\+Shoot}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
 \begin{DoxyCompactList}\small\item\em Reshoot the rays with the same image postions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}{zoom}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, double $\ast$center, double scale, \mbox{\hyperlink{struct_branch}{Branch}} $\ast$top=N\+U\+LL)
-\begin{DoxyCompactList}\small\item\em quickly refines the grid down to a specific scale at a given point \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Test if point is in a region of uniform magnification using the kappa and gamma calculated from the rayshooter. \end{DoxyCompactList}\item 
 unsigned long \mbox{\hyperlink{struct_grid_ae11e8ae40a50d5f47f75920509466767}{Prune\+Trees}} (double resolution, bool use\+SB, double fluxlimit)
 \begin{DoxyCompactList}\small\item\em T\+H\+IS D\+O\+ES N\+OT W\+O\+RK Y\+E\+T!!! \end{DoxyCompactList}\item 
 unsigned long \mbox{\hyperlink{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}{Prune\+Points\+Outside}} (double resolution, double $\ast$y, double r\+\_\+in, double r\+\_\+out)
@@ -74,9 +73,6 @@ double \mbox{\hyperlink{struct_grid_aafb414f884497255df53b5ba7ceb0f24}{get\+Init
 \mbox{\Hypertarget{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}\label{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}} 
 void \mbox{\hyperlink{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}{Clear\+All\+Marks}} ()
 \begin{DoxyCompactList}\small\item\em Rest all in\+\_\+image markers to False. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_af459ba1188dd0c228ccba15ca5728e61}\label{struct_grid_af459ba1188dd0c228ccba15ca5728e61}} 
-void {\bfseries test\+\_\+mag\+\_\+matrix} ()
-\item 
 void \mbox{\hyperlink{struct_grid_a8815d0d3b3bec110d580340ff40621bf}{write\+Fits}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, Lensing\+Variable lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Outputs a fits image of a lensing variable of choice. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_a1c929444392293507dda639537748556}{write\+Fits}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, double resolution, Lensing\+Variable lensvar, std\+::string filename)
@@ -560,7 +556,13 @@ This will be faster than \mbox{\hyperlink{struct_grid_a4d91a7428c0994afbdd4b4a69
 
 
 
-quickly refines the grid down to a specific scale at a given point 
+Test if point is in a region of uniform magnification using the kappa and gamma calculated from the rayshooter. 
+
+An estimate of the magnification matrix is returned if it returns true. Otherwise the magnification matrix is unspecified.
+
+Magnification matrix elements are considered equal if their difference is smaller than maglimit which is set in the \mbox{\hyperlink{struct_grid}{Grid}} constructor.
+
+quickly refines the grid down to a specific scale at a given point
 
 top is an optional argument that allows for the zooming to start part way down the tree. Default is to start at the root. If the point is not within top or the root nothing is done. The point will not necessarily be in the center of the smallest branch. 
 \begin{DoxyParams}{Parameters}

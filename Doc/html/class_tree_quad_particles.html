@@ -79,9 +79,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a318fe2ca82e8e8297d20b53a12c22356"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_particles.html#a318fe2ca82e8e8297d20b53a12c22356">TreeQuadParticles</a> (PType *xpt, IndexType Npoints, float mass_fixed=-1, float size_fixed=-1, PosType my_sigma_background=0, int bucket=5, PosType theta_force=0.1, bool my_periodic_buffer=false, PosType my_inv_screening_scale=0)</td></tr>
-<tr class="memdesc:a318fe2ca82e8e8297d20b53a12c22356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor meant for point particles, simulation particles.  <a href="class_tree_quad_particles.html#a318fe2ca82e8e8297d20b53a12c22356">More...</a><br /></td></tr>
-<tr class="separator:a318fe2ca82e8e8297d20b53a12c22356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c2c3cc795088782c85903d77fca801b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_particles.html#a7c2c3cc795088782c85903d77fca801b">TreeQuadParticles</a> (PType *xpt, IndexType Npoints, float mass_fixed=-1, float size_fixed=-1, PosType my_sigma_background=0, int bucket=5, PosType theta_force=0.1, bool my_periodic_buffer=false, PosType my_inv_screening_scale=0, PosType maximum_range=-1)</td></tr>
+<tr class="memdesc:a7c2c3cc795088782c85903d77fca801b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor meant for point particles, simulation particles.  <a href="class_tree_quad_particles.html#a7c2c3cc795088782c85903d77fca801b">More...</a><br /></td></tr>
+<tr class="separator:a7c2c3cc795088782c85903d77fca801b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f365617a5f5d375d6d6cd248b219cb"><td class="memItemLeft" align="right" valign="top"><a id="a36f365617a5f5d375d6d6cd248b219cb"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_particles.html#a36f365617a5f5d375d6d6cd248b219cb">~TreeQuadParticles</a> ()</td></tr>
 <tr class="memdesc:a36f365617a5f5d375d6d6cd248b219cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Particle positions and other data are not destroyed. <br /></td></tr>
@@ -180,6 +180,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>Nbucket</b></td></tr>
 <tr class="memitem:a4f5cbb67d1bb7e1618630b5166ec4cb8"><td class="memItemLeft" align="right" valign="top"><a id="a4f5cbb67d1bb7e1618630b5166ec4cb8"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><b>force_theta</b></td></tr>
 <tr class="separator:a4f5cbb67d1bb7e1618630b5166ec4cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bb6a47b6dc94ab3063c35fdb745b7c9"><td class="memItemLeft" align="right" valign="top"><a id="a9bb6a47b6dc94ab3063c35fdb745b7c9"></a>
+PosType&#160;</td><td class="memItemRight" valign="bottom"><b>max_range</b></td></tr>
+<tr class="separator:a9bb6a47b6dc94ab3063c35fdb745b7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad889fb83de339c14d18b1d9f3a68050a"><td class="memItemLeft" align="right" valign="top"><a id="ad889fb83de339c14d18b1d9f3a68050a"></a>
 std::unique_ptr&lt; <a class="el" href="struct_q_tree_n_b.html">QTreeNB</a>&lt; PType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tree</b></td></tr>
 <tr class="separator:ad889fb83de339c14d18b1d9f3a68050a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,10 +225,10 @@ class TreeQuadParticles&lt; PType &gt;</h3>
 <p><a class="el" href="class_tree_quad_particles.html" title="TreeQuadParticles is a class for calculating the deflection, kappa and gamma by tree method.">TreeQuadParticles</a> is a class for calculating the deflection, kappa and gamma by tree method. </p>
 <p><a class="el" href="simple_tree_8h_source.html">simpleTree.h</a></p>
 <p>Created on: Oct 14, 2011 Author: bmetcalf <a class="el" href="class_tree_quad_particles.html" title="TreeQuadParticles is a class for calculating the deflection, kappa and gamma by tree method.">TreeQuadParticles</a> is evolved from <a class="el" href="class_tree_simple.html" title="A C++ class wrapper for the bianary treeNB used in the Nobody force calculation, but also useful for ...">TreeSimple</a> and <a class="el" href="class_tree_force.html" title="Object used to calculate the force or deflection caused by a collection of &quot;particles&quot; by the tree me...">TreeForce</a>. It splits each cell into four equal area subcells instead of being a binary tree like <a class="el" href="class_tree_simple.html" title="A C++ class wrapper for the bianary treeNB used in the Nobody force calculation, but also useful for ...">TreeSimple</a>. When the "particles" are given sizes the tree is built in such a way the large particles are stored in branches that are no smaller than their size. In this way particles are stored on all levels of the tree and not just in the leaves. This improves efficiency when particles of a wide range of sizes overlap in 2D.</p>
-<p>The default value of theta = 0.1 generally gives better than 1% accuracy on alpha. The shear and kappa is always more accurate than the deflection. </p>
+<p>The default value of theta = 0.1 generally gives better than 1% accuracy on alpha. The shear and kappa are always more accurate than the deflection. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a318fe2ca82e8e8297d20b53a12c22356"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a318fe2ca82e8e8297d20b53a12c22356">&#9670;&nbsp;</a></span>TreeQuadParticles()</h2>
+<a id="a7c2c3cc795088782c85903d77fca801b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c2c3cc795088782c85903d77fca801b">&#9670;&nbsp;</a></span>TreeQuadParticles()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +287,13 @@ template&lt;typename PType &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>my_inv_screening_scale</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>my_inv_screening_scale</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>maximum_range</em> = <code>-1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -300,6 +309,7 @@ template&lt;typename PType &gt; </div>
     <tr><td class="paramname">my_sigma_background</td><td>background kappa that is subtracted </td></tr>
     <tr><td class="paramname">my_periodic_buffer</td><td>if true a periodic buffer will be imposed in the force calulation. See documentation on <a class="el" href="class_tree_quad_particles.html#a166ba35f1a6b1c59cf5d5a8d120d9448" title="Force2D calculates the defection, convergence and shear using the plane-lens approximation....">TreeQuadParticles::force2D()</a> for details. See note for <a class="el" href="class_tree_quad_particles.html#a5e245b201cd43f69b77a294ea21a930e" title="Force2D_recur calculates the defection, convergence and shear using the plane-lens approximation.">TreeQuadParticles::force2D_recur()</a>. </td></tr>
     <tr><td class="paramname">my_inv_screening_scale</td><td>the inverse of the square of the sreening length. See note for <a class="el" href="class_tree_quad_particles.html#a5e245b201cd43f69b77a294ea21a930e" title="Force2D_recur calculates the defection, convergence and shear using the plane-lens approximation.">TreeQuadParticles::force2D_recur()</a>. </td></tr>
+    <tr><td class="paramname">maximum_range</td><td>if set this will cause the tree not be fully construct down to the bucket size outside this range </td></tr>
   </table>
   </dd>
 </dl>
@@ -514,7 +524,7 @@ template&lt;typename PType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 10 2022 17:54:48 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

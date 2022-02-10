@@ -36,6 +36,8 @@ class \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Random\+Numbers
 \begin{DoxyCompactList}\small\item\em This is a class for generating random numbers. It simplifies and fool proofs initialization and allows for multiple independent series of numbers. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_utilities_1_1_shuffled_index}{Shuffled\+Index}}
 \begin{DoxyCompactList}\small\item\em Gives a randomized sequence of numbers from 0 to N-\/1. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_utilities_1_1_s_u_m_m_e_r}{S\+U\+M\+M\+ER}}
+\begin{DoxyCompactList}\small\item\em class for adding large amounts of numbers with less error than the simple sum \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_utilities_1_1_symmetric_matrix}{Symmetric\+Matrix}}
 \begin{DoxyCompactList}\small\item\em Symetric matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
@@ -185,6 +187,9 @@ void \mbox{\hyperlink{namespace_utilities_ac71ef3b7c0383a2ca61eb5d479d8490d}{con
 \begin{DoxyCompactList}\small\item\em Returns axis ratio, area and points of an ellipse engulfed by some contour (e.\+g. a contour of same convergence calculated with find\+\_\+contour). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{namespace_utilities_a512d73667d76a5a58e44042a4a73c974}{contour\+\_\+center}} (std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&P, unsigned long Npoints)
 \begin{DoxyCompactList}\small\item\em Returns the center of a contour defined as the midpoint between the two points in the contour that are farthest apart from one another. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_aef69c3740a53802b178df4843077fcc4}\label{namespace_utilities_aef69c3740a53802b178df4843077fcc4}} 
+bool \mbox{\hyperlink{namespace_utilities_aef69c3740a53802b178df4843077fcc4}{make\+\_\+directories}} (const std\+::string \&root\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em make a directory if it doesn\textquotesingle{}t exist \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespace_utilities_aa727547d253bdbd88ac47cae3f7c65c4}\label{namespace_utilities_aa727547d253bdbd88ac47cae3f7c65c4}} 
 long {\bfseries Index\+From\+Position} (Pos\+Type $\ast$x, long Npixels, Pos\+Type \mbox{\hyperlink{namespace_utilities_ae60664d77331b21da7b83e6e0cc0c75c}{range}}, const Pos\+Type $\ast$center)
 \item 
@@ -324,6 +329,21 @@ int \mbox{\hyperlink{namespace_utilities_afa654746e24cd77549f412bed8d3ee26}{Get\
 \mbox{\Hypertarget{namespace_utilities_acede0e6fa297e5d2f12c89724110bc25}\label{namespace_utilities_acede0e6fa297e5d2f12c89724110bc25}} 
 void \mbox{\hyperlink{namespace_utilities_acede0e6fa297e5d2f12c89724110bc25}{splitstring}} (std\+::string \&line, std\+::vector$<$ std\+::string $>$ \&vec, const std\+::string \&delimiter)
 \begin{DoxyCompactList}\small\item\em split string into vector of seporate strings that were seporated by \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_a9bcb1b508d1a083903f7efe1cef059c6}\label{namespace_utilities_a9bcb1b508d1a083903f7efe1cef059c6}} 
+{\footnotesize template$<$typename T $>$ }\\double {\bfseries Klein\+Sum} (std\+::vector$<$ T $>$ \&input)
+\item 
+\mbox{\Hypertarget{namespace_utilities_a9cc851578407384fcfddcecd75d32c0e}\label{namespace_utilities_a9cc851578407384fcfddcecd75d32c0e}} 
+{\footnotesize template$<$typename T , typename F $>$ }\\double {\bfseries Pair\+Wise\+Sum} (T $\ast$begin, T $\ast$end, F value)
+\item 
+\mbox{\Hypertarget{namespace_utilities_af24b7bf4d27bbe77e4b9f68e879015d4}\label{namespace_utilities_af24b7bf4d27bbe77e4b9f68e879015d4}} 
+{\footnotesize template$<$typename T $>$ }\\double \mbox{\hyperlink{namespace_utilities_af24b7bf4d27bbe77e4b9f68e879015d4}{Pair\+Wise\+Sum}} (T $\ast$begin, T $\ast$end)
+\begin{DoxyCompactList}\small\item\em Does a parwise sumation of a vector which incresses the precision of the sumation to $\sim$\+O(epsilon log(n) ) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_abb73b4921a044eff1a54293379118c2f}\label{namespace_utilities_abb73b4921a044eff1a54293379118c2f}} 
+{\footnotesize template$<$typename T $>$ }\\double \mbox{\hyperlink{namespace_utilities_abb73b4921a044eff1a54293379118c2f}{Pair\+Wise\+Sum}} (std\+::vector$<$ T $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Does a parwise sumation of a vector which incresses the precision of the sumation to $\sim$\+O(epsilon log(n) ) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_afb47bcadb1b1b4c2662f37d26e84cf0e}\label{namespace_utilities_afb47bcadb1b1b4c2662f37d26e84cf0e}} 
+{\footnotesize template$<$typename T , typename F $>$ }\\double \mbox{\hyperlink{namespace_utilities_afb47bcadb1b1b4c2662f37d26e84cf0e}{Pair\+Wise\+Sum}} (std\+::vector$<$ T $>$ \&v, F value)
+\begin{DoxyCompactList}\small\item\em This version allows you to specify a function( value(\+T $\ast$ p) ), that returns the value of a pointer to a T type that is to be summed. This is useful for summing the squares or summing some a particular variable within a list of objects. A lambda function is particularly useful here. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespace_utilities_ae358b58a950d75ef089c7ad73f37a080}\label{namespace_utilities_ae358b58a950d75ef089c7ad73f37a080}} 
 bool {\bfseries xorderD} (double $\ast$p1, double $\ast$p2)
 \item 

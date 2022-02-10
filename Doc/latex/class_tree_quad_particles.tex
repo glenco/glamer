@@ -12,7 +12,7 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_tree_quad_particles_a318fe2ca82e8e8297d20b53a12c22356}{Tree\+Quad\+Particles}} (P\+Type $\ast$xpt, Index\+Type Npoints, float mass\+\_\+fixed=-\/1, float size\+\_\+fixed=-\/1, Pos\+Type my\+\_\+sigma\+\_\+background=0, int bucket=5, Pos\+Type theta\+\_\+force=0.\+1, bool my\+\_\+periodic\+\_\+buffer=false, Pos\+Type my\+\_\+inv\+\_\+screening\+\_\+scale=0)
+\mbox{\hyperlink{class_tree_quad_particles_a7c2c3cc795088782c85903d77fca801b}{Tree\+Quad\+Particles}} (P\+Type $\ast$xpt, Index\+Type Npoints, float mass\+\_\+fixed=-\/1, float size\+\_\+fixed=-\/1, Pos\+Type my\+\_\+sigma\+\_\+background=0, int bucket=5, Pos\+Type theta\+\_\+force=0.\+1, bool my\+\_\+periodic\+\_\+buffer=false, Pos\+Type my\+\_\+inv\+\_\+screening\+\_\+scale=0, Pos\+Type maximum\+\_\+range=-\/1)
 \begin{DoxyCompactList}\small\item\em Constructor meant for point particles, simulation particles. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}\label{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}} 
 \mbox{\hyperlink{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}{$\sim$\+Tree\+Quad\+Particles}} ()
@@ -105,6 +105,9 @@ int {\bfseries Nbucket}
 \mbox{\Hypertarget{class_tree_quad_particles_a4f5cbb67d1bb7e1618630b5166ec4cb8}\label{class_tree_quad_particles_a4f5cbb67d1bb7e1618630b5166ec4cb8}} 
 Pos\+Type {\bfseries force\+\_\+theta}
 \item 
+\mbox{\Hypertarget{class_tree_quad_particles_a9bb6a47b6dc94ab3063c35fdb745b7c9}\label{class_tree_quad_particles_a9bb6a47b6dc94ab3063c35fdb745b7c9}} 
+Pos\+Type {\bfseries max\+\_\+range}
+\item 
 \mbox{\Hypertarget{class_tree_quad_particles_ad889fb83de339c14d18b1d9f3a68050a}\label{class_tree_quad_particles_ad889fb83de339c14d18b1d9f3a68050a}} 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ P\+Type $>$ $>$ {\bfseries tree}
 \item 
@@ -150,15 +153,15 @@ class Tree\+Quad\+Particles$<$ P\+Type $>$}
 
 Created on\+: Oct 14, 2011 Author\+: bmetcalf \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} is evolved from \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}} and \mbox{\hyperlink{class_tree_force}{Tree\+Force}}. It splits each cell into four equal area subcells instead of being a binary tree like \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}}. When the \char`\"{}particles\char`\"{} are given sizes the tree is built in such a way the large particles are stored in branches that are no smaller than their size. In this way particles are stored on all levels of the tree and not just in the leaves. This improves efficiency when particles of a wide range of sizes overlap in 2D.
 
-The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa is always more accurate than the deflection. 
+The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa are always more accurate than the deflection. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_tree_quad_particles_a318fe2ca82e8e8297d20b53a12c22356}\label{class_tree_quad_particles_a318fe2ca82e8e8297d20b53a12c22356}} 
+\mbox{\Hypertarget{class_tree_quad_particles_a7c2c3cc795088782c85903d77fca801b}\label{class_tree_quad_particles_a7c2c3cc795088782c85903d77fca801b}} 
 \index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!TreeQuadParticles@{TreeQuadParticles}}
 \index{TreeQuadParticles@{TreeQuadParticles}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{TreeQuadParticles()}{TreeQuadParticles()}}
 {\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
-\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} (\begin{DoxyParamCaption}\item[{P\+Type $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{float}]{mass\+\_\+fixed = {\ttfamily -\/1},  }\item[{float}]{size\+\_\+fixed = {\ttfamily -\/1},  }\item[{Pos\+Type}]{my\+\_\+sigma\+\_\+background = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{Pos\+Type}]{theta\+\_\+force = {\ttfamily 0.1},  }\item[{bool}]{my\+\_\+periodic\+\_\+buffer = {\ttfamily false},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+screening\+\_\+scale = {\ttfamily 0} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} (\begin{DoxyParamCaption}\item[{P\+Type $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{float}]{mass\+\_\+fixed = {\ttfamily -\/1},  }\item[{float}]{size\+\_\+fixed = {\ttfamily -\/1},  }\item[{Pos\+Type}]{my\+\_\+sigma\+\_\+background = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{Pos\+Type}]{theta\+\_\+force = {\ttfamily 0.1},  }\item[{bool}]{my\+\_\+periodic\+\_\+buffer = {\ttfamily false},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+screening\+\_\+scale = {\ttfamily 0},  }\item[{Pos\+Type}]{maximum\+\_\+range = {\ttfamily -\/1} }\end{DoxyParamCaption})}
 
 
 
@@ -171,6 +174,8 @@ Constructor meant for point particles, simulation particles.
 {\em my\+\_\+periodic\+\_\+buffer} & if true a periodic buffer will be imposed in the force calulation. See documentation on \mbox{\hyperlink{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}{Tree\+Quad\+Particles\+::force2\+D()}} for details. See note for \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{Tree\+Quad\+Particles\+::force2\+D\+\_\+recur()}}. \\
 \hline
 {\em my\+\_\+inv\+\_\+screening\+\_\+scale} & the inverse of the square of the sreening length. See note for \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{Tree\+Quad\+Particles\+::force2\+D\+\_\+recur()}}. \\
+\hline
+{\em maximum\+\_\+range} & if set this will cause the tree not be fully construct down to the bucket size outside this range \\
 \hline
 \end{DoxyParams}
 

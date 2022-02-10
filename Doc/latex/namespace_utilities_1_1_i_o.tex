@@ -11,6 +11,8 @@ namespace for input/output utilities
 \mbox{\Hypertarget{namespace_utilities_1_1_i_o_ac9fdca8373af48961e696e58f0ccb8ca}\label{namespace_utilities_1_1_i_o_ac9fdca8373af48961e696e58f0ccb8ca}} 
 bool {\bfseries file\+\_\+exists} (const std\+::string \&name)
 \item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{namespace_utilities_1_1_i_o_ae3375a0fb5468f74f81d251cd36e3abd}{read1columnfile}} (std\+::string filename, std\+::vector$<$ T $>$ \&x, int skiplines=0, bool verbose=false)
+\item 
 {\footnotesize template$<$class T1 , class T2 $>$ }\\void \mbox{\hyperlink{namespace_utilities_1_1_i_o_a8186909599387821361b0a5e418a4aff}{read2columnfile}} (std\+::string filename, std\+::vector$<$ T1 $>$ \&x, std\+::vector$<$ T2 $>$ \&y, std\+::string delineator=\char`\"{} \char`\"{}, int skiplines=0, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Read in data from an A\+S\+C\+II file with two columns. \end{DoxyCompactList}\item 
 {\footnotesize template$<$class T1 , class T2 , class T3 $>$ }\\void \mbox{\hyperlink{namespace_utilities_1_1_i_o_a246ae00dfe4fd13897551b48bb4d14d0}{read3columnfile}} (std\+::string filename, std\+::vector$<$ T1 $>$ \&x, std\+::vector$<$ T2 $>$ \&y, std\+::vector$<$ T3 $>$ \&z, std\+::string delineator=\char`\"{} \char`\"{}, bool verbose=false)
@@ -67,6 +69,20 @@ Count the number of columns in a A\+S\+C\+II data file.
 {\em comment\+\_\+char} & comment charactor \\
 \hline
 {\em deliniator} & deliniator between columns \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_utilities_1_1_i_o_ae3375a0fb5468f74f81d251cd36e3abd}\label{namespace_utilities_1_1_i_o_ae3375a0fb5468f74f81d251cd36e3abd}} 
+\index{Utilities::IO@{Utilities::IO}!read1columnfile@{read1columnfile}}
+\index{read1columnfile@{read1columnfile}!Utilities::IO@{Utilities::IO}}
+\doxysubsubsection{\texorpdfstring{read1columnfile()}{read1columnfile()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void Utilities\+::\+I\+O\+::read1columnfile (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ T $>$ \&}]{x,  }\item[{int}]{skiplines = {\ttfamily 0},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & input file name \\
+\hline
+{\em x} & vector that will contain the first column \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{namespace_utilities_1_1_i_o_a8186909599387821361b0a5e418a4aff}\label{namespace_utilities_1_1_i_o_a8186909599387821361b0a5e418a4aff}} 

@@ -75,13 +75,19 @@ std\+::size\+\_\+t \mbox{\hyperlink{class_lens_ad5edcf261950dab5a8d3339626b01eed
 void \mbox{\hyperlink{class_lens_a7a8ed89e743c26f14ab8e3992fa3118a}{rayshooter}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&ray)
 \begin{DoxyCompactList}\small\item\em Using to shoot a single ray. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_a711067d75213f4e6bc0f8a5606faf66a}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+points, bool R\+S\+Iverbose=false)
-\item 
+\begin{DoxyCompactList}\small\item\em Main routine for shooting rays in parrallel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_a2575c6d766091cde0ce87249e97333f1}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_linked_point}{Linked\+Point}} $\ast$i\+\_\+points, std\+::vector$<$ double $>$ \&source\+\_\+zs, bool R\+S\+Iverbose=false)
+\begin{DoxyCompactList}\small\item\em Routine for shooting rays with differnt source redshifts in parrallel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_a789442c6d34aad5a578b2042c65f0903}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$$\ast$halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, short mode=0, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Collects information about the halos and kappa contributions along the light path. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_ac6ab1d5b2d7cee2a600600d4d1950f4a}{find\+\_\+image}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x\+\_\+image, Pos\+Type z\+\_\+source, Pos\+Type ytol2, Pos\+Type \&fret, int sign=0)
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_ad3a11062a75edccda29005253c6f5061}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
 \begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
-short \mbox{\hyperlink{class_lens_a41a7645662d9c26b1c2c4373826348c1}{Reset\+Source\+Plane}} (Pos\+Type z, bool nearest=false, unsigned long Gal\+ID=0, Pos\+Type $\ast$xx=N\+U\+LL, bool verbose=false)
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}{find\+\_\+image}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
+\item 
+short \mbox{\hyperlink{class_lens_a71b1279d35b08c49d537708a46c1d3a6}{Reset\+Source\+Plane}} (Pos\+Type z, bool nearest=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em reset the redshift of the source plane \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}{Find\+Source\+Plane}} (Pos\+Type zs, long \&jmax, double \&Dls, double \&Ds)
+\begin{DoxyCompactList}\small\item\em find information on the position of the source plane with respect to the lens planes \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_af4c16d98618b2a26e75c2673af2058c2}\label{class_lens_af4c16d98618b2a26e75c2673af2058c2}} 
 void \mbox{\hyperlink{class_lens_af4c16d98618b2a26e75c2673af2058c2}{Revert\+Source\+Plane}} ()
 \begin{DoxyCompactList}\small\item\em Revert the source redshift to the value it was when the \mbox{\hyperlink{class_lens}{Lens}} was created. \end{DoxyCompactList}\item 
@@ -206,11 +212,11 @@ A class to represents a lens with multiple planes.
  
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_lens_ac6ab1d5b2d7cee2a600600d4d1950f4a}\label{class_lens_ac6ab1d5b2d7cee2a600600d4d1950f4a}} 
+\mbox{\Hypertarget{class_lens_ad3a11062a75edccda29005253c6f5061}\label{class_lens_ad3a11062a75edccda29005253c6f5061}} 
 \index{Lens@{Lens}!find\_image@{find\_image}}
 \index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{x\+\_\+image,  }\item[{Pos\+Type}]{z\+\_\+source,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{int}]{sign = {\ttfamily 0} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
 
 
 
@@ -220,19 +226,59 @@ Find an image position for a source position.
 
 This uses Powell\textquotesingle{}s algorithm to minimise the distance between the source point of an image and the desired source point. No grid is necessary. This should be fast, but will miss multiple images. This is useful for finding the position of weakly lensed images or the rough region where a grid should be put down for a strong lens.
 
+Find the image position of a source without grid refinement.
+
+This finds an image position given a source postion. No grid is necessary.
+
+If use\+\_\+image\+\_\+guess=true the input image position will be used as a first guess and the output image will be guarenteed to have the same pairity.
+
+This is useful for finding the position of weakly lensed images or for refining the image positions that are found on a finite grid.
+
 This routine finds the image position by minimizing the seporation on the source plane with Powell\textquotesingle{}s method of minimization. This will not find all images. For that you must use another routine. In the weak lensing regiam this should be sufficient. 
 \begin{DoxyParams}{Parameters}
-{\em y\+\_\+source} & input position of source (radians) \\
-\hline
-{\em x\+\_\+image} & initial guess for image postion (radians) \\
-\hline
-{\em z\+\_\+source} & redshift of source \\
+{\em p} & p.\+image-\/$>$x should be set to source position \\
 \hline
 {\em ytol2} & target tolerance in source position squared \\
 \hline
 {\em dy2} & final value of Delta y $^\wedge$2 \\
 \hline
-{\em sign} & sign of magnification, it is found automatically if left out \\
+{\em use\+\_\+image\+\_\+guess} & if true p.\+x\mbox{[}\mbox{]} will be used as a guess for the image position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}\label{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}} 
+\index{Lens@{Lens}!find\_image@{find\_image}}
+\index{find\_image@{find\_image}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & p.\+y\mbox{[}\mbox{]} should be set to source position \\
+\hline
+{\em ytol2} & target tolerance in source position squared \\
+\hline
+{\em dy2} & final value of Delta y $^\wedge$2 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}\label{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}} 
+\index{Lens@{Lens}!FindSourcePlane@{FindSourcePlane}}
+\index{FindSourcePlane@{FindSourcePlane}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{FindSourcePlane()}{FindSourcePlane()}}
+{\footnotesize\ttfamily void Lens\+::\+Find\+Source\+Plane (\begin{DoxyParamCaption}\item[{Pos\+Type}]{zs,  }\item[{long \&}]{jmax,  }\item[{double \&}]{Dls,  }\item[{double \&}]{Ds }\end{DoxyParamCaption})}
+
+
+
+find information on the position of the source plane with respect to the lens planes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zs} & redshift of implanted source \\
+\hline
+{\em jmax} & index of last plane at lower redshift \\
+\hline
+{\em Dls} & coordinate distance between last plane and source plane \\
+\hline
+{\em Ds} & total coordinate distance to source plane \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_lens_a6503364df69f159ab0f6b80acc26761c}\label{class_lens_a6503364df69f159ab0f6b80acc26761c}} 
@@ -335,21 +381,48 @@ Mixed\+Vector cannot be copyed\mbox{\Hypertarget{class_lens_a7a8ed89e743c26f14ab
 
 Using to shoot a single ray. 
 
-This function calculates the deflection, shear, convergence, rotation and time-\/delay of rays in parallel.
+This function calculates the deflection, shear, convergence, rotation and time-\/delay of rays in parallel. The source redshift must be set for the ray.
 
-ray.\+x should be set to the image position. The kappa,gamma,deflection, time-\/delay and source position will be calculated at that image point. \mbox{\Hypertarget{class_lens_a711067d75213f4e6bc0f8a5606faf66a}\label{class_lens_a711067d75213f4e6bc0f8a5606faf66a}} 
+ray.\+x should be set to the image position. The kappa,gamma,deflection, time-\/delay and source position will be calculated at that image point. \mbox{\Hypertarget{class_lens_a2575c6d766091cde0ce87249e97333f1}\label{class_lens_a2575c6d766091cde0ce87249e97333f1}} 
 \index{Lens@{Lens}!rayshooterInternal@{rayshooterInternal}}
 \index{rayshooterInternal@{rayshooterInternal}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}}
-{\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{i\+\_\+points,  }\item[{bool}]{R\+S\+I\+Verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_linked_point}{Linked\+Point}} $\ast$}]{i\+\_\+points,  }\item[{std\+::vector$<$ double $>$ \&}]{source\+\_\+zs,  }\item[{bool}]{R\+S\+Iverbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
+
+Routine for shooting rays with differnt source redshifts in parrallel. 
+
+i\+\_\+points\mbox{[}\mbox{]}.x must be set to the image postion in angular radians. 
 \begin{DoxyParams}{Parameters}
 {\em Npoints} & number of points to be shot \\
 \hline
-{\em i\+\_\+points} & point on the image plane \\
+{\em i\+\_\+points} & poinst on the image plane \\
 \hline
-{\em R\+S\+I\+Verbose} & verbose option \\
+{\em source\+\_\+zs} & source redshifts \\
+\hline
+{\em R\+S\+Iverbose} & verbose option \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a711067d75213f4e6bc0f8a5606faf66a}\label{class_lens_a711067d75213f4e6bc0f8a5606faf66a}} 
+\index{Lens@{Lens}!rayshooterInternal@{rayshooterInternal}}
+\index{rayshooterInternal@{rayshooterInternal}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{i\+\_\+points,  }\item[{bool}]{R\+S\+Iverbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Main routine for shooting rays in parrallel. 
+
+i\+\_\+points\mbox{[}\mbox{]}.x must be set to the image postion in angular radians.
+
+i\+\_\+points must have linked image points. {\ttfamily \mbox{\hyperlink{struct_linked_point}{Linked\+Point}}}s could be used, but for its internal use this is not done. 
+\begin{DoxyParams}{Parameters}
+{\em Npoints} & number of points to be shot \\
+\hline
+{\em i\+\_\+points} & points on the image plane \\
+\hline
+{\em R\+S\+Iverbose} & verbose option \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_lens_aba7e1b3c66565092fdc7555dc4704896}\label{class_lens_aba7e1b3c66565092fdc7555dc4704896}} 
@@ -380,11 +453,11 @@ Note that this does delete the halos that were there. Then all lensing planes ar
 \doxysubsubsection{\texorpdfstring{resetFieldHalos()}{resetFieldHalos()}}
 {\footnotesize\ttfamily void Lens\+::reset\+Field\+Halos (\begin{DoxyParamCaption}\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
-keep the main lens and the number of planes constant, but generate new field halos. \mbox{\Hypertarget{class_lens_a41a7645662d9c26b1c2c4373826348c1}\label{class_lens_a41a7645662d9c26b1c2c4373826348c1}} 
+keep the main lens and the number of planes constant, but generate new field halos. \mbox{\Hypertarget{class_lens_a71b1279d35b08c49d537708a46c1d3a6}\label{class_lens_a71b1279d35b08c49d537708a46c1d3a6}} 
 \index{Lens@{Lens}!ResetSourcePlane@{ResetSourcePlane}}
 \index{ResetSourcePlane@{ResetSourcePlane}!Lens@{Lens}}
 \doxysubsubsection{\texorpdfstring{ResetSourcePlane()}{ResetSourcePlane()}}
-{\footnotesize\ttfamily short Lens\+::\+Reset\+Source\+Plane (\begin{DoxyParamCaption}\item[{Pos\+Type}]{z,  }\item[{bool}]{nearest = {\ttfamily false},  }\item[{unsigned long}]{Gal\+ID = {\ttfamily 0},  }\item[{Pos\+Type $\ast$}]{xx = {\ttfamily NULL},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily short Lens\+::\+Reset\+Source\+Plane (\begin{DoxyParamCaption}\item[{Pos\+Type}]{z,  }\item[{bool}]{nearest = {\ttfamily false},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 

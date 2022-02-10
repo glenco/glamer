@@ -104,8 +104,11 @@ Collaboration diagram for LensHaloParticles&lt; PType &gt;:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5882a56dbe8ad682f28f9590a271f1f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a5882a56dbe8ad682f28f9590a271f1f5">LensHaloParticles</a> (const std::string &amp;simulation_filename, SimFileFormat format, PosType redshift, int Nsmooth, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, bool my_multimass, PosType MinPSize=0, PosType rescale_mass=1.0, bool verbose=false)</td></tr>
 <tr class="separator:a5882a56dbe8ad682f28f9590a271f1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbb5d3b3c9af38e4ae0727781eeea7f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#adbb5d3b3c9af38e4ae0727781eeea7f2">LensHaloParticles</a> (std::vector&lt; PType &gt; &amp;pvector, float redshift, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, float MinPSize=0, bool verbose=false)</td></tr>
-<tr class="separator:adbb5d3b3c9af38e4ae0727781eeea7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4692c66694ee7189a33c865c8de34b79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a4692c66694ee7189a33c865c8de34b79">LensHaloParticles</a> (std::vector&lt; PType &gt; &amp;pvector, float redshift, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, float MinPSize=0, double max_range=-1, bool verbose=false)</td></tr>
+<tr class="separator:a4692c66694ee7189a33c865c8de34b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdc53a142a62cf81b72ef63a1164b819"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#acdc53a142a62cf81b72ef63a1164b819">LensHaloParticles</a> (PType *begin, size_t n, float redshift, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, float MinPSize=0, double max_range=-1, bool verbose=false)</td></tr>
+<tr class="memdesc:acdc53a142a62cf81b72ef63a1164b819"><td class="mdescLeft">&#160;</td><td class="mdescRight">this constructor does not take possession of the particles  <a href="class_lens_halo_particles.html#acdc53a142a62cf81b72ef63a1164b819">More...</a><br /></td></tr>
+<tr class="separator:acdc53a142a62cf81b72ef63a1164b819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c31d8d5f869a0280a83113a85d5607d"><td class="memItemLeft" align="right" valign="top"><a id="a0c31d8d5f869a0280a83113a85d5607d"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>LensHaloParticles</b> (<a class="el" href="class_lens_halo_particles.html">LensHaloParticles</a> &amp;&amp;h)</td></tr>
 <tr class="separator:a0c31d8d5f869a0280a83113a85d5607d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -326,8 +329,11 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>renormalization</b
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a6f74ecb8b18030fe0f01136192d9e4bb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a6f74ecb8b18030fe0f01136192d9e4bb">makeSIE</a> (std::string new_filename, PosType redshift, double particle_mass, double total_mass, double sigma, double q, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran)</td></tr>
-<tr class="memdesc:a6f74ecb8b18030fe0f01136192d9e4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a test class that makes a truncated SIE out of particles and puts it into a file in the right format for constructing a <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>.  <a href="class_lens_halo_particles.html#a6f74ecb8b18030fe0f01136192d9e4bb">More...</a><br /></td></tr>
+<tr class="memdesc:a6f74ecb8b18030fe0f01136192d9e4bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a test static function that makes a truncated SIE out of particles and puts it into a file in the right format for constructing a <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>.  <a href="class_lens_halo_particles.html#a6f74ecb8b18030fe0f01136192d9e4bb">More...</a><br /></td></tr>
 <tr class="separator:a6f74ecb8b18030fe0f01136192d9e4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46def593bc40d817ca3c45d521b700ce"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_lens_halo_particles.html">LensHaloParticles</a>&lt; <a class="el" href="struct_particle_type_simple.html">ParticleTypeSimple</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a46def593bc40d817ca3c45d521b700ce">SIE</a> (PosType redshift, double particle_mass, double total_mass, double sigma, double q, int Nneighbors, <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran)</td></tr>
+<tr class="memdesc:a46def593bc40d817ca3c45d521b700ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a test static function that makes a truncated SIE out of particles and puts it into a file in the right format for constructing a <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>.  <a href="class_lens_halo_particles.html#a46def593bc40d817ca3c45d521b700ce">More...</a><br /></td></tr>
+<tr class="separator:a46def593bc40d817ca3c45d521b700ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cbb000f56bbde0f4df611fe12580a41"><td class="memItemLeft" align="right" valign="top"><a id="a8cbb000f56bbde0f4df611fe12580a41"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_smoothing</b> (int Nsmooth, PType *pp, size_t Npoints, bool verbose=false)</td></tr>
 <tr class="separator:a8cbb000f56bbde0f4df611fe12580a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -355,8 +361,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate_particles</b> 
 <tr class="memitem:a6f957aa525feeee444dc47085add1f2c"><td class="memItemLeft" align="right" valign="top"><a id="a6f957aa525feeee444dc47085add1f2c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>assignParams</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params)</td></tr>
 <tr class="separator:a6f957aa525feeee444dc47085add1f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68ffd8213507b83300fcad40a0e09df8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a68ffd8213507b83300fcad40a0e09df8">set_up</a> (float redshift, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, bool recenter, bool verbose)</td></tr>
-<tr class="separator:a68ffd8213507b83300fcad40a0e09df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e7e332fc3494f003293e608ebc5bb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo_particles.html#a96e7e332fc3494f003293e608ebc5bb6">set_up</a> (float redshift, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, <a class="el" href="struct_point__2d.html">Point_2d</a> theta_rotate, double max_range, bool recenter, bool verbose)</td></tr>
+<tr class="separator:a96e7e332fc3494f003293e608ebc5bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_lens_halo"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_lens_halo')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_lens_halo.html">LensHalo</a></td></tr>
 <tr class="memitem:a3e73f06df4d909f1bff909016cc839b2 inherit pro_methods_class_lens_halo"><td class="memItemLeft" align="right" valign="top"><a id="a3e73f06df4d909f1bff909016cc839b2"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens_halo.html#a3e73f06df4d909f1bff909016cc839b2">alpha_int</a> (PosType x) const</td></tr>
@@ -634,7 +640,7 @@ class LensHaloParticles&lt; PType &gt;</h3>
 <p>More input formats will be added in the future. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5882a56dbe8ad682f28f9590a271f1f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5882a56dbe8ad682f28f9590a271f1f5">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5882a56dbe8ad682f28f9590a271f1f5">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -724,7 +730,7 @@ template&lt;typename PType &gt; </div>
     <tr><td class="paramname">theta_rotate</td><td>rotation of particles around the origin </td></tr>
     <tr><td class="paramname">recenter</td><td>center on center of mass </td></tr>
     <tr><td class="paramname">my_multimass</td><td>set to true is particles have different sizes </td></tr>
-    <tr><td class="paramname">MinPSize</td><td>minimum particle size </td></tr>
+    <tr><td class="paramname">MinPSize</td><td>minimum particle size in Mpc, overrides nearest neighbors aor input sizes for small particle sizes </td></tr>
     <tr><td class="paramname">rescale_mass</td><td>rescale particle masses </td></tr>
   </table>
   </dd>
@@ -732,8 +738,8 @@ template&lt;typename PType &gt; </div>
 
 </div>
 </div>
-<a id="adbb5d3b3c9af38e4ae0727781eeea7f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbb5d3b3c9af38e4ae0727781eeea7f2">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[2/4]</span></h2>
+<a id="a4692c66694ee7189a33c865c8de34b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4692c66694ee7189a33c865c8de34b79">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -782,6 +788,12 @@ template&lt;typename PType &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_range</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
         </tr>
@@ -805,6 +817,101 @@ template&lt;typename PType &gt; </div>
     <tr><td class="paramname">theta_rotate</td><td>rotation of particles around the origin </td></tr>
     <tr><td class="paramname">recenter</td><td>center on center of mass </td></tr>
     <tr><td class="paramname">MinPSize</td><td>minimum particle size </td></tr>
+    <tr><td class="paramname">max_range</td><td>if set this will cause the tree not be fully construct down to the bucket size outside this range </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acdc53a142a62cf81b72ef63a1164b819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdc53a142a62cf81b72ef63a1164b819">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_lens_halo_particles.html">LensHaloParticles</a>&lt; PType &gt;::<a class="el" href="class_lens_halo_particles.html">LensHaloParticles</a> </td>
+          <td>(</td>
+          <td class="paramtype">PType *&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>redshift</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;&#160;</td>
+          <td class="paramname"><em>cosmo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
+          <td class="paramname"><em>theta_rotate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>recenter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>MinPSize</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_range</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>this constructor does not take possession of the particles </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>pointer to first particles pdata[][i] should be the position in physical Mpc, the class takes possession of the data and leaves the vector empty </td></tr>
+    <tr><td class="paramname">redshift</td><td>redshift of origin </td></tr>
+    <tr><td class="paramname">cosmo</td><td>cosmology </td></tr>
+    <tr><td class="paramname">theta_rotate</td><td>rotation of particles around the origin </td></tr>
+    <tr><td class="paramname">recenter</td><td>center on center of mass </td></tr>
+    <tr><td class="paramname">MinPSize</td><td>minimum particle size </td></tr>
+    <tr><td class="paramname">max_range</td><td>if set this will cause the tree not be fully construct down to the bucket size outside this range </td></tr>
   </table>
   </dd>
 </dl>
@@ -812,7 +919,7 @@ template&lt;typename PType &gt; </div>
 </div>
 </div>
 <a id="a287284a34695af4542c2dad6bf610baf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a287284a34695af4542c2dad6bf610baf">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a287284a34695af4542c2dad6bf610baf">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -857,7 +964,7 @@ template&lt;typename PType &gt; </div>
 </div>
 </div>
 <a id="aec0507224635ca8027cae551b7b01ca7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec0507224635ca8027cae551b7b01ca7">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aec0507224635ca8027cae551b7b01ca7">&#9670;&nbsp;</a></span>LensHaloParticles() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1008,7 +1115,7 @@ template&lt;typename PType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>This is a test class that makes a truncated SIE out of particles and puts it into a file in the right format for constructing a <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>. </p>
+<p>This is a test static function that makes a truncated SIE out of particles and puts it into a file in the right format for constructing a <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>. </p>
 <p>This is useful for calculating the level of shot noise and finite source size. The particles are distributed in 3D according to the SIE profile with only the perpendicular coordinates (1st and 2nd) distorted into an elliptical shape. If the halo is rotated from the original orientation it will not be a oblate spheroid. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1071,8 +1178,8 @@ template&lt;typename PType &gt; </div>
 
 </div>
 </div>
-<a id="a68ffd8213507b83300fcad40a0e09df8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68ffd8213507b83300fcad40a0e09df8">&#9670;&nbsp;</a></span>set_up()</h2>
+<a id="a96e7e332fc3494f003293e608ebc5bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e7e332fc3494f003293e608ebc5bb6">&#9670;&nbsp;</a></span>set_up()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1099,6 +1206,12 @@ template&lt;typename PType &gt; </div>
           <td></td>
           <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
           <td class="paramname"><em>theta_rotate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_range</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1136,13 +1249,101 @@ template&lt;typename PType &gt; </div>
 
 </div>
 </div>
+<a id="a46def593bc40d817ca3c45d521b700ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46def593bc40d817ca3c45d521b700ce">&#9670;&nbsp;</a></span>SIE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename PType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_lens_halo_particles.html">LensHaloParticles</a>&lt; <a class="el" href="struct_particle_type_simple.html">ParticleTypeSimple</a> &gt; <a class="el" href="class_lens_halo_particles.html">LensHaloParticles</a>&lt; PType &gt;::SIE </td>
+          <td>(</td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>redshift</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>particle_mass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>total_mass</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>sigma</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Nneighbors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;&#160;</td>
+          <td class="paramname"><em>cosmo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;&#160;</td>
+          <td class="paramname"><em>ran</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This is a test static function that makes a truncated SIE out of particles and puts it into a file in the right format for constructing a <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>. </p>
+<p>This is useful for calculating the level of shot noise and finite source size. The particles are distributed in 3D according to the SIE profile with only the perpendicular coordinates (1st and 2nd) distorted into an elliptical shape. If the halo is rotated from the original orientation it will not be a oblate spheroid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">redshift</td><td>redshift of particles </td></tr>
+    <tr><td class="paramname">particle_mass</td><td>particle mass </td></tr>
+    <tr><td class="paramname">total_mass</td><td>total mass of SIE </td></tr>
+    <tr><td class="paramname">sigma</td><td>velocity dispersion in km/s </td></tr>
+    <tr><td class="paramname">q</td><td>axis ratio </td></tr>
+    <tr><td class="paramname">Nneighbors</td><td>number of neighbor particles used in smoothing </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>SLsimLib/include/<a class="el" href="particle__halo_8h_source.html">particle_halo.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 17 2021 18:30:27 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 10 2022 17:54:47 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

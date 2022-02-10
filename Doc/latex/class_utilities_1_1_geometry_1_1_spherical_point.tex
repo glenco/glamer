@@ -9,6 +9,16 @@ represents a point in spherical coordinates, theta = 0 is equator
 
 {\ttfamily \#include $<$geometry.\+h$>$}
 
+
+
+Inheritance diagram for Utilities\+::Geometry\+::Spherical\+Point$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{class_utilities_1_1_geometry_1_1_spherical_point__inherit__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,6 +63,25 @@ void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac6bd383d
 void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae63bac769d9c3c04201e541801fecc97}{Inverse\+Orthographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x)
 \item 
 \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}}$<$ T $>$ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a9cfa956c3c905f3db0f8c18b00dee579}{Inverse\+Orthographic\+Projection}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x)
+\item 
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_a3a5f110c5d4c4bb08e92178b05cbdae3}\label{class_utilities_1_1_geometry_1_1_spherical_point_a3a5f110c5d4c4bb08e92178b05cbdae3}} 
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3a5f110c5d4c4bb08e92178b05cbdae3}{angular\+\_\+separation}} (\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&p)
+\begin{DoxyCompactList}\small\item\em angle between points. This uses the haversine formula that is more stable for small angles than the more commin formula \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_a127f49c107a23ce38e471be581c7ecd8}\label{class_utilities_1_1_geometry_1_1_spherical_point_a127f49c107a23ce38e471be581c7ecd8}} 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a127f49c107a23ce38e471be581c7ecd8}{unit\+Phi}} ()
+\begin{DoxyCompactList}\small\item\em unit vector in phi direction \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_abcbea75ecdcb3c5f0cda226b280f2ed4}\label{class_utilities_1_1_geometry_1_1_spherical_point_abcbea75ecdcb3c5f0cda226b280f2ed4}} 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_abcbea75ecdcb3c5f0cda226b280f2ed4}{unit\+Theta}} ()
+\begin{DoxyCompactList}\small\item\em unit vector in theta direction \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae132408f75bf98a34c1d7c514a77882a}{Orthographic\+Angle\+Theta}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central)
+\begin{DoxyCompactList}\small\item\em the angle between the orthographic x-\/axis and the constant theta curve \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3772a09dcdb4dc94c04f13f8dbbde21e}{Orthographic\+Angle\+Phi}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central)
+\begin{DoxyCompactList}\small\item\em the angle between the orthographic x-\/axis and the constant Phi curve \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_ac1c232f3935cc1f03a0c106015479138}\label{class_utilities_1_1_geometry_1_1_spherical_point_ac1c232f3935cc1f03a0c106015479138}} 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries theta\+\_\+hat} () const
+\item 
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_a987504120686eb48dac83d93091fafc1}\label{class_utilities_1_1_geometry_1_1_spherical_point_a987504120686eb48dac83d93091fafc1}} 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries phi\+\_\+hat} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -119,6 +148,38 @@ Convert from an orthographic projection of the plane onto the unit sphere.
 {\em x} & 2D output coordinate on projection \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_a3772a09dcdb4dc94c04f13f8dbbde21e}\label{class_utilities_1_1_geometry_1_1_spherical_point_a3772a09dcdb4dc94c04f13f8dbbde21e}} 
+\index{Utilities::Geometry::SphericalPoint$<$ T $>$@{Utilities::Geometry::SphericalPoint$<$ T $>$}!OrthographicAnglePhi@{OrthographicAnglePhi}}
+\index{OrthographicAnglePhi@{OrthographicAnglePhi}!Utilities::Geometry::SphericalPoint$<$ T $>$@{Utilities::Geometry::SphericalPoint$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{OrthographicAnglePhi()}{OrthographicAnglePhi()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities\+::\+Geometry\+::\+Spherical\+Point}}$<$ T $>$\+::Orthographic\+Angle\+Phi (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}}$<$ T $>$ \&}]{central }\end{DoxyParamCaption})}
+
+
+
+the angle between the orthographic x-\/axis and the constant Phi curve 
+
+
+\begin{DoxyParams}{Parameters}
+{\em central} & point on the sphere where the tangent plane touches \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_ae132408f75bf98a34c1d7c514a77882a}\label{class_utilities_1_1_geometry_1_1_spherical_point_ae132408f75bf98a34c1d7c514a77882a}} 
+\index{Utilities::Geometry::SphericalPoint$<$ T $>$@{Utilities::Geometry::SphericalPoint$<$ T $>$}!OrthographicAngleTheta@{OrthographicAngleTheta}}
+\index{OrthographicAngleTheta@{OrthographicAngleTheta}!Utilities::Geometry::SphericalPoint$<$ T $>$@{Utilities::Geometry::SphericalPoint$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{OrthographicAngleTheta()}{OrthographicAngleTheta()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities\+::\+Geometry\+::\+Spherical\+Point}}$<$ T $>$\+::Orthographic\+Angle\+Theta (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}}$<$ T $>$ \&}]{central }\end{DoxyParamCaption})}
+
+
+
+the angle between the orthographic x-\/axis and the constant theta curve 
+
+
+\begin{DoxyParams}{Parameters}
+{\em central} & point on the sphere where the tangent plane touches \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_utilities_1_1_geometry_1_1_spherical_point_ae2991aa2033a3eaff5fe5e759d506311}\label{class_utilities_1_1_geometry_1_1_spherical_point_ae2991aa2033a3eaff5fe5e759d506311}} 
 \index{Utilities::Geometry::SphericalPoint$<$ T $>$@{Utilities::Geometry::SphericalPoint$<$ T $>$}!OrthographicProjection@{OrthographicProjection}}
 \index{OrthographicProjection@{OrthographicProjection}!Utilities::Geometry::SphericalPoint$<$ T $>$@{Utilities::Geometry::SphericalPoint$<$ T $>$}}
@@ -142,7 +203,7 @@ void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilitie
 
 Calculates the orthographic projection of the point onto a plane. 
 
-The result is in radian units. Near the central point this is a rectolinear projection onto a tangent plane. 
+The result is in radian units. Near the central point this is a rectolinear projection onto a tangent plane. Points in the oposite hemosphere are maped to points on the border at $\vert$x$\vert$ = 1 
 \begin{DoxyParams}{Parameters}
 {\em central} & point on the sphere where the tangent plane touches \\
 \hline

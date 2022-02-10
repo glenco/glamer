@@ -105,7 +105,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0893daf7e7db43564182f7847e8ee73e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reshoot the rays with the same image postions.  <a href="struct_grid.html#a0893daf7e7db43564182f7847e8ee73e">More...</a><br /></td></tr>
 <tr class="separator:a0893daf7e7db43564182f7847e8ee73e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dd646880c0c5f33af5869aab6b7c0f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#a0dd646880c0c5f33af5869aab6b7c0f8">zoom</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, double *center, double scale, <a class="el" href="struct_branch.html">Branch</a> *top=NULL)</td></tr>
-<tr class="memdesc:a0dd646880c0c5f33af5869aab6b7c0f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">quickly refines the grid down to a specific scale at a given point  <a href="struct_grid.html#a0dd646880c0c5f33af5869aab6b7c0f8">More...</a><br /></td></tr>
+<tr class="memdesc:a0dd646880c0c5f33af5869aab6b7c0f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if point is in a region of uniform magnification using the kappa and gamma calculated from the rayshooter.  <a href="struct_grid.html#a0dd646880c0c5f33af5869aab6b7c0f8">More...</a><br /></td></tr>
 <tr class="separator:a0dd646880c0c5f33af5869aab6b7c0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae11e8ae40a50d5f47f75920509466767"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#ae11e8ae40a50d5f47f75920509466767">PruneTrees</a> (double resolution, bool useSB, double fluxlimit)</td></tr>
 <tr class="memdesc:ae11e8ae40a50d5f47f75920509466767"><td class="mdescLeft">&#160;</td><td class="mdescRight">THIS DOES NOT WORK YET!!!  <a href="struct_grid.html#ae11e8ae40a50d5f47f75920509466767">More...</a><br /></td></tr>
@@ -159,9 +159,6 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#a3942b5f9d22c55c2b1cc9619991f1412">ClearAllMarks</a> ()</td></tr>
 <tr class="memdesc:a3942b5f9d22c55c2b1cc9619991f1412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rest all in_image markers to False. <br /></td></tr>
 <tr class="separator:a3942b5f9d22c55c2b1cc9619991f1412"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af459ba1188dd0c228ccba15ca5728e61"><td class="memItemLeft" align="right" valign="top"><a id="af459ba1188dd0c228ccba15ca5728e61"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>test_mag_matrix</b> ()</td></tr>
-<tr class="separator:af459ba1188dd0c228ccba15ca5728e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8815d0d3b3bec110d580340ff40621bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_grid.html#a8815d0d3b3bec110d580340ff40621bf">writeFits</a> (const double center[], size_t Npixels, double resolution, LensingVariable lensvar, std::string filename)</td></tr>
 <tr class="memdesc:a8815d0d3b3bec110d580340ff40621bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs a fits image of a lensing variable of choice.  <a href="struct_grid.html#a8815d0d3b3bec110d580340ff40621bf">More...</a><br /></td></tr>
 <tr class="separator:a8815d0d3b3bec110d580340ff40621bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1279,7 +1276,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>quickly refines the grid down to a specific scale at a given point </p>
+<p>Test if point is in a region of uniform magnification using the kappa and gamma calculated from the rayshooter. </p>
+<p>An estimate of the magnification matrix is returned if it returns true. Otherwise the magnification matrix is unspecified.</p>
+<p>Magnification matrix elements are considered equal if their difference is smaller than maglimit which is set in the <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a> constructor.</p>
+<p>quickly refines the grid down to a specific scale at a given point</p>
 <p>top is an optional argument that allows for the zooming to start part way down the tree. Default is to start at the root. If the point is not within top or the root nothing is done. The point will not necessarily be in the center of the smallest branch. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1301,7 +1301,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 17 2021 18:30:26 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 10 2022 17:54:47 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>
