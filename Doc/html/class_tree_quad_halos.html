@@ -90,7 +90,7 @@ Collaboration diagram for TreeQuadHalos&lt; LensHaloType &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad77aa497b58def76263b2d5f0b464727"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_halos.html#ad77aa497b58def76263b2d5f0b464727">TreeQuadHalos</a> (LensHaloType **my_halos, IndexType Npoints, PosType my_sigma_background=0, int bucket=5, PosType theta_force=0.1, bool my_periodic_buffer=false, PosType my_inv_screening_scale=0, PosType maximum_range=-1)</td></tr>
+<tr class="memitem:ad77aa497b58def76263b2d5f0b464727"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_halos.html#ad77aa497b58def76263b2d5f0b464727">TreeQuadHalos</a> (<a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> **my_halos, IndexType Npoints, PosType my_sigma_background=0, int bucket=5, PosType theta_force=0.1, bool my_periodic_buffer=false, PosType my_inv_screening_scale=0, PosType maximum_range=-1)</td></tr>
 <tr class="memdesc:ad77aa497b58def76263b2d5f0b464727"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor meant for halos with internal structure parameters. This is a protected constructor because it should only be invoked from the derived classes that have specific defined halo models.  <a href="class_tree_quad_halos.html#ad77aa497b58def76263b2d5f0b464727">More...</a><br /></td></tr>
 <tr class="separator:ad77aa497b58def76263b2d5f0b464727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdb0e194813ffc698dc53930eea22e09"><td class="memItemLeft" align="right" valign="top"><a id="acdb0e194813ffc698dc53930eea22e09"></a>
@@ -107,7 +107,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a334da617c9fccd36092e573a1d054ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">find all points within rmax of ray in 2D  <a href="class_tree_quad_halos.html#a334da617c9fccd36092e573a1d054ca1">More...</a><br /></td></tr>
 <tr class="separator:a334da617c9fccd36092e573a1d054ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51961d6b52d8325a7826a97cdc190b41"><td class="memItemLeft" align="right" valign="top"><a id="a51961d6b52d8325a7826a97cdc190b41"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_halos.html#a51961d6b52d8325a7826a97cdc190b41">neighbors</a> (PosType ray[], PosType rmax, std::vector&lt; LensHaloType * &gt; &amp;neighbors) const</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_halos.html#a51961d6b52d8325a7826a97cdc190b41">neighbors</a> (PosType ray[], PosType rmax, std::vector&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> * &gt; &amp;neighbors) const</td></tr>
 <tr class="memdesc:a51961d6b52d8325a7826a97cdc190b41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the halos that are within rmax of ray[]. <br /></td></tr>
 <tr class="separator:a51961d6b52d8325a7826a97cdc190b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15df76e018f6aeb5db093fecd4430944"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_quad_halos.html#a15df76e018f6aeb5db093fecd4430944">printParticlesInBranch</a> (unsigned long number)</td></tr>
@@ -184,7 +184,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>max_range</b></td>
 std::vector&lt; IndexType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>index</b></td></tr>
 <tr class="separator:affab696b3f9a7c97552a924832912169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ad8b29ff6aef0aa794ae938f6e7d87f"><td class="memItemLeft" align="right" valign="top"><a id="a2ad8b29ff6aef0aa794ae938f6e7d87f"></a>
-LensHaloType **&#160;</td><td class="memItemRight" valign="bottom"><b>halos</b></td></tr>
+<a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> **&#160;</td><td class="memItemRight" valign="bottom"><b>halos</b></td></tr>
 <tr class="separator:a2ad8b29ff6aef0aa794ae938f6e7d87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a180afd393c48a64df33f3126e55e6706"><td class="memItemLeft" align="right" valign="top"><a id="a180afd393c48a64df33f3126e55e6706"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><b>realray</b> [2]</td></tr>
@@ -236,9 +236,9 @@ class TreeQuadHalos&lt; LensHaloType &gt;</h3>
 template&lt;typename LensHaloType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; LensHaloType &gt;::<a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a> </td>
+          <td class="memname"><a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> &gt;::<a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a> </td>
           <td>(</td>
-          <td class="paramtype">LensHaloType **&#160;</td>
+          <td class="paramtype"><a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> **&#160;</td>
           <td class="paramname"><em>my_halos</em>, </td>
         </tr>
         <tr>
@@ -318,7 +318,7 @@ template&lt;typename LensHaloType &gt; </div>
 template&lt;typename LensHaloType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; LensHaloType &gt;::force2D </td>
+          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> &gt;::force2D </td>
           <td>(</td>
           <td class="paramtype">PosType const *&#160;</td>
           <td class="paramname"><em>ray</em>, </td>
@@ -378,7 +378,7 @@ NB : the units of sigma_backgound need to be mass/units(ray)^2
 template&lt;typename LensHaloType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; LensHaloType &gt;::force2D_recur </td>
+          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> &gt;::force2D_recur </td>
           <td>(</td>
           <td class="paramtype">const PosType *&#160;</td>
           <td class="paramname"><em>ray</em>, </td>
@@ -438,7 +438,7 @@ template&lt;typename LensHaloType &gt; </div>
 template&lt;typename LensHaloType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; LensHaloType &gt;::neighbors </td>
+          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> &gt;::neighbors </td>
           <td>(</td>
           <td class="paramtype">PosType&#160;</td>
           <td class="paramname"><em>ray</em>[], </td>
@@ -477,7 +477,7 @@ template&lt;typename LensHaloType &gt; </div>
 template&lt;typename LensHaloType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; LensHaloType &gt;::printBranchs </td>
+          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> &gt;::printBranchs </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>level</em> = <code>-1</code></td><td>)</td>
@@ -498,7 +498,7 @@ template&lt;typename LensHaloType &gt; </div>
 template&lt;typename LensHaloType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; LensHaloType &gt;::printParticlesInBranch </td>
+          <td class="memname">void <a class="el" href="class_tree_quad_halos.html">TreeQuadHalos</a>&lt; <a class="el" href="_input_params_8h.html#adc636f57bc26ded1ea43d457bba6da97">LensHaloType</a> &gt;::printParticlesInBranch </td>
           <td>(</td>
           <td class="paramtype">unsigned long&#160;</td>
           <td class="paramname"><em>number</em></td><td>)</td>
@@ -516,7 +516,7 @@ template&lt;typename LensHaloType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 10 2022 17:54:48 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 11 2022 17:55:19 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

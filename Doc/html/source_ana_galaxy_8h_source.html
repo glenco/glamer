@@ -130,7 +130,7 @@ $(function() {
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="comment">//PosType getRadius() const {return max(galaxies[index]-&gt;Reff,galaxies[index]-&gt;Rdisk);}</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; PosType getRadius()<span class="keyword"> const </span>{<span class="keywordflow">return</span> galaxies[index].getRadius();}</div>
 <div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_source_multi_ana_galaxy.html#a8a2ddae89ef5ff1765fff679a8ddb8e1">   86</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_source_multi_ana_galaxy.html#a8a2ddae89ef5ff1765fff679a8ddb8e1">setZ</a>(PosType my_z){ galaxies[index].setZ(my_z);}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> resetBand(Band my_band){</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> resetBand(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> my_band){</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0;i&lt;galaxies.size();++i) galaxies[i].changeBand(my_band);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    band = my_band;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; <span class="keywordtype">void</span> <a class="code" href="class_source_multi_ana_galaxy.html#a73cba06a8e4c42c40e69050ad74d955b">multiplier</a>(PosType z,PosType mag_cut,<span class="keywordtype">int</span> Multiplicity,<a class="code" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_source_multi_ana_galaxy.html#ac03498bdd801f210d48e820afcc3ba32">sortInRedshift</a>();</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_source_multi_ana_galaxy.html#a66452aeb918ee03c54a953cfc1aa224e">sortInMag</a>(Band tmp_band);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_source_multi_ana_galaxy.html#a66452aeb918ee03c54a953cfc1aa224e">sortInMag</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> tmp_band);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_source_multi_ana_galaxy.html#aedbadc65941c45b631111f682056a88d">sortInID</a>();</div>
 <div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_source_multi_ana_galaxy.html#ab18393e0b1db63070f4fe31c6faf31d2">  109</a></span>&#160;  PosType <a class="code" href="class_source_multi_ana_galaxy.html#ab18393e0b1db63070f4fe31c6faf31d2">getFOV</a>(){<span class="keywordflow">return</span> (rangex[1]-rangex[0])*(rangey[1]-rangey[0])*180*180/PI/PI;}</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  </div>
@@ -192,7 +192,7 @@ $(function() {
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="comment">//SourceMultiAnaGalaxy(SourceMultiAnaGalaxy &amp;s){};</span></div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="class_source_multi_ana_galaxy.html">SourceMultiAnaGalaxy</a> &amp; operator=(<a class="code" href="class_source_multi_ana_galaxy.html">SourceMultiAnaGalaxy</a> &amp;s){<span class="keywordflow">return</span> s;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; Band band;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; <a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; <span class="keywordtype">float</span> mag_limit;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; std::size_t index;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
@@ -218,7 +218,7 @@ $(function() {
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <a class="code" href="class_source_multi_shapelets.html">SourceMultiShapelets</a>():<a class="code" href="class_source.html#acf598c610085c775dda8e4855b4b9b99">Source</a>(0,<a class="code" href="struct_point__2d.html">Point_2d</a>(0,0),0){};</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  </div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <a class="code" href="class_source_multi_shapelets.html">SourceMultiShapelets</a>(<span class="keyword">const</span> std::string &amp;my_shapelets_folder  </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                       ,Band my_band  </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                       ,<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> my_band  </div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                       ,<span class="keywordtype">double</span> my_max_mag_limit  </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                       ,<span class="keywordtype">double</span> my_min_mag_limit  </div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                       ,<span class="keywordtype">double</span> my_sb_limit = -1 </div>
@@ -226,7 +226,7 @@ $(function() {
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                       );</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="class_source_multi_shapelets.html#a93c5def0201879f90b53c31621f8ab7c">input</a>(<span class="keyword">const</span> std::string &amp;my_shapelets_folder  </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                       ,Band my_band  </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                       ,<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> my_band  </div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                       ,<span class="keywordtype">double</span> my_max_mag_limit  </div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                       ,<span class="keywordtype">double</span> my_min_mag_limit  </div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                       ,<span class="keywordtype">double</span> my_sb_limit = -1 </div>
@@ -284,7 +284,7 @@ $(function() {
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">return</span> galaxies[index];</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; }</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    </div>
-<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="class_source_multi_shapelets.html#ab119d7e6a52bbb83ae9da7d70b4a797f">  271</a></span>&#160; <a class="code" href="class_source_shapelets.html">SourceShapelets</a>&amp; <a class="code" href="class_source_multi_shapelets.html#ab119d7e6a52bbb83ae9da7d70b4a797f">setBand</a> (Band b){</div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="class_source_multi_shapelets.html#ab119d7e6a52bbb83ae9da7d70b4a797f">  271</a></span>&#160; <a class="code" href="class_source_shapelets.html">SourceShapelets</a>&amp; <a class="code" href="class_source_multi_shapelets.html#ab119d7e6a52bbb83ae9da7d70b4a797f">setBand</a> (<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> b){</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        band = b;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; galaxies.size(); i++)</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            galaxies[i].setActiveBand(band);</div>
@@ -306,7 +306,7 @@ $(function() {
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  std::size_t index;</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <span class="keywordtype">float</span> max_mag_limit;</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="keywordtype">float</span> min_mag_limit;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  Band band;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band;</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordtype">double</span> radius_max;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordtype">void</span> readCatalog();</div>
@@ -330,6 +330,7 @@ $(function() {
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_a5f143f1facb63b7bebb14edbf3c211a7"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#a5f143f1facb63b7bebb14edbf3c211a7">SourceMultiAnaGalaxy::getTheta</a></div><div class="ttdeci">Point_2d getTheta()</div><div class="ttdoc">Return angular position of current source.</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:96</div></div>
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_a47c824e5a125491a669db95a17d240e8"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#a47c824e5a125491a669db95a17d240e8">SourceMultiAnaGalaxy::findclosestonsky</a></div><div class="ttdeci">void findclosestonsky(PosType theta[], std::vector&lt; float &gt; &amp;radius, std::vector&lt; size_t &gt; &amp;indexes)</div><div class="ttdoc">finds closest sources to theta on umlensed sky. &quot;radius&quot; should have a size equal ti the number wante...</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:122</div></div>
 <div class="ttc" id="aclass_source_html_acf598c610085c775dda8e4855b4b9b99"><div class="ttname"><a href="class_source.html#acf598c610085c775dda8e4855b4b9b99">Source::Source</a></div><div class="ttdeci">Source(PosType r, Point_2d x, PosType z, PosType SBlimit=100)</div><div class="ttdoc">shell constructor</div><div class="ttdef"><b>Definition:</b> source.h:26</div></div>
+<div class="ttc" id="a_input_params_8h_html_a6bf89b34f34485e455d0236d25b05198"><div class="ttname"><a href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a></div><div class="ttdeci">Band</div><div class="ttdoc">Photometric bands.</div><div class="ttdef"><b>Definition:</b> InputParams.h:79</div></div>
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html"><div class="ttname"><a href="class_source_multi_ana_galaxy.html">SourceMultiAnaGalaxy</a></div><div class="ttdoc">Source that represents an analytic galaxy surface brightness model. It encapsulates a OverzierSource ...</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:32</div></div>
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_a350f1d3ce9163e1049c5c8cc4e14be48"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#a350f1d3ce9163e1049c5c8cc4e14be48">SourceMultiAnaGalaxy::setIndex</a></div><div class="ttdeci">SourceOverzierPlus &amp; setIndex(std::size_t i)</div><div class="ttdoc">Used to change the &quot;current&quot; source that is returned when the surface brightness is subsequently call...</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:56</div></div>
 <div class="ttc" id="astruct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:37</div></div>
@@ -359,14 +360,14 @@ $(function() {
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_a0e1ab20eca008085a346a2234ada0e17"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#a0e1ab20eca008085a346a2234ada0e17">SourceMultiAnaGalaxy::findonsky</a></div><div class="ttdeci">void findonsky(PosType theta[], float radius, std::list&lt; size_t &gt; &amp;indexes)</div><div class="ttdoc">finds objects within radios of theta[] on umlensed sky.</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:129</div></div>
 <div class="ttc" id="aclass_source_shapelets_html"><div class="ttname"><a href="class_source_shapelets.html">SourceShapelets</a></div><div class="ttdoc">Class for sources described by shapelets.</div><div class="ttdef"><b>Definition:</b> source.h:256</div></div>
 <div class="ttc" id="aclass_source_multi_shapelets_html_a4249206f033ae4a5ce92e378ef2f9478"><div class="ttname"><a href="class_source_multi_shapelets.html#a4249206f033ae4a5ce92e378ef2f9478">SourceMultiShapelets::size</a></div><div class="ttdeci">std::size_t size() const</div><div class="ttdoc">number of galaxies</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:220</div></div>
-<div class="ttc" id="aclass_input_params_html"><div class="ttname"><a href="class_input_params.html">InputParams</a></div><div class="ttdoc">Structure for reading and writing parameters to and from a parameter file as well as a container for ...</div><div class="ttdef"><b>Definition:</b> InputParams.h:97</div></div>
+<div class="ttc" id="aclass_input_params_html"><div class="ttname"><a href="class_input_params.html">InputParams</a></div><div class="ttdoc">Structure for reading and writing parameters to and from a parameter file as well as a container for ...</div><div class="ttdef"><b>Definition:</b> InputParams.h:100</div></div>
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_ac03498bdd801f210d48e820afcc3ba32"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#ac03498bdd801f210d48e820afcc3ba32">SourceMultiAnaGalaxy::sortInRedshift</a></div><div class="ttdeci">void sortInRedshift()</div><div class="ttdoc">Sort the sources by redshift in assending order.</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.cpp:367</div></div>
 <div class="ttc" id="aclass_source_multi_shapelets_html_a0d1f8507b2965eec94cf49b15c1c347e"><div class="ttname"><a href="class_source_multi_shapelets.html#a0d1f8507b2965eec94cf49b15c1c347e">SourceMultiShapelets::setIndex</a></div><div class="ttdeci">SourceShapelets &amp; setIndex(std::size_t i)</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:240</div></div>
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_a545da808b0f5c47660316f893ee24542"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#a545da808b0f5c47660316f893ee24542">SourceMultiAnaGalaxy::getTotalFlux</a></div><div class="ttdeci">PosType getTotalFlux() const</div><div class="ttdoc">Total flux coming from the current galaxy in erg/sec/Hz/cm^2.</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.h:47</div></div>
 <div class="ttc" id="aclass_source_multi_ana_galaxy_html_aedbadc65941c45b631111f682056a88d"><div class="ttname"><a href="class_source_multi_ana_galaxy.html#aedbadc65941c45b631111f682056a88d">SourceMultiAnaGalaxy::sortInID</a></div><div class="ttdeci">void sortInID()</div><div class="ttdoc">Sort the sources by magnitude in assending order.</div><div class="ttdef"><b>Definition:</b> sourceAnaGalaxy.cpp:400</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 10 2022 17:54:47 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 11 2022 17:55:18 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

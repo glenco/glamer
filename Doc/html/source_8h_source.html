@@ -80,8 +80,8 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef SOURCE_H_</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define SOURCE_H_</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;standard.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;InputParams.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="standard_8h.html">standard.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_input_params_8h.html">InputParams.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;image_processing.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;utilities_slsim.h&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
@@ -170,7 +170,7 @@ $(function() {
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  {</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">//mag=magnitude;</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">//flux_total = pow(10,-0.4*(mag+48.6))*inv_hplanck;</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    current_band = NoBand;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    current_band = Band::NoBand;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    setMag(magnitude);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">id</span> = -1;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
@@ -214,19 +214,19 @@ $(function() {
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  </div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keyword">virtual</span> ~SourceColored(){};</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  PosType getMag()<span class="keyword"> const </span>{ assert(current_band != NoBand); <span class="keywordflow">return</span> mag;}</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  PosType getMag(Band band)<span class="keyword"> const </span>{<span class="keywordflow">return</span> (mag_map.size() &gt; 0) ? mag_map.at(band) : mag;}</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  Band getBand()<span class="keyword"> const</span>{<span class="keywordflow">return</span> current_band;}</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  PosType getMag()<span class="keyword"> const </span>{ assert(current_band != Band::NoBand); <span class="keywordflow">return</span> mag;}</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  PosType getMag(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band)<span class="keyword"> const </span>{<span class="keywordflow">return</span> (mag_map.size() &gt; 0) ? mag_map.at(band) : mag;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> getBand()<span class="keyword"> const</span>{<span class="keywordflow">return</span> current_band;}</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordtype">long</span> getID()<span class="keyword"> const </span>{<span class="keywordflow">return</span> id;}</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordtype">float</span> getSEDtype()<span class="keyword"> const </span>{<span class="keywordflow">return</span> sed_type;}</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  </div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">void</span> setSEDtype(<span class="keywordtype">float</span> sed) {sed_type = sed;}</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordtype">void</span> setActiveBand(Band band);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">void</span> setBand(Band band,<span class="keywordtype">float</span> m){mag_map[band]=m;};</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordtype">void</span> setActiveBand(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">void</span> setBand(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band,<span class="keywordtype">float</span> m){mag_map[band]=m;};</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keyword">inline</span> PosType getTotalFlux()<span class="keyword"> const </span>{<span class="keywordflow">return</span> flux_total;}</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordtype">void</span> setMag(<span class="keywordtype">float</span> magnitude){</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span>(current_band == NoBand){</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">if</span>(current_band == Band::NoBand){</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      mag=magnitude;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      flux_total = pow(10,-0.4*(mag+48.6))*inv_hplanck;</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }<span class="keywordflow">else</span>{</div>
@@ -245,7 +245,7 @@ $(function() {
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">protected</span>:</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  std::map&lt;Band,PosType&gt; mag_map;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  Band current_band;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> current_band;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  <span class="keywordtype">float</span> sed_type;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  PosType mag;</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="keywordtype">int</span> id;</div>
@@ -533,9 +533,9 @@ $(function() {
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <span class="comment">// returns the integral of the luminosity function at redshift red</span></div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    PosType getNorm() {<span class="keywordflow">return</span> pow(10,log_phi)*norm;}; <span class="comment">// in Mpc^(-3)</span></div>
 <div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a4c8f3c579234f4619a4b0a402470d296">getRandomMag</a>(<a class="code" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;rand);</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a64174482f390f264ece0ef6ef5567cff">getRandomFlux</a>(Band band,<a class="code" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;rand);</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a11317364997ef124290936d3e2ea5b1c">getColor</a>(Band band);</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a0214421005b6673bda512174bee60500">getFluxRatio</a>(Band band);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a64174482f390f264ece0ef6ef5567cff">getRandomFlux</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band,<a class="code" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;rand);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a11317364997ef124290936d3e2ea5b1c">getColor</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    PosType <a class="code" href="class_quasar_l_f.html#a0214421005b6673bda512174bee60500">getFluxRatio</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band);</div>
 <div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    PosType kcorr;</div>
@@ -619,6 +619,7 @@ $(function() {
 <div class="ttc" id="aclass_quasar_l_f_html"><div class="ttname"><a href="class_quasar_l_f.html">QuasarLF</a></div><div class="ttdoc">pointer to surface brightness function</div><div class="ttdef"><b>Definition:</b> source.h:516</div></div>
 <div class="ttc" id="aclass_source_shapelets_html_afe80c365e550701f09cd827c8b291433"><div class="ttname"><a href="class_source_shapelets.html#afe80c365e550701f09cd827c8b291433">SourceShapelets::SurfaceBrightness</a></div><div class="ttdeci">PosType SurfaceBrightness(PosType *y)</div><div class="ttdef"><b>Definition:</b> source.cpp:642</div></div>
 <div class="ttc" id="aclass_source_shapelets_html_ad771741455d9277d8ba17106f40a08f0"><div class="ttname"><a href="class_source_shapelets.html#ad771741455d9277d8ba17106f40a08f0">SourceShapelets::rotate</a></div><div class="ttdeci">void rotate(PosType ang)</div><div class="ttdoc">rotate source</div><div class="ttdef"><b>Definition:</b> source.h:294</div></div>
+<div class="ttc" id="a_input_params_8h_html_a6bf89b34f34485e455d0236d25b05198"><div class="ttname"><a href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a></div><div class="ttdeci">Band</div><div class="ttdoc">Photometric bands.</div><div class="ttdef"><b>Definition:</b> InputParams.h:79</div></div>
 <div class="ttc" id="aclass_source_html_a9fed241b660fcfed6bd22a2aafcf8358"><div class="ttname"><a href="class_source.html#a9fed241b660fcfed6bd22a2aafcf8358">Source::SurfaceBrightness</a></div><div class="ttdeci">virtual PosType SurfaceBrightness(PosType *y)=0</div></div>
 <div class="ttc" id="astruct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:37</div></div>
 <div class="ttc" id="aclass_source_html_a24792a230ec1b4155cb028c19a142046"><div class="ttname"><a href="class_source.html#a24792a230ec1b4155cb028c19a142046">Source::changeFilter</a></div><div class="ttdeci">PosType changeFilter(std::string filter_in, std::string filter_out, std::string sed)</div><div class="ttdoc">Calculates the difference in magnitude when changing the observing filter.</div><div class="ttdef"><b>Definition:</b> source.cpp:350</div></div>
@@ -633,6 +634,7 @@ $(function() {
 <div class="ttc" id="aclass_source_html_a94d904125980e7e4e668755692f15f9c"><div class="ttname"><a href="class_source.html#a94d904125980e7e4e668755692f15f9c">Source::zsource</a></div><div class="ttdeci">PosType zsource</div><div class="ttdoc">redshift of source</div><div class="ttdef"><b>Definition:</b> source.h:109</div></div>
 <div class="ttc" id="aclass_source_html_ab46f439fc0e9c1ecba446770816aee57"><div class="ttname"><a href="class_source.html#ab46f439fc0e9c1ecba446770816aee57">Source::setSBlimit</a></div><div class="ttdeci">void setSBlimit(float limit)</div><div class="ttdoc">Sets sb_limit in erg/cm^2/sec/rad^2/Hz.</div><div class="ttdef"><b>Definition:</b> source.h:89</div></div>
 <div class="ttc" id="aclass_quasar_l_f_html_a0214421005b6673bda512174bee60500"><div class="ttname"><a href="class_quasar_l_f.html#a0214421005b6673bda512174bee60500">QuasarLF::getFluxRatio</a></div><div class="ttdeci">PosType getFluxRatio(Band band)</div><div class="ttdoc">Returns flux ratio (F_band/F_i) for a quasar at the redshift equal to QuasarLF::red.</div><div class="ttdef"><b>Definition:</b> quasarLF.cpp:200</div></div>
+<div class="ttc" id="astandard_8h_html"><div class="ttname"><a href="standard_8h.html">standard.h</a></div></div>
 <div class="ttc" id="aclass_source_pixelled_html_abb581e29376a574fa13be8e2b2491ef3"><div class="ttname"><a href="class_source_pixelled.html#abb581e29376a574fa13be8e2b2491ef3">SourcePixelled::SourcePixelled</a></div><div class="ttdeci">SourcePixelled(PosType my_z, PosType *center, int Npixels, PosType resolution, PosType *arr_val)</div><div class="ttdef"><b>Definition:</b> source.cpp:208</div></div>
 <div class="ttc" id="aclass_quasar_l_f_html_a64174482f390f264ece0ef6ef5567cff"><div class="ttname"><a href="class_quasar_l_f.html#a64174482f390f264ece0ef6ef5567cff">QuasarLF::getRandomFlux</a></div><div class="ttdeci">PosType getRandomFlux(Band band, Utilities::RandomNumbers_NR &amp;rand)</div><div class="ttdoc">returns random flux according to the luminosity function must be divided by an angular area in rad^2 ...</div><div class="ttdef"><b>Definition:</b> quasarLF.cpp:175</div></div>
 <div class="ttc" id="aclass_source_uniform_html"><div class="ttname"><a href="class_source_uniform.html">SourceUniform</a></div><div class="ttdoc">A uniform surface brightness circular source.</div><div class="ttdef"><b>Definition:</b> source.h:367</div></div>
@@ -647,6 +649,7 @@ $(function() {
 <div class="ttc" id="aclass_source_html_a8d1c5ba7cb711317ddeae2893046ce4b"><div class="ttname"><a href="class_source.html#a8d1c5ba7cb711317ddeae2893046ce4b">Source::getTheta</a></div><div class="ttdeci">void getTheta(PosType *x) const</div><div class="ttdoc">position of source in radians</div><div class="ttdef"><b>Definition:</b> source.h:79</div></div>
 <div class="ttc" id="aclass_source_html_acd55331528174d417db0d9480f20e2ad"><div class="ttname"><a href="class_source.html#acd55331528174d417db0d9480f20e2ad">Source::getSBlimit</a></div><div class="ttdeci">PosType getSBlimit()</div><div class="ttdoc">Gets sb_limit in erg/cm^2/sec/rad^2/Hz.</div><div class="ttdef"><b>Definition:</b> source.h:64</div></div>
 <div class="ttc" id="aclass_source_html_a82bb3177c8fd486e75e1d909c2b814f2"><div class="ttname"><a href="class_source.html#a82bb3177c8fd486e75e1d909c2b814f2">Source::getSBlimit_magarcsec</a></div><div class="ttdeci">PosType getSBlimit_magarcsec()</div><div class="ttdoc">Gets sb_limit in mag/arcsec^2.</div><div class="ttdef"><b>Definition:</b> source.h:66</div></div>
+<div class="ttc" id="a_input_params_8h_html"><div class="ttname"><a href="_input_params_8h.html">InputParams.h</a></div></div>
 <div class="ttc" id="aclass_source_b_l_r_disk_html_aebc3b7fa42d44dc5362bf58a2707edbe"><div class="ttname"><a href="class_source_b_l_r_disk.html#aebc3b7fa42d44dc5362bf58a2707edbe">SourceBLRDisk::SurfaceBrightness</a></div><div class="ttdeci">PosType SurfaceBrightness(PosType *y)</div><div class="ttdef"><b>Definition:</b> source.cpp:190</div></div>
 <div class="ttc" id="aclass_source_shapelets_html"><div class="ttname"><a href="class_source_shapelets.html">SourceShapelets</a></div><div class="ttdoc">Class for sources described by shapelets.</div><div class="ttdef"><b>Definition:</b> source.h:256</div></div>
 <div class="ttc" id="aclass_source_html_a46e6ba79945e2d076dc34f2277670ba6"><div class="ttname"><a href="class_source.html#a46e6ba79945e2d076dc34f2277670ba6">Source::setSBlimit_magarcsec</a></div><div class="ttdeci">void setSBlimit_magarcsec(float limit)</div><div class="ttdoc">Sets sb_limit in mag/arcsec^2.</div><div class="ttdef"><b>Definition:</b> source.h:91</div></div>
@@ -657,10 +660,10 @@ $(function() {
 <div class="ttc" id="aclass_pixel_map_html"><div class="ttname"><a href="class_pixel_map.html">PixelMap</a></div><div class="ttdoc">Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...</div><div class="ttdef"><b>Definition:</b> image_processing.h:44</div></div>
 <div class="ttc" id="aclass_source_b_l_r_html_acb238f6da46a44564cc4099ce7248b41"><div class="ttname"><a href="class_source_b_l_r.html#acb238f6da46a44564cc4099ce7248b41">SourceBLR::source_tau</a></div><div class="ttdeci">PosType source_tau</div><div class="ttdoc">lag time</div><div class="ttdef"><b>Definition:</b> source.h:450</div></div>
 <div class="ttc" id="aclass_source_shapelets_html_a3b58fee97bbd2bfd3c09bbd04b892ce2"><div class="ttname"><a href="class_source_shapelets.html#a3b58fee97bbd2bfd3c09bbd04b892ce2">SourceShapelets::SourceShapelets</a></div><div class="ttdeci">SourceShapelets(PosType my_z, PosType my_mag, PosType my_scale, std::valarray&lt; PosType &gt; my_coeff, PosType *my_center=0, PosType my_ang=0.)</div><div class="ttdef"><b>Definition:</b> source.cpp:504</div></div>
-<div class="ttc" id="aclass_input_params_html"><div class="ttname"><a href="class_input_params.html">InputParams</a></div><div class="ttdoc">Structure for reading and writing parameters to and from a parameter file as well as a container for ...</div><div class="ttdef"><b>Definition:</b> InputParams.h:97</div></div>
+<div class="ttc" id="aclass_input_params_html"><div class="ttname"><a href="class_input_params.html">InputParams</a></div><div class="ttdoc">Structure for reading and writing parameters to and from a parameter file as well as a container for ...</div><div class="ttdef"><b>Definition:</b> InputParams.h:100</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 10 2022 17:54:47 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 11 2022 17:55:18 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

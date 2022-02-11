@@ -1,0 +1,266 @@
+\hypertarget{class_tree_quad_halos}{}\doxysection{Tree\+Quad\+Halos$<$ Lens\+Halo\+Type $>$ Class Template Reference}
+\label{class_tree_quad_halos}\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+
+
+Tree\+Quad\+Halo is a class for calculating the deflection, kappa and gamma by tree method.  
+
+
+
+
+{\ttfamily \#include $<$quad\+Tree\+Halos.\+h$>$}
+
+
+
+Collaboration diagram for Tree\+Quad\+Halos$<$ Lens\+Halo\+Type $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{class_tree_quad_halos__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tree_quad_halos_ad77aa497b58def76263b2d5f0b464727}{Tree\+Quad\+Halos}} (\mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $\ast$$\ast$my\+\_\+halos, Index\+Type Npoints, Pos\+Type my\+\_\+sigma\+\_\+background=0, int bucket=5, Pos\+Type theta\+\_\+force=0.\+1, bool my\+\_\+periodic\+\_\+buffer=false, Pos\+Type my\+\_\+inv\+\_\+screening\+\_\+scale=0, Pos\+Type maximum\+\_\+range=-\/1)
+\begin{DoxyCompactList}\small\item\em Constructor meant for halos with internal structure parameters. This is a protected constructor because it should only be invoked from the derived classes that have specific defined halo models. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_halos_acdb0e194813ffc698dc53930eea22e09}\label{class_tree_quad_halos_acdb0e194813ffc698dc53930eea22e09}} 
+\mbox{\hyperlink{class_tree_quad_halos_acdb0e194813ffc698dc53930eea22e09}{$\sim$\+Tree\+Quad\+Halos}} ()
+\begin{DoxyCompactList}\small\item\em Particle positions and other data are not destroyed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_halos_a52666d3434c390ff7c0148b8a8d499be}{force2D}} (Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi) const
+\begin{DoxyCompactList}\small\item\em Force2D calculates the defection, convergence and shear using the plane-\/lens approximation. The tree is walked iteratively. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_halos_a360badb12fe57f17cd3e50c843f5ce62}{force2\+D\+\_\+recur}} (const Pos\+Type $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+\begin{DoxyCompactList}\small\item\em Force2\+D\+\_\+recur calculates the defection, convergence and shear using the plane-\/lens approximation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_halos_a334da617c9fccd36092e573a1d054ca1}{neighbors}} (Pos\+Type ray\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, std\+::list$<$ Index\+Type $>$ \&neighbors) const
+\begin{DoxyCompactList}\small\item\em find all points within rmax of ray in 2D \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a51961d6b52d8325a7826a97cdc190b41}\label{class_tree_quad_halos_a51961d6b52d8325a7826a97cdc190b41}} 
+void \mbox{\hyperlink{class_tree_quad_halos_a51961d6b52d8325a7826a97cdc190b41}{neighbors}} (Pos\+Type ray\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, std\+::vector$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $\ast$ $>$ \&neighbors) const
+\begin{DoxyCompactList}\small\item\em Returns the halos that are within rmax of ray\mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_quad_halos_a15df76e018f6aeb5db093fecd4430944}{print\+Particles\+In\+Branch}} (unsigned long number)
+\item 
+void \mbox{\hyperlink{class_tree_quad_halos_aeb862d1ef1ce9ee6e20a52840f8a3211}{print\+Branchs}} (int level=-\/1)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_ac4527056ee7bac85ec1ed56f0f049680}\label{class_tree_quad_halos_ac4527056ee7bac85ec1ed56f0f049680}} 
+\mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ Pos\+Type $\ast$ $>$ $\ast$ {\bfseries Build\+Q\+Tree\+NB} (Pos\+Type $\ast$$\ast$xp, Index\+Type Nparticles, Index\+Type $\ast$particles)
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a9af08b002e856635237ab47166d95b4a}\label{class_tree_quad_halos_a9af08b002e856635237ab47166d95b4a}} 
+void \mbox{\hyperlink{class_tree_quad_halos_a9af08b002e856635237ab47166d95b4a}{\+\_\+\+Build\+Q\+Tree\+NB}} (Index\+Type nparticles, Index\+Type $\ast$particles)
+\begin{DoxyCompactList}\small\item\em tree must be created and first branch must be set before start \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_halos_ad15d3aead22f874b8832e8624fee826c}\label{class_tree_quad_halos_ad15d3aead22f874b8832e8624fee826c}} 
+short \mbox{\hyperlink{class_tree_quad_halos_ad15d3aead22f874b8832e8624fee826c}{Which\+Quad}} (Pos\+Type $\ast$x, \mbox{\hyperlink{struct_q_branch_n_b}{Q\+Branch\+NB}} \&branch)
+\begin{DoxyCompactList}\small\item\em returns an index for which of the four quadrangles of the branch the point x\mbox{[}\mbox{]} is in \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a550f079452a762d9a39f8be5aefbd3c8}\label{class_tree_quad_halos_a550f079452a762d9a39f8be5aefbd3c8}} 
+bool {\bfseries inbox} (const Pos\+Type $\ast$ray, const Pos\+Type $\ast$p1, const Pos\+Type $\ast$p2)
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a8a460a7d61e80a535ae9ba474210cdac}\label{class_tree_quad_halos_a8a460a7d61e80a535ae9ba474210cdac}} 
+void {\bfseries Calc\+Moments} ()
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a0d70f5c90a801b4126f7a7396687cf16}\label{class_tree_quad_halos_a0d70f5c90a801b4126f7a7396687cf16}} 
+void \mbox{\hyperlink{class_tree_quad_halos_a0d70f5c90a801b4126f7a7396687cf16}{rotate\+\_\+coordinates}} (Pos\+Type $\ast$$\ast$coord)
+\begin{DoxyCompactList}\small\item\em simple rotates the coordinates in the xp array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a1b89a60bc61c59800aaf4626f717d5f1}\label{class_tree_quad_halos_a1b89a60bc61c59800aaf4626f717d5f1}} 
+void {\bfseries cuttoffscale} (\mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ Pos\+Type $\ast$ $>$ $\ast$tree, Pos\+Type $\ast$theta)
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a397268cfd8273fc48627ff0cbb4836b0}\label{class_tree_quad_halos_a397268cfd8273fc48627ff0cbb4836b0}} 
+void {\bfseries walk\+Tree\+\_\+recur} (\mbox{\hyperlink{struct_q_branch_n_b}{Q\+Branch\+NB}} $\ast$branch, Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a3e34801e0f9361abf3ded63ebf78fc4e}\label{class_tree_quad_halos_a3e34801e0f9361abf3ded63ebf78fc4e}} 
+void {\bfseries walk\+Tree\+\_\+iter} (\mbox{\hyperlink{class_q_biterator}{Q\+Biterator}}$<$ Pos\+Type $\ast$ $>$ \&treeit, Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_adade16e230aefa1b1da8375405eb181f}\label{class_tree_quad_halos_adade16e230aefa1b1da8375405eb181f}} 
+std\+::vector$<$ Pos\+Type $>$ {\bfseries workspace}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_ab3dbe82953efa9a4f6deae3ca0386efc}\label{class_tree_quad_halos_ab3dbe82953efa9a4f6deae3ca0386efc}} 
+Pos\+Type $\ast$$\ast$ {\bfseries xp}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a12fe4af478050d7b5c890ff1c1647b3f}\label{class_tree_quad_halos_a12fe4af478050d7b5c890ff1c1647b3f}} 
+bool {\bfseries Multi\+Mass}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_ad308193ae875da7f953e97c794fffd65}\label{class_tree_quad_halos_ad308193ae875da7f953e97c794fffd65}} 
+bool {\bfseries Multi\+Radius}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_acf84f1d483b22e8eeb31529c6a4118be}\label{class_tree_quad_halos_acf84f1d483b22e8eeb31529c6a4118be}} 
+Index\+Type {\bfseries Nparticles}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_ad86ae95019c76ef2b976c6088eb7a636}\label{class_tree_quad_halos_ad86ae95019c76ef2b976c6088eb7a636}} 
+Pos\+Type {\bfseries sigma\+\_\+background}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_ad58f03cabb1e81669f383604312f43f9}\label{class_tree_quad_halos_ad58f03cabb1e81669f383604312f43f9}} 
+int {\bfseries Nbucket}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a7d5e99f0ef8211ec1aedce4ff1ea7a6c}\label{class_tree_quad_halos_a7d5e99f0ef8211ec1aedce4ff1ea7a6c}} 
+Pos\+Type {\bfseries force\+\_\+theta}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a63046f5a43809dc13978260c1d707d8d}\label{class_tree_quad_halos_a63046f5a43809dc13978260c1d707d8d}} 
+Pos\+Type {\bfseries max\+\_\+range}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_af279a6fedb3a57efbb1e6dc056e7f562}\label{class_tree_quad_halos_af279a6fedb3a57efbb1e6dc056e7f562}} 
+\mbox{\hyperlink{struct_q_tree_n_b}{Q\+Tree\+NB}}$<$ Pos\+Type $\ast$ $>$ $\ast$ {\bfseries tree}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_affab696b3f9a7c97552a924832912169}\label{class_tree_quad_halos_affab696b3f9a7c97552a924832912169}} 
+std\+::vector$<$ Index\+Type $>$ {\bfseries index}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a2ad8b29ff6aef0aa794ae938f6e7d87f}\label{class_tree_quad_halos_a2ad8b29ff6aef0aa794ae938f6e7d87f}} 
+\mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $\ast$$\ast$ {\bfseries halos}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a180afd393c48a64df33f3126e55e6706}\label{class_tree_quad_halos_a180afd393c48a64df33f3126e55e6706}} 
+Pos\+Type {\bfseries realray} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a210cc827b1c0de992fc3e45e30ec3dea}\label{class_tree_quad_halos_a210cc827b1c0de992fc3e45e30ec3dea}} 
+int {\bfseries incell}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a07ca7f53484003cdb76460556ece9281}\label{class_tree_quad_halos_a07ca7f53484003cdb76460556ece9281}} 
+int {\bfseries incell2}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a839f64a1f674dc79f58f5b3929fc0029}\label{class_tree_quad_halos_a839f64a1f674dc79f58f5b3929fc0029}} 
+bool \mbox{\hyperlink{class_tree_quad_halos_a839f64a1f674dc79f58f5b3929fc0029}{periodic\+\_\+buffer}}
+\begin{DoxyCompactList}\small\item\em if true there is one layer of peridic buffering \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_quad_halos_af1a48ebe143d780ef5c83fcdc9cfbeab}\label{class_tree_quad_halos_af1a48ebe143d780ef5c83fcdc9cfbeab}} 
+Pos\+Type {\bfseries inv\+\_\+screening\+\_\+scale2}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a0fedd6d906bff59139f4f2e44b8655b3}\label{class_tree_quad_halos_a0fedd6d906bff59139f4f2e44b8655b3}} 
+Pos\+Type {\bfseries original\+\_\+xl}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_aff95ae9a105c060702dabbfc0244aa5a}\label{class_tree_quad_halos_aff95ae9a105c060702dabbfc0244aa5a}} 
+Pos\+Type {\bfseries original\+\_\+yl}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_af79e6b8057369646d81a762c344d9efc}\label{class_tree_quad_halos_af79e6b8057369646d81a762c344d9efc}} 
+Pos\+Type {\bfseries phiintconst}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_quad_halos_a4b0bf674dfac8473d5a12f5cf1c255db}\label{class_tree_quad_halos_a4b0bf674dfac8473d5a12f5cf1c255db}} 
+class {\bfseries Lens\+Plane\+Tree}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Lens\+Halo\+Type$>$\newline
+class Tree\+Quad\+Halos$<$ Lens\+Halo\+Type $>$}
+
+Tree\+Quad\+Halo is a class for calculating the deflection, kappa and gamma by tree method. 
+
+\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} is evolved from \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}} and \mbox{\hyperlink{class_tree_force}{Tree\+Force}}. It splits each cell into four equal area subcells instead of being a binary tree like \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}}. When the \char`\"{}particles\char`\"{} are given sizes the tree is built in such a way the large particles are stored in branches that are no smaller than their size. In this way particles are stored on all levels of the tree and not just in the leaves. This improves efficiency when particles of a wide range of sizes overlap in 2D.
+
+The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa is always more accurate than the deflection.
+
+Class to calculate the deflection, etc. for a collection of Lens\+Halos using a tree structure. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_tree_quad_halos_ad77aa497b58def76263b2d5f0b464727}\label{class_tree_quad_halos_ad77aa497b58def76263b2d5f0b464727}} 
+\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}!TreeQuadHalos@{TreeQuadHalos}}
+\index{TreeQuadHalos@{TreeQuadHalos}!TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+\doxysubsubsection{\texorpdfstring{TreeQuadHalos()}{TreeQuadHalos()}}
+{\footnotesize\ttfamily template$<$typename Lens\+Halo\+Type $>$ \\
+\mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}}$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $>$\+::\mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $\ast$$\ast$}]{my\+\_\+halos,  }\item[{Index\+Type}]{Npoints,  }\item[{Pos\+Type}]{my\+\_\+sigma\+\_\+background = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{Pos\+Type}]{theta\+\_\+force = {\ttfamily 0.1},  }\item[{bool}]{periodic\+\_\+buffer = {\ttfamily false},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+screening\+\_\+scale = {\ttfamily 0},  }\item[{Pos\+Type}]{maximum\+\_\+range = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Constructor meant for halos with internal structure parameters. This is a protected constructor because it should only be invoked from the derived classes that have specific defined halo models. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+halos} & list of halos to be put in tree \\
+\hline
+{\em Npoints} & number of halos \\
+\hline
+{\em my\+\_\+sigma\+\_\+background} & background kappa that is subtracted \\
+\hline
+{\em bucket} & maximum number of halos in each leaf of the tree \\
+\hline
+{\em theta\+\_\+force} & the openning angle used in the criterion for decending into a subcell \\
+\hline
+{\em periodic\+\_\+buffer} & if true a periodic buffer will be imposed in the force calulation. See documentation on \mbox{\hyperlink{class_tree_quad_halos_a52666d3434c390ff7c0148b8a8d499be}{Tree\+Quad\+Halos\+::force2\+D()}} for details. See note for \mbox{\hyperlink{class_tree_quad_halos_a360badb12fe57f17cd3e50c843f5ce62}{Tree\+Quad\+Halos\+::force2\+D\+\_\+recur()}}. \\
+\hline
+{\em my\+\_\+inv\+\_\+screening\+\_\+scale} & the inverse of the square of the sreening length. See note for \mbox{\hyperlink{class_tree_quad_halos_a360badb12fe57f17cd3e50c843f5ce62}{Tree\+Quad\+Halos\+::force2\+D\+\_\+recur()}}. \\
+\hline
+{\em maximum\+\_\+range} & if set this will cause the tree not be fully construct down to the bucket size outside this range \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tree_quad_halos_a52666d3434c390ff7c0148b8a8d499be}\label{class_tree_quad_halos_a52666d3434c390ff7c0148b8a8d499be}} 
+\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}!force2D@{force2D}}
+\index{force2D@{force2D}!TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+\doxysubsubsection{\texorpdfstring{force2D()}{force2D()}}
+{\footnotesize\ttfamily template$<$typename Lens\+Halo\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}}$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $>$\+::force2D (\begin{DoxyParamCaption}\item[{Pos\+Type const $\ast$}]{ray,  }\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi }\end{DoxyParamCaption}) const}
+
+
+
+Force2D calculates the defection, convergence and shear using the plane-\/lens approximation. The tree is walked iteratively. 
+
+\begin{DoxyVerb}The output alpha[] is in units of mass_scale/Mpc, ie it needs to be
+divided by Sigma_crit and multiplied by mass_scale to be the deflection
+in the lens equation expressed on the lens plane or multiplied by
+4*pi*G*mass_scale to get the deflection angle caused by the plane lens.
+
+kappa and gamma need to by multiplied by mass_scale/Sigma_crit to get
+the traditional units for these where Sigma_crit are in the mass/units(ray)^2
+NB : the units of sigma_backgound need to be mass/units(ray)^2
+\end{DoxyVerb}
+
+
+If periodic\+\_\+buffer == true a periodic buffer is included. The ray is calculated as if there where identical copies of it on the borders of the tree\textquotesingle{}s root branch. This is not the same thing as periodic boundary conditions, because there are not an infinite number of copies in all direction as for the D\+FT force solver.
+
+If inv\+\_\+screening\+\_\+scale2 != 0 the mass of cells are reduced by a factor of exp(-\/$\vert$ray -\/ center of mass$\vert$$^\wedge$2$\ast$inv\+\_\+screening\+\_\+scale2) which screens the large scale geometry of the simulation on the sky. This is useful when the region is rectangular instead of circular. \mbox{\Hypertarget{class_tree_quad_halos_a360badb12fe57f17cd3e50c843f5ce62}\label{class_tree_quad_halos_a360badb12fe57f17cd3e50c843f5ce62}} 
+\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}!force2D\_recur@{force2D\_recur}}
+\index{force2D\_recur@{force2D\_recur}!TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+\doxysubsubsection{\texorpdfstring{force2D\_recur()}{force2D\_recur()}}
+{\footnotesize\ttfamily template$<$typename Lens\+Halo\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}}$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $>$\+::force2\+D\+\_\+recur (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{ray,  }\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi }\end{DoxyParamCaption})}
+
+
+
+Force2\+D\+\_\+recur calculates the defection, convergence and shear using the plane-\/lens approximation. 
+
+This function should do the same work as \mbox{\hyperlink{class_tree_quad_halos_a52666d3434c390ff7c0148b8a8d499be}{Tree\+Quad\+Halos\+::force2\+D()}} except it is done recursively instead of iteratively. This is done to enable multi-\/threading of the force calculation. \begin{DoxyVerb} The output alpha[] is in units of mass_scale/Mpc, ie it needs to be
+ divided by Sigma_crit and multiplied by mass_scale to be the deflection
+ in the lens equation expressed on the lens plane or multiplied by
+ 4*pi*G*mass_scale to get the deflection angle caused by the plane lens.
+
+ kappa and gamma need to by multiplied by mass_scale/Sigma_crit to get
+ the traditional units for these where Sigma_crit are in the mass/units(ray)^2
+ NB : the units of sigma_backgound need to be mass/units(ray)^2
+\end{DoxyVerb}
+
+
+If periodic\+\_\+buffer == true a periodic buffer is included. The ray is calculated as if there where identical copies of it on the borders of the tree\textquotesingle{}s root branch. This is not the same thing as periodic boundary conditions, because there are not an infinite number of copies in all direction as for the D\+FT force solver.
+
+If inv\+\_\+screening\+\_\+scale2 != 0 the mass of cells are reduced by a factor of exp(-\/$\vert$ray -\/ center of mass$\vert$$^\wedge$2$\ast$inv\+\_\+screening\+\_\+scale2) which screens the large scale geometry of the simulation on the sky. This is useful when the region is rectangular instead of circular. \mbox{\Hypertarget{class_tree_quad_halos_a334da617c9fccd36092e573a1d054ca1}\label{class_tree_quad_halos_a334da617c9fccd36092e573a1d054ca1}} 
+\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily template$<$typename Lens\+Halo\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}}$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $>$\+::neighbors (\begin{DoxyParamCaption}\item[{Pos\+Type}]{ray\mbox{[}$\,$\mbox{]},  }\item[{Pos\+Type}]{rmax,  }\item[{std\+::list$<$ Index\+Type $>$ \&}]{neighbors }\end{DoxyParamCaption}) const}
+
+
+
+find all points within rmax of ray in 2D 
+
+Returns the halos that are within rmax of ray\mbox{[}\mbox{]}. \mbox{\Hypertarget{class_tree_quad_halos_aeb862d1ef1ce9ee6e20a52840f8a3211}\label{class_tree_quad_halos_aeb862d1ef1ce9ee6e20a52840f8a3211}} 
+\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}!printBranchs@{printBranchs}}
+\index{printBranchs@{printBranchs}!TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+\doxysubsubsection{\texorpdfstring{printBranchs()}{printBranchs()}}
+{\footnotesize\ttfamily template$<$typename Lens\+Halo\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}}$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $>$\+::print\+Branchs (\begin{DoxyParamCaption}\item[{int}]{level = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+Prints to stdout the borders of each branch in the tree below level. If level $<$ 0 or not specified the whole tree will be printed. \mbox{\Hypertarget{class_tree_quad_halos_a15df76e018f6aeb5db093fecd4430944}\label{class_tree_quad_halos_a15df76e018f6aeb5db093fecd4430944}} 
+\index{TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}!printParticlesInBranch@{printParticlesInBranch}}
+\index{printParticlesInBranch@{printParticlesInBranch}!TreeQuadHalos$<$ LensHaloType $>$@{TreeQuadHalos$<$ LensHaloType $>$}}
+\doxysubsubsection{\texorpdfstring{printParticlesInBranch()}{printParticlesInBranch()}}
+{\footnotesize\ttfamily template$<$typename Lens\+Halo\+Type $>$ \\
+void \mbox{\hyperlink{class_tree_quad_halos}{Tree\+Quad\+Halos}}$<$ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} $>$\+::print\+Particles\+In\+Branch (\begin{DoxyParamCaption}\item[{unsigned long}]{number }\end{DoxyParamCaption})}
+
+This is a diagnostic routine that prints the position of every point in a given branch of the tree. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/quad\+Tree\+Halos.\+h\end{DoxyCompactItemize}

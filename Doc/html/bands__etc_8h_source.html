@@ -86,8 +86,8 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="class_band_info.html">BandInfo</a>(){};</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  std::pair&lt;double,double&gt; range(Band band);  </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_band_info.html#a9a1e3191cac3a878a9597a1d2cfa0286">lambda_central</a>(Band band);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  std::pair&lt;double,double&gt; range(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band);  </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_band_info.html#a9a1e3191cac3a878a9597a1d2cfa0286">lambda_central</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  std::vector&lt;Band&gt; bands = {EUC_VIS,EUC_Y,EUC_J,EUC_H,SDSS_U,SDSS_G,SDSS_R,SDSS_I,SDSS_Z,J,H,Ks,IRAC1,IRAC2,F435W,F606W,F775W,F850LP,F814W,F110W,F160W};</div>
@@ -103,9 +103,9 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="class_sun_info.html">SunInfo</a>(){assert(wavelengths.size() == sed.size());}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_sun_info.html#a4ad3c5bb030cbacd1050e6be829706a2">AbsMag</a>(Band band);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_sun_info.html#a46760b124f5edd65af29f8367c3492fb">mag</a>(Band band,<span class="keywordtype">double</span> z,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_sun_info.html#a837198c62ebb1bca1c9628e79213591b">flux</a>(Band band,<span class="keywordtype">double</span> z,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_sun_info.html#a4ad3c5bb030cbacd1050e6be829706a2">AbsMag</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_sun_info.html#a46760b124f5edd65af29f8367c3492fb">mag</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band,<span class="keywordtype">double</span> z,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="class_sun_info.html#a837198c62ebb1bca1c9628e79213591b">flux</a>(<a class="code" href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a> band,<span class="keywordtype">double</span> z,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="class_band_info.html">BandInfo</a> bandinfo;</div>
@@ -479,15 +479,16 @@ $(function() {
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* bands_etc_h */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_sun_info_html"><div class="ttname"><a href="class_sun_info.html">SunInfo</a></div><div class="ttdoc">Class that contains information about the solar SED and magnitudes.</div><div class="ttdef"><b>Definition:</b> bands_etc.h:36</div></div>
+<div class="ttc" id="a_input_params_8h_html_a6bf89b34f34485e455d0236d25b05198"><div class="ttname"><a href="_input_params_8h.html#a6bf89b34f34485e455d0236d25b05198">Band</a></div><div class="ttdeci">Band</div><div class="ttdoc">Photometric bands.</div><div class="ttdef"><b>Definition:</b> InputParams.h:79</div></div>
 <div class="ttc" id="aclass_band_info_html_a9a1e3191cac3a878a9597a1d2cfa0286"><div class="ttname"><a href="class_band_info.html#a9a1e3191cac3a878a9597a1d2cfa0286">BandInfo::lambda_central</a></div><div class="ttdeci">double lambda_central(Band band)</div><div class="ttdoc">range in Angstroms</div><div class="ttdef"><b>Definition:</b> bands_etc.cpp:13</div></div>
 <div class="ttc" id="aclass_sun_info_html_a46760b124f5edd65af29f8367c3492fb"><div class="ttname"><a href="class_sun_info.html#a46760b124f5edd65af29f8367c3492fb">SunInfo::mag</a></div><div class="ttdeci">double mag(Band band, double z, const COSMOLOGY &amp;cosmo)</div><div class="ttdoc">k-corrected apparent magnitude</div><div class="ttdef"><b>Definition:</b> bands_etc.cpp:33</div></div>
 <div class="ttc" id="aclass_sun_info_html_a4ad3c5bb030cbacd1050e6be829706a2"><div class="ttname"><a href="class_sun_info.html#a4ad3c5bb030cbacd1050e6be829706a2">SunInfo::AbsMag</a></div><div class="ttdeci">double AbsMag(Band band)</div><div class="ttdoc">absolute magnitude of the sun</div><div class="ttdef"><b>Definition:</b> bands_etc.cpp:23</div></div>
 <div class="ttc" id="aclass_sun_info_html_a837198c62ebb1bca1c9628e79213591b"><div class="ttname"><a href="class_sun_info.html#a837198c62ebb1bca1c9628e79213591b">SunInfo::flux</a></div><div class="ttdeci">double flux(Band band, double z, const COSMOLOGY &amp;cosmo)</div><div class="ttdoc">k-corrected flux in ergs/cm^2/s/Hz at center of band</div><div class="ttdef"><b>Definition:</b> bands_etc.cpp:45</div></div>
 <div class="ttc" id="aclass_band_info_html"><div class="ttname"><a href="class_band_info.html">BandInfo</a></div><div class="ttdoc">Class that contains information about bands.</div><div class="ttdef"><b>Definition:</b> bands_etc.h:17</div></div>
-<div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology.</div><div class="ttdef"><b>Definition:</b> cosmo.h:49</div></div>
+<div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology.</div><div class="ttdef"><b>Definition:</b> cosmo.h:50</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 10 2022 17:54:46 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Feb 11 2022 17:55:17 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

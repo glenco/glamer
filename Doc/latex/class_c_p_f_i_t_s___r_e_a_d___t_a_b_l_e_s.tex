@@ -1,0 +1,77 @@
+\hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{}\doxysection{C\+P\+F\+I\+T\+S\+\_\+\+R\+E\+A\+D\+\_\+\+T\+A\+B\+L\+ES Class Reference}
+\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}\index{CPFITS\_READ\_TABLES@{CPFITS\_READ\_TABLES}}
+
+
+read only fits file interface  
+
+
+
+
+{\ttfamily \#include $<$cpfits.\+h$>$}
+
+
+
+Inherits C\+P\+F\+I\+T\+S\+\_\+\+B\+A\+SE.
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_aada1ca14a56ef18ad9f51c9684fc3c9e}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_aada1ca14a56ef18ad9f51c9684fc3c9e}} 
+{\bfseries C\+P\+F\+I\+T\+S\+\_\+\+R\+E\+A\+D\+\_\+\+T\+A\+B\+L\+ES} (std\+::string filename, bool verbose=false)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a89ca0ee6c5fd26b2d86b02a96c568226}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a89ca0ee6c5fd26b2d86b02a96c568226}} 
+{\bfseries C\+P\+F\+I\+T\+S\+\_\+\+R\+E\+A\+D\+\_\+\+T\+A\+B\+L\+ES} (\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{C\+P\+F\+I\+T\+S\+\_\+\+R\+E\+AD}} \&\&ff)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a9ffd8c4604dd82a459950271514441ad}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a9ffd8c4604dd82a459950271514441ad}} 
+void {\bfseries operator=} (\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{C\+P\+F\+I\+T\+S\+\_\+\+R\+E\+A\+D\+\_\+\+T\+A\+B\+L\+ES}} \&\&ff)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a5e555bc066d297e1103ed1094c291f70}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a5e555bc066d297e1103ed1094c291f70}} 
+long {\bfseries rows} ()
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a4af28ec9887d65768019774229281695}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a4af28ec9887d65768019774229281695}} 
+long {\bfseries ncol} ()
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ad5b468d673ed56e17f173b188af24bc5}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ad5b468d673ed56e17f173b188af24bc5}} 
+int {\bfseries column\+\_\+index} (std\+::string \&colname)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a8a2ee0d16f98197eeb43823a75025b9f}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a8a2ee0d16f98197eeb43823a75025b9f}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries get\+\_\+colnames} ()
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a5750d25e38f845bea6492c3fca170650}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a5750d25e38f845bea6492c3fca170650}} 
+int {\bfseries read\+\_\+column} (std\+::string \&colname, std\+::vector$<$ float $>$ \&vecf)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a0ed710d910a6c8e40331ec97887eb06b}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a0ed710d910a6c8e40331ec97887eb06b}} 
+int {\bfseries read\+\_\+column} (std\+::string \&colname, long firstsrow, long nelements, std\+::vector$<$ float $>$ \&vecf, float nulval=-\/100)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_aaf318a3222f7c4baea66354edd544320}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_aaf318a3222f7c4baea66354edd544320}} 
+int {\bfseries read\+\_\+column} (int colnum, long firstsrow, long nelements, std\+::vector$<$ float $>$ \&vecf, float nulval=-\/100)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a3e213042bcfa1e27c28d32c3252af630}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a3e213042bcfa1e27c28d32c3252af630}} 
+int {\bfseries read\+\_\+column} (std\+::string \&colname, long firstsrow, long nelements, std\+::vector$<$ double $>$ \&vecf, double nulval=-\/100)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a695fef472e802cdb43221bd1a02822f1}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a695fef472e802cdb43221bd1a02822f1}} 
+int {\bfseries read\+\_\+column} (int colnum, long firstsrow, long nelements, std\+::vector$<$ double $>$ \&vecf, double nulval=-\/100)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a97147fce39a19d3e872de86983cbed1b}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a97147fce39a19d3e872de86983cbed1b}} 
+int {\bfseries read\+\_\+column} (std\+::string \&colname, long firstsrow, long nelements, std\+::vector$<$ long $>$ \&vecf, int nulval=-\/100)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_af10ee48c52402f633fed87890dd64fc5}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_af10ee48c52402f633fed87890dd64fc5}} 
+int {\bfseries read\+\_\+column} (int colnum, long firstsrow, long nelements, std\+::vector$<$ long $>$ \&vecf, int nulval=-\/100)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ab9dc8bd8a32c117bac138628ad9ab0df}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ab9dc8bd8a32c117bac138628ad9ab0df}} 
+int \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ab9dc8bd8a32c117bac138628ad9ab0df}{gettype}} (int colnum)
+\begin{DoxyCompactList}\small\item\em get data type of column \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a00fc427df93341d3ba8344f878630604}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a00fc427df93341d3ba8344f878630604}} 
+int {\bfseries read\+\_\+column} (int column\+\_\+index, std\+::vector$<$ float $>$ \&vecf)
+\item 
+\mbox{\Hypertarget{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a048ed062493e57be035b135b73515067}\label{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_a048ed062493e57be035b135b73515067}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries read} (std\+::vector$<$ T $>$ data, int ncol)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+read only fits file interface 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+Lsim\+Lib/include/cpfits.\+h\end{DoxyCompactItemize}
