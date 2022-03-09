@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.0.0)
+#cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.21)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -58,6 +59,9 @@ if(ENABLE_HDF5)
 	find_package(HDF5 REQUIRED)
 endif()
 
+if(ENABLE_CERF)
+	find_package(CERF REQUIRED)
+endif()
 
 ####
 # sources
@@ -112,6 +116,12 @@ if(ENABLE_HDF5)
 	list(APPEND GLAMER_INCLUDE_DIRS ${HDF5_INCLUDE_DIRS})
 	list(APPEND GLAMER_LIBRARIES ${HDF5_LIBRARIES})
 	list(APPEND GLAMER_DEFINITIONS ${HDF5_DEFINITIONS})
+endif()
+
+if(ENABLE_CERF)
+        list(APPEND GLAMER_INCLUDE_DIRS ${CERF_INCLUDE_DIRS})
+        list(APPEND GLAMER_LIBRARIES ${CERF_LIBRARIES})
+        list(APPEND GLAMER_DEFINITIONS ${CERF_DEFINITIONS})
 endif()
 
 write_basic_package_version_file(

@@ -95,3 +95,12 @@ else()
 	message(STATUS "HDF5 support: disabled")
 endif()
 
+# HDF5
+option(ENABLE_CERF "Enable functions that require CERF." OFF)
+
+if(ENABLE_CERF)
+        add_definitions(-DENABLE_CERF=1)
+        message(STATUS "CERF support: enabled")
+else()
+        message(STATUS "CERF support: disabled")
+endif()
