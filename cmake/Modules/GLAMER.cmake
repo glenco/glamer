@@ -95,7 +95,7 @@ else()
 	message(STATUS "HDF5 support: disabled")
 endif()
 
-# HDF5
+# Libcerf
 option(ENABLE_CERF "Enable functions that require CERF." OFF)
 
 if(ENABLE_CERF)
@@ -103,4 +103,14 @@ if(ENABLE_CERF)
         message(STATUS "CERF support: enabled")
 else()
         message(STATUS "CERF support: disabled")
+endif()
+
+# eigen libraries
+option(ENABLE_EIGEN "Enable functions that require EIGEN." OFF)
+
+if(ENABLE_EIGEN)
+        add_definitions(-DENABLE_EIGEN=1)
+        message(STATUS "EIGEN support: enabled")
+else()
+        message(STATUS "EIGEN support: disabled")
 endif()
