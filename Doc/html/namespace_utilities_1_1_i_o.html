@@ -101,9 +101,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>NumberOfEntries</b> (c
 <tr class="memitem:af6ab01d1aec34ac1000f3551d43a76fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities_1_1_i_o.html#af6ab01d1aec34ac1000f3551d43a76fa">ReadFileNames</a> (std::string dir, const std::string filespec, std::vector&lt; std::string &gt; &amp;filenames, bool verbose)</td></tr>
 <tr class="memdesc:af6ab01d1aec34ac1000f3551d43a76fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the file names in a directory that contain a specific sub string.  <a href="namespace_utilities_1_1_i_o.html#af6ab01d1aec34ac1000f3551d43a76fa">More...</a><br /></td></tr>
 <tr class="separator:af6ab01d1aec34ac1000f3551d43a76fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad361d43d9a51c81897c51286e7851318"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities_1_1_i_o.html#ad361d43d9a51c81897c51286e7851318">check_directory</a> (std::string dir)</td></tr>
-<tr class="memdesc:ad361d43d9a51c81897c51286e7851318"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if the directory does not exist  <a href="namespace_utilities_1_1_i_o.html#ad361d43d9a51c81897c51286e7851318">More...</a><br /></td></tr>
+<tr class="memitem:ad361d43d9a51c81897c51286e7851318"><td class="memItemLeft" align="right" valign="top"><a id="ad361d43d9a51c81897c51286e7851318"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities_1_1_i_o.html#ad361d43d9a51c81897c51286e7851318">check_directory</a> (std::string dir)</td></tr>
+<tr class="memdesc:ad361d43d9a51c81897c51286e7851318"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns true if director exists and false if it doesn't <br /></td></tr>
 <tr class="separator:ad361d43d9a51c81897c51286e7851318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03d02555eef2ba4cd4dd2aabc29e718e"><td class="memItemLeft" align="right" valign="top"><a id="a03d02555eef2ba4cd4dd2aabc29e718e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_utilities_1_1_i_o.html#a03d02555eef2ba4cd4dd2aabc29e718e">make_directories</a> (const std::string &amp;root_dir)</td></tr>
+<tr class="memdesc:a03d02555eef2ba4cd4dd2aabc29e718e"><td class="mdescLeft">&#160;</td><td class="mdescRight">make a directory if it doesn't exist <br /></td></tr>
+<tr class="separator:a03d02555eef2ba4cd4dd2aabc29e718e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16055c8e93e716d382c1ab590ae8af50"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a16055c8e93e716d382c1ab590ae8af50"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_utilities_1_1_i_o.html#a16055c8e93e716d382c1ab590ae8af50">ReadASCII</a> (std::vector&lt; T &gt; &amp;data, std::string filename, int &amp;columns, int &amp;rows, char comment_char='#', int skiplines=0, size_t MaxNrows=std::numeric_limits&lt; size_t &gt;::max(), bool verbose=true)</td></tr>
 <tr class="memdesc:a16055c8e93e716d382c1ab590ae8af50"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will read in all the numbers from a multi-column ,space seporated ASCII data file.  <a href="namespace_utilities_1_1_i_o.html#a16055c8e93e716d382c1ab590ae8af50">More...</a><br /></td></tr>
@@ -127,27 +132,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>NumberOfEntries</b> (c
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>namespace for input/output utilities </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ad361d43d9a51c81897c51286e7851318"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad361d43d9a51c81897c51286e7851318">&#9670;&nbsp;</a></span>check_directory()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Utilities::IO::check_directory </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>dir</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>check if the directory does not exist </p>
-<p>throws a runtime error if the directory does not exist </p>
-
-</div>
-</div>
 <a id="ade63c27fa26dbee97f6182ad188c4efe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade63c27fa26dbee97f6182ad188c4efe">&#9670;&nbsp;</a></span>CountColumns()</h2>
 
@@ -799,7 +783,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 11 2022 17:55:19 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>
