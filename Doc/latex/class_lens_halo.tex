@@ -37,7 +37,7 @@ Inheritance diagram for Lens\+Halo\+:\nopagebreak
 \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \& \mbox{\hyperlink{class_lens_halo_a9be986a94c12228b2e5c173c1cf5d85c}{operator=}} (\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&\&h)
 \item 
 float \mbox{\hyperlink{class_lens_halo_a6aee0c9abc88ca6d3d8ed9e44a18e6e3}{get\+\_\+\+Rmax}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em this can be used to tag types of Lens\+Halos \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_halo_a2616defcc052fd9ab1e568cfd8a5c9a9}\label{class_lens_halo_a2616defcc052fd9ab1e568cfd8a5c9a9}} 
 float \mbox{\hyperlink{class_lens_halo_a2616defcc052fd9ab1e568cfd8a5c9a9}{get\+Rsize}} () const
 \begin{DoxyCompactList}\small\item\em get the Rsize which is the size of the halo in Mpc \end{DoxyCompactList}\item 
@@ -175,13 +175,19 @@ void {\bfseries set\+ID} (size\+\_\+t id)
 Pos\+Type {\bfseries renormalization} (Pos\+Type r\+\_\+max)
 \item 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_lens_halo_a81b1a30f1fe716a34799469554693f6e}{map\+\_\+variables}} (\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, size\+\_\+t Nx, size\+\_\+t Ny, double res)
-\begin{DoxyCompactList}\small\item\em Map a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface, density, potential and potential gradient centred on (0,0) in Len\+Halo coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Map a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface, density, potential and potential gradient centred on (0,0) in \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_lens_halo_a37bed2edc60ce4932c7fc854fe972f01}\label{class_lens_halo_a37bed2edc60ce4932c7fc854fe972f01}} 
 static const int \mbox{\hyperlink{class_lens_halo_a37bed2edc60ce4932c7fc854fe972f01}{get\+\_\+\+Nmod}} ()
 \begin{DoxyCompactList}\small\item\em get length of mod array, which is Nmod. Not to be confused with get\+Nmodes in the class \mbox{\hyperlink{class_lens_halo_fit}{Lens\+Halo\+Fit}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_ab1ebcbc39317e9b6bbbdb32821fe49b2}\label{class_lens_halo_ab1ebcbc39317e9b6bbbdb32821fe49b2}} 
+int {\bfseries tag} =0
+\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -194,6 +200,9 @@ Pos\+Type {\bfseries norm\+\_\+int} (Pos\+Type r\+\_\+max)
 void \mbox{\hyperlink{class_lens_halo_a374d199861689b8186c04d29bf92d6a2}{force\+\_\+halo\+\_\+sym}} (Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, Pos\+Type const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
 \begin{DoxyCompactList}\small\item\em returns the lensing quantities of a ray in center of mass coordinates for a symmetric halo \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_halo_a78cc531d36104d72bec891424aba9fcb}{force\+\_\+halo\+\_\+asym}} (Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, Pos\+Type const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+\item 
+\mbox{\Hypertarget{class_lens_halo_afa55fc41d60760fe22be8ae43dc01f83}\label{class_lens_halo_afa55fc41d60760fe22be8ae43dc01f83}} 
+bool {\bfseries force\+\_\+point} (Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, Pos\+Type const $\ast$xcm, Pos\+Type rcm2, bool subtract\+\_\+point, Pos\+Type screening)
 \item 
 \mbox{\Hypertarget{class_lens_halo_a187b1e7e055d69419bf214ebf588af6d}\label{class_lens_halo_a187b1e7e055d69419bf214ebf588af6d}} 
 void \mbox{\hyperlink{class_lens_halo_a187b1e7e055d69419bf214ebf588af6d}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params, bool need\+Rsize)
@@ -327,6 +336,9 @@ void \mbox{\hyperlink{class_lens_halo_affb1ead96e81d87f61d45e09a6f6fb3f}{anal\+M
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lens_halo_a9a4b9b0baa6d6a0aa28fdb15103cbdfe}\label{class_lens_halo_a9a4b9b0baa6d6a0aa28fdb15103cbdfe}} 
+float {\bfseries Rsize} = 0
 \item 
 \mbox{\Hypertarget{class_lens_halo_a59843843bbea3a022dd8cc201c80adda}\label{class_lens_halo_a59843843bbea3a022dd8cc201c80adda}} 
 float {\bfseries mass}
@@ -537,7 +549,7 @@ output\+: f\mbox{[}0\mbox{]} = G, f\mbox{[}1\mbox{]} = d\+G/dtheta, f\mbox{[}2\m
 \end{DoxyParams}
 
 
-Reimplemented in \mbox{\hyperlink{class_lens_halo_dummy_a97a4d4969529502dd956a03c7da6d5ee}{Lens\+Halo\+Dummy}}, \mbox{\hyperlink{class_lens_halo_t_n_s_i_e_a21702bde8394612b37e7f8b4d87086d7}{Lens\+Halo\+T\+N\+S\+IE}}, \mbox{\hyperlink{class_lens_halo_real_n_s_i_e_a819bd516935f96820fe43e5b27d6fec5}{Lens\+Halo\+Real\+N\+S\+IE}}, \mbox{\hyperlink{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}{Lens\+Halo\+Uniform}}, and \mbox{\hyperlink{class_lens_halo_mass_map_a7539cfc750a26eda61672263a2f75eb4}{Lens\+Halo\+Mass\+Map}}.
+Reimplemented in \mbox{\hyperlink{class_lens_halo_dummy_a97a4d4969529502dd956a03c7da6d5ee}{Lens\+Halo\+Dummy}}, \mbox{\hyperlink{class_lens_halo_t_e_p_l_ae8d450a37357553b9ddfcdfd06a8432e}{Lens\+Halo\+T\+E\+PL}}, \mbox{\hyperlink{class_lens_halo_t_n_s_i_e_a21702bde8394612b37e7f8b4d87086d7}{Lens\+Halo\+T\+N\+S\+IE}}, \mbox{\hyperlink{class_lens_halo_real_n_s_i_e_a819bd516935f96820fe43e5b27d6fec5}{Lens\+Halo\+Real\+N\+S\+IE}}, \mbox{\hyperlink{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}{Lens\+Halo\+Uniform}}, and \mbox{\hyperlink{class_lens_halo_mass_map_a7539cfc750a26eda61672263a2f75eb4}{Lens\+Halo\+Mass\+Map}}.
 
 \mbox{\Hypertarget{class_lens_halo_a78cc531d36104d72bec891424aba9fcb}\label{class_lens_halo_a78cc531d36104d72bec891424aba9fcb}} 
 \index{LensHalo@{LensHalo}!force\_halo\_asym@{force\_halo\_asym}}
@@ -595,6 +607,10 @@ add stars for microlensing
 \doxysubsubsection{\texorpdfstring{get\_Rmax()}{get\_Rmax()}}
 {\footnotesize\ttfamily float Lens\+Halo\+::get\+\_\+\+Rmax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+this can be used to tag types of Lens\+Halos 
+
 get the Rmax which is larger than Rsize in Mpc. This is the region exterior to which the halo will be considered a point mass. Between Rsize and Rmax the deflection and shear are interpolated. \mbox{\Hypertarget{class_lens_halo_a50bd89dc5d7d11932c757eb4e962b6ba}\label{class_lens_halo_a50bd89dc5d7d11932c757eb4e962b6ba}} 
 \index{LensHalo@{LensHalo}!getDist@{getDist}}
 \index{getDist@{getDist}!LensHalo@{LensHalo}}
@@ -625,11 +641,11 @@ radius in Mpc (Not x = r/rscale)\mbox{\Hypertarget{class_lens_halo_a81b1a30f1fe7
 
 
 
-Map a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface, density, potential and potential gradient centred on (0,0) in Len\+Halo coordinates. 
+Map a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface, density, potential and potential gradient centred on (0,0) in \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} coordinates. 
 
 Units \+: A\+L\+P\+HA -\/ mass/\+Phys\+Mpc -\/ A\+L\+P\+HA / Sig\+\_\+crit / Dl is the deflection in radians K\+A\+P\+PA -\/ surface mass density , mass / /\+Phys\+Mpc/\+Phys\+Mpc -\/ K\+A\+P\+PA / Sig\+\_\+crit is the convergence G\+A\+M\+MA -\/ mass / /\+Phys\+Mpc/\+Phys\+Mpc -\/ G\+A\+M\+MA / Sig\+\_\+crit is the shear P\+HI -\/ mass -\/ P\+HI / Sig\+\_\+crit / Dl / Dl is the lensing potential whose angular gradient is the deflection and angular Laplacian is 2 times the convergence
 
-centred on (0,0) in Len\+Halo coordinates 
+centred on (0,0) in \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} coordinates 
 \begin{DoxyParams}{Parameters}
 {\em lensvar} & lensing variable -\/ K\+A\+P\+PA, A\+L\+P\+H\+A1, A\+L\+P\+H\+A2, G\+A\+M\+M\+A1, G\+A\+M\+M\+A2 or P\+HI \\
 \hline

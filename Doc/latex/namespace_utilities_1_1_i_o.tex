@@ -24,8 +24,12 @@ int \mbox{\hyperlink{namespace_utilities_1_1_i_o_ade63c27fa26dbee97f6182ad188c4e
 \begin{DoxyCompactList}\small\item\em Count the number of columns in a A\+S\+C\+II data file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_utilities_1_1_i_o_af6ab01d1aec34ac1000f3551d43a76fa}{Read\+File\+Names}} (std\+::string dir, const std\+::string filespec, std\+::vector$<$ std\+::string $>$ \&filenames, bool verbose)
 \begin{DoxyCompactList}\small\item\em Reads the file names in a directory that contain a specific sub string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851318}\label{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851318}} 
 bool \mbox{\hyperlink{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851318}{check\+\_\+directory}} (std\+::string dir)
-\begin{DoxyCompactList}\small\item\em check if the directory does not exist \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em returns true if director exists and false if it doesn\textquotesingle{}t \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_1_1_i_o_a03d02555eef2ba4cd4dd2aabc29e718e}\label{namespace_utilities_1_1_i_o_a03d02555eef2ba4cd4dd2aabc29e718e}} 
+bool \mbox{\hyperlink{namespace_utilities_1_1_i_o_a03d02555eef2ba4cd4dd2aabc29e718e}{make\+\_\+directories}} (const std\+::string \&root\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em make a directory if it doesn\textquotesingle{}t exist \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_1_1_i_o_a16055c8e93e716d382c1ab590ae8af50}{Read\+A\+S\+C\+II}} (std\+::vector$<$ T $>$ \&data, std\+::string filename, int \&columns, int \&rows, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, int skiplines=0, size\+\_\+t Max\+Nrows=std\+::numeric\+\_\+limits$<$ size\+\_\+t $>$\+::max(), bool verbose=true)
 \begin{DoxyCompactList}\small\item\em This function will read in all the numbers from a multi-\/column ,space seporated A\+S\+C\+II data file. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\int \mbox{\hyperlink{namespace_utilities_1_1_i_o_a8597a573645e6a6ad34d10f6e2012f5f}{Read\+C\+S\+Vnumerical1}} (std\+::string filename, std\+::vector$<$ std\+::vector$<$ T $>$ $>$ \&data, std\+::vector$<$ std\+::string $>$ \&column\+\_\+names, size\+\_\+t Max\+Number=100000000, char comment\+\_\+char=\textquotesingle{}\#\textquotesingle{}, char deliniator=\textquotesingle{},\textquotesingle{}, std\+::string replace=\char`\"{}\textbackslash{}\textbackslash{}N\char`\"{}, std\+::function$<$ bool(std\+::vector$<$ T $>$ \&)$>$ accept=\mbox{[}$\,$\mbox{]}(std\+::vector$<$ T $>$ \&v)\{return true;\})
@@ -42,17 +46,7 @@ bool \mbox{\hyperlink{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851
 namespace for input/output utilities 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851318}\label{namespace_utilities_1_1_i_o_ad361d43d9a51c81897c51286e7851318}} 
-\index{Utilities::IO@{Utilities::IO}!check\_directory@{check\_directory}}
-\index{check\_directory@{check\_directory}!Utilities::IO@{Utilities::IO}}
-\doxysubsubsection{\texorpdfstring{check\_directory()}{check\_directory()}}
-{\footnotesize\ttfamily bool Utilities\+::\+I\+O\+::check\+\_\+directory (\begin{DoxyParamCaption}\item[{std\+::string}]{dir }\end{DoxyParamCaption})}
-
-
-
-check if the directory does not exist 
-
-throws a runtime error if the directory does not exist \mbox{\Hypertarget{namespace_utilities_1_1_i_o_ade63c27fa26dbee97f6182ad188c4efe}\label{namespace_utilities_1_1_i_o_ade63c27fa26dbee97f6182ad188c4efe}} 
+\mbox{\Hypertarget{namespace_utilities_1_1_i_o_ade63c27fa26dbee97f6182ad188c4efe}\label{namespace_utilities_1_1_i_o_ade63c27fa26dbee97f6182ad188c4efe}} 
 \index{Utilities::IO@{Utilities::IO}!CountColumns@{CountColumns}}
 \index{CountColumns@{CountColumns}!Utilities::IO@{Utilities::IO}}
 \doxysubsubsection{\texorpdfstring{CountColumns()}{CountColumns()}}

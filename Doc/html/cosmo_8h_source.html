@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">enum class</span> CosmoParamSet {WMAP5yr,Millennium,Planck1yr,Planck15,Planck18,BigMultiDark,Uchuu,none};</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;std::string to_string(<span class="keyword">const</span> CosmoParamSet &amp;p);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;std::string <a class="code" href="_input_params_8h.html#a6e21a39ae977976a9e55cfa01ceda1e5">to_string</a>(<span class="keyword">const</span> CosmoParamSet &amp;p);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os,<span class="keyword">const</span> CosmoParamSet &amp;p);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_c_o_s_m_o_l_o_g_y.html">   50</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a>{</div>
@@ -505,6 +505,7 @@ $(function() {
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_a1678cfe2dbb79a6f18cd3ad4ec6eb8e0"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#a1678cfe2dbb79a6f18cd3ad4ec6eb8e0">COSMOLOGY::radDist</a></div><div class="ttdeci">double radDist(double zo, double z) const</div><div class="ttdoc">Non-comoving radial distance in units Mpc also known as the lookback time. This is coorDist only inte...</div><div class="ttdef"><b>Definition:</b> cosmo.cpp:683</div></div>
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_a2a7bdf7db8f2b9bc59b0b7482547ddf0"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#a2a7bdf7db8f2b9bc59b0b7482547ddf0">COSMOLOGY::setOmega_matter</a></div><div class="ttdeci">void setOmega_matter(double Omega_matter, bool FLAT=false)</div><div class="ttdoc">Omega matter, renormalizes P(k) to keep sig8 fixed.</div><div class="ttdef"><b>Definition:</b> cosmo.h:201</div></div>
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_aa6f0e75fa360dde78fb9ae28e541251f"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#aa6f0e75fa360dde78fb9ae28e541251f">COSMOLOGY::TopHatVarianceR</a></div><div class="ttdeci">double TopHatVarianceR(double R, double z)</div><div class="ttdoc">Variance within a spherical top-hat filter of size R (Mpc), , at redshift z.</div><div class="ttdef"><b>Definition:</b> powerCDM.cpp:188</div></div>
+<div class="ttc" id="a_input_params_8h_html_a6e21a39ae977976a9e55cfa01ceda1e5"><div class="ttname"><a href="_input_params_8h.html#a6e21a39ae977976a9e55cfa01ceda1e5">to_string</a></div><div class="ttdeci">std::string to_string(const Band &amp;band)</div><div class="ttdoc">convert a Band type to a string name.</div><div class="ttdef"><b>Definition:</b> InputParams.cpp:877</div></div>
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_a2b51480746298bdc547f599cf9f9e350"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#a2b51480746298bdc547f599cf9f9e350">COSMOLOGY::PrintCosmology</a></div><div class="ttdeci">void PrintCosmology(short physical=0) const</div><div class="ttdoc">Print cosmological parameters.</div><div class="ttdef"><b>Definition:</b> cosmo.cpp:357</div></div>
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_a93cc5686643c90adc81007193ba531d6"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#a93cc5686643c90adc81007193ba531d6">COSMOLOGY::Omo</a></div><div class="ttdeci">double Omo</div><div class="ttdoc">Omega matter, dark matter + baryons.</div><div class="ttdef"><b>Definition:</b> cosmo.h:314</div></div>
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_a866c9bce49f640d8f1b975913b18ba2c"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#a866c9bce49f640d8f1b975913b18ba2c">COSMOLOGY::time</a></div><div class="ttdeci">double time(double z) const</div><div class="ttdoc">Return the time from the Big Bang in Gyr at a given redshift z.</div><div class="ttdef"><b>Definition:</b> cosmo.cpp:1178</div></div>
@@ -584,7 +585,7 @@ $(function() {
 <div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html_ae36601fd4a4eae5059470813b68b1095"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html#ae36601fd4a4eae5059470813b68b1095">COSMOLOGY::n</a></div><div class="ttdeci">double n</div><div class="ttdoc">Primordial spectral index.</div><div class="ttdef"><b>Definition:</b> cosmo.h:312</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 11 2022 17:55:17 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 28 2022 15:17:33 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

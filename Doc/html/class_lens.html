@@ -174,9 +174,9 @@ template&lt;typename HaloType &gt; </td></tr>
 <tr class="memitem:a2575c6d766091cde0ce87249e97333f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a2575c6d766091cde0ce87249e97333f1">rayshooterInternal</a> (unsigned long Npoints, <a class="el" href="struct_linked_point.html">LinkedPoint</a> *i_points, std::vector&lt; double &gt; &amp;source_zs, bool RSIverbose=false)</td></tr>
 <tr class="memdesc:a2575c6d766091cde0ce87249e97333f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routine for shooting rays with differnt source redshifts in parrallel.  <a href="class_lens.html#a2575c6d766091cde0ce87249e97333f1">More...</a><br /></td></tr>
 <tr class="separator:a2575c6d766091cde0ce87249e97333f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a789442c6d34aad5a578b2042c65f0903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a789442c6d34aad5a578b2042c65f0903">info_rayshooter</a> (<a class="el" href="struct_point.html">Point</a> *i_point, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;ang_positions, std::vector&lt; KappaType &gt; &amp;kappa_on_planes, std::vector&lt; std::vector&lt; <a class="el" href="class_lens_halo.html">LensHalo</a> * &gt;&gt; &amp;halo_neighbors, <a class="el" href="class_lens_halo.html">LensHalo</a> **halo_max, KappaType &amp;kappa_max, KappaType gamma_max[], PosType rmax, short mode=0, bool verbose=false)</td></tr>
-<tr class="memdesc:a789442c6d34aad5a578b2042c65f0903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects information about the halos and kappa contributions along the light path.  <a href="class_lens.html#a789442c6d34aad5a578b2042c65f0903">More...</a><br /></td></tr>
-<tr class="separator:a789442c6d34aad5a578b2042c65f0903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa714f37553b29a50a6d2b532a99013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a4fa714f37553b29a50a6d2b532a99013">info_rayshooter</a> (<a class="el" href="struct_r_a_y.html">RAY</a> &amp;i_point, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;ang_positions, std::vector&lt; KappaType &gt; &amp;kappa_on_planes, std::vector&lt; std::vector&lt; <a class="el" href="class_lens_halo.html">LensHalo</a> * &gt;&gt; &amp;halo_neighbors, <a class="el" href="class_lens_halo.html">LensHalo</a> &amp;halo_max, KappaType &amp;kappa_max, KappaType gamma_max[], PosType rmax, int tag=0, short mode=0, bool verbose=false)</td></tr>
+<tr class="memdesc:a4fa714f37553b29a50a6d2b532a99013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects information about the halos and kappa contributions along the light path.  <a href="class_lens.html#a4fa714f37553b29a50a6d2b532a99013">More...</a><br /></td></tr>
+<tr class="separator:a4fa714f37553b29a50a6d2b532a99013"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3a11062a75edccda29005253c6f5061"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#ad3a11062a75edccda29005253c6f5061">find_image</a> (<a class="el" href="struct_point.html">Point</a> &amp;p, PosType ytol2, PosType &amp;dy2, bool use_image_guess)</td></tr>
 <tr class="memdesc:ad3a11062a75edccda29005253c6f5061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the image position of a source without grid refinement.  <a href="class_lens.html#ad3a11062a75edccda29005253c6f5061">More...</a><br /></td></tr>
 <tr class="separator:ad3a11062a75edccda29005253c6f5061"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -543,8 +543,8 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a789442c6d34aad5a578b2042c65f0903"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a789442c6d34aad5a578b2042c65f0903">&#9670;&nbsp;</a></span>info_rayshooter()</h2>
+<a id="a4fa714f37553b29a50a6d2b532a99013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa714f37553b29a50a6d2b532a99013">&#9670;&nbsp;</a></span>info_rayshooter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -552,8 +552,8 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">void Lens::info_rayshooter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_point.html">Point</a> *&#160;</td>
-          <td class="paramname"><em>i_point</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_r_a_y.html">RAY</a> &amp;&#160;</td>
+          <td class="paramname"><em>ray</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -576,7 +576,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_lens_halo.html">LensHalo</a> **&#160;</td>
+          <td class="paramtype"><a class="el" href="class_lens_halo.html">LensHalo</a> &amp;&#160;</td>
           <td class="paramname"><em>halo_max</em>, </td>
         </tr>
         <tr>
@@ -596,6 +596,12 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td></td>
           <td class="paramtype">PosType&#160;</td>
           <td class="paramname"><em>rmax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tag</em> = <code>0</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -621,11 +627,15 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Information on the nearest halos is collected where nearest is defined by rmax and mode. When mode == 2 the unlensed angular coordinates are used to evaluate proximity not the lensed ones. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i_point</td><td>point to be shot, must have image point linked </td></tr>
+    <tr><td class="paramname">ray</td><td>ray, ray.x needs to be set, all other quantities will be calculated </td></tr>
     <tr><td class="paramname">ang_positions</td><td>angular positions on each plane </td></tr>
     <tr><td class="paramname">kappa_on_planes</td><td>convergence on each plane </td></tr>
     <tr><td class="paramname">halo_neighbors</td><td>neighboring halos within rmax of ray on each plane </td></tr>
+    <tr><td class="paramname">halo_max</td><td>halo with the larges kappa </td></tr>
+    <tr><td class="paramname">kappa_max</td><td>the kappa from that halo </td></tr>
+    <tr><td class="paramname">gamma_max</td><td>shear from that halo </td></tr>
     <tr><td class="paramname">rmax</td><td>distance from ray on each plane, units depend on mode parameter </td></tr>
+    <tr><td class="paramname">tag</td><td>i f not 0, information on halos with this tag are gathered </td></tr>
     <tr><td class="paramname">mode</td><td>0:physical distance, 1: comoving distance, 2: angular distance </td></tr>
   </table>
   </dd>
@@ -1036,7 +1046,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 11 2022 17:55:18 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 28 2022 15:17:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

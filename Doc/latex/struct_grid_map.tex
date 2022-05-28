@@ -51,12 +51,11 @@ void \mbox{\hyperlink{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}{write\+
 \item 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_aed55e0cb0283537108615b228dbb057a}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
 \begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}\label{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}} 
 void \mbox{\hyperlink{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}{write\+Fits\+Uniform}} (\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em this will make a fits map of the grid as is. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_a4aa568491f3d6a527782d840e3cfc4d3}{get\+Pixel\+Map}} (int res) const
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_map_a199c9dec53304a4995bd8abf5f4f66c3}{get\+Pixel\+Map\+Flux}} (int res) const
 \begin{DoxyCompactList}\small\item\em returns a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_map_ac87d83cc6f0e3f08d9a0393e3720c5f9}{get\+Pixel\+Map}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map) const
+void \mbox{\hyperlink{struct_grid_map_a3ae305576b8720f0f99a60a4278223bb}{get\+Pixel\+Map\+Flux}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map) const
 \begin{DoxyCompactList}\small\item\em surface brightness map \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}\label{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}} 
 Pos\+Type \mbox{\hyperlink{struct_grid_map_a408b0ac19bc5678ca316a582250f4946}{Einstein\+Area}} () const
@@ -149,27 +148,27 @@ Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{s
 
 Recalculate surface brightness just like Grid\+Map\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. 
 
-returns the sum of the surface brightnesses from the new source \mbox{\Hypertarget{struct_grid_map_a4aa568491f3d6a527782d840e3cfc4d3}\label{struct_grid_map_a4aa568491f3d6a527782d840e3cfc4d3}} 
-\index{GridMap@{GridMap}!getPixelMap@{getPixelMap}}
-\index{getPixelMap@{getPixelMap}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{getPixelMap()}{getPixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::get\+Pixel\+Map (\begin{DoxyParamCaption}\item[{int}]{res }\end{DoxyParamCaption}) const}
+returns the sum of the surface brightnesses from the new source \mbox{\Hypertarget{struct_grid_map_a199c9dec53304a4995bd8abf5f4f66c3}\label{struct_grid_map_a199c9dec53304a4995bd8abf5f4f66c3}} 
+\index{GridMap@{GridMap}!getPixelMapFlux@{getPixelMapFlux}}
+\index{getPixelMapFlux@{getPixelMapFlux}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{getPixelMapFlux()}{getPixelMapFlux()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+Map\+::get\+Pixel\+Map\+Flux (\begin{DoxyParamCaption}\item[{int}]{res }\end{DoxyParamCaption}) const}
 
 
 
 returns a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution 
 
-Output a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface brightness with same res as the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}. \mbox{\Hypertarget{struct_grid_map_ac87d83cc6f0e3f08d9a0393e3720c5f9}\label{struct_grid_map_ac87d83cc6f0e3f08d9a0393e3720c5f9}} 
-\index{GridMap@{GridMap}!getPixelMap@{getPixelMap}}
-\index{getPixelMap@{getPixelMap}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{getPixelMap()}{getPixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Grid\+Map\+::get\+Pixel\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map }\end{DoxyParamCaption}) const}
+Output a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the surface brightness with same res as the \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}. \mbox{\Hypertarget{struct_grid_map_a3ae305576b8720f0f99a60a4278223bb}\label{struct_grid_map_a3ae305576b8720f0f99a60a4278223bb}} 
+\index{GridMap@{GridMap}!getPixelMapFlux@{getPixelMapFlux}}
+\index{getPixelMapFlux@{getPixelMapFlux}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{getPixelMapFlux()}{getPixelMapFlux()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grid\+Map\+::get\+Pixel\+Map\+Flux (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map }\end{DoxyParamCaption}) const}
 
 
 
 surface brightness map 
 
-update a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution. The map must have precisely the right size and center to match or an exception will be thrown. Constructing the map with \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} get\+Pixel\+Map(int res) will insure that it does. \mbox{\Hypertarget{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}\label{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}} 
+update a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with the flux in pixels at a resolution of res times the original resolution. The map must have precisely the right size and center to match or an exception will be thrown. Constructing the map with \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} get\+Pixel\+Map\+Flux(int res) will insure that it does. \mbox{\Hypertarget{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}\label{struct_grid_map_a3e4242350b46cbd85b47818b8101f9e2}} 
 \index{GridMap@{GridMap}!RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}}
 \index{RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}!GridMap@{GridMap}}
 \doxysubsubsection{\texorpdfstring{RefreshSurfaceBrightnesses()}{RefreshSurfaceBrightnesses()}}
@@ -201,7 +200,7 @@ fits output of lensing quantities at the resolution of the \mbox{\hyperlink{stru
 \mbox{\Hypertarget{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}\label{struct_grid_map_a1d0b3520105f861334d0da8cd0cf60ba}} 
 \index{GridMap@{GridMap}!writeFitsUniform@{writeFitsUniform}}
 \index{writeFitsUniform@{writeFitsUniform}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{writeFitsUniform()}{writeFitsUniform()}}
+\doxysubsubsection{\texorpdfstring{writeFitsUniform()}{writeFitsUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void Grid\+Map\+::write\+Fits\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
 
 
@@ -215,6 +214,23 @@ fits output of lensing quantities at the resolution of the \mbox{\hyperlink{stru
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 {\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}\label{struct_grid_map_a21ba3c14b21e7a7e83e80e0a8c3aa7ba}} 
+\index{GridMap@{GridMap}!writeFitsUniform@{writeFitsUniform}}
+\index{writeFitsUniform@{writeFitsUniform}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{writeFitsUniform()}{writeFitsUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Grid\+Map\+::write\+Fits\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+this will make a fits map of the grid as is. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lensvar} & quantity to be output \\
+\hline
+{\em filename} & name of output fits file \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{struct_grid_map_a5e7ebe491daab61d9256b45036f9bc48}\label{struct_grid_map_a5e7ebe491daab61d9256b45036f9bc48}} 

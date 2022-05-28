@@ -30,10 +30,9 @@ Collaboration diagram for Lens\+Halo\+Multi\+Map\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_lens_halo_multi_map_a71114994e9347f2ac23f7abf0071e6a3}{Lens\+Halo\+Multi\+Map}} (std\+::string fitsfile, std\+::string dir\+\_\+data, double redshift, double mass\+\_\+unit, double npane, int number\+\_\+of\+\_\+subfields, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&c, bool write\+\_\+subfields=false, std\+::string dir\+\_\+scratch=\char`\"{}\char`\"{}, bool subtract\+\_\+ave=true, double ffactor=5, double gfactor=5)
+\mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{Lens\+Halo\+Multi\+Map}} (std\+::string fitsfile, std\+::string dir\+\_\+data, double redshift, double mass\+\_\+unit, double npane, int number\+\_\+of\+\_\+subfields, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&c, bool write\+\_\+subfields=false, std\+::string dir\+\_\+scratch=\char`\"{}\char`\"{}, bool subtract\+\_\+ave=true, double ffactor=5, double gfactor=5, double rsmooth2=0)
 \item 
-\mbox{\Hypertarget{class_lens_halo_multi_map_a63e901455b10a2d3186f38e9829ca34f}\label{class_lens_halo_multi_map_a63e901455b10a2d3186f38e9829ca34f}} 
-void {\bfseries resetsubmap} (int i, const std\+::vector$<$ long $>$ \&lower\+\_\+left)
+void \mbox{\hyperlink{class_lens_halo_multi_map_a30ed57c69b9bec07ac44a617bfe01718}{resetsubmap}} (int i, const std\+::vector$<$ long $>$ \&lower\+\_\+left\+\_\+pix)
 \item 
 \mbox{\Hypertarget{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}\label{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}} 
 void \mbox{\hyperlink{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}{resetsubmap\+Phys}} (int i, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} ll)
@@ -82,10 +81,10 @@ size\+\_\+t \mbox{\hyperlink{class_lens_halo_multi_map_a577dfa81bd1e33e9fcd12861
 \begin{DoxyCompactList}\small\item\em return number of pixels on a y-\/axis side in original map \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_halo_multi_map_a1c1942ea8a9844a1b26445fb055e557c}\label{class_lens_halo_multi_map_a1c1942ea8a9844a1b26445fb055e557c}} 
 size\+\_\+t \mbox{\hyperlink{class_lens_halo_multi_map_a1c1942ea8a9844a1b26445fb055e557c}{get\+Nx\+\_\+sr}} () const
-\begin{DoxyCompactList}\small\item\em return number of pixels on a x-\/axis side in short range map \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em return number of pixels on a x-\/axis side in short range map (margins are hidden internally) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_halo_multi_map_a01e4daccf7432a38b3a6ec2003717ab5}\label{class_lens_halo_multi_map_a01e4daccf7432a38b3a6ec2003717ab5}} 
 size\+\_\+t \mbox{\hyperlink{class_lens_halo_multi_map_a01e4daccf7432a38b3a6ec2003717ab5}{get\+Ny\+\_\+sr}} () const
-\begin{DoxyCompactList}\small\item\em return number of pixels on a y-\/axis side in short range map \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em return number of pixels on a y-\/axis side in short range map (margins are hidden internally) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_halo_multi_map_ac2144fead49404f2ed827906c089e904}\label{class_lens_halo_multi_map_ac2144fead49404f2ed827906c089e904}} 
 size\+\_\+t \mbox{\hyperlink{class_lens_halo_multi_map_ac2144fead49404f2ed827906c089e904}{get\+Nx}} () const
 \begin{DoxyCompactList}\small\item\em return number of pixels on a x-\/axis side in original map \end{DoxyCompactList}\item 
@@ -170,11 +169,11 @@ A lens halo that calculates all lensing quantities on two grids -\/ a low res lo
 Note\+: To use this class requires setting the E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS compiler flag and linking the cfits library. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_lens_halo_multi_map_a71114994e9347f2ac23f7abf0071e6a3}\label{class_lens_halo_multi_map_a71114994e9347f2ac23f7abf0071e6a3}} 
+\mbox{\Hypertarget{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}\label{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}} 
 \index{LensHaloMultiMap@{LensHaloMultiMap}!LensHaloMultiMap@{LensHaloMultiMap}}
 \index{LensHaloMultiMap@{LensHaloMultiMap}!LensHaloMultiMap@{LensHaloMultiMap}}
 \doxysubsubsection{\texorpdfstring{LensHaloMultiMap()}{LensHaloMultiMap()}}
-{\footnotesize\ttfamily Lens\+Halo\+Multi\+Map\+::\+Lens\+Halo\+Multi\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfile,  }\item[{std\+::string}]{dir\+\_\+data,  }\item[{double}]{redshift,  }\item[{double}]{mass\+\_\+unit,  }\item[{double}]{npane,  }\item[{int}]{number\+\_\+of\+\_\+subfields,  }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{c,  }\item[{bool}]{write\+\_\+subfields = {\ttfamily false},  }\item[{std\+::string}]{dir\+\_\+scratch = {\ttfamily \char`\"{}\char`\"{}},  }\item[{bool}]{subtract\+\_\+ave = {\ttfamily true},  }\item[{double}]{ffactor = {\ttfamily 5},  }\item[{double}]{gfactor = {\ttfamily 5} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Lens\+Halo\+Multi\+Map\+::\+Lens\+Halo\+Multi\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfile,  }\item[{std\+::string}]{dir\+\_\+data,  }\item[{double}]{redshift,  }\item[{double}]{mass\+\_\+unit,  }\item[{double}]{npane,  }\item[{int}]{number\+\_\+of\+\_\+subfields,  }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&}]{c,  }\item[{bool}]{write\+\_\+subfields = {\ttfamily false},  }\item[{std\+::string}]{dir\+\_\+scratch = {\ttfamily \char`\"{}\char`\"{}},  }\item[{bool}]{subtract\+\_\+ave = {\ttfamily true},  }\item[{double}]{ffactor = {\ttfamily 5},  }\item[{double}]{gfactor = {\ttfamily 5},  }\item[{double}]{rsmooth2 = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 long\+\_\+range\+\_\+file\+\_\+exists = false;
 
@@ -195,6 +194,24 @@ set up fftw plans for short range maps
 {\em dir\+\_\+scratch} & directory for saving long rang force if different than directory where fitsfile is \\
 \hline
 {\em subtract\+\_\+ave} & subtract the average of the full field \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_lens_halo_multi_map_a30ed57c69b9bec07ac44a617bfe01718}\label{class_lens_halo_multi_map_a30ed57c69b9bec07ac44a617bfe01718}} 
+\index{LensHaloMultiMap@{LensHaloMultiMap}!resetsubmap@{resetsubmap}}
+\index{resetsubmap@{resetsubmap}!LensHaloMultiMap@{LensHaloMultiMap}}
+\doxysubsubsection{\texorpdfstring{resetsubmap()}{resetsubmap()}}
+{\footnotesize\ttfamily void Lens\+Halo\+Multi\+Map\+::resetsubmap (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{const std\+::vector$<$ long $>$ \&}]{lower\+\_\+left\+\_\+pix }\end{DoxyParamCaption})}
+
+reset the short range map
+
+The pixel position is for the usable region for ray-\/shooting and should not include the margin which is handled internally 
+\begin{DoxyParams}{Parameters}
+{\em i} & the subfield \\
+\hline
+{\em lower\+\_\+left\+\_\+pix} & the lower left of the subfield in pixels of full field \\
 \hline
 \end{DoxyParams}
 

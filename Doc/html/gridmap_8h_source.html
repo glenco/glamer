@@ -113,71 +113,75 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_grid_map.html#a1d0b3520105f861334d0da8cd0cf60ba">writeFitsUniform</a>(<span class="keyword">const</span> PosType center[],<span class="keywordtype">size_t</span> Nx,<span class="keywordtype">size_t</span> Ny,<a class="code" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> lensvar,std::string filename);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="class_pixel_map.html">PixelMap</a> <a class="code" href="struct_grid_map.html#a4ea8dbd5fd0a8c672b33fbe6ff6787ad">writePixelMapUniform</a>(<span class="keyword">const</span> PosType center[],<span class="keywordtype">size_t</span> Nx,<span class="keywordtype">size_t</span> Ny,<a class="code" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> lensvar);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_grid_map.html#a21ba3c14b21e7a7e83e80e0a8c3aa7ba">   73</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_grid_map.html#a21ba3c14b21e7a7e83e80e0a8c3aa7ba">writeFitsUniform</a>(<a class="code" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> lensvar,std::string filename){</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="class_pixel_map.html">PixelMap</a> map = <a class="code" href="struct_grid_map.html#a5e7ebe491daab61d9256b45036f9bc48">writePixelMap</a>(lensvar);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    map.<a class="code" href="class_pixel_map.html#aba0dc186ee8952f6e51e6cf0d784fd51">printFITS</a>(filename);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <a class="code" href="class_pixel_map.html">PixelMap</a> <a class="code" href="struct_grid_map.html#a4aa568491f3d6a527782d840e3cfc4d3">getPixelMap</a>(<span class="keywordtype">int</span> res) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_grid_map.html#a4aa568491f3d6a527782d840e3cfc4d3">getPixelMap</a>(<a class="code" href="class_pixel_map.html">PixelMap</a> &amp;map) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  PosType <a class="code" href="struct_grid_map.html#a408b0ac19bc5678ca316a582250f4946">EinsteinArea</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  PosType <a class="code" href="struct_grid_map.html#a9ee258972a6f83896ba50cd3a5e044e7">magnification</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  PosType magnification2() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <a class="code" href="struct_point__2d.html">Point_2d</a> <a class="code" href="struct_grid_map.html#adf0c0b5b5e8b6c352d1e9dc306d98aef">centroid</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="struct_point__2d.html">Point_2d</a> getCenter(){<span class="keywordflow">return</span> center;}</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="struct_point.html">Point</a> * operator[](<span class="keywordtype">size_t</span> i){<span class="keywordflow">return</span> i_points + i;};</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="struct_grid_map.html#aad8a0873c4dac82c434100643227d601">GridMap</a>(<a class="code" href="struct_grid_map.html">GridMap</a> &amp;&amp;grid){</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    *<span class="keyword">this</span> = std::move(grid);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="struct_grid_map.html">GridMap</a> &amp; operator=(<a class="code" href="struct_grid_map.html">GridMap</a> &amp;&amp;grid){</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    Ngrid_init = grid.Ngrid_init;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    Ngrid_init2 = grid.Ngrid_init2;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    pointID = grid.pointID;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    axisratio = grid.axisratio;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    x_range = grid.x_range;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    i_points = grid.i_points;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    grid.i_points = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    s_points = grid.s_points;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    grid.s_points = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    center = grid.center;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_grid_map.html#a21ba3c14b21e7a7e83e80e0a8c3aa7ba">   73</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_grid_map.html#a21ba3c14b21e7a7e83e80e0a8c3aa7ba">writeFitsUniform</a>(</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <a class="code" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> lensvar    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        ,std::string filename     </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        ){</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_pixel_map.html">PixelMap</a> map = <a class="code" href="struct_grid_map.html#a5e7ebe491daab61d9256b45036f9bc48">writePixelMap</a>(lensvar);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    map.<a class="code" href="class_pixel_map.html#aba0dc186ee8952f6e51e6cf0d784fd51">printFITS</a>(filename);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="class_pixel_map.html">PixelMap</a> <a class="code" href="struct_grid_map.html#a199c9dec53304a4995bd8abf5f4f66c3">getPixelMapFlux</a>(<span class="keywordtype">int</span> res) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="struct_grid_map.html#a199c9dec53304a4995bd8abf5f4f66c3">getPixelMapFlux</a>(<a class="code" href="class_pixel_map.html">PixelMap</a> &amp;map) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  PosType <a class="code" href="struct_grid_map.html#a408b0ac19bc5678ca316a582250f4946">EinsteinArea</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  PosType <a class="code" href="struct_grid_map.html#a9ee258972a6f83896ba50cd3a5e044e7">magnification</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  PosType magnification2() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="struct_point__2d.html">Point_2d</a> <a class="code" href="struct_grid_map.html#adf0c0b5b5e8b6c352d1e9dc306d98aef">centroid</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <a class="code" href="struct_point__2d.html">Point_2d</a> getCenter(){<span class="keywordflow">return</span> center;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="struct_point.html">Point</a> * operator[](<span class="keywordtype">size_t</span> i){<span class="keywordflow">return</span> i_points + i;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="struct_grid_map.html#aad8a0873c4dac82c434100643227d601">GridMap</a>(<a class="code" href="struct_grid_map.html">GridMap</a> &amp;&amp;grid){</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    *<span class="keyword">this</span> = std::move(grid);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <a class="code" href="struct_grid_map.html">GridMap</a> &amp; operator=(<a class="code" href="struct_grid_map.html">GridMap</a> &amp;&amp;grid){</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    Ngrid_init = grid.Ngrid_init;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    Ngrid_init2 = grid.Ngrid_init2;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    pointID = grid.pointID;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    axisratio = grid.axisratio;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    x_range = grid.x_range;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    i_points = grid.i_points;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    grid.i_points = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    s_points = grid.s_points;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    grid.s_points = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    center = grid.center;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">void</span> xygridpoints(<a class="code" href="struct_point.html">Point</a> *points,<span class="keywordtype">double</span> range,<span class="keyword">const</span> <span class="keywordtype">double</span> *center,<span class="keywordtype">long</span> Ngrid</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    ,<span class="keywordtype">short</span> remove_center);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; <span class="keywordtype">int</span> Ngrid_init;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">int</span> Ngrid_init2;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pointID;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  PosType axisratio;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  PosType x_range;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">void</span> writePixelMapUniform_(<a class="code" href="struct_point.html">Point</a>* points,<span class="keywordtype">size_t</span> size,<a class="code" href="class_pixel_map.html">PixelMap</a> *map,<a class="code" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> val);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <a class="code" href="struct_point.html">Point</a> *i_points;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <a class="code" href="struct_point.html">Point</a> *s_points;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <a class="code" href="struct_point__2d.html">Point_2d</a> center;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keyword">static</span> std::mutex grid_mutex;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;};</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif // defined(__GLAMER__gridmap__)</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">void</span> xygridpoints(<a class="code" href="struct_point.html">Point</a> *points,<span class="keywordtype">double</span> range,<span class="keyword">const</span> <span class="keywordtype">double</span> *center,<span class="keywordtype">long</span> Ngrid</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    ,<span class="keywordtype">short</span> remove_center);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; <span class="keywordtype">int</span> Ngrid_init;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordtype">int</span> Ngrid_init2;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pointID;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  PosType axisratio;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  PosType x_range;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordtype">void</span> writePixelMapUniform_(<a class="code" href="struct_point.html">Point</a>* points,<span class="keywordtype">size_t</span> size,<a class="code" href="class_pixel_map.html">PixelMap</a> *map,<a class="code" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> val);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <a class="code" href="struct_point.html">Point</a> *i_points;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <a class="code" href="struct_point.html">Point</a> *s_points;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="struct_point__2d.html">Point_2d</a> center;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keyword">static</span> std::mutex grid_mutex;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;};</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#endif // defined(__GLAMER__gridmap__)</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="astruct_grid_map_html_a9ee258972a6f83896ba50cd3a5e044e7"><div class="ttname"><a href="struct_grid_map.html#a9ee258972a6f83896ba50cd3a5e044e7">GridMap::magnification</a></div><div class="ttdeci">PosType magnification() const</div><div class="ttdoc">flux weighted magnification with current surface brightness averaged on the image plane</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:494</div></div>
-<div class="ttc" id="astruct_grid_map_html_a4ea8dbd5fd0a8c672b33fbe6ff6787ad"><div class="ttname"><a href="struct_grid_map.html#a4ea8dbd5fd0a8c672b33fbe6ff6787ad">GridMap::writePixelMapUniform</a></div><div class="ttdeci">void writePixelMapUniform(PixelMap &amp;map, LensingVariable lensvar)</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:320</div></div>
-<div class="ttc" id="astruct_grid_map_html_a408b0ac19bc5678ca316a582250f4946"><div class="ttname"><a href="struct_grid_map.html#a408b0ac19bc5678ca316a582250f4946">GridMap::EinsteinArea</a></div><div class="ttdeci">PosType EinsteinArea() const</div><div class="ttdoc">returns the area (radians^2) of the region with negative magnification at resolution of fixed grid</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:484</div></div>
+<div class="ttc" id="astruct_grid_map_html_a9ee258972a6f83896ba50cd3a5e044e7"><div class="ttname"><a href="struct_grid_map.html#a9ee258972a6f83896ba50cd3a5e044e7">GridMap::magnification</a></div><div class="ttdeci">PosType magnification() const</div><div class="ttdoc">flux weighted magnification with current surface brightness averaged on the image plane</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:504</div></div>
+<div class="ttc" id="astruct_grid_map_html_a4ea8dbd5fd0a8c672b33fbe6ff6787ad"><div class="ttname"><a href="struct_grid_map.html#a4ea8dbd5fd0a8c672b33fbe6ff6787ad">GridMap::writePixelMapUniform</a></div><div class="ttdeci">void writePixelMapUniform(PixelMap &amp;map, LensingVariable lensvar)</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:324</div></div>
+<div class="ttc" id="astruct_grid_map_html_a408b0ac19bc5678ca316a582250f4946"><div class="ttname"><a href="struct_grid_map.html#a408b0ac19bc5678ca316a582250f4946">GridMap::EinsteinArea</a></div><div class="ttdeci">PosType EinsteinArea() const</div><div class="ttdoc">returns the area (radians^2) of the region with negative magnification at resolution of fixed grid</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:494</div></div>
 <div class="ttc" id="aclass_source_html"><div class="ttname"><a href="class_source.html">Source</a></div><div class="ttdoc">Base class for all sources.</div><div class="ttdef"><b>Definition:</b> source.h:22</div></div>
-<div class="ttc" id="astruct_grid_map_html_adf0c0b5b5e8b6c352d1e9dc306d98aef"><div class="ttname"><a href="struct_grid_map.html#adf0c0b5b5e8b6c352d1e9dc306d98aef">GridMap::centroid</a></div><div class="ttdeci">Point_2d centroid() const</div><div class="ttdoc">returns centroid of flux on the grid</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:514</div></div>
+<div class="ttc" id="astruct_grid_map_html_adf0c0b5b5e8b6c352d1e9dc306d98aef"><div class="ttname"><a href="struct_grid_map.html#adf0c0b5b5e8b6c352d1e9dc306d98aef">GridMap::centroid</a></div><div class="ttdeci">Point_2d centroid() const</div><div class="ttdoc">returns centroid of flux on the grid</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:524</div></div>
+<div class="ttc" id="astruct_grid_map_html_a199c9dec53304a4995bd8abf5f4f66c3"><div class="ttname"><a href="struct_grid_map.html#a199c9dec53304a4995bd8abf5f4f66c3">GridMap::getPixelMapFlux</a></div><div class="ttdeci">PixelMap getPixelMapFlux(int res) const</div><div class="ttdoc">returns a PixelMap with the flux in pixels at a resolution of res times the original resolution</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:128</div></div>
 <div class="ttc" id="aclass_pixel_map_html_aba0dc186ee8952f6e51e6cf0d784fd51"><div class="ttname"><a href="class_pixel_map.html#aba0dc186ee8952f6e51e6cf0d784fd51">PixelMap::printFITS</a></div><div class="ttdeci">void printFITS(std::string filename, bool Xflip=false, bool verbose=false)</div><div class="ttdoc">Output the pixel map as a fits file.</div><div class="ttdef"><b>Definition:</b> pixelize.cpp:910</div></div>
 <div class="ttc" id="astruct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:37</div></div>
 <div class="ttc" id="astruct_grid_map_html"><div class="ttname"><a href="struct_grid_map.html">GridMap</a></div><div class="ttdoc">A simplified version of the Grid structure for making non-adaptive maps of the lensing quantities (ka...</div><div class="ttdef"><b>Definition:</b> gridmap.h:26</div></div>
@@ -187,19 +191,18 @@ $(function() {
 <div class="ttc" id="astruct_grid_map_html_a1378437640a32f87e245da4c7b263022"><div class="ttname"><a href="struct_grid_map.html#a1378437640a32f87e245da4c7b263022">GridMap::getInitNgrid</a></div><div class="ttdeci">int getInitNgrid()</div><div class="ttdoc">return initial number of grid points in each direction</div><div class="ttdef"><b>Definition:</b> gridmap.h:56</div></div>
 <div class="ttc" id="astruct_grid_map_html_a27a1ac9c5e97b87d2ddfd29260ed4cea"><div class="ttname"><a href="struct_grid_map.html#a27a1ac9c5e97b87d2ddfd29260ed4cea">GridMap::getResolution</a></div><div class="ttdeci">double getResolution()</div><div class="ttdoc">resolution in radians, this is range / (N-1)</div><div class="ttdef"><b>Definition:</b> gridmap.h:61</div></div>
 <div class="ttc" id="astruct_grid_map_html_aad8a0873c4dac82c434100643227d601"><div class="ttname"><a href="struct_grid_map.html#aad8a0873c4dac82c434100643227d601">GridMap::GridMap</a></div><div class="ttdeci">GridMap(LensHndl lens, unsigned long N1d, const double center[2], double range)</div><div class="ttdoc">Constructor for initializing square grid.</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:85</div></div>
-<div class="ttc" id="astruct_grid_map_html_a1d0b3520105f861334d0da8cd0cf60ba"><div class="ttname"><a href="struct_grid_map.html#a1d0b3520105f861334d0da8cd0cf60ba">GridMap::writeFitsUniform</a></div><div class="ttdeci">void writeFitsUniform(const PosType center[], size_t Nx, size_t Ny, LensingVariable lensvar, std::string filename)</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:404</div></div>
+<div class="ttc" id="astruct_grid_map_html_a1d0b3520105f861334d0da8cd0cf60ba"><div class="ttname"><a href="struct_grid_map.html#a1d0b3520105f861334d0da8cd0cf60ba">GridMap::writeFitsUniform</a></div><div class="ttdeci">void writeFitsUniform(const PosType center[], size_t Nx, size_t Ny, LensingVariable lensvar, std::string filename)</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:411</div></div>
 <div class="ttc" id="astruct_grid_map_html_a3e4242350b46cbd85b47818b8101f9e2"><div class="ttname"><a href="struct_grid_map.html#a3e4242350b46cbd85b47818b8101f9e2">GridMap::RefreshSurfaceBrightnesses</a></div><div class="ttdeci">double RefreshSurfaceBrightnesses(SourceHndl source)</div><div class="ttdoc">Recalculate surface brightness at every point without changing the positions of the gridmap or any le...</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:184</div></div>
 <div class="ttc" id="astruct_grid_map_html_a5e7ebe491daab61d9256b45036f9bc48"><div class="ttname"><a href="struct_grid_map.html#a5e7ebe491daab61d9256b45036f9bc48">GridMap::writePixelMap</a></div><div class="ttdeci">PixelMap writePixelMap(LensingVariable lensvar)</div><div class="ttdoc">make pixel map of lensing quantities at the resolution of the GridMap</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:253</div></div>
-<div class="ttc" id="astruct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">A point on the source or image plane that contains a position and the lensing quantities.</div><div class="ttdef"><b>Definition:</b> point.h:388</div></div>
+<div class="ttc" id="astruct_point_html"><div class="ttname"><a href="struct_point.html">Point</a></div><div class="ttdoc">A point on the source or image plane that contains a position and the lensing quantities.</div><div class="ttdef"><b>Definition:</b> point.h:393</div></div>
 <div class="ttc" id="aclass_pixel_map_html"><div class="ttname"><a href="class_pixel_map.html">PixelMap</a></div><div class="ttdoc">Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...</div><div class="ttdef"><b>Definition:</b> image_processing.h:44</div></div>
-<div class="ttc" id="astandard_8h_html_a73d5f5042d9b38366d0b3781d199f9e7"><div class="ttname"><a href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a></div><div class="ttdeci">LensingVariable</div><div class="ttdef"><b>Definition:</b> standard.h:88</div></div>
+<div class="ttc" id="astandard_8h_html_a73d5f5042d9b38366d0b3781d199f9e7"><div class="ttname"><a href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a></div><div class="ttdeci">LensingVariable</div><div class="ttdoc">output lensing variables</div><div class="ttdef"><b>Definition:</b> standard.h:89</div></div>
 <div class="ttc" id="astruct_grid_map_html_ab668b2cff39b656fcf3a4e2df290f638"><div class="ttname"><a href="struct_grid_map.html#ab668b2cff39b656fcf3a4e2df290f638">GridMap::AddSurfaceBrightnesses</a></div><div class="ttdeci">double AddSurfaceBrightnesses(SourceHndl source)</div><div class="ttdoc">Recalculate surface brightness just like GridMap::RefreshSurfaceBrightness but the new source is adde...</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:197</div></div>
 <div class="ttc" id="astruct_grid_map_html_a21ba3c14b21e7a7e83e80e0a8c3aa7ba"><div class="ttname"><a href="struct_grid_map.html#a21ba3c14b21e7a7e83e80e0a8c3aa7ba">GridMap::writeFitsUniform</a></div><div class="ttdeci">void writeFitsUniform(LensingVariable lensvar, std::string filename)</div><div class="ttdoc">this will make a fits map of the grid as is.</div><div class="ttdef"><b>Definition:</b> gridmap.h:73</div></div>
 <div class="ttc" id="aclass_lens_html"><div class="ttname"><a href="class_lens.html">Lens</a></div><div class="ttdoc">A class to represents a lens with multiple planes.</div><div class="ttdef"><b>Definition:</b> lens.h:71</div></div>
-<div class="ttc" id="astruct_grid_map_html_a4aa568491f3d6a527782d840e3cfc4d3"><div class="ttname"><a href="struct_grid_map.html#a4aa568491f3d6a527782d840e3cfc4d3">GridMap::getPixelMap</a></div><div class="ttdeci">PixelMap getPixelMap(int res) const</div><div class="ttdoc">returns a PixelMap with the flux in pixels at a resolution of res times the original resolution</div><div class="ttdef"><b>Definition:</b> gridmap.cpp:128</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Feb 11 2022 17:55:17 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 28 2022 15:17:33 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

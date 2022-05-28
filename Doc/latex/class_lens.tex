@@ -78,7 +78,7 @@ void \mbox{\hyperlink{class_lens_a711067d75213f4e6bc0f8a5606faf66a}{rayshooter\+
 \begin{DoxyCompactList}\small\item\em Main routine for shooting rays in parrallel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_a2575c6d766091cde0ce87249e97333f1}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_linked_point}{Linked\+Point}} $\ast$i\+\_\+points, std\+::vector$<$ double $>$ \&source\+\_\+zs, bool R\+S\+Iverbose=false)
 \begin{DoxyCompactList}\small\item\em Routine for shooting rays with differnt source redshifts in parrallel. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_lens_a789442c6d34aad5a578b2042c65f0903}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$$\ast$halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, short mode=0, bool verbose=false)
+void \mbox{\hyperlink{class_lens_a4fa714f37553b29a50a6d2b532a99013}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, int tag=0, short mode=0, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Collects information about the halos and kappa contributions along the light path. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_ad3a11062a75edccda29005253c6f5061}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
 \begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
@@ -318,11 +318,11 @@ The cone is filled up until the redshift of the current zsource that is stored i
 
 inserts a sequence of main lens halos and adds them to the existing ones 
 
-replaces existing main halos with a single main halo replaces existing main halos with a sequence of main halos get number of main halos \mbox{\Hypertarget{class_lens_a789442c6d34aad5a578b2042c65f0903}\label{class_lens_a789442c6d34aad5a578b2042c65f0903}} 
+replaces existing main halos with a single main halo replaces existing main halos with a sequence of main halos get number of main halos \mbox{\Hypertarget{class_lens_a4fa714f37553b29a50a6d2b532a99013}\label{class_lens_a4fa714f37553b29a50a6d2b532a99013}} 
 \index{Lens@{Lens}!info\_rayshooter@{info\_rayshooter}}
 \index{info\_rayshooter@{info\_rayshooter}!Lens@{Lens}}
 \doxysubsubsection{\texorpdfstring{info\_rayshooter()}{info\_rayshooter()}}
-{\footnotesize\ttfamily void Lens\+::info\+\_\+rayshooter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{i\+\_\+point,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{ang\+\_\+positions,  }\item[{std\+::vector$<$ Kappa\+Type $>$ \&}]{kappa\+\_\+on\+\_\+planes,  }\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&}]{halo\+\_\+neighbors,  }\item[{\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$$\ast$}]{halo\+\_\+max,  }\item[{Kappa\+Type \&}]{kappa\+\_\+max,  }\item[{Kappa\+Type}]{gamma\+\_\+max\mbox{[}$\,$\mbox{]},  }\item[{Pos\+Type}]{rmax,  }\item[{short}]{mode = {\ttfamily 0},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Lens\+::info\+\_\+rayshooter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{ray,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{ang\+\_\+positions,  }\item[{std\+::vector$<$ Kappa\+Type $>$ \&}]{kappa\+\_\+on\+\_\+planes,  }\item[{std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&}]{halo\+\_\+neighbors,  }\item[{\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&}]{halo\+\_\+max,  }\item[{Kappa\+Type \&}]{kappa\+\_\+max,  }\item[{Kappa\+Type}]{gamma\+\_\+max\mbox{[}$\,$\mbox{]},  }\item[{Pos\+Type}]{rmax,  }\item[{int}]{tag = {\ttfamily 0},  }\item[{short}]{mode = {\ttfamily 0},  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 
@@ -330,7 +330,7 @@ Collects information about the halos and kappa contributions along the light pat
 
 Information on the nearest halos is collected where nearest is defined by rmax and mode. When mode == 2 the unlensed angular coordinates are used to evaluate proximity not the lensed ones. 
 \begin{DoxyParams}{Parameters}
-{\em i\+\_\+point} & point to be shot, must have image point linked \\
+{\em ray} & ray, ray.\+x needs to be set, all other quantities will be calculated \\
 \hline
 {\em ang\+\_\+positions} & angular positions on each plane \\
 \hline
@@ -338,7 +338,15 @@ Information on the nearest halos is collected where nearest is defined by rmax a
 \hline
 {\em halo\+\_\+neighbors} & neighboring halos within rmax of ray on each plane \\
 \hline
+{\em halo\+\_\+max} & halo with the larges kappa \\
+\hline
+{\em kappa\+\_\+max} & the kappa from that halo \\
+\hline
+{\em gamma\+\_\+max} & shear from that halo \\
+\hline
 {\em rmax} & distance from ray on each plane, units depend on mode parameter \\
+\hline
+{\em tag} & i f not 0, information on halos with this tag are gathered \\
 \hline
 {\em mode} & 0\+:physical distance, 1\+: comoving distance, 2\+: angular distance \\
 \hline
