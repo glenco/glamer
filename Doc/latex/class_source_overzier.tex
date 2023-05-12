@@ -20,26 +20,27 @@ Inheritance diagram for Source\+Overzier\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Source\+Overzier\+:\nopagebreak
+Collaboration diagram for Source\+Overzier\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=165pt]{class_source_overzier__coll__graph}
+\includegraphics[width=224pt]{class_source_overzier__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_source_overzier_a0068fa5742c422eea19c68019a97cce7}{Source\+Overzier}} (Pos\+Type mag, Pos\+Type mag\+\_\+bulge, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, unsigned long my\+\_\+id, Pos\+Type my\+\_\+z=0, const Pos\+Type $\ast$theta=0)
-\begin{DoxyCompactList}\small\item\em sets everything to zero \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_source_overzier_a4d863b506dd0ecc6a0502991363ac1da}{Source\+Overzier}} (Pos\+Type mag, Pos\+Type mag\+\_\+bulge, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, unsigned long my\+\_\+id, Pos\+Type my\+\_\+z, const Pos\+Type $\ast$theta, double zero\+\_\+point)
+\item 
 \mbox{\Hypertarget{class_source_overzier_a4842b38897163579d0c150699a390fbf}\label{class_source_overzier_a4842b38897163579d0c150699a390fbf}} 
 {\bfseries Source\+Overzier} (const \mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \&s)
 \item 
 \mbox{\Hypertarget{class_source_overzier_ac3caee66c301733c2f04d303ec11674f}\label{class_source_overzier_ac3caee66c301733c2f04d303ec11674f}} 
 \mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source_overzier}{Source\+Overzier}} \&s)
 \item 
-\mbox{\Hypertarget{class_source_overzier_a7d7d5af6bee27ef57eee0520def38133}\label{class_source_overzier_a7d7d5af6bee27ef57eee0520def38133}} 
-void \mbox{\hyperlink{class_source_overzier_a7d7d5af6bee27ef57eee0520def38133}{set\+Internals}} (Pos\+Type mag, Pos\+Type BtoT, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, unsigned long my\+\_\+id, Pos\+Type my\+\_\+z=0, const Pos\+Type $\ast$my\+\_\+theta=0)
+\mbox{\Hypertarget{class_source_overzier_a117fcb51bce58a5dab6591bad375d1aa}\label{class_source_overzier_a117fcb51bce58a5dab6591bad375d1aa}} 
+void \mbox{\hyperlink{class_source_overzier_a117fcb51bce58a5dab6591bad375d1aa}{set\+Internals}} (Pos\+Type mag, Pos\+Type BtoT, Pos\+Type Reff, Pos\+Type Rdisk, Pos\+Type PA, Pos\+Type inclination, unsigned long my\+\_\+id, Pos\+Type my\+\_\+z, const Pos\+Type $\ast$my\+\_\+theta)
 \begin{DoxyCompactList}\small\item\em Sets internal variables. If default constructor is used this must be called before the surface brightness function. \end{DoxyCompactList}\item 
 virtual Pos\+Type \mbox{\hyperlink{class_source_overzier_a3ab6be6e44d689db4f56ad3d20836337}{Surface\+Brightness}} (Pos\+Type $\ast$x)
 \begin{DoxyCompactList}\small\item\em Surface brightness in erg/cm$^\wedge$2/sec/rad$^\wedge$2/\+Hz. \end{DoxyCompactList}\item 
@@ -49,9 +50,6 @@ Pos\+Type {\bfseries get\+Total\+Flux} () const
 \mbox{\Hypertarget{class_source_overzier_a22f7979b54fe2d1791bc8e5f9d58ca09}\label{class_source_overzier_a22f7979b54fe2d1791bc8e5f9d58ca09}} 
 void {\bfseries print\+Source} ()
 \item 
-\mbox{\Hypertarget{class_source_overzier_ace6642446410adac99ad287f3b59d27a}\label{class_source_overzier_ace6642446410adac99ad287f3b59d27a}} 
-unsigned long \mbox{\hyperlink{class_source_overzier_ace6642446410adac99ad287f3b59d27a}{get\+ID}} ()
-\begin{DoxyCompactList}\small\item\em Halo ID. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_overzier_ab4ce092f3bcd95e3e72c6565de2ec90f}\label{class_source_overzier_ab4ce092f3bcd95e3e72c6565de2ec90f}} 
 Pos\+Type \mbox{\hyperlink{class_source_overzier_ab4ce092f3bcd95e3e72c6565de2ec90f}{get\+Mag}} () const
 \begin{DoxyCompactList}\small\item\em get magnitude of whole galaxy. Which band this is in depends on which was passed in the constructor \end{DoxyCompactList}\item 
@@ -114,12 +112,12 @@ void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Par
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_source_overzier_ae7d8f792132641bb6035a101b313235f}\label{class_source_overzier_ae7d8f792132641bb6035a101b313235f}} 
+\mbox{\hyperlink{class_source_sersic}{Source\+Sersic}} {\bfseries spheroid}
+\item 
 \mbox{\Hypertarget{class_source_overzier_a8322ab35065725810cdc70ccfc1b43aa}\label{class_source_overzier_a8322ab35065725810cdc70ccfc1b43aa}} 
 float {\bfseries sedtype} = -\/1
 \item 
-\mbox{\Hypertarget{class_source_overzier_a4746ce72ff652bc1fad9cc8b3ab818da}\label{class_source_overzier_a4746ce72ff652bc1fad9cc8b3ab818da}} 
-unsigned long \mbox{\hyperlink{class_source_overzier_a4746ce72ff652bc1fad9cc8b3ab818da}{halo\+ID}}
-\begin{DoxyCompactList}\small\item\em halo\+ID \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_overzier_ac9c5b19facd30c94a6ba9dab96d7cd62}\label{class_source_overzier_ac9c5b19facd30c94a6ba9dab96d7cd62}} 
 Params {\bfseries current}
 \end{DoxyCompactItemize}
@@ -129,15 +127,11 @@ Params {\bfseries current}
 Structure for holding parameters for one or more galaxy images according to the Overzier model. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_source_overzier_a0068fa5742c422eea19c68019a97cce7}\label{class_source_overzier_a0068fa5742c422eea19c68019a97cce7}} 
+\mbox{\Hypertarget{class_source_overzier_a4d863b506dd0ecc6a0502991363ac1da}\label{class_source_overzier_a4d863b506dd0ecc6a0502991363ac1da}} 
 \index{SourceOverzier@{SourceOverzier}!SourceOverzier@{SourceOverzier}}
 \index{SourceOverzier@{SourceOverzier}!SourceOverzier@{SourceOverzier}}
 \doxysubsubsection{\texorpdfstring{SourceOverzier()}{SourceOverzier()}}
-{\footnotesize\ttfamily Source\+Overzier\+::\+Source\+Overzier (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{Pos\+Type}]{mag\+\_\+bulge,  }\item[{Pos\+Type}]{Reff,  }\item[{Pos\+Type}]{Rdisk,  }\item[{Pos\+Type}]{PA,  }\item[{Pos\+Type}]{inclination,  }\item[{unsigned long}]{my\+\_\+id,  }\item[{Pos\+Type}]{my\+\_\+z = {\ttfamily 0},  }\item[{const Pos\+Type $\ast$}]{theta = {\ttfamily 0} }\end{DoxyParamCaption})}
-
-
-
-sets everything to zero 
+{\footnotesize\ttfamily Source\+Overzier\+::\+Source\+Overzier (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{Pos\+Type}]{mag\+\_\+bulge,  }\item[{Pos\+Type}]{Reff,  }\item[{Pos\+Type}]{Rdisk,  }\item[{Pos\+Type}]{PA,  }\item[{Pos\+Type}]{inclination,  }\item[{unsigned long}]{my\+\_\+id,  }\item[{Pos\+Type}]{my\+\_\+z,  }\item[{const Pos\+Type $\ast$}]{theta,  }\item[{double}]{zeropoint }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -158,6 +152,8 @@ sets everything to zero
 {\em my\+\_\+z} & optional redshift \\
 \hline
 {\em theta} & optional angular position on the sky \\
+\hline
+{\em zeropoint} & magnitude zero point \\
 \hline
 \end{DoxyParams}
 

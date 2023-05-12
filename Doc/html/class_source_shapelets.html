@@ -80,12 +80,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3b58fee97bbd2bfd3c09bbd04b892ce2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_shapelets.html#a3b58fee97bbd2bfd3c09bbd04b892ce2">SourceShapelets</a> (PosType my_z, PosType my_mag, PosType my_scale, std::valarray&lt; PosType &gt; my_coeff, PosType *my_center=0, PosType my_ang=0.)</td></tr>
-<tr class="separator:a3b58fee97bbd2bfd3c09bbd04b892ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fea4bdc79ac976bb83c23f014eac509"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_shapelets.html#a1fea4bdc79ac976bb83c23f014eac509">SourceShapelets</a> (PosType my_z, PosType my_mag, std::string shap_file, PosType *my_center=0, PosType my_ang=0.)</td></tr>
-<tr class="separator:a1fea4bdc79ac976bb83c23f014eac509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a6aafdb5f74d79ba0b0586d1c71f785"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_shapelets.html#a9a6aafdb5f74d79ba0b0586d1c71f785">SourceShapelets</a> (std::string shap_file, PosType my_ang=0.)</td></tr>
-<tr class="separator:a9a6aafdb5f74d79ba0b0586d1c71f785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d83b7427c44efa07dece6063fc0e02f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_shapelets.html#a2d83b7427c44efa07dece6063fc0e02f">SourceShapelets</a> (PosType my_z, PosType my_mag, PosType my_scale, std::valarray&lt; PosType &gt; my_coeff, PosType *my_center, PosType my_ang, PosType zero_point)</td></tr>
+<tr class="separator:a2d83b7427c44efa07dece6063fc0e02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f8651cdf8bebb9cb27d3fcbba7dcf0c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_shapelets.html#a8f8651cdf8bebb9cb27d3fcbba7dcf0c">SourceShapelets</a> (PosType my_z, PosType my_mag, std::string shap_file, PosType *my_center, PosType my_ang, PosType zero_point)</td></tr>
+<tr class="separator:a8f8651cdf8bebb9cb27d3fcbba7dcf0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a7d3ae4248c50654ddeafec03dfe8d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_shapelets.html#a9a7d3ae4248c50654ddeafec03dfe8d7">SourceShapelets</a> (std::string shap_file, PosType my_ang, PosType zero_point)</td></tr>
+<tr class="separator:a9a7d3ae4248c50654ddeafec03dfe8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f1f9afd1577f5818d89bab6acdb770e"><td class="memItemLeft" align="right" valign="top"><a id="a6f1f9afd1577f5818d89bab6acdb770e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SourceShapelets</b> (const <a class="el" href="class_source_shapelets.html">SourceShapelets</a> &amp;s)</td></tr>
 <tr class="separator:a6f1f9afd1577f5818d89bab6acdb770e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,8 +121,8 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
 <div class="textblock"><p>Class for sources described by shapelets. </p>
 <p>The sources are created from magnitude, scale radius, and the coefficients of their decomposition into the shapelets basis functions (Refregier et al., 2001). The coefficients can be read from a fits square array. In case the magnitude is not given as input, the constructor will read an array of values from the shapelet file header. One can then choose the desired magnitude with setActiveMag. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3b58fee97bbd2bfd3c09bbd04b892ce2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b58fee97bbd2bfd3c09bbd04b892ce2">&#9670;&nbsp;</a></span>SourceShapelets() <span class="overload">[1/3]</span></h2>
+<a id="a2d83b7427c44efa07dece6063fc0e02f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d83b7427c44efa07dece6063fc0e02f">&#9670;&nbsp;</a></span>SourceShapelets() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,13 +155,19 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType *&#160;</td>
-          <td class="paramname"><em>my_center</em> = <code>0</code>, </td>
+          <td class="paramname"><em>my_center</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>my_ang</em> = <code>0.</code>&#160;</td>
+          <td class="paramname"><em>my_ang</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>zeropoint</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -178,14 +184,15 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
     <tr><td class="paramname">my_coeff</td><td>coefficients of the shapelets decomposition </td></tr>
     <tr><td class="paramname">my_center</td><td>center (in rad) </td></tr>
     <tr><td class="paramname">my_ang</td><td>rotation angle (in rad) </td></tr>
+    <tr><td class="paramname">zeropoint</td><td>magnitude zero point </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a1fea4bdc79ac976bb83c23f014eac509"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fea4bdc79ac976bb83c23f014eac509">&#9670;&nbsp;</a></span>SourceShapelets() <span class="overload">[2/3]</span></h2>
+<a id="a8f8651cdf8bebb9cb27d3fcbba7dcf0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f8651cdf8bebb9cb27d3fcbba7dcf0c">&#9670;&nbsp;</a></span>SourceShapelets() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,13 +219,19 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType *&#160;</td>
-          <td class="paramname"><em>my_center</em> = <code>0</code>, </td>
+          <td class="paramname"><em>my_center</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>my_ang</em> = <code>0.</code>&#160;</td>
+          <td class="paramname"><em>my_ang</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>zeropoint</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -234,14 +247,15 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
     <tr><td class="paramname">shap_file</td><td>fits file with coefficients in a square array </td></tr>
     <tr><td class="paramname">my_center</td><td>center (in rad) </td></tr>
     <tr><td class="paramname">my_ang</td><td>rotation angle (in rad) </td></tr>
+    <tr><td class="paramname">zeropoint</td><td>magnitude zero point </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a9a6aafdb5f74d79ba0b0586d1c71f785"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a6aafdb5f74d79ba0b0586d1c71f785">&#9670;&nbsp;</a></span>SourceShapelets() <span class="overload">[3/3]</span></h2>
+<a id="a9a7d3ae4248c50654ddeafec03dfe8d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a7d3ae4248c50654ddeafec03dfe8d7">&#9670;&nbsp;</a></span>SourceShapelets() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,7 +270,13 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>my_ang</em> = <code>0.</code>&#160;</td>
+          <td class="paramname"><em>my_ang</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>zeropoint</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -269,6 +289,7 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
   <table class="params">
     <tr><td class="paramname">shap_file</td><td>fits file with coefficients in a square array. Mag and redshift are read from the header. </td></tr>
     <tr><td class="paramname">my_ang</td><td>rotation angle (in rad) </td></tr>
+    <tr><td class="paramname">zeropoint</td><td>magnitude zero point </td></tr>
   </table>
   </dd>
 </dl>
@@ -346,7 +367,7 @@ friend&#160;</td><td class="memItemRight" valign="bottom"><b>SourceMultiShapelet
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

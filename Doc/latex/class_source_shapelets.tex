@@ -16,11 +16,11 @@ Inherits Source\+Colored.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_source_shapelets_a3b58fee97bbd2bfd3c09bbd04b892ce2}{Source\+Shapelets}} (Pos\+Type my\+\_\+z, Pos\+Type my\+\_\+mag, Pos\+Type my\+\_\+scale, std\+::valarray$<$ Pos\+Type $>$ my\+\_\+coeff, Pos\+Type $\ast$my\+\_\+center=0, Pos\+Type my\+\_\+ang=0.)
+\mbox{\hyperlink{class_source_shapelets_a2d83b7427c44efa07dece6063fc0e02f}{Source\+Shapelets}} (Pos\+Type my\+\_\+z, Pos\+Type my\+\_\+mag, Pos\+Type my\+\_\+scale, std\+::valarray$<$ Pos\+Type $>$ my\+\_\+coeff, Pos\+Type $\ast$my\+\_\+center, Pos\+Type my\+\_\+ang, Pos\+Type zero\+\_\+point)
 \item 
-\mbox{\hyperlink{class_source_shapelets_a1fea4bdc79ac976bb83c23f014eac509}{Source\+Shapelets}} (Pos\+Type my\+\_\+z, Pos\+Type my\+\_\+mag, std\+::string shap\+\_\+file, Pos\+Type $\ast$my\+\_\+center=0, Pos\+Type my\+\_\+ang=0.)
+\mbox{\hyperlink{class_source_shapelets_a8f8651cdf8bebb9cb27d3fcbba7dcf0c}{Source\+Shapelets}} (Pos\+Type my\+\_\+z, Pos\+Type my\+\_\+mag, std\+::string shap\+\_\+file, Pos\+Type $\ast$my\+\_\+center, Pos\+Type my\+\_\+ang, Pos\+Type zero\+\_\+point)
 \item 
-\mbox{\hyperlink{class_source_shapelets_a9a6aafdb5f74d79ba0b0586d1c71f785}{Source\+Shapelets}} (std\+::string shap\+\_\+file, Pos\+Type my\+\_\+ang=0.)
+\mbox{\hyperlink{class_source_shapelets_a9a7d3ae4248c50654ddeafec03dfe8d7}{Source\+Shapelets}} (std\+::string shap\+\_\+file, Pos\+Type my\+\_\+ang, Pos\+Type zero\+\_\+point)
 \item 
 \mbox{\Hypertarget{class_source_shapelets_a6f1f9afd1577f5818d89bab6acdb770e}\label{class_source_shapelets_a6f1f9afd1577f5818d89bab6acdb770e}} 
 {\bfseries Source\+Shapelets} (const \mbox{\hyperlink{class_source_shapelets}{Source\+Shapelets}} \&s)
@@ -58,11 +58,11 @@ Class for sources described by shapelets.
 The sources are created from magnitude, scale radius, and the coefficients of their decomposition into the shapelets basis functions (Refregier et al., 2001). The coefficients can be read from a fits square array. In case the magnitude is not given as input, the constructor will read an array of values from the shapelet file header. One can then choose the desired magnitude with set\+Active\+Mag. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_source_shapelets_a3b58fee97bbd2bfd3c09bbd04b892ce2}\label{class_source_shapelets_a3b58fee97bbd2bfd3c09bbd04b892ce2}} 
+\mbox{\Hypertarget{class_source_shapelets_a2d83b7427c44efa07dece6063fc0e02f}\label{class_source_shapelets_a2d83b7427c44efa07dece6063fc0e02f}} 
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \doxysubsubsection{\texorpdfstring{SourceShapelets()}{SourceShapelets()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{Pos\+Type}]{my\+\_\+scale,  }\item[{std\+::valarray$<$ Pos\+Type $>$}]{my\+\_\+coeff,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center = {\ttfamily 0},  }\item[{Pos\+Type}]{my\+\_\+ang = {\ttfamily 0.} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{Pos\+Type}]{my\+\_\+scale,  }\item[{std\+::valarray$<$ Pos\+Type $>$}]{my\+\_\+coeff,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center,  }\item[{Pos\+Type}]{my\+\_\+ang,  }\item[{Pos\+Type}]{zeropoint }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -78,12 +78,14 @@ The sources are created from magnitude, scale radius, and the coefficients of th
 \hline
 {\em my\+\_\+ang} & rotation angle (in rad) \\
 \hline
+{\em zeropoint} & magnitude zero point \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_source_shapelets_a1fea4bdc79ac976bb83c23f014eac509}\label{class_source_shapelets_a1fea4bdc79ac976bb83c23f014eac509}} 
+\mbox{\Hypertarget{class_source_shapelets_a8f8651cdf8bebb9cb27d3fcbba7dcf0c}\label{class_source_shapelets_a8f8651cdf8bebb9cb27d3fcbba7dcf0c}} 
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \doxysubsubsection{\texorpdfstring{SourceShapelets()}{SourceShapelets()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{std\+::string}]{shap\+\_\+file,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center = {\ttfamily 0},  }\item[{Pos\+Type}]{my\+\_\+ang = {\ttfamily 0.} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{my\+\_\+mag,  }\item[{std\+::string}]{shap\+\_\+file,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center,  }\item[{Pos\+Type}]{my\+\_\+ang,  }\item[{Pos\+Type}]{zeropoint }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -97,18 +99,22 @@ The sources are created from magnitude, scale radius, and the coefficients of th
 \hline
 {\em my\+\_\+ang} & rotation angle (in rad) \\
 \hline
+{\em zeropoint} & magnitude zero point \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_source_shapelets_a9a6aafdb5f74d79ba0b0586d1c71f785}\label{class_source_shapelets_a9a6aafdb5f74d79ba0b0586d1c71f785}} 
+\mbox{\Hypertarget{class_source_shapelets_a9a7d3ae4248c50654ddeafec03dfe8d7}\label{class_source_shapelets_a9a7d3ae4248c50654ddeafec03dfe8d7}} 
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \index{SourceShapelets@{SourceShapelets}!SourceShapelets@{SourceShapelets}}
 \doxysubsubsection{\texorpdfstring{SourceShapelets()}{SourceShapelets()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{std\+::string}]{shap\+\_\+file,  }\item[{Pos\+Type}]{my\+\_\+ang = {\ttfamily 0.} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Shapelets\+::\+Source\+Shapelets (\begin{DoxyParamCaption}\item[{std\+::string}]{shap\+\_\+file,  }\item[{Pos\+Type}]{my\+\_\+ang,  }\item[{Pos\+Type}]{zeropoint }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
 {\em shap\+\_\+file} & fits file with coefficients in a square array. Mag and redshift are read from the header. \\
 \hline
 {\em my\+\_\+ang} & rotation angle (in rad) \\
+\hline
+{\em zeropoint} & magnitude zero point \\
 \hline
 \end{DoxyParams}
 

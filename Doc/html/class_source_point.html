@@ -79,8 +79,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0a918828f716205bf0bc233f84e87bc5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_point.html#a0a918828f716205bf0bc233f84e87bc5">SourcePoint</a> (<a class="el" href="struct_point__2d.html">Point_2d</a> position, PosType z, PosType magnitude, PosType radius_in_radians)</td></tr>
-<tr class="separator:a0a918828f716205bf0bc233f84e87bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1cacd51ae207c159805b5df11f4391"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_point.html#a8f1cacd51ae207c159805b5df11f4391">SourcePoint</a> (<a class="el" href="struct_point__2d.html">Point_2d</a> position, PosType z, PosType magnitude, PosType radius_in_radians, double SBlimit, PosType zero_point)</td></tr>
+<tr class="separator:a8f1cacd51ae207c159805b5df11f4391"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7be2be24409b4488b326fb3adf021dac"><td class="memItemLeft" align="right" valign="top">PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source_point.html#a7be2be24409b4488b326fb3adf021dac">SurfaceBrightness</a> (PosType *y)</td></tr>
 <tr class="separator:a7be2be24409b4488b326fb3adf021dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b3d69d3077412b4887cdf5296f1b106"><td class="memItemLeft" align="right" valign="top"><a id="a8b3d69d3077412b4887cdf5296f1b106"></a>
@@ -96,8 +96,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (PosType t
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A uniform surface brightness circular source. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0a918828f716205bf0bc233f84e87bc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a918828f716205bf0bc233f84e87bc5">&#9670;&nbsp;</a></span>SourcePoint()</h2>
+<a id="a8f1cacd51ae207c159805b5df11f4391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1cacd51ae207c159805b5df11f4391">&#9670;&nbsp;</a></span>SourcePoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -127,7 +127,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (PosType t
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>radius_in_radians</em>&#160;</td>
+          <td class="paramname"><em>radius_in_radians</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>SBlimit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>zero_point</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -147,6 +159,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (PosType t
     <tr><td class="paramname">z</td><td>redshift of source </td></tr>
     <tr><td class="paramname">magnitude</td><td>unlensed brightness </td></tr>
     <tr><td class="paramname">radius_in_radians</td><td>radius of source in radians </td></tr>
+    <tr><td class="paramname">SBlimit</td><td>minimum surface brightness limit </td></tr>
+    <tr><td class="paramname">zero_point</td><td>radius of source in radians </td></tr>
   </table>
   </dd>
 </dl>
@@ -178,7 +192,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (PosType t
 </table>
 </div><div class="memdoc">
 <p>Surface brightness of source in grid coordinates not source centered coordinates.</p>
-<p>The units shuld be ergs / s / Hz / cm^2 / hplanck </p>
+<p>The units shuld be ergs / s / Hz / cm^2 </p>
 
 <p>Implements <a class="el" href="class_source.html#a9fed241b660fcfed6bd22a2aafcf8358">Source</a>.</p>
 
@@ -190,7 +204,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (PosType t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

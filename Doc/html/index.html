@@ -111,14 +111,14 @@ Lens class</h1>
 Grid &amp; GridMap</h1>
 <p>The <code><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a></code> structure contains the image points and their source points along with other information. Without further grid refinement the <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a> can be used to make a map of deflection, convergence, shear or time-delay. <code><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a></code> contains functions for outputting these. If no further grid refinement is desired for image or caustic finding, the <code><a class="el" href="struct_grid_map.html" title="A simplified version of the Grid structure for making non-adaptive maps of the lensing quantities (ka...">GridMap</a></code> structure can be used which requires significantly less memory overhead and is faster.</p>
 <p>When a <code><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a></code> is constructed the initial grid of rays are shot. If no more refinement is needed the <code><a class="el" href="class_lens.html" title="A class to represents a lens with multiple planes.">Lens</a></code> is no longer needed. If source plane is changed a new <code><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a></code> needs to be constructed for that source plane.</p>
-<p>To change the source plane surface brightness use <code><a class="el" href="struct_grid.html#aae2b3f9fe8cc6a464852e3441f22d8a9" title="Recalculate surface brightness at every point without changing the positions of the grid or any lens ...">Grid::RefreshSurfaceBrightnesses</a> ()</code>. This takes a <code><a class="el" href="class_source.html" title="Base class for all sources.">Source</a></code> object.</p>
+<p>To change the source plane surface brightness use <code><a class="el" href="struct_grid.html#aae2b3f9fe8cc6a464852e3441f22d8a9" title="Reshoot the rays with the same image postions.">Grid::RefreshSurfaceBrightnesses</a> ()</code>. This takes a <code><a class="el" href="class_source.html" title="Base class for all sources.">Source</a></code> object.</p>
 <h1><a class="anchor" id="autotoc_md20"></a>
 Image finding and Grid refinement</h1>
 <p>The mean functions used for image finding are</p>
 <ul>
 <li><code><a class="el" href="namespace_image_finding.html#a84da40a884b9a6fd16038de225b51dc7" title="Finds images given a source position and size.">ImageFinding::find_images_kist()</a></code></li>
 <li><code><a class="el" href="namespace_image_finding.html#aa7596607b563fc41789b2db5a2277a2c" title="Find the images without any additional grid refinement or ray shooting.">ImageFinding::map_images_fixedgrid</a></code> and</li>
-<li><code><a class="el" href="namespace_image_finding.html#a2abeafd5d8401246c3a4ed2dc79989c3" title="Find images and refine them based on their surface brightness distribution.">ImageFinding::map_images()</a></code>. And for finding critical curves / caustics</li>
+<li><code>ImageFinding::map_images()</code>. And for finding critical curves / caustics</li>
 <li><code><a class="el" href="namespace_image_finding.html#aeddf360f46ff1014096ff17d160d3d3d" title="Finds critical curves and caustics.">ImageFinding::find_crit()</a></code></li>
 </ul>
 <p>These take a <code><a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a></code> and a <code><a class="el" href="class_lens.html" title="A class to represents a lens with multiple planes.">Lens</a></code> object. The found images are then stored in an array of <code><a class="el" href="struct_image_info.html" title="Structure for storing information about images or curves.">ImageInfo</a></code> structures.</p>
@@ -135,7 +135,7 @@ Output</h1>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

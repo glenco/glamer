@@ -18,6 +18,8 @@ void \mbox{\hyperlink{namespace_image_finding_aa1d61941f50776c7133ead2f5ea87117}
 \begin{DoxyCompactList}\small\item\em Finds images for a given source position and size. Not meant for high level user. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}{find\+\_\+crit}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, std\+::vector$<$ Critical\+Curve $>$ \&crtcurve, int $\ast$Ncrits, double resolution, double invmag\+\_\+min=0.\+0, bool verbose=false, bool test=false)
 \begin{DoxyCompactList}\small\item\em Finds critical curves and caustics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_image_finding_ab1efbf1d0c8d328e7c10938ddb3163e6}{find\+\_\+crit}} (\mbox{\hyperlink{class_lens}{Lens}} \&lens, \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&gridmap, std\+::vector$<$ Critical\+Curve $>$ \&crtcurves, bool verbose=false)
+\item 
 Crit\+Type \mbox{\hyperlink{namespace_image_finding_ac423dd72b206974de345741c56783d61}{find\+\_\+pseudo}} (\mbox{\hyperlink{struct_image_info}{Image\+Info}} \&pseudocurve, \mbox{\hyperlink{struct_image_info}{Image\+Info}} \&negimage, Pos\+Type pseudolimit, \mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, Pos\+Type resolution, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ \&paritypoints, bool T\+E\+ST=false)
 \item 
 void \mbox{\hyperlink{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}{find\+\_\+contour}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, std\+::vector$<$ Critical\+Curve $>$ \&contour, int $\ast$Ncrits, Pos\+Type resolution, bool $\ast$orderingsuccess, bool ordercurve, bool dividecurves, double contour\+\_\+value, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} contour\+\_\+type, bool verbose=false)
@@ -26,11 +28,12 @@ void \mbox{\hyperlink{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}
 void {\bfseries print\+Critical\+Curves} (std\+::string filename, const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&critcurves)
 \item 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{namespace_image_finding_aa3186a3ec810f8f68f57f7b6bfdf762d}{map\+Critical\+Curves}} (const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&critcurves, int Nx)
-\item 
+\begin{DoxyCompactList}\small\item\em Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{namespace_image_finding_a98d48e2de32898ac9b73c252e0ad2607}{map\+Caustic\+Curves}} (const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&critcurves, int Nx)
+\begin{DoxyCompactList}\small\item\em Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}\label{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}} 
+void {\bfseries map\+\_\+images} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double xmax, double xmin, double initial\+\_\+size, Exit\+Criterion criterion, bool Find\+Center, bool divide\+\_\+images)
 \item 
-void \mbox{\hyperlink{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}{map\+\_\+images}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double xmax, double xmin, double initial\+\_\+size, Exit\+Criterion criterion, bool Find\+Center, bool divide\+\_\+images)
-\begin{DoxyCompactList}\small\item\em Find images and refine them based on their surface brightness distribution. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}{map\+\_\+images\+\_\+fixedgrid}} (\mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double xmax, bool divide\+\_\+images, bool find\+\_\+borders)
 \begin{DoxyCompactList}\small\item\em Find the images without any additional grid refinement or ray shooting. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_image_finding_a70bbca22cc631872b33de04441c20b99}{map\+\_\+images\+I\+S\+OP}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, \mbox{\hyperlink{struct_grid}{Grid\+Hndl}} grid, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, double rmax, double res\+\_\+min, double initial\+\_\+size, Exit\+Criterion criterion, bool divide\+\_\+images, bool int\+\_\+on=true, bool verbos=false)
@@ -76,10 +79,25 @@ Finding
 {\em contour\+\_\+type} & K\+A\+P\+PA, I\+N\+V\+M\+AG or D\+E\+L\+A\+YT \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{namespace_image_finding_ab1efbf1d0c8d328e7c10938ddb3163e6}\label{namespace_image_finding_ab1efbf1d0c8d328e7c10938ddb3163e6}} 
+\index{ImageFinding@{ImageFinding}!find\_crit@{find\_crit}}
+\index{find\_crit@{find\_crit}!ImageFinding@{ImageFinding}}
+\doxysubsubsection{\texorpdfstring{find\_crit()}{find\_crit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+crit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens}} \&}]{lens,  }\item[{\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&}]{gridmap,  }\item[{std\+::vector$<$ Critical\+Curve $>$ \&}]{critcurves,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lens} & The lens model. \\
+\hline
+{\em gridmap} & The grid. It must be initialized. \\
+\hline
+{\em critcurves} & Structure to hold critical curve. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}\label{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}} 
 \index{ImageFinding@{ImageFinding}!find\_crit@{find\_crit}}
 \index{find\_crit@{find\_crit}!ImageFinding@{ImageFinding}}
-\doxysubsubsection{\texorpdfstring{find\_crit()}{find\_crit()}}
+\doxysubsubsection{\texorpdfstring{find\_crit()}{find\_crit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void Image\+Finding\+::find\+\_\+crit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{std\+::vector$<$ Critical\+Curve $>$ \&}]{crtcurve,  }\item[{int $\ast$}]{Ncrits,  }\item[{double}]{resolution,  }\item[{double}]{invmag\+\_\+min = {\ttfamily 0.0},  }\item[{bool}]{verbose = {\ttfamily false},  }\item[{bool}]{T\+E\+ST = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
@@ -288,42 +306,7 @@ splitparities= 0 don\textquotesingle{}t split attached negative and positive par
 
 side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0
 
-$<${\ttfamily } $>$ \mbox{\Hypertarget{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}\label{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}} 
-\index{ImageFinding@{ImageFinding}!map\_images@{map\_images}}
-\index{map\_images@{map\_images}!ImageFinding@{ImageFinding}}
-\doxysubsubsection{\texorpdfstring{map\_images()}{map\_images()}}
-{\footnotesize\ttfamily void Image\+Finding\+::map\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{class_source}{Source}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{struct_grid}{Grid\+Hndl}}}]{grid,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{double}]{xmax,  }\item[{double}]{xmin,  }\item[{double}]{initial\+\_\+size,  }\item[{Exit\+Criterion}]{criterion,  }\item[{bool}]{Find\+Center,  }\item[{bool}]{divide\+\_\+images }\end{DoxyParamCaption})}
-
-
-
-Find images and refine them based on their surface brightness distribution. 
-
-Finding Uses \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()}} to initially find and refine images and then uses a surface brightness based criterion to refine the most important parts of the lens.
-
-map\+\_\+images is intended for mapping images of sources more complicated than simple circles. 
-\begin{DoxyParams}{Parameters}
-{\em lens} & model \\
-\hline
-{\em grid} & Tree of grid points \\
-\hline
-{\em Nimages} & number of images found \\
-\hline
-{\em imageinfo} & information on each image \\
-\hline
-{\em xmax} & Maximum size of source on image plane. The entire source must be within this distance from source-\/$>$get\+Theta()\mbox{[}\mbox{]} \\
-\hline
-{\em xmin} & The smallest scale of the source measured on the lens plane. The more accurate these 2 parameters are the less likely it is that an image will be missed. \\
-\hline
-{\em initial\+\_\+size} & Initial size of source for telescoping, 0 to start from the initial grid size. If $<$ 0 no telescoping is used and only the already existing points are used to to initiate the image finding. \\
-\hline
-{\em criterion} & see data type \\
-\hline
-{\em Find\+Center} & if the center of the source is not known this can be set to true and it will attempt to find the center, find the size of the source and determine if there is more than one source The entire source must be within xmax of source-\/$>$get\+Theta() because this is the only region that will be scanned. \\
-\hline
-{\em divide\+\_\+images} & if true will divide images and apply the exit criterion to them separately. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}\label{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}} 
+$<${\ttfamily } $>$ \mbox{\Hypertarget{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}\label{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}} 
 \index{ImageFinding@{ImageFinding}!map\_images\_fixedgrid@{map\_images\_fixedgrid}}
 \index{map\_images\_fixedgrid@{map\_images\_fixedgrid}!ImageFinding@{ImageFinding}}
 \doxysubsubsection{\texorpdfstring{map\_images\_fixedgrid()}{map\_images\_fixedgrid()}}
@@ -333,7 +316,7 @@ map\+\_\+images is intended for mapping images of sources more complicated than 
 
 Find the images without any additional grid refinement or ray shooting. 
 
-Finding The images and surface brighnesses are found. This will be much faster than \mbox{\hyperlink{namespace_image_finding_a2abeafd5d8401246c3a4ed2dc79989c3}{map\+\_\+images()}}, but will miss images that are not resolved on the current grid.
+Finding The images and surface brighnesses are found. This will be much faster than map\+\_\+images(), but will miss images that are not resolved on the current grid.
 
 The surface brightnesses on all of the grid are refreshed. The images centroids and gridranges are maintained. 
 \begin{DoxyParams}{Parameters}
@@ -391,7 +374,11 @@ map\+\_\+images is intended for mapping images of sources more complicated than 
 \doxysubsubsection{\texorpdfstring{mapCausticCurves()}{mapCausticCurves()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Image\+Finding\+::map\+Caustic\+Curves (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&}]{critcurves,  }\item[{int}]{Nx }\end{DoxyParamCaption})}
 
-\textbackslash{}breaf Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) 
+
+
+Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) 
+
+
 \begin{DoxyParams}{Parameters}
 {\em critcurves} & list of critical curves \\
 \hline
@@ -404,7 +391,11 @@ map\+\_\+images is intended for mapping images of sources more complicated than 
 \doxysubsubsection{\texorpdfstring{mapCriticalCurves()}{mapCriticalCurves()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Image\+Finding\+::map\+Critical\+Curves (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Image\+Finding\+::\+Critical\+Curve $>$ \&}]{critcurves,  }\item[{int}]{Nx }\end{DoxyParamCaption})}
 
-\textbackslash{}breaf Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) 
+
+
+Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) 
+
+
 \begin{DoxyParams}{Parameters}
 {\em critcurves} & list of critical curves \\
 \hline

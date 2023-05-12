@@ -89,6 +89,8 @@ Functions</h2></td></tr>
 <tr class="memitem:aeddf360f46ff1014096ff17d160d3d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#aeddf360f46ff1014096ff17d160d3d3d">find_crit</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_grid.html">GridHndl</a> grid, std::vector&lt; CriticalCurve &gt; &amp;crtcurve, int *Ncrits, double resolution, double invmag_min=0.0, bool verbose=false, bool test=false)</td></tr>
 <tr class="memdesc:aeddf360f46ff1014096ff17d160d3d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds critical curves and caustics.  <a href="namespace_image_finding.html#aeddf360f46ff1014096ff17d160d3d3d">More...</a><br /></td></tr>
 <tr class="separator:aeddf360f46ff1014096ff17d160d3d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1efbf1d0c8d328e7c10938ddb3163e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#ab1efbf1d0c8d328e7c10938ddb3163e6">find_crit</a> (<a class="el" href="class_lens.html">Lens</a> &amp;lens, <a class="el" href="struct_grid_map.html">GridMap</a> &amp;gridmap, std::vector&lt; CriticalCurve &gt; &amp;crtcurves, bool verbose=false)</td></tr>
+<tr class="separator:ab1efbf1d0c8d328e7c10938ddb3163e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac423dd72b206974de345741c56783d61"><td class="memItemLeft" align="right" valign="top">CritType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#ac423dd72b206974de345741c56783d61">find_pseudo</a> (<a class="el" href="struct_image_info.html">ImageInfo</a> &amp;pseudocurve, <a class="el" href="struct_image_info.html">ImageInfo</a> &amp;negimage, PosType pseudolimit, <a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_grid.html">GridHndl</a> grid, PosType resolution, Kist&lt; <a class="el" href="struct_point.html">Point</a> &gt; &amp;paritypoints, bool TEST=false)</td></tr>
 <tr class="separator:ac423dd72b206974de345741c56783d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada031993e8ed6cfead17ecc83951a197"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#ada031993e8ed6cfead17ecc83951a197">find_contour</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="struct_grid.html">GridHndl</a> grid, std::vector&lt; CriticalCurve &gt; &amp;contour, int *Ncrits, PosType resolution, bool *orderingsuccess, bool ordercurve, bool dividecurves, double contour_value, <a class="el" href="standard_8h.html#a73d5f5042d9b38366d0b3781d199f9e7">LensingVariable</a> contour_type, bool verbose=false)</td></tr>
@@ -98,11 +100,13 @@ Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</b> (std::string filename, const std::vector&lt; ImageFinding::CriticalCurve &gt; &amp;critcurves)</td></tr>
 <tr class="separator:a2a5f16f9082f1c14ba6f22625366975e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3186a3ec810f8f68f57f7b6bfdf762d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#aa3186a3ec810f8f68f57f7b6bfdf762d">mapCriticalCurves</a> (const std::vector&lt; ImageFinding::CriticalCurve &gt; &amp;critcurves, int Nx)</td></tr>
+<tr class="memdesc:aa3186a3ec810f8f68f57f7b6bfdf762d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo )  <a href="namespace_image_finding.html#aa3186a3ec810f8f68f57f7b6bfdf762d">More...</a><br /></td></tr>
 <tr class="separator:aa3186a3ec810f8f68f57f7b6bfdf762d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98d48e2de32898ac9b73c252e0ad2607"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#a98d48e2de32898ac9b73c252e0ad2607">mapCausticCurves</a> (const std::vector&lt; ImageFinding::CriticalCurve &gt; &amp;critcurves, int Nx)</td></tr>
+<tr class="memdesc:a98d48e2de32898ac9b73c252e0ad2607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo )  <a href="namespace_image_finding.html#a98d48e2de32898ac9b73c252e0ad2607">More...</a><br /></td></tr>
 <tr class="separator:a98d48e2de32898ac9b73c252e0ad2607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2abeafd5d8401246c3a4ed2dc79989c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#a2abeafd5d8401246c3a4ed2dc79989c3">map_images</a> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="class_source.html">Source</a> *source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, double xmax, double xmin, double initial_size, ExitCriterion criterion, bool FindCenter, bool divide_images)</td></tr>
-<tr class="memdesc:a2abeafd5d8401246c3a4ed2dc79989c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find images and refine them based on their surface brightness distribution.  <a href="namespace_image_finding.html#a2abeafd5d8401246c3a4ed2dc79989c3">More...</a><br /></td></tr>
+<tr class="memitem:a2abeafd5d8401246c3a4ed2dc79989c3"><td class="memItemLeft" align="right" valign="top"><a id="a2abeafd5d8401246c3a4ed2dc79989c3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>map_images</b> (<a class="el" href="class_lens.html">LensHndl</a> lens, <a class="el" href="class_source.html">Source</a> *source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, double xmax, double xmin, double initial_size, ExitCriterion criterion, bool FindCenter, bool divide_images)</td></tr>
 <tr class="separator:a2abeafd5d8401246c3a4ed2dc79989c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7596607b563fc41789b2db5a2277a2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_image_finding.html#aa7596607b563fc41789b2db5a2277a2c">map_images_fixedgrid</a> (<a class="el" href="class_source.html">Source</a> *source, <a class="el" href="struct_grid.html">GridHndl</a> grid, int *Nimages, std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;imageinfo, double xmax, bool divide_images, bool find_borders)</td></tr>
 <tr class="memdesc:aa7596607b563fc41789b2db5a2277a2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the images without any additional grid refinement or ray shooting.  <a href="namespace_image_finding.html#aa7596607b563fc41789b2db5a2277a2c">More...</a><br /></td></tr>
@@ -217,8 +221,56 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 
 </div>
 </div>
+<a id="ab1efbf1d0c8d328e7c10938ddb3163e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1efbf1d0c8d328e7c10938ddb3163e6">&#9670;&nbsp;</a></span>find_crit() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ImageFinding::find_crit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_lens.html">Lens</a> &amp;&#160;</td>
+          <td class="paramname"><em>lens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_grid_map.html">GridMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>gridmap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; CriticalCurve &gt; &amp;&#160;</td>
+          <td class="paramname"><em>critcurves</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lens</td><td>The lens model. </td></tr>
+    <tr><td class="paramname">gridmap</td><td>The grid. It must be initialized. </td></tr>
+    <tr><td class="paramname">critcurves</td><td>Structure to hold critical curve. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aeddf360f46ff1014096ff17d160d3d3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeddf360f46ff1014096ff17d160d3d3d">&#9670;&nbsp;</a></span>find_crit()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeddf360f46ff1014096ff17d160d3d3d">&#9670;&nbsp;</a></span>find_crit() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -838,107 +890,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 
 </div>
 </div>
-<a id="a2abeafd5d8401246c3a4ed2dc79989c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2abeafd5d8401246c3a4ed2dc79989c3">&#9670;&nbsp;</a></span>map_images()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ImageFinding::map_images </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_lens.html">LensHndl</a>&#160;</td>
-          <td class="paramname"><em>lens</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_source.html">Source</a> *&#160;</td>
-          <td class="paramname"><em>source</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_grid.html">GridHndl</a>&#160;</td>
-          <td class="paramname"><em>grid</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>Nimages</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="struct_image_info.html">ImageInfo</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>imageinfo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>xmax</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>xmin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>initial_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ExitCriterion&#160;</td>
-          <td class="paramname"><em>criterion</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>FindCenter</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>divide_images</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Find images and refine them based on their surface brightness distribution. </p>
-<p>Finding Uses <a class="el" href="namespace_image_finding.html#a84da40a884b9a6fd16038de225b51dc7" title="Finds images given a source position and size.">ImageFinding::find_images_kist()</a> to initially find and refine images and then uses a surface brightness based criterion to refine the most important parts of the lens.</p>
-<p>map_images is intended for mapping images of sources more complicated than simple circles. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lens</td><td>model </td></tr>
-    <tr><td class="paramname">grid</td><td>Tree of grid points </td></tr>
-    <tr><td class="paramname">Nimages</td><td>number of images found </td></tr>
-    <tr><td class="paramname">imageinfo</td><td>information on each image </td></tr>
-    <tr><td class="paramname">xmax</td><td>Maximum size of source on image plane. The entire source must be within this distance from source-&gt;getTheta()[] </td></tr>
-    <tr><td class="paramname">xmin</td><td>The smallest scale of the source measured on the lens plane. The more accurate these 2 parameters are the less likely it is that an image will be missed. </td></tr>
-    <tr><td class="paramname">initial_size</td><td>Initial size of source for telescoping, 0 to start from the initial grid size. If &lt; 0 no telescoping is used and only the already existing points are used to to initiate the image finding. </td></tr>
-    <tr><td class="paramname">criterion</td><td>see data type </td></tr>
-    <tr><td class="paramname">FindCenter</td><td>if the center of the source is not known this can be set to true and it will attempt to find the center, find the size of the source and determine if there is more than one source The entire source must be within xmax of source-&gt;getTheta() because this is the only region that will be scanned. </td></tr>
-    <tr><td class="paramname">divide_images</td><td>if true will divide images and apply the exit criterion to them separately. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="aa7596607b563fc41789b2db5a2277a2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7596607b563fc41789b2db5a2277a2c">&#9670;&nbsp;</a></span>map_images_fixedgrid()</h2>
 
@@ -996,7 +947,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 </div><div class="memdoc">
 
 <p>Find the images without any additional grid refinement or ray shooting. </p>
-<p>Finding The images and surface brighnesses are found. This will be much faster than <a class="el" href="namespace_image_finding.html#a2abeafd5d8401246c3a4ed2dc79989c3" title="Find images and refine them based on their surface brightness distribution.">map_images()</a>, but will miss images that are not resolved on the current grid.</p>
+<p>Finding The images and surface brighnesses are found. This will be much faster than map_images(), but will miss images that are not resolved on the current grid.</p>
 <p>The surface brightnesses on all of the grid are refreshed. The images centroids and gridranges are maintained. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1144,7 +1095,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
         </tr>
       </table>
 </div><div class="memdoc">
-<p>\breaf Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) </p>
+
+<p>Makes an image of the caustic curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">critcurves</td><td>list of critical curves </td></tr>
@@ -1180,7 +1132,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
         </tr>
       </table>
 </div><div class="memdoc">
-<p>\breaf Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) </p>
+
+<p>Makes an image of the critical curves. The map will encompose all curves found. The pixel values are the caustic type + 1 ( 2=radial,3=tangential,4=pseudo ) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">critcurves</td><td>list of critical curves </td></tr>
@@ -1194,7 +1147,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printCriticalCurves</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

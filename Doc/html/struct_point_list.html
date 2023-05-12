@@ -64,7 +64,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_point_list-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PointList Struct Reference</div>  </div>
@@ -74,18 +73,7 @@ $(function() {
 <p>link list for points, uses the linking pointers within the <a class="el" href="struct_point.html" title="A point on the source or image plane that contains a position and the lensing quantities.">Point</a> type unlike Kist  
  <a href="struct_point_list.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="_list1_8h_source.html">List1.h</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for PointList:</div>
-<div class="dyncontent">
-<div class="center"><img src="struct_point_list__coll__graph.png" border="0" usemap="#_point_list_coll__map" alt="Collaboration graph"/></div>
-<map name="_point_list_coll__map" id="_point_list_coll__map">
-<area shape="rect" title="link list for points, uses the linking pointers within the Point type unlike Kist" alt="" coords="5,233,79,260"/>
-<area shape="rect" href="struct_point.html" title="A point on the source or image plane that contains a position and the lensing quantities." alt="" coords="92,90,144,117"/>
-<area shape="rect" href="struct_branch.html" title="The box representing a branch of a binary tree structure. Used specifically in TreeStruct for organiz..." alt="" coords="129,233,192,260"/>
-<area shape="rect" href="struct_point__2d.html" title="Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over..." alt="" coords="81,5,155,32"/>
-</map>
-<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<p><code>#include &lt;<a class="el" href="point_8h_source.html">point.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -107,12 +95,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsBottom</b> (PointLi
 <tr class="memitem:a7d83a5eaf17a6555c429a04826c2d2fe"><td class="memItemLeft" align="right" valign="top"><a id="a7d83a5eaf17a6555c429a04826c2d2fe"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>EmptyList</b> ()</td></tr>
 <tr class="separator:a7d83a5eaf17a6555c429a04826c2d2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa914dac7f50a4c7fc34ec09123c1b32c"><td class="memItemLeft" align="right" valign="top"><a id="aa914dac7f50a4c7fc34ec09123c1b32c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>InsertAfterCurrent</b> (iterator &amp;current, double *x, unsigned long id, <a class="el" href="struct_point.html">Point</a> *image)</td></tr>
-<tr class="separator:aa914dac7f50a4c7fc34ec09123c1b32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26bb5665c55fa6c7efa6983206e09d11"><td class="memItemLeft" align="right" valign="top"><a id="a26bb5665c55fa6c7efa6983206e09d11"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>InsertBeforeCurrent</b> (iterator &amp;current, double *x, unsigned long id, <a class="el" href="struct_point.html">Point</a> *image)</td></tr>
-<tr class="separator:a26bb5665c55fa6c7efa6983206e09d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20f63a8cb97f0b93b1371bff36d0a551"><td class="memItemLeft" align="right" valign="top"><a id="a20f63a8cb97f0b93b1371bff36d0a551"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>InsertPointAfterCurrent</b> (iterator &amp;current, <a class="el" href="struct_point.html">Point</a> *)</td></tr>
 <tr class="separator:a20f63a8cb97f0b93b1371bff36d0a551"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,9 +118,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MergeLists</b> (<a cl
 <tr class="memitem:a1be4e9acffa3de20e6879bd8f2e9b508"><td class="memItemLeft" align="right" valign="top"><a id="a1be4e9acffa3de20e6879bd8f2e9b508"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ShiftList</b> (iterator &amp;current)</td></tr>
 <tr class="separator:a1be4e9acffa3de20e6879bd8f2e9b508"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9820ae8cd535dab518615e137791373c"><td class="memItemLeft" align="right" valign="top"><a id="a9820ae8cd535dab518615e137791373c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>FillList</b> (double **x, unsigned long N, unsigned long idmin)</td></tr>
-<tr class="separator:a9820ae8cd535dab518615e137791373c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d9c805756ef67df989dd57b5419e933"><td class="memItemLeft" align="right" valign="top"><a id="a8d9c805756ef67df989dd57b5419e933"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>PrintList</b> ()</td></tr>
 <tr class="separator:a8d9c805756ef67df989dd57b5419e933"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,24 +130,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTop</b> (<a class=
 <tr class="memitem:ac7ceff27b788b51a3df69c0f7ed11e26"><td class="memItemLeft" align="right" valign="top"><a id="ac7ceff27b788b51a3df69c0f7ed11e26"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setBottom</b> (<a class="el" href="struct_point.html">Point</a> *p)</td></tr>
 <tr class="separator:ac7ceff27b788b51a3df69c0f7ed11e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a3d0ed94c20287dc9d55a357c61318978"><td class="memItemLeft" align="right" valign="top"><a id="a3d0ed94c20287dc9d55a357c61318978"></a>
-<a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>top</b></td></tr>
-<tr class="separator:a3d0ed94c20287dc9d55a357c61318978"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5061a1b3a607ec347113dcfb330358e6"><td class="memItemLeft" align="right" valign="top"><a id="a5061a1b3a607ec347113dcfb330358e6"></a>
-<a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>bottom</b></td></tr>
-<tr class="separator:a5061a1b3a607ec347113dcfb330358e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b52384bc7e5cdb914c95f97788d8274"><td class="memItemLeft" align="right" valign="top"><a id="a0b52384bc7e5cdb914c95f97788d8274"></a>
-<a class="el" href="struct_point.html">Point</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current</b></td></tr>
-<tr class="separator:a0b52384bc7e5cdb914c95f97788d8274"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2095e25d0117cee7dd7d16a183b96eb0"><td class="memItemLeft" align="right" valign="top"><a id="a2095e25d0117cee7dd7d16a183b96eb0"></a>
-unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>Npoints</b></td></tr>
-<tr class="separator:a2095e25d0117cee7dd7d16a183b96eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>link list for points, uses the linking pointers within the <a class="el" href="struct_point.html" title="A point on the source or image plane that contains a position and the lensing quantities.">Point</a> type unlike Kist </p>
+<p>Does not own the Points within it and will not delete them when distroyed </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5582e98ded628b2e47642c679fb5faa2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5582e98ded628b2e47642c679fb5faa2">&#9670;&nbsp;</a></span>TakeOutCurrent()</h2>
@@ -190,14 +155,13 @@ unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>Npoints</b><
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>SLsimLib/include/<a class="el" href="_list1_8h_source.html">List1.h</a></li>
 <li>SLsimLib/include/<a class="el" href="point_8h_source.html">point.h</a></li>
 <li>SLsimLib/TreeCode_link/List/list.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

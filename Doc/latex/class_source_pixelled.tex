@@ -30,9 +30,9 @@ Collaboration diagram for Source\+Pixelled\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_source_pixelled_abb581e29376a574fa13be8e2b2491ef3}{Source\+Pixelled}} (Pos\+Type my\+\_\+z, Pos\+Type $\ast$center, int Npixels, Pos\+Type resolution, Pos\+Type $\ast$arr\+\_\+val)
+\mbox{\hyperlink{class_source_pixelled_a505a2ef5ecdb80fba01afd35d8ab25d7}{Source\+Pixelled}} (Pos\+Type my\+\_\+z, Pos\+Type $\ast$center, int Npixels, Pos\+Type resolution, Pos\+Type $\ast$arr\+\_\+val, Pos\+Type zero\+\_\+point)
 \item 
-\mbox{\hyperlink{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}{Source\+Pixelled}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&gal\+\_\+map, Pos\+Type z, Pos\+Type factor=1.)
+\mbox{\hyperlink{class_source_pixelled_ab93fe3212935452f978c0c846f7f63f8}{Source\+Pixelled}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&gal\+\_\+map, Pos\+Type z, Pos\+Type factor, Pos\+Type zero\+\_\+point)
 \begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}} from a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} image. The idea is to use stamps of observed galaxies as input sources for simuations. Surface brightness of the source is conserved, taking into account the input pixel size. Factor allows for rescaling of the flux, in case one wants to simulate a different observation. \end{DoxyCompactList}\item 
 Pos\+Type \mbox{\hyperlink{class_source_pixelled_a5166077c4140daf9287c92fb09429164}{Surface\+Brightness}} (Pos\+Type $\ast$y)
 \item 
@@ -69,11 +69,11 @@ Class for sources described by an array of pixels.
 The sources are created as a square array of pixels of dimension Npixels x Npixels and pixel size equal to resolution. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_source_pixelled_abb581e29376a574fa13be8e2b2491ef3}\label{class_source_pixelled_abb581e29376a574fa13be8e2b2491ef3}} 
+\mbox{\Hypertarget{class_source_pixelled_a505a2ef5ecdb80fba01afd35d8ab25d7}\label{class_source_pixelled_a505a2ef5ecdb80fba01afd35d8ab25d7}} 
 \index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
 \index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
 \doxysubsubsection{\texorpdfstring{SourcePixelled()}{SourcePixelled()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Source\+Pixelled\+::\+Source\+Pixelled (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center,  }\item[{int}]{my\+\_\+\+Npixels,  }\item[{Pos\+Type}]{my\+\_\+resolution,  }\item[{Pos\+Type $\ast$}]{arr\+\_\+val }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Pixelled\+::\+Source\+Pixelled (\begin{DoxyParamCaption}\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type $\ast$}]{my\+\_\+center,  }\item[{int}]{my\+\_\+\+Npixels,  }\item[{Pos\+Type}]{my\+\_\+resolution,  }\item[{Pos\+Type $\ast$}]{arr\+\_\+val,  }\item[{Pos\+Type}]{zero\+\_\+point }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
@@ -87,12 +87,14 @@ The sources are created as a square array of pixels of dimension Npixels x Npixe
 \hline
 {\em arr\+\_\+val} & array of pixel values (must be of size = Npixels$\ast$\+Npixels) \\
 \hline
+{\em zero\+\_\+point} & magnitude zero point \\
+\hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}\label{class_source_pixelled_a6f48cb7748c14d87b07f4324d62a5f06}} 
+\mbox{\Hypertarget{class_source_pixelled_ab93fe3212935452f978c0c846f7f63f8}\label{class_source_pixelled_ab93fe3212935452f978c0c846f7f63f8}} 
 \index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
 \index{SourcePixelled@{SourcePixelled}!SourcePixelled@{SourcePixelled}}
 \doxysubsubsection{\texorpdfstring{SourcePixelled()}{SourcePixelled()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Source\+Pixelled\+::\+Source\+Pixelled (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{gal\+\_\+map,  }\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{factor = {\ttfamily 1.} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Source\+Pixelled\+::\+Source\+Pixelled (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{gal\+\_\+map,  }\item[{Pos\+Type}]{my\+\_\+z,  }\item[{Pos\+Type}]{factor,  }\item[{Pos\+Type}]{zero\+\_\+point }\end{DoxyParamCaption})}
 
 
 
@@ -118,7 +120,7 @@ Creates a \mbox{\hyperlink{class_source_pixelled}{Source\+Pixelled}} from a \mbo
 
 Surface brightness of source in grid coordinates not source centered coordinates.
 
-The units shuld be ergs / s / Hz / cm$^\wedge$2 / hplanck 
+The units shuld be ergs / s / Hz / cm$^\wedge$2 
 
 Implements \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Source}}.
 

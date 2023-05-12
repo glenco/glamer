@@ -105,9 +105,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#a35f2659d431f1ccae4c48f5db4c8eb4d">PointsWithinEllipse</a> (D center[2], float a_max, float a_min, float posangle, std::list&lt; unsigned long &gt; &amp;neighborkist)</td></tr>
 <tr class="memdesc:a35f2659d431f1ccae4c48f5db4c8eb4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the points within an ellipse around center and puts their index numbers in a list. <br /></td></tr>
 <tr class="separator:a35f2659d431f1ccae4c48f5db4c8eb4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afefb9e161e470e7b45a9dbde99b84fff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#afefb9e161e470e7b45a9dbde99b84fff">NearestNeighbors</a> (D *ray, int Nneighbors, float *radius, IndexType *neighbors)</td></tr>
-<tr class="memdesc:afefb9e161e470e7b45a9dbde99b84fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the nearest N neighbors and puts their index numbers in an array, also returns the distance to the Nth neighbor for calculating smoothing.  <a href="class_tree_simple_vec.html#afefb9e161e470e7b45a9dbde99b84fff">More...</a><br /></td></tr>
-<tr class="separator:afefb9e161e470e7b45a9dbde99b84fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656687586737eedb85a0686005fc29a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#a656687586737eedb85a0686005fc29a0">NearestNeighbors</a> (D *ray, int Nneighbors, std::vector&lt; D &gt; &amp;radii, std::vector&lt; IndexType &gt; &amp;neighbors)</td></tr>
+<tr class="memdesc:a656687586737eedb85a0686005fc29a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the nearest N neighbors and puts their index numbers in an array, also returns the distance to the Nth neighbor for calculating smoothing.  <a href="class_tree_simple_vec.html#a656687586737eedb85a0686005fc29a0">More...</a><br /></td></tr>
+<tr class="separator:a656687586737eedb85a0686005fc29a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02207879f7bfde45151630c54fc17e7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#a02207879f7bfde45151630c54fc17e7a">NearestNeighbor</a> (D *ray, D &amp;radius, IndexType &amp;neighbor)</td></tr>
+<tr class="memdesc:a02207879f7bfde45151630c54fc17e7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds the nearest neighbors in whatever dimensions tree is defined in  <a href="class_tree_simple_vec.html#a02207879f7bfde45151630c54fc17e7a">More...</a><br /></td></tr>
+<tr class="separator:a02207879f7bfde45151630c54fc17e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ebbaa4a5dffb04458d1cf71f241575a"><td class="memItemLeft" align="right" valign="top"><a id="a4ebbaa4a5dffb04458d1cf71f241575a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#a4ebbaa4a5dffb04458d1cf71f241575a">pop</a> (IndexType index_of_point)</td></tr>
+<tr class="memdesc:a4ebbaa4a5dffb04458d1cf71f241575a"><td class="mdescLeft">&#160;</td><td class="mdescRight">pop this point out of the tree <br /></td></tr>
+<tr class="separator:a4ebbaa4a5dffb04458d1cf71f241575a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add10e586d5cbe2f111bc16b569da4971"><td class="memItemLeft" align="right" valign="top"><a id="add10e586d5cbe2f111bc16b569da4971"></a>
+std::vector&lt; IndexType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#add10e586d5cbe2f111bc16b569da4971">get_index</a> () const</td></tr>
+<tr class="memdesc:add10e586d5cbe2f111bc16b569da4971"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the index numbers of the remaining points which are less than the original if <a class="el" href="class_tree_simple_vec.html#a4ebbaa4a5dffb04458d1cf71f241575a" title="pop this point out of the tree">pop()</a> was used. <br /></td></tr>
+<tr class="separator:add10e586d5cbe2f111bc16b569da4971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1844660139cb987024eaaa5f13858706"><td class="memItemLeft" align="right" valign="top"><a id="a1844660139cb987024eaaa5f13858706"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> ()</td></tr>
+<tr class="separator:a1844660139cb987024eaaa5f13858706"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -399,8 +413,54 @@ template&lt;typename T , typename D &gt; </div>
 
 </div>
 </div>
-<a id="afefb9e161e470e7b45a9dbde99b84fff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afefb9e161e470e7b45a9dbde99b84fff">&#9670;&nbsp;</a></span>NearestNeighbors()</h2>
+<a id="a02207879f7bfde45151630c54fc17e7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02207879f7bfde45151630c54fc17e7a">&#9670;&nbsp;</a></span>NearestNeighbor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename D &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_tree_simple_vec.html">TreeSimpleVec</a>&lt; T, D &gt;::NearestNeighbor </td>
+          <td>(</td>
+          <td class="paramtype">D *&#160;</td>
+          <td class="paramname"><em>ray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">D &amp;&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IndexType &amp;&#160;</td>
+          <td class="paramname"><em>neighbor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>finds the nearest neighbors in whatever dimensions tree is defined in </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ray</td><td>position </td></tr>
+    <tr><td class="paramname">radius</td><td>distance of furthest neighbor found from ray[] </td></tr>
+    <tr><td class="paramname">neighbor</td><td>list of the indexes of the neighbors </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a656687586737eedb85a0686005fc29a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a656687586737eedb85a0686005fc29a0">&#9670;&nbsp;</a></span>NearestNeighbors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -422,14 +482,14 @@ template&lt;typename T , typename D &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>radius</em>, </td>
+          <td class="paramtype">std::vector&lt; D &gt; &amp;&#160;</td>
+          <td class="paramname"><em>radii</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">IndexType *&#160;</td>
-          <td class="paramname"><em>neighborsout</em>&#160;</td>
+          <td class="paramtype">std::vector&lt; IndexType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>neighbors</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -445,8 +505,8 @@ template&lt;typename T , typename D &gt; </div>
   <table class="params">
     <tr><td class="paramname">ray</td><td>position </td></tr>
     <tr><td class="paramname">Nneighbors</td><td>number of neighbors to be found </td></tr>
-    <tr><td class="paramname">radius</td><td>distance of furthest neighbor found from ray[] </td></tr>
-    <tr><td class="paramname">neighborsout</td><td>list of the indexes ofx the neighbors </td></tr>
+    <tr><td class="paramname">radii</td><td>distance to neighbors </td></tr>
+    <tr><td class="paramname">neighbors</td><td>list of the indexes of the neighbors </td></tr>
   </table>
   </dd>
 </dl>
@@ -459,7 +519,7 @@ template&lt;typename T , typename D &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

@@ -11,11 +11,12 @@ Tree\+: Exported struct.
 
 
 
-Collaboration diagram for Tree\+Struct\+:\nopagebreak
+Collaboration diagram for Tree\+Struct\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=176pt]{struct_tree_struct__coll__graph}
+\includegraphics[width=148pt]{struct_tree_struct__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Classes}
@@ -54,11 +55,14 @@ void \mbox{\hyperlink{struct_tree_struct_a36a2c24eb61beee51be40c0624b459dd}{Poin
 \begin{DoxyCompactList}\small\item\em Finds all points within a circle. Much simpler, iterative algorithm. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_tree_struct_ad5a40088ed454c0fb84073653e317a4f}{Nearest\+Neighbor\+Kist}} (const Pos\+Type $\ast$center, int Nneighbors, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$neighborkist) const
 \begin{DoxyCompactList}\small\item\em Finds nearest neighbor points to ray. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_tree_struct_a567260adb1b9753c70b336ff38791341}\label{struct_tree_struct_a567260adb1b9753c70b336ff38791341}} 
+bool \mbox{\hyperlink{struct_tree_struct_a567260adb1b9753c70b336ff38791341}{At\+Edge}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$point)
+\begin{DoxyCompactList}\small\item\em true is point is on the edge of the field \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_tree_struct_acec8b0dc4a3a18fda4f3feef690923ca}\label{struct_tree_struct_acec8b0dc4a3a18fda4f3feef690923ca}} 
 bool {\bfseries Test} ()
 \item 
 \mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}{Remove\+Leaf\+From\+Tree}} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current, unsigned long $\ast$Npoints)
-\item 
+\begin{DoxyCompactList}\small\item\em Prune off points that are below a resolution and in an annulus on the source plane. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}\label{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}} 
 void \mbox{\hyperlink{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}{Fill\+Tree}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$xp, unsigned long Npoints)
 \begin{DoxyCompactList}\small\item\em Fill a tree with points. The previous tree structure will be destroyed. Used for refilling. \end{DoxyCompactList}\item 
@@ -66,9 +70,7 @@ void \mbox{\hyperlink{struct_tree_struct_a76668d1516ab7ddb2b7cdefa470d3419}{Fill
 int \mbox{\hyperlink{struct_tree_struct_aa57c8f27fb818e4c45e75cfda1cee0ec}{Add\+Points\+To\+Tree}} (\mbox{\hyperlink{struct_point}{Point}} $\ast$xpoint, unsigned long Nadd)
 \begin{DoxyCompactList}\small\item\em Expands tree by adding points. \end{DoxyCompactList}\item 
 short \mbox{\hyperlink{struct_tree_struct_a22011842bc8af6c0770f23e4cf192a87}{empty\+Tree}} ()
-\begin{DoxyCompactList}\small\item\em Empty tree of all point leaving a tree with an empty root. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_tree_struct_a427822306514170bb89a5d529a6cb565}{Rebuild\+Tree\+From\+List}} ()
-\begin{DoxyCompactList}\small\item\em Rebuilds the tree from the points that are already in the tree-\/$>$pointlist. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Spawn a subtree with current as its top. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_tree_struct_aa07ffc0660e4f26705e9ebe38bd53957}\label{struct_tree_struct_aa07ffc0660e4f26705e9ebe38bd53957}} 
 bool {\bfseries is\+Empty} ()
 \item 
@@ -83,15 +85,13 @@ void {\bfseries check\+Tree} ()
 \item 
 \mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_tree_struct_a230c70e5a72e2ae2d30ff3cc159a3e87}{Find\+Box\+Point}} (const Pos\+Type $\ast$ray) const
 \item 
-\mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}} $\ast$ \mbox{\hyperlink{struct_tree_struct_aa926ddaf09634063e0d4da15290a6dbc}{spawn}} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current)
-\begin{DoxyCompactList}\small\item\em Spawn a subtree with current as its top. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_tree_struct_a05a6a26bae725392d290cdfa0220e7f0}{\+\_\+\+Find\+Leaf}} (\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&current, const Pos\+Type $\ast$ray, unsigned long Nadd=0) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_tree_struct_acacd06c4536d377fd43239cb03e46a02}\label{struct_tree_struct_acacd06c4536d377fd43239cb03e46a02}} 
-\mbox{\hyperlink{struct_point_list}{Point\+List}} $\ast$ \mbox{\hyperlink{struct_tree_struct_acacd06c4536d377fd43239cb03e46a02}{pointlist}}
+\mbox{\Hypertarget{struct_tree_struct_a18020df556ff80dedecd9425afe72d24}\label{struct_tree_struct_a18020df556ff80dedecd9425afe72d24}} 
+\mbox{\hyperlink{struct_point_list}{Point\+List}} \mbox{\hyperlink{struct_tree_struct_a18020df556ff80dedecd9425afe72d24}{pointlist}}
 \begin{DoxyCompactList}\small\item\em list of points \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
@@ -157,9 +157,13 @@ Finds the leaf the ray is in and adds Nadd to all of is parent leaves \mbox{\Hyp
 
 
 
-Empty tree of all point leaving a tree with an empty root. 
+Spawn a subtree with current as its top. 
 
-The points are freed, but the list structure is not destroyed.
+The new tree contains all of the tree below the current. Warning\+:\+: Adding points to the new tree will not update the parent tree so it can become dangerously out of sync.
+
+Empty tree of all point leaving a tree with an empty root.
+
+The points are not freed, and the list structure is not destroyed.
 
 Fill\+Tree can then be used to regenerate tree. \mbox{\Hypertarget{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}\label{struct_tree_struct_a8e33786248bdc48fde6a165b6bfae22f}} 
 \index{TreeStruct@{TreeStruct}!FindAllBoxNeighborsKist@{FindAllBoxNeighborsKist}}
@@ -259,37 +263,236 @@ Returns the largest gridsize of the points within the circle. Note that this is 
 
 Finds all points within a circle. Much simpler, iterative algorithm. 
 
-\mbox{\Hypertarget{struct_tree_struct_a427822306514170bb89a5d529a6cb565}\label{struct_tree_struct_a427822306514170bb89a5d529a6cb565}} 
-\index{TreeStruct@{TreeStruct}!RebuildTreeFromList@{RebuildTreeFromList}}
-\index{RebuildTreeFromList@{RebuildTreeFromList}!TreeStruct@{TreeStruct}}
-\doxysubsubsection{\texorpdfstring{RebuildTreeFromList()}{RebuildTreeFromList()}}
-{\footnotesize\ttfamily void Tree\+Struct\+::\+Rebuild\+Tree\+From\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Rebuilds the tree from the points that are already in the tree-\/$>$pointlist. 
-
-This is not the best function because it copies all the points \mbox{\Hypertarget{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}\label{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}} 
+\mbox{\Hypertarget{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}\label{struct_tree_struct_a5258c95f4de87c75e74ce9d4e59e888e}} 
 \index{TreeStruct@{TreeStruct}!RemoveLeafFromTree@{RemoveLeafFromTree}}
 \index{RemoveLeafFromTree@{RemoveLeafFromTree}!TreeStruct@{TreeStruct}}
 \doxysubsubsection{\texorpdfstring{RemoveLeafFromTree()}{RemoveLeafFromTree()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Tree\+Struct\+::\+Remove\+Leaf\+From\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&}]{current,  }\item[{unsigned long $\ast$}]{Npoints }\end{DoxyParamCaption})}
 
-Removes current from a tree if it is a leaf. Will not remove root of tree.
+
+
+Prune off points that are below a resolution and in an annulus on the source plane. 
+
+\begin{DoxyVerb}\brief THIS DOES NOT WORK YET!!!
+
+Reduces the size of the tree by removing points and branches that are no longer needed.
+\end{DoxyVerb}
+
+
+unsigned long Grid\+::\+Prune\+Trees( Pos\+Type resolution /// Maximum size of a cell to be removed. ,bool use\+SB /// If true it will not remove any point that has a flux above fluxlimit. ,Pos\+Type fluxlimit /// flux limit threshold )\{
+
+long i,Ntmp,count = 0; Pos\+Type res,initres; bool go;
+
+assert(trashkist);
+
+if(i\+\_\+tree == N\+U\+LL) return 0; if(s\+\_\+tree == N\+U\+LL) return 0;
+
+Ntmp = i\+\_\+tree-\/$>$pointlist.\+size();
+
+i\+\_\+tree-\/$>$move\+Top();
+
+\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} i\+\_\+tree\+\_\+current(i\+\_\+tree); Point\+List\+::iterator i\+\_\+tree\+\_\+pointlist\+\_\+current;
+
+initres = (i\+\_\+tree-\/$>$\mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top()}}-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]}-\/i\+\_\+tree-\/$>$\mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top()}}-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]}); if(resolution $>$ initres/3 $\vert$$\vert$ resolution $<$= 0.\+0) return 0; // do not allow pruning up to the initial grid size
+
+walk tree i=0; go = true; do\{ assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$next $\vert$$\vert$ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$prev);
+
+res = (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]}-\/($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]}); if( (res $<$= resolution \&\& i\+\_\+tree\+\_\+current.\+Is\+Square\+Branch() ) \&\& ($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined)\{
+
+if(use\+S\+B)\{ go = true; Check if surface brightness of all points in cell are zero. i\+\_\+tree\+\_\+pointlist\+\_\+current = ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points; for(i=0; i $<$ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints;++i,--i\+\_\+tree\+\_\+pointlist\+\_\+current )\{ if(($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$surface\+\_\+brightness$\ast$pow(($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$gridsize,2) $>$ fluxlimit )\{ go = false; break; \} \} \}
+
+remove all lower branches and make current a leaf if(go \&\& ($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints $>$ 1)\{
+
+count += Free\+Branches\+Below(i\+\_\+tree\+\_\+current,i\+\_\+tree,s\+\_\+tree,trashkist); \} \} \}while(i\+\_\+tree\+\_\+current.\+Tree\+Walk\+Step(true));
+
+rebuild source tree from list. if(count $>$ 0) Rebuild\+Tree\+From\+List(s\+\_\+tree);
+
+assert(count == (Ntmp -\/ i\+\_\+tree-\/$>$pointlist.\+size()) );
+
+return count; \}
+
+Used to keep the number of grid points limited while telescoping.
+
+The points that are removed have cells that do not overlap the inner circle and centers that are within the outer circle. Thus some points will be outside of the inner circle and some cells that are not removed may intersect with the outer circle.
+
+unsigned long Grid\+::\+Prune\+Points\+Outside( Pos\+Type resolution /// Maximum size of a cell to be removed. ,Pos\+Type $\ast$y /// Center on source plane ,Pos\+Type r\+\_\+in /// Inner radius of annulus on the source plane ,Pos\+Type r\+\_\+out /// Outer radius of annulus on the source plane )\{
+
+if(i\+\_\+tree == N\+U\+LL) return 0; if(s\+\_\+tree == N\+U\+LL) return 0; if(r\+\_\+in $>$ r\+\_\+out $\vert$$\vert$ resolution $<$= 0) return 0; if(r\+\_\+out $<$= 0.\+0) return 0.\+0;
+
+Pos\+Type res,dr2;
+
+long i,count = 0; \mbox{\hyperlink{struct_point}{Point}} $\ast$point; \mbox{\hyperlink{struct_branch}{Branch}} $\ast$branch; Kist$<$\+Point$>$ $\ast$ subkist = new Kist$<$\+Point$>$; bool go = true; unsigned long Ntmp; Unit $\ast$unit;
+
+assert(trashkist);
+
+Make a kist of all points in the annulus. Points\+Within\+Kist(s\+\_\+tree,y,r\+\_\+out+resolution,subkist,0); s\+\_\+tree-\/$>$Points\+Within\+Kist\+\_\+iter(y,r\+\_\+in,r\+\_\+out+resolution,subkist);
+
+std\+::printf(\char`\"{}number of points after Points\+Within \%li\textbackslash{}n\char`\"{},subkist-\/$>$Nunits());
+
+if(r\+\_\+in $>$ 0)\{ take out points that are within inner circle subkist-\/$>$Move\+To\+Top(); Ntmp = subkist-\/$>$Nunits(); for(i=0;i$<$Ntmp;++i)\{ go = true; point = subkist-\/$>$get\+Current(); if(point-\/$>$gridsize$\ast$\+Ngrid\+\_\+block $>$ resolution)\{ if(subkist-\/$>$At\+Top()) go = false; subkist-\/$>$Take\+Out\+Current(); \}else if( Utilities\+::cutbox(y,point-\/$>$leaf-\/$>$boundary\+\_\+p1,point-\/$>$leaf-\/$>$boundary\+\_\+p2,r\+\_\+in) )\{ if(subkist-\/$>$At\+Top()) go = false; subkist-\/$>$Take\+Out\+Current(); \}
+
+if(go) subkist-\/$>$Down(); \} \} std\+::printf(\char`\"{}number of points after culling \%li\textbackslash{}n\char`\"{},subkist-\/$>$Nunits());
+
+if(subkist-\/$>$Nunits() == 0)\{ delete subkist; return 0; \}
+
+move from source plane to image plane subkist-\/$>$Tranform\+Planes(); \begin{DoxyVerb} TreeStruct::iterator i_tree_current(i_tree);
+\end{DoxyVerb}
+
+
+Take out all points that are not at the center of their parent refined cell subkist-\/$>$Move\+To\+Top(); Ntmp = subkist-\/$>$Nunits(); for(i = 0; i $<$ Ntmp ; ++i)\{ go = true; point = subkist-\/$>$get\+Current(); i\+\_\+tree\+\_\+current = point-\/$>$leaf; Move up to nearest ancestor that was refined. while(!(($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined) \&\& i\+\_\+tree\+\_\+current.\+up() );
+
+res = (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]}-\/($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]});
+
+if(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints != Ngrid\+\_\+block$\ast$\+Ngrid\+\_\+block $\vert$$\vert$ res $>$ resolution)\{ Take out the point if it is not in a parent block that has been refined than once or if the parent block is about the resolution limit if(subkist-\/$>$At\+Top()) go = false; subkist-\/$>$Take\+Out\+Current(); \}else\{ assert(inbox(point-\/$>$x,($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1,($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2));
+
+assert(fabs(($\ast$i\+\_\+tree\+\_\+current)-\/$>$center\mbox{[}0\mbox{]} -\/ (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]}+($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]})/2) $<$ point-\/$>$gridsize/2); assert(fabs(($\ast$i\+\_\+tree\+\_\+current)-\/$>$center\mbox{[}1\mbox{]} -\/ (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}1\mbox{]}+($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}1\mbox{]})/2) $<$ point-\/$>$gridsize/2 ); assert(point-\/$>$gridsize $<$ fabs(($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]}-\/($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]}) ); assert(point-\/$>$gridsize $<$ fabs(($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}1\mbox{]}-\/($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}1\mbox{]}) );
+
+if( (point-\/$>$gridsize)/2 $<$ fabs(point-\/$>$x\mbox{[}0\mbox{]} -\/ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$center\mbox{[}0\mbox{]}) $\vert$$\vert$ (point-\/$>$gridsize)/2 $<$ fabs(point-\/$>$x\mbox{[}1\mbox{]} -\/ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$center\mbox{[}1\mbox{]}) )\{ // Take out point if it is not at the center of it\textquotesingle{}s parent block if(subkist-\/$>$At\+Top()) go = false; subkist-\/$>$Take\+Out\+Current(); \} \}
+
+if(go) subkist-\/$>$Down(); \}
+
+assert(subkist-\/$>$At\+Bottom());
+
+subkist-\/$>$Move\+To\+Top(); Point\+List\+::iterator i\+\_\+tree\+\_\+pointlist\+\_\+current; while(subkist-\/$>$Nunits() $>$ 0)\{ i\+\_\+tree\+\_\+current = subkist-\/$>$get\+Current()-\/$>$leaf; Move up to nearest ancestor that was refined. while(!(($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined) \&\& i\+\_\+tree\+\_\+current.\+up() );
+
+assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints == Ngrid\+\_\+block$\ast$\+Ngrid\+\_\+block);
+
+make sure that none of the child points are outside the annulus i\+\_\+tree\+\_\+pointlist\+\_\+current = ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points; for(i=0;i $<$ Ngrid\+\_\+block$\ast$\+Ngrid\+\_\+block ; ++i,--i\+\_\+tree\+\_\+pointlist\+\_\+current)\{ dr2 = pow(($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$image-\/$>$x\mbox{[}0\mbox{]} -\/ y\mbox{[}0\mbox{]},2) + pow(($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$image-\/$>$x\mbox{[}1\mbox{]} -\/ y\mbox{[}1\mbox{]},2); if(dr2 $>$ r\+\_\+out$\ast$r\+\_\+out $\vert$$\vert$ dr2 $<$ r\+\_\+in$\ast$r\+\_\+in) break; if(dr2 $<$ r\+\_\+in$\ast$r\+\_\+in) break; \}
+
+if(i == Ngrid\+\_\+block$\ast$\+Ngrid\+\_\+block)\{ branch = $\ast$i\+\_\+tree\+\_\+current;
+
+count += Free\+Branches\+Below(i\+\_\+tree\+\_\+current,i\+\_\+tree,s\+\_\+tree,trashkist);
+
+assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints == 1); assert( fabs( 1 -\/ (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]})/($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$gridsize) $<$ 1.\+0e-\/4 ); assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined == false);
+
+\}
+
+subkist-\/$>$Take\+Out\+Current();
+
+\}
+
+delete subkist;
+
+return count; \} \begin{DoxyVerb}\brief Empty trash points.
+
+Frees point arrays whose heads are stored in trashlist.
+If check=true it will only free arrays where all the points have NULL leafs.
+   check=false all the point arrays are freed..
+\end{DoxyVerb}
+
+
+void Collect\+Trash(\+Kist$<$\+Point$>$ $\ast$ trashkist,bool check)\{ bool go; unsigned long i,j,Ntmp; \mbox{\hyperlink{struct_point}{Point}} $\ast$points;
+
+if(trashkist-\/$>$Nunits() == 0) return;
+
+Ntmp = trashkist-\/$>$Nunits(); for(j=0,trashkist-\/$>$Move\+To\+Top();j$<$Ntmp;++j)\{
+
+if(!(trashkist-\/$>$get\+Current()-\/$>$head))\{ // point is not the head of an array if(trashkist-\/$>$At\+Top()) go = false; else go = true; trashkist-\/$>$Take\+Out\+Current(); \}else\{
+
+check to see if all points in the block have been removed from the trees if(check)\{ for(i=0;i$<$trashkist-\/$>$get\+Current()-\/$>$head;++i) if(trashkist-\/$>$get\+Current()\mbox{[}i\mbox{]}.leaf != N\+U\+LL) break; \}else\{ i = trashkist-\/$>$get\+Current()-\/$>$head; \}
+
+if(i == trashkist-\/$>$get\+Current()-\/$>$head)\{ if(trashkist-\/$>$At\+Top()) go = false; else go = true; points = trashkist-\/$>$Take\+Out\+Current(); Free\+Point\+Array(points); \}else\{ go = true; \} \}
+
+if(go) trashkist-\/$>$Down(); \}
+
+return; \}
+
+Frees all branches of the tree below the current branch in i\+\_\+tree if that branch is square and i\+\_\+tree-\/$>$current-\/$>$refined == true. If either of these are not true nothing happens.
+
+On exit\+: The i\+\_\+tree-\/$>$current is back to the original current. If it is square it will have no children and contain one point. The source points and branches are also removed.
+
+unsigned long Free\+Branches\+Below(\+Tree\+Struct\+::iterator \&i\+\_\+tree\+\_\+current,\+Tree\+Hndl i\+\_\+tree,\+Tree\+Hndl s\+\_\+tree,\+Kist$<$\+Point$>$ $\ast$ trashkist)\{
+
+if(!i\+\_\+tree\+\_\+current.Is\+Square\+Branch()) return 0; if(i\+\_\+tree\+\_\+current.\+at\+Leaf()) return 0; if(($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined == false) return 0;
+
+\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} s\+\_\+tree\+\_\+current(s\+\_\+tree); assert( s\+\_\+tree !=N\+U\+LL);
+
+\mbox{\hyperlink{struct_branch}{Branch}} $\ast$branch,$\ast$headbranch; \mbox{\hyperlink{struct_point}{Point}} $\ast$point; unsigned long Ntmp,Nto\+Remove,i,count = 0,count2 = 0,count1; Pos\+Type center\mbox{[}2\mbox{]}; Point\+List\+::iterator i\+\_\+tree\+\_\+pointlist\+\_\+current; Point\+List\+::iterator s\+\_\+tree\+\_\+pointlist\+\_\+current;
+
+\+\_\+free\+Branches\+\_\+iter(s\+\_\+tree); // s\+\_\+tree will no longer be valid on exit. This is to make sure it isn\textquotesingle{}t used later without a rebuild.
+
+headbranch = $\ast$i\+\_\+tree\+\_\+current; i\+\_\+tree-\/$>$Tree\+Walk\+Step(true);
+
+while( (headbranch-\/$>$child1 != N\+U\+LL) $\vert$$\vert$ (headbranch-\/$>$child2 != N\+U\+LL) )\{
+
+assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch)); if(i\+\_\+tree\+\_\+current.\+at\+Leaf())\{ assert(i\+\_\+tree-\/$>$current-\/$>$points-\/$>$image-\/$>$leaf); s\+\_\+tree-\/$>$current = i\+\_\+tree-\/$>$current-\/$>$points-\/$>$image-\/$>$leaf; // set s\+\_\+tree to source of current image cell
+
+branch = ($\ast$i\+\_\+tree\+\_\+current)-\/$>$prev; i = branch-\/$>$npoints;
+
+if(($\ast$i\+\_\+tree\+\_\+current) != headbranch) i\+\_\+tree-\/$>$Remove\+Leaf\+From\+Tree(i\+\_\+tree\+\_\+current,\&\+Ntmp); \begin{DoxyVerb}                test line  **************************
+\end{DoxyVerb}
+ assert($\ast$i\+\_\+tree\+\_\+current == branch); assert(i == ($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints); \begin{DoxyVerb}                test line  **************************
+\end{DoxyVerb}
+ assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$next $\vert$$\vert$ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$prev);
+
+in a square leaf cell take out extra points that have come up from below
+
+if(i\+\_\+tree\+\_\+current.\+at\+Leaf() \&\& ($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined)\{ test line $\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$$\ast$ assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$next $\vert$$\vert$ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$prev);
+
+std\+::printf(\char`\"{}  collecting points from removed leaves\textbackslash{}n\char`\"{}); assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points); i\+\_\+tree\+\_\+pointlist\+\_\+current = ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points; Nto\+Remove = ($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints; assert(Nto\+Remove == 9); center\mbox{[}0\mbox{]} = (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]} + ($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]})/2; center\mbox{[}1\mbox{]} = (($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p1\mbox{[}1\mbox{]} + ($\ast$i\+\_\+tree\+\_\+current)-\/$>$boundary\+\_\+p2\mbox{[}1\mbox{]})/2;
+
+for(i=0,count1=0,count2=0;i$<$Nto\+Remove;++i,--i\+\_\+tree\+\_\+pointlist\+\_\+current)\{ find central point and remove others \begin{DoxyVerb} if( (pow(center[0]-(*i_tree_pointlist_current)->x[0],2)
+  + pow(center[1]-(*i_tree_pointlist_current)->x[1],2) )
+  < pow((*i_tree_pointlist_current)->gridsize/2,2) ){
+
+  ++count1;
+\end{DoxyVerb}
+ keep this central point ($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$gridsize $\ast$= 3; ($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$image-\/$>$gridsize = ($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$gridsize; ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points = ($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current); \begin{DoxyVerb}                test line  **************************
+\end{DoxyVerb}
+ assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$next $\vert$$\vert$ ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points-\/$>$prev); assert(($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$leaf == $\ast$i\+\_\+tree\+\_\+current); \}else\{
+
+++count; // count of total number of points removed ++count2;
+
+reduce the number of particles in all parent cells
+
+First take points out of source plane This is tricky because they are not ordered into square blocks with 9 points in each.
+
+Take point out of the source plane \begin{DoxyVerb}  assert((*i_tree_pointlist_current)->image);
+  point = (*i_tree_pointlist_current)->image;
+  assert(point->leaf);
+  s_tree_current = point->leaf;
+\end{DoxyVerb}
+ if(($\ast$s\+\_\+tree\+\_\+current)-\/$>$npoints $<$ 2) Remove\+Leaf\+From\+Tree(s\+\_\+tree,\&\+Ntmp); while(!(s\+\_\+tree\+\_\+current.\+at\+Top()))\{ --(($\ast$s\+\_\+tree\+\_\+current)-\/$>$npoints); if(($\ast$s\+\_\+tree\+\_\+current)-\/$>$npoints $>$ 0 \&\& ($\ast$s\+\_\+tree\+\_\+current)-\/$>$points == point) ($\ast$s\+\_\+tree\+\_\+current)-\/$>$points = point-\/$>$next;
+
+if(($\ast$s\+\_\+tree\+\_\+current)-\/$>$npoints == 0) ($\ast$s\+\_\+tree\+\_\+current)-\/$>$points = N\+U\+LL;
+
+if(($\ast$s\+\_\+tree\+\_\+current)-\/$>$npoints == 0 \&\& ($\ast$s\+\_\+tree\+\_\+current)-\/$>$prev-\/$>$npoints == 1)\{ only remove empty leaves if it will make its parent a leaf assert(s\+\_\+tree\+\_\+current.\+at\+Leaf()); s\+\_\+tree-\/$>$Remove\+Leaf\+From\+Tree(s\+\_\+tree\+\_\+current,\&\+Ntmp); s\+\_\+tree\+\_\+current.\+Tree\+Walk\+Step(true); // Go to other child. s\+\_\+tree-\/$>$Remove\+Leaf\+From\+Tree(s\+\_\+tree\+\_\+current,\&\+Ntmp); \}else\{ s\+\_\+tree\+\_\+current.\+up(); \} \} assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch));
+
+Do it for top --(s\+\_\+tree-\/$>$\mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top()}}-\/$>$npoints); if(s\+\_\+tree-\/$>$\mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top()}}-\/$>$npoints $>$ 0 \&\& s\+\_\+tree-\/$>$\mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top()}}-\/$>$points == point) s\+\_\+tree-\/$>$\mbox{\hyperlink{struct_tree_struct_a5e30cc9c4338d888800cd6f45cd69547}{get\+Top()}}-\/$>$points = point-\/$>$next;
+
+s\+\_\+tree\+\_\+pointlist\+\_\+current = point; s\+\_\+tree-\/$>$pointlist.\+Take\+Out\+Current(s\+\_\+tree\+\_\+pointlist\+\_\+current); point-\/$>$leaf = N\+U\+LL; // set leaf to N\+U\+LL to indicate that point is no longer in tree if(point-\/$>$head) trashkist-\/$>$Insert\+After\+Current(point); // collect heads for later trash collection
+
+assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch));
+
+take points out of image plane branch = $\ast$i\+\_\+tree\+\_\+current; do\{ assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints); --(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints); if(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points == ($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)) ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points = N\+U\+LL;
+
+\}while(i\+\_\+tree\+\_\+current.\+up()); i\+\_\+tree\+\_\+current = branch; assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch));
+
+if(($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current) == ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points) ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points = ($\ast$i\+\_\+tree\+\_\+pointlist\+\_\+current)-\/$>$next; point = i\+\_\+tree-\/$>$pointlist.\+Take\+Out\+Current(i\+\_\+tree\+\_\+pointlist\+\_\+current); point-\/$>$leaf = N\+U\+LL; If point is a head of a memory block add it to trashlist for eventual trash collection if(point-\/$>$head)\{ assert(point-\/$>$head == 8); trashkist-\/$>$Insert\+After\+Current(point); \} \} assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch));
+
+\} // loop through points in leaf
+
+reassign first point in branches above the current branch = $\ast$i\+\_\+tree\+\_\+current; do\{ assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints); if(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points == N\+U\+LL) ($\ast$i\+\_\+tree\+\_\+current)-\/$>$points = branch-\/$>$points; \}while(i\+\_\+tree\+\_\+current.\+up()); i\+\_\+tree\+\_\+current = branch;
+
+assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch));
+
+assert(count1 == 1); assert(count2 == 8); assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints == 1); \} // if current was leaf that was refined
+
+\} // at tree leaf assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$points); assert(boxinbox($\ast$i\+\_\+tree\+\_\+current,headbranch));
+
+if( !(i\+\_\+tree\+\_\+current.\+at\+Leaf()) ) i\+\_\+tree\+\_\+current.\+Tree\+Walk\+Step(true); \} // while entry current is not a leaf
+
+assert(\+Current\+Is\+Square\+Tree(i\+\_\+tree)); assert(($\ast$i\+\_\+tree\+\_\+current)-\/$>$npoints == 1); assert(i\+\_\+tree\+\_\+current.\+at\+Leaf()); assert($\ast$i\+\_\+tree\+\_\+current == headbranch);
+
+($\ast$i\+\_\+tree\+\_\+current)-\/$>$refined = false;
+
+Free the memory for the points that have been removed. Collect\+Trash(trashkist,false);
+
+assert(trashkist-\/$>$Nunits() == 0); if(count) std\+::printf(\char`\"{}\+Free\+Branches\+Below() freed \%li points and moved up \%li points\textbackslash{}n\char`\"{},count,count2); return count; \} Removes current from a tree if it is a leaf. Will not remove root of tree.
 
 on output\+: Current is left at the father of the leaf that was removed. All the points in the leaf that was removed are in its father so the father might be a leaf without Nbucket points. The -\/$>$leaf pointer of these points are reassigned to the father.
 
-returns\+: Pointer to first in list of points that were reassigned. $\ast$\+Npoints = number of points reassigned. \mbox{\Hypertarget{struct_tree_struct_aa926ddaf09634063e0d4da15290a6dbc}\label{struct_tree_struct_aa926ddaf09634063e0d4da15290a6dbc}} 
-\index{TreeStruct@{TreeStruct}!spawn@{spawn}}
-\index{spawn@{spawn}!TreeStruct@{TreeStruct}}
-\doxysubsubsection{\texorpdfstring{spawn()}{spawn()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}} $\ast$ Tree\+Struct\+::spawn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tree_struct_1_1iterator}{Tree\+Struct\+::iterator}} \&}]{current }\end{DoxyParamCaption})}
-
-
-
-Spawn a subtree with current as its top. 
-
-The new tree contains all of the tree below the current. Warning\+:\+: Adding points to the new tree will not update the parent tree so it can become dangerously out of sync. 
+returns\+: Pointer to first in list of points that were reassigned. $\ast$\+Npoints = number of points reassigned. 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

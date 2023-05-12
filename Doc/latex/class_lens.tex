@@ -78,11 +78,20 @@ void \mbox{\hyperlink{class_lens_a711067d75213f4e6bc0f8a5606faf66a}{rayshooter\+
 \begin{DoxyCompactList}\small\item\em Main routine for shooting rays in parrallel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_a2575c6d766091cde0ce87249e97333f1}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_linked_point}{Linked\+Point}} $\ast$i\+\_\+points, std\+::vector$<$ double $>$ \&source\+\_\+zs, bool R\+S\+Iverbose=false)
 \begin{DoxyCompactList}\small\item\em Routine for shooting rays with differnt source redshifts in parrallel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_ae505c3e066e52d60372449aecc7ae6b0}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $\ast$rays)
+\item 
 void \mbox{\hyperlink{class_lens_a4fa714f37553b29a50a6d2b532a99013}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, int tag=0, short mode=0, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Collects information about the halos and kappa contributions along the light path. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_ad3a11062a75edccda29005253c6f5061}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a6d6d04ad98ee9831d8b2e278be6f3a6b}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
 \begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}{find\+\_\+image}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
+\begin{DoxyCompactList}\small\item\em this version uses the redshift stored in the ray \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a450a498938a92acf5b73568e64f0acfe}{find\+\_\+image}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&boundary)
+\begin{DoxyCompactList}\small\item\em This is the same, but the image is forced to stay within boundary. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a31dd5ed6c77cca4e00c5ebb8414b18ff}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&boundary)
+\item 
+\mbox{\Hypertarget{class_lens_ac02a64bb6d6d00858ff83b2803bdafc2}\label{class_lens_ac02a64bb6d6d00858ff83b2803bdafc2}} 
+void {\bfseries find\+\_\+point\+\_\+source\+\_\+images} (\mbox{\hyperlink{struct_grid}{Grid}} \&grid, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source, Pos\+Type z\+\_\+source, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&images, double dytol2, double dxtol, bool verbose=false)
 \item 
 short \mbox{\hyperlink{class_lens_a71b1279d35b08c49d537708a46c1d3a6}{Reset\+Source\+Plane}} (Pos\+Type z, bool nearest=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em reset the redshift of the source plane \end{DoxyCompactList}\item 
@@ -212,11 +221,11 @@ A class to represents a lens with multiple planes.
  
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_lens_ad3a11062a75edccda29005253c6f5061}\label{class_lens_ad3a11062a75edccda29005253c6f5061}} 
+\mbox{\Hypertarget{class_lens_a6d6d04ad98ee9831d8b2e278be6f3a6b}\label{class_lens_a6d6d04ad98ee9831d8b2e278be6f3a6b}} 
 \index{Lens@{Lens}!find\_image@{find\_image}}
 \index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{double}]{zs,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
 
 
 
@@ -238,6 +247,8 @@ This routine finds the image position by minimizing the seporation on the source
 \begin{DoxyParams}{Parameters}
 {\em p} & p.\+image-\/$>$x should be set to source position \\
 \hline
+{\em zs} & redhsift of source \\
+\hline
 {\em ytol2} & target tolerance in source position squared \\
 \hline
 {\em dy2} & final value of Delta y $^\wedge$2 \\
@@ -245,11 +256,34 @@ This routine finds the image position by minimizing the seporation on the source
 {\em use\+\_\+image\+\_\+guess} & if true p.\+x\mbox{[}\mbox{]} will be used as a guess for the image position \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a31dd5ed6c77cca4e00c5ebb8414b18ff}\label{class_lens_a31dd5ed6c77cca4e00c5ebb8414b18ff}} 
+\index{Lens@{Lens}!find\_image@{find\_image}}
+\index{find\_image@{find\_image}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{double}]{zs,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{boundary }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & p\mbox{[}\mbox{]} is \\
+\hline
+{\em zs} & source redshift \\
+\hline
+{\em ytol2} & target tolerance in source position squared \\
+\hline
+{\em dy2} & final value of Delta y $^\wedge$2 \\
+\hline
+{\em boundary} & image will be limited to within this boundary \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}\label{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}} 
 \index{Lens@{Lens}!find\_image@{find\_image}}
 \index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
+
+
+
+this version uses the redshift stored in the ray 
 
 
 \begin{DoxyParams}{Parameters}
@@ -258,6 +292,29 @@ This routine finds the image position by minimizing the seporation on the source
 {\em ytol2} & target tolerance in source position squared \\
 \hline
 {\em dy2} & final value of Delta y $^\wedge$2 \\
+\hline
+{\em use\+\_\+image\+\_\+guess} & if true p.\+x\mbox{[}\mbox{]} will be used as a guess for the image position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a450a498938a92acf5b73568e64f0acfe}\label{class_lens_a450a498938a92acf5b73568e64f0acfe}} 
+\index{Lens@{Lens}!find\_image@{find\_image}}
+\index{find\_image@{find\_image}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{boundary }\end{DoxyParamCaption})}
+
+
+
+This is the same, but the image is forced to stay within boundary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & p\mbox{[}\mbox{]} is \\
+\hline
+{\em ytol2} & target tolerance in source position squared \\
+\hline
+{\em dy2} & final value of Delta y $^\wedge$2 \\
+\hline
+{\em boundary} & image will be limited to within this boundary \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}\label{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}} 
@@ -394,7 +451,7 @@ This function calculates the deflection, shear, convergence, rotation and time-\
 ray.\+x should be set to the image position. The kappa,gamma,deflection, time-\/delay and source position will be calculated at that image point. \mbox{\Hypertarget{class_lens_a2575c6d766091cde0ce87249e97333f1}\label{class_lens_a2575c6d766091cde0ce87249e97333f1}} 
 \index{Lens@{Lens}!rayshooterInternal@{rayshooterInternal}}
 \index{rayshooterInternal@{rayshooterInternal}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_linked_point}{Linked\+Point}} $\ast$}]{i\+\_\+points,  }\item[{std\+::vector$<$ double $>$ \&}]{source\+\_\+zs,  }\item[{bool}]{R\+S\+Iverbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
@@ -415,7 +472,7 @@ i\+\_\+points\mbox{[}\mbox{]}.x must be set to the image postion in angular radi
 \mbox{\Hypertarget{class_lens_a711067d75213f4e6bc0f8a5606faf66a}\label{class_lens_a711067d75213f4e6bc0f8a5606faf66a}} 
 \index{Lens@{Lens}!rayshooterInternal@{rayshooterInternal}}
 \index{rayshooterInternal@{rayshooterInternal}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{i\+\_\+points,  }\item[{bool}]{R\+S\+Iverbose = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
@@ -431,6 +488,19 @@ i\+\_\+points must have linked image points. {\ttfamily \mbox{\hyperlink{struct_
 {\em i\+\_\+points} & points on the image plane \\
 \hline
 {\em R\+S\+Iverbose} & verbose option \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_ae505c3e066e52d60372449aecc7ae6b0}\label{class_lens_ae505c3e066e52d60372449aecc7ae6b0}} 
+\index{Lens@{Lens}!rayshooterInternal@{rayshooterInternal}}
+\index{rayshooterInternal@{rayshooterInternal}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{rayshooterInternal()}{rayshooterInternal()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Lens\+::rayshooter\+Internal (\begin{DoxyParamCaption}\item[{unsigned long}]{Npoints,  }\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} $\ast$}]{rays }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Npoints} & number of points to be shot \\
+\hline
+{\em rays} & points on the image plane \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_lens_aba7e1b3c66565092fdc7555dc4704896}\label{class_lens_aba7e1b3c66565092fdc7555dc4704896}} 
@@ -489,4 +559,5 @@ The documentation for this class was generated from the following files\+:\begin
 S\+Lsim\+Lib/include/lens.\+h\item 
 S\+Lsim\+Lib/\+Full\+Range/internal\+\_\+rayshooter\+\_\+multi.\+cpp\item 
 S\+Lsim\+Lib/\+Multi\+Plane/lens.\+cpp\item 
-S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+multi\+\_\+dark.\+cpp\end{DoxyCompactItemize}
+S\+Lsim\+Lib/\+Multi\+Plane/lens\+\_\+multi\+\_\+dark.\+cpp\item 
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/image\+\_\+finder.\+cpp\end{DoxyCompactItemize}

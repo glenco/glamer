@@ -107,10 +107,10 @@ Collaboration diagram for Source:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acf598c610085c775dda8e4855b4b9b99"><td class="memItemLeft" align="right" valign="top"><a id="acf598c610085c775dda8e4855b4b9b99"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#acf598c610085c775dda8e4855b4b9b99">Source</a> (PosType r, <a class="el" href="struct_point__2d.html">Point_2d</a> x, PosType z, PosType SBlimit=100)</td></tr>
-<tr class="memdesc:acf598c610085c775dda8e4855b4b9b99"><td class="mdescLeft">&#160;</td><td class="mdescRight">shell constructor <br /></td></tr>
-<tr class="separator:acf598c610085c775dda8e4855b4b9b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca1ca0b2c7b26cc4fa287ce6ed51cfd8"><td class="memItemLeft" align="right" valign="top"><a id="aca1ca0b2c7b26cc4fa287ce6ed51cfd8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#aca1ca0b2c7b26cc4fa287ce6ed51cfd8">Source</a> (PosType r, <a class="el" href="struct_point__2d.html">Point_2d</a> x, PosType z, PosType SBlimit, PosType zero_point)</td></tr>
+<tr class="memdesc:aca1ca0b2c7b26cc4fa287ce6ed51cfd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">shell constructor <br /></td></tr>
+<tr class="separator:aca1ca0b2c7b26cc4fa287ce6ed51cfd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c888b0601eaa7568764fb8b051a6d29"><td class="memItemLeft" align="right" valign="top"><a id="a5c888b0601eaa7568764fb8b051a6d29"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Source</b> (const <a class="el" href="class_source.html">Source</a> &amp;s)</td></tr>
 <tr class="separator:a5c888b0601eaa7568764fb8b051a6d29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,6 +125,10 @@ virtual PosType&#160;</td><td class="memItemRight" valign="bottom"><b>getTotalFl
 <tr class="memitem:ae8a56970be87a5927579eda5bc35486c"><td class="memItemLeft" align="right" valign="top"><a id="ae8a56970be87a5927579eda5bc35486c"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>printSource</b> ()=0</td></tr>
 <tr class="separator:ae8a56970be87a5927579eda5bc35486c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1fbd99e966c584788dc126f8ef84a35"><td class="memItemLeft" align="right" valign="top"><a id="ac1fbd99e966c584788dc126f8ef84a35"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#ac1fbd99e966c584788dc126f8ef84a35">SBlimit_magarcsec</a> (float limit)</td></tr>
+<tr class="memdesc:ac1fbd99e966c584788dc126f8ef84a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">convert mag/arcsec^2 to flux units <br /></td></tr>
+<tr class="separator:ac1fbd99e966c584788dc126f8ef84a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd55331528174d417db0d9480f20e2ad"><td class="memItemLeft" align="right" valign="top"><a id="acd55331528174d417db0d9480f20e2ad"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#acd55331528174d417db0d9480f20e2ad">getSBlimit</a> ()</td></tr>
 <tr class="memdesc:acd55331528174d417db0d9480f20e2ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets sb_limit in erg/cm^2/sec/rad^2/Hz. <br /></td></tr>
@@ -174,10 +178,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTheta</b> (const <
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#ab46f439fc0e9c1ecba446770816aee57">setSBlimit</a> (float limit)</td></tr>
 <tr class="memdesc:ab46f439fc0e9c1ecba446770816aee57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets sb_limit in erg/cm^2/sec/rad^2/Hz. <br /></td></tr>
 <tr class="separator:ab46f439fc0e9c1ecba446770816aee57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46e6ba79945e2d076dc34f2277670ba6"><td class="memItemLeft" align="right" valign="top"><a id="a46e6ba79945e2d076dc34f2277670ba6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a46e6ba79945e2d076dc34f2277670ba6">setSBlimit_magarcsec</a> (float limit)</td></tr>
-<tr class="memdesc:a46e6ba79945e2d076dc34f2277670ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets sb_limit in mag/arcsec^2. <br /></td></tr>
-<tr class="separator:a46e6ba79945e2d076dc34f2277670ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a168e39fcc32a9fe19aef93d00e53d040"><td class="memItemLeft" align="right" valign="top"><a id="a168e39fcc32a9fe19aef93d00e53d040"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setMagZeroPoint</b> (float zeropoint)</td></tr>
+<tr class="separator:a168e39fcc32a9fe19aef93d00e53d040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f343d85e0752d823718a08819afddaf"><td class="memItemLeft" align="right" valign="top"><a id="a5f343d85e0752d823718a08819afddaf"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>getMagZeroPoint</b> ()</td></tr>
+<tr class="separator:a5f343d85e0752d823718a08819afddaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24792a230ec1b4155cb028c19a142046"><td class="memItemLeft" align="right" valign="top">PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#a24792a230ec1b4155cb028c19a142046">changeFilter</a> (std::string filter_in, std::string filter_out, std::string sed)</td></tr>
 <tr class="memdesc:a24792a230ec1b4155cb028c19a142046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the difference in magnitude when changing the observing filter.  <a href="class_source.html#a24792a230ec1b4155cb028c19a142046">More...</a><br /></td></tr>
 <tr class="separator:a24792a230ec1b4155cb028c19a142046"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +193,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ac64731db1d6be651ad589c78c549610d"><td class="memItemLeft" align="right" valign="top">PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#ac64731db1d6be651ad589c78c549610d">integrateFilterSED</a> (std::vector&lt; PosType &gt; wavel_fil, std::vector&lt; PosType &gt; fil, std::vector&lt; PosType &gt; wavel_sed, std::vector&lt; PosType &gt; sed)</td></tr>
 <tr class="memdesc:ac64731db1d6be651ad589c78c549610d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the integral of the sed multiplied by the filter curve.  <a href="class_source.html#ac64731db1d6be651ad589c78c549610d">More...</a><br /></td></tr>
 <tr class="separator:ac64731db1d6be651ad589c78c549610d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa621da5aa92e42d530eb9230a97e7c7"><td class="memItemLeft" align="right" valign="top"><a id="aaa621da5aa92e42d530eb9230a97e7c7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_source.html#aaa621da5aa92e42d530eb9230a97e7c7">TEST_surface_brightness</a> (double res, int N)</td></tr>
+<tr class="memdesc:aaa621da5aa92e42d530eb9230a97e7c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">test if flux in pixels matches total flux <br /></td></tr>
+<tr class="separator:aaa621da5aa92e42d530eb9230a97e7c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab450c6351678fa1f72d983f154ca29a4"><td class="memItemLeft" align="right" valign="top"><a id="ab450c6351678fa1f72d983f154ca29a4"></a>
+long&#160;</td><td class="memItemRight" valign="bottom"><b>getID</b> () const</td></tr>
+<tr class="separator:ab450c6351678fa1f72d983f154ca29a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b6fe5ba55bfe11ad4b5c6c4591ceed"><td class="memItemLeft" align="right" valign="top"><a id="ae0b6fe5ba55bfe11ad4b5c6c4591ceed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setID</b> (long i)</td></tr>
+<tr class="separator:ae0b6fe5ba55bfe11ad4b5c6c4591ceed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -199,6 +215,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a565c099349f8e451a22b2583419d1082"><td class="memItemLeft" align="right" valign="top"><a id="a565c099349f8e451a22b2583419d1082"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>assignParams</b> (<a class="el" href="class_input_params.html">InputParams</a> &amp;params)</td></tr>
 <tr class="separator:a565c099349f8e451a22b2583419d1082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11790734590d8922584d37afefbd670b"><td class="memItemLeft" align="right" valign="top"><a id="a11790734590d8922584d37afefbd670b"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (double flux) const</td></tr>
+<tr class="separator:a11790734590d8922584d37afefbd670b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a056f263f0115fbdb3cb3a31e47ef4137"><td class="memItemLeft" align="right" valign="top"><a id="a056f263f0115fbdb3cb3a31e47ef4137"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>mag_to_flux</b> (double mag) const</td></tr>
+<tr class="separator:a056f263f0115fbdb3cb3a31e47ef4137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -217,6 +239,9 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a55461e57bbcd058f2839de16b2a656c1"><td class="memItemLeft" align="right" valign="top"><a id="a55461e57bbcd058f2839de16b2a656c1"></a>
 PosType&#160;</td><td class="memItemRight" valign="bottom"><b>sb_limit</b></td></tr>
 <tr class="separator:a55461e57bbcd058f2839de16b2a656c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba38543526f52f944bd82cbd5d3730f"><td class="memItemLeft" align="right" valign="top"><a id="a0ba38543526f52f944bd82cbd5d3730f"></a>
+long&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:a0ba38543526f52f944bd82cbd5d3730f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for all sources. </p>
@@ -361,7 +386,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>sb_limit</b></td><
 </table>
 </div><div class="memdoc">
 <p>Surface brightness of source in grid coordinates not source centered coordinates.</p>
-<p>The units shuld be ergs / s / Hz / cm^2 / hplanck </p>
+<p>The units shuld be ergs / s / Hz / cm^2 </p>
 
 <p>Implemented in <a class="el" href="class_source_b_l_r_sph2.html#a383aaa68add7b1193d624b9d88576db1">SourceBLRSph2</a>, <a class="el" href="class_source_b_l_r_sph1.html#a671b96b2650fb7c300462495adea8b99">SourceBLRSph1</a>, <a class="el" href="class_source_b_l_r_disk.html#aebc3b7fa42d44dc5362bf58a2707edbe">SourceBLRDisk</a>, <a class="el" href="class_source_point.html#a7be2be24409b4488b326fb3adf021dac">SourcePoint</a>, <a class="el" href="class_source_uniform.html#aa22f9134afb8d19e6d1ad7b57630ffe9">SourceUniform</a>, <a class="el" href="class_source_shapelets.html#afe80c365e550701f09cd827c8b291433">SourceShapelets</a>, <a class="el" href="class_source_pixelled.html#a5166077c4140daf9287c92fb09429164">SourcePixelled</a>, <a class="el" href="class_source_overzier_plus.html#aebbc4d39449422a61635b6afc18531f1">SourceOverzierPlus</a>, <a class="el" href="class_source_multi_shapelets.html#a8e170c4b250e94d00aaec67f90847af6">SourceMultiShapelets</a>, <a class="el" href="class_source_sersic.html#aaae076ff76f3a5588ccc3b1b2f215123">SourceSersic</a>, <a class="el" href="class_source_multi_ana_galaxy.html#afd8eb720a8b9a5d2d4b475af621ce957">SourceMultiAnaGalaxy</a>, and <a class="el" href="class_source_overzier.html#a3ab6be6e44d689db4f56ad3d20836337">SourceOverzier</a>.</p>
 
@@ -374,7 +399,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><b>sb_limit</b></td><
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 28 2022 15:17:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

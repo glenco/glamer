@@ -11,7 +11,8 @@ Structure to contain both source and image trees.
 
 
 
-Collaboration diagram for Grid\+:\nopagebreak
+Collaboration diagram for Grid\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -28,26 +29,26 @@ Collaboration diagram for Grid\+:\nopagebreak
 \mbox{\Hypertarget{struct_grid_a3661d0a7f998caaaf8627d7a67072116}\label{struct_grid_a3661d0a7f998caaaf8627d7a67072116}} 
 \mbox{\hyperlink{struct_grid_a3661d0a7f998caaaf8627d7a67072116}{$\sim$\+Grid}} ()
 \begin{DoxyCompactList}\small\item\em Destructor for a \mbox{\hyperlink{struct_grid}{Grid}}. Frees all memory. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_aa24da72593941193758c4a98ee860b19}{Re\+Initialize\+Grid}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
-\begin{DoxyCompactList}\small\item\em Reinitializes the grid so that it is back to the original coarse grid, but if the lens has changed the source positions will be updated. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a0893daf7e7db43564182f7847e8ee73e}{Re\+Shoot}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
-\begin{DoxyCompactList}\small\item\em Reshoot the rays with the same image postions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}\label{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}} 
+\mbox{\hyperlink{struct_grid}{Grid}} \mbox{\hyperlink{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}{Re\+Initialize}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
+\begin{DoxyCompactList}\small\item\em Returns a new grid that has not been refined but has the same intial image grid, but calculated with a new lens. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}{zoom}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, double $\ast$center, double scale, \mbox{\hyperlink{struct_branch}{Branch}} $\ast$top=N\+U\+LL)
 \begin{DoxyCompactList}\small\item\em Test if point is in a region of uniform magnification using the kappa and gamma calculated from the rayshooter. \end{DoxyCompactList}\item 
-unsigned long \mbox{\hyperlink{struct_grid_ae11e8ae40a50d5f47f75920509466767}{Prune\+Trees}} (double resolution, bool use\+SB, double fluxlimit)
-\begin{DoxyCompactList}\small\item\em T\+H\+IS D\+O\+ES N\+OT W\+O\+RK Y\+E\+T!!! \end{DoxyCompactList}\item 
-unsigned long \mbox{\hyperlink{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}{Prune\+Points\+Outside}} (double resolution, double $\ast$y, double r\+\_\+in, double r\+\_\+out)
-\begin{DoxyCompactList}\small\item\em Prune off points that are below a resolution and in an annulus on the source plane. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{struct_grid_aae2b3f9fe8cc6a464852e3441f22d8a9}{Refresh\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
-\begin{DoxyCompactList}\small\item\em Recalculate surface brightness at every point without changing the positions of the grid or any lens properties. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Reshoot the rays with the same image postions. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{struct_grid_acd3c8aa66053c2a4ef071f877c0ff214}{Add\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
 \begin{DoxyCompactList}\small\item\em Recalculate surface brightness just like Grid\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. ~\newline
  \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{struct_grid_a76402d3ee2fe5127cc42990ced7cb967}{mark\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source\+\_\+max, Pos\+Type luminosity, bool verbose=false)
-\item 
+double \mbox{\hyperlink{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}{mark\+\_\+closest\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source\+\_\+max, Pos\+Type luminosity, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center and then markes each surface brightness. Only one pixel per image gets flux. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}{find\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source, Pos\+Type z\+\_\+source, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&images, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center of the source. Only one pixel per image gets flux. Points are not marked. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_a25db542a5491a1b59f3c36278b830407}\label{struct_grid_a25db542a5491a1b59f3c36278b830407}} 
 double \mbox{\hyperlink{struct_grid_a25db542a5491a1b59f3c36278b830407}{Clear\+Surface\+Brightnesses}} ()
 \begin{DoxyCompactList}\small\item\em Reset the surface brightness and in\+\_\+image flag in every point on image and source planes to zero (false) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_grid_adc141a71ff2f072060af41ab458c98a1}\label{struct_grid_adc141a71ff2f072060af41ab458c98a1}} 
+double {\bfseries refine\+\_\+on\+\_\+surfacebrightness} (\mbox{\hyperlink{class_lens}{Lens}} \&lens, \mbox{\hyperlink{class_source}{Source}} \&source)
+\item 
 unsigned long \mbox{\hyperlink{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}{get\+Number\+Of\+Points}} () const
 \begin{DoxyCompactList}\small\item\em Returns number of points on image plane. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_a27fc09f6be7248237f1edea5830bab43}\label{struct_grid_a27fc09f6be7248237f1edea5830bab43}} 
@@ -94,7 +95,7 @@ void \mbox{\hyperlink{struct_grid_a797067dc0d3104916e78b36f6d4d0dd6}{Map\+Surfac
 \begin{DoxyCompactList}\small\item\em make image of surface brightness \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_ad98811bdf4d3b3baded53966291654e0}\label{struct_grid_ad98811bdf4d3b3baded53966291654e0}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_ad98811bdf4d3b3baded53966291654e0}{Map\+Surface\+Brightness}} (double resolution)
-\begin{DoxyCompactList}\small\item\em map a map of the whole gridded area with given resolution \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em make a map of the whole gridded area with given resolution \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_a6ca7e1b7dd57ce1b051b84e4c542477d}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
 \begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_a063530b0b7c7e5ffe1b85432fcad1498}{write\+Pixel\+Map\+Uniform}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
@@ -103,20 +104,28 @@ void \mbox{\hyperlink{struct_grid_aa8dd246a0f9e9c1f606d425989e742ac}{write\+Fits
 \begin{DoxyCompactList}\small\item\em Output a fits map of the without distribution the pixels. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}{find\+\_\+images}} (Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, int \&Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long \&Nimagepoints)
 \begin{DoxyCompactList}\small\item\em Finds images for a given source position and size. It seporates images of different pairities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_grid_a08fbb68b8796b638083812ca5f46d030}{map\+\_\+images}} (\mbox{\hyperlink{class_lens}{Lens}} $\ast$lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, Pos\+Type xmax, Pos\+Type xmin, Pos\+Type initial\+\_\+size, Exit\+Criterion criterion, bool Find\+Center, bool divide\+\_\+images)
+\begin{DoxyCompactList}\small\item\em Find images and refine them based on their surface brightness distribution. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{struct_grid_a292378167185b8eb18245060b21a13c6}\label{struct_grid_a292378167185b8eb18245060b21a13c6}} 
 {\bfseries Grid} (\mbox{\hyperlink{struct_grid}{Grid}} \&\&grid)
+\item 
+\mbox{\Hypertarget{struct_grid_a4507e0ed7ada07245f8252d462a4a5fb}\label{struct_grid_a4507e0ed7ada07245f8252d462a4a5fb}} 
+\mbox{\hyperlink{struct_grid}{Grid}} {\bfseries operator=} (\mbox{\hyperlink{struct_grid}{Grid}} \&grid)=delete
+\item 
+\mbox{\Hypertarget{struct_grid_a8f0bd8ddfe96ce77d598ef8cdf10ab69}\label{struct_grid_a8f0bd8ddfe96ce77d598ef8cdf10ab69}} 
+{\bfseries Grid} (\mbox{\hyperlink{struct_grid}{Grid}} \&grid)=delete
 \item 
 \mbox{\Hypertarget{struct_grid_a225f3c122c472daa49a8686005325c86}\label{struct_grid_a225f3c122c472daa49a8686005325c86}} 
 \mbox{\hyperlink{struct_grid}{Grid}} \& {\bfseries operator=} (\mbox{\hyperlink{struct_grid}{Grid}} \&\&grid)
 \item 
-\mbox{\Hypertarget{struct_grid_ae31b9263380798f393f967f2d087a7da}\label{struct_grid_ae31b9263380798f393f967f2d087a7da}} 
-Pos\+Type \mbox{\hyperlink{struct_grid_ae31b9263380798f393f967f2d087a7da}{magnification}} () const
+\mbox{\Hypertarget{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}\label{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}} 
+Pos\+Type \mbox{\hyperlink{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}{magnification}} (double sblimit=-\/1.\+0e12) const
 \begin{DoxyCompactList}\small\item\em flux weighted local magnification that does not take multiple imaging into effect \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a82dbe23796c30a73ffa72df0948a9f70}\label{struct_grid_a82dbe23796c30a73ffa72df0948a9f70}} 
-Pos\+Type {\bfseries Unlensed\+Flux} () const
+\mbox{\Hypertarget{struct_grid_aa331fd4aedeb883a3c39088d5479ce88}\label{struct_grid_aa331fd4aedeb883a3c39088d5479ce88}} 
+Pos\+Type {\bfseries Unlensed\+Flux} (double sblimit=-\/1.\+0e12) const
 \item 
-\mbox{\Hypertarget{struct_grid_af0962ac5a92a9cb07f9e70a31a32bc53}\label{struct_grid_af0962ac5a92a9cb07f9e70a31a32bc53}} 
-Pos\+Type {\bfseries Lensed\+Flux} () const
+\mbox{\Hypertarget{struct_grid_a116a7c25be81428653ae2cf8ae63876c}\label{struct_grid_a116a7c25be81428653ae2cf8ae63876c}} 
+Pos\+Type {\bfseries Lensed\+Flux} (double sblimit=-\/1.\+0e12) const
 \item 
 \mbox{\Hypertarget{struct_grid_aedfddf45465203922ce4ac592da07bb0}\label{struct_grid_aedfddf45465203922ce4ac592da07bb0}} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{struct_grid_aedfddf45465203922ce4ac592da07bb0}{centroid}} () const
@@ -196,7 +205,7 @@ Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{s
 Recalculate surface brightness just like Grid\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. ~\newline
  
 
-returns the sum of the surface brightnesses from the new source \mbox{\Hypertarget{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}\label{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}} 
+returns the total flux from new source \mbox{\Hypertarget{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}\label{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}} 
 \index{Grid@{Grid}!find\_images@{find\_images}}
 \index{find\_images@{find\_images}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}}
@@ -212,7 +221,28 @@ image points are put into imageinfo\mbox{[}\mbox{]}.imagekist imageinfo\mbox{[}\
 
 side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0
 
-$<${\ttfamily } $>$ \mbox{\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}\label{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}} 
+$<${\ttfamily } $>$ \mbox{\Hypertarget{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}\label{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}} 
+\index{Grid@{Grid}!find\_point\_source\_images@{find\_point\_source\_images}}
+\index{find\_point\_source\_images@{find\_point\_source\_images}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{find\_point\_source\_images()}{find\_point\_source\_images()}}
+{\footnotesize\ttfamily void Grid\+::find\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{Pos\+Type}]{z\+\_\+source,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&}]{images,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center of the source. Only one pixel per image gets flux. Points are not marked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+source} & angular position of source, \\
+\hline
+{\em r\+\_\+source} & points outside this radius on the source plane will not be considered as in the image \\
+\hline
+{\em z\+\_\+source} & redhsift of source \\
+\hline
+{\em images} & returned image rays \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}\label{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}} 
 \index{Grid@{Grid}!getNumberOfPoints@{getNumberOfPoints}}
 \index{getNumberOfPoints@{getNumberOfPoints}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{getNumberOfPoints()}{getNumberOfPoints()}}
@@ -222,59 +252,35 @@ $<${\ttfamily } $>$ \mbox{\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca2
 
 Returns number of points on image plane. 
 
-Finding \mbox{\Hypertarget{struct_grid_a76402d3ee2fe5127cc42990ced7cb967}\label{struct_grid_a76402d3ee2fe5127cc42990ced7cb967}} 
-\index{Grid@{Grid}!mark\_point\_source\_images@{mark\_point\_source\_images}}
-\index{mark\_point\_source\_images@{mark\_point\_source\_images}!Grid@{Grid}}
-\doxysubsubsection{\texorpdfstring{mark\_point\_source\_images()}{mark\_point\_source\_images()}}
-{\footnotesize\ttfamily double Grid\+::mark\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{Pos\+Type}]{luminosity,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+Finding \mbox{\Hypertarget{struct_grid_a08fbb68b8796b638083812ca5f46d030}\label{struct_grid_a08fbb68b8796b638083812ca5f46d030}} 
+\index{Grid@{Grid}!map\_images@{map\_images}}
+\index{map\_images@{map\_images}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{map\_images()}{map\_images()}}
+{\footnotesize\ttfamily void Grid\+::map\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens}} $\ast$}]{lens,  }\item[{\mbox{\hyperlink{class_source}{Source}} $\ast$}]{source,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{Pos\+Type}]{xmax,  }\item[{Pos\+Type}]{xmin,  }\item[{Pos\+Type}]{initial\+\_\+size,  }\item[{Exit\+Criterion}]{criterion,  }\item[{bool}]{Find\+Center,  }\item[{bool}]{divide\+\_\+images }\end{DoxyParamCaption})}
 
-\textbackslash{}breaf This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center and then markes each surface brightness. Only one pixel per image gets flux. 
+
+
+Find images and refine them based on their surface brightness distribution. 
+
+Finding Uses \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()}} to initially find and refine images and then uses a surface brightness based criterion to refine the most important parts of the lens.
+
+map\+\_\+images is intended for mapping images of sources more complicated than simple circles.
+
+No \mbox{\hyperlink{struct_grid}{Grid}} refinement is done. \mbox{\Hypertarget{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}\label{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}} 
+\index{Grid@{Grid}!mark\_closest\_point\_source\_images@{mark\_closest\_point\_source\_images}}
+\index{mark\_closest\_point\_source\_images@{mark\_closest\_point\_source\_images}!Grid@{Grid}}
+\doxysubsubsection{\texorpdfstring{mark\_closest\_point\_source\_images()}{mark\_closest\_point\_source\_images()}}
+{\footnotesize\ttfamily double Grid\+::mark\+\_\+closest\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source\+\_\+max,  }\item[{Pos\+Type}]{luminosity,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center and then markes each surface brightness. Only one pixel per image gets flux. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em y\+\_\+source} & angular position of source, \\
 \hline
-{\em r\+\_\+source} & points outside this radius on the source plane will not be considered as in the image \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}\label{struct_grid_ac8142d1e6206e19c8f83d21aee7fd03c}} 
-\index{Grid@{Grid}!PrunePointsOutside@{PrunePointsOutside}}
-\index{PrunePointsOutside@{PrunePointsOutside}!Grid@{Grid}}
-\doxysubsubsection{\texorpdfstring{PrunePointsOutside()}{PrunePointsOutside()}}
-{\footnotesize\ttfamily unsigned long Grid\+::\+Prune\+Points\+Outside (\begin{DoxyParamCaption}\item[{double}]{resolution,  }\item[{double $\ast$}]{y,  }\item[{double}]{r\+\_\+in,  }\item[{double}]{r\+\_\+out }\end{DoxyParamCaption})}
-
-
-
-Prune off points that are below a resolution and in an annulus on the source plane. 
-
-Used to keep the number of grid points limited while telescoping.
-
-The points that are removed have cells that do not overlap the inner circle and centers that are within the outer circle. Thus some points will be outside of the inner circle and some cells that are not removed may intersect with the outer circle. 
-\begin{DoxyParams}{Parameters}
-{\em resolution} & Maximum size of a cell to be removed. \\
-\hline
-{\em y} & Center on source plane \\
-\hline
-{\em r\+\_\+in} & Inner radius of annulus on the source plane \\
-\hline
-{\em r\+\_\+out} & Outer radius of annulus on the source plane \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_ae11e8ae40a50d5f47f75920509466767}\label{struct_grid_ae11e8ae40a50d5f47f75920509466767}} 
-\index{Grid@{Grid}!PruneTrees@{PruneTrees}}
-\index{PruneTrees@{PruneTrees}!Grid@{Grid}}
-\doxysubsubsection{\texorpdfstring{PruneTrees()}{PruneTrees()}}
-{\footnotesize\ttfamily unsigned long Grid\+::\+Prune\+Trees (\begin{DoxyParamCaption}\item[{double}]{resolution,  }\item[{bool}]{use\+SB,  }\item[{double}]{fluxlimit }\end{DoxyParamCaption})}
-
-
-
-T\+H\+IS D\+O\+ES N\+OT W\+O\+RK Y\+E\+T!!! 
-
-Reduces the size of the tree by removing points and branches that are no longer needed. 
-\begin{DoxyParams}{Parameters}
-{\em resolution} & Maximum size of a cell to be removed. \\
-\hline
-{\em use\+SB} & If true it will not remove any point that has a flux above fluxlimit. \\
-\hline
-{\em fluxlimit} & flux limit threshold \\
+{\em r\+\_\+source\+\_\+max} & points outside this radius on the source plane will not be considered as in the image \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{struct_grid_aef2864fc3791c44eed90c2e980777884}\label{struct_grid_aef2864fc3791c44eed90c2e980777884}} 
@@ -301,31 +307,39 @@ i\+\_\+tree current is left in one of the new subcells. \mbox{\Hypertarget{struc
 
 
 
-Recalculate surface brightness at every point without changing the positions of the grid or any lens properties. 
-
-Finding Recalculate the surface brightness at all points on the grid. This is useful when changing the source model while preserving changes in the grid. Both i\+\_\+tree and s\+\_\+tree are both changed although only s\+\_\+tree shows up here.
-
-returns total flux \mbox{\Hypertarget{struct_grid_aa24da72593941193758c4a98ee860b19}\label{struct_grid_aa24da72593941193758c4a98ee860b19}} 
-\index{Grid@{Grid}!ReInitializeGrid@{ReInitializeGrid}}
-\index{ReInitializeGrid@{ReInitializeGrid}!Grid@{Grid}}
-\doxysubsubsection{\texorpdfstring{ReInitializeGrid()}{ReInitializeGrid()}}
-{\footnotesize\ttfamily void Grid\+::\+Re\+Initialize\+Grid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens }\end{DoxyParamCaption})}
-
-
-
-Reinitializes the grid so that it is back to the original coarse grid, but if the lens has changed the source positions will be updated. 
-
-Finding \mbox{\Hypertarget{struct_grid_a0893daf7e7db43564182f7847e8ee73e}\label{struct_grid_a0893daf7e7db43564182f7847e8ee73e}} 
-\index{Grid@{Grid}!ReShoot@{ReShoot}}
-\index{ReShoot@{ReShoot}!Grid@{Grid}}
-\doxysubsubsection{\texorpdfstring{ReShoot()}{ReShoot()}}
-{\footnotesize\ttfamily void Grid\+::\+Re\+Shoot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens }\end{DoxyParamCaption})}
-
-
-
 Reshoot the rays with the same image postions. 
 
-Finding The source positions and source tree are updated to the current lens model. The advantage over \mbox{\hyperlink{struct_grid_aa24da72593941193758c4a98ee860b19}{Grid\+::\+Re\+Initialize\+Grid()}} is that the image plane refinements are preserved. \mbox{\Hypertarget{struct_grid_a8815d0d3b3bec110d580340ff40621bf}\label{struct_grid_a8815d0d3b3bec110d580340ff40621bf}} 
+Finding The source positions and source tree are updated to the current lens model. The advantage over Grid\+::\+Re\+Initialize\+Grid() is that the image plane refinements are preserved.
+
+void Grid\+::\+Re\+Shoot(\+Lens\+Hndl lens)\{
+
+Pos\+Type range,center\mbox{[}2\mbox{]};
+
+range = i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]}; center\mbox{[}0\mbox{]} = (i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} + i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]})/2; center\mbox{[}1\mbox{]} = (i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}1\mbox{]} + i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}1\mbox{]})/2;
+
+\mbox{\hyperlink{struct_grid}{Grid}} newgrid(lens,\+Ngrid\+\_\+init,center,range\+X,range\+Y); \begin{DoxyVerb}         Grid(LensHndl lens ,unsigned long Nx ,const PosType center[2] ,PosType rangeX ,PosType rangeY);
+\end{DoxyVerb}
+ \mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+points,$\ast$s\+\_\+points;
+
+unsigned long i;
+
+clear source tree delete s\+\_\+tree; s\+\_\+points = New\+Point\+Array(i\+\_\+tree-\/$>$pointlist.\+size()); s\+\_\+points = point\+\_\+factory(i\+\_\+tree-\/$>$pointlist.\+size());
+
+build new initial grid Point\+List\+::iterator i\+\_\+tree\+\_\+pointlist\+\_\+it; i\+\_\+tree\+\_\+pointlist\+\_\+it.\+current = i\+\_\+tree-\/$>$pointlist.\+Top(); size\+\_\+t k; for(i=0,k=0;i$<$i\+\_\+tree-\/$>$pointlist.\+size();++i)\{ i\+\_\+points = $\ast$i\+\_\+tree\+\_\+pointlist\+\_\+it; if(i\+\_\+points-\/$>$head $>$ 0)\{
+
+link source and image points for(size\+\_\+t j=0;j$<$i\+\_\+points-\/$>$head;++j,++k)\{ i\+\_\+points\mbox{[}j\mbox{]}.image = \&s\+\_\+points\mbox{[}k\mbox{]}; s\+\_\+points\mbox{[}k\mbox{]}.image = \&i\+\_\+points\mbox{[}j\mbox{]}; s\+\_\+points\mbox{[}k\mbox{]}.id = i\+\_\+points\mbox{[}j\mbox{]}.id; s\+\_\+points\mbox{[}k\mbox{]}.gridsize = i\+\_\+points\mbox{[}j\mbox{]}.gridsize; \};
+
+\{ reshoot the rays std\+::lock\+\_\+guard$<$std\+::mutex$>$ hold(grid\+\_\+mutex); lens-\/$>$rayshooter\+Internal(i\+\_\+points-\/$>$head,i\+\_\+points); \} \}
+
+--i\+\_\+tree\+\_\+pointlist\+\_\+it; \}
+
+s\+\_\+tree = new \mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}}(s\+\_\+points,s\+\_\+points-\/$>$head,1,(i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]})/10 ); return; \}
+
+Recalculate surface brightness at every point without changing the positions of the grid or any lens properties.
+
+Whatever is in the image is replaced with the one input source. Recalculate the surface brightness at all points on the grid. This is useful when changing the source model while preserving changes in the grid. Both i\+\_\+tree and s\+\_\+tree are both changed although only s\+\_\+tree shows up here.
+
+returns total flux \mbox{\Hypertarget{struct_grid_a8815d0d3b3bec110d580340ff40621bf}\label{struct_grid_a8815d0d3b3bec110d580340ff40621bf}} 
 \index{Grid@{Grid}!writeFits@{writeFits}}
 \index{writeFits@{writeFits}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writeFits()}{writeFits()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
@@ -580,4 +594,4 @@ The documentation for this struct was generated from the following files\+:\begi
 S\+Lsim\+Lib/include/grid\+\_\+maintenance.\+h\item 
 S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/grid\+\_\+maintenance.\+cpp\item 
 S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/image\+\_\+finder.\+cpp\item 
-S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/tree\+\_\+maintenance.\+cpp\end{DoxyCompactItemize}
+S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/map\+\_\+images.\+cpp\end{DoxyCompactItemize}

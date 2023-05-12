@@ -16,7 +16,7 @@ Inherits Source\+Colored.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_source_point_a0a918828f716205bf0bc233f84e87bc5}{Source\+Point}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} position, Pos\+Type z, Pos\+Type magnitude, Pos\+Type radius\+\_\+in\+\_\+radians)
+\mbox{\hyperlink{class_source_point_a8f1cacd51ae207c159805b5df11f4391}{Source\+Point}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} position, Pos\+Type z, Pos\+Type magnitude, Pos\+Type radius\+\_\+in\+\_\+radians, double S\+Blimit, Pos\+Type zero\+\_\+point)
 \item 
 Pos\+Type \mbox{\hyperlink{class_source_point_a7be2be24409b4488b326fb3adf021dac}{Surface\+Brightness}} (Pos\+Type $\ast$y)
 \item 
@@ -35,11 +35,11 @@ void {\bfseries rotate} (Pos\+Type t)
 A uniform surface brightness circular source. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_source_point_a0a918828f716205bf0bc233f84e87bc5}\label{class_source_point_a0a918828f716205bf0bc233f84e87bc5}} 
+\mbox{\Hypertarget{class_source_point_a8f1cacd51ae207c159805b5df11f4391}\label{class_source_point_a8f1cacd51ae207c159805b5df11f4391}} 
 \index{SourcePoint@{SourcePoint}!SourcePoint@{SourcePoint}}
 \index{SourcePoint@{SourcePoint}!SourcePoint@{SourcePoint}}
 \doxysubsubsection{\texorpdfstring{SourcePoint()}{SourcePoint()}}
-{\footnotesize\ttfamily Source\+Point\+::\+Source\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{position,  }\item[{Pos\+Type}]{z,  }\item[{Pos\+Type}]{magnitude,  }\item[{Pos\+Type}]{radius\+\_\+in\+\_\+radians }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Source\+Point\+::\+Source\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{position,  }\item[{Pos\+Type}]{z,  }\item[{Pos\+Type}]{magnitude,  }\item[{Pos\+Type}]{radius\+\_\+in\+\_\+radians,  }\item[{double}]{S\+Blimit,  }\item[{Pos\+Type}]{zero\+\_\+point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Parameters}
@@ -50,6 +50,10 @@ A uniform surface brightness circular source.
 {\em magnitude} & unlensed brightness \\
 \hline
 {\em radius\+\_\+in\+\_\+radians} & radius of source in radians \\
+\hline
+{\em S\+Blimit} & minimum surface brightness limit \\
+\hline
+{\em zero\+\_\+point} & radius of source in radians \\
 \hline
 \end{DoxyParams}
 
@@ -63,7 +67,7 @@ A uniform surface brightness circular source.
 
 Surface brightness of source in grid coordinates not source centered coordinates.
 
-The units shuld be ergs / s / Hz / cm$^\wedge$2 / hplanck 
+The units shuld be ergs / s / Hz / cm$^\wedge$2 
 
 Implements \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Source}}.
 

@@ -128,8 +128,8 @@ Pos\+Type \mbox{\hyperlink{namespace_utilities_a0855636bdb71f103a4412555b9711e98
 template$<$$>$ bool {\bfseries inhull$<$ Point $\ast$ $>$} (Pos\+Type x\mbox{[}$\,$\mbox{]}, const std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $\ast$ $>$ \&H)
 \item 
 \mbox{\Hypertarget{namespace_utilities_a85c8c08716d4ebdceb0b8c31d543773a}\label{namespace_utilities_a85c8c08716d4ebdceb0b8c31d543773a}} 
-template$<$$>$ bool {\bfseries inhull$<$ R\+A\+Y $>$} (Pos\+Type x\mbox{[}$\,$\mbox{]}, const std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&H)
-\item 
+template$<$$>$ bool \mbox{\hyperlink{namespace_utilities_a85c8c08716d4ebdceb0b8c31d543773a}{inhull$<$ R\+A\+Y $>$}} (Pos\+Type x\mbox{[}$\,$\mbox{]}, const std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&H)
+\begin{DoxyCompactList}\small\item\em finds in x is within the curve discribed by the H\mbox{[}\mbox{]}.x points ie image points \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespace_utilities_a5f5cdf470897a1c0fa3f63c06ce8a1ce}\label{namespace_utilities_a5f5cdf470897a1c0fa3f63c06ce8a1ce}} 
 template$<$$>$ bool {\bfseries inhull$<$ Pos\+Type $\ast$ $>$} (Pos\+Type x\mbox{[}$\,$\mbox{]}, const std\+::vector$<$ Pos\+Type $\ast$ $>$ \&H)
 \item 
@@ -205,8 +205,14 @@ std\+::vector$<$ double $\ast$ $>$ \mbox{\hyperlink{namespace_utilities_afadfff4
 \begin{DoxyCompactList}\small\item\em Returns a vector of points on the convcave hull in counter-\/clockwise order. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_utilities_ac71ef3b7c0383a2ca61eb5d479d8490d}{contour\+\_\+ellipse}} (std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&P, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center, unsigned long Npoints, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&C, double $\ast$ellipticity, double $\ast$ellipse\+\_\+area)
 \begin{DoxyCompactList}\small\item\em Returns axis ratio, area and points of an ellipse engulfed by some contour (e.\+g. a contour of same convergence calculated with find\+\_\+contour). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_ab6187b4dcc9357787a98f62c63b5b716}\label{namespace_utilities_ab6187b4dcc9357787a98f62c63b5b716}} 
+void {\bfseries contour\+\_\+ellipse} (std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&P, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center, unsigned long Npoints, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&C, double $\ast$ellipticity, double $\ast$ellipse\+\_\+area)
+\item 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{namespace_utilities_a512d73667d76a5a58e44042a4a73c974}{contour\+\_\+center}} (std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&P, unsigned long Npoints)
 \begin{DoxyCompactList}\small\item\em Returns the center of a contour defined as the midpoint between the two points in the contour that are farthest apart from one another. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_a3c1adbf25f771564249b51be04a10b09}\label{namespace_utilities_a3c1adbf25f771564249b51be04a10b09}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries contour\+\_\+center} (std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&P, unsigned long Npoints)
+\item 
 \mbox{\Hypertarget{namespace_utilities_aa727547d253bdbd88ac47cae3f7c65c4}\label{namespace_utilities_aa727547d253bdbd88ac47cae3f7c65c4}} 
 long {\bfseries Index\+From\+Position} (Pos\+Type $\ast$x, long Npixels, Pos\+Type \mbox{\hyperlink{namespace_utilities_ae60664d77331b21da7b83e6e0cc0c75c}{range}}, const Pos\+Type $\ast$center)
 \item 
@@ -245,6 +251,8 @@ int \mbox{\hyperlink{namespace_utilities_ac42846299720c47decf597f70d448464}{wind
 int \mbox{\hyperlink{namespace_utilities_ad964e6781b61f0d76240eda24a4f9ffa}{windings}} (Pos\+Type $\ast$x, \mbox{\hyperlink{struct_point}{Point}} $\ast$$\ast$points, unsigned long Npoints, Pos\+Type $\ast$area, short image=0)
 \item 
 int \mbox{\hyperlink{namespace_utilities_a64cd4e52a3b543449c6ba0330f13f01e}{windings}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&point, Pos\+Type $\ast$area)
+\item 
+int \mbox{\hyperlink{namespace_utilities_afc8d337b886b466535a29068af0b4994}{windings}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&point, Pos\+Type $\ast$area)
 \item 
 int \mbox{\hyperlink{namespace_utilities_aa7db30634cbf18e1652cd2a9ec7f95aa}{windings}} (Pos\+Type $\ast$x, Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$kist, Pos\+Type $\ast$area, short image=0)
 \item 
@@ -787,7 +795,7 @@ Out of bounds points return 0. map is a i dimensional array representing a 2 dim
 bilinear interpolation\mbox{\Hypertarget{namespace_utilities_a64cd4e52a3b543449c6ba0330f13f01e}\label{namespace_utilities_a64cd4e52a3b543449c6ba0330f13f01e}} 
 \index{Utilities@{Utilities}!windings@{windings}}
 \index{windings@{windings}!Utilities@{Utilities}}
-\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{point,  }\item[{Pos\+Type $\ast$}]{area }\end{DoxyParamCaption})}
 
 
@@ -799,10 +807,25 @@ bilinear interpolation\mbox{\Hypertarget{namespace_utilities_a64cd4e52a3b543449c
 {\em area} & returns absolute the area within the curve with oriented border \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{namespace_utilities_afc8d337b886b466535a29068af0b4994}\label{namespace_utilities_afc8d337b886b466535a29068af0b4994}} 
+\index{Utilities@{Utilities}!windings@{windings}}
+\index{windings@{windings}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&}]{point,  }\item[{Pos\+Type $\ast$}]{area }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \mbox{\hyperlink{struct_point}{Point}} for which the winding number is calculated \\
+\hline
+{\em point} & The points on the border. Uses image plane points \\
+\hline
+{\em area} & returns absolute the area within the curve with oriented border \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{namespace_utilities_aa7db30634cbf18e1652cd2a9ec7f95aa}\label{namespace_utilities_aa7db30634cbf18e1652cd2a9ec7f95aa}} 
 \index{Utilities@{Utilities}!windings@{windings}}
 \index{windings@{windings}!Utilities@{Utilities}}
-\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{x,  }\item[{Kist$<$ \mbox{\hyperlink{struct_point}{Point}} $>$ $\ast$}]{kist,  }\item[{Pos\+Type $\ast$}]{area,  }\item[{short}]{image = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
@@ -819,7 +842,7 @@ bilinear interpolation\mbox{\Hypertarget{namespace_utilities_a64cd4e52a3b543449c
 \mbox{\Hypertarget{namespace_utilities_ad964e6781b61f0d76240eda24a4f9ffa}\label{namespace_utilities_ad964e6781b61f0d76240eda24a4f9ffa}} 
 \index{Utilities@{Utilities}!windings@{windings}}
 \index{windings@{windings}!Utilities@{Utilities}}
-\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
 {\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{x,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$$\ast$}]{points,  }\item[{unsigned long}]{Npoints,  }\item[{Pos\+Type $\ast$}]{area,  }\item[{short}]{image = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
@@ -838,7 +861,7 @@ bilinear interpolation\mbox{\Hypertarget{namespace_utilities_a64cd4e52a3b543449c
 \mbox{\Hypertarget{namespace_utilities_ac42846299720c47decf597f70d448464}\label{namespace_utilities_ac42846299720c47decf597f70d448464}} 
 \index{Utilities@{Utilities}!windings@{windings}}
 \index{windings@{windings}!Utilities@{Utilities}}
-\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+\doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
 {\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{x,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{points,  }\item[{unsigned long}]{Npoints,  }\item[{Pos\+Type $\ast$}]{area,  }\item[{short}]{image }\end{DoxyParamCaption})}
 
 
