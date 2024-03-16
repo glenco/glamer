@@ -729,8 +729,8 @@ If check=true it will only free arrays where all the points have NULL leafs.
 <p>while( (headbranch-&gt;child1 != NULL) || (headbranch-&gt;child2 != NULL) ){</p>
 <p>assert(boxinbox(*i_tree_current,headbranch)); if(i_tree_current.atLeaf()){ assert(i_tree-&gt;current-&gt;points-&gt;image-&gt;leaf); s_tree-&gt;current = i_tree-&gt;current-&gt;points-&gt;image-&gt;leaf; // set s_tree to source of current image cell</p>
 <p>branch = (*i_tree_current)-&gt;prev; i = branch-&gt;npoints;</p>
-<p>if((*i_tree_current) != headbranch) i_tree-&gt;RemoveLeafFromTree(i_tree_current,&amp;Ntmp); </p><pre class="fragment">                test line  **************************
-</pre><p> assert(*i_tree_current == branch); assert(i == (*i_tree_current)-&gt;npoints); </p><pre class="fragment">                test line  **************************
+<p>if((*i_tree_current) != headbranch) i_tree-&gt;RemoveLeafFromTree(i_tree_current,&amp;Ntmp); </p><pre class="fragment">                 test line  **************************
+</pre><p> assert(*i_tree_current == branch); assert(i == (*i_tree_current)-&gt;npoints); </p><pre class="fragment">                 test line  **************************
 </pre><p> assert((*i_tree_current)-&gt;points-&gt;next || (*i_tree_current)-&gt;points-&gt;prev);</p>
 <p>in a square leaf cell take out extra points that have come up from below</p>
 <p>if(i_tree_current.atLeaf() &amp;&amp; (*i_tree_current)-&gt;refined){ test line ************************** assert((*i_tree_current)-&gt;points-&gt;next || (*i_tree_current)-&gt;points-&gt;prev);</p>
@@ -740,7 +740,7 @@ If check=true it will only free arrays where all the points have NULL leafs.
   &lt; pow((*i_tree_pointlist_current)-&gt;gridsize/2,2) ){
 
   ++count1;
-</pre><p> keep this central point (*i_tree_pointlist_current)-&gt;gridsize *= 3; (*i_tree_pointlist_current)-&gt;image-&gt;gridsize = (*i_tree_pointlist_current)-&gt;gridsize; (*i_tree_current)-&gt;points = (*i_tree_pointlist_current); </p><pre class="fragment">                test line  **************************
+</pre><p> keep this central point (*i_tree_pointlist_current)-&gt;gridsize *= 3; (*i_tree_pointlist_current)-&gt;image-&gt;gridsize = (*i_tree_pointlist_current)-&gt;gridsize; (*i_tree_current)-&gt;points = (*i_tree_pointlist_current); </p><pre class="fragment">                 test line  **************************
 </pre><p> assert((*i_tree_current)-&gt;points-&gt;next || (*i_tree_current)-&gt;points-&gt;prev); assert((*i_tree_pointlist_current)-&gt;leaf == *i_tree_current); }else{</p>
 <p>++count; // count of total number of points removed ++count2;</p>
 <p>reduce the number of particles in all parent cells</p>
@@ -783,7 +783,7 @@ If check=true it will only free arrays where all the points have NULL leafs.
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

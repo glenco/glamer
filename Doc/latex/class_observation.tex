@@ -16,7 +16,7 @@ Inherits Obs.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_observation_a69a026d1fbd9aa9dcda07462405c4c13}{Observation}} (Telescope tel\+\_\+name, size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y)
+\mbox{\hyperlink{class_observation_af8238641e874a89a1e579dd6ae40491b}{Observation}} (Telescope tel\+\_\+name, double exposure\+\_\+time, int exposure\+\_\+num, size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, float oversample)
 \begin{DoxyCompactList}\small\item\em Creates an observation setup that mimics a known instrument. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_observation_ab99834678bfa2e4381818218a07b8e2d}{Observation}} (float diameter, float transmission, float exp\+\_\+time, int exp\+\_\+num, float back\+\_\+mag, float read\+\_\+out\+\_\+noise, size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, double pix\+\_\+size, float seeing=0.)
 \item 
@@ -44,6 +44,9 @@ float \mbox{\hyperlink{class_observation_af67cdb34b8ae50c22243ad3f7cfe3926}{get\
 \mbox{\Hypertarget{class_observation_af8fa0620fb804297e4db01f9da32e747}\label{class_observation_af8fa0620fb804297e4db01f9da32e747}} 
 float {\bfseries get\+Zeropoint} () const
 \item 
+\mbox{\Hypertarget{class_observation_a44244c829e396232835d2c9e7f7bc480}\label{class_observation_a44244c829e396232835d2c9e7f7bc480}} 
+void {\bfseries set\+Zeropoint} (double zpoint)
+\item 
 float \mbox{\hyperlink{class_observation_a1866e210a777eb8cadc9d33237f6df2f}{get\+Background\+Noise}} (float resolution, Unit\+Type unit=Unit\+Type\+::counts\+\_\+x\+\_\+sec) const
 \begin{DoxyCompactList}\small\item\em pixel size in radians \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_observation_a9355303af83acb36adf80e5427447c7b}\label{class_observation_a9355303af83acb36adf80e5427447c7b}} 
@@ -52,7 +55,7 @@ float {\bfseries get\+Background\+Noise} () const
 \mbox{\Hypertarget{class_observation_ab1e76ec7f9d1765cd183376d19c71119}\label{class_observation_ab1e76ec7f9d1765cd183376d19c71119}} 
 void \mbox{\hyperlink{class_observation_ab1e76ec7f9d1765cd183376d19c71119}{Add\+Noise}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&error\+\_\+map, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran, bool dummy)
 \begin{DoxyCompactList}\small\item\em Applies realistic noise (read-\/out + Poisson) on an image, returns noise map. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_observation_a8a016ecae1a0059cec10830aa4689612}{Convert}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map\+\_\+in, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map\+\_\+out, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&error\+\_\+map, bool psf, bool noise, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
+void \mbox{\hyperlink{class_observation_a7d26c25c7e1bc0838fa2d54aa29e0052}{Convert}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map\+\_\+in, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map\+\_\+out, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&error\+\_\+map, bool psf, bool noise, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran, bool cosmic=false)
 \begin{DoxyCompactList}\small\item\em Converts the input map to a realistic image. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_observation_a670be0f361abb519391ff0c30c907c1d}\label{class_observation_a670be0f361abb519391ff0c30c907c1d}} 
 void \mbox{\hyperlink{class_observation_a670be0f361abb519391ff0c30c907c1d}{set\+Exp\+Time}} (float time)
@@ -60,11 +63,14 @@ void \mbox{\hyperlink{class_observation_a670be0f361abb519391ff0c30c907c1d}{set\+
 \mbox{\Hypertarget{class_observation_a99fdbd23ab8d25e959cee5c215b464d2}\label{class_observation_a99fdbd23ab8d25e959cee5c215b464d2}} 
 void {\bfseries set\+Pixel\+Size} (float pixel\+\_\+size)
 \item 
-\mbox{\Hypertarget{class_observation_acecbbbe6aa9867a7c6be8c14638f320e}\label{class_observation_acecbbbe6aa9867a7c6be8c14638f320e}} 
-double {\bfseries mag\+\_\+to\+\_\+flux} (double m) const
+\mbox{\Hypertarget{class_observation_aa33b0cd169875e9ed9751dff97c63df7}\label{class_observation_aa33b0cd169875e9ed9751dff97c63df7}} 
+double {\bfseries mag\+\_\+to\+\_\+counts} (double m) const
 \item 
-\mbox{\Hypertarget{class_observation_a195926678b3eb6d7f89f11effdcdf5db}\label{class_observation_a195926678b3eb6d7f89f11effdcdf5db}} 
-double {\bfseries flux\+\_\+to\+\_\+mag} (double flux) const
+\mbox{\Hypertarget{class_observation_a76cd9dea1231a32f401ee53f7cf9ca44}\label{class_observation_a76cd9dea1231a32f401ee53f7cf9ca44}} 
+double {\bfseries counts\+\_\+to\+\_\+mag} (double flux) const
+\item 
+\mbox{\Hypertarget{class_observation_aa2bbb86a3941202abaff8d226664cddf}\label{class_observation_aa2bbb86a3941202abaff8d226664cddf}} 
+double {\bfseries zeropoint} () const
 \end{DoxyCompactItemize}
 
 
@@ -76,11 +82,11 @@ It translates pixel values in observed units (counts/sec), applies P\+SF and noi
 see \href{https://www.ucolick.org/~bolte/AY257/s_n.pdf}{\texttt{ https\+://www.\+ucolick.\+org/$\sim$bolte/\+A\+Y257/s\+\_\+n.\+pdf}} 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_observation_a69a026d1fbd9aa9dcda07462405c4c13}\label{class_observation_a69a026d1fbd9aa9dcda07462405c4c13}} 
+\mbox{\Hypertarget{class_observation_af8238641e874a89a1e579dd6ae40491b}\label{class_observation_af8238641e874a89a1e579dd6ae40491b}} 
 \index{Observation@{Observation}!Observation@{Observation}}
 \index{Observation@{Observation}!Observation@{Observation}}
 \doxysubsubsection{\texorpdfstring{Observation()}{Observation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
-{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{Telescope}]{tel\+\_\+name,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{Telescope}]{tel\+\_\+name,  }\item[{double}]{exposure\+\_\+time,  }\item[{int}]{exposure\+\_\+num,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y,  }\item[{float}]{oversample }\end{DoxyParamCaption})}
 
 
 
@@ -171,7 +177,7 @@ Creates a custom observation setup with parameters decided by the user.
 \index{Observation@{Observation}!Observation@{Observation}}
 \index{Observation@{Observation}!Observation@{Observation}}
 \doxysubsubsection{\texorpdfstring{Observation()}{Observation()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
-{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{float}]{zeropoint\+\_\+mag,  }\item[{float}]{exp\+\_\+time,  }\item[{int}]{exp\+\_\+num,  }\item[{float}]{back\+\_\+mag,  }\item[{float}]{read\+\_\+out\+\_\+noise,  }\item[{std\+::string}]{psf\+\_\+file,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y,  }\item[{double}]{pix\+\_\+size,  }\item[{float}]{oversample = {\ttfamily 1.} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily Observation\+::\+Observation (\begin{DoxyParamCaption}\item[{float}]{zeropoint\+\_\+mag,  }\item[{float}]{exp\+\_\+time,  }\item[{int}]{exp\+\_\+num,  }\item[{float}]{back\+\_\+mag,  }\item[{float}]{myread\+\_\+out\+\_\+noise,  }\item[{std\+::string}]{psf\+\_\+file,  }\item[{size\+\_\+t}]{Npix\+\_\+x,  }\item[{size\+\_\+t}]{Npix\+\_\+y,  }\item[{double}]{pix\+\_\+size,  }\item[{float}]{oversample = {\ttfamily 1.} }\end{DoxyParamCaption})}
 
 Creates a custom observation setup with parameters decided by the user. Allows for the use of a psf fits image.
 
@@ -195,11 +201,11 @@ Creates a custom observation setup with parameters decided by the user. Allows f
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_observation_a8a016ecae1a0059cec10830aa4689612}\label{class_observation_a8a016ecae1a0059cec10830aa4689612}} 
+\mbox{\Hypertarget{class_observation_a7d26c25c7e1bc0838fa2d54aa29e0052}\label{class_observation_a7d26c25c7e1bc0838fa2d54aa29e0052}} 
 \index{Observation@{Observation}!Convert@{Convert}}
 \index{Convert@{Convert}!Observation@{Observation}}
 \doxysubsubsection{\texorpdfstring{Convert()}{Convert()}}
-{\footnotesize\ttfamily void Observation\+::\+Convert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map\+\_\+in,  }\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map\+\_\+out,  }\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{error\+\_\+map,  }\item[{bool}]{psf,  }\item[{bool}]{noise,  }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Observation\+::\+Convert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map\+\_\+in,  }\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map\+\_\+out,  }\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{error\+\_\+map,  }\item[{bool}]{psf,  }\item[{bool}]{noise,  }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran,  }\item[{bool}]{cosmic = {\ttfamily false} }\end{DoxyParamCaption})}
 
 
 

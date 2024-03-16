@@ -103,11 +103,11 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="struct_m_o_k_amap.html#ae4aa8cbe0f88124b50d0beb5787d213b">   45</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="struct_m_o_k_amap.html#ae4aa8cbe0f88124b50d0beb5787d213b">omegam</a>,omegal,h,wq;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; <span class="keywordtype">double</span> inarcsec;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="struct_m_o_k_amap.html">MOKAmap</a>(std::string MOKA_input_file,<span class="keywordtype">bool</span> zeromean,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo){</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="struct_m_o_k_amap.html">MOKAmap</a>(std::string MOKA_input_file,<span class="keywordtype">bool</span> zeromean,<span class="keyword">const</span> COSMOLOGY &amp;cosmo){</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    read(MOKA_input_file,zeromean,cosmo);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> read(std::string MOKA_input_file,<span class="keywordtype">bool</span> zeromean,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> read(std::string MOKA_input_file,<span class="keywordtype">bool</span> zeromean,<span class="keyword">const</span> COSMOLOGY &amp;cosmo);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> write(std::string filename);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; <a class="code" href="struct_point__2d.html">Point_2d</a> center;</div>
@@ -241,7 +241,7 @@ $(function() {
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                  ,<a class="code" href="_input_params_8h.html#a2fb3f72f5f7c1fedb4f5200d29a06164">PixelMapType</a> maptype</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                  ,<span class="keywordtype">int</span> pixel_map_zeropad</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                  ,<span class="keywordtype">bool</span> my_zeromean</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                  ,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a>&amp; lenscosmo</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                  ,<span class="keyword">const</span> COSMOLOGY&amp; lenscosmo</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                  );</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  </div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="comment">//LensHaloMassMap(PixelMap &amp;map,double massconvertion,double zlens,double zsource,int pixel_map_zeropad,const COSMOLOGY&amp; lenscosmo);</span></div>
@@ -254,7 +254,7 @@ $(function() {
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                  ,<span class="keywordtype">double</span> redshift          </div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                  ,<span class="keywordtype">int</span> pixel_map_zeropad    </div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                  ,<span class="keywordtype">bool</span> my_zeromean         </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                  ,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a>&amp; lenscosmo  </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                  ,<span class="keyword">const</span> COSMOLOGY&amp; lenscosmo  </div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  );</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  </div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <a class="code" href="class_lens_halo_mass_map.html#a56bc6d67fd3dd85564794bdebd75c2d9">LensHaloMassMap</a>(<span class="keywordtype">double</span> mass           </div>
@@ -263,7 +263,7 @@ $(function() {
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                  ,<span class="keywordtype">double</span> resolution    </div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                  ,<span class="keywordtype">int</span> zeropadding      </div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                  ,<span class="keywordtype">double</span> redshift      </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                  ,<span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                  ,<span class="keyword">const</span> COSMOLOGY &amp;cosmo</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                  );</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  </div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <a class="code" href="class_lens_halo_mass_map.html#a56bc6d67fd3dd85564794bdebd75c2d9">LensHaloMassMap</a>(<span class="keyword">const</span> <a class="code" href="class_lens_halo_mass_map.html">LensHaloMassMap</a> &amp;h):<a class="code" href="class_lens_halo.html#a813618bcd6d1f26dafa49a2e509a37db">LensHalo</a>(h),cosmo(h.cosmo){</div>
@@ -347,12 +347,12 @@ $(function() {
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; <span class="keywordtype">void</span> convertmap(<a class="code" href="struct_m_o_k_amap.html">MOKAmap</a> &amp;map,<a class="code" href="_input_params_8h.html#a2fb3f72f5f7c1fedb4f5200d29a06164">PixelMapType</a> maptype);</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; <a class="code" href="struct_m_o_k_amap.html">MOKAmap</a> map;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; <span class="keyword">const</span> <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a>&amp; cosmo;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; <span class="keyword">const</span> COSMOLOGY&amp; cosmo;</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordtype">int</span> zerosize;</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordtype">bool</span> zeromean;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  </div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <a class="code" href="class_lens_halo_mass_map.html#a56bc6d67fd3dd85564794bdebd75c2d9">LensHaloMassMap</a>(<a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;c):cosmo(c){}</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <a class="code" href="class_lens_halo_mass_map.html#a56bc6d67fd3dd85564794bdebd75c2d9">LensHaloMassMap</a>(COSMOLOGY &amp;c):cosmo(c){}</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;};</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="keywordtype">void</span> make_friendship(<span class="keywordtype">int</span> ii,<span class="keywordtype">int</span> ji,<span class="keywordtype">int</span> np,std:: vector&lt;int&gt; &amp;friends, std:: vector&lt;double&gt; &amp;pointdist);</div>
@@ -372,7 +372,7 @@ $(function() {
 <div class="ttc" id="aclass_lens_halo_mass_map_html_aa890ed7562990f4794cd5041cf391293"><div class="ttname"><a href="class_lens_halo_mass_map.html#aa890ed7562990f4794cd5041cf391293">LensHaloMassMap::writeImage</a></div><div class="ttdeci">void writeImage(std::string fn)</div><div class="ttdoc">write the fits file of the new MOKA map from the structure map</div><div class="ttdef"><b>Definition:</b> MOKAfits.cpp:369</div></div>
 <div class="ttc" id="aclass_lens_halo_mass_map_html_ac9236e51a98fd875e0f98da79744dd63"><div class="ttname"><a href="class_lens_halo_mass_map.html#ac9236e51a98fd875e0f98da79744dd63">LensHaloMassMap::getRangeRad</a></div><div class="ttdeci">double getRangeRad() const</div><div class="ttdoc">return range of input map in rad</div><div class="ttdef"><b>Definition:</b> MOKAlens.h:289</div></div>
 <div class="ttc" id="aclass_lens_halo_html"><div class="ttname"><a href="class_lens_halo.html">LensHalo</a></div><div class="ttdoc">A base class for all types of lensing &quot;halos&quot; which are any mass distribution that cause lensing.</div><div class="ttdef"><b>Definition:</b> lens_halos.h:56</div></div>
-<div class="ttc" id="astruct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:45</div></div>
+<div class="ttc" id="astruct_point__2d_html"><div class="ttname"><a href="struct_point__2d.html">Point_2d</a></div><div class="ttdoc">Class for representing points or vectors in 2 dimensions. Not that the dereferencing operator is over...</div><div class="ttdef"><b>Definition:</b> point.h:48</div></div>
 <div class="ttc" id="aclass_lens_halo_mass_map_html_aeaea36f2eae141c1cbd67157c30c31d0"><div class="ttname"><a href="class_lens_halo_mass_map.html#aeaea36f2eae141c1cbd67157c30c31d0">LensHaloMassMap::getNx</a></div><div class="ttdeci">size_t getNx() const</div><div class="ttdoc">return number of pixels on a x-axis side in original map</div><div class="ttdef"><b>Definition:</b> MOKAlens.h:300</div></div>
 <div class="ttc" id="a_input_params_8h_html_a2fb3f72f5f7c1fedb4f5200d29a06164"><div class="ttname"><a href="_input_params_8h.html#a2fb3f72f5f7c1fedb4f5200d29a06164">PixelMapType</a></div><div class="ttdeci">PixelMapType</div><div class="ttdoc">format of mass map file</div><div class="ttdef"><b>Definition:</b> InputParams.h:60</div></div>
 <div class="ttc" id="aclass_lens_halo_mass_map_html_a94ae7e7e4e71b54e4c89afa324e29f24"><div class="ttname"><a href="class_lens_halo_mass_map.html#a94ae7e7e4e71b54e4c89afa324e29f24">LensHaloMassMap::readMap</a></div><div class="ttdeci">void readMap()</div><div class="ttdoc">reads in the fits file for the MOKA or mass map and saves it in the structure map</div><div class="ttdef"><b>Definition:</b> MOKAfits.cpp:81</div></div>
@@ -389,15 +389,14 @@ $(function() {
 <div class="ttc" id="astruct_m_o_k_amap_html_ae4aa8cbe0f88124b50d0beb5787d213b"><div class="ttname"><a href="struct_m_o_k_amap.html#ae4aa8cbe0f88124b50d0beb5787d213b">MOKAmap::omegam</a></div><div class="ttdeci">double omegam</div><div class="ttdoc">cosmology</div><div class="ttdef"><b>Definition:</b> MOKAlens.h:45</div></div>
 <div class="ttc" id="astruct_m_o_k_amap_html_add4e43f7bcdc1b8b06038f022e96d591"><div class="ttname"><a href="struct_m_o_k_amap.html#add4e43f7bcdc1b8b06038f022e96d591">MOKAmap::zlens</a></div><div class="ttdeci">double zlens</div><div class="ttdoc">lens and source properties</div><div class="ttdef"><b>Definition:</b> MOKAlens.h:41</div></div>
 <div class="ttc" id="aclass_lens_halo_mass_map_html_a447b6fa6e3eb58ebb6df8b13fbc37381"><div class="ttname"><a href="class_lens_halo_mass_map.html#a447b6fa6e3eb58ebb6df8b13fbc37381">LensHaloMassMap::getNy</a></div><div class="ttdeci">size_t getNy() const</div><div class="ttdoc">return number of pixels on a y-axis side in original map</div><div class="ttdef"><b>Definition:</b> MOKAlens.h:302</div></div>
-<div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology.</div><div class="ttdef"><b>Definition:</b> cosmo.h:50</div></div>
-<div class="ttc" id="aclass_pixel_map_html"><div class="ttname"><a href="class_pixel_map.html">PixelMap</a></div><div class="ttdoc">Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...</div><div class="ttdef"><b>Definition:</b> image_processing.h:44</div></div>
+<div class="ttc" id="aclass_pixel_map_html"><div class="ttname"><a href="class_pixel_map.html">PixelMap</a></div><div class="ttdoc">Image structure that can be manipulated and exported to/from fits files.</div><div class="ttdef"><b>Definition:</b> image_processing.h:48</div></div>
 <div class="ttc" id="aclass_lens_halo_mass_map_html_a143fceb361040d085a606556b98c92c0"><div class="ttname"><a href="class_lens_halo_mass_map.html#a143fceb361040d085a606556b98c92c0">LensHaloMassMap::assignParams</a></div><div class="ttdeci">void assignParams(InputParams &amp;params)</div><div class="ttdef"><b>Definition:</b> MOKAlens.cpp:376</div></div>
 <div class="ttc" id="aclass_input_params_html"><div class="ttname"><a href="class_input_params.html">InputParams</a></div><div class="ttdoc">Structure for reading and writing parameters to and from a parameter file as well as a container for ...</div><div class="ttdef"><b>Definition:</b> InputParams.h:99</div></div>
 <div class="ttc" id="aclass_lens_halo_mass_map_html_afb6416d108ed824204166b6c7d763eb0"><div class="ttname"><a href="class_lens_halo_mass_map.html#afb6416d108ed824204166b6c7d763eb0">LensHaloMassMap::checkCosmology</a></div><div class="ttdeci">void checkCosmology()</div><div class="ttdoc">checks the cosmology against the MOKA map parameters</div><div class="ttdef"><b>Definition:</b> MOKAlens.cpp:362</div></div>
 <div class="ttc" id="astruct_m_o_k_amap_html_aff6e7b73ead075f0f59ecaa1b813e885"><div class="ttname"><a href="struct_m_o_k_amap.html#aff6e7b73ead075f0f59ecaa1b813e885">MOKAmap::surface_density</a></div><div class="ttdeci">std::valarray&lt; double &gt; surface_density</div><div class="ttdoc">values for the map</div><div class="ttdef"><b>Definition:</b> MOKAlens.h:30</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:10 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

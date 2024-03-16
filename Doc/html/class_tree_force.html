@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_force.html#af9939e82b46c3b59952adb71a6f4406f">CalculateSPHsmoothing</a> (int N)</td></tr>
 <tr class="memdesc:af9939e82b46c3b59952adb71a6f4406f"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculated sph smoothing and store them in the tree, also provide pointer to them <br /></td></tr>
 <tr class="separator:af9939e82b46c3b59952adb71a6f4406f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3259836d3275204c9a3a68e10c9da7b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_force.html#a3259836d3275204c9a3a68e10c9da7b2">force2D</a> (PosType const *ray, PosType *alpha, KappaType *kappa, KappaType *gamma, KappaType *phi)</td></tr>
+<tr class="memdesc:a3259836d3275204c9a3a68e10c9da7b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the deflection and lensing propertie  <a href="class_tree_force.html#a3259836d3275204c9a3a68e10c9da7b2">More...</a><br /></td></tr>
+<tr class="separator:a3259836d3275204c9a3a68e10c9da7b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_tree_simple"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_tree_simple')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_tree_simple.html">TreeSimple&lt; PType &gt;</a></td></tr>
 <tr class="memitem:ac421113f963e72ed395fb4a334c94c6e inherit pub_methods_class_tree_simple"><td class="memItemLeft" align="right" valign="top"><a id="ac421113f963e72ed395fb4a334c94c6e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TreeSimple</b> (PType *xp, IndexType Npoints, int bucket=5, int dimensions=2, bool median=true)</td></tr>
@@ -232,8 +235,9 @@ template&lt;typename T &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_force.html#adefb6e7b1cc3a3fff2d2d0eeb6cb1f78">init</a></td></tr>
-<tr class="memdesc:adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the deflection and lensing properties  <a href="class_tree_force.html#adefb6e7b1cc3a3fff2d2d0eeb6cb1f78">More...</a><br /></td></tr>
+<tr class="memitem:adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"><td class="memItemLeft" align="right" valign="top"><a id="adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_force.html#adefb6e7b1cc3a3fff2d2d0eeb6cb1f78">init</a></td></tr>
+<tr class="memdesc:adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">provides a way to change the profiles of the particles, by default Gaussian <br /></td></tr>
 <tr class="separator:adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a03e820fcfde1a984937c59977e52c2"><td class="memItemLeft" align="right" valign="top"><a id="a5a03e820fcfde1a984937c59977e52c2"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_force.html#a5a03e820fcfde1a984937c59977e52c2">MultiMass</a></td></tr>
@@ -470,32 +474,59 @@ PType *&#160;</td><td class="memItemRight" valign="bottom"><b>xxp</b></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="adefb6e7b1cc3a3fff2d2d0eeb6cb1f78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adefb6e7b1cc3a3fff2d2d0eeb6cb1f78">&#9670;&nbsp;</a></span>init</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3259836d3275204c9a3a68e10c9da7b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3259836d3275204c9a3a68e10c9da7b2">&#9670;&nbsp;</a></span>force2D()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool TreeForce::init</td>
+          <td class="memname">void TreeForce::force2D </td>
+          <td>(</td>
+          <td class="paramtype">PosType const *&#160;</td>
+          <td class="paramname"><em>ray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType *&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">KappaType *&#160;</td>
+          <td class="paramname"><em>kappa</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">KappaType *&#160;</td>
+          <td class="paramname"><em>gamma</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">KappaType *&#160;</td>
+          <td class="paramname"><em>phi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>calculate the deflection and lensing properties </p>
-<p>provides a way to change the profiles of the particles, by default Gaussian </p>
+<p>calculate the deflection and lensing propertie </p>
+<p>TreeNBForce2D calculates the defection, convergence and shear using the plane-lens approximation with 3D SPH smoothing of the density rsph must be calculated before doing this with FindRSPH or by other means. tangent[3] - the direction of light rays or orientation of the simulation tree can be either a 3d or 2d tree although 2d is more efficient need to change the projected cm in _TreeNBForce to us 3d tree</p>
+<p>The output alpha[] is in units of mass_scale/Mpc, ie it needs to be divided by Sigma_crit and multiplied by mass_scale to be the defelction in the lens equation expressed on the lens plane or multiplied by 4*pi*G*mass_scale to get the deflection angle caused by the plane lens. </p>
+<p>intersecting, subtract the point particle</p>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="acdb57d9d285c3718886c04229dd09dfc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acdb57d9d285c3718886c04229dd09dfc">&#9670;&nbsp;</a></span>kappa_background</h2>
 
@@ -526,7 +557,7 @@ PType *&#160;</td><td class="memItemRight" valign="bottom"><b>xxp</b></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

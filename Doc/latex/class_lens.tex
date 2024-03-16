@@ -16,7 +16,7 @@ A class to represents a lens with multiple planes.
 \mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}} (long $\ast$seed, Pos\+Type z\+\_\+source, Cosmo\+Param\+Set cosmoset, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Creates an empty lens. Main halos and field halos need to be inserted by hand from the user. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_a7d35c838440ad6d526e402492be04fc3}\label{class_lens_a7d35c838440ad6d526e402492be04fc3}} 
-{\bfseries Lens} (long $\ast$seed, Pos\+Type z\+\_\+source, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, bool verbose=false)
+{\bfseries Lens} (long $\ast$seed, Pos\+Type z\+\_\+source, const C\+O\+S\+M\+O\+L\+O\+GY \&cosmo, bool verbose=false)
 \item 
 \mbox{\Hypertarget{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}\label{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}} 
 int \mbox{\hyperlink{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}{get\+Nplanes}} () const
@@ -80,18 +80,25 @@ void \mbox{\hyperlink{class_lens_a2575c6d766091cde0ce87249e97333f1}{rayshooter\+
 \begin{DoxyCompactList}\small\item\em Routine for shooting rays with differnt source redshifts in parrallel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_ae505c3e066e52d60372449aecc7ae6b0}{rayshooter\+Internal}} (unsigned long Npoints, \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $\ast$rays)
 \item 
-void \mbox{\hyperlink{class_lens_a4fa714f37553b29a50a6d2b532a99013}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, int tag=0, short mode=0, bool verbose=false)
-\begin{DoxyCompactList}\small\item\em Collects information about the halos and kappa contributions along the light path. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a6d6d04ad98ee9831d8b2e278be6f3a6b}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
-\begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}{find\+\_\+image}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
-\begin{DoxyCompactList}\small\item\em this version uses the redshift stored in the ray \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a450a498938a92acf5b73568e64f0acfe}{find\+\_\+image}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&p, Pos\+Type ytol2, Pos\+Type \&dy2, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&boundary)
-\begin{DoxyCompactList}\small\item\em This is the same, but the image is forced to stay within boundary. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a31dd5ed6c77cca4e00c5ebb8414b18ff}{find\+\_\+image}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&boundary)
+\mbox{\Hypertarget{class_lens_ae67ceb70df6830db1fbcb8e33aa60176}\label{class_lens_ae67ceb70df6830db1fbcb8e33aa60176}} 
+void {\bfseries rayshooter\+Internal} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&ray)
 \item 
-\mbox{\Hypertarget{class_lens_ac02a64bb6d6d00858ff83b2803bdafc2}\label{class_lens_ac02a64bb6d6d00858ff83b2803bdafc2}} 
-void {\bfseries find\+\_\+point\+\_\+source\+\_\+images} (\mbox{\hyperlink{struct_grid}{Grid}} \&grid, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source, Pos\+Type z\+\_\+source, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&images, double dytol2, double dxtol, bool verbose=false)
+void \mbox{\hyperlink{class_lens_a4fa714f37553b29a50a6d2b532a99013}{info\+\_\+rayshooter}} (\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&i\+\_\+point, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ang\+\_\+positions, std\+::vector$<$ Kappa\+Type $>$ \&kappa\+\_\+on\+\_\+planes, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} $\ast$ $>$$>$ \&halo\+\_\+neighbors, \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&halo\+\_\+max, Kappa\+Type \&kappa\+\_\+max, Kappa\+Type gamma\+\_\+max\mbox{[}$\,$\mbox{]}, Pos\+Type rmax, int tag=0, short mode=0, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em single ray \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_a5e683b56effd97638db0dceb4cd04c3c}{mass\+\_\+on\+\_\+planes}} (const std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&rays, std\+::vector$<$ double $>$ \&masses, bool verbose=false)
+\begin{DoxyCompactList}\small\item\em finds the mass within a curve of rays one every lens plane im Msun \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a73758de70585bda93be75065f772f85b}{find\+\_\+image\+\_\+min}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, bool use\+\_\+image\+\_\+guess)
+\begin{DoxyCompactList}\small\item\em Find the image position of a source without grid refinement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a6ea1caf11ec4eff16655de132a701165}{find\+\_\+image\+\_\+min}} (const \mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&in\+\_\+ray, Pos\+Type ytol2)
+\item 
+\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \mbox{\hyperlink{class_lens_a29120751ca87eb68c2c2afc3a6ca9ae4}{find\+\_\+image\+\_\+min}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&boundary)
+\begin{DoxyCompactList}\small\item\em This is the same, but the image is forced to stay within boundary. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \mbox{\hyperlink{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}{find\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, double z\+\_\+source, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center, double range, double stop\+\_\+res)
+\begin{DoxyCompactList}\small\item\em finds images by telescoping triangle method \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \mbox{\hyperlink{class_lens_adb05102639f1d175bad05f64e4e3bf56}{find\+\_\+images}} (\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&init\+\_\+grid, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, double z\+\_\+source, double stop\+\_\+res)
+\begin{DoxyCompactList}\small\item\em finds images by telescoping triangle method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lens_ac408b0446806251de0022c4600acfdb7}\label{class_lens_ac408b0446806251de0022c4600acfdb7}} 
+void {\bfseries find\+\_\+images\+\_\+min\+\_\+parallel} (std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&rays, double ytol2, std\+::vector$<$ bool $>$ \&success)
 \item 
 short \mbox{\hyperlink{class_lens_a71b1279d35b08c49d537708a46c1d3a6}{Reset\+Source\+Plane}} (Pos\+Type z, bool nearest=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em reset the redshift of the source plane \end{DoxyCompactList}\item 
@@ -113,7 +120,7 @@ void \mbox{\hyperlink{class_lens_a6e65d6c8d5c97e4024d7002eb8cc7d04}{Print\+Cosmo
 Pos\+Type \mbox{\hyperlink{class_lens_a53108c7002e0cb4ce7064d43c5efdb0e}{get\+Sigma\+Crit}} (Pos\+Type zsource) const
 \begin{DoxyCompactList}\small\item\em returns the critical density at the main lens in Msun/ Mpc$^\wedge$2 for a source at zsource \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}\label{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}} 
-const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \& \mbox{\hyperlink{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}{get\+Cosmo}} ()
+const C\+O\+S\+M\+O\+L\+O\+GY \& \mbox{\hyperlink{class_lens_a5576b59d2f70c1d0f0a798b8a92a4f81}{get\+Cosmo}} ()
 \begin{DoxyCompactList}\small\item\em returns a const reference to the cosmology so that constant functions can be used, but the cosmological parameters cannot be changed. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_lens_a40ef8e31f5a9d3ada238db9c8a8babe9}\label{class_lens_a40ef8e31f5a9d3ada238db9c8a8babe9}} 
 void \mbox{\hyperlink{class_lens_a40ef8e31f5a9d3ada238db9c8a8babe9}{Turn\+Field\+Off}} ()
@@ -133,6 +140,9 @@ void \mbox{\hyperlink{class_lens_a9925ac3f8486c262f0d10096f3ad902a}{Generate\+Fi
 \item 
 \mbox{\Hypertarget{class_lens_a557f940236f66e88f8a3b73efbb7c2bc}\label{class_lens_a557f940236f66e88f8a3b73efbb7c2bc}} 
 {\bfseries Lens} (\mbox{\hyperlink{class_lens}{Lens}} \&\&lens)
+\item 
+\mbox{\Hypertarget{class_lens_aad9941c8999a39551c900932442993ed}\label{class_lens_aad9941c8999a39551c900932442993ed}} 
+std\+::vector$<$ Pos\+Type $>$ {\bfseries get\+\_\+plane\+\_\+redshifts} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -221,11 +231,26 @@ A class to represents a lens with multiple planes.
  
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_lens_a6d6d04ad98ee9831d8b2e278be6f3a6b}\label{class_lens_a6d6d04ad98ee9831d8b2e278be6f3a6b}} 
-\index{Lens@{Lens}!find\_image@{find\_image}}
-\index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{double}]{zs,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_lens_a6ea1caf11ec4eff16655de132a701165}\label{class_lens_a6ea1caf11ec4eff16655de132a701165}} 
+\index{Lens@{Lens}!find\_image\_min@{find\_image\_min}}
+\index{find\_image\_min@{find\_image\_min}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_image\_min()}{find\_image\_min()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image\+\_\+min (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{in\+\_\+ray,  }\item[{Pos\+Type}]{ytol2 }\end{DoxyParamCaption})}
+
+this version uses the redshift stored in the ray,
+
+Tthe ray is replaced with the best guess so the source position is replaced. 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+ray} & p.\+y\mbox{[}\mbox{]} should be set to source position \\
+\hline
+{\em ytol2} & target tolerance in source position squared \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_a73758de70585bda93be75065f772f85b}\label{class_lens_a73758de70585bda93be75065f772f85b}} 
+\index{Lens@{Lens}!find\_image\_min@{find\_image\_min}}
+\index{find\_image\_min@{find\_image\_min}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_image\_min()}{find\_image\_min()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{double}]{zs,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
 
 
 
@@ -256,11 +281,15 @@ This routine finds the image position by minimizing the seporation on the source
 {\em use\+\_\+image\+\_\+guess} & if true p.\+x\mbox{[}\mbox{]} will be used as a guess for the image position \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_lens_a31dd5ed6c77cca4e00c5ebb8414b18ff}\label{class_lens_a31dd5ed6c77cca4e00c5ebb8414b18ff}} 
-\index{Lens@{Lens}!find\_image@{find\_image}}
-\index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{double}]{zs,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{boundary }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_lens_a29120751ca87eb68c2c2afc3a6ca9ae4}\label{class_lens_a29120751ca87eb68c2c2afc3a6ca9ae4}} 
+\index{Lens@{Lens}!find\_image\_min@{find\_image\_min}}
+\index{find\_image\_min@{find\_image\_min}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_image\_min()}{find\_image\_min()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}} \&}]{p,  }\item[{double}]{zs,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{boundary }\end{DoxyParamCaption})}
+
+
+
+This is the same, but the image is forced to stay within boundary. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -275,49 +304,29 @@ This routine finds the image position by minimizing the seporation on the source
 {\em boundary} & image will be limited to within this boundary \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}\label{class_lens_a5688505e56faca56c0f8d424cb5bdd3d}} 
-\index{Lens@{Lens}!find\_image@{find\_image}}
-\index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{bool}]{use\+\_\+image\+\_\+guess }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_lens_adb05102639f1d175bad05f64e4e3bf56}\label{class_lens_adb05102639f1d175bad05f64e4e3bf56}} 
+\index{Lens@{Lens}!find\_images@{find\_images}}
+\index{find\_images@{find\_images}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ Lens\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&}]{init\+\_\+grid,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{double}]{z\+\_\+source,  }\item[{double}]{stop\+\_\+res }\end{DoxyParamCaption})}
 
 
 
-this version uses the redshift stored in the ray 
+finds images by telescoping triangle method 
 
+find rays using telescoping triangle method starting with a \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} init\+\_\+grid
 
-\begin{DoxyParams}{Parameters}
-{\em p} & p.\+y\mbox{[}\mbox{]} should be set to source position \\
-\hline
-{\em ytol2} & target tolerance in source position squared \\
-\hline
-{\em dy2} & final value of Delta y $^\wedge$2 \\
-\hline
-{\em use\+\_\+image\+\_\+guess} & if true p.\+x\mbox{[}\mbox{]} will be used as a guess for the image position \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_lens_a450a498938a92acf5b73568e64f0acfe}\label{class_lens_a450a498938a92acf5b73568e64f0acfe}} 
-\index{Lens@{Lens}!find\_image@{find\_image}}
-\index{find\_image@{find\_image}!Lens@{Lens}}
-\doxysubsubsection{\texorpdfstring{find\_image()}{find\_image()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_r_a_y}{R\+AY}} Lens\+::find\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_r_a_y}{R\+AY}} \&}]{p,  }\item[{Pos\+Type}]{ytol2,  }\item[{Pos\+Type \&}]{dy2,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{boundary }\end{DoxyParamCaption})}
+Meant for refining the image positions to higher resolution than the initial grid \mbox{\Hypertarget{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}\label{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}} 
+\index{Lens@{Lens}!find\_images@{find\_images}}
+\index{find\_images@{find\_images}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ Lens\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{double}]{z\+\_\+source,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{center,  }\item[{double}]{range,  }\item[{double}]{stop\+\_\+res }\end{DoxyParamCaption})}
 
 
 
-This is the same, but the image is forced to stay within boundary. 
+finds images by telescoping triangle method 
 
-
-\begin{DoxyParams}{Parameters}
-{\em p} & p\mbox{[}\mbox{]} is \\
-\hline
-{\em ytol2} & target tolerance in source position squared \\
-\hline
-{\em dy2} & final value of Delta y $^\wedge$2 \\
-\hline
-{\em boundary} & image will be limited to within this boundary \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}\label{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}} 
+find rays using telescoping triangle method \mbox{\Hypertarget{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}\label{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}} 
 \index{Lens@{Lens}!FindSourcePlane@{FindSourcePlane}}
 \index{FindSourcePlane@{FindSourcePlane}!Lens@{Lens}}
 \doxysubsubsection{\texorpdfstring{FindSourcePlane()}{FindSourcePlane()}}
@@ -383,7 +392,9 @@ replaces existing main halos with a single main halo replaces existing main halo
 
 
 
-Collects information about the halos and kappa contributions along the light path. 
+single ray 
+
+Collects information about the halos and kappa contributions along the light path.
 
 Information on the nearest halos is collected where nearest is defined by rmax and mode. When mode == 2 the unlensed angular coordinates are used to evaluate proximity not the lensed ones. 
 \begin{DoxyParams}{Parameters}
@@ -419,7 +430,24 @@ void Lens\+::insert\+Main\+Halos (\begin{DoxyParamCaption}\item[{std\+::vector$<
 
 Inserts a sequense of main lens halos and adds them to the existing ones. Then all lensing planes are updated accordingly. If addplanes is true new planes will be added otherwise the halo is added to the nearest plane and a plane is added only if none exited on entry. 
 
-The angular position of the halo should be preserved, but the x coordinates may change The halos are copied so the input halos can be destoyed without affecting the \mbox{\hyperlink{class_lens}{Lens}}. \mbox{\Hypertarget{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}\label{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}} 
+The angular position of the halo should be preserved, but the x coordinates may change The halos are copied so the input halos can be destoyed without affecting the \mbox{\hyperlink{class_lens}{Lens}}. \mbox{\Hypertarget{class_lens_a5e683b56effd97638db0dceb4cd04c3c}\label{class_lens_a5e683b56effd97638db0dceb4cd04c3c}} 
+\index{Lens@{Lens}!mass\_on\_planes@{mass\_on\_planes}}
+\index{mass\_on\_planes@{mass\_on\_planes}!Lens@{Lens}}
+\doxysubsubsection{\texorpdfstring{mass\_on\_planes()}{mass\_on\_planes()}}
+{\footnotesize\ttfamily void Lens\+::mass\+\_\+on\+\_\+planes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&}]{rays,  }\item[{std\+::vector$<$ double $>$ \&}]{masses,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+finds the mass within a curve of rays one every lens plane im Msun 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rays} & ray, ray.\+x needs to be set \\
+\hline
+{\em masses} & mass within curve on each lens plane \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}\label{class_lens_aa8a8bbd818794bc97ee6d3f842e82e54}} 
 \index{Lens@{Lens}!moveinMainHalo@{moveinMainHalo}}
 \index{moveinMainHalo@{moveinMainHalo}!Lens@{Lens}}
 \doxysubsubsection{\texorpdfstring{moveinMainHalo()}{moveinMainHalo()}}

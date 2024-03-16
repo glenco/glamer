@@ -72,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a fits file, smoothed, etc. like an image.  
+<p>Image structure that can be manipulated and exported to/from fits files.  
  <a href="class_pixel_map.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="image__processing_8h_source.html">image_processing.h</a>&gt;</code></p>
@@ -80,7 +80,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac284147e8e2b7aa5bf44f16dfb327956"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ac284147e8e2b7aa5bf44f16dfb327956">PixelMap</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, double res_ratio)</td></tr>
-<tr class="memdesc:ac284147e8e2b7aa5bf44f16dfb327956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> at a different resolution. The new counts are calculated integrating over the input pixels. No interpolation or smoothing is performed.  <a href="class_pixel_map.html#ac284147e8e2b7aa5bf44f16dfb327956">More...</a><br /></td></tr>
+<tr class="memdesc:ac284147e8e2b7aa5bf44f16dfb327956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> at a different resolution. The new counts are calculated integrating over the input pixels. No interpolation or smoothing is performed.  <a href="class_pixel_map.html#ac284147e8e2b7aa5bf44f16dfb327956">More...</a><br /></td></tr>
 <tr class="separator:ac284147e8e2b7aa5bf44f16dfb327956"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08239b9c7d5c3dcb9ea1b3a15d61d5ef"><td class="memItemLeft" align="right" valign="top"><a id="a08239b9c7d5c3dcb9ea1b3a15d61d5ef"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PixelMap</b> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;other)</td></tr>
@@ -89,16 +89,19 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PixelMap</b> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&amp;other)</td></tr>
 <tr class="separator:a4c0af880374dd71116c825d1f88774b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74ed2fba8e634543912eed915b84f67c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a74ed2fba8e634543912eed915b84f67c">PixelMap</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, const double *center, std::size_t Npixels)</td></tr>
-<tr class="memdesc:a74ed2fba8e634543912eed915b84f67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> from a square region of a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a>. If the region exceeds the boundaries of the original map, the new map is completed with zeros.  <a href="class_pixel_map.html#a74ed2fba8e634543912eed915b84f67c">More...</a><br /></td></tr>
+<tr class="memdesc:a74ed2fba8e634543912eed915b84f67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> from a square region of a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>. If the region exceeds the boundaries of the original map, the new map is completed with zeros.  <a href="class_pixel_map.html#a74ed2fba8e634543912eed915b84f67c">More...</a><br /></td></tr>
 <tr class="separator:a74ed2fba8e634543912eed915b84f67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a125232b6f699bc5b6411f5e38e5bfd04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a125232b6f699bc5b6411f5e38e5bfd04">PixelMap</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, long nx, long ny, std::size_t Npixels)</td></tr>
+<tr class="memdesc:a125232b6f699bc5b6411f5e38e5bfd04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a square cut-out of the input <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>.  <a href="class_pixel_map.html#a125232b6f699bc5b6411f5e38e5bfd04">More...</a><br /></td></tr>
+<tr class="separator:a125232b6f699bc5b6411f5e38e5bfd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1237bd9c0cb6fde88245e1d5996be808"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a1237bd9c0cb6fde88245e1d5996be808">PixelMap</a> (const double *center, std::size_t Npixels, double resolution, PixelMapUnits u=PixelMapUnits::ndef)</td></tr>
-<tr class="memdesc:a1237bd9c0cb6fde88245e1d5996be808"><td class="mdescLeft">&#160;</td><td class="mdescRight">make square <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a>  <a href="class_pixel_map.html#a1237bd9c0cb6fde88245e1d5996be808">More...</a><br /></td></tr>
+<tr class="memdesc:a1237bd9c0cb6fde88245e1d5996be808"><td class="mdescLeft">&#160;</td><td class="mdescRight">make square <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>  <a href="class_pixel_map.html#a1237bd9c0cb6fde88245e1d5996be808">More...</a><br /></td></tr>
 <tr class="separator:a1237bd9c0cb6fde88245e1d5996be808"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a448987171aa76ba4554e9e3be4883ed8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a448987171aa76ba4554e9e3be4883ed8">PixelMap</a> (const double *center, std::size_t Nx, std::size_t Ny, double resolution, PixelMapUnits u=PixelMapUnits::ndef)</td></tr>
-<tr class="memdesc:a448987171aa76ba4554e9e3be4883ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">make rectangular <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> with square pixels  <a href="class_pixel_map.html#a448987171aa76ba4554e9e3be4883ed8">More...</a><br /></td></tr>
+<tr class="memdesc:a448987171aa76ba4554e9e3be4883ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">make rectangular <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> with square pixels  <a href="class_pixel_map.html#a448987171aa76ba4554e9e3be4883ed8">More...</a><br /></td></tr>
 <tr class="separator:a448987171aa76ba4554e9e3be4883ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca57f4b308948e5fd53e5389a53760be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#aca57f4b308948e5fd53e5389a53760be">PixelMap</a> (std::string fitsfilename, double resolution=-1, PixelMapUnits u=PixelMapUnits::ndef)</td></tr>
-<tr class="memdesc:aca57f4b308948e5fd53e5389a53760be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> reading in a fits file Infos about resolution, Npixels and center are read from the header.  <a href="class_pixel_map.html#aca57f4b308948e5fd53e5389a53760be">More...</a><br /></td></tr>
+<tr class="memdesc:aca57f4b308948e5fd53e5389a53760be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> reading in a fits file Infos about resolution, Npixels and center are read from the header.  <a href="class_pixel_map.html#aca57f4b308948e5fd53e5389a53760be">More...</a><br /></td></tr>
 <tr class="separator:aca57f4b308948e5fd53e5389a53760be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85b879cd2561ca7841b578dd27d8e5ed"><td class="memItemLeft" align="right" valign="top"><a id="a85b879cd2561ca7841b578dd27d8e5ed"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;other)</td></tr>
@@ -161,11 +164,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Clean</b> ()</td></tr
 <tr class="separator:ad8b4419429867e55f8314af905c0ff22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa33c8087ce8fcbd03499f74ffbdcd27a"><td class="memItemLeft" align="right" valign="top"><a id="aa33c8087ce8fcbd03499f74ffbdcd27a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#aa33c8087ce8fcbd03499f74ffbdcd27a">AddGridBrightness</a> (<a class="el" href="struct_grid.html">Grid</a> &amp;grid)</td></tr>
-<tr class="memdesc:aa33c8087ce8fcbd03499f74ffbdcd27a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an image from a the surface brightnesses of a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a> to the <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a>. <br /></td></tr>
+<tr class="memdesc:aa33c8087ce8fcbd03499f74ffbdcd27a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an image from a the surface brightnesses of a <a class="el" href="struct_grid.html" title="Structure to contain both source and image trees.">Grid</a> to the <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>. <br /></td></tr>
 <tr class="separator:aa33c8087ce8fcbd03499f74ffbdcd27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb7eb4d5fcb023f905609b8a33695c95"><td class="memItemLeft" align="right" valign="top"><a id="afb7eb4d5fcb023f905609b8a33695c95"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#afb7eb4d5fcb023f905609b8a33695c95">AddGridMapBrightness</a> (const <a class="el" href="struct_grid_map.html">GridMap</a> &amp;grid)</td></tr>
-<tr class="memdesc:afb7eb4d5fcb023f905609b8a33695c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an image from a the surface brightnesses of a <a class="el" href="struct_grid_map.html" title="A simplified version of the Grid structure for making non-adaptive maps of the lensing quantities (ka...">GridMap</a> to the <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a>. <br /></td></tr>
+<tr class="memdesc:afb7eb4d5fcb023f905609b8a33695c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an image from a the surface brightnesses of a <a class="el" href="struct_grid_map.html" title="A simplified version of the Grid structure for making non-adaptive maps of the lensing quantities (ka...">GridMap</a> to the <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>. <br /></td></tr>
 <tr class="separator:afb7eb4d5fcb023f905609b8a33695c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34ad39c9a06232f9d9b794c45a5f80c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a34ad39c9a06232f9d9b794c45a5f80c6">AddUniformImages</a> (<a class="el" href="struct_image_info.html">ImageInfo</a> *imageinfo, int Nimages, double value)</td></tr>
 <tr class="memdesc:a34ad39c9a06232f9d9b794c45a5f80c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add images with uniform surface brightness set by input parameter value.  <a href="class_pixel_map.html#a34ad39c9a06232f9d9b794c45a5f80c6">More...</a><br /></td></tr>
@@ -181,17 +184,17 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 void&#160;</td><td class="memItemRight" valign="bottom"><b>AddPointSource</b> (const <a class="el" href="struct_point__2d.html">Point_2d</a> &amp;x, double flux)</td></tr>
 <tr class="separator:a25c7d70b334c841921a991021f8a8217"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9087887d2f53766161f09fb1b043cd76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a9087887d2f53766161f09fb1b043cd76">copy_in</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap)</td></tr>
-<tr class="memdesc:a9087887d2f53766161f09fb1b043cd76"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> into this one.  <a href="class_pixel_map.html#a9087887d2f53766161f09fb1b043cd76">More...</a><br /></td></tr>
+<tr class="memdesc:a9087887d2f53766161f09fb1b043cd76"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> into this one.  <a href="class_pixel_map.html#a9087887d2f53766161f09fb1b043cd76">More...</a><br /></td></tr>
 <tr class="separator:a9087887d2f53766161f09fb1b043cd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a007c98640a772347dd2e728d78e17ec1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a007c98640a772347dd2e728d78e17ec1">paste</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap)</td></tr>
 <tr class="memdesc:a007c98640a772347dd2e728d78e17ec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace overlaping pixel values with those of the input map.  <a href="class_pixel_map.html#a007c98640a772347dd2e728d78e17ec1">More...</a><br /></td></tr>
 <tr class="separator:a007c98640a772347dd2e728d78e17ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c08a1e76d33efd460b35e50f0abe1f"><td class="memItemLeft" align="right" valign="top"><a id="a10c08a1e76d33efd460b35e50f0abe1f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a10c08a1e76d33efd460b35e50f0abe1f">paste</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, long nx, long ny)</td></tr>
-<tr class="memdesc:a10c08a1e76d33efd460b35e50f0abe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">paste a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> on with the lower left pixel match to [nx,ny] <br /></td></tr>
+<tr class="memdesc:a10c08a1e76d33efd460b35e50f0abe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">paste a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> on with the lower left pixel match to [nx,ny] of this <br /></td></tr>
 <tr class="separator:a10c08a1e76d33efd460b35e50f0abe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf48a8ec99723d1475a68ad86a71af8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#abf48a8ec99723d1475a68ad86a71af8d">duplicate</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap)</td></tr>
-<tr class="memdesc:abf48a8ec99723d1475a68ad86a71af8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> that must be the same without creating a new one..  <a href="class_pixel_map.html#abf48a8ec99723d1475a68ad86a71af8d">More...</a><br /></td></tr>
+<tr class="memdesc:abf48a8ec99723d1475a68ad86a71af8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> that must be the same without creating a new one..  <a href="class_pixel_map.html#abf48a8ec99723d1475a68ad86a71af8d">More...</a><br /></td></tr>
 <tr class="separator:abf48a8ec99723d1475a68ad86a71af8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42bba4a4e112e10ede847a572fa934ec"><td class="memTemplParams" colspan="2"><a id="a42bba4a4e112e10ede847a572fa934ec"></a>
 template&lt;typename T &gt; </td></tr>
@@ -256,9 +259,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#aba0dc186ee8952f6e51e6cf0d784fd51">printFITS</a> (std::string filename, bool Xflip=false, bool verbose=false)</td></tr>
 <tr class="memdesc:aba0dc186ee8952f6e51e6cf0d784fd51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output the pixel map as a fits file. <br /></td></tr>
 <tr class="separator:aba0dc186ee8952f6e51e6cf0d784fd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a729210170d6ee3c2bba9134f20354b5c"><td class="memItemLeft" align="right" valign="top"><a id="a729210170d6ee3c2bba9134f20354b5c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printFITS</b> (std::string filename, std::vector&lt; std::tuple&lt; std::string, double, std::string &gt;&gt; &amp;extra_header_info, bool verbose)</td></tr>
-<tr class="separator:a729210170d6ee3c2bba9134f20354b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac51e6b2909b45e13409d0c08bb493176"><td class="memItemLeft" align="right" valign="top"><a id="ac51e6b2909b45e13409d0c08bb493176"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>printFITS</b> (std::string filename, std::vector&lt; std::tuple&lt; std::string, double, std::string &gt; &gt; &amp;extra_header_info, bool verbose)</td></tr>
+<tr class="separator:ac51e6b2909b45e13409d0c08bb493176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bcbc5ca93ec951a009241fb0767c8ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a8bcbc5ca93ec951a009241fb0767c8ed">printFITS</a> (std::string filename, std::vector&lt; std::string &gt; &amp;headercards)</td></tr>
+<tr class="memdesc:a8bcbc5ca93ec951a009241fb0767c8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">This overides all header information and relaces it with the inputs. Meant for making a modified copy.  <a href="class_pixel_map.html#a8bcbc5ca93ec951a009241fb0767c8ed">More...</a><br /></td></tr>
+<tr class="separator:a8bcbc5ca93ec951a009241fb0767c8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d9d32d06836045b9cfc0d2129f7815f"><td class="memItemLeft" align="right" valign="top"><a id="a5d9d32d06836045b9cfc0d2129f7815f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a5d9d32d06836045b9cfc0d2129f7815f">smooth</a> (double sigma)</td></tr>
 <tr class="memdesc:a5d9d32d06836045b9cfc0d2129f7815f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smoothes a map with a Gaussian kernel of width sigma (in arcseconds) <br /></td></tr>
@@ -269,9 +275,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>getValue</b> (std::
 <tr class="memitem:abe9b6636a98fc53d5a9a694f8196081c"><td class="memItemLeft" align="right" valign="top"><a id="abe9b6636a98fc53d5a9a694f8196081c"></a>
 double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (std::size_t i)</td></tr>
 <tr class="separator:abe9b6636a98fc53d5a9a694f8196081c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f5143b0d57eb7c52fdbf6418ecbeb8f"><td class="memItemLeft" align="right" valign="top"><a id="a2f5143b0d57eb7c52fdbf6418ecbeb8f"></a>
-const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (std::size_t i) const</td></tr>
-<tr class="separator:a2f5143b0d57eb7c52fdbf6418ecbeb8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6f4f708fe0da29b7ea0c77e754c937"><td class="memItemLeft" align="right" valign="top"><a id="a5c6f4f708fe0da29b7ea0c77e754c937"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (std::size_t i) const</td></tr>
+<tr class="separator:a5c6f4f708fe0da29b7ea0c77e754c937"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34507be11570b0957f48b6890bd1bb6b"><td class="memItemLeft" align="right" valign="top"><a id="a34507be11570b0957f48b6890bd1bb6b"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (std::size_t i) const</td></tr>
 <tr class="separator:a34507be11570b0957f48b6890bd1bb6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -283,15 +289,18 @@ double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b
 <tr class="separator:ac3b9fdf6f6fbdba16daa323357e99531"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9d31ce7fb07d7b11d9f7e5d4685d634"><td class="memItemLeft" align="right" valign="top"><a id="ae9d31ce7fb07d7b11d9f7e5d4685d634"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ae9d31ce7fb07d7b11d9f7e5d4685d634">operator+=</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;rhs)</td></tr>
-<tr class="memdesc:ae9d31ce7fb07d7b11d9f7e5d4685d634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the values of another <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> to this one. <br /></td></tr>
+<tr class="memdesc:ae9d31ce7fb07d7b11d9f7e5d4685d634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the values of another <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> to this one. <br /></td></tr>
 <tr class="separator:ae9d31ce7fb07d7b11d9f7e5d4685d634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f575531e01349914485f3d57c49a214"><td class="memItemLeft" align="right" valign="top"><a id="a2f575531e01349914485f3d57c49a214"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (double f)</td></tr>
+<tr class="separator:a2f575531e01349914485f3d57c49a214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af49565ada428b47b4e9fcc205e55ea95"><td class="memItemLeft" align="right" valign="top"><a id="af49565ada428b47b4e9fcc205e55ea95"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#af49565ada428b47b4e9fcc205e55ea95">operator+</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;) const</td></tr>
 <tr class="memdesc:af49565ada428b47b4e9fcc205e55ea95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add two PixelMaps. <br /></td></tr>
 <tr class="separator:af49565ada428b47b4e9fcc205e55ea95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f81ce7624abffbb85080db357e9f6ca"><td class="memItemLeft" align="right" valign="top"><a id="a2f81ce7624abffbb85080db357e9f6ca"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a2f81ce7624abffbb85080db357e9f6ca">operator-=</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a2f81ce7624abffbb85080db357e9f6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtract the values of another <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> from this one. <br /></td></tr>
+<tr class="memdesc:a2f81ce7624abffbb85080db357e9f6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtract the values of another <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> from this one. <br /></td></tr>
 <tr class="separator:a2f81ce7624abffbb85080db357e9f6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dfae4b04c57cb7484bd64b5ca79cc04"><td class="memItemLeft" align="right" valign="top"><a id="a9dfae4b04c57cb7484bd64b5ca79cc04"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a9dfae4b04c57cb7484bd64b5ca79cc04">operator-</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;) const</td></tr>
@@ -299,7 +308,7 @@ double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b
 <tr class="separator:a9dfae4b04c57cb7484bd64b5ca79cc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bdc36ffcfd2de883be7978daeaa7999"><td class="memItemLeft" align="right" valign="top"><a id="a7bdc36ffcfd2de883be7978daeaa7999"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a7bdc36ffcfd2de883be7978daeaa7999">operator*=</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a7bdc36ffcfd2de883be7978daeaa7999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the values of another <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> by this one. <br /></td></tr>
+<tr class="memdesc:a7bdc36ffcfd2de883be7978daeaa7999"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiply the values of another <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> by this one. <br /></td></tr>
 <tr class="separator:a7bdc36ffcfd2de883be7978daeaa7999"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3c50a98b838e61f220700fd67227251"><td class="memItemLeft" align="right" valign="top"><a id="ad3c50a98b838e61f220700fd67227251"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ad3c50a98b838e61f220700fd67227251">operator*</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;a) const</td></tr>
@@ -312,10 +321,9 @@ double &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b
 <tr class="memitem:aa98d4aa3605b759076eef156ebb8d3eb"><td class="memItemLeft" align="right" valign="top"><a id="aa98d4aa3605b759076eef156ebb8d3eb"></a>
 <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (PosType b)</td></tr>
 <tr class="separator:aa98d4aa3605b759076eef156ebb8d3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe231f0627899a087407b96589f28558"><td class="memItemLeft" align="right" valign="top"><a id="afe231f0627899a087407b96589f28558"></a>
-<a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#afe231f0627899a087407b96589f28558">operator*=</a> (const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;m) const</td></tr>
-<tr class="memdesc:afe231f0627899a087407b96589f28558"><td class="mdescLeft">&#160;</td><td class="mdescRight">element wise multiplictioan <br /></td></tr>
-<tr class="separator:afe231f0627899a087407b96589f28558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19effe1072188fdd1e09b4d3824d53e3"><td class="memItemLeft" align="right" valign="top"><a id="a19effe1072188fdd1e09b4d3824d53e3"></a>
+<a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (PosType b) const</td></tr>
+<tr class="separator:a19effe1072188fdd1e09b4d3824d53e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3706a6491650f14200eef64213d1e68"><td class="memItemLeft" align="right" valign="top"><a id="ae3706a6491650f14200eef64213d1e68"></a>
 std::valarray&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> ()</td></tr>
 <tr class="separator:ae3706a6491650f14200eef64213d1e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -335,6 +343,12 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a6d9e3d1725679255fdbd1926fd813b71">size</a> ()</td></tr>
 <tr class="memdesc:a6d9e3d1725679255fdbd1926fd813b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of pixels. <br /></td></tr>
 <tr class="separator:a6d9e3d1725679255fdbd1926fd813b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2946851c810bb1fa61f1542af60dad95"><td class="memItemLeft" align="right" valign="top"><a id="a2946851c810bb1fa61f1542af60dad95"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>max</b> () const</td></tr>
+<tr class="separator:a2946851c810bb1fa61f1542af60dad95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3c7181770270bb6862216b20a57ac1"><td class="memItemLeft" align="right" valign="top"><a id="a7b3c7181770270bb6862216b20a57ac1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>min</b> () const</td></tr>
+<tr class="separator:a7b3c7181770270bb6862216b20a57ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846abd2731b960f8252c2588d4482cfd"><td class="memItemLeft" align="right" valign="top"><a id="a846abd2731b960f8252c2588d4482cfd"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a846abd2731b960f8252c2588d4482cfd">FindArc</a> (PosType &amp;radius, PosType *xc, PosType *arc_center, PosType &amp;arclength, PosType &amp;width, PosType <a class="el" href="class_pixel_map.html#a81fb4e5d1904d31b147b294086448ce8">threshold</a>)</td></tr>
 <tr class="memdesc:a846abd2731b960f8252c2588d4482cfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find arcs in image WARNING: THIS IS UNDER CONSTRUCTION! <br /></td></tr>
@@ -361,6 +375,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ac0c97f9fe34a01fa572065c1fb496694">find_position</a> (PosType x[], std::size_t const ix, std::size_t const iy) const</td></tr>
 <tr class="memdesc:ac0c97f9fe34a01fa572065c1fb496694"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index for a position, returns -1 if out of map <br /></td></tr>
 <tr class="separator:ac0c97f9fe34a01fa572065c1fb496694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cf70dc1f709b358bf58d798d1e7223"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a23cf70dc1f709b358bf58d798d1e7223">rotate</a> (PosType theta, PosType scale=1)</td></tr>
+<tr class="memdesc:a23cf70dc1f709b358bf58d798d1e7223"><td class="mdescLeft">&#160;</td><td class="mdescRight">rotate and scale the image while keeping pixels, resoluiton  <a href="class_pixel_map.html#a23cf70dc1f709b358bf58d798d1e7223">More...</a><br /></td></tr>
+<tr class="separator:a23cf70dc1f709b358bf58d798d1e7223"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8383674bc9357e957284678ba7652b5d"><td class="memItemLeft" align="right" valign="top">PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a8383674bc9357e957284678ba7652b5d">linear_interpolate</a> (PosType x[])</td></tr>
 <tr class="memdesc:a8383674bc9357e957284678ba7652b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">interpolate to point x[]  <a href="class_pixel_map.html#a8383674bc9357e957284678ba7652b5d">More...</a><br /></td></tr>
 <tr class="separator:a8383674bc9357e957284678ba7652b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -392,6 +409,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>drawCurve</b> (std::v
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a9706dfb86aec046bea4193ed1228c463">drawBox</a> (PosType p1[], PosType p2[], PosType value, int Nstrip)</td></tr>
 <tr class="memdesc:a9706dfb86aec046bea4193ed1228c463"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a box (filling the inside with horizontal lines, starting from the top) <br /></td></tr>
 <tr class="separator:a9706dfb86aec046bea4193ed1228c463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b5659e4484b935aaf7c15418ae0bd32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a5b5659e4484b935aaf7c15418ae0bd32">PowerSpectrum</a> (std::vector&lt; PosType &gt; &amp;power_spectrum, std::vector&lt; PosType &gt; &amp;lvec, bool overwrite=true)</td></tr>
+<tr class="memdesc:a5b5659e4484b935aaf7c15418ae0bd32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the power spectrum of the map.  <a href="class_pixel_map.html#a5b5659e4484b935aaf7c15418ae0bd32">More...</a><br /></td></tr>
+<tr class="separator:a5b5659e4484b935aaf7c15418ae0bd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7afb16b257f3f672e41b2e521b28889"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ae7afb16b257f3f672e41b2e521b28889">PowerSpectrum</a> (std::vector&lt; PosType &gt; &amp;power_spectrum, const std::vector&lt; PosType &gt; &amp;lbins, std::vector&lt; PosType &gt; &amp;lave, bool overwrite=true)</td></tr>
+<tr class="memdesc:ae7afb16b257f3f672e41b2e521b28889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the power spectrum of the map.  <a href="class_pixel_map.html#ae7afb16b257f3f672e41b2e521b28889">More...</a><br /></td></tr>
+<tr class="separator:ae7afb16b257f3f672e41b2e521b28889"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073d79a4bdf2ba7151ebe677854b88df"><td class="memItemLeft" align="right" valign="top"><a id="a073d79a4bdf2ba7151ebe677854b88df"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>AdaptiveSmooth</b> (PosType value)</td></tr>
+<tr class="separator:a073d79a4bdf2ba7151ebe677854b88df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b30794ebe4e12654cd00546392b14b5"><td class="memItemLeft" align="right" valign="top"><a id="a8b30794ebe4e12654cd00546392b14b5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a8b30794ebe4e12654cd00546392b14b5">find_contour</a> (double level, std::vector&lt; std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &gt; &amp;points, std::vector&lt; bool &gt; &amp;hits_edge) const</td></tr>
+<tr class="memdesc:a8b30794ebe4e12654cd00546392b14b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a vector of contour curves <br /></td></tr>
+<tr class="separator:a8b30794ebe4e12654cd00546392b14b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e1c84cfd0acd94a3388ade6139e2195"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a9e1c84cfd0acd94a3388ade6139e2195">find_islands_holes</a> (double level, std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp;points) const</td></tr>
+<tr class="separator:a9e1c84cfd0acd94a3388ade6139e2195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53f6098636ea9725f8b3291a5952188"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ac53f6098636ea9725f8b3291a5952188">lens_definition</a> (double min_sn_per_image, double pixel_threshold, int &amp;Nimages, double &amp;total_sig_noise_source, std::vector&lt; size_t &gt; &amp;maxima_indexes, std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp;image_points, bool &amp;lens_TF, double &amp;level, size_t &amp;n_pix_in_source, bool verbose=false)</td></tr>
+<tr class="separator:ac53f6098636ea9725f8b3291a5952188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42cc7b1dd9c40c0850afa19fd7369abe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a42cc7b1dd9c40c0850afa19fd7369abe">maxima</a> (double minlevel) const</td></tr>
+<tr class="memdesc:a42cc7b1dd9c40c0850afa19fd7369abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">find maxima that are above minlevel  <a href="class_pixel_map.html#a42cc7b1dd9c40c0850afa19fd7369abe">More...</a><br /></td></tr>
+<tr class="separator:a42cc7b1dd9c40c0850afa19fd7369abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7765719a3711365372ca54100efa9dcc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a7765719a3711365372ca54100efa9dcc">count_islands</a> (std::vector&lt; size_t &gt; &amp;pixel_index) const</td></tr>
 <tr class="memdesc:a7765719a3711365372ca54100efa9dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">For a list of pixel indexes this will count and separated islands that are not connected.  <a href="class_pixel_map.html#a7765719a3711365372ca54100efa9dcc">More...</a><br /></td></tr>
 <tr class="separator:a7765719a3711365372ca54100efa9dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -420,7 +457,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:af4a0ded3c25c693842b399640178d785"><td class="mdescLeft">&#160;</td><td class="mdescRight">convolve the image with a kernel.  <a href="class_pixel_map.html#af4a0ded3c25c693842b399640178d785">More...</a><br /></td></tr>
 <tr class="separator:af4a0ded3c25c693842b399640178d785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cdbaacdbaa3861f586b9ffcf08d261a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pixel_map.html">PixelMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#a3cdbaacdbaa3861f586b9ffcf08d261a">downsize</a> (int n)</td></tr>
-<tr class="memdesc:a3cdbaacdbaa3861f586b9ffcf08d261a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> with a lower resolution. The value of the pixels are added for the new pixels. If n does not go into the orginial number of pixels evenly the right (top) redge is dropped.  <a href="class_pixel_map.html#a3cdbaacdbaa3861f586b9ffcf08d261a">More...</a><br /></td></tr>
+<tr class="memdesc:a3cdbaacdbaa3861f586b9ffcf08d261a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> with a lower resolution. The value of the pixels are added for the new pixels. If n does not go into the orginial number of pixels evenly the right (top) redge is dropped.  <a href="class_pixel_map.html#a3cdbaacdbaa3861f586b9ffcf08d261a">More...</a><br /></td></tr>
 <tr class="separator:a3cdbaacdbaa3861f586b9ffcf08d261a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7a48ee6c682d5093629d3ee3fdc9ed5"><td class="memItemLeft" align="right" valign="top"><a id="ab7a48ee6c682d5093629d3ee3fdc9ed5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pixel_map.html#ab7a48ee6c682d5093629d3ee3fdc9ed5">addheader</a> (std::string label, long value, std::string comment)</td></tr>
@@ -452,10 +489,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 <tr class="separator:ad3dd1fcb2d47f249045280520158757d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a fits file, smoothed, etc. like an image. </p>
+<div class="textblock"><p>Image structure that can be manipulated and exported to/from fits files. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac284147e8e2b7aa5bf44f16dfb327956"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac284147e8e2b7aa5bf44f16dfb327956">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac284147e8e2b7aa5bf44f16dfb327956">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -480,7 +517,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>Creates a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> at a different resolution. The new counts are calculated integrating over the input pixels. No interpolation or smoothing is performed. </p>
+<p>Creates a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> at a different resolution. The new counts are calculated integrating over the input pixels. No interpolation or smoothing is performed. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">res_ratio</td><td>resolution of map is res_ratio times the resolution of the input map </td></tr>
@@ -491,7 +528,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 </div>
 </div>
 <a id="a74ed2fba8e634543912eed915b84f67c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74ed2fba8e634543912eed915b84f67c">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ed2fba8e634543912eed915b84f67c">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -522,10 +559,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>Creates a new <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> from a square region of a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a>. If the region exceeds the boundaries of the original map, the new map is completed with zeros. </p>
+<p>Creates a new <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> from a square region of a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>. If the region exceeds the boundaries of the original map, the new map is completed with zeros. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">center</td><td>Input <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> (from which the stamp is taken) </td></tr>
+    <tr><td class="paramname">center</td><td>Input <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> (from which the stamp is taken) </td></tr>
     <tr><td class="paramname">my_Npixels</td><td>center of the region to be duplicated (in rads) size of the region to be duplicated (in pixels) </td></tr>
   </table>
   </dd>
@@ -533,8 +570,58 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 
 </div>
 </div>
+<a id="a125232b6f699bc5b6411f5e38e5bfd04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a125232b6f699bc5b6411f5e38e5bfd04">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PixelMap::PixelMap </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>pmap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>ny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>my_Npixels</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produces a square cut-out of the input <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nx</td><td>Input <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> (from which the stamp is taken) </td></tr>
+    <tr><td class="paramname">ny</td><td>lower left pixels of in pmap </td></tr>
+    <tr><td class="paramname">my_Npixels</td><td>lower left pixels of in pmap size of the region to be duplicated (in pixels) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a1237bd9c0cb6fde88245e1d5996be808"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1237bd9c0cb6fde88245e1d5996be808">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1237bd9c0cb6fde88245e1d5996be808">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -571,7 +658,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>make square <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> </p>
+<p>make square <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Npixels</td><td>The location of the center of the map </td></tr>
@@ -583,7 +670,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 </div>
 </div>
 <a id="a448987171aa76ba4554e9e3be4883ed8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a448987171aa76ba4554e9e3be4883ed8">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a448987171aa76ba4554e9e3be4883ed8">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -626,7 +713,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>make rectangular <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> with square pixels </p>
+<p>make rectangular <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> with square pixels </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Nx</td><td>The location of the center of the map </td></tr>
@@ -639,7 +726,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 </div>
 </div>
 <a id="aca57f4b308948e5fd53e5389a53760be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca57f4b308948e5fd53e5389a53760be">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aca57f4b308948e5fd53e5389a53760be">&#9670;&nbsp;</a></span>PixelMap() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -670,7 +757,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> reading in a fits file Infos about resolution, Npixels and center are read from the header. </p>
+<p>Constructs a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> reading in a fits file Infos about resolution, Npixels and center are read from the header. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fitsfilename</td><td>file name of fits file to be read </td></tr>
@@ -771,7 +858,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 </div><div class="memdoc">
 
 <p>Fills in pixels with the selected quantity from the grid points. </p>
-<p>The grid and <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> do not need to be related in any way. Using this function multiple grids can be added to the same image.</p>
+<p>The grid and <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> do not need to be related in any way. Using this function multiple grids can be added to the same image.</p>
 <p>This is for lensing quantities and not surface brightness. If you want surface brightness use <a class="el" href="class_pixel_map.html#aa33c8087ce8fcbd03499f74ffbdcd27a" title="Add an image from a the surface brightnesses of a Grid to the PixelMap.">PixelMap::AddGridBrightness()</a></p>
 <p>Warning: When adding a new grid it should not overlap with any of the previously added grids. </p>
 
@@ -960,7 +1047,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>copy a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> into this one. </p>
+<p>copy a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> into this one. </p>
 <p>The size, resolution and center of the pixel maps are not changed and do not need to match. The input pixel map is added while conserving the area integral of the map within the area of overlaping pixels. </p>
 
 </div>
@@ -1002,7 +1089,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>Creates a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> with a lower resolution. The value of the pixels are added for the new pixels. If n does not go into the orginial number of pixels evenly the right (top) redge is dropped. </p>
+<p>Creates a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> with a lower resolution. The value of the pixels are added for the new pixels. If n does not go into the orginial number of pixels evenly the right (top) redge is dropped. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>number of pixels each direction added into each new pixel </td></tr>
@@ -1244,7 +1331,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
       </table>
 </div><div class="memdoc">
 
-<p>copy a <a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> that must be the same without creating a new one.. </p>
+<p>copy a <a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> that must be the same without creating a new one.. </p>
 <p>This avoids calling a any constructor or destructor. </p>
 
 </div>
@@ -1329,6 +1416,128 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 
 </div>
 </div>
+<a id="a9e1c84cfd0acd94a3388ade6139e2195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e1c84cfd0acd94a3388ade6139e2195">&#9670;&nbsp;</a></span>find_islands_holes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PixelMap::find_islands_holes </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>points</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>find all the points above level divided into seprated groups</p>
+<p>Groups with points are connected regions above level. Groups without points are regions surrounded by regions above level, i.e. holes. </p>
+
+</div>
+</div>
+<a id="ac53f6098636ea9725f8b3291a5952188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53f6098636ea9725f8b3291a5952188">&#9670;&nbsp;</a></span>lens_definition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PixelMap::lens_definition </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>min_sn_per_image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>pixel_threshold</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>Nimages</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>total_sig_noise_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; size_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>maxima_indexes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::vector&lt; size_t &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>image_points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>lens_TF</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t &amp;&#160;</td>
+          <td class="paramname"><em>n_pix_in_source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This applies a definition of lesning for a resolved source based on that of Sonnenfeld et al. 2023</p>
+<p>This is meant to be used on a signal-to-noise map of the lensed source only.</p>
+<p>The definition does the following tests: 1) define a footprint at surface brightness level <code>pixel_threshold</code> 2) romove disconected region that have signal-to-noise below <code>min_sn_per_image</code> 3) if there are multiple images or a hole in the image <code>lens_TF =true</code> 4) if there is one image with no hole increase the threshold and apply 3) until the it is classified as a lens or it reaches the maximum surface brightness level </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min_sn_per_image</td><td>signal-to-noise required for a seporate image (ex 10) </td></tr>
+    <tr><td class="paramname">pixel_threshold</td><td>signal-to-noise threshold that defines the footprint (ex. 2) </td></tr>
+    <tr><td class="paramname">Nimages</td><td>the number of images </td></tr>
+    <tr><td class="paramname">total_sig_noise_source</td><td>gives the total signal-to-noise of all images </td></tr>
+    <tr><td class="paramname">maxima_indexes</td><td>index of maxima </td></tr>
+    <tr><td class="paramname">lens_TF</td><td>whether it passes lens diffintion </td></tr>
+    <tr><td class="paramname">level</td><td>levels on which the multiple images are defined </td></tr>
+    <tr><td class="paramname">n_pix_in_source</td><td>number of pixels in footprint </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a8383674bc9357e957284678ba7652b5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8383674bc9357e957284678ba7652b5d">&#9670;&nbsp;</a></span>linear_interpolate()</h2>
 
@@ -1347,6 +1556,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 
 <p>interpolate to point x[] </p>
 <p>bilinear interpolation</p>
+
+</div>
+</div>
+<a id="a42cc7b1dd9c40c0850afa19fd7369abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42cc7b1dd9c40c0850afa19fd7369abe">&#9670;&nbsp;</a></span>maxima()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; size_t &gt; PixelMap::maxima </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>minlevel</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>find maxima that are above minlevel </p>
+<p>find the index of the pixels that are larger than all its neighbors </p>
 
 </div>
 </div>
@@ -1369,6 +1599,154 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 <p>Replace overlaping pixel values with those of the input map. </p>
 <p>No attempt is made to interpolate or average the pixels of pmap. No integration is done. If the resolution of input map is higher than the reslution of the map then the pixels values will just be that of the last pixel visited while going through them.</p>
 <p>This can be used to sew tiles together into a larger map. </p>
+
+</div>
+</div>
+<a id="ae7afb16b257f3f672e41b2e521b28889"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7afb16b257f3f672e41b2e521b28889">&#9670;&nbsp;</a></span>PowerSpectrum() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PixelMap::PowerSpectrum </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; PosType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>power_spectrum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; PosType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lbins</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; PosType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>overwrite</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the power spectrum of the map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power_spectrum</td><td>output power spectrum </td></tr>
+    <tr><td class="paramname">lbins</td><td>output l values of bands </td></tr>
+    <tr><td class="paramname">lave</td><td>output l values of bands </td></tr>
+    <tr><td class="paramname">overwrite</td><td>if false add power to existing power_spectrum (used for averaging over many fields </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b5659e4484b935aaf7c15418ae0bd32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b5659e4484b935aaf7c15418ae0bd32">&#9670;&nbsp;</a></span>PowerSpectrum() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PixelMap::PowerSpectrum </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; PosType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>power_spectrum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; PosType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lvec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>overwrite</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Find the power spectrum of the map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power_spectrum</td><td>output power spectrum </td></tr>
+    <tr><td class="paramname">lvec</td><td>output l values of bands </td></tr>
+    <tr><td class="paramname">overwrite</td><td>if false add power to existing power_spectrum (used for averaging over many fields </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8bcbc5ca93ec951a009241fb0767c8ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bcbc5ca93ec951a009241fb0767c8ed">&#9670;&nbsp;</a></span>printFITS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PixelMap::printFITS </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>headercards</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This overides all header information and relaces it with the inputs. Meant for making a modified copy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>file to create </td></tr>
+    <tr><td class="paramname">headercards</td><td>header information in cfitsio "card" format </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1422,6 +1800,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 
 </div>
 </div>
+<a id="a23cf70dc1f709b358bf58d798d1e7223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23cf70dc1f709b358bf58d798d1e7223">&#9670;&nbsp;</a></span>rotate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pixel_map.html">PixelMap</a> PixelMap::rotate </td>
+          <td>(</td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>theta</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>scale</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>rotate and scale the image while keeping pixels, resoluiton </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">theta</td><td>counter-clockwise rotation (radians) </td></tr>
+    <tr><td class="paramname">scale</td><td>scale &lt;1 shrinks it </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>SLsimLib/include/<a class="el" href="image__processing_8h_source.html">image_processing.h</a></li>
 <li>SLsimLib/ImageProcessing/pixelize.cpp</li>
@@ -1429,7 +1844,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="e
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

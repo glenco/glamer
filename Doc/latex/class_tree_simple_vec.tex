@@ -11,11 +11,12 @@ A tree for doing quick searches in multidimensional space. A pointer to an array
 
 
 
-Collaboration diagram for Tree\+Simple\+Vec$<$ T, D $>$\+:\nopagebreak
+Collaboration diagram for Tree\+Simple\+Vec$<$ T, D $>$\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=249pt]{class_tree_simple_vec__coll__graph}
+\includegraphics[width=199pt]{class_tree_simple_vec__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Classes}
@@ -63,12 +64,6 @@ void \mbox{\hyperlink{class_tree_simple_vec_ac71ffe3e4d77b7c17205d797d7429ae6}{\
 \mbox{\Hypertarget{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}\label{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}} 
 void \mbox{\hyperlink{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}{free\+Tree}} ()
 \begin{DoxyCompactList}\small\item\em Free all the tree branches. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_tree_simple_vec_aa677d5c211b9f1c08571877016c96a96}\label{class_tree_simple_vec_aa677d5c211b9f1c08571877016c96a96}} 
-short {\bfseries clear\+Tree} ()
-\item 
-\mbox{\Hypertarget{class_tree_simple_vec_a282e161ef74e8a0a61381040355998f9}\label{class_tree_simple_vec_a282e161ef74e8a0a61381040355998f9}} 
-void {\bfseries \+\_\+free\+Tree} (short child)
-\item 
 \mbox{\Hypertarget{class_tree_simple_vec_ac09ed1dfe5dba4b0b06759a10f237745}\label{class_tree_simple_vec_ac09ed1dfe5dba4b0b06759a10f237745}} 
 bool {\bfseries is\+Empty} ()
 \item 
@@ -110,6 +105,9 @@ bool {\bfseries at\+Leaf} ()
 \item 
 \mbox{\Hypertarget{class_tree_simple_vec_afcd0699377564436f58c1af7d9c2bebd}\label{class_tree_simple_vec_afcd0699377564436f58c1af7d9c2bebd}} 
 bool {\bfseries inbox} (const D $\ast$center, D $\ast$p1, D $\ast$p2)
+\item 
+\mbox{\Hypertarget{class_tree_simple_vec_aca9bb5b69bb96d54dbcfbf4e4f8a4063}\label{class_tree_simple_vec_aca9bb5b69bb96d54dbcfbf4e4f8a4063}} 
+int {\bfseries cutbox} (const D $\ast$center, D $\ast$p1, D $\ast$p2, float rmax)
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -132,8 +130,8 @@ bool {\bfseries median\+\_\+cut}
 \mbox{\Hypertarget{class_tree_simple_vec_adf1fc26a5f415e49a2935f52ef368f4c}\label{class_tree_simple_vec_adf1fc26a5f415e49a2935f52ef368f4c}} 
 int {\bfseries Nbucket}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_ab652a8414b6c0c2eda921702ee2afdbc}\label{class_tree_simple_vec_ab652a8414b6c0c2eda921702ee2afdbc}} 
-D {\bfseries realray} \mbox{[}2\mbox{]}
+\mbox{\Hypertarget{class_tree_simple_vec_a8219ffbb7f8b0287c018370a0778d9c5}\label{class_tree_simple_vec_a8219ffbb7f8b0287c018370a0778d9c5}} 
+\mbox{\hyperlink{struct_point__nd}{Point\+\_\+nd}}$<$ D $>$ {\bfseries realray}
 \item 
 \mbox{\Hypertarget{class_tree_simple_vec_ab12580702c34b069979e25336e201ff3}\label{class_tree_simple_vec_ab12580702c34b069979e25336e201ff3}} 
 T $\ast$ {\bfseries points}
@@ -144,11 +142,11 @@ D $\ast$($\ast$ {\bfseries position} )(T \&)
 \mbox{\Hypertarget{class_tree_simple_vec_aaa9f936256ae2b2cfd0020b58737bfbe}\label{class_tree_simple_vec_aaa9f936256ae2b2cfd0020b58737bfbe}} 
 std\+::vector$<$ D $>$ {\bfseries workspace}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a4726fc119de45202077976366bbbc2bc}\label{class_tree_simple_vec_a4726fc119de45202077976366bbbc2bc}} 
-\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} $\ast$ {\bfseries top}
+\mbox{\Hypertarget{class_tree_simple_vec_af4bb9517dea5452ad6091d5928dd0e0e}\label{class_tree_simple_vec_af4bb9517dea5452ad6091d5928dd0e0e}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} $>$ {\bfseries top\+\_\+ptr}
 \item 
-\mbox{\Hypertarget{class_tree_simple_vec_a69269746148ca24051c25336c06b44ab}\label{class_tree_simple_vec_a69269746148ca24051c25336c06b44ab}} 
-\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} $\ast$ {\bfseries current}
+\mbox{\Hypertarget{class_tree_simple_vec_a186704c44911da80b2a93b12d46f2f13}\label{class_tree_simple_vec_a186704c44911da80b2a93b12d46f2f13}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}} $>$ {\bfseries current}
 \item 
 \mbox{\Hypertarget{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}\label{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}} 
 unsigned long \mbox{\hyperlink{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}{Nbranches}}

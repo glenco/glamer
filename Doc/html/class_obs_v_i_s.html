@@ -79,9 +79,19 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af5b7724065f01c83f8cd72e1b70bd0a4"><td class="memItemLeft" align="right" valign="top"><a id="af5b7724065f01c83f8cd72e1b70bd0a4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ObsVIS</b> (size_t Npix_x, size_t Npix_y, int oversample)</td></tr>
-<tr class="separator:af5b7724065f01c83f8cd72e1b70bd0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1bb4c8159cdecfb3df9c23685d32b4"><td class="memItemLeft" align="right" valign="top"><a id="a1b1bb4c8159cdecfb3df9c23685d32b4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ObsVIS</b> (size_t Npix_x, size_t Npix_y, int oversample, double resolution=0.1 *arcsecTOradians)</td></tr>
+<tr class="separator:a1b1bb4c8159cdecfb3df9c23685d32b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08afa2bd9051719a3a70f3c0c4ba1003"><td class="memItemLeft" align="right" valign="top"><a id="a08afa2bd9051719a3a70f3c0c4ba1003"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ObsVIS</b> (size_t Npix_x, size_t Npix_y, const std::vector&lt; double &gt; &amp;exposure_times, int oversample)</td></tr>
+<tr class="separator:a08afa2bd9051719a3a70f3c0c4ba1003"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd1439270d9ac1e14f79047813a349e2"><td class="memItemLeft" align="right" valign="top"><a id="acd1439270d9ac1e14f79047813a349e2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ObsVIS</b> (size_t Npix_x, size_t Npix_y, const std::vector&lt; double &gt; &amp;exposure_times, int oversample, double resolution, double background_sigma)</td></tr>
+<tr class="separator:acd1439270d9ac1e14f79047813a349e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b44d29c27c145231a8ece7209d73be"><td class="memItemLeft" align="right" valign="top"><a id="aa6b44d29c27c145231a8ece7209d73be"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_obs_v_i_s.html#aa6b44d29c27c145231a8ece7209d73be">AddPoisson</a> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran)</td></tr>
+<tr class="memdesc:aa6b44d29c27c145231a8ece7209d73be"><td class="mdescLeft">&#160;</td><td class="mdescRight">add poisson noise to an image that is in units of electrons <br /></td></tr>
+<tr class="separator:aa6b44d29c27c145231a8ece7209d73be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a351628873fd60092d3ac0bd67a47e4b3"><td class="memItemLeft" align="right" valign="top"><a id="a351628873fd60092d3ac0bd67a47e4b3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_obs_v_i_s.html#a351628873fd60092d3ac0bd67a47e4b3">AddNoise</a> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;error_map, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran, bool cosmic=true)</td></tr>
 <tr class="memdesc:a351628873fd60092d3ac0bd67a47e4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies noise (read-out + Poisson) on an image, returns noise map. <br /></td></tr>
@@ -89,17 +99,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a2de4e525aff83297882ab17692000406"><td class="memItemLeft" align="right" valign="top"><a id="a2de4e525aff83297882ab17692000406"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Convert</b> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map_in, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map_out, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;error_map, bool psf, bool noise, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran, bool cosmic=true)</td></tr>
 <tr class="separator:a2de4e525aff83297882ab17692000406"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2f9665122d74eb4b97103a47a679912"><td class="memItemLeft" align="right" valign="top"><a id="ad2f9665122d74eb4b97103a47a679912"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>mag_to_flux</b> (double m) const</td></tr>
-<tr class="separator:ad2f9665122d74eb4b97103a47a679912"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9336b53ceb6ebd13cbaa154d268b12eb"><td class="memItemLeft" align="right" valign="top"><a id="a9336b53ceb6ebd13cbaa154d268b12eb"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (double flux) const</td></tr>
-<tr class="separator:a9336b53ceb6ebd13cbaa154d268b12eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4605d56d5154b6fa5c2007a0225e81"><td class="memItemLeft" align="right" valign="top"><a id="a0d4605d56d5154b6fa5c2007a0225e81"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_counts</b> (double flux) const</td></tr>
-<tr class="separator:a0d4605d56d5154b6fa5c2007a0225e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa85741b3aad8974f1c453bf0c40d4d05"><td class="memItemLeft" align="right" valign="top"><a id="aa85741b3aad8974f1c453bf0c40d4d05"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>mag_to_counts</b> (double m) const</td></tr>
+<tr class="separator:aa85741b3aad8974f1c453bf0c40d4d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a936c246b0b501aa53be788d2db2d227a"><td class="memItemLeft" align="right" valign="top"><a id="a936c246b0b501aa53be788d2db2d227a"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>counts_to_mag</b> (double flux) const</td></tr>
+<tr class="separator:a936c246b0b501aa53be788d2db2d227a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85997ac0faed1bfebb67aed82e203a16"><td class="memItemLeft" align="right" valign="top"><a id="a85997ac0faed1bfebb67aed82e203a16"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>zeropoint</b> () const</td></tr>
+<tr class="separator:a85997ac0faed1bfebb67aed82e203a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f0471d949b9e761e59ac1b89d7c4931"><td class="memItemLeft" align="right" valign="top"><a id="a1f0471d949b9e761e59ac1b89d7c4931"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setZeropoint</b> (double zpoint)</td></tr>
+<tr class="separator:a1f0471d949b9e761e59ac1b89d7c4931"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0b0e08351ab37c295adf6b1d361e93b"><td class="memItemLeft" align="right" valign="top"><a id="af0b0e08351ab37c295adf6b1d361e93b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>getBackgroundNoise</b> () const</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_obs_v_i_s.html#af0b0e08351ab37c295adf6b1d361e93b">getBackgroundNoise</a> () const</td></tr>
+<tr class="memdesc:af0b0e08351ab37c295adf6b1d361e93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns std of pixels in e- <br /></td></tr>
 <tr class="separator:af0b0e08351ab37c295adf6b1d361e93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -113,7 +127,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getBackgroundNoise</
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

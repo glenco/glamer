@@ -98,9 +98,8 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_make_particle_lenses.html#a9c881089027b61294077339f8cebef5c">Recenter</a> (<a class="el" href="struct_point__3d.html">Point_3d</a>&lt;&gt; x)</td></tr>
 <tr class="memdesc:a9c881089027b61294077339f8cebef5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">recenter the particles to 3d point in physical Mpc/h units If the halos have already been created they will be destroyed. <br /></td></tr>
 <tr class="separator:a9c881089027b61294077339f8cebef5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae06b423696d18b77c6545cf15c825d48"><td class="memItemLeft" align="right" valign="top"><a id="ae06b423696d18b77c6545cf15c825d48"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CreateHalos</b> (const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, double redshift)</td></tr>
-<tr class="separator:ae06b423696d18b77c6545cf15c825d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630543b97c4e4e571852e4accbb065b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_make_particle_lenses.html#a630543b97c4e4e571852e4accbb065b4">CreateHalos</a> (const COSMOLOGY &amp;cosmo, double redshift, double inv_area)</td></tr>
+<tr class="separator:a630543b97c4e4e571852e4accbb065b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef610bf4ef8d5b80f36740f9654aab74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_make_particle_lenses.html#aef610bf4ef8d5b80f36740f9654aab74">radialCut</a> (<a class="el" href="struct_point__3d.html">Point_3d</a>&lt;&gt; center, double radius)</td></tr>
 <tr class="memdesc:aef610bf4ef8d5b80f36740f9654aab74"><td class="mdescLeft">&#160;</td><td class="mdescRight">remove particles that are beyond radius (Mpc/h) from center  <a href="class_make_particle_lenses.html#aef610bf4ef8d5b80f36740f9654aab74">More...</a><br /></td></tr>
 <tr class="separator:aef610bf4ef8d5b80f36740f9654aab74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,14 +136,14 @@ std::vector&lt; ParticleType&lt; float &gt; &gt;&#160;</td><td class="memItemRig
 <div class="textblock"><p>A class for constructing LensHalos from particles in a data file. </p>
 <p>The particle data is stored in this structure so the <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a> should not be copied and then this object allowed to be destroyed. The halos will be destroyed when this structure is destroyed.</p>
 <p>A separate <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a> is made for each type of particle that is present in the gadget file. The nearest N neighbour smoothing is done in 3D on construction separately for each type of particle. The smoothing sizes are automatically saved to files and used again if the class is constructed again with the same file and smoothing number.</p>
-<p>On construction the LensHalos are not constructed. You nead to run the <code>CreateHalos()</code> method the them to be created.</p>
+<p>On construction the LensHalos are not constructed. You nead to run the <code><a class="el" href="class_make_particle_lenses.html#a630543b97c4e4e571852e4accbb065b4">CreateHalos()</a></code> method the them to be created.</p>
 <p>The data file formats are :</p>
 <p>gadget2 - standard Gadget-2 output. A different <a class="el" href="class_lens_halo.html" title="A base class for all types of lensing &quot;halos&quot; which are any mass distribution that cause lensing.">LensHalo</a> is made for each type of particle. The nearest neighbour smoothing scales are calculated within particle type. The sph density of gas particles are not used.</p>
 <p>csv3,csv4,csv5,csv6 - CSV ascii format without header. The first three columns are the positions. Next columns are used for the other formats being and interpreted as (column 4) masses are in Msun/h, (column 5) the paricle smoothing size in Mpc/h and (column 6) an integer for type of particle. There can be more columns in the file than are uesed. In the case of csv6, when there are more then one type of halo each type will be in a differeent <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a> with differnt smoothing.</p>
 <p>glmb - This is a binary format internal to GLAMER used to store the positions, masses and sizes of the particles. If GLAMER has generated one, it should be all that is needed to recreate the <a class="el" href="class_lens_halo_particles.html" title="A class that represents the lensing by a collection of simulation particles.">LensHaloParticles</a>.</p>
 <p>ascii2 - This is the original ascii GLAMER format. Three floats for positions in comoving Mpc (no h factor). The lines "# nparticles ...." and "# mass ...." must be in header at the top of the file. # is otherwise a comment character. Only one type of particle in a single input file.</p>
 <p>example of use:</p>
-<p><a class="el" href="class_c_o_s_m_o_l_o_g_y.html" title="The cosmology and all the functions required to calculated quantities based on the cosmology.">COSMOLOGY</a> cosmo(Planck);</p>
+<p>COSMOLOGY cosmo(Planck);</p>
 <p>double zs = 2,zl = 0.5; double Dl = cosmo.coorDist(zl);</p>
 <p>std::string filename = "DataFiles/snap_058_centered.txt";</p>
 <p><a class="el" href="class_make_particle_lenses.html" title="A class for constructing LensHalos from particles in a data file.">MakeParticleLenses</a> halomaker(filename,csv4,30,false);</p>
@@ -159,7 +158,7 @@ std::vector&lt; ParticleType&lt; float &gt; &gt;&#160;</td><td class="memItemRig
 <p>halomaker.CreateHalos(cosmo,zl);</p>
 <p>for(auto h : halomaker.halos){ lens.insertMainHalo(h,zl, true); }</p>
 <p><a class="el" href="struct_grid_map.html" title="A simplified version of the Grid structure for making non-adaptive maps of the lensing quantities (ka...">GridMap</a> gridmap(&amp;lens, 2049,center.x,range);</p>
-<p><a class="el" href="class_pixel_map.html" title="Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a ...">PixelMap</a> pmap = gridmap.writePixelMapUniform(KAPPA); pmap.printFITS("!" + filename + ".kappa.fits");</p>
+<p><a class="el" href="class_pixel_map.html" title="Image structure that can be manipulated and exported to/from fits files.">PixelMap</a> pmap = gridmap.writePixelMapUniform(KAPPA); pmap.printFITS("!" + filename + ".kappa.fits");</p>
 <p>pmap = gridmap.writePixelMapUniform(ALPHA1); pmap.printFITS("!" + filename + ".alpha1.fits");</p>
 <p>pmap = gridmap.writePixelMapUniform(ALPHA2); pmap.printFITS("!" + filename + ".alpha2.fits");</p>
 <p>&lt;<code></code> &gt; </p>
@@ -256,6 +255,41 @@ std::vector&lt; ParticleType&lt; float &gt; &gt;&#160;</td><td class="memItemRig
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a630543b97c4e4e571852e4accbb065b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630543b97c4e4e571852e4accbb065b4">&#9670;&nbsp;</a></span>CreateHalos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MakeParticleLenses::CreateHalos </td>
+          <td>(</td>
+          <td class="paramtype">const COSMOLOGY &amp;&#160;</td>
+          <td class="paramname"><em>cosmo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>redshift</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>inv_area</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>how do you set up inv_area in general ???</p>
+
+</div>
+</div>
 <a id="a55fa4825f80d5020b01691f66012d713"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55fa4825f80d5020b01691f66012d713">&#9670;&nbsp;</a></span>cylindricalCut()</h2>
 
@@ -325,7 +359,7 @@ std::vector&lt; ParticleType&lt; float &gt; &gt;&#160;</td><td class="memItemRig
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

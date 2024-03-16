@@ -104,12 +104,24 @@ Pos\+Type \mbox{\hyperlink{namespace_utilities_a0855636bdb71f103a4412555b9711e98
 \mbox{\Hypertarget{namespace_utilities_a02302245829df0b35aca33fc6415cb96}\label{namespace_utilities_a02302245829df0b35aca33fc6415cb96}} 
 {\footnotesize template$<$typename T $>$ }\\size\+\_\+t \mbox{\hyperlink{namespace_utilities_a02302245829df0b35aca33fc6415cb96}{Remove\+Intersections}} (std\+::vector$<$ T $>$ \&curve)
 \begin{DoxyCompactList}\small\item\em removes the intersections of the curve \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \mbox{\hyperlink{namespace_utilities_a7f2aed1fb05038e399bf1287d64b56ec}{Tighter\+Hull}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&v)
+\item 
+{\footnotesize template$<$typename P $>$ }\\void \mbox{\hyperlink{namespace_utilities_a56791def1b50f6282d75e612aa4f5257}{find\+\_\+boundaries}} (std\+::vector$<$ bool $>$ \&bitmap, long nx, std\+::vector$<$ std\+::vector$<$ P $>$ $>$ \&points, std\+::vector$<$ bool $>$ \&hits\+\_\+edge, bool add\+\_\+to\+\_\+vector=false)
+\item 
+\mbox{\Hypertarget{namespace_utilities_aed791a1510ae7571dde0bd77ff4d1891}\label{namespace_utilities_aed791a1510ae7571dde0bd77ff4d1891}} 
+void \mbox{\hyperlink{namespace_utilities_aed791a1510ae7571dde0bd77ff4d1891}{find\+\_\+islands}} (std\+::vector$<$ bool $>$ \&bitmap, long nx, std\+::vector$<$ std\+::vector$<$ long $>$ $>$ \&indexes, std\+::vector$<$ bool $>$ \&hits\+\_\+edge, bool add\+\_\+to\+\_\+vector=false)
+\begin{DoxyCompactList}\small\item\em find the indexes of areas with bitmap\mbox{[}\mbox{]}=true broken up into diconnected islands \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}\label{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}} 
+double \mbox{\hyperlink{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}{interior\+\_\+mass}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&alpha, const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&x)
+\begin{DoxyCompactList}\small\item\em this returns area within the curve x average kappa iwithin the curve \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_afdd97747d61e6407e4c421eef6f04441}\label{namespace_utilities_afdd97747d61e6407e4c421eef6f04441}} 
+double \mbox{\hyperlink{namespace_utilities_afdd97747d61e6407e4c421eef6f04441}{interior\+\_\+mass}} (const std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&rays)
+\begin{DoxyCompactList}\small\item\em this returns area within the curve x average kappa iwithin the curve \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespace_utilities_acd4dccd3d5a6b05220a4060b921cf318}\label{namespace_utilities_acd4dccd3d5a6b05220a4060b921cf318}} 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_acd4dccd3d5a6b05220a4060b921cf318}{convex\+\_\+hull}} (std\+::vector$<$ T $>$ \&P, std\+::vector$<$ T $>$ \&hull\+\_\+out)
 \begin{DoxyCompactList}\small\item\em Returns a vector of points on the convex hull in counter-\/clockwise order. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespace_utilities_a3ffe5233ee836b82577a661cd137075d}\label{namespace_utilities_a3ffe5233ee836b82577a661cd137075d}} 
-{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_a3ffe5233ee836b82577a661cd137075d}{convex\+\_\+hull}} (std\+::vector$<$ T $>$ \&P, std\+::vector$<$ size\+\_\+t $>$ \&hull\+\_\+index)
-\begin{DoxyCompactList}\small\item\em Returns a vector of points on the convex hull in counter-\/clockwise order. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_a181252f6287df861af9107445a4cac7f}{convex\+\_\+hull}} (const std\+::vector$<$ T $>$ \&P, std\+::vector$<$ size\+\_\+t $>$ \&hull)
+\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_utilities_a6d17c2495bead70b18b91c376c28c051}{concave}} (std\+::vector$<$ T $>$ \&init\+\_\+points, std\+::vector$<$ T $>$ \&hull\+\_\+out, double scale)
 \begin{DoxyCompactList}\small\item\em Creates the concave hull of a group of 2 dimensional points by the shrink-\/wrap algorithm. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespace_utilities_a50f51d6512069fdc1b2fa93dbf409c20}\label{namespace_utilities_a50f51d6512069fdc1b2fa93dbf409c20}} 
@@ -118,8 +130,8 @@ Pos\+Type \mbox{\hyperlink{namespace_utilities_a0855636bdb71f103a4412555b9711e98
 \mbox{\Hypertarget{namespace_utilities_ad7806b8fa0368de7ee40f453c05c4561}\label{namespace_utilities_ad7806b8fa0368de7ee40f453c05c4561}} 
 {\footnotesize template$<$typename Ptype $>$ }\\bool {\bfseries segments\+\_\+cross} (const Ptype \&a1, const Ptype \&a2, const Ptype \&b1, const Ptype \&b2)
 \item 
-\mbox{\Hypertarget{namespace_utilities_a00d33d43c9993d57148387a57b49c93a}\label{namespace_utilities_a00d33d43c9993d57148387a57b49c93a}} 
-{\footnotesize template$<$typename Ptype $>$ }\\bool {\bfseries inhull2} (Ptype \&x, const std\+::vector$<$ Ptype $>$ \&H)
+\mbox{\Hypertarget{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}\label{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}} 
+{\footnotesize template$<$typename Ptype $>$ }\\bool {\bfseries in\+Curve} (const Ptype \&x, const std\+::vector$<$ Ptype $>$ \&H)
 \item 
 \mbox{\Hypertarget{namespace_utilities_af814c998581b6e9f30a929c7508a1eff}\label{namespace_utilities_af814c998581b6e9f30a929c7508a1eff}} 
 {\footnotesize template$<$typename Ptype $>$ }\\bool {\bfseries inhull} (Pos\+Type x\mbox{[}$\,$\mbox{]}, const std\+::vector$<$ Ptype $>$ \&H)
@@ -138,6 +150,23 @@ template$<$$>$ bool {\bfseries inhull$<$ Pos\+Type $\ast$ $>$} (Pos\+Type x\mbox
 \mbox{\Hypertarget{namespace_utilities_a073b41b6e45e881bc03e94bd2548ebad}\label{namespace_utilities_a073b41b6e45e881bc03e94bd2548ebad}} 
 {\footnotesize template$<$typename Ptype $>$ }\\void {\bfseries testconcaveK} ()
 \item 
+\mbox{\Hypertarget{namespace_utilities_af55b9c3d5f503bd2c5544cdec2d5aa42}\label{namespace_utilities_af55b9c3d5f503bd2c5544cdec2d5aa42}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{namespace_utilities_af55b9c3d5f503bd2c5544cdec2d5aa42}{line\+\_\+intersection}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&v1, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&v2, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&w1, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&w2)
+\begin{DoxyCompactList}\small\item\em return the interesetion point of line defined by v1,v2 and w1,w2 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_afc0243f1746707bddd91dd1295795f9e}\label{namespace_utilities_afc0243f1746707bddd91dd1295795f9e}} 
+bool \mbox{\hyperlink{namespace_utilities_afc0243f1746707bddd91dd1295795f9e}{circle\+Intersets\+Curve}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, double r, const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&v)
+\begin{DoxyCompactList}\small\item\em returns true if a circle of radius r around the point x intersects with the curve v. Does not include case where one compleatly encloses the other. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_aed8667e8dfb7a5c44ae73262f63dd2ba}\label{namespace_utilities_aed8667e8dfb7a5c44ae73262f63dd2ba}} 
+bool \mbox{\hyperlink{namespace_utilities_aed8667e8dfb7a5c44ae73262f63dd2ba}{circle\+Overlaps\+Curve}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, double r, const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&v)
+\begin{DoxyCompactList}\small\item\em Returns true if there is any overlap between a curve and a circle. This includea cases where one compleatly encloses the other. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \mbox{\hyperlink{namespace_utilities_a6b3b3327085b03c3dcbb1afadd59fcd4}{envelope}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&v, const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&w)
+\begin{DoxyCompactList}\small\item\em Find a curve that is made up of segments from v and w that surrounds them and does not self intersect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_a1558aa0e0a4492c82429ea4f3ede998a}\label{namespace_utilities_a1558aa0e0a4492c82429ea4f3ede998a}} 
+{\footnotesize template$<$typename R $>$ }\\\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries Random\+Point\+Within\+Curve} (const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&curve, R \&ran)
+\item 
+\mbox{\Hypertarget{namespace_utilities_a093c24fdbd228e902fa9bb86c4de9d7f}\label{namespace_utilities_a093c24fdbd228e902fa9bb86c4de9d7f}} 
+{\footnotesize template$<$typename R $>$ }\\\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{namespace_utilities_a093c24fdbd228e902fa9bb86c4de9d7f}{Random\+Point\+Touching\+Curve}} (const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&curve, double r, R \&ran)
+\begin{DoxyCompactList}\small\item\em Return a point that is either within the curve or within a distance r of the curve. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_utilities_a74edb07bfa2d5cee2ef5450f0998ff57}{Load\+Fits\+Images}} (std\+::string dir, const std\+::string \&filespec, std\+::vector$<$ \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} $>$ \&images, int maxN, double resolution=-\/1, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Reads all the fits files in a directory into a vector of Pixel\+Maps. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{namespace_utilities_ad3f190fa0f0cac4eb4b7c981d5131e5d}{Load\+Fits\+Images}} (std\+::string dir, std\+::vector$<$ std\+::string $>$ filespecs, std\+::vector$<$ std\+::string $>$ file\+\_\+non\+\_\+specs, std\+::vector$<$ \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} $>$ \&images, std\+::vector$<$ std\+::string $>$ \&names, int maxN, double resolution=-\/1, bool verbose=false)
@@ -241,8 +270,8 @@ Pos\+Type {\bfseries Two\+D\+Interpolator} (Pos\+Type $\ast$map)
 \mbox{\Hypertarget{namespace_utilities_a0f92371d63e47b1c09977312f15a15f0}\label{namespace_utilities_a0f92371d63e47b1c09977312f15a15f0}} 
 float {\bfseries is\+Left} (\mbox{\hyperlink{struct_point}{Point}} $\ast$p0, \mbox{\hyperlink{struct_point}{Point}} $\ast$p1, Pos\+Type $\ast$x)
 \item 
-\mbox{\Hypertarget{namespace_utilities_a7ac422420ab4fffbff7714f0015e1727}\label{namespace_utilities_a7ac422420ab4fffbff7714f0015e1727}} 
-float {\bfseries is\+Left} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p0, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p1, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x)
+\mbox{\Hypertarget{namespace_utilities_a281a4ca91cc4e6ba6380b946ed5457af}\label{namespace_utilities_a281a4ca91cc4e6ba6380b946ed5457af}} 
+float {\bfseries is\+Left} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p0, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p1, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x)
 \item 
 unsigned long \mbox{\hyperlink{namespace_utilities_abe61342a713adf7115f351e3342a2b79}{prevpower}} (unsigned long k)
 \item 
@@ -250,7 +279,7 @@ int \mbox{\hyperlink{namespace_utilities_ac42846299720c47decf597f70d448464}{wind
 \begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{namespace_utilities_ac42846299720c47decf597f70d448464}{windings()}}\+: winding number test for a point in a polygon Returns\+: Number of times a curves winds around the point x. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{namespace_utilities_ad964e6781b61f0d76240eda24a4f9ffa}{windings}} (Pos\+Type $\ast$x, \mbox{\hyperlink{struct_point}{Point}} $\ast$$\ast$points, unsigned long Npoints, Pos\+Type $\ast$area, short image=0)
 \item 
-int \mbox{\hyperlink{namespace_utilities_a64cd4e52a3b543449c6ba0330f13f01e}{windings}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&point, Pos\+Type $\ast$area)
+int \mbox{\hyperlink{namespace_utilities_a09f4dcf28911d550c9bd20eeba202f5f}{windings}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&point, Pos\+Type $\ast$area)
 \item 
 int \mbox{\hyperlink{namespace_utilities_afc8d337b886b466535a29068af0b4994}{windings}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&point, Pos\+Type $\ast$area)
 \item 
@@ -296,6 +325,9 @@ template$<$$>$ double {\bfseries to\+\_\+numeric$<$ double $>$} (const std\+::st
 \item 
 \mbox{\Hypertarget{namespace_utilities_ab47b3f15baa661c5bb9cfd66acea8758}\label{namespace_utilities_ab47b3f15baa661c5bb9cfd66acea8758}} 
 {\footnotesize template$<$typename T $>$ }\\bool {\bfseries Always\+False} (T t)
+\item 
+\mbox{\Hypertarget{namespace_utilities_abdf3959325f408179babef5fc09a0a24}\label{namespace_utilities_abdf3959325f408179babef5fc09a0a24}} 
+{\footnotesize template$<$typename T $>$ }\\T {\bfseries vec\+\_\+sum} (const std\+::vector$<$ T $>$ \&v)
 \item 
 \mbox{\Hypertarget{namespace_utilities_a5364acb5691c4969be66653956508e6b}\label{namespace_utilities_a5364acb5691c4969be66653956508e6b}} 
 {\footnotesize template$<$class T $>$ }\\void {\bfseries Matrix} (T $\ast$$\ast$matrix, long rows, long cols)
@@ -377,7 +409,15 @@ long \mbox{\hyperlink{namespace_utilities_af495d1ed407458779abf8694a2e4cda2}{Ind
 \begin{DoxyCompactList}\small\item\em this is the nonsquare version of the function, it will return -\/1 is outside of region \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespace_utilities_a043901fd09c24707f46eb23b75548882}\label{namespace_utilities_a043901fd09c24707f46eb23b75548882}} 
 void \mbox{\hyperlink{namespace_utilities_a043901fd09c24707f46eb23b75548882}{Position\+From\+Index}} (unsigned long i, Pos\+Type $\ast$x, long Nx, long Ny, Pos\+Type \mbox{\hyperlink{namespace_utilities_ae60664d77331b21da7b83e6e0cc0c75c}{range}}, Pos\+Type const $\ast$center)
-\begin{DoxyCompactList}\small\item\em This should work for square or rectangular regions as long as Npixels and range are the x-\/axis values and the pixels are square. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This should work for square or rectangular regions as long as Npixels and range are the x-\/axis values and the pixels are square. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_utilities_a3c5c4e1c74c85e3942c1fddf18629369}\label{namespace_utilities_a3c5c4e1c74c85e3942c1fddf18629369}} 
+void {\bfseries powerspectrum2d} (std\+::valarray$<$ double $>$ const \&aa, std\+::valarray$<$ double $>$ const \&bb, int nx, int ny, double boxlx, double boxly, std\+::vector$<$ double $>$ \&ll, std\+::vector$<$ double $>$ \&Pl, double zeropaddingfactor)
+\item 
+\mbox{\Hypertarget{namespace_utilities_a889cbf69ed2b1a69b3f40a2f7a8bd5b1}\label{namespace_utilities_a889cbf69ed2b1a69b3f40a2f7a8bd5b1}} 
+void {\bfseries powerspectrum2d} (std\+::valarray$<$ double $>$ \&aa, int nx, int ny, double boxlx, double boxly, std\+::vector$<$ double $>$ \&ll, std\+::vector$<$ double $>$ \&Pl)
+\item 
+void \mbox{\hyperlink{namespace_utilities_a35c9acc0fb5635e252266c40790b9b9f}{powerspectrum2dprebin}} (std\+::valarray$<$ double $>$ \&aa, int nx, int ny, double boxlx, double boxly, const std\+::vector$<$ double $>$ \&ll, std\+::vector$<$ double $>$ \&Pl, std\+::vector$<$ double $>$ \&llave)
+\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -394,12 +434,20 @@ const double {\bfseries n\+Xbin} =64.
 
 The \mbox{\hyperlink{namespace_utilities}{Utilities}} namespace contains functions for wide use in many classes that perform generic tasks.
 
+structure to construct, hold and destruct image and source points
+
 
 \begin{DoxyItemize}
 \item \textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
 \item \textbackslash{}ing\+Einstein\+\_\+roup Change\+Lens
-\item The two functions below are inverses of each other for converting between a 1d array index and a square grid of positions Npixels in the number of point is 1 dimension index is between 0 and Npixels$\ast$\+Npixels-\/1 If x is outside of the region -\/1 is returned. 
+\item orders points in a curve, separates disconnected curves curves\mbox{[}0...Maxcurves\mbox{]} must be allocated before
 \end{DoxyItemize}
+
+uses neighbors-\/of-\/neighbors to split into curves and then uses sorts by angle and then walks the ist sorting
+
+can break down for crescent curves
+
+The two functions below are inverses of each other for converting between a 1d array index and a square grid of positions Npixels in the number of point is 1 dimension index is between 0 and Npixels$\ast$\+Npixels-\/1 If x is outside of the region -\/1 is returned. 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{namespace_utilities_a1faf43d7dba91cb2697307c22249bc12}\label{namespace_utilities_a1faf43d7dba91cb2697307c22249bc12}} 
@@ -490,7 +538,14 @@ The performance of the algorithm is $\sim$\+O(\+N$^\wedge$2). Less naive methods
 
 Returns axis ratio, area and points of an ellipse engulfed by some contour (e.\+g. a contour of same convergence calculated with find\+\_\+contour). 
 
-The axis ratio of the ellipse b/a is equal to the ratio of the distances between center and the nearest contour point (i.\+e. b) and between center and the farthest contour point (i.\+e. a). N\+O\+TE that the center used to calculate a and b is an input parameter. The definition of the center is crucial to the meaning of above output parameters. The center of the convex\+\_\+hull produces for even slightly distorted hulls significant offsets resulting in overestimated major axis values (a). The function \mbox{\hyperlink{namespace_utilities_a512d73667d76a5a58e44042a4a73c974}{Utilities\+::contour\+\_\+center()}} calculates the center as the midpoint between the two points in the contour that are farthest apart from one another, which gives already more reliable results. The output vector describing the ellipse is resized to match the size of the contour vector. \mbox{\Hypertarget{namespace_utilities_a865c4f1f38a91d8b3d4e07fdfea16bd0}\label{namespace_utilities_a865c4f1f38a91d8b3d4e07fdfea16bd0}} 
+The axis ratio of the ellipse b/a is equal to the ratio of the distances between center and the nearest contour point (i.\+e. b) and between center and the farthest contour point (i.\+e. a). N\+O\+TE that the center used to calculate a and b is an input parameter. The definition of the center is crucial to the meaning of above output parameters. The center of the convex\+\_\+hull produces for even slightly distorted hulls significant offsets resulting in overestimated major axis values (a). The function \mbox{\hyperlink{namespace_utilities_a512d73667d76a5a58e44042a4a73c974}{Utilities\+::contour\+\_\+center()}} calculates the center as the midpoint between the two points in the contour that are farthest apart from one another, which gives already more reliable results. The output vector describing the ellipse is resized to match the size of the contour vector. \mbox{\Hypertarget{namespace_utilities_a181252f6287df861af9107445a4cac7f}\label{namespace_utilities_a181252f6287df861af9107445a4cac7f}} 
+\index{Utilities@{Utilities}!convex\_hull@{convex\_hull}}
+\index{convex\_hull@{convex\_hull}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{convex\_hull()}{convex\_hull()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Utilities\+::convex\+\_\+hull (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{P,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{hull }\end{DoxyParamCaption})}
+
+Returns a vector of points on the convex hull in counter-\/clockwise order. \mbox{\Hypertarget{namespace_utilities_a865c4f1f38a91d8b3d4e07fdfea16bd0}\label{namespace_utilities_a865c4f1f38a91d8b3d4e07fdfea16bd0}} 
 \index{Utilities@{Utilities}!ConvexHullArea@{ConvexHullArea}}
 \index{ConvexHullArea@{ConvexHullArea}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{ConvexHullArea()}{ConvexHullArea()}}
@@ -510,7 +565,17 @@ gives the area within the convex hull of the curve \mbox{\Hypertarget{namespace_
 
 Sorts points in a point array. 
 
-arr array uses NR standard indexing i.\+e arr\mbox{[}1...n\mbox{]} but brr\mbox{[}0..n-\/1\mbox{]} if the point array is two-\/way-\/coupled to another point array the image pointers of that array will follow sort if the array is not two-\/way-\/coupled to another the image pointers in the other array will be untouched \mbox{\Hypertarget{namespace_utilities_a380f0a954728d751781e61918facba0e}\label{namespace_utilities_a380f0a954728d751781e61918facba0e}} 
+arr array uses NR standard indexing i.\+e arr\mbox{[}1...n\mbox{]} but brr\mbox{[}0..n-\/1\mbox{]} if the point array is two-\/way-\/coupled to another point array the image pointers of that array will follow sort if the array is not two-\/way-\/coupled to another the image pointers in the other array will be untouched \mbox{\Hypertarget{namespace_utilities_a6b3b3327085b03c3dcbb1afadd59fcd4}\label{namespace_utilities_a6b3b3327085b03c3dcbb1afadd59fcd4}} 
+\index{Utilities@{Utilities}!envelope@{envelope}}
+\index{envelope@{envelope}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{envelope()}{envelope()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ Utilities\+::envelope (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{v,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{w }\end{DoxyParamCaption})}
+
+
+
+Find a curve that is made up of segments from v and w that surrounds them and does not self intersect. 
+
+v and w must be non-\/self intersecting If they do not intersect and one is not inside the other an empty vector is returned \mbox{\Hypertarget{namespace_utilities_a380f0a954728d751781e61918facba0e}\label{namespace_utilities_a380f0a954728d751781e61918facba0e}} 
 \index{Utilities@{Utilities}!fill\_linear@{fill\_linear}}
 \index{fill\_linear@{fill\_linear}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{fill\_linear()}{fill\_linear()}}
@@ -524,7 +589,20 @@ Fills a vector with equidistant points from \mbox{[}min, max\mbox{]}. \mbox{\Hyp
 {\footnotesize\ttfamily template$<$class T $>$ \\
 void Utilities\+::fill\+\_\+logarithmic (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{v,  }\item[{size\+\_\+t}]{n,  }\item[{T}]{min,  }\item[{T}]{max }\end{DoxyParamCaption})}
 
-Fills a vector with logarithmically equidistant points from \mbox{[}min, max\mbox{]}. \mbox{\Hypertarget{namespace_utilities_af5c6f9e86e55bf8ac250ed8a2849ba3e}\label{namespace_utilities_af5c6f9e86e55bf8ac250ed8a2849ba3e}} 
+Fills a vector with logarithmically equidistant points from \mbox{[}min, max\mbox{]}. \mbox{\Hypertarget{namespace_utilities_a56791def1b50f6282d75e612aa4f5257}\label{namespace_utilities_a56791def1b50f6282d75e612aa4f5257}} 
+\index{Utilities@{Utilities}!find\_boundaries@{find\_boundaries}}
+\index{find\_boundaries@{find\_boundaries}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{find\_boundaries()}{find\_boundaries()}}
+{\footnotesize\ttfamily template$<$typename P $>$ \\
+void Utilities\+::find\+\_\+boundaries (\begin{DoxyParamCaption}\item[{std\+::vector$<$ bool $>$ \&}]{bitmap,  }\item[{long}]{nx,  }\item[{std\+::vector$<$ std\+::vector$<$ P $>$ $>$ \&}]{points,  }\item[{std\+::vector$<$ bool $>$ \&}]{hits\+\_\+edge,  }\item[{bool}]{add\+\_\+to\+\_\+vector = {\ttfamily false} }\end{DoxyParamCaption})}
+
+finds ordered boundaries to regions where bitmap == true
+
+This can be used to find critical curves or contours. {\ttfamily bitmap} should be the same size as the {\ttfamily Gridmap} If the boundary curve touches the edge of the {\ttfamily \mbox{\hyperlink{struct_grid_map}{Grid\+Map}}} it will be indicated in {\ttfamily hits\+\_\+boundary} as {\ttfamily true}.
+
+Boundaries will never cross or lead off the grid. On the edges they will leave the edge pixels out even if they should be in. This is a technical comprimise.
+
+Output points are in pixel units with (0,0) being pioint (0,0) \mbox{\Hypertarget{namespace_utilities_af5c6f9e86e55bf8ac250ed8a2849ba3e}\label{namespace_utilities_af5c6f9e86e55bf8ac250ed8a2849ba3e}} 
 \index{Utilities@{Utilities}!InterpolateYvec@{InterpolateYvec}}
 \index{InterpolateYvec@{InterpolateYvec}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{InterpolateYvec()}{InterpolateYvec()}}
@@ -668,7 +746,20 @@ This algorithm could be improve by inserting the remaining points, if any, into 
 
 For odering the curve by the convex hull method. Warning\+: Does not work very well. 
 
-The convex hull is found for the points in the kist. Then each additional point is inserted into the curve where it will increase the length of the curve the least. This method leaves loops where they shouldn\textquotesingle{}t be and probably doesn\textquotesingle{}t handle self-\/intersections well. \mbox{\Hypertarget{namespace_utilities_abe61342a713adf7115f351e3342a2b79}\label{namespace_utilities_abe61342a713adf7115f351e3342a2b79}} 
+The convex hull is found for the points in the kist. Then each additional point is inserted into the curve where it will increase the length of the curve the least. This method leaves loops where they shouldn\textquotesingle{}t be and probably doesn\textquotesingle{}t handle self-\/intersections well. \mbox{\Hypertarget{namespace_utilities_a35c9acc0fb5635e252266c40790b9b9f}\label{namespace_utilities_a35c9acc0fb5635e252266c40790b9b9f}} 
+\index{Utilities@{Utilities}!powerspectrum2dprebin@{powerspectrum2dprebin}}
+\index{powerspectrum2dprebin@{powerspectrum2dprebin}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{powerspectrum2dprebin()}{powerspectrum2dprebin()}}
+{\footnotesize\ttfamily void Utilities\+::powerspectrum2dprebin (\begin{DoxyParamCaption}\item[{std\+::valarray$<$ double $>$ \&}]{aa,  }\item[{int}]{nx,  }\item[{int}]{ny,  }\item[{double}]{boxlx,  }\item[{double}]{boxly,  }\item[{const std\+::vector$<$ double $>$ \&}]{ll,  }\item[{std\+::vector$<$ double $>$ \&}]{Pl,  }\item[{std\+::vector$<$ double $>$ \&}]{llave }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ll} & pre-\/set bins, one more value than number of bins \\
+\hline
+{\em llave} & average value of Fourier node in bins \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_utilities_abe61342a713adf7115f351e3342a2b79}\label{namespace_utilities_abe61342a713adf7115f351e3342a2b79}} 
 \index{Utilities@{Utilities}!prevpower@{prevpower}}
 \index{prevpower@{prevpower}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{prevpower()}{prevpower()}}
@@ -780,7 +871,13 @@ Find the indexes that sort a vector in descending order.
 {\em index} & vector of indexes that if put into v will sort it \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{namespace_utilities_a2d063fcd59fdf742b8cbf0c57ef29104}\label{namespace_utilities_a2d063fcd59fdf742b8cbf0c57ef29104}} 
+\mbox{\Hypertarget{namespace_utilities_a7f2aed1fb05038e399bf1287d64b56ec}\label{namespace_utilities_a7f2aed1fb05038e399bf1287d64b56ec}} 
+\index{Utilities@{Utilities}!TighterHull@{TighterHull}}
+\index{TighterHull@{TighterHull}!Utilities@{Utilities}}
+\doxysubsubsection{\texorpdfstring{TighterHull()}{TighterHull()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ Utilities\+::\+Tighter\+Hull (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{v }\end{DoxyParamCaption})}
+
+removes the intersections while removing interior loops The input curve needs to be ordered already. No points in the input curve will be outside the output hull. Will fail if there are overlapping segments on the hull. \mbox{\Hypertarget{namespace_utilities_a2d063fcd59fdf742b8cbf0c57ef29104}\label{namespace_utilities_a2d063fcd59fdf742b8cbf0c57ef29104}} 
 \index{Utilities@{Utilities}!TwoDInterpolator@{TwoDInterpolator}}
 \index{TwoDInterpolator@{TwoDInterpolator}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{TwoDInterpolator()}{TwoDInterpolator()}}
@@ -792,11 +889,11 @@ bilinear interpolation from a map.
 
 Out of bounds points return 0. map is a i dimensional array representing a 2 dimensional map. Don\textquotesingle{}t use init. After it is used once, later calls can use Two\+D\+Interpolator(\+Pos\+Type $\ast$map) for the same point in the same coordinate system to save time in calculating the indexes. bilinear interpolation
 
-bilinear interpolation\mbox{\Hypertarget{namespace_utilities_a64cd4e52a3b543449c6ba0330f13f01e}\label{namespace_utilities_a64cd4e52a3b543449c6ba0330f13f01e}} 
+bilinear interpolation\mbox{\Hypertarget{namespace_utilities_a09f4dcf28911d550c9bd20eeba202f5f}\label{namespace_utilities_a09f4dcf28911d550c9bd20eeba202f5f}} 
 \index{Utilities@{Utilities}!windings@{windings}}
 \index{windings@{windings}!Utilities@{Utilities}}
 \doxysubsubsection{\texorpdfstring{windings()}{windings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
-{\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{x,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{point,  }\item[{Pos\+Type $\ast$}]{area }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Utilities\+::windings (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{x,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{point,  }\item[{Pos\+Type $\ast$}]{area }\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}

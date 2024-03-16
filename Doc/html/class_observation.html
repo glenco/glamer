@@ -79,9 +79,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a69a026d1fbd9aa9dcda07462405c4c13"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#a69a026d1fbd9aa9dcda07462405c4c13">Observation</a> (Telescope tel_name, size_t Npix_x, size_t Npix_y)</td></tr>
-<tr class="memdesc:a69a026d1fbd9aa9dcda07462405c4c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an observation setup that mimics a known instrument.  <a href="class_observation.html#a69a026d1fbd9aa9dcda07462405c4c13">More...</a><br /></td></tr>
-<tr class="separator:a69a026d1fbd9aa9dcda07462405c4c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8238641e874a89a1e579dd6ae40491b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#af8238641e874a89a1e579dd6ae40491b">Observation</a> (Telescope tel_name, double exposure_time, int exposure_num, size_t Npix_x, size_t Npix_y, float oversample)</td></tr>
+<tr class="memdesc:af8238641e874a89a1e579dd6ae40491b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an observation setup that mimics a known instrument.  <a href="class_observation.html#af8238641e874a89a1e579dd6ae40491b">More...</a><br /></td></tr>
+<tr class="separator:af8238641e874a89a1e579dd6ae40491b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab99834678bfa2e4381818218a07b8e2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#ab99834678bfa2e4381818218a07b8e2d">Observation</a> (float diameter, float transmission, float exp_time, int exp_num, float back_mag, float read_out_noise, size_t Npix_x, size_t Npix_y, double pix_size, float seeing=0.)</td></tr>
 <tr class="separator:ab99834678bfa2e4381818218a07b8e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab842a1f17359571a3ca2008694a232f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#ab842a1f17359571a3ca2008694a232f2">Observation</a> (float diameter, float transmission, float exp_time, int exp_num, float back_mag, float read_out_noise, std::string psf_file, size_t Npix_x, size_t Npix_y, double pix_size, float oversample=1.)</td></tr>
@@ -110,6 +110,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <tr class="memitem:af8fa0620fb804297e4db01f9da32e747"><td class="memItemLeft" align="right" valign="top"><a id="af8fa0620fb804297e4db01f9da32e747"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>getZeropoint</b> () const</td></tr>
 <tr class="separator:af8fa0620fb804297e4db01f9da32e747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44244c829e396232835d2c9e7f7bc480"><td class="memItemLeft" align="right" valign="top"><a id="a44244c829e396232835d2c9e7f7bc480"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setZeropoint</b> (double zpoint)</td></tr>
+<tr class="separator:a44244c829e396232835d2c9e7f7bc480"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1866e210a777eb8cadc9d33237f6df2f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#a1866e210a777eb8cadc9d33237f6df2f">getBackgroundNoise</a> (float resolution, UnitType unit=UnitType::counts_x_sec) const</td></tr>
 <tr class="memdesc:a1866e210a777eb8cadc9d33237f6df2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">pixel size in radians  <a href="class_observation.html#a1866e210a777eb8cadc9d33237f6df2f">More...</a><br /></td></tr>
 <tr class="separator:a1866e210a777eb8cadc9d33237f6df2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,9 +123,9 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>getBackgroundNoise</
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#ab1e76ec7f9d1765cd183376d19c71119">AddNoise</a> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;pmap, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;error_map, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran, bool dummy)</td></tr>
 <tr class="memdesc:ab1e76ec7f9d1765cd183376d19c71119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies realistic noise (read-out + Poisson) on an image, returns noise map. <br /></td></tr>
 <tr class="separator:ab1e76ec7f9d1765cd183376d19c71119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a016ecae1a0059cec10830aa4689612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#a8a016ecae1a0059cec10830aa4689612">Convert</a> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map_in, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map_out, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;error_map, bool psf, bool noise, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran)</td></tr>
-<tr class="memdesc:a8a016ecae1a0059cec10830aa4689612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the input map to a realistic image.  <a href="class_observation.html#a8a016ecae1a0059cec10830aa4689612">More...</a><br /></td></tr>
-<tr class="separator:a8a016ecae1a0059cec10830aa4689612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d26c25c7e1bc0838fa2d54aa29e0052"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#a7d26c25c7e1bc0838fa2d54aa29e0052">Convert</a> (<a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map_in, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;map_out, <a class="el" href="class_pixel_map.html">PixelMap</a> &amp;error_map, bool psf, bool noise, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran, bool cosmic=false)</td></tr>
+<tr class="memdesc:a7d26c25c7e1bc0838fa2d54aa29e0052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the input map to a realistic image.  <a href="class_observation.html#a7d26c25c7e1bc0838fa2d54aa29e0052">More...</a><br /></td></tr>
+<tr class="separator:a7d26c25c7e1bc0838fa2d54aa29e0052"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a670be0f361abb519391ff0c30c907c1d"><td class="memItemLeft" align="right" valign="top"><a id="a670be0f361abb519391ff0c30c907c1d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_observation.html#a670be0f361abb519391ff0c30c907c1d">setExpTime</a> (float time)</td></tr>
 <tr class="memdesc:a670be0f361abb519391ff0c30c907c1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns factor by which code image units need to be multiplied by to get flux units <br /></td></tr>
@@ -130,20 +133,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a99fdbd23ab8d25e959cee5c215b464d2"><td class="memItemLeft" align="right" valign="top"><a id="a99fdbd23ab8d25e959cee5c215b464d2"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setPixelSize</b> (float pixel_size)</td></tr>
 <tr class="separator:a99fdbd23ab8d25e959cee5c215b464d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acecbbbe6aa9867a7c6be8c14638f320e"><td class="memItemLeft" align="right" valign="top"><a id="acecbbbe6aa9867a7c6be8c14638f320e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>mag_to_flux</b> (double m) const</td></tr>
-<tr class="separator:acecbbbe6aa9867a7c6be8c14638f320e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a195926678b3eb6d7f89f11effdcdf5db"><td class="memItemLeft" align="right" valign="top"><a id="a195926678b3eb6d7f89f11effdcdf5db"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (double flux) const</td></tr>
-<tr class="separator:a195926678b3eb6d7f89f11effdcdf5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa33b0cd169875e9ed9751dff97c63df7"><td class="memItemLeft" align="right" valign="top"><a id="aa33b0cd169875e9ed9751dff97c63df7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>mag_to_counts</b> (double m) const</td></tr>
+<tr class="separator:aa33b0cd169875e9ed9751dff97c63df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76cd9dea1231a32f401ee53f7cf9ca44"><td class="memItemLeft" align="right" valign="top"><a id="a76cd9dea1231a32f401ee53f7cf9ca44"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>counts_to_mag</b> (double flux) const</td></tr>
+<tr class="separator:a76cd9dea1231a32f401ee53f7cf9ca44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2bbb86a3941202abaff8d226664cddf"><td class="memItemLeft" align="right" valign="top"><a id="aa2bbb86a3941202abaff8d226664cddf"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>zeropoint</b> () const</td></tr>
+<tr class="separator:aa2bbb86a3941202abaff8d226664cddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>It creates a realistic image from the output of a ray-tracing simulation. </p>
 <p>It translates pixel values in observed units (counts/sec), applies PSF and noise. Input must be in ergs/(s*cm^2*Hz).</p>
 <p>see <a href="https://www.ucolick.org/~bolte/AY257/s_n.pdf">https://www.ucolick.org/~bolte/AY257/s_n.pdf</a> </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a69a026d1fbd9aa9dcda07462405c4c13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69a026d1fbd9aa9dcda07462405c4c13">&#9670;&nbsp;</a></span>Observation() <span class="overload">[1/5]</span></h2>
+<a id="af8238641e874a89a1e579dd6ae40491b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8238641e874a89a1e579dd6ae40491b">&#9670;&nbsp;</a></span>Observation() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,6 +163,18 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (do
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>exposure_time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>exposure_num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>Npix_x</em>, </td>
         </tr>
@@ -164,7 +182,13 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (do
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>Npix_y</em>&#160;</td>
+          <td class="paramname"><em>Npix_y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>oversample</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -484,7 +508,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (do
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>read_out_noise</em>, </td>
+          <td class="paramname"><em>myread_out_noise</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -540,8 +564,8 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (do
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8a016ecae1a0059cec10830aa4689612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a016ecae1a0059cec10830aa4689612">&#9670;&nbsp;</a></span>Convert()</h2>
+<a id="a7d26c25c7e1bc0838fa2d54aa29e0052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d26c25c7e1bc0838fa2d54aa29e0052">&#9670;&nbsp;</a></span>Convert()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -580,7 +604,13 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (do
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;&#160;</td>
-          <td class="paramname"><em>ran</em>&#160;</td>
+          <td class="paramname"><em>ran</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>cosmic</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -641,7 +671,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>flux_to_mag</b> (do
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

@@ -12,7 +12,7 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_tree_quad_particles_a7c2c3cc795088782c85903d77fca801b}{Tree\+Quad\+Particles}} (P\+Type $\ast$xpt, Index\+Type Npoints, float mass\+\_\+fixed=-\/1, float size\+\_\+fixed=-\/1, Pos\+Type my\+\_\+sigma\+\_\+background=0, int bucket=5, Pos\+Type theta\+\_\+force=0.\+1, bool my\+\_\+periodic\+\_\+buffer=false, Pos\+Type my\+\_\+inv\+\_\+screening\+\_\+scale=0, Pos\+Type maximum\+\_\+range=-\/1)
+\mbox{\hyperlink{class_tree_quad_particles_ada4cd659653d35f09750d55c3f3a9741}{Tree\+Quad\+Particles}} (P\+Type $\ast$xpt, Index\+Type Npoints, float mass\+\_\+fixed=-\/1, float size\+\_\+fixed=-\/1, Pos\+Type my\+\_\+inv\+\_\+area=0, int bucket=5, Pos\+Type theta\+\_\+force=0.\+1, bool my\+\_\+periodic\+\_\+buffer=false, Pos\+Type my\+\_\+inv\+\_\+screening\+\_\+scale=0, Pos\+Type maximum\+\_\+range=-\/1)
 \begin{DoxyCompactList}\small\item\em Constructor meant for point particles, simulation particles. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}\label{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}} 
 \mbox{\hyperlink{class_tree_quad_particles_a36f365617a5f5d375d6d6cd248b219cb}{$\sim$\+Tree\+Quad\+Particles}} ()
@@ -93,11 +93,11 @@ bool {\bfseries Multi\+Radius}
 \mbox{\Hypertarget{class_tree_quad_particles_a841d3c4ad9049be5671952dfc7780577}\label{class_tree_quad_particles_a841d3c4ad9049be5671952dfc7780577}} 
 double {\bfseries size\+\_\+fixed} = 0.\+0
 \item 
+\mbox{\Hypertarget{class_tree_quad_particles_a6e2a356d882891aa976b2ac9c9c92292}\label{class_tree_quad_particles_a6e2a356d882891aa976b2ac9c9c92292}} 
+double {\bfseries inv\+\_\+area}
+\item 
 \mbox{\Hypertarget{class_tree_quad_particles_a5e1d3bdc792a44cf492add668f47c67d}\label{class_tree_quad_particles_a5e1d3bdc792a44cf492add668f47c67d}} 
 Index\+Type {\bfseries Nparticles}
-\item 
-\mbox{\Hypertarget{class_tree_quad_particles_a24b878d222a6df0fe18c7877809ff52c}\label{class_tree_quad_particles_a24b878d222a6df0fe18c7877809ff52c}} 
-Pos\+Type {\bfseries sigma\+\_\+background}
 \item 
 \mbox{\Hypertarget{class_tree_quad_particles_aac73179e5c5add53f1ba8fa7a7ad4230}\label{class_tree_quad_particles_aac73179e5c5add53f1ba8fa7a7ad4230}} 
 int {\bfseries Nbucket}
@@ -151,17 +151,36 @@ class Tree\+Quad\+Particles$<$ P\+Type $>$}
 
 \mbox{\hyperlink{simple_tree_8h_source}{simple\+Tree.\+h}}
 
-Created on\+: Oct 14, 2011 Author\+: bmetcalf \mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} is evolved from \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}} and \mbox{\hyperlink{class_tree_force}{Tree\+Force}}. It splits each cell into four equal area subcells instead of being a binary tree like \mbox{\hyperlink{class_tree_simple}{Tree\+Simple}}. When the \char`\"{}particles\char`\"{} are given sizes the tree is built in such a way the large particles are stored in branches that are no smaller than their size. In this way particles are stored on all levels of the tree and not just in the leaves. This improves efficiency when particles of a wide range of sizes overlap in 2D.
+Created on\+: Oct 14, 2011 Author\+: bmetcalf 
+\begin{DoxyPre}
+  \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles}} is evolved from \mbox{\hyperlink{class_tree_simple}{TreeSimple}} and \mbox{\hyperlink{class_tree_force}{TreeForce}}.  It splits each cell into four equal area
+  subcells instead of being a binary tree like \mbox{\hyperlink{class_tree_simple}{TreeSimple}}.  When the "particles" are given sizes
+  the tree is built in such a way the large particles are stored in branches that are no smaller
+  than their size.  In this way particles are stored on all levels of the tree and not just in the
+  leaves.  This improves efficiency when particles of a wide range of sizes overlap in 2D.\end{DoxyPre}
 
-The default value of theta = 0.\+1 generally gives better than 1\% accuracy on alpha. The shear and kappa are always more accurate than the deflection. 
+
+
+\begin{DoxyPre}  The default value of theta = 0.1 generally gives better than 1\% accuracy on alpha.
+  The shear and kappa are always more accurate than the deflection.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}   Parameters:\end{DoxyPre}
+
+
+
+\begin{DoxyPre}    inv\_area -\/ If not zero, there is an effective uniform negative mass sheet that compensates for the positive mass.  This should be this should be set to the area in Mpc^-\/2 over which the integral of the surface density should be zero.
+*\end{DoxyPre}
+ 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_tree_quad_particles_a7c2c3cc795088782c85903d77fca801b}\label{class_tree_quad_particles_a7c2c3cc795088782c85903d77fca801b}} 
+\mbox{\Hypertarget{class_tree_quad_particles_ada4cd659653d35f09750d55c3f3a9741}\label{class_tree_quad_particles_ada4cd659653d35f09750d55c3f3a9741}} 
 \index{TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}!TreeQuadParticles@{TreeQuadParticles}}
 \index{TreeQuadParticles@{TreeQuadParticles}!TreeQuadParticles$<$ PType $>$@{TreeQuadParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{TreeQuadParticles()}{TreeQuadParticles()}}
 {\footnotesize\ttfamily template$<$typename P\+Type $>$ \\
-\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} (\begin{DoxyParamCaption}\item[{P\+Type $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{float}]{mass\+\_\+fixed = {\ttfamily -\/1},  }\item[{float}]{size\+\_\+fixed = {\ttfamily -\/1},  }\item[{Pos\+Type}]{my\+\_\+sigma\+\_\+background = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{Pos\+Type}]{theta\+\_\+force = {\ttfamily 0.1},  }\item[{bool}]{my\+\_\+periodic\+\_\+buffer = {\ttfamily false},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+screening\+\_\+scale = {\ttfamily 0},  }\item[{Pos\+Type}]{maximum\+\_\+range = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}}$<$ P\+Type $>$\+::\mbox{\hyperlink{class_tree_quad_particles}{Tree\+Quad\+Particles}} (\begin{DoxyParamCaption}\item[{P\+Type $\ast$}]{xpt,  }\item[{Index\+Type}]{Npoints,  }\item[{float}]{mass\+\_\+fixed = {\ttfamily -\/1},  }\item[{float}]{size\+\_\+fixed = {\ttfamily -\/1},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+area = {\ttfamily 0},  }\item[{int}]{bucket = {\ttfamily 5},  }\item[{Pos\+Type}]{theta\+\_\+force = {\ttfamily 0.1},  }\item[{bool}]{my\+\_\+periodic\+\_\+buffer = {\ttfamily false},  }\item[{Pos\+Type}]{my\+\_\+inv\+\_\+screening\+\_\+scale = {\ttfamily 0},  }\item[{Pos\+Type}]{maximum\+\_\+range = {\ttfamily -\/1} }\end{DoxyParamCaption})}
 
 
 
@@ -169,7 +188,7 @@ Constructor meant for point particles, simulation particles.
 
 
 \begin{DoxyParams}{Parameters}
-{\em my\+\_\+sigma\+\_\+background} & background kappa that is subtracted \\
+{\em my\+\_\+inv\+\_\+area} & if the total mass in field is meant to be zero this should be set to the inverse of the area of the region in Mpc$^\wedge$-\/2 \\
 \hline
 {\em my\+\_\+periodic\+\_\+buffer} & if true a periodic buffer will be imposed in the force calulation. See documentation on \mbox{\hyperlink{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}{Tree\+Quad\+Particles\+::force2\+D()}} for details. See note for \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{Tree\+Quad\+Particles\+::force2\+D\+\_\+recur()}}. \\
 \hline

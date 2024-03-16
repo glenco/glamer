@@ -82,8 +82,8 @@ Collaboration diagram for TreeSimpleVec&lt; T, D &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_tree_simple_vec__coll__graph.png" border="0" usemap="#_tree_simple_vec_3_01_t_00_01_d_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="_tree_simple_vec_3_01_t_00_01_d_01_4_coll__map" id="_tree_simple_vec_3_01_t_00_01_d_01_4_coll__map">
-<area shape="rect" title="A tree for doing quick searches in multidimensional space. A pointer to an array of objects type T is..." alt="" coords="5,149,166,177"/>
-<area shape="rect" href="struct_tree_simple_vec_1_1_branch_v.html" title="Box representing a branch in a tree. It has four children. Used in TreeNBStruct which is used in Tree..." alt="" coords="11,15,160,59"/>
+<area shape="rect" title="A tree for doing quick searches in multidimensional space. A pointer to an array of objects type T is..." alt="" coords="5,95,164,121"/>
+<area shape="rect" href="struct_point__nd.html" title=" " alt="" coords="11,5,159,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -139,12 +139,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_BuildTree</b> (Index
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#a907fd04223a4aa1c8ab2b23e0a9ee554">freeTree</a> ()</td></tr>
 <tr class="memdesc:a907fd04223a4aa1c8ab2b23e0a9ee554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all the tree branches. <br /></td></tr>
 <tr class="separator:a907fd04223a4aa1c8ab2b23e0a9ee554"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa677d5c211b9f1c08571877016c96a96"><td class="memItemLeft" align="right" valign="top"><a id="aa677d5c211b9f1c08571877016c96a96"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>clearTree</b> ()</td></tr>
-<tr class="separator:aa677d5c211b9f1c08571877016c96a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a282e161ef74e8a0a61381040355998f9"><td class="memItemLeft" align="right" valign="top"><a id="a282e161ef74e8a0a61381040355998f9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>_freeTree</b> (short child)</td></tr>
-<tr class="separator:a282e161ef74e8a0a61381040355998f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac09ed1dfe5dba4b0b06759a10f237745"><td class="memItemLeft" align="right" valign="top"><a id="ac09ed1dfe5dba4b0b06759a10f237745"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>isEmpty</b> ()</td></tr>
 <tr class="separator:ac09ed1dfe5dba4b0b06759a10f237745"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +181,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>atLeaf</b> ()</td></t
 <tr class="memitem:afcd0699377564436f58c1af7d9c2bebd"><td class="memItemLeft" align="right" valign="top"><a id="afcd0699377564436f58c1af7d9c2bebd"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>inbox</b> (const D *center, D *p1, D *p2)</td></tr>
 <tr class="separator:afcd0699377564436f58c1af7d9c2bebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca9bb5b69bb96d54dbcfbf4e4f8a4063"><td class="memItemLeft" align="right" valign="top"><a id="aca9bb5b69bb96d54dbcfbf4e4f8a4063"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>cutbox</b> (const D *center, D *p1, D *p2, float rmax)</td></tr>
+<tr class="separator:aca9bb5b69bb96d54dbcfbf4e4f8a4063"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -208,9 +205,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>median_cut</b></td></
 <tr class="memitem:adf1fc26a5f415e49a2935f52ef368f4c"><td class="memItemLeft" align="right" valign="top"><a id="adf1fc26a5f415e49a2935f52ef368f4c"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>Nbucket</b></td></tr>
 <tr class="separator:adf1fc26a5f415e49a2935f52ef368f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab652a8414b6c0c2eda921702ee2afdbc"><td class="memItemLeft" align="right" valign="top"><a id="ab652a8414b6c0c2eda921702ee2afdbc"></a>
-D&#160;</td><td class="memItemRight" valign="bottom"><b>realray</b> [2]</td></tr>
-<tr class="separator:ab652a8414b6c0c2eda921702ee2afdbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8219ffbb7f8b0287c018370a0778d9c5"><td class="memItemLeft" align="right" valign="top"><a id="a8219ffbb7f8b0287c018370a0778d9c5"></a>
+<a class="el" href="struct_point__nd.html">Point_nd</a>&lt; D &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>realray</b></td></tr>
+<tr class="separator:a8219ffbb7f8b0287c018370a0778d9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab12580702c34b069979e25336e201ff3"><td class="memItemLeft" align="right" valign="top"><a id="ab12580702c34b069979e25336e201ff3"></a>
 T *&#160;</td><td class="memItemRight" valign="bottom"><b>points</b></td></tr>
 <tr class="separator:ab12580702c34b069979e25336e201ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,12 +217,12 @@ D *(*&#160;</td><td class="memItemRight" valign="bottom"><b>position</b> )(T &am
 <tr class="memitem:aaa9f936256ae2b2cfd0020b58737bfbe"><td class="memItemLeft" align="right" valign="top"><a id="aaa9f936256ae2b2cfd0020b58737bfbe"></a>
 std::vector&lt; D &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>workspace</b></td></tr>
 <tr class="separator:aaa9f936256ae2b2cfd0020b58737bfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4726fc119de45202077976366bbbc2bc"><td class="memItemLeft" align="right" valign="top"><a id="a4726fc119de45202077976366bbbc2bc"></a>
-<a class="el" href="struct_tree_simple_vec_1_1_branch_v.html">BranchV</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>top</b></td></tr>
-<tr class="separator:a4726fc119de45202077976366bbbc2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69269746148ca24051c25336c06b44ab"><td class="memItemLeft" align="right" valign="top"><a id="a69269746148ca24051c25336c06b44ab"></a>
-<a class="el" href="struct_tree_simple_vec_1_1_branch_v.html">BranchV</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>current</b></td></tr>
-<tr class="separator:a69269746148ca24051c25336c06b44ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4bb9517dea5452ad6091d5928dd0e0e"><td class="memItemLeft" align="right" valign="top"><a id="af4bb9517dea5452ad6091d5928dd0e0e"></a>
+std::shared_ptr&lt; <a class="el" href="struct_tree_simple_vec_1_1_branch_v.html">BranchV</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>top_ptr</b></td></tr>
+<tr class="separator:af4bb9517dea5452ad6091d5928dd0e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186704c44911da80b2a93b12d46f2f13"><td class="memItemLeft" align="right" valign="top"><a id="a186704c44911da80b2a93b12d46f2f13"></a>
+std::shared_ptr&lt; <a class="el" href="struct_tree_simple_vec_1_1_branch_v.html">BranchV</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>current</b></td></tr>
+<tr class="separator:a186704c44911da80b2a93b12d46f2f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ec681692fe5b2aadc538da7a7bcf5aa"><td class="memItemLeft" align="right" valign="top"><a id="a4ec681692fe5b2aadc538da7a7bcf5aa"></a>
 unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tree_simple_vec.html#a4ec681692fe5b2aadc538da7a7bcf5aa">Nbranches</a></td></tr>
 <tr class="memdesc:a4ec681692fe5b2aadc538da7a7bcf5aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of branches in tree <br /></td></tr>
@@ -519,7 +516,7 @@ template&lt;typename T , typename D &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:36 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

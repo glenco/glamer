@@ -28,8 +28,7 @@ double \mbox{\hyperlink{class_make_particle_lenses_a350b46da6e51256c778759b71f1e
 \mbox{\Hypertarget{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}\label{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}} 
 void \mbox{\hyperlink{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}{Recenter}} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ x)
 \begin{DoxyCompactList}\small\item\em recenter the particles to 3d point in physical Mpc/h units If the halos have already been created they will be destroyed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_ae06b423696d18b77c6545cf15c825d48}\label{class_make_particle_lenses_ae06b423696d18b77c6545cf15c825d48}} 
-void {\bfseries Create\+Halos} (const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} \&cosmo, double redshift)
+void \mbox{\hyperlink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{Create\+Halos}} (const C\+O\+S\+M\+O\+L\+O\+GY \&cosmo, double redshift, double inv\+\_\+area)
 \item 
 void \mbox{\hyperlink{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74}{radial\+Cut}} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ center, double radius)
 \begin{DoxyCompactList}\small\item\em remove particles that are beyond radius (Mpc/h) from center \end{DoxyCompactList}\item 
@@ -65,7 +64,7 @@ The particle data is stored in this structure so the \mbox{\hyperlink{class_lens
 
 A separate \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}} is made for each type of particle that is present in the gadget file. The nearest N neighbour smoothing is done in 3D on construction separately for each type of particle. The smoothing sizes are automatically saved to files and used again if the class is constructed again with the same file and smoothing number.
 
-On construction the Lens\+Halos are not constructed. You nead to run the {\ttfamily Create\+Halos()} method the them to be created.
+On construction the Lens\+Halos are not constructed. You nead to run the {\ttfamily \mbox{\hyperlink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{Create\+Halos()}}} method the them to be created.
 
 The data file formats are \+:
 
@@ -79,7 +78,7 @@ ascii2 -\/ This is the original ascii G\+L\+A\+M\+ER format. Three floats for po
 
 example of use\+:
 
-\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{C\+O\+S\+M\+O\+L\+O\+GY}} cosmo(\+Planck);
+C\+O\+S\+M\+O\+L\+O\+GY cosmo(\+Planck);
 
 double zs = 2,zl = 0.\+5; double Dl = cosmo.\+coor\+Dist(zl);
 
@@ -153,7 +152,13 @@ $<${\ttfamily } $>$
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}\label{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}} 
+\mbox{\Hypertarget{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}\label{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}} 
+\index{MakeParticleLenses@{MakeParticleLenses}!CreateHalos@{CreateHalos}}
+\index{CreateHalos@{CreateHalos}!MakeParticleLenses@{MakeParticleLenses}}
+\doxysubsubsection{\texorpdfstring{CreateHalos()}{CreateHalos()}}
+{\footnotesize\ttfamily void Make\+Particle\+Lenses\+::\+Create\+Halos (\begin{DoxyParamCaption}\item[{const C\+O\+S\+M\+O\+L\+O\+GY \&}]{cosmo,  }\item[{double}]{redshift,  }\item[{double}]{inv\+\_\+area }\end{DoxyParamCaption})}
+
+how do you set up inv\+\_\+area in general ???\mbox{\Hypertarget{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}\label{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}} 
 \index{MakeParticleLenses@{MakeParticleLenses}!cylindricalCut@{cylindricalCut}}
 \index{cylindricalCut@{cylindricalCut}!MakeParticleLenses@{MakeParticleLenses}}
 \doxysubsubsection{\texorpdfstring{cylindricalCut()}{cylindricalCut()}}

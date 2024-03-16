@@ -11,8 +11,7 @@ Object used to calculate the force or deflection caused by a collection of \char
 
 
 
-Inheritance diagram for Tree\+Force\+:
-\nopagebreak
+Inheritance diagram for Tree\+Force\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ Inheritance diagram for Tree\+Force\+:
 \end{figure}
 
 
-Collaboration diagram for Tree\+Force\+:
-\nopagebreak
+Collaboration diagram for Tree\+Force\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,7 +36,9 @@ Collaboration diagram for Tree\+Force\+:
 \item 
 \mbox{\Hypertarget{class_tree_force_af9939e82b46c3b59952adb71a6f4406f}\label{class_tree_force_af9939e82b46c3b59952adb71a6f4406f}} 
 float $\ast$ \mbox{\hyperlink{class_tree_force_af9939e82b46c3b59952adb71a6f4406f}{Calculate\+S\+P\+Hsmoothing}} (int N)
-\begin{DoxyCompactList}\small\item\em calculated sph smoothing and store them in the tree, also provide pointer to them \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em calculated sph smoothing and store them in the tree, also provide pointer to them \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_force_a3259836d3275204c9a3a68e10c9da7b2}{force2D}} (Pos\+Type const $\ast$ray, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+\begin{DoxyCompactList}\small\item\em calculate the deflection and lensing propertie \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,8 +63,9 @@ virtual Pos\+Type {\bfseries phi\+\_\+o} (Pos\+Type r2, Pos\+Type sigma)
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}\label{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}} 
 bool \mbox{\hyperlink{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}{init}}
-\begin{DoxyCompactList}\small\item\em calculate the deflection and lensing properties \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em provides a way to change the profiles of the particles, by default Gaussian \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_tree_force_a5a03e820fcfde1a984937c59977e52c2}\label{class_tree_force_a5a03e820fcfde1a984937c59977e52c2}} 
 bool \mbox{\hyperlink{class_tree_force_a5a03e820fcfde1a984937c59977e52c2}{Multi\+Mass}}
 \begin{DoxyCompactList}\small\item\em true if particles have different masses. \end{DoxyCompactList}\item 
@@ -142,18 +143,23 @@ The default value of theta = 0.\+1 generally gives better than 1\% accuracy on a
 \end{DoxyParams}
 
 
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tree_force_a3259836d3275204c9a3a68e10c9da7b2}\label{class_tree_force_a3259836d3275204c9a3a68e10c9da7b2}} 
+\index{TreeForce@{TreeForce}!force2D@{force2D}}
+\index{force2D@{force2D}!TreeForce@{TreeForce}}
+\doxysubsubsection{\texorpdfstring{force2D()}{force2D()}}
+{\footnotesize\ttfamily void Tree\+Force\+::force2D (\begin{DoxyParamCaption}\item[{Pos\+Type const $\ast$}]{ray,  }\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi }\end{DoxyParamCaption})}
+
+
+
+calculate the deflection and lensing propertie 
+
+Tree\+N\+B\+Force2D calculates the defection, convergence and shear using the plane-\/lens approximation with 3D S\+PH smoothing of the density rsph must be calculated before doing this with Find\+R\+S\+PH or by other means. tangent\mbox{[}3\mbox{]} -\/ the direction of light rays or orientation of the simulation tree can be either a 3d or 2d tree although 2d is more efficient need to change the projected cm in \+\_\+\+Tree\+N\+B\+Force to us 3d tree
+
+The output alpha\mbox{[}\mbox{]} is in units of mass\+\_\+scale/\+Mpc, ie it needs to be divided by Sigma\+\_\+crit and multiplied by mass\+\_\+scale to be the defelction in the lens equation expressed on the lens plane or multiplied by 4$\ast$pi$\ast$\+G$\ast$mass\+\_\+scale to get the deflection angle caused by the plane lens. intersecting, subtract the point particle
+
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}\label{class_tree_force_adefb6e7b1cc3a3fff2d2d0eeb6cb1f78}} 
-\index{TreeForce@{TreeForce}!init@{init}}
-\index{init@{init}!TreeForce@{TreeForce}}
-\doxysubsubsection{\texorpdfstring{init}{init}}
-{\footnotesize\ttfamily bool Tree\+Force\+::init\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
-calculate the deflection and lensing properties 
-
-provides a way to change the profiles of the particles, by default Gaussian \mbox{\Hypertarget{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}\label{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}} 
+\mbox{\Hypertarget{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}\label{class_tree_force_acdb57d9d285c3718886c04229dd09dfc}} 
 \index{TreeForce@{TreeForce}!kappa\_background@{kappa\_background}}
 \index{kappa\_background@{kappa\_background}!TreeForce@{TreeForce}}
 \doxysubsubsection{\texorpdfstring{kappa\_background}{kappa\_background}}

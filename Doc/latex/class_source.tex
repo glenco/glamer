@@ -39,7 +39,7 @@ Collaboration diagram for Source\+:\nopagebreak
 \mbox{\Hypertarget{class_source_a094287d2e19ef3fb710e14a1bba7bba9}\label{class_source_a094287d2e19ef3fb710e14a1bba7bba9}} 
 \mbox{\hyperlink{class_source}{Source}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source}{Source}} \&s)
 \item 
-virtual Pos\+Type \mbox{\hyperlink{class_source_a9fed241b660fcfed6bd22a2aafcf8358}{Surface\+Brightness}} (Pos\+Type $\ast$y)=0
+virtual Pos\+Type \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Surface\+Brightness}} (const Pos\+Type $\ast$y) const =0
 \item 
 \mbox{\Hypertarget{class_source_abbaa352cb424a6e910c733d94edfcee7}\label{class_source_abbaa352cb424a6e910c733d94edfcee7}} 
 virtual Pos\+Type {\bfseries get\+Total\+Flux} () const =0
@@ -47,8 +47,8 @@ virtual Pos\+Type {\bfseries get\+Total\+Flux} () const =0
 \mbox{\Hypertarget{class_source_ae8a56970be87a5927579eda5bc35486c}\label{class_source_ae8a56970be87a5927579eda5bc35486c}} 
 virtual void {\bfseries print\+Source} ()=0
 \item 
-\mbox{\Hypertarget{class_source_ac1fbd99e966c584788dc126f8ef84a35}\label{class_source_ac1fbd99e966c584788dc126f8ef84a35}} 
-double \mbox{\hyperlink{class_source_ac1fbd99e966c584788dc126f8ef84a35}{S\+Blimit\+\_\+magarcsec}} (float limit)
+\mbox{\Hypertarget{class_source_ac448b92e5c6a3905a71a1c65ae18bc31}\label{class_source_ac448b92e5c6a3905a71a1c65ae18bc31}} 
+double \mbox{\hyperlink{class_source_ac448b92e5c6a3905a71a1c65ae18bc31}{S\+Blimit\+\_\+magarcsec}} (double limit)
 \begin{DoxyCompactList}\small\item\em convert mag/arcsec$^\wedge$2 to flux units \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_acd55331528174d417db0d9480f20e2ad}\label{class_source_acd55331528174d417db0d9480f20e2ad}} 
 Pos\+Type \mbox{\hyperlink{class_source_acd55331528174d417db0d9480f20e2ad}{get\+S\+Blimit}} ()
@@ -68,8 +68,8 @@ Pos\+Type \mbox{\hyperlink{class_source_a3b7965ae771388ca9a9c6cc2d389f6df}{get\+
 \mbox{\Hypertarget{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}\label{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}} 
 void \mbox{\hyperlink{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}{set\+Radius}} (Pos\+Type my\+\_\+radius)
 \begin{DoxyCompactList}\small\item\em Reset the radius of the source in radians. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_source_a689dbf4ee16f1fcd01d0cffa2d4bab69}\label{class_source_a689dbf4ee16f1fcd01d0cffa2d4bab69}} 
-\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_a689dbf4ee16f1fcd01d0cffa2d4bab69}{get\+Theta}} ()
+\mbox{\Hypertarget{class_source_ac7171e2f368094681e0c49c387905aa0}\label{class_source_ac7171e2f368094681e0c49c387905aa0}} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_source_ac7171e2f368094681e0c49c387905aa0}{get\+Theta}} () const
 \begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}\label{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}} 
 void \mbox{\hyperlink{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}{get\+Theta}} (Pos\+Type $\ast$x) const
@@ -124,9 +124,6 @@ virtual void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{In
 \item 
 \mbox{\Hypertarget{class_source_a11790734590d8922584d37afefbd670b}\label{class_source_a11790734590d8922584d37afefbd670b}} 
 double {\bfseries flux\+\_\+to\+\_\+mag} (double flux) const
-\item 
-\mbox{\Hypertarget{class_source_a056f263f0115fbdb3cb3a31e47ef4137}\label{class_source_a056f263f0115fbdb3cb3a31e47ef4137}} 
-double {\bfseries mag\+\_\+to\+\_\+flux} (double mag) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -145,6 +142,9 @@ Pos\+Type {\bfseries sb\+\_\+limit}
 \item 
 \mbox{\Hypertarget{class_source_a0ba38543526f52f944bd82cbd5d3730f}\label{class_source_a0ba38543526f52f944bd82cbd5d3730f}} 
 long {\bfseries id}
+\item 
+\mbox{\Hypertarget{class_source_ab392f5a9ffe5c8b01580a6231893c235}\label{class_source_ab392f5a9ffe5c8b01580a6231893c235}} 
+double {\bfseries mag\+\_\+zero\+\_\+point}
 \end{DoxyCompactItemize}
 
 
@@ -193,17 +193,17 @@ Calculates the integral of the filter curve given as an array of (x,y) values.
 
 Calculates the integral of the sed multiplied by the filter curve. 
 
-\mbox{\Hypertarget{class_source_a9fed241b660fcfed6bd22a2aafcf8358}\label{class_source_a9fed241b660fcfed6bd22a2aafcf8358}} 
+\mbox{\Hypertarget{class_source_a3cd419a342712d907529e9725fb90462}\label{class_source_a3cd419a342712d907529e9725fb90462}} 
 \index{Source@{Source}!SurfaceBrightness@{SurfaceBrightness}}
 \index{SurfaceBrightness@{SurfaceBrightness}!Source@{Source}}
 \doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
-{\footnotesize\ttfamily virtual Pos\+Type Source\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual Pos\+Type Source\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 Surface brightness of source in grid coordinates not source centered coordinates.
 
 The units shuld be ergs / s / Hz / cm$^\wedge$2 
 
-Implemented in \mbox{\hyperlink{class_source_b_l_r_sph2_a383aaa68add7b1193d624b9d88576db1}{Source\+B\+L\+R\+Sph2}}, \mbox{\hyperlink{class_source_b_l_r_sph1_a671b96b2650fb7c300462495adea8b99}{Source\+B\+L\+R\+Sph1}}, \mbox{\hyperlink{class_source_b_l_r_disk_aebc3b7fa42d44dc5362bf58a2707edbe}{Source\+B\+L\+R\+Disk}}, \mbox{\hyperlink{class_source_point_a7be2be24409b4488b326fb3adf021dac}{Source\+Point}}, \mbox{\hyperlink{class_source_uniform_aa22f9134afb8d19e6d1ad7b57630ffe9}{Source\+Uniform}}, \mbox{\hyperlink{class_source_shapelets_afe80c365e550701f09cd827c8b291433}{Source\+Shapelets}}, \mbox{\hyperlink{class_source_pixelled_a5166077c4140daf9287c92fb09429164}{Source\+Pixelled}}, \mbox{\hyperlink{class_source_overzier_plus_aebbc4d39449422a61635b6afc18531f1}{Source\+Overzier\+Plus}}, \mbox{\hyperlink{class_source_multi_shapelets_a8e170c4b250e94d00aaec67f90847af6}{Source\+Multi\+Shapelets}}, \mbox{\hyperlink{class_source_sersic_aaae076ff76f3a5588ccc3b1b2f215123}{Source\+Sersic}}, \mbox{\hyperlink{class_source_multi_ana_galaxy_afd8eb720a8b9a5d2d4b475af621ce957}{Source\+Multi\+Ana\+Galaxy}}, and \mbox{\hyperlink{class_source_overzier_a3ab6be6e44d689db4f56ad3d20836337}{Source\+Overzier}}.
+Implemented in \mbox{\hyperlink{class_source_b_l_r_sph2_a8070025f21088cb37fbd1c212bd1b752}{Source\+B\+L\+R\+Sph2}}, \mbox{\hyperlink{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}{Source\+B\+L\+R\+Sph1}}, \mbox{\hyperlink{class_source_b_l_r_disk_a53b0c5b67aaa4250fb2f1365a5960ff3}{Source\+B\+L\+R\+Disk}}, \mbox{\hyperlink{class_source_point_a11f8f20734df59ae970239bd87e9c342}{Source\+Point}}, \mbox{\hyperlink{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}{Source\+Uniform}}, \mbox{\hyperlink{class_source_shapelets_a8ef9f8240fe8de0d9d25cb041ca3191a}{Source\+Shapelets}}, \mbox{\hyperlink{class_source_pixelled_a6641a512eb71f65d688294cc8e5e7534}{Source\+Pixelled}}, \mbox{\hyperlink{class_source_overzier_plus_af3f11f4fcfd496db297b80509584696c}{Source\+Overzier\+Plus}}, \mbox{\hyperlink{class_source_multi_shapelets_a93325bc42c50835e20096cb55b4da41f}{Source\+Multi\+Shapelets}}, \mbox{\hyperlink{class_source_sersic_a89d55adba5fe10d42eb437904744bbee}{Source\+Sersic}}, \mbox{\hyperlink{class_source_multi_ana_galaxy_a8e6b2f8edcf251910263053fd8e0e483}{Source\+Multi\+Ana\+Galaxy}}, and \mbox{\hyperlink{class_source_overzier_ad3ecb886fab054d37eea81979b5d02a2}{Source\+Overzier}}.
 
 
 

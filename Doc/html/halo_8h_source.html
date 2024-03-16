@@ -88,7 +88,7 @@ $(function() {
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_h_a_l_o_calculator.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_h_a_l_o_calculator.html">HALOCalculator</a>{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="class_h_a_l_o_calculator.html#aaeade8ec9ba9fcdf3e3b60d8149173ae">HALOCalculator</a> (<a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> *co, <span class="keywordtype">double</span> mass, <span class="keywordtype">double</span> redshift);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="class_h_a_l_o_calculator.html#aaeade8ec9ba9fcdf3e3b60d8149173ae">HALOCalculator</a> (COSMOLOGY *co, <span class="keywordtype">double</span> mass, <span class="keywordtype">double</span> redshift);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordtype">double</span> getMass(){<span class="keywordflow">return</span> m;}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordtype">double</span> getZ(){<span class="keywordflow">return</span> z;}</div>
@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">virtual</span> ~<a class="code" href="class_h_a_l_o_calculator.html">HALOCalculator</a> ();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> *co;   <span class="comment">// cosmological model</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    COSMOLOGY *co;   <span class="comment">// cosmological model</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">double</span> m;        <span class="comment">// halo mass</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> z;        <span class="comment">// redshift</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> R200;     <span class="comment">// radius enclosing 200 times the critical density</span></div>
@@ -127,12 +127,11 @@ $(function() {
 <div class="ttc" id="aclass_h_a_l_o_calculator_html_a329d639e50df9362d11cc71ff73b1a5e"><div class="ttname"><a href="class_h_a_l_o_calculator.html#a329d639e50df9362d11cc71ff73b1a5e">HALOCalculator::reset</a></div><div class="ttdeci">void reset(double, double)</div><div class="ttdoc">Reset halo mass and redshift.</div><div class="ttdef"><b>Definition:</b> halo.cpp:36</div></div>
 <div class="ttc" id="aclass_h_a_l_o_calculator_html_af406c2440bb8083b45ac02b6a9c1c80d"><div class="ttname"><a href="class_h_a_l_o_calculator.html#af406c2440bb8083b45ac02b6a9c1c80d">HALOCalculator::getR200</a></div><div class="ttdeci">double getR200()</div><div class="ttdoc">Radius in physical Mpc at which the enclosed density reach 200 times the critical value at that redsh...</div><div class="ttdef"><b>Definition:</b> halo.cpp:55</div></div>
 <div class="ttc" id="aclass_h_a_l_o_calculator_html_a5ea33c1489d3ecaedf62b29b26e1a3d1"><div class="ttname"><a href="class_h_a_l_o_calculator.html#a5ea33c1489d3ecaedf62b29b26e1a3d1">HALOCalculator::getConcentration</a></div><div class="ttdeci">double getConcentration(int caseunit=0, double alpha0=-0.1)</div><div class="ttdoc">The halo concentration according to Zhao et al. 2009 is returned, if the integer 1 is given the conce...</div><div class="ttdef"><b>Definition:</b> halo.cpp:92</div></div>
-<div class="ttc" id="aclass_c_o_s_m_o_l_o_g_y_html"><div class="ttname"><a href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a></div><div class="ttdoc">The cosmology and all the functions required to calculated quantities based on the cosmology.</div><div class="ttdef"><b>Definition:</b> cosmo.h:50</div></div>
 <div class="ttc" id="aclass_h_a_l_o_calculator_html_a3852ec6628d11c11d36c7ef9ffcd01a5"><div class="ttname"><a href="class_h_a_l_o_calculator.html#a3852ec6628d11c11d36c7ef9ffcd01a5">HALOCalculator::MosterStellarMassFraction</a></div><div class="ttdeci">static double MosterStellarMassFraction(double Mtotal)</div><div class="ttdoc">returns the fraction of halo+galaxy in stars according to from Moster et al. 2010ApJ....</div><div class="ttdef"><b>Definition:</b> halo.cpp:146</div></div>
 <div class="ttc" id="aclass_h_a_l_o_calculator_html_a7460b456a7c22c2b04625f0554024655"><div class="ttname"><a href="class_h_a_l_o_calculator.html#a7460b456a7c22c2b04625f0554024655">HALOCalculator::getFormationTime</a></div><div class="ttdeci">double getFormationTime(double f=0.5)</div><div class="ttdoc">The median time at which the main halo progenitor assembles 50% of the halo mass, if 0&lt;f&lt;1 is given,...</div><div class="ttdef"><b>Definition:</b> halo.cpp:78</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:10 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:34 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>

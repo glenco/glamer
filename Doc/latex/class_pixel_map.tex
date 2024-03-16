@@ -2,7 +2,7 @@
 \label{class_pixel_map}\index{PixelMap@{PixelMap}}
 
 
-Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a fits file, smoothed, etc. like an image.  
+Image structure that can be manipulated and exported to/from fits files.  
 
 
 
@@ -22,6 +22,8 @@ Takes image structure and pixelizes the flux into regular pixel grid which then 
 \item 
 \mbox{\hyperlink{class_pixel_map_a74ed2fba8e634543912eed915b84f67c}{Pixel\+Map}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap, const double $\ast$center, std\+::size\+\_\+t Npixels)
 \begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} from a square region of a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}. If the region exceeds the boundaries of the original map, the new map is completed with zeros. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pixel_map_a125232b6f699bc5b6411f5e38e5bfd04}{Pixel\+Map}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap, long nx, long ny, std\+::size\+\_\+t Npixels)
+\begin{DoxyCompactList}\small\item\em Produces a square cut-\/out of the input \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_pixel_map_a1237bd9c0cb6fde88245e1d5996be808}{Pixel\+Map}} (const double $\ast$center, std\+::size\+\_\+t Npixels, double resolution, Pixel\+Map\+Units u=Pixel\+Map\+Units\+::ndef)
 \begin{DoxyCompactList}\small\item\em make square \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_pixel_map_a448987171aa76ba4554e9e3be4883ed8}{Pixel\+Map}} (const double $\ast$center, std\+::size\+\_\+t Nx, std\+::size\+\_\+t Ny, double resolution, Pixel\+Map\+Units u=Pixel\+Map\+Units\+::ndef)
@@ -106,7 +108,7 @@ void \mbox{\hyperlink{class_pixel_map_a007c98640a772347dd2e728d78e17ec1}{paste}}
 \begin{DoxyCompactList}\small\item\em Replace overlaping pixel values with those of the input map. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a10c08a1e76d33efd460b35e50f0abe1f}\label{class_pixel_map_a10c08a1e76d33efd460b35e50f0abe1f}} 
 void \mbox{\hyperlink{class_pixel_map_a10c08a1e76d33efd460b35e50f0abe1f}{paste}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap, long nx, long ny)
-\begin{DoxyCompactList}\small\item\em paste a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} on with the lower left pixel match to \mbox{[}nx,ny\mbox{]} \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em paste a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} on with the lower left pixel match to \mbox{[}nx,ny\mbox{]} of this \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_pixel_map_abf48a8ec99723d1475a68ad86a71af8d}{duplicate}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&pmap)
 \begin{DoxyCompactList}\small\item\em copy a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} that must be the same without creating a new one.. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a42bba4a4e112e10ede847a572fa934ec}\label{class_pixel_map_a42bba4a4e112e10ede847a572fa934ec}} 
@@ -157,9 +159,11 @@ void \mbox{\hyperlink{class_pixel_map_a6907a422586159e5f0884306e308d3ec}{print\+
 \mbox{\Hypertarget{class_pixel_map_aba0dc186ee8952f6e51e6cf0d784fd51}\label{class_pixel_map_aba0dc186ee8952f6e51e6cf0d784fd51}} 
 void \mbox{\hyperlink{class_pixel_map_aba0dc186ee8952f6e51e6cf0d784fd51}{print\+F\+I\+TS}} (std\+::string filename, bool Xflip=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Output the pixel map as a fits file. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_pixel_map_a729210170d6ee3c2bba9134f20354b5c}\label{class_pixel_map_a729210170d6ee3c2bba9134f20354b5c}} 
-void {\bfseries print\+F\+I\+TS} (std\+::string filename, std\+::vector$<$ std\+::tuple$<$ std\+::string, double, std\+::string $>$$>$ \&extra\+\_\+header\+\_\+info, bool verbose)
+\mbox{\Hypertarget{class_pixel_map_ac51e6b2909b45e13409d0c08bb493176}\label{class_pixel_map_ac51e6b2909b45e13409d0c08bb493176}} 
+void {\bfseries print\+F\+I\+TS} (std\+::string filename, std\+::vector$<$ std\+::tuple$<$ std\+::string, double, std\+::string $>$ $>$ \&extra\+\_\+header\+\_\+info, bool verbose)
 \item 
+void \mbox{\hyperlink{class_pixel_map_a8bcbc5ca93ec951a009241fb0767c8ed}{print\+F\+I\+TS}} (std\+::string filename, std\+::vector$<$ std\+::string $>$ \&headercards)
+\begin{DoxyCompactList}\small\item\em This overides all header information and relaces it with the inputs. Meant for making a modified copy. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a5d9d32d06836045b9cfc0d2129f7815f}\label{class_pixel_map_a5d9d32d06836045b9cfc0d2129f7815f}} 
 void \mbox{\hyperlink{class_pixel_map_a5d9d32d06836045b9cfc0d2129f7815f}{smooth}} (double sigma)
 \begin{DoxyCompactList}\small\item\em Smoothes a map with a Gaussian kernel of width sigma (in arcseconds) \end{DoxyCompactList}\item 
@@ -169,8 +173,8 @@ double {\bfseries get\+Value} (std\+::size\+\_\+t i) const
 \mbox{\Hypertarget{class_pixel_map_abe9b6636a98fc53d5a9a694f8196081c}\label{class_pixel_map_abe9b6636a98fc53d5a9a694f8196081c}} 
 double \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (std\+::size\+\_\+t i)
 \item 
-\mbox{\Hypertarget{class_pixel_map_a2f5143b0d57eb7c52fdbf6418ecbeb8f}\label{class_pixel_map_a2f5143b0d57eb7c52fdbf6418ecbeb8f}} 
-const double \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (std\+::size\+\_\+t i) const
+\mbox{\Hypertarget{class_pixel_map_a5c6f4f708fe0da29b7ea0c77e754c937}\label{class_pixel_map_a5c6f4f708fe0da29b7ea0c77e754c937}} 
+double {\bfseries operator\mbox{[}$\,$\mbox{]}} (std\+::size\+\_\+t i) const
 \item 
 \mbox{\Hypertarget{class_pixel_map_a34507be11570b0957f48b6890bd1bb6b}\label{class_pixel_map_a34507be11570b0957f48b6890bd1bb6b}} 
 double {\bfseries operator()} (std\+::size\+\_\+t i) const
@@ -184,6 +188,9 @@ double \& {\bfseries operator()} (std\+::size\+\_\+t i, std\+::size\+\_\+t j)
 \mbox{\Hypertarget{class_pixel_map_ae9d31ce7fb07d7b11d9f7e5d4685d634}\label{class_pixel_map_ae9d31ce7fb07d7b11d9f7e5d4685d634}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& \mbox{\hyperlink{class_pixel_map_ae9d31ce7fb07d7b11d9f7e5d4685d634}{operator+=}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&rhs)
 \begin{DoxyCompactList}\small\item\em Add the values of another \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} to this one. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_a2f575531e01349914485f3d57c49a214}\label{class_pixel_map_a2f575531e01349914485f3d57c49a214}} 
+void {\bfseries operator+=} (double f)
+\item 
 \mbox{\Hypertarget{class_pixel_map_af49565ada428b47b4e9fcc205e55ea95}\label{class_pixel_map_af49565ada428b47b4e9fcc205e55ea95}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_af49565ada428b47b4e9fcc205e55ea95}{operator+}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&) const
 \begin{DoxyCompactList}\small\item\em Add two Pixel\+Maps. \end{DoxyCompactList}\item 
@@ -205,9 +212,9 @@ double \& {\bfseries operator()} (std\+::size\+\_\+t i, std\+::size\+\_\+t j)
 \mbox{\Hypertarget{class_pixel_map_aa98d4aa3605b759076eef156ebb8d3eb}\label{class_pixel_map_aa98d4aa3605b759076eef156ebb8d3eb}} 
 \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \& {\bfseries operator$\ast$=} (Pos\+Type b)
 \item 
-\mbox{\Hypertarget{class_pixel_map_afe231f0627899a087407b96589f28558}\label{class_pixel_map_afe231f0627899a087407b96589f28558}} 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_afe231f0627899a087407b96589f28558}{operator$\ast$=}} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&m) const
-\begin{DoxyCompactList}\small\item\em element wise multiplictioan \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_a19effe1072188fdd1e09b4d3824d53e3}\label{class_pixel_map_a19effe1072188fdd1e09b4d3824d53e3}} 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} {\bfseries operator$\ast$} (Pos\+Type b) const
+\item 
 \mbox{\Hypertarget{class_pixel_map_ae3706a6491650f14200eef64213d1e68}\label{class_pixel_map_ae3706a6491650f14200eef64213d1e68}} 
 std\+::valarray$<$ double $>$ \& {\bfseries data} ()
 \item 
@@ -223,6 +230,12 @@ Pos\+Type \mbox{\hyperlink{class_pixel_map_aacabfbe3fd3a55721d9e74b69cabe4d0}{su
 \mbox{\Hypertarget{class_pixel_map_a6d9e3d1725679255fdbd1926fd813b71}\label{class_pixel_map_a6d9e3d1725679255fdbd1926fd813b71}} 
 size\+\_\+t \mbox{\hyperlink{class_pixel_map_a6d9e3d1725679255fdbd1926fd813b71}{size}} ()
 \begin{DoxyCompactList}\small\item\em Total number of pixels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_a2946851c810bb1fa61f1542af60dad95}\label{class_pixel_map_a2946851c810bb1fa61f1542af60dad95}} 
+double {\bfseries max} () const
+\item 
+\mbox{\Hypertarget{class_pixel_map_a7b3c7181770270bb6862216b20a57ac1}\label{class_pixel_map_a7b3c7181770270bb6862216b20a57ac1}} 
+double {\bfseries min} () const
+\item 
 \mbox{\Hypertarget{class_pixel_map_a846abd2731b960f8252c2588d4482cfd}\label{class_pixel_map_a846abd2731b960f8252c2588d4482cfd}} 
 void \mbox{\hyperlink{class_pixel_map_a846abd2731b960f8252c2588d4482cfd}{Find\+Arc}} (Pos\+Type \&radius, Pos\+Type $\ast$xc, Pos\+Type $\ast$arc\+\_\+center, Pos\+Type \&arclength, Pos\+Type \&width, Pos\+Type \mbox{\hyperlink{class_pixel_map_a81fb4e5d1904d31b147b294086448ce8}{threshold}})
 \begin{DoxyCompactList}\small\item\em Find arcs in image W\+A\+R\+N\+I\+NG\+: T\+H\+IS IS U\+N\+D\+ER C\+O\+N\+S\+T\+R\+U\+C\+T\+I\+O\+N! \end{DoxyCompactList}\item 
@@ -242,6 +255,8 @@ void \mbox{\hyperlink{class_pixel_map_abdeba8ccda61273ca38129b500e1c166}{find\+\
 \mbox{\Hypertarget{class_pixel_map_ac0c97f9fe34a01fa572065c1fb496694}\label{class_pixel_map_ac0c97f9fe34a01fa572065c1fb496694}} 
 void \mbox{\hyperlink{class_pixel_map_ac0c97f9fe34a01fa572065c1fb496694}{find\+\_\+position}} (Pos\+Type x\mbox{[}$\,$\mbox{]}, std\+::size\+\_\+t const ix, std\+::size\+\_\+t const iy) const
 \begin{DoxyCompactList}\small\item\em get the index for a position, returns -\/1 if out of map \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{class_pixel_map_a23cf70dc1f709b358bf58d798d1e7223}{rotate}} (Pos\+Type theta, Pos\+Type scale=1)
+\begin{DoxyCompactList}\small\item\em rotate and scale the image while keeping pixels, resoluiton \end{DoxyCompactList}\item 
 Pos\+Type \mbox{\hyperlink{class_pixel_map_a8383674bc9357e957284678ba7652b5d}{linear\+\_\+interpolate}} (Pos\+Type x\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em interpolate to point x\mbox{[}\mbox{]} \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_pixel_map_a6290c8218f90b09fa1d5cbfb12754d79}{drawgrid}} (int N, Pos\+Type value)
@@ -269,6 +284,22 @@ void \mbox{\hyperlink{class_pixel_map_a206014c2f116d207ac67330b3ed796fd}{draw\+S
 \mbox{\Hypertarget{class_pixel_map_a9706dfb86aec046bea4193ed1228c463}\label{class_pixel_map_a9706dfb86aec046bea4193ed1228c463}} 
 void \mbox{\hyperlink{class_pixel_map_a9706dfb86aec046bea4193ed1228c463}{draw\+Box}} (Pos\+Type p1\mbox{[}$\,$\mbox{]}, Pos\+Type p2\mbox{[}$\,$\mbox{]}, Pos\+Type value, int Nstrip)
 \begin{DoxyCompactList}\small\item\em Draws a box (filling the inside with horizontal lines, starting from the top) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pixel_map_a5b5659e4484b935aaf7c15418ae0bd32}{Power\+Spectrum}} (std\+::vector$<$ Pos\+Type $>$ \&power\+\_\+spectrum, std\+::vector$<$ Pos\+Type $>$ \&lvec, bool overwrite=true)
+\begin{DoxyCompactList}\small\item\em Find the power spectrum of the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pixel_map_ae7afb16b257f3f672e41b2e521b28889}{Power\+Spectrum}} (std\+::vector$<$ Pos\+Type $>$ \&power\+\_\+spectrum, const std\+::vector$<$ Pos\+Type $>$ \&lbins, std\+::vector$<$ Pos\+Type $>$ \&lave, bool overwrite=true)
+\begin{DoxyCompactList}\small\item\em Find the power spectrum of the map. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pixel_map_a073d79a4bdf2ba7151ebe677854b88df}\label{class_pixel_map_a073d79a4bdf2ba7151ebe677854b88df}} 
+void {\bfseries Adaptive\+Smooth} (Pos\+Type value)
+\item 
+\mbox{\Hypertarget{class_pixel_map_a8b30794ebe4e12654cd00546392b14b5}\label{class_pixel_map_a8b30794ebe4e12654cd00546392b14b5}} 
+void \mbox{\hyperlink{class_pixel_map_a8b30794ebe4e12654cd00546392b14b5}{find\+\_\+contour}} (double level, std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ $>$ \&points, std\+::vector$<$ bool $>$ \&hits\+\_\+edge) const
+\begin{DoxyCompactList}\small\item\em returns a vector of contour curves \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pixel_map_a9e1c84cfd0acd94a3388ade6139e2195}{find\+\_\+islands\+\_\+holes}} (double level, std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \&points) const
+\item 
+void \mbox{\hyperlink{class_pixel_map_ac53f6098636ea9725f8b3291a5952188}{lens\+\_\+definition}} (double min\+\_\+sn\+\_\+per\+\_\+image, double pixel\+\_\+threshold, int \&Nimages, double \&total\+\_\+sig\+\_\+noise\+\_\+source, std\+::vector$<$ size\+\_\+t $>$ \&maxima\+\_\+indexes, std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \&image\+\_\+points, bool \&lens\+\_\+\+TF, double \&level, size\+\_\+t \&n\+\_\+pix\+\_\+in\+\_\+source, bool verbose=false)
+\item 
+std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_pixel_map_a42cc7b1dd9c40c0850afa19fd7369abe}{maxima}} (double minlevel) const
+\begin{DoxyCompactList}\small\item\em find maxima that are above minlevel \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_pixel_map_a7765719a3711365372ca54100efa9dcc}{count\+\_\+islands}} (std\+::vector$<$ size\+\_\+t $>$ \&pixel\+\_\+index) const
 \begin{DoxyCompactList}\small\item\em For a list of pixel indexes this will count and separated islands that are not connected. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_pixel_map_a81fb4e5d1904d31b147b294086448ce8}\label{class_pixel_map_a81fb4e5d1904d31b147b294086448ce8}} 
@@ -321,7 +352,7 @@ void {\bfseries swap} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&, \mbox{
 
 
 \doxysubsection{Detailed Description}
-Takes image structure and pixelizes the flux into regular pixel grid which then can be exported as a fits file, smoothed, etc. like an image. 
+Image structure that can be manipulated and exported to/from fits files. 
 
 
 
@@ -329,7 +360,7 @@ Takes image structure and pixelizes the flux into regular pixel grid which then 
 \mbox{\Hypertarget{class_pixel_map_ac284147e8e2b7aa5bf44f16dfb327956}\label{class_pixel_map_ac284147e8e2b7aa5bf44f16dfb327956}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
-\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
 {\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{pmap,  }\item[{double}]{res\+\_\+ratio }\end{DoxyParamCaption})}
 
 
@@ -344,7 +375,7 @@ Creates a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} at a different resoluti
 \mbox{\Hypertarget{class_pixel_map_a74ed2fba8e634543912eed915b84f67c}\label{class_pixel_map_a74ed2fba8e634543912eed915b84f67c}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
-\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
 {\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{pmap,  }\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{my\+\_\+\+Npixels }\end{DoxyParamCaption})}
 
 
@@ -358,10 +389,29 @@ Creates a new \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} from a square regio
 {\em my\+\_\+\+Npixels} & center of the region to be duplicated (in rads) size of the region to be duplicated (in pixels) \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a125232b6f699bc5b6411f5e38e5bfd04}\label{class_pixel_map_a125232b6f699bc5b6411f5e38e5bfd04}} 
+\index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
+\index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{pmap,  }\item[{long}]{nx,  }\item[{long}]{ny,  }\item[{std\+::size\+\_\+t}]{my\+\_\+\+Npixels }\end{DoxyParamCaption})}
+
+
+
+Produces a square cut-\/out of the input \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nx} & Input \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} (from which the stamp is taken) \\
+\hline
+{\em ny} & lower left pixels of in pmap \\
+\hline
+{\em my\+\_\+\+Npixels} & lower left pixels of in pmap size of the region to be duplicated (in pixels) \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_pixel_map_a1237bd9c0cb6fde88245e1d5996be808}\label{class_pixel_map_a1237bd9c0cb6fde88245e1d5996be808}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
-\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
 {\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{Npixels,  }\item[{double}]{resolution,  }\item[{Pixel\+Map\+Units}]{u = {\ttfamily PixelMapUnits\+:\+:ndef} }\end{DoxyParamCaption})}
 
 
@@ -378,7 +428,7 @@ make square \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}
 \mbox{\Hypertarget{class_pixel_map_a448987171aa76ba4554e9e3be4883ed8}\label{class_pixel_map_a448987171aa76ba4554e9e3be4883ed8}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
-\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
 {\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double $\ast$}]{center,  }\item[{std\+::size\+\_\+t}]{Nx,  }\item[{std\+::size\+\_\+t}]{Ny,  }\item[{double}]{resolution,  }\item[{Pixel\+Map\+Units}]{u = {\ttfamily PixelMapUnits\+:\+:ndef} }\end{DoxyParamCaption})}
 
 
@@ -397,7 +447,7 @@ make rectangular \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} with square pixe
 \mbox{\Hypertarget{class_pixel_map_aca57f4b308948e5fd53e5389a53760be}\label{class_pixel_map_aca57f4b308948e5fd53e5389a53760be}} 
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap@{PixelMap}}
-\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+\doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
 {\footnotesize\ttfamily Pixel\+Map\+::\+Pixel\+Map (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfilename,  }\item[{double}]{my\+\_\+res = {\ttfamily -\/1},  }\item[{Pixel\+Map\+Units}]{u = {\ttfamily PixelMapUnits\+:\+:ndef} }\end{DoxyParamCaption})}
 
 
@@ -655,7 +705,44 @@ get the index for a position, returns -\/1 if out of map \mbox{\Hypertarget{clas
 
 get the index for a position, returns -\/1 if out of map, this version returns the 2D grid coordinates 
 
-get the index for a position, returns -\/1 if out of map \mbox{\Hypertarget{class_pixel_map_a8383674bc9357e957284678ba7652b5d}\label{class_pixel_map_a8383674bc9357e957284678ba7652b5d}} 
+get the index for a position, returns -\/1 if out of map \mbox{\Hypertarget{class_pixel_map_a9e1c84cfd0acd94a3388ade6139e2195}\label{class_pixel_map_a9e1c84cfd0acd94a3388ade6139e2195}} 
+\index{PixelMap@{PixelMap}!find\_islands\_holes@{find\_islands\_holes}}
+\index{find\_islands\_holes@{find\_islands\_holes}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{find\_islands\_holes()}{find\_islands\_holes()}}
+{\footnotesize\ttfamily void Pixel\+Map\+::find\+\_\+islands\+\_\+holes (\begin{DoxyParamCaption}\item[{double}]{level,  }\item[{std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \&}]{points }\end{DoxyParamCaption}) const}
+
+find all the points above level divided into seprated groups
+
+Groups with points are connected regions above level. Groups without points are regions surrounded by regions above level, i.\+e. holes. \mbox{\Hypertarget{class_pixel_map_ac53f6098636ea9725f8b3291a5952188}\label{class_pixel_map_ac53f6098636ea9725f8b3291a5952188}} 
+\index{PixelMap@{PixelMap}!lens\_definition@{lens\_definition}}
+\index{lens\_definition@{lens\_definition}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{lens\_definition()}{lens\_definition()}}
+{\footnotesize\ttfamily void Pixel\+Map\+::lens\+\_\+definition (\begin{DoxyParamCaption}\item[{double}]{min\+\_\+sn\+\_\+per\+\_\+image,  }\item[{double}]{pixel\+\_\+threshold,  }\item[{int \&}]{Nimages,  }\item[{double \&}]{total\+\_\+sig\+\_\+noise\+\_\+source,  }\item[{std\+::vector$<$ size\+\_\+t $>$ \&}]{maxima\+\_\+indexes,  }\item[{std\+::vector$<$ std\+::vector$<$ size\+\_\+t $>$ $>$ \&}]{image\+\_\+points,  }\item[{bool \&}]{lens\+\_\+\+TF,  }\item[{double \&}]{level,  }\item[{size\+\_\+t \&}]{n\+\_\+pix\+\_\+in\+\_\+source,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+
+This applies a definition of lesning for a resolved source based on that of Sonnenfeld et al. 2023
+
+This is meant to be used on a signal-\/to-\/noise map of the lensed source only.
+
+The definition does the following tests\+: 1) define a footprint at surface brightness level {\ttfamily pixel\+\_\+threshold} 2) romove disconected region that have signal-\/to-\/noise below {\ttfamily min\+\_\+sn\+\_\+per\+\_\+image} 3) if there are multiple images or a hole in the image {\ttfamily lens\+\_\+\+TF =true} 4) if there is one image with no hole increase the threshold and apply 3) until the it is classified as a lens or it reaches the maximum surface brightness level 
+\begin{DoxyParams}{Parameters}
+{\em min\+\_\+sn\+\_\+per\+\_\+image} & signal-\/to-\/noise required for a seporate image (ex 10) \\
+\hline
+{\em pixel\+\_\+threshold} & signal-\/to-\/noise threshold that defines the footprint (ex. 2) \\
+\hline
+{\em Nimages} & the number of images \\
+\hline
+{\em total\+\_\+sig\+\_\+noise\+\_\+source} & gives the total signal-\/to-\/noise of all images \\
+\hline
+{\em maxima\+\_\+indexes} & index of maxima \\
+\hline
+{\em lens\+\_\+\+TF} & whether it passes lens diffintion \\
+\hline
+{\em level} & levels on which the multiple images are defined \\
+\hline
+{\em n\+\_\+pix\+\_\+in\+\_\+source} & number of pixels in footprint \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a8383674bc9357e957284678ba7652b5d}\label{class_pixel_map_a8383674bc9357e957284678ba7652b5d}} 
 \index{PixelMap@{PixelMap}!linear\_interpolate@{linear\_interpolate}}
 \index{linear\_interpolate@{linear\_interpolate}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{linear\_interpolate()}{linear\_interpolate()}}
@@ -665,7 +752,17 @@ get the index for a position, returns -\/1 if out of map \mbox{\Hypertarget{clas
 
 interpolate to point x\mbox{[}\mbox{]} 
 
-bilinear interpolation\mbox{\Hypertarget{class_pixel_map_a007c98640a772347dd2e728d78e17ec1}\label{class_pixel_map_a007c98640a772347dd2e728d78e17ec1}} 
+bilinear interpolation\mbox{\Hypertarget{class_pixel_map_a42cc7b1dd9c40c0850afa19fd7369abe}\label{class_pixel_map_a42cc7b1dd9c40c0850afa19fd7369abe}} 
+\index{PixelMap@{PixelMap}!maxima@{maxima}}
+\index{maxima@{maxima}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{maxima()}{maxima()}}
+{\footnotesize\ttfamily std\+::vector$<$ size\+\_\+t $>$ Pixel\+Map\+::maxima (\begin{DoxyParamCaption}\item[{double}]{minlevel }\end{DoxyParamCaption}) const}
+
+
+
+find maxima that are above minlevel 
+
+find the index of the pixels that are larger than all its neighbors \mbox{\Hypertarget{class_pixel_map_a007c98640a772347dd2e728d78e17ec1}\label{class_pixel_map_a007c98640a772347dd2e728d78e17ec1}} 
 \index{PixelMap@{PixelMap}!paste@{paste}}
 \index{paste@{paste}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{paste()}{paste()}}
@@ -677,7 +774,64 @@ Replace overlaping pixel values with those of the input map.
 
 No attempt is made to interpolate or average the pixels of pmap. No integration is done. If the resolution of input map is higher than the reslution of the map then the pixels values will just be that of the last pixel visited while going through them.
 
-This can be used to sew tiles together into a larger map. \mbox{\Hypertarget{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}\label{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}} 
+This can be used to sew tiles together into a larger map. \mbox{\Hypertarget{class_pixel_map_ae7afb16b257f3f672e41b2e521b28889}\label{class_pixel_map_ae7afb16b257f3f672e41b2e521b28889}} 
+\index{PixelMap@{PixelMap}!PowerSpectrum@{PowerSpectrum}}
+\index{PowerSpectrum@{PowerSpectrum}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{PowerSpectrum()}{PowerSpectrum()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Pixel\+Map\+::\+Power\+Spectrum (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Pos\+Type $>$ \&}]{power\+\_\+spectrum,  }\item[{const std\+::vector$<$ Pos\+Type $>$ \&}]{lbins,  }\item[{std\+::vector$<$ Pos\+Type $>$ \&}]{lave,  }\item[{bool}]{overwrite = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the power spectrum of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em power\+\_\+spectrum} & output power spectrum \\
+\hline
+{\em lbins} & output l values of bands \\
+\hline
+{\em lave} & output l values of bands \\
+\hline
+{\em overwrite} & if false add power to existing power\+\_\+spectrum (used for averaging over many fields \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a5b5659e4484b935aaf7c15418ae0bd32}\label{class_pixel_map_a5b5659e4484b935aaf7c15418ae0bd32}} 
+\index{PixelMap@{PixelMap}!PowerSpectrum@{PowerSpectrum}}
+\index{PowerSpectrum@{PowerSpectrum}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{PowerSpectrum()}{PowerSpectrum()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Pixel\+Map\+::\+Power\+Spectrum (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Pos\+Type $>$ \&}]{power\+\_\+spectrum,  }\item[{std\+::vector$<$ Pos\+Type $>$ \&}]{lvec,  }\item[{bool}]{overwrite = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Find the power spectrum of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em power\+\_\+spectrum} & output power spectrum \\
+\hline
+{\em lvec} & output l values of bands \\
+\hline
+{\em overwrite} & if false add power to existing power\+\_\+spectrum (used for averaging over many fields \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a8bcbc5ca93ec951a009241fb0767c8ed}\label{class_pixel_map_a8bcbc5ca93ec951a009241fb0767c8ed}} 
+\index{PixelMap@{PixelMap}!printFITS@{printFITS}}
+\index{printFITS@{printFITS}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{printFITS()}{printFITS()}}
+{\footnotesize\ttfamily void Pixel\+Map\+::print\+F\+I\+TS (\begin{DoxyParamCaption}\item[{std\+::string}]{filename,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{headercards }\end{DoxyParamCaption})}
+
+
+
+This overides all header information and relaces it with the inputs. Meant for making a modified copy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & file to create \\
+\hline
+{\em headercards} & header information in cfitsio \char`\"{}card\char`\"{} format \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}\label{class_pixel_map_a86424d820ef5b2c9a56e3ef7d9783929}} 
 \index{PixelMap@{PixelMap}!recenter@{recenter}}
 \index{recenter@{recenter}!PixelMap@{PixelMap}}
 \doxysubsubsection{\texorpdfstring{recenter()}{recenter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -701,6 +855,23 @@ recenter the map without changing anything else.
 
 \begin{DoxyParams}{Parameters}
 {\em newcenter} & in radians \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pixel_map_a23cf70dc1f709b358bf58d798d1e7223}\label{class_pixel_map_a23cf70dc1f709b358bf58d798d1e7223}} 
+\index{PixelMap@{PixelMap}!rotate@{rotate}}
+\index{rotate@{rotate}!PixelMap@{PixelMap}}
+\doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Pixel\+Map\+::rotate (\begin{DoxyParamCaption}\item[{Pos\+Type}]{theta,  }\item[{Pos\+Type}]{scale = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+rotate and scale the image while keeping pixels, resoluiton 
+
+
+\begin{DoxyParams}{Parameters}
+{\em theta} & counter-\/clockwise rotation (radians) \\
+\hline
+{\em scale} & scale $<$1 shrinks it \\
 \hline
 \end{DoxyParams}
 

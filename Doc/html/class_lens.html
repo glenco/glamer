@@ -84,7 +84,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:acc69ae46a84f55e9f89633d0e4182230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an empty lens. Main halos and field halos need to be inserted by hand from the user. <br /></td></tr>
 <tr class="separator:acc69ae46a84f55e9f89633d0e4182230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d35c838440ad6d526e402492be04fc3"><td class="memItemLeft" align="right" valign="top"><a id="a7d35c838440ad6d526e402492be04fc3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Lens</b> (long *seed, PosType z_source, const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;cosmo, bool verbose=false)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Lens</b> (long *seed, PosType z_source, const COSMOLOGY &amp;cosmo, bool verbose=false)</td></tr>
 <tr class="separator:a7d35c838440ad6d526e402492be04fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ce0eee4b6bf7070d5524d27b3474168"><td class="memItemLeft" align="right" valign="top"><a id="a0ce0eee4b6bf7070d5524d27b3474168"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a0ce0eee4b6bf7070d5524d27b3474168">getNplanes</a> () const</td></tr>
@@ -176,23 +176,32 @@ template&lt;typename HaloType &gt; </td></tr>
 <tr class="separator:a2575c6d766091cde0ce87249e97333f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae505c3e066e52d60372449aecc7ae6b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#ae505c3e066e52d60372449aecc7ae6b0">rayshooterInternal</a> (unsigned long Npoints, <a class="el" href="struct_r_a_y.html">RAY</a> *rays)</td></tr>
 <tr class="separator:ae505c3e066e52d60372449aecc7ae6b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae67ceb70df6830db1fbcb8e33aa60176"><td class="memItemLeft" align="right" valign="top"><a id="ae67ceb70df6830db1fbcb8e33aa60176"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rayshooterInternal</b> (<a class="el" href="struct_r_a_y.html">RAY</a> &amp;ray)</td></tr>
+<tr class="separator:ae67ceb70df6830db1fbcb8e33aa60176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fa714f37553b29a50a6d2b532a99013"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a4fa714f37553b29a50a6d2b532a99013">info_rayshooter</a> (<a class="el" href="struct_r_a_y.html">RAY</a> &amp;i_point, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;ang_positions, std::vector&lt; KappaType &gt; &amp;kappa_on_planes, std::vector&lt; std::vector&lt; <a class="el" href="class_lens_halo.html">LensHalo</a> * &gt;&gt; &amp;halo_neighbors, <a class="el" href="class_lens_halo.html">LensHalo</a> &amp;halo_max, KappaType &amp;kappa_max, KappaType gamma_max[], PosType rmax, int tag=0, short mode=0, bool verbose=false)</td></tr>
-<tr class="memdesc:a4fa714f37553b29a50a6d2b532a99013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects information about the halos and kappa contributions along the light path.  <a href="class_lens.html#a4fa714f37553b29a50a6d2b532a99013">More...</a><br /></td></tr>
+<tr class="memdesc:a4fa714f37553b29a50a6d2b532a99013"><td class="mdescLeft">&#160;</td><td class="mdescRight">single ray  <a href="class_lens.html#a4fa714f37553b29a50a6d2b532a99013">More...</a><br /></td></tr>
 <tr class="separator:a4fa714f37553b29a50a6d2b532a99013"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d6d04ad98ee9831d8b2e278be6f3a6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a6d6d04ad98ee9831d8b2e278be6f3a6b">find_image</a> (<a class="el" href="struct_point.html">Point</a> &amp;p, double zs, PosType ytol2, PosType &amp;dy2, bool use_image_guess)</td></tr>
-<tr class="memdesc:a6d6d04ad98ee9831d8b2e278be6f3a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the image position of a source without grid refinement.  <a href="class_lens.html#a6d6d04ad98ee9831d8b2e278be6f3a6b">More...</a><br /></td></tr>
-<tr class="separator:a6d6d04ad98ee9831d8b2e278be6f3a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5688505e56faca56c0f8d424cb5bdd3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a5688505e56faca56c0f8d424cb5bdd3d">find_image</a> (<a class="el" href="struct_r_a_y.html">RAY</a> &amp;p, PosType ytol2, PosType &amp;dy2, bool use_image_guess)</td></tr>
-<tr class="memdesc:a5688505e56faca56c0f8d424cb5bdd3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">this version uses the redshift stored in the ray  <a href="class_lens.html#a5688505e56faca56c0f8d424cb5bdd3d">More...</a><br /></td></tr>
-<tr class="separator:a5688505e56faca56c0f8d424cb5bdd3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a450a498938a92acf5b73568e64f0acfe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a450a498938a92acf5b73568e64f0acfe">find_image</a> (<a class="el" href="struct_r_a_y.html">RAY</a> &amp;p, PosType ytol2, PosType &amp;dy2, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;boundary)</td></tr>
-<tr class="memdesc:a450a498938a92acf5b73568e64f0acfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the same, but the image is forced to stay within boundary.  <a href="class_lens.html#a450a498938a92acf5b73568e64f0acfe">More...</a><br /></td></tr>
-<tr class="separator:a450a498938a92acf5b73568e64f0acfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31dd5ed6c77cca4e00c5ebb8414b18ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a31dd5ed6c77cca4e00c5ebb8414b18ff">find_image</a> (<a class="el" href="struct_point.html">Point</a> &amp;p, double zs, PosType ytol2, PosType &amp;dy2, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;boundary)</td></tr>
-<tr class="separator:a31dd5ed6c77cca4e00c5ebb8414b18ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac02a64bb6d6d00858ff83b2803bdafc2"><td class="memItemLeft" align="right" valign="top"><a id="ac02a64bb6d6d00858ff83b2803bdafc2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>find_point_source_images</b> (<a class="el" href="struct_grid.html">Grid</a> &amp;grid, <a class="el" href="struct_point__2d.html">Point_2d</a> y_source, PosType r_source, PosType z_source, std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt; &amp;images, double dytol2, double dxtol, bool verbose=false)</td></tr>
-<tr class="separator:ac02a64bb6d6d00858ff83b2803bdafc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e683b56effd97638db0dceb4cd04c3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a5e683b56effd97638db0dceb4cd04c3c">mass_on_planes</a> (const std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt; &amp;rays, std::vector&lt; double &gt; &amp;masses, bool verbose=false)</td></tr>
+<tr class="memdesc:a5e683b56effd97638db0dceb4cd04c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds the mass within a curve of rays one every lens plane im Msun  <a href="class_lens.html#a5e683b56effd97638db0dceb4cd04c3c">More...</a><br /></td></tr>
+<tr class="separator:a5e683b56effd97638db0dceb4cd04c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73758de70585bda93be75065f772f85b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a73758de70585bda93be75065f772f85b">find_image_min</a> (<a class="el" href="struct_point.html">Point</a> &amp;p, double zs, PosType ytol2, PosType &amp;dy2, bool use_image_guess)</td></tr>
+<tr class="memdesc:a73758de70585bda93be75065f772f85b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the image position of a source without grid refinement.  <a href="class_lens.html#a73758de70585bda93be75065f772f85b">More...</a><br /></td></tr>
+<tr class="separator:a73758de70585bda93be75065f772f85b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ea1caf11ec4eff16655de132a701165"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a6ea1caf11ec4eff16655de132a701165">find_image_min</a> (const <a class="el" href="struct_r_a_y.html">RAY</a> &amp;in_ray, PosType ytol2)</td></tr>
+<tr class="separator:a6ea1caf11ec4eff16655de132a701165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29120751ca87eb68c2c2afc3a6ca9ae4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_r_a_y.html">RAY</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a29120751ca87eb68c2c2afc3a6ca9ae4">find_image_min</a> (<a class="el" href="struct_point.html">Point</a> &amp;p, double zs, PosType ytol2, PosType &amp;dy2, std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;boundary)</td></tr>
+<tr class="memdesc:a29120751ca87eb68c2c2afc3a6ca9ae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the same, but the image is forced to stay within boundary.  <a href="class_lens.html#a29120751ca87eb68c2c2afc3a6ca9ae4">More...</a><br /></td></tr>
+<tr class="separator:a29120751ca87eb68c2c2afc3a6ca9ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4a8cd1c9c69e16aa7f01a8b0eaff596"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#ac4a8cd1c9c69e16aa7f01a8b0eaff596">find_images</a> (<a class="el" href="struct_point__2d.html">Point_2d</a> y_source, double z_source, <a class="el" href="struct_point__2d.html">Point_2d</a> center, double range, double stop_res)</td></tr>
+<tr class="memdesc:ac4a8cd1c9c69e16aa7f01a8b0eaff596"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds images by telescoping triangle method  <a href="class_lens.html#ac4a8cd1c9c69e16aa7f01a8b0eaff596">More...</a><br /></td></tr>
+<tr class="separator:ac4a8cd1c9c69e16aa7f01a8b0eaff596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb05102639f1d175bad05f64e4e3bf56"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#adb05102639f1d175bad05f64e4e3bf56">find_images</a> (<a class="el" href="struct_grid_map.html">GridMap</a> &amp;init_grid, <a class="el" href="struct_point__2d.html">Point_2d</a> y_source, double z_source, double stop_res)</td></tr>
+<tr class="memdesc:adb05102639f1d175bad05f64e4e3bf56"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds images by telescoping triangle method  <a href="class_lens.html#adb05102639f1d175bad05f64e4e3bf56">More...</a><br /></td></tr>
+<tr class="separator:adb05102639f1d175bad05f64e4e3bf56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac408b0446806251de0022c4600acfdb7"><td class="memItemLeft" align="right" valign="top"><a id="ac408b0446806251de0022c4600acfdb7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>find_images_min_parallel</b> (std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt; &amp;rays, double ytol2, std::vector&lt; bool &gt; &amp;success)</td></tr>
+<tr class="separator:ac408b0446806251de0022c4600acfdb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71b1279d35b08c49d537708a46c1d3a6"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a71b1279d35b08c49d537708a46c1d3a6">ResetSourcePlane</a> (PosType z, bool nearest=false, bool verbose=false)</td></tr>
 <tr class="memdesc:a71b1279d35b08c49d537708a46c1d3a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the redshift of the source plane  <a href="class_lens.html#a71b1279d35b08c49d537708a46c1d3a6">More...</a><br /></td></tr>
 <tr class="separator:a71b1279d35b08c49d537708a46c1d3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,7 +227,7 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memdesc:a53108c7002e0cb4ce7064d43c5efdb0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the critical density at the main lens in Msun/ Mpc^2 for a source at zsource <br /></td></tr>
 <tr class="separator:a53108c7002e0cb4ce7064d43c5efdb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5576b59d2f70c1d0f0a798b8a92a4f81"><td class="memItemLeft" align="right" valign="top"><a id="a5576b59d2f70c1d0f0a798b8a92a4f81"></a>
-const <a class="el" href="class_c_o_s_m_o_l_o_g_y.html">COSMOLOGY</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">getCosmo</a> ()</td></tr>
+const COSMOLOGY &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lens.html#a5576b59d2f70c1d0f0a798b8a92a4f81">getCosmo</a> ()</td></tr>
 <tr class="memdesc:a5576b59d2f70c1d0f0a798b8a92a4f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns a const reference to the cosmology so that constant functions can be used, but the cosmological parameters cannot be changed. <br /></td></tr>
 <tr class="separator:a5576b59d2f70c1d0f0a798b8a92a4f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ef8e31f5a9d3ada238db9c8a8babe9"><td class="memItemLeft" align="right" valign="top"><a id="a40ef8e31f5a9d3ada238db9c8a8babe9"></a>
@@ -243,6 +252,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>getfieldOff</b> () co
 <tr class="memitem:a557f940236f66e88f8a3b73efbb7c2bc"><td class="memItemLeft" align="right" valign="top"><a id="a557f940236f66e88f8a3b73efbb7c2bc"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Lens</b> (<a class="el" href="class_lens.html">Lens</a> &amp;&amp;lens)</td></tr>
 <tr class="separator:a557f940236f66e88f8a3b73efbb7c2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad9941c8999a39551c900932442993ed"><td class="memItemLeft" align="right" valign="top"><a id="aad9941c8999a39551c900932442993ed"></a>
+std::vector&lt; PosType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_plane_redshifts</b> ()</td></tr>
+<tr class="separator:aad9941c8999a39551c900932442993ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -290,14 +302,51 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   Omega_neutrino -- Density in neutrinos
   hubble -- Hubble parameter in units of 100 km/s/Mpc
   sigm_8 -- normalization of power spectrum</pre><pre> </pre> </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6d6d04ad98ee9831d8b2e278be6f3a6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d6d04ad98ee9831d8b2e278be6f3a6b">&#9670;&nbsp;</a></span>find_image() <span class="overload">[1/4]</span></h2>
+<a id="a6ea1caf11ec4eff16655de132a701165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ea1caf11ec4eff16655de132a701165">&#9670;&nbsp;</a></span>find_image_min() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image </td>
+          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image_min </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_r_a_y.html">RAY</a> &amp;&#160;</td>
+          <td class="paramname"><em>in_ray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PosType&#160;</td>
+          <td class="paramname"><em>ytol2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>this version uses the redshift stored in the ray,</p>
+<p>Tthe ray is replaced with the best guess so the source position is replaced. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in_ray</td><td>p.y[] should be set to source position </td></tr>
+    <tr><td class="paramname">ytol2</td><td>target tolerance in source position squared </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a73758de70585bda93be75065f772f85b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73758de70585bda93be75065f772f85b">&#9670;&nbsp;</a></span>find_image_min() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image_min </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_point.html">Point</a> &amp;&#160;</td>
           <td class="paramname"><em>p</em>, </td>
@@ -355,14 +404,14 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a31dd5ed6c77cca4e00c5ebb8414b18ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31dd5ed6c77cca4e00c5ebb8414b18ff">&#9670;&nbsp;</a></span>find_image() <span class="overload">[2/4]</span></h2>
+<a id="a29120751ca87eb68c2c2afc3a6ca9ae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29120751ca87eb68c2c2afc3a6ca9ae4">&#9670;&nbsp;</a></span>find_image_min() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image </td>
+          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image_min </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_point.html">Point</a> &amp;&#160;</td>
           <td class="paramname"><em>p</em>, </td>
@@ -398,6 +447,8 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This is the same, but the image is forced to stay within boundary. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>p[] is </td></tr>
@@ -411,35 +462,35 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a id="a5688505e56faca56c0f8d424cb5bdd3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5688505e56faca56c0f8d424cb5bdd3d">&#9670;&nbsp;</a></span>find_image() <span class="overload">[3/4]</span></h2>
+<a id="adb05102639f1d175bad05f64e4e3bf56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb05102639f1d175bad05f64e4e3bf56">&#9670;&nbsp;</a></span>find_images() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image </td>
+          <td class="memname">std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt; Lens::find_images </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_r_a_y.html">RAY</a> &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_grid_map.html">GridMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>init_grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>ytol2</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
+          <td class="paramname"><em>y_source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">PosType &amp;&#160;</td>
-          <td class="paramname"><em>dy2</em>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z_source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>use_image_guess</em>&#160;</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>stop_res</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -449,48 +500,47 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
 </div><div class="memdoc">
 
-<p>this version uses the redshift stored in the ray </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>p.y[] should be set to source position </td></tr>
-    <tr><td class="paramname">ytol2</td><td>target tolerance in source position squared </td></tr>
-    <tr><td class="paramname">dy2</td><td>final value of Delta y ^2 </td></tr>
-    <tr><td class="paramname">use_image_guess</td><td>if true p.x[] will be used as a guess for the image position </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>finds images by telescoping triangle method </p>
+<p>find rays using telescoping triangle method starting with a <a class="el" href="struct_grid_map.html" title="A simplified version of the Grid structure for making non-adaptive maps of the lensing quantities (ka...">GridMap</a> init_grid</p>
+<p>Meant for refining the image positions to higher resolution than the initial grid </p>
 
 </div>
 </div>
-<a id="a450a498938a92acf5b73568e64f0acfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a450a498938a92acf5b73568e64f0acfe">&#9670;&nbsp;</a></span>find_image() <span class="overload">[4/4]</span></h2>
+<a id="ac4a8cd1c9c69e16aa7f01a8b0eaff596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4a8cd1c9c69e16aa7f01a8b0eaff596">&#9670;&nbsp;</a></span>find_images() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_r_a_y.html">RAY</a> Lens::find_image </td>
+          <td class="memname">std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt; Lens::find_images </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_r_a_y.html">RAY</a> &amp;&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
+          <td class="paramname"><em>y_source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">PosType&#160;</td>
-          <td class="paramname"><em>ytol2</em>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>z_source</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">PosType &amp;&#160;</td>
-          <td class="paramname"><em>dy2</em>, </td>
+          <td class="paramtype"><a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>boundary</em>&#160;</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>range</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>stop_res</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -500,16 +550,8 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
 </div><div class="memdoc">
 
-<p>This is the same, but the image is forced to stay within boundary. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>p[] is </td></tr>
-    <tr><td class="paramname">ytol2</td><td>target tolerance in source position squared </td></tr>
-    <tr><td class="paramname">dy2</td><td>final value of Delta y ^2 </td></tr>
-    <tr><td class="paramname">boundary</td><td>image will be limited to within this boundary </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>finds images by telescoping triangle method </p>
+<p>find rays using telescoping triangle method </p>
 
 </div>
 </div>
@@ -751,7 +793,8 @@ PosType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
       </table>
 </div><div class="memdoc">
 
-<p>Collects information about the halos and kappa contributions along the light path. </p>
+<p>single ray </p>
+<p>Collects information about the halos and kappa contributions along the light path.</p>
 <p>Information on the nearest halos is collected where nearest is defined by rmax and mode. When mode == 2 the unlensed angular coordinates are used to evaluate proximity not the lensed ones. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -815,6 +858,49 @@ template&lt;typename T &gt; </div>
 
 <p>Inserts a sequense of main lens halos and adds them to the existing ones. Then all lensing planes are updated accordingly. If addplanes is true new planes will be added otherwise the halo is added to the nearest plane and a plane is added only if none exited on entry. </p>
 <p>The angular position of the halo should be preserved, but the x coordinates may change The halos are copied so the input halos can be destoyed without affecting the <a class="el" href="class_lens.html" title="A class to represents a lens with multiple planes.">Lens</a>. </p>
+
+</div>
+</div>
+<a id="a5e683b56effd97638db0dceb4cd04c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e683b56effd97638db0dceb4cd04c3c">&#9670;&nbsp;</a></span>mass_on_planes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Lens::mass_on_planes </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_r_a_y.html">RAY</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rays</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>masses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>finds the mass within a curve of rays one every lens plane im Msun </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rays</td><td>ray, ray.x needs to be set </td></tr>
+    <tr><td class="paramname">masses</td><td>mass within curve on each lens plane </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1210,7 +1296,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 12 2023 11:35:11 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 16 2024 11:03:35 for GLAMERDOC++ by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.18
 </small></address>
