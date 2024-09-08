@@ -1,0 +1,1132 @@
+\doxysection{cpfits.\+h}
+\hypertarget{cpfits_8h_source}{}\label{cpfits_8h_source}\index{SLsimLib/include/cpfits.h@{SLsimLib/include/cpfits.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ cpfits.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Robert\ Benton\ Metcalf\ on\ 24/10/2019.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ This\ is\ a\ class\ that\ is\ meant\ to\ replace\ the\ CCFITS\ library}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ so\ that\ it\ can\ be\ eliminated\ as\ a\ dependancy.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ These\ classes\ are\ for\ reading\ from\ and\ writing\ to\ fits\ files.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Only}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ for\ more\ infermation\ of\ cfitio\ routines\ see\ :}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ \ \ https://heasarc.gsfc.nasa.gov/docs/software/fitsio/quick/node9.html}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ cpfits\_h}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ cpfits\_h}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <valarray>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}fitsio.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <Tree.h>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }CPFITS\_BASE\{}
+\DoxyCodeLine{00031\ \ \ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00033\ \ \ CPFITS\_BASE()\{\}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ CPFITS\_BASE(CPFITS\_BASE\ \&\&ff)\{}
+\DoxyCodeLine{00036\ \ \ \ \ fptr\ =\ ff.fptr;}
+\DoxyCodeLine{00037\ \ \ \ \ ff.fptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00038\ \ \ \}}
+\DoxyCodeLine{00039\ \ \ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ operator=(CPFITS\_BASE\ \&\&ff)\{}
+\DoxyCodeLine{00041\ \ \ \ \ fptr\ =\ ff.fptr;}
+\DoxyCodeLine{00042\ \ \ \ \ ff.fptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ check\_status(\textcolor{keywordtype}{int}\ status,std::string\ s\ =\ \textcolor{stringliteral}{"{}Error\ in\ CPFITS"{}})\{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}(status)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ fits\_report\_error(stderr,\ status);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ std::cerr\ <<\ s\ <<\ std::endl;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(s);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \}}
+\DoxyCodeLine{00052\ \ \ fitsfile\ *fptr;}
+\DoxyCodeLine{00053\ \ \ }
+\DoxyCodeLine{00054\ \ \ std::mutex\ mutex\_lock;}
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//\ HDU-\/level\ Routines}}
+\DoxyCodeLine{00060\ \ \ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{int}\ get\_num\_hdus()\{}
+\DoxyCodeLine{00063\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ hdunum;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ fits\_get\_num\_hdus(fptr,\ \&hdunum,\ \&status);}
+\DoxyCodeLine{00067\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ hdunum;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ get\_current\_hdu\_num()\{}
+\DoxyCodeLine{00073\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ hdunum;}
+\DoxyCodeLine{00075\ \ \ \ \ fits\_get\_hdu\_num(fptr,\&hdunum);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ hdunum;}
+\DoxyCodeLine{00077\ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{int}\ change\_hdu(\textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ hdunum\ =\ get\_num\_hdus();}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{if}(i\ >\ hdunum\ ||\ i\ <\ 1)\{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}out\ of\ range"{}});}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ hdutype;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ fits\_movabs\_hdu(fptr,i,\&hdutype,\&status);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00092\ \ \ \ \ reset\_imageInfo();}
+\DoxyCodeLine{00093\ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{return}\ hdutype;}
+\DoxyCodeLine{00095\ \ \ \}}
+\DoxyCodeLine{00096\ \ \ }
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{int}\ get\_current\_hdu\_type(\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false})\{}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ hdutype,status\ =\ 0;}
+\DoxyCodeLine{00100\ \ \ \ \ fits\_get\_hdu\_type(fptr,\&hdutype,\&status);}
+\DoxyCodeLine{00101\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}type:\ "{}}\ ;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (hdutype)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Image"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}ASCII\ table"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Binary\ table"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{return}\ hdutype;}
+\DoxyCodeLine{00122\ \ \ \}}
+\DoxyCodeLine{00123\ \ \ }
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//\ image\ information\ of\ current\ HDU}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keywordtype}{void}\ reset\_imageInfo()\{}
+\DoxyCodeLine{00137\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00140\ \ \ \ \ fits\_get\_img\_type(fptr,\&bitpix,\&status);}
+\DoxyCodeLine{00141\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00142\ \ \ \ \ fits\_get\_img\_dim(fptr,\&Ndims,\&status);}
+\DoxyCodeLine{00143\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00144\ \ \ \ \ sizes.resize(Ndims);}
+\DoxyCodeLine{00145\ \ \ \ \ fits\_get\_img\_size(fptr,Ndims,sizes.data(),\&status);}
+\DoxyCodeLine{00146\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ sizes.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00149\ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \textcolor{keywordtype}{void}\ imageDimensions(std::vector<long>\ \&my\_sizes)\{}
+\DoxyCodeLine{00151\ \ \ \ \ my\_sizes.resize(sizes.size());}
+\DoxyCodeLine{00152\ \ \ \ \ my\_sizes\ =\ sizes;}
+\DoxyCodeLine{00153\ \ \ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00156\ \ \ \textcolor{keywordtype}{int}\ nkyewords()\{}
+\DoxyCodeLine{00157\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{int}\ keysexist,status=0;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_get\_hdrspace(fptr,\&keysexist,NULL,\&status);}
+\DoxyCodeLine{00160\ \ \ \}}
+\DoxyCodeLine{00161\ \ \ }
+\DoxyCodeLine{00163\ \ \ \textcolor{keywordtype}{int}\ readKey(std::string\ keyname,\textcolor{keywordtype}{double}\ \&value)\{}
+\DoxyCodeLine{00164\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_key(fptr,TDOUBLE,keyname.c\_str(),}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,NULL,\&status);}
+\DoxyCodeLine{00168\ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \textcolor{keywordtype}{int}\ readKey(std::string\ keyname,\textcolor{keywordtype}{float}\ \&value)\{}
+\DoxyCodeLine{00170\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_key(fptr,TFLOAT,keyname.c\_str(),}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,NULL,\&status);}
+\DoxyCodeLine{00174\ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordtype}{int}\ readKey(std::string\ keyname,\textcolor{keywordtype}{int}\ \&value)\{}
+\DoxyCodeLine{00176\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_key(fptr,TINT,keyname.c\_str(),}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,NULL,\&status);}
+\DoxyCodeLine{00180\ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \textcolor{keywordtype}{int}\ readKey(std::string\ keyname,\textcolor{keywordtype}{size\_t}\ \&value)\{}
+\DoxyCodeLine{00182\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_key(fptr,TULONG,keyname.c\_str(),}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,NULL,\&status);}
+\DoxyCodeLine{00186\ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordtype}{int}\ readKey(std::string\ keyname,\textcolor{keywordtype}{long}\ \&value)\{}
+\DoxyCodeLine{00188\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_key(fptr,TLONG,keyname.c\_str(),}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,NULL,\&status);}
+\DoxyCodeLine{00192\ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \textcolor{keywordtype}{int}\ readHeader(std::vector<std::string>\ \&headercards,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false})\{}
+\DoxyCodeLine{00194\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{int}\ nkeys,status=0,hdupos;}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{char}\ card[FLEN\_CARD];}
+\DoxyCodeLine{00197\ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ headercards.clear();}
+\DoxyCodeLine{00199\ \ \ \ \ fits\_get\_hdu\_num(fptr,\ \&hdupos);\ \ \textcolor{comment}{/*\ Get\ the\ current\ HDU\ position\ */}}
+\DoxyCodeLine{00200\ \ \ \ \ fits\_get\_hdrspace(fptr,\ \&nkeys,\ NULL,\ \&status);\ \textcolor{comment}{//\ get\ \#\ of\ keywords}}
+\DoxyCodeLine{00201\ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ printf(\textcolor{stringliteral}{"{}Header\ listing\ for\ HDU\ \#\%d:\(\backslash\)n"{}},\ hdupos);}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ii\ =\ 1;\ ii\ <=\ nkeys;\ ii++)\ \{\ \textcolor{comment}{//\ Read\ and\ print\ each\ keywords}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fits\_read\_record(fptr,\ ii,\ card,\ \&status))\textcolor{keywordflow}{break};}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ printf(\textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}},\ card);}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ headercards.push\_back(card);}
+\DoxyCodeLine{00208\ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ printf(\textcolor{stringliteral}{"{}END\(\backslash\)n\(\backslash\)n"{}});\ \ \textcolor{comment}{//\ terminate\ listing\ with\ END}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \textcolor{comment}{//fits\_movrel\_hdu(fptr,\ 1,\ NULL,\ \&status);\ \ /*\ try\ to\ move\ to\ next\ HDU\ */}}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00213\ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00216\ \ \ \textcolor{keywordtype}{int}\ printHeader()\{}
+\DoxyCodeLine{00217\ \ \ \ \ std::vector<std::string>\ cards;}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordflow}{return}\ readHeader(cards,\textcolor{keyword}{true});}
+\DoxyCodeLine{00219\ \ \ \}}
+\DoxyCodeLine{00220\ \ \ }
+\DoxyCodeLine{00221\ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \textcolor{comment}{//int\ fits\_parse\_value(char\ *card,\ char\ *value,\ char\ *comment,\ int\ *status)}}
+\DoxyCodeLine{00223\ \ \ \textcolor{comment}{//int\ fits\_get\_keytype(char\ *value,\ char\ *dtype,\ int\ *status)}}
+\DoxyCodeLine{00224\ \ \ }
+\DoxyCodeLine{00225\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00226\ \ \ \textcolor{keywordtype}{int}\ Ndims;}
+\DoxyCodeLine{00227\ \ \ std::vector<long>\ sizes;}
+\DoxyCodeLine{00228\ \ \ \textcolor{keywordtype}{int}\ bitpix;}
+\DoxyCodeLine{00229\ \};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00232\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
+\DoxyCodeLine{00233\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00234\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
+\DoxyCodeLine{00235\ \ \ \textcolor{comment}{//CPFITS\_READ(CPFITS\_READ\ \&);}}
+\DoxyCodeLine{00236\ \ \ \textcolor{comment}{//CPFITS\_READ\ operator=(CPFITS\_READ\ );}}
+\DoxyCodeLine{00237\ \ \ }
+\DoxyCodeLine{00238\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00239\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}(std::string\ filename,std::string\ extension=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{comment}{//fits\_open\_file(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordflow}{if}(extension==\textcolor{stringliteral}{"{}"{}})\{}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ fits\_open\_image(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}
+\DoxyCodeLine{00246\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ filename\ =\ filename\ +\ extension;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ fits\_open\_image(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}
+\DoxyCodeLine{00249\ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ print\ any\ error\ messages}}
+\DoxyCodeLine{00251\ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}Problem\ with\ input\ fits\ file."{}});}
+\DoxyCodeLine{00252\ \ \ \ \ reset\_imageInfo();}
+\DoxyCodeLine{00253\ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opening\ file\ :\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ \ \ status\ :\ "{}}\ <<\ status\ <<\ std::endl;}
+\DoxyCodeLine{00257\ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \}}
+\DoxyCodeLine{00259\ \ \ }
+\DoxyCodeLine{00260\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{\string~CPFITS\_READ}}()\{}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00262\ \ \ \ \ fits\_close\_file(fptr,\ \&status);}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{comment}{//check\_status(status,"{}Problem\ closing\ fits\ file!"{});}}
+\DoxyCodeLine{00264\ \ \ \}}
+\DoxyCodeLine{00265\ \ \ }
+\DoxyCodeLine{00266\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff):CPFITS\_BASE(std::move(ff))\{\};}
+\DoxyCodeLine{00267\ \ \ }
+\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff)\{}
+\DoxyCodeLine{00269\ \ \ \ \ \ CPFITS\_BASE::operator=(std::move(ff));}
+\DoxyCodeLine{00270\ \ \ \}}
+\DoxyCodeLine{00271\ \ \ }
+\DoxyCodeLine{00273\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_ae998bd47d0d06ea4cbd08c80c51f2271}{reset}}(std::string\ filename,std::string\ extension=\textcolor{stringliteral}{"{}"{}})\{}
+\DoxyCodeLine{00274\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00276\ \ \ \ \ fits\_close\_file(fptr,\ \&status);}
+\DoxyCodeLine{00277\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{comment}{//fits\_open\_image(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{if}(extension==\textcolor{stringliteral}{"{}"{}})\{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ fits\_open\_image(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}
+\DoxyCodeLine{00281\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ filename\ =\ filename\ +\ extension;}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ fits\_open\_image(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00286\ \ \ \ \ reset\_imageInfo();}
+\DoxyCodeLine{00287\ \ \ \}}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00290\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a08291744dc04c2099d4aad86e783744a}{read}}(std::vector<double>\ \&output,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00291\ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{comment}{//int\ dtype;}}
+\DoxyCodeLine{00293\ \ \ \ \ imageDimensions(size);}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keywordtype}{long}\ nelements=1;}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ n\ :\ size)\ nelements\ *=\ n;}
+\DoxyCodeLine{00296\ \ \ \ \ std::vector<long>\ start(size.size(),1);}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ output.resize(nelements);}
+\DoxyCodeLine{00299\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_pix(fptr,TDOUBLE,start.data(),nelements}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,output.data(),NULL,\ \&status);}
+\DoxyCodeLine{00303\ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a7e5d45a865089cd3bb3c8ece68721508}{read}}(std::vector<float>\ \&output,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00306\ \ \ \ \ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{comment}{//int\ dtype;}}
+\DoxyCodeLine{00308\ \ \ \ \ imageDimensions(size);}
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{long}\ nelements=1;}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ n\ :\ size)\ nelements\ *=\ n;}
+\DoxyCodeLine{00311\ \ \ \ \ std::vector<long>\ start(size.size(),1);}
+\DoxyCodeLine{00312\ \ \ \ \ output.resize(nelements);}
+\DoxyCodeLine{00313\ \ \ \ \ }
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00315\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_pix(fptr,TFLOAT,start.data(),nelements}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,output.data(),NULL,\ \&status);}
+\DoxyCodeLine{00318\ \ \ \}}
+\DoxyCodeLine{00320\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a7c9dc923dc8169309ed23df40503335e}{read}}(std::valarray<float>\ \&output,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00321\ \ \ \ \ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{comment}{//int\ dtype;}}
+\DoxyCodeLine{00323\ \ \ \ \ imageDimensions(size);}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordtype}{long}\ nelements=1;}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ n\ :\ size)\ nelements\ *=\ n;}
+\DoxyCodeLine{00326\ \ \ \ \ std::vector<long>\ start(size.size(),1);}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ output.resize(nelements);}
+\DoxyCodeLine{00329\ \ \ \ \ }
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00331\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_pix(fptr,TFLOAT,start.data(),nelements}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,\&output[0],NULL,\ \&status);}
+\DoxyCodeLine{00334\ \ \ \}}
+\DoxyCodeLine{00335\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a08291744dc04c2099d4aad86e783744a}{read}}(std::valarray<double>\ \&output,std::vector<long>\ \&sizes)\{}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ sizes.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00337\ \ \ \ \ imageDimensions(sizes);}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ sizes.size()\ <<\ std::endl;}}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ sizes[0]\ <<\ "{}\ "{}\ <<\ sizes[1]\ <<\ std::endl;}}
+\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ nelements=1;}
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ n\ :\ sizes)\ nelements\ *=\ n;}
+\DoxyCodeLine{00342\ \ \ \ \ std::vector<long>\ start(sizes.size(),1);}
+\DoxyCodeLine{00343\ \ \ \ \ output.resize(nelements);}
+\DoxyCodeLine{00344\ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00346\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordtype}{int}\ error\ =\ fits\_read\_pix(fptr,TDOUBLE,start.data(),nelements}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,\&output[0],NULL,\ \&status);}
+\DoxyCodeLine{00349\ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}PixMap\ Read\ Failure"{}});}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keywordflow}{return}\ error;}
+\DoxyCodeLine{00352\ \ \ \}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00355\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00356\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_ae12751a88513a50fb1d1a454d7693296}{read}}(std::vector<std::vector<T>\ >\ \&output)\{}
+\DoxyCodeLine{00357\ \ \ }
+\DoxyCodeLine{00358\ \ \ \ \ std::vector<long>\ size;}
+\DoxyCodeLine{00359\ \ \ \ \ std::vector<T>\ tmp;}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a08291744dc04c2099d4aad86e783744a}{read}}(tmp,size);}
+\DoxyCodeLine{00361\ \ \ \ \ output.resize(size[0]);}
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ 0;}
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i\ <\ size[0]\ ;\ ++i)\{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ output[i].resize(size[1]);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ \&x\ :\ output[i])\{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ x\ =\ tmp[k++];}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00371\ \ \ \}}
+\DoxyCodeLine{00373\ \ \ }
+\DoxyCodeLine{00375\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_affc79c6f5a7d078f2c5b01c8b9bcb7c9}{read\_block}}(\textcolor{keywordtype}{double}\ *output,\textcolor{keywordtype}{long}\ nelements,\textcolor{keywordtype}{long}\ *\ start)\{}
+\DoxyCodeLine{00376\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =0;}
+\DoxyCodeLine{00377\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_pix(fptr,TDOUBLE,start,nelements}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,output,NULL,\ \&status);}
+\DoxyCodeLine{00380\ \ \ \}}
+\DoxyCodeLine{00381\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_affc79c6f5a7d078f2c5b01c8b9bcb7c9}{read\_block}}(\textcolor{keywordtype}{float}\ *output,\textcolor{keywordtype}{long}\ nelements,\textcolor{keywordtype}{long}\ *\ start)\{}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00383\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_pix(fptr,TFLOAT,start,nelements}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,output,NULL,\ \&status);}
+\DoxyCodeLine{00386\ \ \ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ \ }
+\DoxyCodeLine{00390\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a766b4da503c6a370eb9776b2f48e7569}{read\_subset}}(\textcolor{keywordtype}{double}\ *output,\textcolor{keywordtype}{long}\ *lowerleft,\textcolor{keywordtype}{long}\ *upperright)\{}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{long}\ inc[2]\ =\ \{1,1\};\ \ \textcolor{comment}{//\ this\ is\ a\ step}}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00393\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_subset(fptr,TDOUBLE,lowerleft,upperright,inc}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,output,NULL,\&status);}
+\DoxyCodeLine{00396\ \ \ \}}
+\DoxyCodeLine{00398\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d_a5f4befa343534f2471b90ccc0dfa391b}{read\_subset}}(\textcolor{keywordtype}{float}\ *output,\textcolor{keywordtype}{long}\ *lowerleft,\textcolor{keywordtype}{long}\ *upperright)\{}
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keywordtype}{long}\ inc[2]\ =\ \{1,1\};\ \ \textcolor{comment}{//\ this\ is\ a\ step}}
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00401\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00402\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_read\_subset(fptr,TFLOAT,lowerleft,upperright,inc}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,NULL,output,NULL,\&status);}
+\DoxyCodeLine{00404\ \ \ \}}
+\DoxyCodeLine{00405\ \};}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ \textcolor{keyword}{class\ }CPFITS\_WRITE\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
+\DoxyCodeLine{00408\ \ \ }
+\DoxyCodeLine{00409\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00410\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
+\DoxyCodeLine{00411\ \ \ CPFITS\_WRITE(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&);}
+\DoxyCodeLine{00412\ \ \ CPFITS\_WRITE\ operator=(CPFITS\_WRITE\ );}
+\DoxyCodeLine{00413\ \ \ }
+\DoxyCodeLine{00414\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00415\ \ \ CPFITS\_WRITE(std::string\ filename,\textcolor{keywordtype}{bool}\ append\ =\ \textcolor{keyword}{false},\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00416\ \ \ \ \ }
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordflow}{if}(!append)\{}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}Creating\ file\ :\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(filename[0]\ !=\ \textcolor{charliteral}{'!'})\ filename\ =\ \textcolor{stringliteral}{"{}!"{}}\ +\ filename;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ fits\_create\_file(\&fptr,\ filename.c\_str(),\ \&status);}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00423\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ fits\_open\_image(\&fptr,filename.c\_str(),READWRITE,\&status);}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ reset\_imageInfo();}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status==104)\{\ \ \textcolor{comment}{//\ create\ file\ if\ it\ does\ not\ exist}}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ status\ =\ 0;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ fits\_create\_file(\&fptr,\ filename.c\_str(),\ \&status);}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}Creating\ file\ :\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}Appending\ to\ file\ :\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00438\ \ \ \ \ \}}
+\DoxyCodeLine{00439\ \ \ \}}
+\DoxyCodeLine{00440\ \ \ }
+\DoxyCodeLine{00441\ \ \ \string~CPFITS\_WRITE()\{}
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00443\ \ \ \ \ fits\_close\_file(fptr,\ \&status);}
+\DoxyCodeLine{00444\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00445\ \ \ \ \ \}}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00448\ \ \ \ \textcolor{keywordtype}{void}\ write\_array(std::vector<double>\ \&array)\{}
+\DoxyCodeLine{00449\ \ \ \ \ \ \textcolor{keywordtype}{long}\ n\ =\ array.size();}
+\DoxyCodeLine{00450\ \ \ \ \ \ \textcolor{keywordtype}{int}\ status=0;}
+\DoxyCodeLine{00451\ \ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00452\ \ \ \ \ \ fits\_create\_img(fptr,DOUBLE\_IMG,1,\&n,\ \&status);}
+\DoxyCodeLine{00453\ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00454\ \ \ \ \ \ std::vector<long>\ fpixel(1,1);}
+\DoxyCodeLine{00455\ \ \ \ \ \ fits\_write\_pix(fptr,TDOUBLE,fpixel.data(),}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n,array.data(),\&status);}
+\DoxyCodeLine{00457\ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00458\ \ \ \ \}}
+\DoxyCodeLine{00460\ \ \ \ \textcolor{keywordtype}{void}\ write\_array(std::vector<float>\ \&array)\{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \textcolor{keywordtype}{long}\ n\ =\ array.size();}
+\DoxyCodeLine{00462\ \ \ \ \ \ \textcolor{keywordtype}{int}\ status=0;}
+\DoxyCodeLine{00463\ \ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00464\ \ \ \ \ \ fits\_create\_img(fptr,FLOAT\_IMG,1,\&n,\ \&status);}
+\DoxyCodeLine{00465\ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00466\ \ \ \ \ \ std::vector<long>\ fpixel(1,1);}
+\DoxyCodeLine{00467\ \ \ \ \ \ fits\_write\_pix(fptr,TFLOAT,fpixel.data(),}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n,array.data(),\&status);}
+\DoxyCodeLine{00469\ \ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00470\ \ \ \ \}}
+\DoxyCodeLine{00471\ \ \ }
+\DoxyCodeLine{00473\ \ \ \textcolor{keywordtype}{void}\ write\_image(std::vector<double>\ \&im,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=1;}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ size)\ n\ *=\ i;}
+\DoxyCodeLine{00476\ \ \ \ \ assert(im.size()\ ==\ n);}
+\DoxyCodeLine{00477\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0;}
+\DoxyCodeLine{00478\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00479\ \ \ \ \ fits\_create\_img(fptr,DOUBLE\_IMG,size.size(),}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size.data(),\ \&status);}
+\DoxyCodeLine{00481\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00482\ \ \ \ \ std::vector<long>\ fpixel(size.size(),1);}
+\DoxyCodeLine{00483\ \ \ \ \ fits\_write\_pix(fptr,TDOUBLE,fpixel.data(),}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ im.size(),im.data(),\&status);}
+\DoxyCodeLine{00485\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00486\ \ \ \}}
+\DoxyCodeLine{00487\ \ \ \textcolor{keywordtype}{void}\ write\_image(\textcolor{keywordtype}{double}\ *im,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=1;}
+\DoxyCodeLine{00489\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ size)\ n\ *=\ i;}
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0;}
+\DoxyCodeLine{00491\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00492\ \ \ \ \ fits\_create\_img(fptr,DOUBLE\_IMG,size.size(),}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size.data(),\ \&status);}
+\DoxyCodeLine{00494\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00495\ \ \ \ \ std::vector<long>\ fpixel(size.size(),1);}
+\DoxyCodeLine{00496\ \ \ \ \ fits\_write\_pix(fptr,TDOUBLE,fpixel.data(),}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n,im,\&status);}
+\DoxyCodeLine{00498\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00499\ \ \ \}}
+\DoxyCodeLine{00500\ \ \textcolor{keywordtype}{void}\ write\_image(std::vector<float>\ \&im,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=1;}
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ size)\ n\ *=\ i;}
+\DoxyCodeLine{00503\ \ \ \ \ assert(im.size()\ ==\ n);}
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00505\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00506\ \ \ \ \ fits\_create\_img(fptr,FLOAT\_IMG,size.size(),}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size.data(),\ \&status);}
+\DoxyCodeLine{00508\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00509\ \ \ \ \ std::vector<long>\ fpixel(size.size(),1);}
+\DoxyCodeLine{00510\ \ \ \ \ fits\_write\_pix(fptr,TFLOAT,fpixel.data(),}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ im.size(),im.data(),\&status);}
+\DoxyCodeLine{00512\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00513\ \ \ \}}
+\DoxyCodeLine{00514\ \ \ \textcolor{keywordtype}{void}\ write\_image(\textcolor{keywordtype}{float}\ *im,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00515\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=1;}
+\DoxyCodeLine{00516\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ size)\ n\ *=\ i;}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0;}
+\DoxyCodeLine{00518\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00519\ \ \ \ \ fits\_create\_img(fptr,FLOAT\_IMG,size.size(),}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size.data(),\ \&status);}
+\DoxyCodeLine{00521\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00522\ \ \ \ \ std::vector<long>\ fpixel(size.size(),1);}
+\DoxyCodeLine{00523\ \ \ \ \ fits\_write\_pix(fptr,TFLOAT,fpixel.data(),}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n,im,\&status);}
+\DoxyCodeLine{00525\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00526\ \ \ \}}
+\DoxyCodeLine{00527\ \ \ \textcolor{keywordtype}{void}\ write\_image(std::valarray<double>\ \&im,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=1;}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ size)\ n\ *=\ i;}
+\DoxyCodeLine{00530\ \ \ \ \ assert(im.size()\ ==\ n);}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00532\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00533\ \ \ \ \ fits\_create\_img(fptr,DOUBLE\_IMG,size.size(),}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size.data(),\ \&status);}
+\DoxyCodeLine{00535\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \ \ \ \ status\ =\ 0;}
+\DoxyCodeLine{00538\ \ \ \ \ std::vector<long>\ fpixel(size.size(),1);}
+\DoxyCodeLine{00539\ \ \ \ \ fits\_write\_pix(fptr,TDOUBLE,fpixel.data(),}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ im.size(),\&im[0],\&status);}
+\DoxyCodeLine{00541\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00542\ \ \ \}}
+\DoxyCodeLine{00543\ \ \ \textcolor{keywordtype}{void}\ write\_image(std::valarray<float>\ \&im,std::vector<long>\ \&size)\{}
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=1;}
+\DoxyCodeLine{00545\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ size)\ n\ *=\ i;}
+\DoxyCodeLine{00546\ \ \ \ \ assert(im.size()\ ==\ n);}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00548\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00549\ \ \ \ \ fits\_create\_img(fptr,FLOAT\_IMG,size.size(),}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ size.data(),\ \&status);}
+\DoxyCodeLine{00551\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00552\ \ \ \ \ std::vector<long>\ fpixel(size.size(),1);}
+\DoxyCodeLine{00553\ \ \ \ \ fits\_write\_pix(fptr,TFLOAT,fpixel.data(),}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ im.size(),\&im[0],\&status);}
+\DoxyCodeLine{00555\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00556\ \ \ \}}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00559\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00560\ \ \ \textcolor{keywordtype}{void}\ write\_image(std::vector<std::vector<T>\ >\ \&im)\{}
+\DoxyCodeLine{00561\ \ \ \ \ std::vector<long>\ size(2);}
+\DoxyCodeLine{00562\ \ \ \ \ size[0]\ =\ im.size();}
+\DoxyCodeLine{00563\ \ \ \ \ size[1]\ =\ im[0].size();}
+\DoxyCodeLine{00564\ \ \ \ \ }
+\DoxyCodeLine{00565\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k=0;}
+\DoxyCodeLine{00566\ \ \ \ \ std::vector<T>\ tmp(size[0]*size[1]);}
+\DoxyCodeLine{00567\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ i=0;\ i<size[0]\ ;\ ++i)\{}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j=0;\ j<size[1]\ ;\ ++j)\{}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ tmp[k++]\ =\ im[i][j];}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00571\ \ \ \ \ \}}
+\DoxyCodeLine{00572\ \ \ \ \ }
+\DoxyCodeLine{00573\ \ \ \ \ write\_image(tmp,size);}
+\DoxyCodeLine{00574\ \ \ \}}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00577\ \ \ \textcolor{keywordtype}{int}\ writeKey(std::string\ key,std::string\ value,std::string\ comment\ )\{}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00579\ \ \ \ \ \textcolor{keywordtype}{char}\ *s\ =\ strdup(value.c\_str());}
+\DoxyCodeLine{00580\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keywordtype}{int}\ error\ =\ fits\_write\_key(fptr,TSTRING,key.c\_str(),}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s,comment.c\_str(),\&status);}
+\DoxyCodeLine{00583\ \ \ \ \ \textcolor{keyword}{delete}[]\ s;}
+\DoxyCodeLine{00584\ \ \ \ \ \textcolor{keywordflow}{return}\ error;}
+\DoxyCodeLine{00585\ \ \ \}}
+\DoxyCodeLine{00586\ \ \ \textcolor{keywordtype}{int}\ writeKey(std::string\ key,\textcolor{keywordtype}{double}\ value,std::string\ comment\ )\{}
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00588\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_update\_key(fptr,TDOUBLE,key.c\_str(),}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,comment.c\_str(),\&status);}
+\DoxyCodeLine{00591\ \ \ \}}
+\DoxyCodeLine{00592\ \ \ \textcolor{keywordtype}{int}\ writeKey(std::string\ key,\textcolor{keywordtype}{float}\ value,std::string\ comment\ )\{}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00594\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00595\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_update\_key(fptr,TFLOAT,key.c\_str(),}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,comment.c\_str(),\&status);}
+\DoxyCodeLine{00597\ \ \ \}}
+\DoxyCodeLine{00598\ \ \ \textcolor{keywordtype}{int}\ writeKey(std::string\ key,\textcolor{keywordtype}{int}\ value,std::string\ comment\ )\{}
+\DoxyCodeLine{00599\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00600\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00601\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_update\_key(fptr,TINT,key.c\_str(),}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,comment.c\_str(),\&status);}
+\DoxyCodeLine{00603\ \ \ \}}
+\DoxyCodeLine{00604\ \ \ \textcolor{keywordtype}{int}\ writeKey(std::string\ key,\textcolor{keywordtype}{long}\ value,std::string\ comment\ )\{}
+\DoxyCodeLine{00605\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00606\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_update\_key(fptr,TLONG,key.c\_str(),}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,comment.c\_str(),\&status);}
+\DoxyCodeLine{00609\ \ \ \}}
+\DoxyCodeLine{00610\ \ \ \textcolor{keywordtype}{int}\ writeKey(std::string\ key,\textcolor{keywordtype}{size\_t}\ value,std::string\ comment\ )\{}
+\DoxyCodeLine{00611\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00612\ \ \ \ \ std::lock\_guard<std::mutex>\ hold(mutex\_lock);}
+\DoxyCodeLine{00613\ \ \ \ \ \textcolor{keywordflow}{return}\ fits\_update\_key(fptr,TULONG,key.c\_str(),}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&value,comment.c\_str(),\&status);}
+\DoxyCodeLine{00615\ \ \ \}}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00618\ \ \ \textcolor{keywordtype}{int}\ writeHeader(std::vector<std::string>\ \&cards)\{}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00620\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&str\ :\ cards)\{}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ fits\_write\_record(fptr,\ str.c\_str(),\ \&status);}
+\DoxyCodeLine{00622\ \ \ \ \ \}}
+\DoxyCodeLine{00623\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00624\ \ \ \}}
+\DoxyCodeLine{00625\ \ \ }
+\DoxyCodeLine{00627\ \ \ \textcolor{keywordtype}{void}\ copyHeader(CPFITS\_BASE\ \&input)\{}
+\DoxyCodeLine{00628\ \ \ \ \ std::vector<std::string>\ cards;}
+\DoxyCodeLine{00629\ \ \ \ \ input.readHeader(cards);}
+\DoxyCodeLine{00630\ \ \ \ \ writeHeader(cards);}
+\DoxyCodeLine{00631\ \ \ \}}
+\DoxyCodeLine{00632\ }
+\DoxyCodeLine{00633\ \};}
+\DoxyCodeLine{00634\ }
+\DoxyCodeLine{00636\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
+\DoxyCodeLine{00637\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00638\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
+\DoxyCodeLine{00639\ \ \ \textcolor{comment}{//CPFITS\_READ(CPFITS\_READ\ \&);}}
+\DoxyCodeLine{00640\ \ \ \textcolor{comment}{//CPFITS\_READ\ operator=(CPFITS\_READ\ );}}
+\DoxyCodeLine{00641\ \ \ }
+\DoxyCodeLine{00642\ \ \ \textcolor{keywordtype}{long}\ Nrow;\ \ \textcolor{comment}{//\ current\ number\ of\ rows}}
+\DoxyCodeLine{00643\ \ \ \textcolor{keywordtype}{int}\ Ncol;\ \ \textcolor{comment}{//\ current\ number\ of\ columns}}
+\DoxyCodeLine{00644\ \ \ }
+\DoxyCodeLine{00645\ \ \ \textcolor{keywordtype}{void}\ reset\_tableInfo()\{}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00647\ \ \ \ \ fits\_get\_num\_rows(fptr,\ \&Nrow,\ \&status);}
+\DoxyCodeLine{00648\ \ \ \ \ fits\_get\_num\_cols(fptr,\ \&Ncol,\ \&status);}
+\DoxyCodeLine{00649\ \ \ \}}
+\DoxyCodeLine{00650\ \ \ std::vector<std::string>\ col\_names;}
+\DoxyCodeLine{00651\ \ \ }
+\DoxyCodeLine{00652\ \ \ \textcolor{keywordtype}{int}\ get\_colnames(std::vector<std::string>\ \&names)\{}
+\DoxyCodeLine{00653\ \ \ \ \ }
+\DoxyCodeLine{00654\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0;}
+\DoxyCodeLine{00655\ \ \ \ \ \textcolor{keywordtype}{char}\ colname[100];}
+\DoxyCodeLine{00656\ \ \ \ \ std::string\ c\ =\ \textcolor{stringliteral}{"{}*"{}};}
+\DoxyCodeLine{00657\ \ \ \ \ names.resize(Ncol);}
+\DoxyCodeLine{00658\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum;}
+\DoxyCodeLine{00659\ \ \ \ \ }
+\DoxyCodeLine{00660\ \ \ \ \ \textcolor{comment}{//for(int\ i=0;i<Ncol;++i)\{}}
+\DoxyCodeLine{00661\ \ \ \ \ \textcolor{comment}{//for(int\ i=0;i<10;++i)\{}}
+\DoxyCodeLine{00662\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&name\ :\ names)\{}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ fits\_get\_colname(fptr,CASESEN,(\textcolor{keywordtype}{char}*)(c.c\_str()),colname,\ \&colnum,\ \&status);}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \textcolor{comment}{//names[i]\ =\ colname;}}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ name\ =\ colname;}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ i\ <<\ "{}\ "{}\ <<\ names[i]\ <<\ "{}\ \ "{}\ <<\ status\ <<\ std::endl;}}
+\DoxyCodeLine{00667\ \ \ \ \ \}}
+\DoxyCodeLine{00668\ \ \ \ \ }
+\DoxyCodeLine{00669\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00670\ \ \ \}}
+\DoxyCodeLine{00671\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00672\ \ \ }
+\DoxyCodeLine{00673\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}(std::string\ filename,\textcolor{keywordtype}{int}\ hdunum=2,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00674\ }
+\DoxyCodeLine{00675\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00676\ \ \ \ \ fits\_open\_table(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}
+\DoxyCodeLine{00677\ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}Problem\ with\ input\ fits\ file."{}});}
+\DoxyCodeLine{00678\ \ \ \ \ \textcolor{keywordflow}{if}(hdunum>0)\{}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num;}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ fits\_get\_num\_hdus(fptr,\ \&num,\ \&status);}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hdunum\ >\ num)\{}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Not\ enough\ HDUs\ in\ "{}}\ +\ filename);}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hdutype;}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ fits\_movabs\_hdu(fptr,hdunum,\ \&hdutype,\ \ \&status);}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}Problem\ with\ input\ fits\ file.\ HDU\ "{}}+std::to\_string(hdunum));}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hdutype\ !=\ BINARY\_TBL)\{}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}HDU\ "{}}\ <<\ hdunum\ <<\ \textcolor{stringliteral}{"{}\ in\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ is\ not\ a\ binary\ table"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}wrong\ HDUs\ in\ "{}}\ +\ filename);}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00691\ \ \ \ \ \}}
+\DoxyCodeLine{00692\ }
+\DoxyCodeLine{00693\ \ \ \ \ reset\_tableInfo();}
+\DoxyCodeLine{00694\ \ \ \ \ get\_colnames(col\_names);}
+\DoxyCodeLine{00695\ \ \ \ \ }
+\DoxyCodeLine{00696\ \ \ \ \ \textcolor{keywordflow}{if}(Nrow\ <=\ 0)\{}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}No\ data\ was\ found\ in\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00698\ \ \ \ \ \}}
+\DoxyCodeLine{00699\ \ \ \ \ }
+\DoxyCodeLine{00700\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\{}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Opening\ file\ :\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ std::cout\ <<\ Ncol\ <<\ \textcolor{stringliteral}{"{}\ columns"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ std::cout\ <<\ Nrow\ <<\ \textcolor{stringliteral}{"{}\ rows"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00704\ \ \ \ \ \}}
+\DoxyCodeLine{00705\ \ \ \}}
+\DoxyCodeLine{00706\ \ \ }
+\DoxyCodeLine{00707\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{\string~CPFITS\_READ\_TABLES}}()\{}
+\DoxyCodeLine{00708\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
+\DoxyCodeLine{00709\ \ \ \ \ fits\_close\_file(fptr,\ \&status);}
+\DoxyCodeLine{00710\ \ \ \}}
+\DoxyCodeLine{00711\ \ \ }
+\DoxyCodeLine{00712\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff):CPFITS\_BASE(std::move(ff))\{\};}
+\DoxyCodeLine{00713\ \ \ }
+\DoxyCodeLine{00714\ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ \&\&ff)\{}
+\DoxyCodeLine{00715\ \ \ \ \ \ CPFITS\_BASE::operator=(std::move(ff));}
+\DoxyCodeLine{00716\ \ \ \}}
+\DoxyCodeLine{00717\ \ \ }
+\DoxyCodeLine{00718\ \ \ \textcolor{keywordtype}{long}\ rows()\{\textcolor{keywordflow}{return}\ Nrow;\}}
+\DoxyCodeLine{00719\ \ \ \textcolor{keywordtype}{long}\ ncol()\{\textcolor{keywordflow}{return}\ Ncol;\}}
+\DoxyCodeLine{00720\ \ \ }
+\DoxyCodeLine{00721\ \ \ \textcolor{keywordtype}{int}\ column\_index(std::string\ \&colname)\{}
+\DoxyCodeLine{00722\ \ \ \ \ \textcolor{keywordtype}{int}\ col,\ status=0;}
+\DoxyCodeLine{00723\ \ \ \ \ }
+\DoxyCodeLine{00724\ \ \ \ \ fits\_get\_colnum(fptr,\ CASEINSEN,(\textcolor{keywordtype}{char}*)(colname.c\_str())}
+\DoxyCodeLine{00725\ \ \ \ \ ,\ \&col,\ \&status);}
+\DoxyCodeLine{00726\ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}Column\ does\ not\ exist."{}});}
+\DoxyCodeLine{00727\ \ \ \ \ }
+\DoxyCodeLine{00728\ \ \ \ \ \textcolor{keywordflow}{return}\ col;}
+\DoxyCodeLine{00729\ \ \ \}}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00731\ \ \ std::vector<std::string>\ get\_colnames()\{\textcolor{keywordflow}{return}\ col\_names;\}}
+\DoxyCodeLine{00732\ \ \ }
+\DoxyCodeLine{00733\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,std::vector<float>\ \&vecf)\{}
+\DoxyCodeLine{00734\ \ \ \ }
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keywordtype}{int}\ col,\ status=0,anyval=0;}
+\DoxyCodeLine{00736\ \ \ \ \ col\ =\ column\_index(colname);}
+\DoxyCodeLine{00737\ }
+\DoxyCodeLine{00738\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ Nrow\ )\ vecf.resize(Nrow);}
+\DoxyCodeLine{00739\ \ \ \ \ }
+\DoxyCodeLine{00740\ \ \ \ \ fits\_read\_col\_flt(fptr,\ col,\ 1,\ 1,Nrow,0,}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00744\ \ \ \}}
+\DoxyCodeLine{00745\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<float>\ \&vecf,\textcolor{keywordtype}{float}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00746\ \ \ \ }
+\DoxyCodeLine{00747\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
+\DoxyCodeLine{00749\ \ \ \ \ }
+\DoxyCodeLine{00750\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00751\ \ \ \ \ fits\_read\_col(fptr,TFLOAT,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00753\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00754\ }
+\DoxyCodeLine{00755\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00756\ \ \ \}}
+\DoxyCodeLine{00757\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<float>\ \&vecf,\textcolor{keywordtype}{float}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00758\ \ \ \ }
+\DoxyCodeLine{00759\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00760\ \ \ \ \ }
+\DoxyCodeLine{00761\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00762\ \ \ \ \ }
+\DoxyCodeLine{00763\ \ \ \ \ fits\_read\_col(fptr,TFLOAT,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\ \&anyval,\ \&status);}
+\DoxyCodeLine{00765\ }
+\DoxyCodeLine{00766\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00769\ \ \ \}}
+\DoxyCodeLine{00770\ \ \ }
+\DoxyCodeLine{00771\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<double>\ \&vecf,\textcolor{keywordtype}{double}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00772\ \ \ \ }
+\DoxyCodeLine{00773\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00774\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
+\DoxyCodeLine{00775\ \ \ \ \ }
+\DoxyCodeLine{00776\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00777\ \ \ \ \ fits\_read\_col(fptr,TDOUBLE,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00779\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00780\ }
+\DoxyCodeLine{00781\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00782\ \ \ \}}
+\DoxyCodeLine{00783\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<double>\ \&vecf,\textcolor{keywordtype}{double}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00784\ \ \ \ }
+\DoxyCodeLine{00785\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00786\ \ \ \ \ }
+\DoxyCodeLine{00787\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00788\ \ \ \ \ fits\_read\_col(fptr,TDOUBLE,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00790\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00791\ }
+\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00793\ \ \ \}}
+\DoxyCodeLine{00794\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<long>\ \&vecf,\textcolor{keywordtype}{int}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00795\ \ \ \ }
+\DoxyCodeLine{00796\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00797\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
+\DoxyCodeLine{00798\ \ \ \ \ }
+\DoxyCodeLine{00799\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00800\ \ \ \ \ fits\_read\_col(fptr,TLONG,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00802\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00803\ }
+\DoxyCodeLine{00804\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00805\ \ \ \}}
+\DoxyCodeLine{00806\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<long>\ \&vecf,\textcolor{keywordtype}{int}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00807\ \ \ \ }
+\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00809\ \ \ \ \ }
+\DoxyCodeLine{00810\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00811\ \ \ \ \ fits\_read\_col(fptr,TLONG,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00813\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00814\ }
+\DoxyCodeLine{00815\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00816\ \ \ \}}
+\DoxyCodeLine{00817\ }
+\DoxyCodeLine{00818\ }
+\DoxyCodeLine{00820\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ab9dc8bd8a32c117bac138628ad9ab0df}{gettype}}(\textcolor{keywordtype}{int}\ colnum)\{}
+\DoxyCodeLine{00821\ \ \ \ \ \textcolor{keywordtype}{int}\ typecode,status=0;}
+\DoxyCodeLine{00822\ \ \ \ \ \textcolor{keywordtype}{long}\ repeat,width;}
+\DoxyCodeLine{00823\ \ \ \ \ fits\_get\_coltype(fptr,colnum,\&typecode,}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&repeat,\&width,\&status);}
+\DoxyCodeLine{00825\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00826\ \ \ \ \ }
+\DoxyCodeLine{00827\ \ \ \ \ \textcolor{keywordflow}{return}\ typecode;}
+\DoxyCodeLine{00828\ \ \ \}}
+\DoxyCodeLine{00829\ \ \ }
+\DoxyCodeLine{00830\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ column\_index,std::vector<float>\ \&vecf)\{}
+\DoxyCodeLine{00831\ \ \ \ }
+\DoxyCodeLine{00832\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00833\ }
+\DoxyCodeLine{00834\ \ \ \ \ \textcolor{keywordflow}{if}(column\_index\ <\ 1)\{}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}CPFITS:\ column\ number\ must\ be\ >\ 0"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Error\ in\ CPFITS"{}});}
+\DoxyCodeLine{00837\ \ \ \ \ \}}
+\DoxyCodeLine{00838\ \ \ \ \ \textcolor{keywordflow}{if}(column\_index\ >\ Ncol)\{}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}CPFITS:\ there\ are\ only\ "{}}\ <<\ Ncol\ <<\ \textcolor{stringliteral}{"{}\ columns."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Error\ in\ CPFITS"{}});}
+\DoxyCodeLine{00841\ \ \ \ \ \}}
+\DoxyCodeLine{00842\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ Nrow\ )\ vecf.resize(Nrow);}
+\DoxyCodeLine{00843\ \ \ \ \ }
+\DoxyCodeLine{00844\ \ \ \ \ fits\_read\_col\_flt(fptr,\ column\_index,\ 1,\ 1,Nrow,0,}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00846\ }
+\DoxyCodeLine{00847\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00848\ \ \ \}}
+\DoxyCodeLine{00849\ }
+\DoxyCodeLine{00850\ \ \ }
+\DoxyCodeLine{00851\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00852\ \ \ \textcolor{keywordtype}{void}\ read(std::vector<T>\ data,\textcolor{keywordtype}{int}\ ncol)\{}
+\DoxyCodeLine{00853\ \ \ \ \ }
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0,anyval=0;}
+\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keywordtype}{long}\ i,\ n,\ nread,\ ntodo,\ nrest;}
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keywordtype}{long}\ buffer\_size\ =\ 20000;}
+\DoxyCodeLine{00857\ \ \ \ \ std::vector<float>\ fitscol(buffer\_size);}
+\DoxyCodeLine{00858\ \ \ \ \ }
+\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ col\ =\ 1\ ;\ col\ !=\ ncol\ ;\ ++col)\{}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ nread\ =\ 0;}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ nrest\ =\ n;}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (nrest)\ \{}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ntodo\ =\ MIN(nrest,buffer\_size);}}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ ntodo\ =\ (nrest\ <\ buffer\_size)\ ?\ nrest\ :\ buffer\_size;}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ fits\_read\_col\_flt(fptr,\ col,\ nread\ +\ 1,\ 1,\ ntodo,\ 0,}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fitscol.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ ntodo;\ i++)\ data[i\ +\ nread][col-\/1]\ =\ fitscol[i];}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ nread\ +=\ ntodo;}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ nrest\ -\/=\ ntodo;}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00871\ \ \ \ \ \}}
+\DoxyCodeLine{00872\ \ \ \}}
+\DoxyCodeLine{00873\ \};}
+\DoxyCodeLine{00874\ }
+\DoxyCodeLine{00875\ \textcolor{comment}{/***\ \(\backslash\)brief\ Data\ frame\ for\ reading\ fits\ tables\ and\ minipulating\ the\ results.}}
+\DoxyCodeLine{00876\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00877\ \textcolor{comment}{\ Missing\ entries\ are\ replaced\ with\ -\/100}}
+\DoxyCodeLine{00878\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00879\ }
+\DoxyCodeLine{00880\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00881\ \ \ \textcolor{keyword}{class\ }DataFrameFits\{}
+\DoxyCodeLine{00882\ \ }
+\DoxyCodeLine{00883\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00884\ \ \ \ \ std::map<std::string,int>\ datamap;}
+\DoxyCodeLine{00885\ \ \ \ \ std::vector<std::string>\ all\_column\_names;}
+\DoxyCodeLine{00886\ \ \ \ \ std::vector<std::string>\ used\_column\_names;}
+\DoxyCodeLine{00887\ \ \ \ \ std::string\ filename;}
+\DoxyCodeLine{00888\ \ \ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ cpfits;}
+\DoxyCodeLine{00889\ \ \ \ \ std::vector<std::vector<T>\ >\ data;}
+\DoxyCodeLine{00890\ \ \ \ \ \textcolor{keywordtype}{long}\ n0;}
+\DoxyCodeLine{00891\ \ \ \ \ std::vector<int>\ column\_index;}
+\DoxyCodeLine{00892\ \ \ }
+\DoxyCodeLine{00893\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00895\ \ \ \ \ DataFrameFits(}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ datafile\ \ \ }
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::string>\ \&columns\ \ }
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ hdu\ =\ 2}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{00900\ \ \ \ \ ):filename(datafile),cpfits(filename,hdu,verbose),n0(1)\{}
+\DoxyCodeLine{00901\ \ \ \ }
+\DoxyCodeLine{00902\ \ \ \ \ \ \ all\_column\_names\ =\ cpfits.get\_colnames();}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ }
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(columns.size()\ ==\ 0)\{}
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ used\_column\_names\ =\ all\_column\_names;}
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ used\_column\_names\ =\ columns;}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ }
+\DoxyCodeLine{00910\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Reading\ "{}}\ <<\ used\_column\_names.size()\ <<\ \textcolor{stringliteral}{"{}\ columns."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ }
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::string\ a\ :\ used\_column\_names)\{}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ column\_index.push\_back(cpfits.column\_index(a));}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ }
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<used\_column\_names.size()\ ;\ ++i)\{}
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ datamap[used\_column\_names[i]]\ =\ i;}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00919\ \ }
+\DoxyCodeLine{00920\ \ \ \ \ \ \ data.resize(column\_index.size());}
+\DoxyCodeLine{00921\ \ \ \ \ \};}
+\DoxyCodeLine{00922\ \ \ \ }
+\DoxyCodeLine{00924\ \ \ \ \ std::vector<std::string>\ get\_all\_columnnames()\{\textcolor{keywordflow}{return}\ all\_column\_names;\}}
+\DoxyCodeLine{00925\ \ \ \ \ std::vector<std::string>\ get\_used\_columnnames()\{\textcolor{keywordflow}{return}\ all\_column\_names;\}}
+\DoxyCodeLine{00926\ \ \ \ \ }
+\DoxyCodeLine{00927\ \ \ \ \ \textcolor{comment}{//\ clear\ data}}
+\DoxyCodeLine{00928\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\{}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ n0=1;}
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol=data.size();}
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ data[i].clear();}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00934\ \ \ \ \ \}}
+\DoxyCodeLine{00935\ \ }
+\DoxyCodeLine{00942\ \ \ \ \ \textcolor{keywordtype}{int}\ read(}
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::function<\textcolor{keywordtype}{bool}(T\ \&)>\ >\ \&accept}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add=\textcolor{keyword}{false}}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ maxsize\ =\ -\/1}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 10000;}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ requirements\ =\ accept.size();}
+\DoxyCodeLine{00951\ }
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(add)\{}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ n0=1;}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ data[i].clear();}
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00959\ \ \ }
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize\ >\ 0)\ nrow\ =\ MIN(maxsize\ +\ n0,nrow);}
+\DoxyCodeLine{00961\ \ \ \ \ \ \ }
+\DoxyCodeLine{00962\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(requirements\ >\ ncol)\{}
+\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ requirments"{}});}
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00965\ \ \ }
+\DoxyCodeLine{00966\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ tdata(ncol);}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n0\ <\ nrow)\{}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ chunksize\ =\ MIN(nrow-\/n0+1,chunksize);}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data[0].capacity()\ -\/\ data[0].size()\ <\ chunksize\ )\{}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ data[i].reserve(chunksize\ +\ data[i].capacity());}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ }
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,tdata[i]);}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ n0\ +=\ chunksize;}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ }
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j\ =\ 0\ ;\ j\ <\ chunksize\ ;\ ++j)\{}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ accpt\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<requirements;\ ++i)\{}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ accpt\ *=\ accept[i](tdata[i][j]);}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(accpt)\{}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[i].push\_back(\ tdata[i][j]\ )\ ;}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00992\ \ \ }
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ }
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00997\ \ \ \ \ \};}
+\DoxyCodeLine{00998\ \ \ \ \ }
+\DoxyCodeLine{00999\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ read(}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{bool}(T,T)>\ \&binary\_accept}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::pair<int,int>\ index\_binary\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::function<\textcolor{keywordtype}{bool}(T\ \&)>\ >\ \&unary\_accept}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<int>\ index\_unary}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add=\textcolor{keyword}{false}}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ maxsize\ =\ -\/1}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 10000;}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ }
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unary\_accept.size()\ !=\ index\_unary.size()\ )\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}index\_unary\ wrong\ sized\ "{}});}
+\DoxyCodeLine{01012\ \ }
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(add)\{}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ n0=1;}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \ \ data[i].clear();}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01020\ \ \ }
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize\ >\ 0)\ nrow\ =\ MIN(maxsize\ +\ n0,nrow);}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ }
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\_unary.size()\ >\ ncol)\{}
+\DoxyCodeLine{01024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ requirments"{}});}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01026\ \ \ }
+\DoxyCodeLine{01027\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ tdata(ncol);}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n0\ <\ nrow)\{}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ chunksize\ =\ MIN(nrow-\/n0+1,chunksize);}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data[0].capacity()\ -\/\ data[0].size()\ <\ chunksize\ )\{}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \ \ \ \ data[i].reserve(chunksize\ +\ data[i].capacity());}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ }
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,tdata[i]);}
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ n0\ +=\ chunksize;}
+\DoxyCodeLine{01041\ \ \ \ \ \ \ }
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j\ =\ 0\ ;\ j\ <\ chunksize\ ;\ ++j)\{}
+\DoxyCodeLine{01043\ \ \ \ \ }
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ accpt\ =\ binary\_accept(tdata[index\_binary.first][j],tdata[index\_binary.second][j]\ );}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ k=0;}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ :\ index\_unary)\{}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ \ \ \ accpt\ *=\ unary\_accept[k++](\ tdata[i][j]\ );}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ accpt\ )\{}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[i].push\_back(\ tdata[i][j]\ )\ ;}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01056\ \ \ }
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01059\ \ \ \ \ \ \ }
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.size();}
+\DoxyCodeLine{01061\ \ \ \ \ \}}
+\DoxyCodeLine{01062\ }
+\DoxyCodeLine{01064\ \ \ \ \ \textcolor{keywordtype}{int}\ read(\textcolor{keywordtype}{long}\ maxsize=-\/1)\{}
+\DoxyCodeLine{01065\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{01066\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize==-\/1)\ maxsize\ =\ nrow;}
+\DoxyCodeLine{01068\ \ \ \ \ \ \ }
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ nrow-\/n0+1;}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \textcolor{comment}{//chunksize\ =\ MIN(maxsize,chunksize);}}
+\DoxyCodeLine{01071\ \ \ \ \ \ \ chunksize\ =\ (maxsize\ <\ chunksize)\ ?\ maxsize\ :\ chunksize;}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ }
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,data[i]);}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ n0\ +=\ chunksize;}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ }
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{01079\ \ \ \ \ \}}
+\DoxyCodeLine{01080\ }
+\DoxyCodeLine{01082\ \ \ \ \ std::vector<std::vector<T>\ >\ ranges(\textcolor{keywordtype}{bool}\ verbose)\{}
+\DoxyCodeLine{01083\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ ranges;}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 100000;}
+\DoxyCodeLine{01087\ \ \ \ \ \ \ }
+\DoxyCodeLine{01088\ \ \ \ \ \ \ ranges.resize(ncol);}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&v\ :\ ranges)\ v.resize(2);}
+\DoxyCodeLine{01090\ \ \ \ \ }
+\DoxyCodeLine{01091\ \ \ \ \ \ \ std::vector<T>\ tdata;}
+\DoxyCodeLine{01092\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],1,1,tdata);}
+\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ tdata)\{}
+\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \ ranges[i][0]\ =\ a;}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ ranges[i][1]\ =\ a;}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01099\ }
+\DoxyCodeLine{01100\ \ \ \ \ \ \ }
+\DoxyCodeLine{01101\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ n=2;}
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n\ <\ nrow)\{}
+\DoxyCodeLine{01103\ }
+\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//chunksize\ =\ MIN(nrow-\/n+1,chunksize);}}
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \ \ chunksize\ =\ (nrow-\/n+1\ <\ chunksize)\ ?\ nrow-\/n+1\ :\ chunksize;}
+\DoxyCodeLine{01106\ }
+\DoxyCodeLine{01107\ \ \ \ \ \ \ }
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n,chunksize,tdata);}
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ tdata)\{}
+\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ ranges[i][0]\ =\ MIN(a,ranges[i][0]);}
+\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ \ \ \ \ ranges[i][1]\ =\ MAX(a,ranges[i][1]);}
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ n\ +=\ chunksize;}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01117\ \ \ \ \ \ \ }
+\DoxyCodeLine{01118\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\{}
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ ranges[i][0]\ <<\ \textcolor{stringliteral}{"{}\ <=\ "{}}\ <<\ used\_column\_names[i]\ <<\ \textcolor{stringliteral}{"{}\ <=\ "{}}\ <<\ ranges[i][1]\ <<\ std::endl;}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01123\ \ \ \ \ \ \ }
+\DoxyCodeLine{01124\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ranges;}
+\DoxyCodeLine{01125\ \ \ \ \ \}}
+\DoxyCodeLine{01126\ \ \ \ \ }
+\DoxyCodeLine{01128\ \ \ \ \ std::vector<T>\&\ operator[](\textcolor{keyword}{const}\ std::string\ \&label)\{}
+\DoxyCodeLine{01129\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(datamap.find(label)\ ==\ datamap.end())\{}
+\DoxyCodeLine{01130\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}No\ label\ -\/\ "{}}\ <<\ label\ <<\ \textcolor{stringliteral}{"{}\ -\/\ in\ "{}}\ <<\ filename\ <<std::endl;}
+\DoxyCodeLine{01131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}no\ label"{}});}
+\DoxyCodeLine{01132\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01133\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data[datamap[label]];}
+\DoxyCodeLine{01134\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ c\ :\ all\_column\_names\ )\ std::cout\ <<\ c\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{01135\ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(label\ +\ \textcolor{stringliteral}{"{}\ was\ not\ one\ of\ the\ columns\ of\ the\ galaxy\ data\ file\ :"{}}\ +\ filename);}
+\DoxyCodeLine{01137\ \ \ \ \ \};}
+\DoxyCodeLine{01138\ \ \ \ \ }
+\DoxyCodeLine{01140\ \ \ \ \ std::vector<T>\&\ operator[](\textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{01141\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data[i];}
+\DoxyCodeLine{01142\ \ \ \ \ \};}
+\DoxyCodeLine{01143\ \ \ \ \ }
+\DoxyCodeLine{01144\ \ \ \ \ \textcolor{comment}{//\ sort\ by\ one\ of\ the\ columns\ in\ ascending\ order}}
+\DoxyCodeLine{01145\ \ \ \ \ \textcolor{keywordtype}{void}\ sortby(std::string\ name)\{}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ std::vector<size\_t>\ index(data[0].size());}
+\DoxyCodeLine{01147\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ index.size();}
+\DoxyCodeLine{01148\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\ index[i]\ =\ i;}
+\DoxyCodeLine{01149\ \ \ \ \ \ \ }
+\DoxyCodeLine{01150\ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utilities_a9b44ff17b26b627e429e9984d4908577}{Utilities::sort\_indexes}}(data[datamap[name]],index);}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ std::vector<T>\ tmp\_v(N);}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ }
+\DoxyCodeLine{01153\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j=0\ ;\ j<data.size()\ ;\ ++j)\{}
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\{}
+\DoxyCodeLine{01155\ \ \ \ \ \ \ \ \ \ \ tmp\_v[i]\ =\ data[j][index[i]];}
+\DoxyCodeLine{01156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01157\ \ \ \ \ \ \ \ \ swap(data[j],tmp\_v);}
+\DoxyCodeLine{01158\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01159\ \ \ \ \ \}}
+\DoxyCodeLine{01160\ \ \ \ \ }
+\DoxyCodeLine{01162\ \ \ \ \ \textcolor{keywordtype}{void}\ addColumn(std::string\ name)\{}
+\DoxyCodeLine{01163\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nc\ =\ \ number\_of\_columns();}
+\DoxyCodeLine{01164\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nr\ =\ number\_of\_rows();}
+\DoxyCodeLine{01165\ \ \ \ \ \ \ data.emplace\_back(nr);}
+\DoxyCodeLine{01166\ \ \ \ \ \ \ all\_column\_names.push\_back(name);}
+\DoxyCodeLine{01167\ \ \ \ \ \ \ used\_column\_names.push\_back(name);}
+\DoxyCodeLine{01168\ \ \ \ \ \ \ datamap[name]\ =\ nc;}
+\DoxyCodeLine{01169\ \ \ \ \ \ \ \textcolor{comment}{//column\_index.push\_back(nc);}}
+\DoxyCodeLine{01170\ \ \ \ \ \}}
+\DoxyCodeLine{01171\ \ \ \ \ }
+\DoxyCodeLine{01172\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_rows()\{\textcolor{keywordflow}{return}\ data[0].size();\}}
+\DoxyCodeLine{01173\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_columns()\{\textcolor{keywordflow}{return}\ data.size();\}}
+\DoxyCodeLine{01174\ }
+\DoxyCodeLine{01175\ \};}
+\DoxyCodeLine{01176\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ cpfits\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

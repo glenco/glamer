@@ -1,0 +1,519 @@
+\doxysection{q\+Tree\+NB.\+h}
+\hypertarget{q_tree_n_b_8h_source}{}\label{q_tree_n_b_8h_source}\index{SLsimLib/include/qTreeNB.h@{SLsimLib/include/qTreeNB.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ qTreeNB.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Ben\ Metcalf\ on\ 11/11/2018.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ qTreeNB\_h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ qTreeNB\_h}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}utilities.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}cosmo.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ PI}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PI\ \ 3.141593}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ treeNBdim}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ treeNBdim\ 2\ \ }\textcolor{comment}{//\ dimension\ of\ boxes\ in\ tree}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifndef\ IndexType\_declare}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ IndexType\_declare}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ IndexType;}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\{}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *parent):\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}}(parent)\{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ n=0;}
+\DoxyCodeLine{00034\ \ \ \ \ child0\ =\ NULL;}
+\DoxyCodeLine{00035\ \ \ \ \ child1\ =\ NULL;}
+\DoxyCodeLine{00036\ \ \ \ \ child2\ =\ NULL;}
+\DoxyCodeLine{00037\ \ \ \ \ child3\ =\ NULL;}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ =\ NULL;}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00040\ \ \ \ \ nparticles\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ number\ =\ n;}
+\DoxyCodeLine{00042\ \ \ \ \ ++n;}
+\DoxyCodeLine{00043\ \ \ \};}
+\DoxyCodeLine{00044\ \ \ }
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{\string~QBranchNB}}()\{\ \};}
+\DoxyCodeLine{00046\ \ \ }
+\DoxyCodeLine{00048\ \ \ IndexType\ *\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}};}
+\DoxyCodeLine{00049\ \ \ std::unique\_ptr<IndexType[]>\ big\_particles;}
+\DoxyCodeLine{00050\ \ \ IndexType\ nparticles;}
+\DoxyCodeLine{00052\ \ \ IndexType\ \mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}};}
+\DoxyCodeLine{00054\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_a24bce67bfb8a3388c8657c1cd06143a8}{maxrsph}};}
+\DoxyCodeLine{00056\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[2];}
+\DoxyCodeLine{00057\ \ \ PosType\ mass;}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}};}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ number;}
+\DoxyCodeLine{00062\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[2];}
+\DoxyCodeLine{00064\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[2];}
+\DoxyCodeLine{00065\ \ \ PosType\ boxsize2;}
+\DoxyCodeLine{00066\ \ \ }
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child0;}
+\DoxyCodeLine{00068\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child1;}
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child2;}
+\DoxyCodeLine{00070\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child3;}
+\DoxyCodeLine{00071\ \ \ }
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}};}
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}};}
+\DoxyCodeLine{00077\ \ \ }
+\DoxyCodeLine{00078\ \ \ \textcolor{comment}{/*\ projected\ quantities\ */}}
+\DoxyCodeLine{00080\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[3];}
+\DoxyCodeLine{00082\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_ad786fedfa32eeabc465a4e68df8d3f20}{rmax}};}
+\DoxyCodeLine{00084\ \ \ PosType\ \mbox{\hyperlink{struct_q_branch_n_b_a87dac993100fab4073900e46ce93868a}{r2crit\_angle}};}
+\DoxyCodeLine{00085\ \ \ \textcolor{comment}{/*\ force\ calculation\ */}}
+\DoxyCodeLine{00086\ \ \ PosType\ rcrit\_part;}
+\DoxyCodeLine{00087\ \ \ \textcolor{comment}{//PosType\ cm[2];\ /*\ projected\ center\ of\ mass\ */}}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType\ =\ \textcolor{keywordtype}{double}*>}
+\DoxyCodeLine{00098\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB}}\{}
+\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB}}(PType\ *xp,IndexType\ *particles,IndexType\ nparticles}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ ,PosType\ boundary\_p1[],PosType\ boundary\_p2[]);}
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{struct_q_tree_n_b_a513e4f75de982f81c981a343df2f7aaa}{\string~QTreeNB}}();}
+\DoxyCodeLine{00102\ \ \ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ isEmpty();}
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ atTop();}
+\DoxyCodeLine{00105\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ noChild();}
+\DoxyCodeLine{00106\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ offEnd();}
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ getNbranches();}
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ atLeaf(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch)\{}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{return}\ (branch-\/>child0\ ==\ NULL)*(branch-\/>child1\ ==\ NULL)}
+\DoxyCodeLine{00110\ \ \ \ \ *(branch-\/>child2\ ==\ NULL)*(branch-\/>child3\ ==\ NULL);}
+\DoxyCodeLine{00111\ \ \ \}}
+\DoxyCodeLine{00112\ \ \ }
+\DoxyCodeLine{00113\ \ \ }
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ getCurrent(IndexType\ *particles,IndexType\ *nparticles);}
+\DoxyCodeLine{00115\ \ \ \textcolor{keywordtype}{void}\ moveTop();}
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ moveUp();}
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{void}\ moveToChild(\textcolor{keywordtype}{int}\ child);}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{bool}\ WalkStep(\textcolor{keywordtype}{bool}\ allowDescent);}
+\DoxyCodeLine{00119\ \ \ }
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordtype}{short}\ empty();}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{void}\ attachChildrenToCurrent(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch0,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch1}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch2,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch3);}
+\DoxyCodeLine{00123\ \ \ }
+\DoxyCodeLine{00124\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *top;}
+\DoxyCodeLine{00125\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *current;}
+\DoxyCodeLine{00127\ \ \ PType\ *\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}};}
+\DoxyCodeLine{00128\ \ \ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Nbranches;}
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{void}\ \_freeQTree(\textcolor{keywordtype}{short}\ child);}
+\DoxyCodeLine{00133\ \};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ *\ This\ constructor\ just\ creates\ a\ root\ branch.\ \ To\ construct\ a\ full\ tree}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ *\ an\ external\ function\ must\ be\ used.\ \ For\ example,\ TreeQuad\ uses\ QTreeNB}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00139\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00140\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::QTreeNB}}(PType\ *xp,IndexType\ *particles,IndexType\ nparticles}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ boundary\_p1[],PosType\ boundary\_p2[]):\ xxp(xp)\ \{}
+\DoxyCodeLine{00142\ \ \ }
+\DoxyCodeLine{00143\ \ \ top\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00144\ \ \ }
+\DoxyCodeLine{00145\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]\ =\ boundary\_p1[0];}
+\DoxyCodeLine{00146\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]\ =\ boundary\_p1[1];}
+\DoxyCodeLine{00147\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ =\ boundary\_p2[0];}
+\DoxyCodeLine{00148\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]\ =\ boundary\_p2[1];}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ top-\/>boxsize2\ =\ (boundary\_p2[0]-\/boundary\_p1[0])*(boundary\_p2[0]-\/boundary\_p1[0]);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ top-\/>nparticles\ =\ nparticles;}
+\DoxyCodeLine{00153\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}\ =\ 0;}
+\DoxyCodeLine{00154\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ particles;}
+\DoxyCodeLine{00155\ \ \ }
+\DoxyCodeLine{00156\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0]\ =\ (boundary\_p1[0]\ +\ boundary\_p2[0])/2;}
+\DoxyCodeLine{00157\ \ \ top-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]\ =\ (boundary\_p1[1]\ +\ boundary\_p2[1])/2;}
+\DoxyCodeLine{00158\ \ \ }
+\DoxyCodeLine{00159\ \ \ Nbranches\ =\ 1;}
+\DoxyCodeLine{00160\ \ \ current\ =\ top;}
+\DoxyCodeLine{00161\ \ \ }
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00172\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00173\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_q_biterator}{QBiterator}}\{}
+\DoxyCodeLine{00174\ \ \ }
+\DoxyCodeLine{00175\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00176\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *current;}
+\DoxyCodeLine{00177\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *top;}
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordtype}{size\_t}\ nbranches;}
+\DoxyCodeLine{00179\ \ \ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00182\ \ \ \mbox{\hyperlink{class_q_biterator_a92d757e4b48e239cdd45a6dc748b82e3}{QBiterator}}(\mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>}}\ *\ tree)\{current\ =\ top\ =\ tree-\/>top;\ nbranches\ =\ tree-\/>getNbranches();\ \}}
+\DoxyCodeLine{00184\ \ \ \mbox{\hyperlink{class_q_biterator_a2df3dd5d4360267c2d371b6807726b68}{QBiterator}}(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch)\{current\ =\ top\ =\ branch;\}}
+\DoxyCodeLine{00185\ \ \ }
+\DoxyCodeLine{00187\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *\mbox{\hyperlink{class_q_biterator_a51b544216c4742412a28441f56b39d22}{operator*}}()\{\textcolor{keywordflow}{return}\ current;\}}
+\DoxyCodeLine{00188\ \ \ }
+\DoxyCodeLine{00189\ \ \ \textcolor{keywordtype}{void}\ movetop()\{current\ =\ top;\}}
+\DoxyCodeLine{00190\ \ \ }
+\DoxyCodeLine{00192\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_q_biterator_ab47fd3c5ad923a116fdefae9339cd3be}{operator++}}()\{\ \textcolor{keywordflow}{return}\ up();\}}
+\DoxyCodeLine{00193\ \ \ }
+\DoxyCodeLine{00195\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_q_biterator_ab5c005a0ae48f75d10731e6f7cc4ee54}{operator++}}(\textcolor{keywordtype}{int})\{\ \textcolor{keywordflow}{return}\ up();\}}
+\DoxyCodeLine{00196\ \ \ }
+\DoxyCodeLine{00197\ \ \ \textcolor{keywordtype}{bool}\ up();}
+\DoxyCodeLine{00199\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_q_biterator_a90861741630eb5bcad4ee156d528c065}{down}}(\textcolor{keywordtype}{short}\ child);}
+\DoxyCodeLine{00200\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ atLeaf()\{}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordflow}{return}\ (current-\/>child0\ ==\ NULL)*(current-\/>child1\ ==\ NULL)}
+\DoxyCodeLine{00202\ \ \ \ \ *(current-\/>child2\ ==\ NULL)*(current-\/>child3\ ==\ NULL);}
+\DoxyCodeLine{00203\ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordtype}{bool}\ TreeWalkStep(\textcolor{keywordtype}{bool}\ allowDescent);}
+\DoxyCodeLine{00205\ \ \ }
+\DoxyCodeLine{00206\ \ \ \textcolor{keywordtype}{size\_t}\ getNbranches()\{\textcolor{keywordflow}{return}\ nbranches;\}}
+\DoxyCodeLine{00207\ \};}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00213\ \mbox{\hyperlink{struct_q_tree_n_b_a513e4f75de982f81c981a343df2f7aaa}{QTreeNB<PType>::\string~QTreeNB}}()\{}
+\DoxyCodeLine{00214\ \ \ \textcolor{comment}{//\ \ void\ TreeQuad::freeQTreeNB(QTreeNBHndl\ tree)\{}}
+\DoxyCodeLine{00215\ \ \ }
+\DoxyCodeLine{00216\ \ \ empty();}
+\DoxyCodeLine{00217\ \ \ \textcolor{keyword}{delete}\ top;}
+\DoxyCodeLine{00218\ \ \ -\/-\/Nbranches;}
+\DoxyCodeLine{00219\ \ \ }
+\DoxyCodeLine{00220\ \ \ assert(Nbranches\ ==0);}
+\DoxyCodeLine{00221\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00222\ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00225\ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::empty}}()\{}
+\DoxyCodeLine{00226\ \ \ }
+\DoxyCodeLine{00227\ \ \ \textcolor{keywordflow}{if}(Nbranches\ <=\ 1)\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00228\ \ \ moveTop();}
+\DoxyCodeLine{00229\ \ \ \_freeQTree(0);}
+\DoxyCodeLine{00230\ \ \ }
+\DoxyCodeLine{00231\ \ \ assert(Nbranches\ ==\ 1);}
+\DoxyCodeLine{00232\ \ \ }
+\DoxyCodeLine{00233\ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00234\ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00237\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::\_freeQTree}}(\textcolor{keywordtype}{short}\ child)\{}
+\DoxyCodeLine{00238\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch;}
+\DoxyCodeLine{00239\ \ \ }
+\DoxyCodeLine{00240\ \ \ assert(current);}
+\DoxyCodeLine{00241\ \ \ \textcolor{comment}{//if(current-\/>particles\ !=\ current-\/>big\_particles}}
+\DoxyCodeLine{00242\ \ \ \textcolor{comment}{//\ \ \ \&\&\ current-\/>big\_particles\ !=\ NULL)\ delete[]\ current-\/>big\_particles;}}
+\DoxyCodeLine{00243\ \ \ }
+\DoxyCodeLine{00244\ \ \ \textcolor{keywordflow}{if}(current-\/>child0\ !=\ NULL)\{}
+\DoxyCodeLine{00245\ \ \ \ \ moveToChild(0);}
+\DoxyCodeLine{00246\ \ \ \ \ \_freeQTree(0);}
+\DoxyCodeLine{00247\ \ \ \}}
+\DoxyCodeLine{00248\ \ \ }
+\DoxyCodeLine{00249\ \ \ \textcolor{keywordflow}{if}(current-\/>child1\ !=\ NULL)\{}
+\DoxyCodeLine{00250\ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00251\ \ \ \ \ \_freeQTree(1);}
+\DoxyCodeLine{00252\ \ \ \}}
+\DoxyCodeLine{00253\ \ \ }
+\DoxyCodeLine{00254\ \ \ \textcolor{keywordflow}{if}(current-\/>child2\ !=\ NULL)\{}
+\DoxyCodeLine{00255\ \ \ \ \ moveToChild(2);}
+\DoxyCodeLine{00256\ \ \ \ \ \_freeQTree(2);}
+\DoxyCodeLine{00257\ \ \ \}}
+\DoxyCodeLine{00258\ \ \ }
+\DoxyCodeLine{00259\ \ \ \textcolor{keywordflow}{if}(current-\/>child3\ !=\ NULL)\{}
+\DoxyCodeLine{00260\ \ \ \ \ moveToChild(3);}
+\DoxyCodeLine{00261\ \ \ \ \ \_freeQTree(3);}
+\DoxyCodeLine{00262\ \ \ \}}
+\DoxyCodeLine{00263\ \ \ }
+\DoxyCodeLine{00264\ \ \ \textcolor{keywordflow}{if}(\ atLeaf(current)\ )\{}
+\DoxyCodeLine{00265\ \ \ \ \ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keywordflow}{if}(atTop())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00267\ \ \ \ \ }
+\DoxyCodeLine{00268\ \ \ \ \ branch\ =\ current;}
+\DoxyCodeLine{00269\ \ \ \ \ moveUp();}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{delete}\ branch;}
+\DoxyCodeLine{00271\ \ \ \ \ -\/-\/Nbranches;}
+\DoxyCodeLine{00272\ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{comment}{/*printf("{}***\ removing\ branch\ \%i\ number\ of\ branches\ \%i\(\backslash\)n"{},branch-\/>number}}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ \ \ ,Nbranches-\/1);*/}}
+\DoxyCodeLine{00275\ \ \ \ \ }
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keywordflow}{if}(child==0)\ current-\/>child0\ =\ NULL;}
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{if}(child==1)\ current-\/>child1\ =\ NULL;}
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordflow}{if}(child==2)\ current-\/>child2\ =\ NULL;}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{if}(child==3)\ current-\/>child3\ =\ NULL;}
+\DoxyCodeLine{00280\ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ }
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00283\ \ \ \}}
+\DoxyCodeLine{00284\ \ \ }
+\DoxyCodeLine{00285\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00286\ \}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00289\ \textcolor{comment}{\ *\ isEmpty}}
+\DoxyCodeLine{00290\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ the\ QTreeNB\ is\ empty\ and\ "{}false"{}\ otherwise.\ \ Exported.}}
+\DoxyCodeLine{00291\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00292\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00293\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::isEmpty}}()\{}
+\DoxyCodeLine{00294\ \ \ }
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordflow}{return}(Nbranches\ ==\ 0);}
+\DoxyCodeLine{00296\ \}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00299\ \textcolor{comment}{\ *\ atTop}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ current\ is\ the\ same\ as\ top\ and\ "{}false"{}\ otherwise.}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ *\ Exported.}}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ *\ Pre:\ !isEmptyNB(tree)}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00304\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00305\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::atTop}}()\{}
+\DoxyCodeLine{00306\ \ \ }
+\DoxyCodeLine{00307\ \ \ \textcolor{keywordflow}{if}(\ isEmpty()\ )\{}
+\DoxyCodeLine{00308\ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00309\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ calling\ atTop()\ on\ empty\ tree"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00310\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00311\ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \textcolor{keywordflow}{return}(current\ ==\ top);}
+\DoxyCodeLine{00313\ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00316\ \textcolor{comment}{\ *\ offEndNB}}
+\DoxyCodeLine{00317\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ current\ is\ off\ end\ and\ "{}false"{}\ otherwise.\ \ Exported.}}
+\DoxyCodeLine{00318\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00319\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00320\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::offEnd}}()\{}
+\DoxyCodeLine{00321\ \ \ }
+\DoxyCodeLine{00322\ \ \ \textcolor{keywordflow}{return}(current\ ==\ NULL);}
+\DoxyCodeLine{00323\ \}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00326\ \textcolor{comment}{\ *\ getCurrentNB}}
+\DoxyCodeLine{00327\ \textcolor{comment}{\ *\ Returns\ the\ particles\ of\ current.\ \ Exported.}}
+\DoxyCodeLine{00328\ \textcolor{comment}{\ *\ Pre:\ !offEnd()}}
+\DoxyCodeLine{00329\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00330\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00331\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::getCurrent}}(IndexType\ *particles,IndexType\ *nparticles)\{}
+\DoxyCodeLine{00332\ \ \ }
+\DoxyCodeLine{00333\ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{00334\ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00335\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ calling\ getCurrent()\ when\ current\ is\ off\ end"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00336\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00337\ \ \ \}}
+\DoxyCodeLine{00338\ \ \ }
+\DoxyCodeLine{00339\ \ \ *nparticles\ =\ current-\/>nparticles;}
+\DoxyCodeLine{00340\ \ \ particles\ =\ current-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}};}
+\DoxyCodeLine{00341\ \ \ }
+\DoxyCodeLine{00342\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00343\ \}}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00346\ \textcolor{comment}{\ *\ getNbranches}}
+\DoxyCodeLine{00347\ \textcolor{comment}{\ *\ Returns\ the\ NbranchNBes\ of\ tree.\ \ Exported.}}
+\DoxyCodeLine{00348\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00349\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00350\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::getNbranches}}()\{}
+\DoxyCodeLine{00351\ \ \ }
+\DoxyCodeLine{00352\ \ \ \textcolor{keywordflow}{return}(Nbranches);}
+\DoxyCodeLine{00353\ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{comment}{/*****\ Manipulation\ procedures\ *****/}}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00358\ \textcolor{comment}{\ *\ moveTop}}
+\DoxyCodeLine{00359\ \textcolor{comment}{\ *\ Moves\ current\ to\ the\ front\ of\ tree.\ \ Exported.}}
+\DoxyCodeLine{00360\ \textcolor{comment}{\ *\ Pre:\ !isEmpty(tree)}}
+\DoxyCodeLine{00361\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00362\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00363\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::moveTop}}()\{}
+\DoxyCodeLine{00364\ \ \ \textcolor{comment}{//std::cout\ <<\ tree\ <<\ std::endl;}}
+\DoxyCodeLine{00365\ \ \ \textcolor{comment}{//std::cout\ <<\ tree-\/>current\ <<\ std::endl;}}
+\DoxyCodeLine{00366\ \ \ \textcolor{comment}{//std::cout\ <<\ tree-\/>top\ <<\ std::endl;}}
+\DoxyCodeLine{00367\ \ \ }
+\DoxyCodeLine{00368\ \ \ \textcolor{keywordflow}{if}(\ isEmpty()\ )\{}
+\DoxyCodeLine{00369\ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00370\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ calling\ moveTop()\ on\ empty\ tree"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00371\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00372\ \ \ \}}
+\DoxyCodeLine{00373\ \ \ }
+\DoxyCodeLine{00374\ \ \ current\ =\ top;}
+\DoxyCodeLine{00375\ \ \ }
+\DoxyCodeLine{00376\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00377\ \}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00380\ \textcolor{comment}{\ *\ movePrev}}
+\DoxyCodeLine{00381\ \textcolor{comment}{\ *\ Moves\ current\ to\ the\ branchNB\ before\ it\ in\ tree.\ \ This\ can\ move\ current}}
+\DoxyCodeLine{00382\ \textcolor{comment}{\ *\ off\ end.\ \ Exported.}}
+\DoxyCodeLine{00383\ \textcolor{comment}{\ *\ Pre:\ !offEndNB(tree)}}
+\DoxyCodeLine{00384\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00385\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00386\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::moveUp}}()\{}
+\DoxyCodeLine{00387\ \ \ }
+\DoxyCodeLine{00388\ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{00389\ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00390\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ call\ to\ moveUp()\ when\ current\ is\ off\ end"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00391\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00392\ \ \ \}}
+\DoxyCodeLine{00393\ \ \ \textcolor{keywordflow}{if}(\ current\ ==\ top\ )\{}
+\DoxyCodeLine{00394\ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00395\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ call\ to\ moveUp()\ tried\ to\ move\ off\ the\ top"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00396\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00397\ \ \ \}}
+\DoxyCodeLine{00398\ \ \ }
+\DoxyCodeLine{00399\ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}};\ \ \textcolor{comment}{/*\ can\ move\ off\ end\ */}}
+\DoxyCodeLine{00400\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00401\ \}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00404\ \textcolor{comment}{\ *\ moveToChild}}
+\DoxyCodeLine{00405\ \textcolor{comment}{\ *\ Moves\ current\ to\ child\ branchNB\ after\ it\ in\ tree.\ \ This\ can\ move\ current\ off}}
+\DoxyCodeLine{00406\ \textcolor{comment}{\ *\ end.\ \ Exported.}}
+\DoxyCodeLine{00407\ \textcolor{comment}{\ *\ Pre:\ !offEnd(tree)}}
+\DoxyCodeLine{00408\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00409\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00410\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::moveToChild}}(\textcolor{keywordtype}{int}\ child)\{}
+\DoxyCodeLine{00411\ \ \ }
+\DoxyCodeLine{00412\ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{00413\ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ calling\ moveChildren()\ when\ current\ is\ off\ end"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00414\ \ \ \ \ exit(1);}
+\DoxyCodeLine{00415\ \ \ \}}
+\DoxyCodeLine{00416\ \ \ \textcolor{keywordflow}{if}(child==0)\{}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child0\ ==\ NULL\ )\{}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child1\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00420\ \ \ \ \ \}}
+\DoxyCodeLine{00421\ \ \ \ \ current\ =\ current-\/>child0;}
+\DoxyCodeLine{00422\ \ \ \}}
+\DoxyCodeLine{00423\ \ \ \textcolor{keywordflow}{if}(child==1)\{}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child1\ ==\ NULL\ )\{}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child1\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00427\ \ \ \ \ \}}
+\DoxyCodeLine{00428\ \ \ \ \ current\ =\ current-\/>child1;}
+\DoxyCodeLine{00429\ \ \ \}}
+\DoxyCodeLine{00430\ \ \ \textcolor{keywordflow}{if}(child==2)\{}
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child2\ ==\ NULL\ )\{}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child2\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00434\ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ current\ =\ current-\/>child2;}
+\DoxyCodeLine{00436\ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \textcolor{keywordflow}{if}(child==3)\{}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child3\ ==\ NULL\ )\{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child2\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00441\ \ \ \ \ \}}
+\DoxyCodeLine{00442\ \ \ \ \ current\ =\ current-\/>child3;}
+\DoxyCodeLine{00443\ \ \ \}}
+\DoxyCodeLine{00444\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00445\ \}}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00447\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00448\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::attachChildrenToCurrent}}(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch0,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch1}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch2,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch3)\{}
+\DoxyCodeLine{00450\ \ \ }
+\DoxyCodeLine{00451\ \ \ Nbranches\ +=\ 4;}
+\DoxyCodeLine{00452\ \ \ current-\/>child0\ =\ branch0;}
+\DoxyCodeLine{00453\ \ \ current-\/>child1\ =\ branch1;}
+\DoxyCodeLine{00454\ \ \ current-\/>child2\ =\ branch2;}
+\DoxyCodeLine{00455\ \ \ current-\/>child3\ =\ branch3;}
+\DoxyCodeLine{00456\ \ \ }
+\DoxyCodeLine{00457\ \ \ \textcolor{keywordtype}{int}\ level\ =\ current-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}+1;}
+\DoxyCodeLine{00458\ \ \ branch0-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}\ =\ level;}
+\DoxyCodeLine{00459\ \ \ branch1-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}\ =\ level;}
+\DoxyCodeLine{00460\ \ \ branch2-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}\ =\ level;}
+\DoxyCodeLine{00461\ \ \ branch3-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}\ =\ level;}
+\DoxyCodeLine{00462\ \ \ }
+\DoxyCodeLine{00463\ \ \ \textcolor{comment}{//\ work\ out\ brothers\ for\ children}}
+\DoxyCodeLine{00464\ \ \ branch0-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ =\ branch1;}
+\DoxyCodeLine{00465\ \ \ branch1-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ =\ branch2;}
+\DoxyCodeLine{00466\ \ \ branch2-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ =\ branch3;}
+\DoxyCodeLine{00467\ \ \ branch3-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ =\ current-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}};}
+\DoxyCodeLine{00468\ \ \ }
+\DoxyCodeLine{00469\ \ \ branch0-\/>\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}}\ =\ current;}
+\DoxyCodeLine{00470\ \ \ branch1-\/>\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}}\ =\ current;}
+\DoxyCodeLine{00471\ \ \ branch2-\/>\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}}\ =\ current;}
+\DoxyCodeLine{00472\ \ \ branch3-\/>\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}}\ =\ current;}
+\DoxyCodeLine{00473\ \ \ }
+\DoxyCodeLine{00474\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00475\ \}}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \textcolor{comment}{//\ step\ for\ walking\ tree\ by\ iteration\ instead\ of\ recursion}}
+\DoxyCodeLine{00478\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00479\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>::WalkStep}}(\textcolor{keywordtype}{bool}\ allowDescent)\{}
+\DoxyCodeLine{00480\ \ \ \textcolor{keywordflow}{if}(allowDescent\ \&\&\ current-\/>child0\ !=\ NULL)\{}
+\DoxyCodeLine{00481\ \ \ \ \ moveToChild(0);}
+\DoxyCodeLine{00482\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00483\ \ \ \}}
+\DoxyCodeLine{00484\ \ \ }
+\DoxyCodeLine{00485\ \ \ \textcolor{keywordflow}{if}(current-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ !=\ NULL)\{}
+\DoxyCodeLine{00486\ \ \ \ \ current=current-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}};}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00488\ \ \ \}}
+\DoxyCodeLine{00489\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00490\ \}}
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00492\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00493\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_q_biterator}{QBiterator<PType>::up}}()\{}
+\DoxyCodeLine{00494\ \ \ \textcolor{keywordflow}{if}(\ current\ ==\ top\ )\{}
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00496\ \ \ \}}
+\DoxyCodeLine{00497\ \ \ current\ =\ current-\/>\mbox{\hyperlink{struct_q_branch_n_b_ae6ada2bd564b1be351ecbf1bb6c2eab2}{prev}};\ \ \textcolor{comment}{/*\ can\ move\ off\ end\ */}}
+\DoxyCodeLine{00498\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00499\ \}}
+\DoxyCodeLine{00500\ }
+\DoxyCodeLine{00502\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00503\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_q_biterator_a90861741630eb5bcad4ee156d528c065}{QBiterator<PType>::down}}(\textcolor{keywordtype}{short}\ child)\{}
+\DoxyCodeLine{00504\ \ \ }
+\DoxyCodeLine{00505\ \ \ \textcolor{keywordflow}{if}(child==0)\{}
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child0\ ==\ NULL\ )\{}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child1\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00509\ \ \ \ \ \}}
+\DoxyCodeLine{00510\ \ \ \ \ current\ =\ current-\/>child0;}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00512\ \ \ \}}
+\DoxyCodeLine{00513\ \ \ \textcolor{keywordflow}{if}(child==1)\{}
+\DoxyCodeLine{00514\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child1\ ==\ NULL\ )\{}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child1\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00517\ \ \ \ \ \}}
+\DoxyCodeLine{00518\ \ \ \ \ current\ =\ current-\/>child1;}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00520\ \ \ \}}
+\DoxyCodeLine{00521\ \ \ \textcolor{keywordflow}{if}(child==2)\{}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child2\ ==\ NULL\ )\{}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child2\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00525\ \ \ \ \ \}}
+\DoxyCodeLine{00526\ \ \ \ \ current\ =\ current-\/>child2;}
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00528\ \ \ \}}
+\DoxyCodeLine{00529\ \ \ \textcolor{keywordflow}{if}(child==3)\{}
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child3\ ==\ NULL\ )\{}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ ERROR\_MESSAGE();\ std::cout\ <<\ \textcolor{stringliteral}{"{}QTreeNB\ Error:\ moveToChild()\ typing\ to\ move\ to\ child2\ when\ it\ doesn't\ exist"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00533\ \ \ \ \ \}}
+\DoxyCodeLine{00534\ \ \ \ \ current\ =\ current-\/>child3;}
+\DoxyCodeLine{00535\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00536\ \ \ \}}
+\DoxyCodeLine{00537\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00538\ \}}
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00541\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_q_biterator}{QBiterator<PType>::TreeWalkStep}}(\textcolor{keywordtype}{bool}\ allowDescent)\{}
+\DoxyCodeLine{00542\ \ \ \textcolor{keywordflow}{if}(allowDescent\ \&\&\ current-\/>child0\ !=\ NULL)\{}
+\DoxyCodeLine{00543\ \ \ \ \ down(0);}
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00545\ \ \ \}}
+\DoxyCodeLine{00546\ \ \ }
+\DoxyCodeLine{00547\ \ \ \textcolor{keywordflow}{if}(current-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}}\ !=\ NULL)\{}
+\DoxyCodeLine{00548\ \ \ \ \ current=current-\/>\mbox{\hyperlink{struct_q_branch_n_b_a4b80dd6d4a6859d6af1982eb7096a837}{brother}};}
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00550\ \ \ \}}
+\DoxyCodeLine{00551\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00552\ \}}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ qTreeNB\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

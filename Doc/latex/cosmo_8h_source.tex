@@ -1,0 +1,438 @@
+\doxysection{cosmo.\+h}
+\hypertarget{cosmo_8h_source}{}\label{cosmo_8h_source}\index{CosmoLib/include/cosmo.h@{CosmoLib/include/cosmo.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifdef\ ENABLE\_GSL}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_integration.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_deriv.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ PI}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PI\ \ 3.141593}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ Grav}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ Grav\ 4.7788e-\/20\ \ }\textcolor{comment}{//\ Newton's\ constant\ over\ c\string^2\ in\ Mpc\ /\ Msun}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifndef\ lightspeed}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ lightspeed\ 2.99792458e5\ \ }\textcolor{comment}{//\ km\ /\ s}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#ifndef\ error\_message}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ error\_message}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ ERROR\_MESSAGE()\ std::cerr\ <<\ "{}ERROR:\ file:\ "{}\ <<\ \_\_FILE\_\_\ <<\ "{}\ line:\ "{}\ <<\ \_\_LINE\_\_\ <<\ std::endl;}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ CRITD\ 2.49783e18\ \ \ \ }\textcolor{comment}{/*\ critical\ density\ /\ Ho\string^2\ solar/Mpc\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ CRITD2\ 2.7752543e11\ }\textcolor{comment}{/*\ critical\ density\ /\ h\string^2\ M\_sun/Mpc\string^3\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#ifndef\ cosmo\_declare}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{enum\ class}\ CosmoParamSet\ \{WMAP5yr,Millennium,Planck1yr,Planck15,Planck18,BigMultiDark,Uchuu,none\};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ std::string\ to\_string(\textcolor{keyword}{const}\ CosmoParamSet\ \&p);}
+\DoxyCodeLine{00040\ std::ostream\ \&operator<<(std::ostream\ \&os,\textcolor{keyword}{const}\ CosmoParamSet\ \&p);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\{}
+\DoxyCodeLine{00053\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ }
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}(CosmoParamSet\ cosmo\_p\ =\ CosmoParamSet::WMAP5yr);}
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}(\textcolor{keywordtype}{double}\ omegam,\textcolor{keywordtype}{double}\ omegal,\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}},\ \textcolor{keywordtype}{double}\ w\ =\ -\/1,\textcolor{keywordtype}{double}\ wa\ =\ 0}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ justdistances=\textcolor{keyword}{false}\ }
+\DoxyCodeLine{00059\ \ \ );}
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo);}
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{\string~COSMOLOGY}}();}
+\DoxyCodeLine{00062\ \ \ }
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo);}
+\DoxyCodeLine{00064\ \ \ }
+\DoxyCodeLine{00065\ \ \ \textcolor{comment}{//\ returns\ the\ parameter\ set\ if\ any}}
+\DoxyCodeLine{00066\ \ \ CosmoParamSet\ ParamSet()\{\textcolor{keywordflow}{return}\ cosmo\_set;\}}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ ParamSet(std::string\ \&s);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a2b51480746298bdc547f599cf9f9e350}{PrintCosmology}}(\textcolor{keywordtype}{short}\ physical\ =\ 0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \ \ std::string\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a293d89de4b3501c5c3da1c3ac87c8fdb}{print}}(\textcolor{keywordtype}{short}\ physical=\ 0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ }
+\DoxyCodeLine{00072\ \ \ \textcolor{comment}{//\ Lengths}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1ecb8812337a56970e0d5085607fcfc8}{rcurve}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//double\ emptyDist(double\ zo,double\ z);}}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a8648a12f8d8894769443f8d40766732e}{coorDist}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a8648a12f8d8894769443f8d40766732e}{coorDist}}(\textcolor{keywordtype}{double}\ z)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a8648a12f8d8894769443f8d40766732e}{coorDist}}(0,z);\}}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1678cfe2dbb79a6f18cd3ad4ec6eb8e0}{radDist}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1678cfe2dbb79a6f18cd3ad4ec6eb8e0}{radDist}}(\textcolor{keywordtype}{double}\ z)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1678cfe2dbb79a6f18cd3ad4ec6eb8e0}{radDist}}(0,z);\}}
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a907355eb8b7de87fef45837e2ccb9589}{angDist}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a907355eb8b7de87fef45837e2ccb9589}{angDist}}(\textcolor{keywordtype}{double}\ z)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a907355eb8b7de87fef45837e2ccb9589}{angDist}}(0,z);\}}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7004548cdca13a33f3bc6d811f80bc8e}{lumDist}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7004548cdca13a33f3bc6d811f80bc8e}{lumDist}}(\textcolor{keywordtype}{double}\ z)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7004548cdca13a33f3bc6d811f80bc8e}{lumDist}}(0,z);\}}
+\DoxyCodeLine{00090\ \ \ }
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1aa9fafae35b9411487acdda4b6a904b}{d\_coorDist\_dOmo}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ad72ad00b437e97c430a81a08a6c1a23f}{d\_coorDist\_dw}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a689ad6ef9959f8b962b368bf3dc16ea6}{d\_coorDist\_dw1}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ \ \ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a53a32f5a595308acf1839a82204357bf}{DRradius}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ pfrac);}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ab5b37657376b1e61ea22e226f3b51577}{DRradius2}}(\textcolor{keywordtype}{double}\ zo,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00100\ \ \ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a50c6f23f323e9eb7acbc53b5762f3d78}{invCoorDist}}(\textcolor{keywordtype}{double}\ d)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a93811fdbf3734a47839e4a63a31d0f15}{invRadDist}}(\textcolor{keywordtype}{double}\ d)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a368e2e72e8db61b8002abb710f07e8a2}{invComovingDist}}(\textcolor{keywordtype}{double}\ d)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ \ \ }
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a4091c2f33fd2d21bf6153175d16edf06}{scalefactor}}(\textcolor{keywordtype}{double}\ rad)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a750b8ea755173a5c3bb9c5e400a847fb}{Omegam}}(\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a5fda903d6c775682ab09cda5c66a5cfe}{rho\_crit\_comoving}}(\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ \ \ \textcolor{comment}{//double\ drdz\_empty(double\ x);}}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{double}\ drdz(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ \ \ \textcolor{comment}{//double\ adrdz(double\ x)\ const;}}
+\DoxyCodeLine{00111\ \ \ \textcolor{keywordtype}{double}\ drdz\_dark(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ dark\_factor(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00113\ \ \ \textcolor{comment}{//double\ adrdz\_dark(double\ x)\ const;}}
+\DoxyCodeLine{00114\ \ \ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a40e4182a5b1ad349790b412e38928d2d}{delta\_c}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ \ \ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a0483cae597332064632dcafe551ab791}{DeltaVir}}(\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{int}\ caseunit=0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{double}\ Deltao(\textcolor{keywordtype}{double}\ m)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a866c9bce49f640d8f1b975913b18ba2c}{time}}(\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{double}\ nonlinMass(\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{comment}{//\ Stuff\ having\ to\ do\ with\ the\ power\ spectrum}}
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(\textcolor{keywordtype}{double}\ sigma8);}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ac058e962b0293f8f3069e7e925d769c5}{power\_linear}}(\textcolor{keywordtype}{double}\ k,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00129\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a812ab4ab014e260f1befb71185413091}{Dgrowth}}(\textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00130\ \ \ }
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae80d93667c4677f124b20ed6640ffc24}{powerCDMz}}(\textcolor{keywordtype}{double}\ k,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3cf225bb7de948043c5e9ce227629b1b}{psdfdm}}(\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ m,\textcolor{keywordtype}{int}\ caseunit=0);}
+\DoxyCodeLine{00140\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7877ebec64dfcfc6af2c78cff7969eb2}{halo\_bias}}\ (\textcolor{keywordtype}{double}\ m,\ \textcolor{keywordtype}{double}\ z,\ \textcolor{keywordtype}{int}\ t=0);}
+\DoxyCodeLine{00141\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a0a07e3a40bd976746b6a198f748282a4}{stdfdm}}(\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ m,\textcolor{keywordtype}{int}\ caseunit=0);}
+\DoxyCodeLine{00142\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a2e68907f8e9866c5f353ec9bd88e07db}{powerlawdfdm}}(\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ m,\textcolor{keywordtype}{double}\ alpha,\textcolor{keywordtype}{int}\ caseunit=0);}
+\DoxyCodeLine{00143\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_aefccbf1c35cbd2b9a732411483544e4e}{haloNumberDensity}}(\textcolor{keywordtype}{double}\ m,\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{int}\ t,\textcolor{keywordtype}{double}\ alpha\ =\ 0.0);}
+\DoxyCodeLine{00144\ \ \ }
+\DoxyCodeLine{00150\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_adeb92b72113231a46a0a51e4ab73c0af}{CorrelationFunction}}(\textcolor{keywordtype}{double}\ radius,\textcolor{keywordtype}{double}\ redshift}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ k\_max\ =\ 100,\textcolor{keywordtype}{double}\ k\_min\ =\ 1.0e-\/3);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \textcolor{keyword}{struct\ }CorrFunctorType\{}
+\DoxyCodeLine{00154\ \ \ \ \ CorrFunctorType(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *cosmo,\textcolor{keywordtype}{double}\ radius,\textcolor{keywordtype}{double}\ redshift)}
+\DoxyCodeLine{00155\ \ \ \ \ :\ cosmology(cosmo),z(redshift),r(radius)}
+\DoxyCodeLine{00156\ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ norm\ =\ 0.5/PI/PI/(1+z)/(1+z);}
+\DoxyCodeLine{00158\ \ \ \ \ \};}
+\DoxyCodeLine{00159\ \ \ \ \ }
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *cosmology;}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{double}\ z;}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{double}\ r;}
+\DoxyCodeLine{00163\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{double}\ norm;}
+\DoxyCodeLine{00165\ \ \ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{double}\ operator\ ()\ (\textcolor{keywordtype}{double}\ k)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ rk\ =\ r*k;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ jo\ =\ sin(rk)/rk;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rk\ <\ 1.0e-\/3)\ jo\ =\ 1.0;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ norm*jo*k*k*cosmology-\/>\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae80d93667c4677f124b20ed6640ffc24}{powerCDMz}}(k,z);}
+\DoxyCodeLine{00173\ \ \ \ \ \}}
+\DoxyCodeLine{00174\ \ \ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ }
+\DoxyCodeLine{00177\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1127b68c89a89284d80837b3bd9567d5}{haloNumberDensityOnSky}}\ (\textcolor{keywordtype}{double}\ m,\textcolor{keywordtype}{double}\ z1,\textcolor{keywordtype}{double}\ z2,\textcolor{keywordtype}{int}\ t,\textcolor{keywordtype}{double}\ alpha\ =\ 0.0);}
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a9807e0a14dfeb53f396ac16caac30f89}{haloNumberInBufferedCone}}\ (\textcolor{keywordtype}{double}\ mass\ ,\textcolor{keywordtype}{double}\ z1,\textcolor{keywordtype}{double}\ z2,\textcolor{keywordtype}{double}\ fov,\textcolor{keywordtype}{double}\ buffer\ ,\textcolor{keywordtype}{int}\ type\ ,\textcolor{keywordtype}{double}\ alpha=0.0);}
+\DoxyCodeLine{00179\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a9def1c6aa40dbc0f9e18504a800283e6}{haloMassInBufferedCone}}\ (\textcolor{keywordtype}{double}\ mass\ ,\textcolor{keywordtype}{double}\ z1,\textcolor{keywordtype}{double}\ z2,\textcolor{keywordtype}{double}\ fov,\textcolor{keywordtype}{double}\ buffer\ ,\textcolor{keywordtype}{int}\ type\ ,\textcolor{keywordtype}{double}\ alpha=0.0);}
+\DoxyCodeLine{00180\ \ \ }
+\DoxyCodeLine{00181\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a8e5d5ef9af8ea10bf8e1800ebcac5c09}{TopHatVariance}}(\textcolor{keywordtype}{double}\ m)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00182\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_aa6f0e75fa360dde78fb9ae28e541251f}{TopHatVarianceR}}(\textcolor{keywordtype}{double}\ R,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00183\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_aec8546a966a365df3f7b916eff18351f}{TopHatVarianceM}}(\textcolor{keywordtype}{double}\ M,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00184\ \ \ \textcolor{comment}{//double\ gradius(double\ R,double\ rd);}}
+\DoxyCodeLine{00185\ \ \ }
+\DoxyCodeLine{00186\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae3fab86a8d9749f41b2bc7cf54008bee}{getTimefromDeltaC}}(\textcolor{keywordtype}{double}\ dc);}
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ac87824b7c3d5336583a1a960449125a4}{getZfromDeltaC}}(\textcolor{keywordtype}{double}\ dc);}
+\DoxyCodeLine{00188\ \ \ }
+\DoxyCodeLine{00190\ \ \ }
+\DoxyCodeLine{00192\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ac3c0f1336697c6df3dfbaa077e0757bd}{sethubble}}(\textcolor{keywordtype}{double}\ ht)\{\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}}\ =\ ht;\ TFmdm\_set\_cosm();}
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ \ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00194\ \ \ \textcolor{keywordtype}{double}\ gethubble()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}};\}}
+\DoxyCodeLine{00196\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a47a4706dd653ddc9ecab61e661572332}{getHubble}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ 100*\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}}/lightspeed;\}}
+\DoxyCodeLine{00197\ \ \ }
+\DoxyCodeLine{00199\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a79d8eeb8ffc476d54c35063343c24915}{setindex}}(\textcolor{keywordtype}{double}\ nn)\{\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}}\ =\ nn;\ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00200\ \ \ \textcolor{keywordtype}{double}\ getindex()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}};\}}
+\DoxyCodeLine{00201\ \ \ }
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a2a7bdf7db8f2b9bc59b0b7482547ddf0}{setOmega\_matter}}(\textcolor{keywordtype}{double}\ Omega\_matter,\textcolor{keywordtype}{bool}\ FLAT\ =\ \textcolor{keyword}{false})\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a93cc5686643c90adc81007193ba531d6}{Omo}}\ =\ Omega\_matter;\ \textcolor{keywordflow}{if}(FLAT)\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a85123874fa91eb2ec10b3d452b579b4b}{Oml}}\ =\ 1-\/\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a93cc5686643c90adc81007193ba531d6}{Omo}}\ ;\ TFmdm\_set\_cosm();\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordtype}{double}\ getOmega\_matter()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a93cc5686643c90adc81007193ba531d6}{Omo}};\}}
+\DoxyCodeLine{00205\ \ \ }
+\DoxyCodeLine{00207\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a75cd4514bc08d501cf8be5956575e4f5}{setOmega\_lambda}}(\textcolor{keywordtype}{double}\ Omega\_lambda,\textcolor{keywordtype}{bool}\ FLAT\ =\ \textcolor{keyword}{false})\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a85123874fa91eb2ec10b3d452b579b4b}{Oml}}\ =\ Omega\_lambda;\ \ \textcolor{keywordflow}{if}(FLAT)\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a85123874fa91eb2ec10b3d452b579b4b}{Oml}}\ =\ 1-\/\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a93cc5686643c90adc81007193ba531d6}{Omo}}\ ;\ TFmdm\_set\_cosm();\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00208\ \ \ \textcolor{keywordtype}{double}\ getOmega\_lambda()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a85123874fa91eb2ec10b3d452b579b4b}{Oml}};\}}
+\DoxyCodeLine{00209\ \ \ }
+\DoxyCodeLine{00211\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ac76a6b217406eb844e271d00432a6fc3}{setOmega\_baryon}}(\textcolor{keywordtype}{double}\ Omega\_baryon)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_acc366e1a443d30e4b57dc9d5af2c3cab}{Omb}}\ =\ Omega\_baryon;\ TFmdm\_set\_cosm();\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;}
+\DoxyCodeLine{00212\ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \textcolor{keywordtype}{double}\ getOmega\_baryon()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_acc366e1a443d30e4b57dc9d5af2c3cab}{Omb}};\}}
+\DoxyCodeLine{00214\ \ \ }
+\DoxyCodeLine{00216\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a07df35fa8d2895d208385425912e48f7}{setOmega\_neutrino}}(\textcolor{keywordtype}{double}\ Omega\_neutrino)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a441775df563047f61873179c98ca3e53}{Omnu}}\ =\ Omega\_neutrino;\ TFmdm\_set\_cosm();\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ \ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;}
+\DoxyCodeLine{00217\ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \textcolor{keywordtype}{double}\ getOmega\_neutrino()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a441775df563047f61873179c98ca3e53}{Omnu}};\}}
+\DoxyCodeLine{00219\ \ \ }
+\DoxyCodeLine{00221\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1cfb4a1b569388ffe806b79de72d1477}{setNneutrino}}(\textcolor{keywordtype}{double}\ Nneutrino)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a25cde82a4dc5500b22211a07860049a2}{Nnu}}\ =\ Nneutrino;\ TFmdm\_set\_cosm();\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00222\ \ \ \textcolor{keywordtype}{double}\ getNneutrino()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a25cde82a4dc5500b22211a07860049a2}{Nnu}};\}}
+\DoxyCodeLine{00223\ \ \ }
+\DoxyCodeLine{00225\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a53c2c4e3eb5d4b22ae1a4b575ac595c7}{setW}}(\textcolor{keywordtype}{double}\ w)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7bd4b04d29be8dcb73a143916c356545}{ww}}\ =\ w;\ \ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00226\ \ \ \textcolor{keywordtype}{double}\ getW()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7bd4b04d29be8dcb73a143916c356545}{ww}};\}}
+\DoxyCodeLine{00227\ \ \ \textcolor{keywordtype}{void}\ setW1(\textcolor{keywordtype}{double}\ w)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae4266845b8e2b1b1c196b6ff7812211a}{ww1}}\ =\ w;\ \ calc\_interp\_dist();\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00228\ \ \ \textcolor{keywordtype}{double}\ getW1()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae4266845b8e2b1b1c196b6ff7812211a}{ww1}};\}}
+\DoxyCodeLine{00229\ \ \ }
+\DoxyCodeLine{00231\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a92cae469a7024b3f5beeb1f774afeb68}{setdndlnk}}(\textcolor{keywordtype}{double}\ w)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a745ec67ee0dd926d7a7077fadf2e0623}{dndlnk}}\ =\ w;\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(sig8);\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00232\ \ \ \textcolor{keywordtype}{double}\ getdndlnk()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a745ec67ee0dd926d7a7077fadf2e0623}{dndlnk}};\}}
+\DoxyCodeLine{00233\ \ \ }
+\DoxyCodeLine{00235\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a549dc31e2008705ecae089fd5f60f232}{setgamma}}(\textcolor{keywordtype}{double}\ gamm)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a67962681b52d8ba6014df3e499ed8e76}{gamma}}\ =\ gamm;\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00236\ \ \ \textcolor{keywordtype}{double}\ getgamma()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a67962681b52d8ba6014df3e499ed8e76}{gamma}};\}}
+\DoxyCodeLine{00237\ \ \ \textcolor{comment}{//\ If\ physical\ =\ 1\ all\ Omega\ are\ Omega*h\string^2\ otherwise\ they\ have\ the\ usual\ definitions.}}
+\DoxyCodeLine{00238\ \ \ \textcolor{comment}{//\ 2\ gamma\ parameterization\ is\ used\ for\ dark\ energy}}
+\DoxyCodeLine{00239\ \ \ \textcolor{keywordtype}{void}\ setDEtype(\textcolor{keywordtype}{short}\ tt)\{darkenergy\ =\ tt;\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00240\ \ \ \textcolor{keywordtype}{short}\ getDEtype()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ darkenergy;\}}
+\DoxyCodeLine{00241\ \ \ }
+\DoxyCodeLine{00242\ \ \ \textcolor{keywordtype}{void}\ setSigma8(\textcolor{keywordtype}{double}\ my\_sig8)\{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a3f9e7c97607e583ac4b8f6044f052852}{power\_normalize}}(my\_sig8);\ cosmo\_set\ =\ CosmoParamSet::none;\}}
+\DoxyCodeLine{00243\ \ \ \textcolor{keywordtype}{double}\ getSigma8()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ sig8;\}}
+\DoxyCodeLine{00244\ \ \ }
+\DoxyCodeLine{00245\ \ \ }
+\DoxyCodeLine{00246\ \ \ \textcolor{keywordtype}{void}\ dzdangDist(\textcolor{keywordtype}{double}\ D,\textcolor{keywordtype}{double}\ z[],\textcolor{keywordtype}{double}\ dzdD[]);}
+\DoxyCodeLine{00247\ \ \ }
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_adfb16cedaef63f9c5478b8dc0d453de6}{totalMassDensityinHalos}}(\textcolor{keywordtype}{int}\ t,\textcolor{keywordtype}{double}\ alpha,\textcolor{keywordtype}{double}\ m\_min,\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ z1,\textcolor{keywordtype}{double}\ z2);}
+\DoxyCodeLine{00249\ \ \ }
+\DoxyCodeLine{00251\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a0ff9d2c898191502bef4f512e9351f94}{setInterpolation}}(\textcolor{keywordtype}{double}\ z\_interp,\ std::size\_t\ n\_interp);}
+\DoxyCodeLine{00252\ \ \ }
+\DoxyCodeLine{00254\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a4c83495b75f4c2f42daa8d0cd39bae1e}{SigmaCrit}}(\textcolor{keywordtype}{double}\ zlens,\textcolor{keywordtype}{double}\ zsource)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00255\ \ \ }
+\DoxyCodeLine{00256\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00257\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a2bec793c32629d5d8b6ae55ea3725254}{SetConcordenceCosmology}}(CosmoParamSet\ cosmo\_p);}
+\DoxyCodeLine{00258\ \ \ }
+\DoxyCodeLine{00259\ \ \ CosmoParamSet\ cosmo\_set;}
+\DoxyCodeLine{00260\ \ \ }
+\DoxyCodeLine{00261\ \ \ \textcolor{comment}{//\ structure\ rappers\ to\ make\ integration\ thread\ safe}}
+\DoxyCodeLine{00262\ \ \ \textcolor{keyword}{struct\ }drdz\_struct\{}
+\DoxyCodeLine{00263\ \ \ \ \ drdz\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz(x);\}}
+\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00266\ \ \ \};}
+\DoxyCodeLine{00267\ \ \ \textcolor{keyword}{struct\ }drdzdark\_struct\{}
+\DoxyCodeLine{00268\ \ \ \ \ drdzdark\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz\_dark(x);\}}
+\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00271\ \ \ \};}
+\DoxyCodeLine{00272\ \ \ \textcolor{keyword}{struct\ }adrdz\_struct\{}
+\DoxyCodeLine{00273\ \ \ \ \ adrdz\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz(x)/x;\}}
+\DoxyCodeLine{00275\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00276\ \ \ \};}
+\DoxyCodeLine{00277\ \ \ \textcolor{keyword}{struct\ }adrdzdark\_struct\{}
+\DoxyCodeLine{00278\ \ \ \ \ adrdzdark\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz\_dark(x)/x;\}}
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00281\ \ \ \};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \ \ \textcolor{keyword}{struct\ }normL\_struct\{}
+\DoxyCodeLine{00284\ \ \ \ \ normL\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.normL(x);\}}
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cos;}
+\DoxyCodeLine{00287\ \ \ \};}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \textcolor{keywordtype}{double}\ ddrdzdOmo(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00290\ \ \ \textcolor{keywordtype}{double}\ ddrdzdw(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00291\ \ \ \textcolor{keywordtype}{double}\ ddrdzdw1(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00292\ \ \ }
+\DoxyCodeLine{00293\ \ \ \textcolor{keyword}{struct\ }ddrdzdOmo\_struct\{}
+\DoxyCodeLine{00294\ \ \ \ \ ddrdzdOmo\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.ddrdzdOmo(x);\}}
+\DoxyCodeLine{00296\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00297\ \ \ \};}
+\DoxyCodeLine{00298\ \ \ \textcolor{keyword}{struct\ }ddrdzdw\_struct\{}
+\DoxyCodeLine{00299\ \ \ \ \ ddrdzdw\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.ddrdzdw(x);\}}
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00302\ \ \ \};}
+\DoxyCodeLine{00303\ \ \ \textcolor{keyword}{struct\ }ddrdzdw1\_struct\{}
+\DoxyCodeLine{00304\ \ \ \ \ ddrdzdw1\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.ddrdzdw1(x);\}}
+\DoxyCodeLine{00306\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00307\ \ \ \};}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \textcolor{keywordtype}{bool}\ init\_structure\_functions;}
+\DoxyCodeLine{00310\ \ \ }
+\DoxyCodeLine{00312\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}};}
+\DoxyCodeLine{00314\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}};}
+\DoxyCodeLine{00316\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a93cc5686643c90adc81007193ba531d6}{Omo}};}
+\DoxyCodeLine{00318\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a85123874fa91eb2ec10b3d452b579b4b}{Oml}};}
+\DoxyCodeLine{00320\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_acc366e1a443d30e4b57dc9d5af2c3cab}{Omb}};}
+\DoxyCodeLine{00322\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a441775df563047f61873179c98ca3e53}{Omnu}};}
+\DoxyCodeLine{00324\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a25cde82a4dc5500b22211a07860049a2}{Nnu}};}
+\DoxyCodeLine{00326\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a7bd4b04d29be8dcb73a143916c356545}{ww}};}
+\DoxyCodeLine{00328\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae4266845b8e2b1b1c196b6ff7812211a}{ww1}};}
+\DoxyCodeLine{00330\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a745ec67ee0dd926d7a7077fadf2e0623}{dndlnk}};}
+\DoxyCodeLine{00331\ \ \ }
+\DoxyCodeLine{00333\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a67962681b52d8ba6014df3e499ed8e76}{gamma}};}
+\DoxyCodeLine{00334\ \ \ \textcolor{comment}{//\ If\ physical\ =\ 1\ all\ Omega\ are\ Omega*h\string^2\ otherwise\ they\ have\ the\ usual\ definitions.}}
+\DoxyCodeLine{00335\ \ \ \textcolor{comment}{//short\ physical;}}
+\DoxyCodeLine{00336\ \ \ \textcolor{comment}{//\ 2\ gamma\ parameterization\ is\ used\ for\ dark\ energy}}
+\DoxyCodeLine{00337\ \ \ \textcolor{keywordtype}{short}\ darkenergy;}
+\DoxyCodeLine{00338\ \ \ }
+\DoxyCodeLine{00339\ \ \ \textcolor{comment}{/*\ table\ for\ growth\ parameter\ */}}
+\DoxyCodeLine{00340\ \ \ \textcolor{comment}{//std::auto\_ptr<double>\ *aa;}}
+\DoxyCodeLine{00341\ \ \ \textcolor{comment}{//std::auto\_ptr<double>\ *growth;}}
+\DoxyCodeLine{00342\ \ \ \textcolor{comment}{//int\ Ntable;}}
+\DoxyCodeLine{00343\ \ \ }
+\DoxyCodeLine{00344\ \ \ \textcolor{keywordtype}{double}\ A;}
+\DoxyCodeLine{00345\ \ \ \textcolor{keywordtype}{double}\ sig8;\ \ \textcolor{comment}{/*\ do\ not\ access\ these\ normalization\ outside\ */}}
+\DoxyCodeLine{00346\ \ \ }
+\DoxyCodeLine{00347\ \ \ \textcolor{keywordtype}{double}\ Rtophat;}
+\DoxyCodeLine{00348\ \ \ \textcolor{keywordtype}{double}\ ztmp;}
+\DoxyCodeLine{00349\ \ \ }
+\DoxyCodeLine{00350\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a30d7f05551fd03f91ba00217392790f6}{powerEH}}(\textcolor{keywordtype}{double}\ k,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00351\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ac9475a8c3cbaf9f92b52c352d576b121}{powerEHv2}}(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00352\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1616ae2b54a9045667251ec6e73e5ce3}{powerloc}}(\textcolor{keywordtype}{double}\ k,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00353\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a1a219b0653373af634a484e693ae55cc}{npow}}(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00354\ \ \ \textcolor{keywordtype}{double}\ normL(\textcolor{keywordtype}{double}\ lgk);}
+\DoxyCodeLine{00355\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a2f9b55eeff4470b5a6927cece1627fa7}{gradius}}(\textcolor{keywordtype}{double}\ R,\textcolor{keywordtype}{double}\ rd)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00356\ \ \ }
+\DoxyCodeLine{00357\ \ \ \textcolor{keywordtype}{int}\ nbin;\ \ \textcolor{comment}{//\ number\ of\ points\ when\ binning\ to\ interpolate}}
+\DoxyCodeLine{00358\ \ \ std::\ vector<double>\ vDeltaCz,vlz,vt;}
+\DoxyCodeLine{00359\ \ \ \textcolor{keywordtype}{double}\ DpropDz(\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00360\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a761624ec8999ee2743b9687e08e25e23}{dsigdM}}(\textcolor{keywordtype}{double}\ m);}
+\DoxyCodeLine{00361\ \ \ \textcolor{keywordtype}{double}\ timeEarly(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00362\ \ \ \textcolor{keywordtype}{double}\ dNdz(\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00363\ \ \ }
+\DoxyCodeLine{00364\ \ \ \textcolor{keyword}{typedef}\ double\ (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}::*pt2MemFunc)(double)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00365\ \ \ \textcolor{keyword}{typedef}\ double\ (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}::*pt2MemFuncNonConst)(double);}
+\DoxyCodeLine{00366\ \ \ }
+\DoxyCodeLine{00367\ \ \ \textcolor{keywordtype}{double}\ nintegrateDcos(pt2MemFunc\ func,\textcolor{keywordtype}{double}\ a,\textcolor{keywordtype}{double}\ b,\textcolor{keywordtype}{double}\ tols)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00368\ \ \ \textcolor{keywordtype}{double}\ trapzdDcoslocal(pt2MemFunc\ func,\ \textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}},\ \textcolor{keywordtype}{double}\ *s2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00369\ \ \ \textcolor{keywordtype}{void}\ polintD(\textcolor{keywordtype}{double}\ xa[],\ \textcolor{keywordtype}{double}\ ya[],\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}},\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ *y,\ \textcolor{keywordtype}{double}\ *dy)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00370\ \ \ \textcolor{keywordtype}{double}\ nintegrateDcos(pt2MemFuncNonConst\ func,\textcolor{keywordtype}{double}\ a,\textcolor{keywordtype}{double}\ b,\textcolor{keywordtype}{double}\ tols);}
+\DoxyCodeLine{00371\ \ \ \textcolor{keywordtype}{double}\ trapzdDcoslocal(pt2MemFuncNonConst\ func,\ \textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}},\ \textcolor{keywordtype}{double}\ *s2);}
+\DoxyCodeLine{00372\ \ \ \textcolor{keywordtype}{double}\ dfridrDcos(pt2MemFunc\ func,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}},\ \textcolor{keywordtype}{double}\ *err);}
+\DoxyCodeLine{00373\ \ \ \textcolor{keywordtype}{double}\ f4(\textcolor{keywordtype}{double}\ u)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00374\ \ \ }
+\DoxyCodeLine{00375\ \ \ \textcolor{keywordtype}{int}\ ni;}
+\DoxyCodeLine{00376\ \ \ std::vector<float>\ xf,\ wf;}
+\DoxyCodeLine{00377\ \ \ }
+\DoxyCodeLine{00378\ \ \ \textcolor{comment}{//\ The\ parameters\ used\ in\ Eisenstein\ \&\ Hu\ power\ spectrum}}
+\DoxyCodeLine{00379\ \ \ \textcolor{comment}{/*\ in\ powerEH.c\ */}}
+\DoxyCodeLine{00380\ \ \ \textcolor{keywordtype}{short}\ TFmdm\_set\_cosm\_change\_z(\textcolor{keywordtype}{double}\ redshift);}
+\DoxyCodeLine{00381\ \ \ \textcolor{keywordtype}{short}\ TFmdm\_set\_cosm();}
+\DoxyCodeLine{00382\ \ \ \textcolor{keywordtype}{double}\ TFmdm\_onek\_mpc(\textcolor{keywordtype}{double}\ kk);}
+\DoxyCodeLine{00383\ \ \ \textcolor{keywordtype}{double}\ TFmdm\_onek\_hmpc(\textcolor{keywordtype}{double}\ kk);}
+\DoxyCodeLine{00384\ \ \ }
+\DoxyCodeLine{00385\ \ \ \textcolor{keywordtype}{double}\ f\_baryon;\ \textcolor{comment}{//\ Baryon\ fraction}}
+\DoxyCodeLine{00386\ \ \ \textcolor{keywordtype}{double}\ f\_bnu;\ \ \textcolor{comment}{//\ Baryon\ +\ Massive\ Neutrino\ fraction}}
+\DoxyCodeLine{00387\ \ \ \textcolor{keywordtype}{double}\ f\_cb;\ \ \textcolor{comment}{//\ Baryon\ +\ CDM\ fraction}}
+\DoxyCodeLine{00388\ \ \ \textcolor{keywordtype}{double}\ f\_cdm;\ \ \textcolor{comment}{//\ CDM\ fraction}}
+\DoxyCodeLine{00389\ \ \ \textcolor{keywordtype}{double}\ f\_hdm;\ \ \textcolor{comment}{//\ Massive\ Neutrino\ fraction}}
+\DoxyCodeLine{00390\ \ \ }
+\DoxyCodeLine{00391\ \ \ \textcolor{keywordtype}{double}\ alpha\_gamma;\ \ \textcolor{comment}{//\ sqrt(alpha\_nu)}}
+\DoxyCodeLine{00392\ \ \ \textcolor{keywordtype}{double}\ alpha\_nu;\ \ \ \ \ \ \textcolor{comment}{//\ The\ small-\/scale\ suppression}}
+\DoxyCodeLine{00393\ \ \ \textcolor{keywordtype}{double}\ beta\_c;\ \ \ \textcolor{comment}{//\ The\ correction\ to\ the\ log\ in\ the\ small-\/scale}}
+\DoxyCodeLine{00394\ \ \ \textcolor{keywordtype}{double}\ num\_degen\_hdm;\ \ \textcolor{comment}{//\ Number\ of\ degenerate\ massive\ neutrino\ species}}
+\DoxyCodeLine{00395\ \ \ \textcolor{keywordtype}{double}\ growth\_k0;\ \ \ \ \ \ \textcolor{comment}{//\ D\_1(z)\ -\/-\/\ the\ growth\ function\ as\ k-\/>0}}
+\DoxyCodeLine{00396\ \ \ \textcolor{keywordtype}{double}\ growth\_to\_z0;\ \ \textcolor{comment}{//\ D\_1(z)/D\_1(0)\ -\/-\/\ the\ growth\ relative\ to\ z=0}}
+\DoxyCodeLine{00397\ \ \ \textcolor{keywordtype}{double}\ k\_equality;\ \ \textcolor{comment}{//\ The\ comoving\ wave\ number\ of\ the\ horizon\ at\ equality}}
+\DoxyCodeLine{00398\ \ \ \textcolor{keywordtype}{double}\ obhh;\ \ \ \ \ \ \ \textcolor{comment}{//\ Omega\_baryon\ *\ hubble\string^2}}
+\DoxyCodeLine{00399\ \ \ \textcolor{keywordtype}{double}\ omega\_curv;\ \ \textcolor{comment}{//\ =\ 1\ -\/\ omega\_matter\ -\/\ omega\_lambda}}
+\DoxyCodeLine{00400\ \ \ \textcolor{keywordtype}{double}\ omega\_lambda\_z;\ \textcolor{comment}{//\ Omega\_lambda\ at\ the\ given\ redshift}}
+\DoxyCodeLine{00401\ \ \ \textcolor{keywordtype}{double}\ omega\_matter\_z;\ \textcolor{comment}{//\ Omega\_matter\ at\ the\ given\ redshift}}
+\DoxyCodeLine{00402\ \ \ \textcolor{keywordtype}{double}\ omhh;\ \ \ \ \ \ \ \textcolor{comment}{//\ Omega\_matter\ *\ hubble\string^2}}
+\DoxyCodeLine{00403\ \ \ \textcolor{keywordtype}{double}\ onhh;\ \ \ \ \ \ \ \textcolor{comment}{//\ Omega\_hdm\ *\ hubble\string^2}}
+\DoxyCodeLine{00404\ \ \ \textcolor{keywordtype}{double}\ p\_c;\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ correction\ to\ the\ exponent\ before\ drag\ epoch}}
+\DoxyCodeLine{00405\ \ \ \textcolor{keywordtype}{double}\ p\_cb;\ \ \ \ \ \ \ \textcolor{comment}{//\ The\ correction\ to\ the\ exponent\ after\ drag\ epoch}}
+\DoxyCodeLine{00406\ \ \ \textcolor{keywordtype}{double}\ sound\_horizon\_fit;\ \ \textcolor{comment}{//\ The\ sound\ horizon\ at\ the\ drag\ epoch}}
+\DoxyCodeLine{00407\ \ \ \textcolor{keywordtype}{double}\ theta\_cmb;\ \ \ \ \ \ \textcolor{comment}{//\ The\ temperature\ of\ the\ CMB,\ in\ units\ of\ 2.7\ K}}
+\DoxyCodeLine{00408\ \ \ \textcolor{keywordtype}{double}\ y\_drag;\ \ \ \textcolor{comment}{//\ Ratio\ of\ z\_equality\ to\ z\_drag}}
+\DoxyCodeLine{00409\ \ \ \textcolor{keywordtype}{double}\ z\_drag;\ \ \ \textcolor{comment}{//\ Redshift\ of\ the\ drag\ epoch}}
+\DoxyCodeLine{00410\ \ \ \textcolor{keywordtype}{double}\ z\_equality;\ \ \textcolor{comment}{//\ Redshift\ of\ matter-\/radiation\ equality}}
+\DoxyCodeLine{00411\ \ \ }
+\DoxyCodeLine{00412\ \ \ \textcolor{keywordtype}{void}\ setinternals();}
+\DoxyCodeLine{00413\ \ \ \textcolor{comment}{//\ in\ powerEHv2.c}}
+\DoxyCodeLine{00414\ \ \ \textcolor{keywordtype}{void}\ TFset\_parameters(\textcolor{keywordtype}{double}\ omega0hh,\ \textcolor{keywordtype}{double}\ f\_baryon,\ \textcolor{keywordtype}{double}\ Tcmb);}
+\DoxyCodeLine{00415\ \ \ \textcolor{keywordtype}{double}\ TFfit\_onek(\textcolor{keywordtype}{double}\ k,\ \textcolor{keywordtype}{double}\ *tf\_baryon,\ \textcolor{keywordtype}{double}\ *tf\_cdm);}
+\DoxyCodeLine{00416\ \ \ }
+\DoxyCodeLine{00417\ \ \ \textcolor{keywordtype}{double}\ R\_drag;\ \ \textcolor{comment}{//\ Photon-\/baryon\ ratio\ at\ drag\ epoch}}
+\DoxyCodeLine{00418\ \ \ \textcolor{keywordtype}{double}\ R\_equality;\ \textcolor{comment}{//\ Photon-\/baryon\ ratio\ at\ equality\ epoch}}
+\DoxyCodeLine{00419\ \ \ \textcolor{keywordtype}{double}\ sound\_horizon;\ \textcolor{comment}{//\ Sound\ horizon\ at\ drag\ epoch,\ in\ Mpc}}
+\DoxyCodeLine{00420\ \ \ \textcolor{keywordtype}{double}\ k\_silk;\ \ \textcolor{comment}{//\ Silk\ damping\ scale,\ in\ Mpc\string^-\/1}}
+\DoxyCodeLine{00421\ \ \ \textcolor{keywordtype}{double}\ alpha\_c;\ \ \ \ \ \textcolor{comment}{//\ CDM\ suppression}}
+\DoxyCodeLine{00422\ \ \ \textcolor{keywordtype}{double}\ alpha\_b;\ \ \ \ \ \textcolor{comment}{//\ Baryon\ suppression}}
+\DoxyCodeLine{00423\ \ \ \textcolor{keywordtype}{double}\ beta\_b;\ \ \textcolor{comment}{//\ Baryon\ envelope\ shift}}
+\DoxyCodeLine{00424\ \ \ \textcolor{keywordtype}{double}\ beta\_node;\ \textcolor{comment}{//\ Sound\ horizon\ shift}}
+\DoxyCodeLine{00425\ \ \ \textcolor{keywordtype}{double}\ k\_peak;\ \ \textcolor{comment}{//\ Fit\ to\ wavenumber\ of\ first\ peak,\ in\ Mpc\string^-\/1}}
+\DoxyCodeLine{00426\ \ \ }
+\DoxyCodeLine{00427\ \ \ \textcolor{comment}{//\ temporary\ variables\ for\ doing\ interations}}
+\DoxyCodeLine{00428\ \ \ \textcolor{keywordtype}{int}\ tmp\_type;}
+\DoxyCodeLine{00429\ \ \ \textcolor{keywordtype}{double}\ tmp\_alpha;}
+\DoxyCodeLine{00430\ \ \ \textcolor{keywordtype}{double}\ tmp\_mass;}
+\DoxyCodeLine{00431\ \ \ \textcolor{keywordtype}{double}\ tmp\_a;}
+\DoxyCodeLine{00432\ \ \ }
+\DoxyCodeLine{00433\ \ \ \textcolor{comment}{//\ interpolation\ of\ functions}}
+\DoxyCodeLine{00434\ \ \ \textcolor{keywordtype}{double}\ z\_interp;}
+\DoxyCodeLine{00435\ \ \ std::size\_t\ n\_interp;}
+\DoxyCodeLine{00436\ \ \ \textcolor{keywordtype}{void}\ calc\_interp\_dist();}
+\DoxyCodeLine{00437\ \ \ \textcolor{keywordtype}{double}\ interp(\textcolor{keyword}{const}\ std::vector<double>\&\ table,\ \textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00438\ \ \ \textcolor{keywordtype}{double}\ invert(\textcolor{keyword}{const}\ std::vector<double>\&\ table,\ \textcolor{keywordtype}{double}\ f\_z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00439\ \ \ std::vector<double>\ redshift\_interp;}
+\DoxyCodeLine{00440\ \ \ std::vector<double>\ coorDist\_interp;}
+\DoxyCodeLine{00441\ \ \ std::vector<double>\ radDist\_interp;}
+\DoxyCodeLine{00442\ \};}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}};}
+\DoxyCodeLine{00451\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_n_f_w___utility}{NFW\_Utility}}\ \{}
+\DoxyCodeLine{00452\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00453\ \ \ \mbox{\hyperlink{class_n_f_w___utility}{NFW\_Utility}}()\{\}}
+\DoxyCodeLine{00454\ \ \ \mbox{\hyperlink{class_n_f_w___utility}{\string~NFW\_Utility}}()\{\};}
+\DoxyCodeLine{00455\ \ \ }
+\DoxyCodeLine{00456\ \ \ \textcolor{comment}{//\ methods\ for\ NFW\ profile}}
+\DoxyCodeLine{00457\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_acc2dee463cfc4de09d9a50b4ae62b7c3}{NFW\_V200}}(\textcolor{keywordtype}{double}\ M200,\textcolor{keywordtype}{double}\ R200);}
+\DoxyCodeLine{00458\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_abb59792831f69289056504e3d43d7c0f}{NFW\_Vmax}}(\textcolor{keywordtype}{double}\ cons,\textcolor{keywordtype}{double}\ M200,\textcolor{keywordtype}{double}\ R200);}
+\DoxyCodeLine{00459\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_a319d740c16b22216b206f1546a13f025}{NFW\_Vr}}(\textcolor{keywordtype}{double}\ x,\textcolor{keywordtype}{double}\ cons,\textcolor{keywordtype}{double}\ M200,\textcolor{keywordtype}{double}\ R200);}
+\DoxyCodeLine{00460\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_a1f1b3e41d2e04994145018f35ddcc59d}{NFW\_M}}(\textcolor{keywordtype}{double}\ x,\textcolor{keywordtype}{double}\ cons,\textcolor{keywordtype}{double}\ M200);}
+\DoxyCodeLine{00461\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_ae2d3957bf42f0b00a9313600b5967f3e}{NFW\_deltac}}(\textcolor{keywordtype}{double}\ cons);}
+\DoxyCodeLine{00462\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_ab9d4efae34d0856e4383fe3d2f187ada}{NFW\_Concentration}}(\textcolor{keywordtype}{double}\ Vmax,\textcolor{keywordtype}{double}\ M200,\textcolor{keywordtype}{double}\ R200);}
+\DoxyCodeLine{00463\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_a2e3d729d8e8da987cbfab6b9b9e9fa9d}{NFW\_rho}}(\textcolor{keywordtype}{double}\ cons,\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00464\ \ \ }
+\DoxyCodeLine{00465\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_n_f_w___utility_a2698ec2984a756004a4dbb080b63c70a}{match\_nfw}}(\textcolor{keywordtype}{float}\ Vmax,\textcolor{keywordtype}{float}\ R\_half,\textcolor{keywordtype}{float}\ mass,\textcolor{keywordtype}{float}\ *cons,\textcolor{keywordtype}{float}\ *Rsize);}
+\DoxyCodeLine{00466\ \ \ \textcolor{keywordtype}{float}\ Rsize(\textcolor{keywordtype}{float}\ cons,\textcolor{keywordtype}{float}\ Vmax,\textcolor{keywordtype}{float}\ mass);}
+\DoxyCodeLine{00467\ \ \ \textcolor{keywordtype}{float}\ g\_func(\textcolor{keywordtype}{float}\ x);}
+\DoxyCodeLine{00468\ \ \ }
+\DoxyCodeLine{00469\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00470\ \ \ \textcolor{keywordtype}{float}\ Vmax,R\_half,mass;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00471\ \ \ }
+\DoxyCodeLine{00472\ \ \ \textcolor{keyword}{typedef}\ float\ (\mbox{\hyperlink{class_n_f_w___utility}{NFW\_Utility}}::*MemFunc)(float);}
+\DoxyCodeLine{00473\ \ \ \textcolor{keywordtype}{float}\ zbrentD(MemFunc\ func,\ \textcolor{keywordtype}{float}\ a,\textcolor{keywordtype}{float}\ b,\textcolor{keywordtype}{float}\ tols);}
+\DoxyCodeLine{00474\ \ \ \textcolor{keywordtype}{float}\ nfwfunc(\textcolor{keywordtype}{float}\ cons);}
+\DoxyCodeLine{00475\ \ \ \textcolor{keywordtype}{float}\ funcforconcentration(\textcolor{keywordtype}{float}\ cons);}
+\DoxyCodeLine{00476\ \};}
+\DoxyCodeLine{00477\ }
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00480\ \textcolor{keywordtype}{double}\ drdz\_wrapper(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{void}\ *params);}
+\DoxyCodeLine{00481\ \textcolor{keywordtype}{double}\ drdz\_dark\_wrapper(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{void}\ *params);}
+\DoxyCodeLine{00482\ \textcolor{keywordtype}{double}\ Deltao\_wrapper(\textcolor{keywordtype}{double}\ m,\ \textcolor{keywordtype}{void}\ *params);}
+\DoxyCodeLine{00483\ }
+\DoxyCodeLine{00484\ \textcolor{preprocessor}{\#define\ cosmo\_declare}}
+\DoxyCodeLine{00485\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00487\ \textcolor{comment}{/***\ in\ cosmo.c\ ***/}}
+\DoxyCodeLine{00488\ \textcolor{keywordtype}{int}\ cosmo\_compare(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos1,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos2);}
+\DoxyCodeLine{00489\ \textcolor{keywordtype}{void}\ cosmo\_copy(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos1,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos2);}
+\DoxyCodeLine{00490\ \textcolor{keywordtype}{void}\ ders(\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ Da[],\textcolor{keywordtype}{double}\ dDdz[]);}
+\DoxyCodeLine{00491\ \textcolor{keywordtype}{void}\ dir(\textcolor{keywordtype}{double}\ r,\textcolor{keywordtype}{double}\ a[],\textcolor{keywordtype}{double}\ dadr[]);}
+\DoxyCodeLine{00492\ \textcolor{keywordtype}{double}\ arctanh(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00493\ \textcolor{keywordtype}{double}\ fmini(\textcolor{keywordtype}{double}\ a,\textcolor{keywordtype}{double}\ b);}
+\DoxyCodeLine{00494\ \textcolor{keywordtype}{double}\ fmaxi(\textcolor{keywordtype}{double}\ a,\textcolor{keywordtype}{double}\ b);}
+\DoxyCodeLine{00495\ \textcolor{keywordtype}{double}\ **dmatrixcos(\textcolor{keywordtype}{long}\ nrl,\ \textcolor{keywordtype}{long}\ nrh,\ \textcolor{keywordtype}{long}\ ncl,\ \textcolor{keywordtype}{long}\ nch);}
+\DoxyCodeLine{00496\ \textcolor{keywordtype}{void}\ free\_dmatrixcos(\textcolor{keywordtype}{double}\ **m,\ \textcolor{keywordtype}{long}\ nrl,\ \textcolor{keywordtype}{long}\ nrh,\ \textcolor{keywordtype}{long}\ ncl,\ \textcolor{keywordtype}{long}\ nch);}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \textcolor{comment}{/*\ in\ nfw.c\ */}}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ \textcolor{comment}{/*\ in\ powerEHv2.c\ */}}
+\DoxyCodeLine{00501\ \textcolor{keywordtype}{void}\ TFset\_parameters(\textcolor{keywordtype}{double}\ omega0hh,\ \textcolor{keywordtype}{double}\ f\_baryon,\ \textcolor{keywordtype}{double}\ Tcmb);}
+\DoxyCodeLine{00502\ \textcolor{keywordtype}{double}\ TFfit\_onek(\textcolor{keywordtype}{double}\ k,\ \textcolor{keywordtype}{double}\ *tf\_baryon,\ \textcolor{keywordtype}{double}\ *tf\_cdm);}
+
+\end{DoxyCode}

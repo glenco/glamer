@@ -1,0 +1,759 @@
+\doxysection{Kist.\+h}
+\hypertarget{_kist_8h_source}{}\label{_kist_8h_source}\index{SLsimLib/include/Kist.h@{SLsimLib/include/Kist.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Kist.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 2,\ 2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ R.B.\ Metcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ kisttypes\_declare}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ kisttypes\_declare}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\#include\ "{}pointlist.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kist_unit}{KistUnit}}\{}
+\DoxyCodeLine{00017\ \ T\ *\ data;}
+\DoxyCodeLine{00018\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kist_unit}{KistUnit}}<T>\ *next;}
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kist_unit}{KistUnit}}<T>\ *prev;}
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//typedef\ struct\ Point\ Data;\ \ //\ change\ this\ to\ make\ a\ kist\ of\ other\ objects}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>}
+\DoxyCodeLine{00076\ \textcolor{keyword}{struct\ }Kist\{}
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ Kist(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_blocksize\ =\ 10000\ \ \ }
+\DoxyCodeLine{00080\ \ \ \ )\{}
+\DoxyCodeLine{00081\ \ \ \ \ top=NULL;}
+\DoxyCodeLine{00082\ \ \ \ \ Number=0;}
+\DoxyCodeLine{00083\ \ \ \ \ bottom\ =\ top;}
+\DoxyCodeLine{00084\ \ \ \ \ current\ =\ top;}
+\DoxyCodeLine{00085\ \ \ \ \ blocksize\ =\ my\_blocksize;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ reserve\_top\ =\ NULL;}
+\DoxyCodeLine{00088\ \ \ \ \ Nreserve\ =\ 0;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00091\ \ \};}
+\DoxyCodeLine{00092\ \ Kist(Kist\ \&a)\{}
+\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *tmp\_current;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ top=NULL;}
+\DoxyCodeLine{00096\ \ \ Number=0;}
+\DoxyCodeLine{00097\ \ \ bottom\ =\ top;}
+\DoxyCodeLine{00098\ \ \ current\ =\ top;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ tmp\_current\ =\ a.current;}
+\DoxyCodeLine{00101\ \ \ a.MoveToTop();}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00103\ \ \ \ InsertAfterCurrent(a.getCurrent());}
+\DoxyCodeLine{00104\ \ \ \ Down();}
+\DoxyCodeLine{00105\ \ \ \}\textcolor{keywordflow}{while}(a.Down());}
+\DoxyCodeLine{00106\ \ \ assert(a.Nunits()\ ==\ Nunits());}
+\DoxyCodeLine{00107\ \ \ a.current\ =\ tmp\_current;}
+\DoxyCodeLine{00108\ \ \};}
+\DoxyCodeLine{00109\ \ \ }
+\DoxyCodeLine{00110\ \ \string~Kist()\{}
+\DoxyCodeLine{00111\ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *units;}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordflow}{while}(heads.size()\ >\ 0)\{}
+\DoxyCodeLine{00113\ \ \ \ units\ =\ heads.back();}
+\DoxyCodeLine{00114\ \ \ \ heads.pop\_back();}
+\DoxyCodeLine{00115\ \ \ \ \textcolor{keyword}{delete}[]\ units;}
+\DoxyCodeLine{00116\ \ \ \}}
+\DoxyCodeLine{00117\ \ \};}
+\DoxyCodeLine{00118\ \ \ }
+\DoxyCodeLine{00119\ \ \ Kist\ \&\ operator=(\textcolor{keyword}{const}\ Kist\ \&a)\{}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&a)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00121\ \ \ \ \ copy(a);}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00123\ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \textcolor{keyword}{inline}\ Data\ *getCurrent();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \textcolor{keywordtype}{void}\ InsertAfterCurrent(Data\ *\ data);}
+\DoxyCodeLine{00128\ \ \textcolor{keywordtype}{void}\ InsertBeforeCurrent(Data\ *\ data);}
+\DoxyCodeLine{00129\ \ Data\ *TakeOutCurrent();}
+\DoxyCodeLine{00130\ \ \textcolor{keywordtype}{void}\ Empty();}
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{void}\ Clear();}
+\DoxyCodeLine{00132\ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \textcolor{comment}{//void\ FreeAll();}}
+\DoxyCodeLine{00134\ \ \textcolor{keywordtype}{void}\ Fill(Data\ *\ data,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N);}
+\DoxyCodeLine{00135\ \ \textcolor{keywordtype}{void}\ SwapCurrentWithBottom();}
+\DoxyCodeLine{00136\ \ \textcolor{keywordtype}{void}\ MoveCurrentToBottom();}
+\DoxyCodeLine{00137\ \ \textcolor{keywordtype}{void}\ MoveCurrentToTop();}
+\DoxyCodeLine{00138\ \ \textcolor{keywordtype}{void}\ copy(Kist<Data>\ *kist);}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{void}\ copy(\textcolor{keyword}{const}\ Kist<Data>\ \&kist);}
+\DoxyCodeLine{00140\ \ \ \textcolor{keywordtype}{void}\ copy(std::vector<Data\ *>\ \&vector);}
+\DoxyCodeLine{00141\ \ \ \textcolor{keywordtype}{void}\ add(Kist<Data>\ *kist);}
+\DoxyCodeLine{00142\ \ \ \textcolor{keywordtype}{void}\ add(\textcolor{keyword}{const}\ Kist<Data>\ \&kist);}
+\DoxyCodeLine{00143\ \ \ \textcolor{keywordtype}{void}\ test\_iterator();}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \textcolor{comment}{//\ movement}}
+\DoxyCodeLine{00146\ \ \textcolor{keywordtype}{bool}\ JumpDown(\textcolor{keywordtype}{int}\ jump);}
+\DoxyCodeLine{00147\ \ \textcolor{keywordtype}{bool}\ Down();}
+\DoxyCodeLine{00148\ \ \textcolor{keywordtype}{bool}\ Up();}
+\DoxyCodeLine{00149\ \ \textcolor{keywordtype}{bool}\ MoveToTop();}
+\DoxyCodeLine{00150\ \ \textcolor{keywordtype}{bool}\ MoveToBottom();}
+\DoxyCodeLine{00151\ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{class\ }iterator\{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ iterator()\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ unit\ =\ NULL;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ iterator(\textcolor{keyword}{const}\ iterator\ \&my\_it\ )\{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ unit\ =\ my\_it.unit;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ Data\ \&\ operator*()\{\textcolor{keywordflow}{return}\ *(unit-\/>data);\}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ atend()\{\textcolor{keywordflow}{return}\ (unit==NULL);\}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ iterator\&\ operator++()\{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unit\ ==\ NULL\ )\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ unit\ =\ unit-\/>prev;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ Data\ *\ operator-\/>()\{\textcolor{keywordflow}{return}\ unit-\/>data;\}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ iterator\ operator++(\textcolor{keywordtype}{int})\{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unit\ ==\ NULL)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ iterator\ tmp\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ unit\ =\ unit-\/>prev;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ iterator\&\ operator-\/-\/()\{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unit\ ==\ NULL\ )\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ unit\ =\ unit-\/>next;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ iterator\ operator-\/-\/(\textcolor{keywordtype}{int})\{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unit\ ==\ NULL)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ iterator\ tmp\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ unit\ =\ unit-\/>next;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ iterator\&\ operator=(\mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *my\_unit)\{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ unit\ =\ my\_unit;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ iterator\&\ operator=(\textcolor{keyword}{const}\ iterator\ \&my\_it)\{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&my\_it)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ unit\ =\ my\_it.unit;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ iterator\ my\_it)\{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (unit\ ==\ my\_it.unit);}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ iterator\ my\_it)\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (unit\ !=\ my\_it.unit);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_kist_unit}{KistUnit}}<Data>\ *unit;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \textcolor{comment}{//struct\ KistUnit<Data>\ offbot2;}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \};}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \textcolor{comment}{//\ \ void\ SetCurrentIt(iterator\ it)\{current\ =\ it.getUnit();\}}}
+\DoxyCodeLine{00231\ \textcolor{comment}{//\ \ \ \ void\ SetCurrentIt(iterator\ it)\{current\ =\ it.unit;\}}}
+\DoxyCodeLine{00232\ \ \ \ \ }
+\DoxyCodeLine{00234\ \ \ Kist<Data>::iterator\ CurrentIt()\{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ Kist<Data>::iterator\ it\ ;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ it\ =\ current;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00238\ \ \ \}}
+\DoxyCodeLine{00240\ \ \ Kist<Data>::iterator\ TopIt()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ Kist<Data>::iterator\ it\ ;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ it\ =\ top;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00244\ \ \ \}}
+\DoxyCodeLine{00246\ \ \ Kist<Data>::iterator\ BottomIt()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00247\ \ \ \ \ Kist<Data>::iterator\ it;}
+\DoxyCodeLine{00248\ \ \ \ \ it\ =\ bottom;}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00250\ \ \ \}}
+\DoxyCodeLine{00251\ \ \ }
+\DoxyCodeLine{00252\ \ \ Kist<Data>::iterator\ begin()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00253\ \ \ \ \ Kist<Data>::iterator\ it;}
+\DoxyCodeLine{00254\ \ \ \ \ it\ =\ bottom;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00256\ \ \ \}}
+\DoxyCodeLine{00257\ \ \ }
+\DoxyCodeLine{00258\ \ \ Kist<Data>::iterator\ end()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00259\ \ \ \ \ Kist<Data>::iterator\ it;}
+\DoxyCodeLine{00260\ \ \ \ \ it\ =\ NULL;}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{00262\ \ \ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \textcolor{comment}{//\ status}}
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Nunits()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Number;\}}
+\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ size()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Number;\}}
+\DoxyCodeLine{00269\ \ \textcolor{keywordtype}{bool}\ AtTop();}
+\DoxyCodeLine{00270\ \ \textcolor{keywordtype}{bool}\ AtBottom();}
+\DoxyCodeLine{00271\ \ \textcolor{keywordtype}{void}\ Print();}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \textcolor{keywordtype}{void}\ TranformPlanes();}
+\DoxyCodeLine{00274\ \ \textcolor{keywordtype}{bool}\ AreDataUnique();}
+\DoxyCodeLine{00275\ \ \ \textcolor{keywordtype}{void}\ SetInImage(Boo\ value);}
+\DoxyCodeLine{00276\ \ \ \textcolor{comment}{//\ check\ is\ all\ in\_image\ flags\ are\ set\ to\ value}}
+\DoxyCodeLine{00277\ \ \ \textcolor{keywordtype}{bool}\ CheckInImage(Boo\ value);}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00280\ \ \ \textcolor{keywordtype}{bool}\ OffBottom()\{}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{return}\ (current\ ==\ \&offbot);}
+\DoxyCodeLine{00282\ \ \ \}}
+\DoxyCodeLine{00283\ \ \ }
+\DoxyCodeLine{00285\ \ Data\ *operator*()\{\textcolor{keywordflow}{return}\ getCurrent();\}}
+\DoxyCodeLine{00287\ \ \textcolor{keywordtype}{bool}\ operator++()\{\textcolor{keywordflow}{return}\ Up();\}}
+\DoxyCodeLine{00289\ \ \textcolor{keywordtype}{bool}\ operator-\/-\/()\{\textcolor{keywordflow}{return}\ Down();\}}
+\DoxyCodeLine{00291\ \ \textcolor{keywordtype}{bool}\ operator++(\textcolor{keywordtype}{int})\{\textcolor{keywordflow}{return}\ Up();\}}
+\DoxyCodeLine{00293\ \ \textcolor{keywordtype}{bool}\ operator-\/-\/(\textcolor{keywordtype}{int})\{\textcolor{keywordflow}{return}\ Down();\}}
+\DoxyCodeLine{00294\ \ \ }
+\DoxyCodeLine{00296\ \ \ std::vector<Data\ *>\ copytovector()\{}
+\DoxyCodeLine{00297\ \ \ \ \ std::vector<Data\ *>\ vec(Number);}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \ \ \ Kist<Data>::iterator\ it=TopIt();}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;!(it.atend())\ ;-\/-\/it,++i)\{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ vec[i]\ =\ \&(*it);}
+\DoxyCodeLine{00302\ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{return}\ vec;}
+\DoxyCodeLine{00305\ \ \ \}}
+\DoxyCodeLine{00306\ \ \ }
+\DoxyCodeLine{00307\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *\ pop\_from\_reserve();}
+\DoxyCodeLine{00310\ \ \textcolor{keywordtype}{void}\ push\_to\_reserve(\mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00312\ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Number;}
+\DoxyCodeLine{00313\ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ blocksize;}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ std::vector<KistUnit<Data>\ *>\ heads;}
+\DoxyCodeLine{00316\ \ \textcolor{comment}{//Unit\ *units;}}
+\DoxyCodeLine{00317\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *reserve\_top;}
+\DoxyCodeLine{00318\ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Nreserve;}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *top;}
+\DoxyCodeLine{00321\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *bottom;}
+\DoxyCodeLine{00322\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *current;}
+\DoxyCodeLine{00323\ \ \ }
+\DoxyCodeLine{00324\ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ offbot;}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \};\textcolor{comment}{//\ Kist;}}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \textcolor{comment}{//typedef\ struct\ Kist\ *\ Kist\ *;}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00333\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::Empty()\{}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \textcolor{keywordflow}{while}(Number\ >\ 0)\ TakeOutCurrent();}
+\DoxyCodeLine{00336\ \ \textcolor{comment}{//Number\ =\ 0;}}
+\DoxyCodeLine{00337\ \ \textcolor{comment}{//top\ =\ bottom\ =\ current\ =\ NULL;}}
+\DoxyCodeLine{00338\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00339\ \}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00344\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::Clear()\{}
+\DoxyCodeLine{00345\ \ \ std::list<Data\ *>\ list;}
+\DoxyCodeLine{00346\ \ \ Data*\ point;}
+\DoxyCodeLine{00347\ \ \ }
+\DoxyCodeLine{00348\ \ \textcolor{keywordflow}{while}(Number\ >\ 0)\{}
+\DoxyCodeLine{00349\ \ \ \ \ point\ =\ TakeOutCurrent();}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keywordflow}{if}(point-\/>head)\ list.push\_back(point);}
+\DoxyCodeLine{00351\ \ \ \}}
+\DoxyCodeLine{00352\ \ \ \textcolor{keywordflow}{while}(list.size()\ >\ 0)\{}
+\DoxyCodeLine{00353\ \ \ \ \ point\ =\ list.back();}
+\DoxyCodeLine{00354\ \ \ \ \ list.pop\_back();}
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keyword}{delete}\ []\ point;}
+\DoxyCodeLine{00356\ \ \ \}}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00359\ \}}
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00362\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *\ Kist<Data>::pop\_from\_reserve()\{}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \textcolor{keywordflow}{if}(Nreserve\ <=\ 1)\{}
+\DoxyCodeLine{00365\ \ \ \textcolor{comment}{//\ expand\ reservoir\ of\ Units\ for\ later\ use}}
+\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *units\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}[blocksize];}
+\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i=0;i<blocksize-\/1;++i)\ units[i].next\ =\ \&units[i+1];}
+\DoxyCodeLine{00368\ \ \ \ \ units[blocksize-\/1].next\ =\ NULL;}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ heads.push\_back(units);\ \ \textcolor{comment}{//\ keep\ list\ of\ first\ point\ in\ each\ block\ of\ memory}}
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keywordflow}{if}(Nreserve\ ==\ 1)\ reserve\_top-\/>next\ =\ units;}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keywordflow}{else}\ reserve\_top\ =\ units;}
+\DoxyCodeLine{00373\ \ \ \ \ Nreserve\ +=\ blocksize;}
+\DoxyCodeLine{00374\ \ \}}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00376\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit\ =\ reserve\_top;}
+\DoxyCodeLine{00377\ \ reserve\_top\ =\ unit-\/>next;}
+\DoxyCodeLine{00378\ \ -\/-\/Nreserve;}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00380\ \ \textcolor{keywordflow}{return}\ unit;}
+\DoxyCodeLine{00381\ \}}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00384\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::push\_to\_reserve(\mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit)\{}
+\DoxyCodeLine{00385\ \ assert(reserve\_top);}
+\DoxyCodeLine{00386\ \ assert(Nreserve\ >\ 0);}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \ unit-\/>next\ =\ reserve\_top;}
+\DoxyCodeLine{00389\ \ reserve\_top\ =\ unit;}
+\DoxyCodeLine{00390\ \ ++Nreserve;}
+\DoxyCodeLine{00391\ \}}
+\DoxyCodeLine{00393\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::AtTop()\{}
+\DoxyCodeLine{00394\ \ \textcolor{keywordflow}{if}(current==top)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00395\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00396\ \}}
+\DoxyCodeLine{00398\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::AtBottom()\{}
+\DoxyCodeLine{00399\ \ \textcolor{keywordflow}{if}(current==bottom)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00400\ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00401\ \}}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00404\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::InsertAfterCurrent(Data\ *data)\{}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00406\ \ \ \ \ assert(data);}
+\DoxyCodeLine{00407\ \ \ \ \ assert(data-\/>x);}
+\DoxyCodeLine{00408\ \ \ \ \ assert(data-\/>gridsize\ >=\ 0);}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{comment}{//assert(current\ !=\ \&offbot);}}
+\DoxyCodeLine{00410\ \ \ }
+\DoxyCodeLine{00411\ \ \ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit\ =\ pop\_from\_reserve();}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \ \ \ \ unit-\/>data\ =\ data;}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keywordflow}{if}(Number\ >\ 0)\{}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ assert(current);}
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current\ ==\ \&offbot)\ current\ =\ bottom;}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ unit-\/>prev\ =\ current;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ unit-\/>next\ =\ current-\/>next;}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current\ ==\ bottom)\ bottom\ =\ unit;}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ current-\/>next-\/>prev\ =\ unit;}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ current-\/>next\ =\ unit;}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unit\ ==\ bottom)\ unit-\/>next\ =\ NULL;}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00428\ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \ \textcolor{comment}{//\ empty\ kist\ case}}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ current=unit;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ top=unit;}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ bottom=unit;}
+\DoxyCodeLine{00432\ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ unit-\/>prev\ =\ NULL;}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ unit-\/>next\ =\ NULL;}
+\DoxyCodeLine{00435\ \ \ \ \ \}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \ \ Number++;}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00439\ \}}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00442\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::InsertBeforeCurrent(Data\ *data)\{}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \ assert(data);}
+\DoxyCodeLine{00445\ \ \ assert(data-\/>x);}
+\DoxyCodeLine{00446\ \ \ assert(data-\/>gridsize\ >=\ 0);}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \ \ \textcolor{comment}{//Unit\ *unit\ =\ (Unit\ *)malloc(sizeof(Unit));}}
+\DoxyCodeLine{00449\ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit\ =\ pop\_from\_reserve();}
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ \ unit-\/>data=data;}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordflow}{if}(Number\ >\ 0)\{}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ assert(current);}
+\DoxyCodeLine{00455\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current\ ==\ \&offbot)\ current=bottom;}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ }
+\DoxyCodeLine{00458\ \ \ \ \ \ \ unit-\/>prev=current-\/>prev;}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ unit-\/>next=current;}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current\ ==\ top)\ top=unit;}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ current-\/>prev-\/>next=unit;}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ current-\/>prev=unit;}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ }
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unit\ ==\ top)\ unit-\/>prev\ =\ NULL;}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00466\ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \ \textcolor{comment}{/*\ empty\ kist\ case\ */}}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ current=unit;}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ top=unit;}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ bottom=unit;}
+\DoxyCodeLine{00470\ }
+\DoxyCodeLine{00471\ \ \ \ \ \ \ unit-\/>prev\ =\ NULL;}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ unit-\/>next\ =\ NULL;}
+\DoxyCodeLine{00473\ \ \ \ \ \}}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ \ \ \ \ Number++;}
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00477\ \}}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00480\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::SwapCurrentWithBottom()\{}
+\DoxyCodeLine{00481\ }
+\DoxyCodeLine{00482\ \ \ \textcolor{keywordflow}{if}(Number\ ==\ 0\ ||\ current==\&offbot)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00483\ \ Data\ *data;}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ data=current-\/>data;}
+\DoxyCodeLine{00486\ \ current-\/>data=bottom-\/>data;}
+\DoxyCodeLine{00487\ \ bottom-\/>data=data;}
+\DoxyCodeLine{00488\ \ Up();}
+\DoxyCodeLine{00489\ \}}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00493\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::MoveCurrentToBottom()\{}
+\DoxyCodeLine{00494\ \ \ }
+\DoxyCodeLine{00495\ \ \ \textcolor{keywordflow}{if}(Number\ ==\ 0\ ||\ current==\&offbot)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00496\ \ Data\ *data\ =\ TakeOutCurrent();}
+\DoxyCodeLine{00497\ \ MoveToBottom();}
+\DoxyCodeLine{00498\ \ InsertAfterCurrent(data);}
+\DoxyCodeLine{00499\ \ Down();}
+\DoxyCodeLine{00500\ \}}
+\DoxyCodeLine{00502\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::MoveCurrentToTop()\{}
+\DoxyCodeLine{00503\ \ \ }
+\DoxyCodeLine{00504\ \ \ \textcolor{keywordflow}{if}(Number\ ==\ 0\ ||\ current==\&offbot)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00505\ \ Data\ *data\ =\ TakeOutCurrent();}
+\DoxyCodeLine{00506\ \ MoveToTop();}
+\DoxyCodeLine{00507\ \ InsertBeforeCurrent(data);}
+\DoxyCodeLine{00508\ \ Up();}
+\DoxyCodeLine{00509\ \}}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00516\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ Data\ *Kist<Data>::TakeOutCurrent()\{}
+\DoxyCodeLine{00517\ }
+\DoxyCodeLine{00518\ \ \ \ \ Data\ *data;}
+\DoxyCodeLine{00519\ \ \ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit;}
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordflow}{if}(\ Number\ <=\ 0\ )\ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00522\ \ \ }
+\DoxyCodeLine{00523\ \ \ \ \ \textcolor{keywordflow}{if}(\ current\ ==\ \&offbot\ )\ current\ =\ bottom;}
+\DoxyCodeLine{00524\ }
+\DoxyCodeLine{00525\ \ \ \ \ assert(current);}
+\DoxyCodeLine{00526\ \ \ \ \ assert(top);}
+\DoxyCodeLine{00527\ \ \ \ \ assert(bottom);}
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00529\ \ \ \ \ data\ =\ current-\/>data;}
+\DoxyCodeLine{00530\ \ \ \ \ unit\ =\ current;}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keywordflow}{if}(top\ ==\ bottom)\{\ \ \textcolor{comment}{/*\ last\ data\ */}}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ current=\&offbot;}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ top=NULL;}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ bottom=NULL;}
+\DoxyCodeLine{00536\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(current==top)\{}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ top=top-\/>next;}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ current=top;}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ top-\/>prev=NULL;}
+\DoxyCodeLine{00540\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(current==bottom)\{}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ bottom=bottom-\/>prev;}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ current=bottom;}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ bottom-\/>next=NULL;}
+\DoxyCodeLine{00544\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ current-\/>prev-\/>next=current-\/>next;}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ current-\/>next-\/>prev=current-\/>prev;}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ current=current-\/>prev;}
+\DoxyCodeLine{00548\ \ \ \ \ \}}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \ \ \ \ push\_to\_reserve(unit);}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{comment}{//std::free(unit);}}
+\DoxyCodeLine{00552\ \ \ \ \ Number-\/-\/;}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00555\ \}}
+\DoxyCodeLine{00557\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::JumpDown(\textcolor{keywordtype}{int}\ jump)\{}
+\DoxyCodeLine{00558\ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00559\ \ \textcolor{keywordtype}{bool}\ ans\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00560\ }
+\DoxyCodeLine{00561\ \ \textcolor{keywordflow}{if}(jump\ >\ 0)\ \textcolor{keywordflow}{for}(i=0;i<jump;++i)\ ans=Down();}
+\DoxyCodeLine{00562\ \ \textcolor{keywordflow}{if}(jump\ <\ 0)\ \textcolor{keywordflow}{for}(i=0;i<abs(jump);++i)\ ans=Up();}
+\DoxyCodeLine{00563\ \ \textcolor{keywordflow}{return}\ ans;}
+\DoxyCodeLine{00564\ \}}
+\DoxyCodeLine{00566\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::Down()\{}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00568\ \ \textcolor{keywordflow}{if}(Number\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00569\ \ \textcolor{keywordflow}{if}(current==bottom\ ||\ current\ ==\ \&offbot)\{}
+\DoxyCodeLine{00570\ \ \ \ \ current\ =\ \&offbot;}
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00572\ \ \ \}}
+\DoxyCodeLine{00573\ \ current=current-\/>next;}
+\DoxyCodeLine{00574\ }
+\DoxyCodeLine{00575\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00576\ \}}
+\DoxyCodeLine{00578\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::Up()\{}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ \ \ \textcolor{keywordflow}{if}(current\ ==\ \&offbot)\ current=bottom;}
+\DoxyCodeLine{00581\ \ \textcolor{keywordflow}{if}(Number\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00582\ \ \textcolor{keywordflow}{if}(current==top)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00583\ \ current=current-\/>prev;}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00586\ \}}
+\DoxyCodeLine{00588\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::MoveToTop()\{}
+\DoxyCodeLine{00589\ \ \textcolor{keywordflow}{if}(!Number)\{current\ =\ \&offbot;\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\}}
+\DoxyCodeLine{00590\ \ current\ =\ top;}
+\DoxyCodeLine{00591\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00592\ \}}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00595\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::MoveToBottom()\{}
+\DoxyCodeLine{00596\ \ \textcolor{keywordflow}{if}(!Number)\{current=\&offbot;\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\}}
+\DoxyCodeLine{00597\ \ current\ =\ bottom;}
+\DoxyCodeLine{00598\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00599\ \}}
+\DoxyCodeLine{00600\ }
+\DoxyCodeLine{00602\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::Fill(Data\ *data\_array,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N)\{}
+\DoxyCodeLine{00603\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i;}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \ \ \ \textcolor{keywordflow}{for}(i=1;i<N;++i)\{}
+\DoxyCodeLine{00606\ \ \ \ \ InsertAfterCurrent(\&(data\_array[i]));}
+\DoxyCodeLine{00607\ \ \ \ \ Kist<Data>::Down();}
+\DoxyCodeLine{00608\ \ \ \}}
+\DoxyCodeLine{00609\ \}}
+\DoxyCodeLine{00610\ \textcolor{comment}{/*********************************/}}
+\DoxyCodeLine{00611\ \textcolor{comment}{/*\ \ data\ extraction\ routines\ */}}
+\DoxyCodeLine{00612\ \textcolor{comment}{/*********************************/}}
+\DoxyCodeLine{00614\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keyword}{inline}\ Data\ *\ Kist<Data>::getCurrent()\{}
+\DoxyCodeLine{00615\ \ \ \textcolor{keywordflow}{if}(Number\ ==\ 0\ ||\ current\ ==\ NULL)\ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{00616\ \ \ \textcolor{keywordflow}{if}(current\ ==\ \&offbot)\ current\ =\ bottom;}
+\DoxyCodeLine{00617\ \ \textcolor{keywordflow}{return}\ current-\/>data;}
+\DoxyCodeLine{00618\ \}}
+\DoxyCodeLine{00619\ \textcolor{comment}{/*********************************}}
+\DoxyCodeLine{00620\ \textcolor{comment}{\ *\ specific\ to\ image\ points}}
+\DoxyCodeLine{00621\ \textcolor{comment}{\ *\ ******************************/}}
+\DoxyCodeLine{00625\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::TranformPlanes()\{}
+\DoxyCodeLine{00626\ }
+\DoxyCodeLine{00627\ \ \textcolor{keywordflow}{if}(Number\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00628\ \ MoveToTop();}
+\DoxyCodeLine{00629\ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00630\ \ \ assert(current-\/>data);}
+\DoxyCodeLine{00631\ \ \ assert(current-\/>data-\/>image);}
+\DoxyCodeLine{00632\ \ \ current-\/>data\ =\ current-\/>data-\/>image;}
+\DoxyCodeLine{00633\ \ \}\textcolor{keywordflow}{while}(Down());}
+\DoxyCodeLine{00634\ }
+\DoxyCodeLine{00635\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00636\ \}}
+\DoxyCodeLine{00638\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::Print()\{}
+\DoxyCodeLine{00639\ \ std::cout\ <<\ Nunits()\ <<\ std::endl;}
+\DoxyCodeLine{00640\ \ MoveToTop();}
+\DoxyCodeLine{00641\ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00642\ \ \ \ \ std::cout\ <<\ *(getCurrent())\ <<\ std::endl;}
+\DoxyCodeLine{00643\ \ \}\textcolor{keywordflow}{while}(Down());}
+\DoxyCodeLine{00644\ \}}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00647\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::AreDataUnique()\{}
+\DoxyCodeLine{00648\ }
+\DoxyCodeLine{00649\ \ \textcolor{keywordflow}{if}(Nunits()\ <\ 2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00650\ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *unit\ =\ current;}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i,j;}
+\DoxyCodeLine{00653\ \ Data\ **data\ =\ \textcolor{keyword}{new}\ Data*[Nunits()];}
+\DoxyCodeLine{00654\ }
+\DoxyCodeLine{00655\ \ MoveToTop();}
+\DoxyCodeLine{00656\ \ \textcolor{keywordflow}{for}(i=0;i<Nunits();++i,Down())\{}
+\DoxyCodeLine{00657\ \ \ data[i]=getCurrent();}
+\DoxyCodeLine{00658\ \ \}}
+\DoxyCodeLine{00659\ }
+\DoxyCodeLine{00660\ \ MoveToTop();}
+\DoxyCodeLine{00661\ \ \textcolor{keywordflow}{for}(i=0;i<Nunits();++i,Down())\{}
+\DoxyCodeLine{00662\ \ \ \textcolor{keywordflow}{for}(j=0;j<i;++j)\{}
+\DoxyCodeLine{00663\ \ \ \ \textcolor{keywordflow}{if}(\ getCurrent()\ ==\ data[j]\ )\{}
+\DoxyCodeLine{00664\ \ \ \ \ current\ =\ unit;}
+\DoxyCodeLine{00665\ \ \ \ \ \textcolor{keyword}{delete}[]\ data;}
+\DoxyCodeLine{00666\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00667\ \ \ \ \}}
+\DoxyCodeLine{00668\ \ \ \}}
+\DoxyCodeLine{00669\ \ \}}
+\DoxyCodeLine{00670\ }
+\DoxyCodeLine{00671\ \ \textcolor{keyword}{delete}[]\ data;}
+\DoxyCodeLine{00672\ \ current\ =\ unit;}
+\DoxyCodeLine{00673\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00674\ \}}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00682\ \textcolor{comment}{/*template\ <class\ Data>\ void\ Kist<Data>::SetInImage(Boo\ value)\{}}
+\DoxyCodeLine{00683\ \textcolor{comment}{\ return;}}
+\DoxyCodeLine{00684\ \textcolor{comment}{\}*/}}
+\DoxyCodeLine{00685\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::SetInImage(Boo\ value)\{}
+\DoxyCodeLine{00686\ }
+\DoxyCodeLine{00687\ \ \textcolor{keywordflow}{if}(Nunits()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00688\ }
+\DoxyCodeLine{00689\ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *temp\ =\ current;}
+\DoxyCodeLine{00690\ \ MoveToTop();}
+\DoxyCodeLine{00691\ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00692\ \ \ getCurrent()-\/>in\_image\ =\ value;}
+\DoxyCodeLine{00693\ \ \ getCurrent()-\/>image-\/>in\_image\ =\ value;}
+\DoxyCodeLine{00694\ \ \}\textcolor{keywordflow}{while}(Down());}
+\DoxyCodeLine{00695\ \ \ }
+\DoxyCodeLine{00696\ \ \ current\ =\ temp;}
+\DoxyCodeLine{00697\ \}}
+\DoxyCodeLine{00698\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{bool}\ Kist<Data>::CheckInImage(Boo\ value)\{}
+\DoxyCodeLine{00699\ \ \ }
+\DoxyCodeLine{00700\ \ \ \textcolor{keywordflow}{if}(Nunits()\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00701\ \ \ }
+\DoxyCodeLine{00702\ \ \ \mbox{\hyperlink{struct_kist_unit}{KistUnit<Data>}}\ *temp\ =\ current;}
+\DoxyCodeLine{00703\ \ \ MoveToTop();}
+\DoxyCodeLine{00704\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordflow}{if}(getCurrent()-\/>in\_image\ !=\ value)\{}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ current\ =\ temp;}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00708\ \ \ \ \ \}}
+\DoxyCodeLine{00709\ \ \ \}\textcolor{keywordflow}{while}(Down());}
+\DoxyCodeLine{00710\ \ \ }
+\DoxyCodeLine{00711\ \ \ current\ =\ temp;}
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00713\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00714\ \}}
+\DoxyCodeLine{00715\ }
+\DoxyCodeLine{00720\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>}
+\DoxyCodeLine{00721\ \textcolor{keywordtype}{void}\ Kist<Data>::copy(Kist<Data>\ *kist)\{}
+\DoxyCodeLine{00722\ \ \ Empty();}
+\DoxyCodeLine{00723\ \ \ \textcolor{keywordflow}{if}(kist-\/>Nunits()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00724\ \ \ kist-\/>MoveToTop();}
+\DoxyCodeLine{00725\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00726\ \ \ \ \ InsertAfterCurrent(kist-\/>getCurrent());}
+\DoxyCodeLine{00727\ \ \ \ \ Down();}
+\DoxyCodeLine{00728\ \ \ \}\textcolor{keywordflow}{while}(kist-\/>Down());}
+\DoxyCodeLine{00729\ \}}
+\DoxyCodeLine{00734\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>}
+\DoxyCodeLine{00735\ \textcolor{keywordtype}{void}\ Kist<Data>::copy(\textcolor{keyword}{const}\ Kist<Data>\ \&kist)\{}
+\DoxyCodeLine{00736\ \ \ Empty();}
+\DoxyCodeLine{00737\ \ \ \textcolor{keywordflow}{if}(kist.Nunits()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00738\ \ \ Kist<Data>::iterator\ it\ =\ kist.BottomIt();}
+\DoxyCodeLine{00739\ \ \ \textcolor{keywordflow}{for}(;!(it.atend())\ ;++it)\{}
+\DoxyCodeLine{00740\ \ \ \ \ InsertAfterCurrent(\&(*it));}
+\DoxyCodeLine{00741\ \ \ \ \ Down();}
+\DoxyCodeLine{00742\ \ \ \};}
+\DoxyCodeLine{00743\ \}}
+\DoxyCodeLine{00744\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>}
+\DoxyCodeLine{00745\ \textcolor{keywordtype}{void}\ Kist<Data>::copy(std::vector<Data\ *>\ \&vector)\{}
+\DoxyCodeLine{00746\ \ Empty();}
+\DoxyCodeLine{00747\ \ \textcolor{keywordflow}{if}(vector.size()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00748\ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<vector.size();++i)\{}
+\DoxyCodeLine{00749\ \ \ InsertAfterCurrent(vector[i]);}
+\DoxyCodeLine{00750\ \ \ Down();}
+\DoxyCodeLine{00751\ \ \}}
+\DoxyCodeLine{00752\ \}}
+\DoxyCodeLine{00756\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>}
+\DoxyCodeLine{00757\ \textcolor{keywordtype}{void}\ Kist<Data>::add(Kist<Data>\ *kist)\{}
+\DoxyCodeLine{00758\ \ \ \textcolor{keywordflow}{if}(kist-\/>Nunits()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00759\ \ \ kist-\/>MoveToTop();}
+\DoxyCodeLine{00760\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00761\ \ \ \ \ InsertAfterCurrent(kist-\/>getCurrent());}
+\DoxyCodeLine{00762\ \ \ \ \ Down();}
+\DoxyCodeLine{00763\ \ \ \}\textcolor{keywordflow}{while}(kist-\/>Down());}
+\DoxyCodeLine{00764\ \}}
+\DoxyCodeLine{00768\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>}
+\DoxyCodeLine{00769\ \textcolor{keywordtype}{void}\ Kist<Data>::add(\textcolor{keyword}{const}\ Kist<Data>\ \&kist)\{}
+\DoxyCodeLine{00770\ \ \ \textcolor{keywordflow}{if}(kist.Nunits()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00771\ \ \ Kist<Data>::iterator\ it\ =\ kist.getBottomIt();}
+\DoxyCodeLine{00772\ \ \ \textcolor{keywordflow}{for}(;!(it.atend())\ ;++it)\{}
+\DoxyCodeLine{00773\ \ \ \ \ InsertAfterCurrent(*it);}
+\DoxyCodeLine{00774\ \ \ \ \ Down();}
+\DoxyCodeLine{00775\ \ \ \};}
+\DoxyCodeLine{00776\ \}}
+\DoxyCodeLine{00777\ }
+\DoxyCodeLine{00778\ }
+\DoxyCodeLine{00779\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ Kist<Data>::test\_iterator()\{}
+\DoxyCodeLine{00780\ \ \ \ \ }
+\DoxyCodeLine{00781\ \ \ \ \ MoveToBottom();}
+\DoxyCodeLine{00782\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00783\ \ \ \ \ Kist<Data>::iterator\ it\ =\ this-\/>getBottomIt();}
+\DoxyCodeLine{00784\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;!(it.atend())\ ;++it,++i)\{}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ assert(current-\/>data\ ==\ (*it));}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}i\ =\ "{}}\ <<\ i\ <<\ std::endl;}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ Up();}
+\DoxyCodeLine{00788\ \ \ \ \ \}}
+\DoxyCodeLine{00789\ \ \ \ \ assert(i\ ==\ Nunits());\ }
+\DoxyCodeLine{00790\ \}}
+\DoxyCodeLine{00791\ }
+\DoxyCodeLine{00792\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ test\_iterator(Kist<Data>\ \&kist)\{}
+\DoxyCodeLine{00793\ \ \ }
+\DoxyCodeLine{00794\ \ \ kist.MoveToBottom();}
+\DoxyCodeLine{00795\ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{00796\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ p\ =\ kist.begin()\ ;\ p\ !=\ kist.end();\ ++p\ )\{}
+\DoxyCodeLine{00797\ \ \ \ \ assert(\ \&(*p)==\ kist.getCurrent()\ );}
+\DoxyCodeLine{00798\ \ \ \ \ (*p).print();}
+\DoxyCodeLine{00799\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}i\ =\ "{}}\ <<\ i\ <<\ std::endl;}
+\DoxyCodeLine{00800\ \ \ \ \ kist.Up();}
+\DoxyCodeLine{00801\ \ \ \ \ ++i;}
+\DoxyCodeLine{00802\ \ \ \}}
+\DoxyCodeLine{00803\ \ \ assert(i\ ==\ kist.Nunits());}
+\DoxyCodeLine{00804\ \}}
+\DoxyCodeLine{00805\ }
+\DoxyCodeLine{00806\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ Data>\ \textcolor{keywordtype}{void}\ test\_iterator2(Kist<Data>\ \&kist)\{}
+\DoxyCodeLine{00807\ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{00808\ \ \ \textcolor{keyword}{auto}\ p2\ =\ kist.begin();}
+\DoxyCodeLine{00809\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ p\ :\ kist\ )\{}
+\DoxyCodeLine{00810\ \ \ \ \ }
+\DoxyCodeLine{00811\ \ \ \ \ assert(p.id\ ==\ (*p2).id);}
+\DoxyCodeLine{00812\ \ \ \ \ }
+\DoxyCodeLine{00813\ \ \ \ \ p.print();}
+\DoxyCodeLine{00814\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}i\ =\ "{}}\ <<\ i\ <<\ std::endl;}
+\DoxyCodeLine{00815\ \ \ \ \ ++p2;}
+\DoxyCodeLine{00816\ \ \ \ \ ++i;}
+\DoxyCodeLine{00817\ \ \ \}}
+\DoxyCodeLine{00818\ \ \ assert(i\ ==\ kist.Nunits());}
+\DoxyCodeLine{00819\ \}}
+\DoxyCodeLine{00820\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00821\ \textcolor{comment}{\ *\ These\ functions\ are\ provided\ for\ backwards\ compatibility,\ but\ the\ kist\ member\ methods}}
+\DoxyCodeLine{00822\ \textcolor{comment}{\ *\ should\ be\ used\ in\ the\ future.}}
+\DoxyCodeLine{00823\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00824\ \textcolor{comment}{inline\ void\ EmptyKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00825\ \textcolor{comment}{\ kist-\/>Empty();}}
+\DoxyCodeLine{00826\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00827\ \textcolor{comment}{inline\ bool\ AtTopKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00828\ \textcolor{comment}{\ return\ kist-\/>AtTop();}}
+\DoxyCodeLine{00829\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00830\ \textcolor{comment}{inline\ bool\ AtBottomKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00831\ \textcolor{comment}{\ return\ kist-\/>AtBottom();}}
+\DoxyCodeLine{00832\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00833\ \textcolor{comment}{inline\ void\ InsertAfterCurrentKist(Kist<Point>\ *\ kist,Point\ *data)\{}}
+\DoxyCodeLine{00834\ \textcolor{comment}{\ kist-\/>InsertAfterCurrent(data);}}
+\DoxyCodeLine{00835\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00836\ \textcolor{comment}{inline\ void\ InsertBeforeCurrentKist(Kist<Point>\ *\ kist,Point\ *data)\{}}
+\DoxyCodeLine{00837\ \textcolor{comment}{\ kist-\/>InsertBeforeCurrent(data);}}
+\DoxyCodeLine{00838\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00839\ \textcolor{comment}{inline\ void\ SwapCurrentWithBottomKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00840\ \textcolor{comment}{\ kist-\/>SwapCurrentWithBottom();}}
+\DoxyCodeLine{00841\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00842\ \textcolor{comment}{inline\ Point\ *TakeOutCurrentKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00843\ \textcolor{comment}{\ return\ kist-\/>TakeOutCurrent();}}
+\DoxyCodeLine{00844\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00845\ \textcolor{comment}{inline\ void\ JumpDownKist(Kist<Point>\ *\ kist,int\ jump)\{}}
+\DoxyCodeLine{00846\ \textcolor{comment}{\ kist-\/>JumpDown(jump);}}
+\DoxyCodeLine{00847\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00848\ \textcolor{comment}{inline\ bool\ MoveDownKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00849\ \textcolor{comment}{\ return\ kist-\/>Down();}}
+\DoxyCodeLine{00850\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00851\ \textcolor{comment}{inline\ bool\ MoveUpKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00852\ \textcolor{comment}{\ return\ kist-\/>Up();}}
+\DoxyCodeLine{00853\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00854\ \textcolor{comment}{inline\ bool\ MoveToTopKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00855\ \textcolor{comment}{\ return\ kist-\/>MoveToTop();}}
+\DoxyCodeLine{00856\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00857\ \textcolor{comment}{inline\ bool\ MoveToBottomKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00858\ \textcolor{comment}{\ return\ kist-\/>MoveToBottom();}}
+\DoxyCodeLine{00859\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00860\ \textcolor{comment}{inline\ void\ FillKist(Kist<Point>\ *\ kist,Point\ *data\_array,unsigned\ long\ N)\{}}
+\DoxyCodeLine{00861\ \textcolor{comment}{\ kist-\/>Fill(data\_array,N);}}
+\DoxyCodeLine{00862\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00863\ \textcolor{comment}{inline\ Point\ *getCurrentKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ return\ kist-\/>getCurrent();}}
+\DoxyCodeLine{00865\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00866\ \textcolor{comment}{}}
+\DoxyCodeLine{00867\ \textcolor{comment}{inline\ void\ TranformPlanesKist(Kist<Point>\ *\ kist)\{}}
+\DoxyCodeLine{00868\ \textcolor{comment}{\ kist-\/>TranformPlanes();}}
+\DoxyCodeLine{00869\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00870\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00871\ }
+\DoxyCodeLine{00872\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

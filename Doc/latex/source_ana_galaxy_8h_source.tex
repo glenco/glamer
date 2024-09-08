@@ -1,0 +1,259 @@
+\doxysection{source\+Ana\+Galaxy.\+h}
+\hypertarget{source_ana_galaxy_8h_source}{}\label{source_ana_galaxy_8h_source}\index{SLsimLib/include/sourceAnaGalaxy.h@{SLsimLib/include/sourceAnaGalaxy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ souceAnaLens.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Aug\ 13,\ 2012}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ bmetcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SOURCE\_ANA\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SOURCE\_ANA\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}source.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}overzier\_source.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}simpleTreeVec.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}utilities.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_multi_ana_galaxy}{SourceMultiAnaGalaxy}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \mbox{\hyperlink{class_source_multi_ana_galaxy_a5f391bced254f5ed4a36a8cdc1c9474a}{SourceMultiAnaGalaxy}}(PosType\ mag,PosType\ mag\_bulge,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,PosType\ zero\_point,\ PosType\ Reff,\ PosType\ Rdisk,\ PosType\ PA,\ PosType\ inclination,PosType\ my\_z,PosType\ *my\_theta}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00036\ \ \mbox{\hyperlink{class_source_multi_ana_galaxy_a5f391bced254f5ed4a36a8cdc1c9474a}{SourceMultiAnaGalaxy}}(\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ *my\_galaxy);}
+\DoxyCodeLine{00037\ \ \textcolor{comment}{//SourceMultiAnaGalaxy(InputParams\&\ params,Utilities::RandomNumbers\_NR\ \&ran);}}
+\DoxyCodeLine{00038\ \ \mbox{\hyperlink{class_source_multi_ana_galaxy}{\string~SourceMultiAnaGalaxy}}();}
+\DoxyCodeLine{00039\ \ }
+\DoxyCodeLine{00041\ \ PosType\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a8e6b2f8edcf251910263053fd8e0e483}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType*\ x)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00042\ \ \ PosType\ sb\ =\ galaxies[index].SurfaceBrightness(x);}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{if}\ (sb\ <\ sb\_limit)\ \textcolor{keywordflow}{return}\ 0.;}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordflow}{return}\ sb;}
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ \ }
+\DoxyCodeLine{00048\ \ PosType\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a545da808b0f5c47660316f893ee24542}{getTotalFlux}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ mag\_to\_flux(galaxies[index].getMag(),mag\_zero\_point);\}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a7134be94fedb1a9aebeba6091fc4dbb6}{printSource}}();}
+\DoxyCodeLine{00051\ \ \textcolor{comment}{//\ Add\ a\ pre-\/constructed\ galaxy\ to\ the\ source\ collection}}
+\DoxyCodeLine{00052\ \ \textcolor{keywordtype}{void}\ AddAGalaxy(\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ *my\_galaxy)\{galaxies.push\_back(*my\_galaxy);\}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\&\ \mbox{\hyperlink{class_source_multi_ana_galaxy_ac382e5374e877ce32359f469fa9008b5}{setIndex}}\ (std::size\_t\ i)\{}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{if}(i\ <\ galaxies.size())}
+\DoxyCodeLine{00059\ \ \ \ index\ =\ i;}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00061\ \ \}}
+\DoxyCodeLine{00065\ \ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\&\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a8107081266fb757e1bf6645b5e2c11be}{operator[]\ }}(std::size\_t\ i)\{}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordflow}{if}(i\ <\ galaxies.size())}
+\DoxyCodeLine{00067\ \ \ \ \textcolor{keywordflow}{return}\ galaxies[i];}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00069\ \ \}}
+\DoxyCodeLine{00070\ \ }
+\DoxyCodeLine{00071\ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\&\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a8107081266fb757e1bf6645b5e2c11be}{operator[]\ }}(std::size\_t\ i)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordflow}{if}(i\ <\ galaxies.size())}
+\DoxyCodeLine{00073\ \ \ \ \textcolor{keywordflow}{return}\ galaxies[i];}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00075\ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\&\ CurrentGalaxy()\{}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00079\ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00082\ \ \textcolor{comment}{//PosType\ getZ()\ const\ \{return\ galaxies[index].getZ();\}}}
+\DoxyCodeLine{00083\ \ \ \ PosType\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a9d90be8db058d7ff5638ca5031c56d9e}{getZ}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies[index].getZ();\}}
+\DoxyCodeLine{00084\ \ \ \textcolor{comment}{//PosType\ getRadius()\ const\ \{return\ max(galaxies[index]-\/>Reff,galaxies[index]-\/>Rdisk);\}}}
+\DoxyCodeLine{00085\ \ PosType\ getRadius()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies[index].getRadius();\}}
+\DoxyCodeLine{00087\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a8a2ddae89ef5ff1765fff679a8ddb8e1}{setZ}}(PosType\ my\_z)\{\ galaxies[index].setZ(my\_z);\}}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ resetBand(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ my\_band)\{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<galaxies.size();++i)\ galaxies[i].changeBand(my\_band);}
+\DoxyCodeLine{00090\ \ \ \ \ band\ =\ my\_band;}
+\DoxyCodeLine{00091\ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ getID()\{\textcolor{keywordflow}{return}\ galaxies[index].getID();\}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00097\ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a1d1776450810879b7bfb9a9e82dcb9d2}{getTheta}}()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ galaxies[index].getTheta();\}}
+\DoxyCodeLine{00099\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a35f23a787c77d92fdbd45f3fef1ee520}{setTheta}}(PosType\ my\_theta[2])\{galaxies[index].setTheta(my\_theta);\}}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a35f23a787c77d92fdbd45f3fef1ee520}{setTheta}}(PosType\ my\_x,PosType\ my\_y)\{galaxies[index].setTheta(my\_x,\ my\_y);\}}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a35f23a787c77d92fdbd45f3fef1ee520}{setTheta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{galaxies[index].setTheta(p);\}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ std::size\_t\ getNumberOfGalaxies()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies.size();\}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a73cba06a8e4c42c40e69050ad74d955b}{multiplier}}(PosType\ z,PosType\ mag\_cut,\textcolor{keywordtype}{int}\ Multiplicity,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_ac03498bdd801f210d48e820afcc3ba32}{sortInRedshift}}();}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a66452aeb918ee03c54a953cfc1aa224e}{sortInMag}}(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ tmp\_band);}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_aedbadc65941c45b631111f682056a88d}{sortInID}}();}
+\DoxyCodeLine{00110\ \ \ PosType\ \mbox{\hyperlink{class_source_multi_ana_galaxy_ab18393e0b1db63070f4fe31c6faf31d2}{getFOV}}()\{\textcolor{keywordflow}{return}\ (rangex[1]-\/rangex[0])*(rangey[1]-\/rangey[0])*180*180/PI/PI;\}}
+\DoxyCodeLine{00111\ \ \ }
+\DoxyCodeLine{00115\ \ \ std::size\_t\ \mbox{\hyperlink{class_source_multi_ana_galaxy_adf882083a160b0eefac8deb47dd57ad6}{findclosestonsky}}(PosType\ theta[],PosType\ *radius)\{}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index;}
+\DoxyCodeLine{00117\ \ \ \ \ searchtree-\/>\mbox{\hyperlink{class_tree_simple_vec_a02207879f7bfde45151630c54fc17e7a}{NearestNeighbor}}(theta,*radius,index);}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{00119\ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_af9158dc7bda29cb59cc78133cc3bb845}{findclosestonsky}}(PosType\ theta[],std::vector<PosType>\ \&radius,std::vector<size\_t>\ \&indexes)\{}
+\DoxyCodeLine{00124\ \ \ \ \ indexes.resize(radius.size());}
+\DoxyCodeLine{00125\ \ \ \ \ searchtree-\/>\mbox{\hyperlink{class_tree_simple_vec_a656687586737eedb85a0686005fc29a0}{NearestNeighbors}}(theta,radius.size(),radius,indexes);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00127\ \ \ \}}
+\DoxyCodeLine{00128\ \ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a0e1ab20eca008085a346a2234ada0e17}{findonsky}}(PosType\ theta[],\textcolor{keywordtype}{float}\ radius,std::list<size\_t>\ \&indexes)\{}
+\DoxyCodeLine{00131\ \ \ \ \ indexes.clear();}
+\DoxyCodeLine{00132\ \ \ \ \ searchtree-\/>\mbox{\hyperlink{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}{PointsWithinCircle}}(theta,radius,indexes);}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00134\ \ \ \}}
+\DoxyCodeLine{00135\ \ \ }
+\DoxyCodeLine{00137\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_ana_galaxy_a66751bce29c2fdeb0a9360515acdc5ea}{findnear}}(PosType\ theta[],\textcolor{keywordtype}{float}\ radius,std::list<size\_t>\ \&indexes,PosType\ z\_range[])\{}
+\DoxyCodeLine{00138\ \ \ \ \ indexes.clear();}
+\DoxyCodeLine{00139\ \ \ \ \ searchtree-\/>\mbox{\hyperlink{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}{PointsWithinCircle}}(theta,radius,indexes);}
+\DoxyCodeLine{00140\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ PosType\ z;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ make\ redshift\ cut\ for\ lens\ sources}}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{for}(std::list<size\_t>::iterator\ itt\ =\ indexes.begin();}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ itt\ !=\ indexes.end();\ ++itt)\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ z\ =\ galaxies[*itt].getZ();}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(z\ <\ z\_range[0]\ ||\ z\ >\ z\_range[1])\{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ indexes.erase(itt);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(itt\ !=\ indexes.begin())\ -\/-\/itt;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00153\ \ \ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00156\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
+\DoxyCodeLine{00157\ \ \ \textcolor{comment}{//SourceMultiAnaGalaxy(SourceMultiAnaGalaxy\ \&s)\{\};}}
+\DoxyCodeLine{00158\ \ \ \mbox{\hyperlink{class_source_multi_ana_galaxy}{SourceMultiAnaGalaxy}}\ \&\ operator=(\mbox{\hyperlink{class_source_multi_ana_galaxy}{SourceMultiAnaGalaxy}}\ \&s)\{\textcolor{keywordflow}{return}\ s;\}}
+\DoxyCodeLine{00159\ \ \ }
+\DoxyCodeLine{00160\ \ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band;}
+\DoxyCodeLine{00161\ \ \textcolor{keywordtype}{float}\ mag\_limit;}
+\DoxyCodeLine{00162\ \ std::size\_t\ index;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ std::vector<SourceOverzierPlus>\ galaxies;}
+\DoxyCodeLine{00165\ \ \ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<SourceOverzierPlus>}}\ *searchtree;}
+\DoxyCodeLine{00166\ \ std::string\ input\_gal\_file;}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \textcolor{keywordtype}{void}\ readDataFileMillenn(std::map<Band,double>\ zeropoints,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00169\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ PosType\ rangex[2],rangey[2];}
+\DoxyCodeLine{00172\ \};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{keywordtype}{bool}\ redshiftcompare(\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ s1,\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ s2);}
+\DoxyCodeLine{00175\ \textcolor{keywordtype}{bool}\ magcompare(\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ s1,\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ s2);}
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{bool}\ idcompare(\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ s1,\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ s2);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00184\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_multi_shapelets}{SourceMultiShapelets}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00185\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00186\ \ \ }
+\DoxyCodeLine{00187\ \ \ \textcolor{comment}{//SourceMultiShapelets(InputParams\&\ params);}}
+\DoxyCodeLine{00188\ \ \ }
+\DoxyCodeLine{00189\ \ \ \mbox{\hyperlink{class_source_multi_shapelets}{SourceMultiShapelets}}(\textcolor{keywordtype}{double}\ mag\_zero\_point):\mbox{\hyperlink{class_source_aca1ca0b2c7b26cc4fa287ce6ed51cfd8}{Source}}(0,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}(0,0),0,-\/1,mag\_zero\_point)\{\};}
+\DoxyCodeLine{00190\ \ \ }
+\DoxyCodeLine{00192\ \ \ \mbox{\hyperlink{class_source_multi_shapelets}{SourceMultiShapelets}}(\textcolor{keyword}{const}\ std::string\ \&my\_shapelets\_folder\ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ my\_band\ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_max\_mag\_limit\ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_min\_mag\_limit\ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_z\_max\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_sb\_limit\ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ maximum\_radius\ \ \ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ zero\_point\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_ae4790082fa4f12601af7047fec209706}{input}}(\textcolor{keyword}{const}\ std::string\ \&my\_shapelets\_folder\ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ my\_band\ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_max\_mag\_limit\ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_min\_mag\_limit\ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_z\_max\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_sb\_limit\ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ maximum\_radius\ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ zero\_point\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \mbox{\hyperlink{class_source_multi_shapelets}{\string~SourceMultiShapelets}}();}
+\DoxyCodeLine{00213\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_a28f0567b51b2bb70ad61f077aa031949}{sortInRedshift}}();}
+\DoxyCodeLine{00214\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_a28afc8b0f860c5d3001a3d03ee05406d}{sortInMag}}();}
+\DoxyCodeLine{00216\ \ \ PosType\ \mbox{\hyperlink{class_source_multi_shapelets_a93325bc42c50835e20096cb55b4da41f}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType*\ x)\textcolor{keyword}{const\ }\{}
+\DoxyCodeLine{00217\ \ \ PosType\ sb\ =\ galaxies[index].SurfaceBrightness(x);}
+\DoxyCodeLine{00218\ \ \ \textcolor{keywordflow}{if}\ (sb\ <\ sb\_limit)\ \textcolor{keywordflow}{return}\ 0.;}
+\DoxyCodeLine{00219\ \ \ \textcolor{keywordflow}{return}\ sb;}
+\DoxyCodeLine{00220\ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_a26d51973009981c38826db004ae7b65f}{printSource}}();}
+\DoxyCodeLine{00223\ \ \ std::size\_t\ getNumberOfGalaxies()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies.size();\}}
+\DoxyCodeLine{00225\ \ \ std::size\_t\ \mbox{\hyperlink{class_source_multi_shapelets_a4249206f033ae4a5ce92e378ef2f9478}{size}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies.size();\}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00228\ \ PosType\ \mbox{\hyperlink{class_source_multi_shapelets_a38f2e85b8283a3988162f12ee3827ebf}{getTotalFlux}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ mag\_to\_flux(galaxies[index].getMag(),mag\_zero\_point);\}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00231\ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_source_multi_shapelets_ac9adb68338ce357f0cfc74298bcc9854}{getTheta}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies[index].getTheta();\}}
+\DoxyCodeLine{00233\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_a4046c8da25755b0184651b56b568272e}{setTheta}}(PosType\ my\_theta[2])\{galaxies[index].setTheta(my\_theta);\}}
+\DoxyCodeLine{00234\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_a4046c8da25755b0184651b56b568272e}{setTheta}}(PosType\ my\_x,PosType\ my\_y)\{galaxies[index].setTheta(my\_x,\ my\_y);\}}
+\DoxyCodeLine{00235\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_multi_shapelets_a4046c8da25755b0184651b56b568272e}{setTheta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{galaxies[index].setTheta(p);\}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00238\ \ PosType\ \mbox{\hyperlink{class_source_multi_shapelets_a6c3a8a631309805fe5a4e51b90b04236}{getZ}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies[index].getZ();\}}
+\DoxyCodeLine{00239\ \ \textcolor{comment}{//PosType\ getRadius()\ const\ \{return\ max(galaxies[index]-\/>Reff,galaxies[index]-\/>Rdisk);\}}}
+\DoxyCodeLine{00240\ \ PosType\ getRadius()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ galaxies[index].getRadius();\}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00245\ \ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\&\ \mbox{\hyperlink{class_source_multi_shapelets_a5a75f2cdd2c47041f37ae8cbe04c7cdd}{setIndex}}\ (std::size\_t\ i)\{}
+\DoxyCodeLine{00246\ \ \ \textcolor{keywordflow}{if}(i\ <\ galaxies.size())}
+\DoxyCodeLine{00247\ \ \ \ index\ =\ i;}
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00249\ \ \}}
+\DoxyCodeLine{00250\ \ \ \textcolor{keywordtype}{size\_t}\ getIndex()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ index;\}}
+\DoxyCodeLine{00251\ \ \ }
+\DoxyCodeLine{00255\ \ \ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\&\ \mbox{\hyperlink{class_source_multi_shapelets_a1acc037d4447662efab600902d146ecd}{operator[]\ }}(std::size\_t\ i)\{}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{if}(i\ <\ galaxies.size())}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ galaxies[i];}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00259\ \ \ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\&\ back()\{}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordflow}{return}\ galaxies.back();}
+\DoxyCodeLine{00263\ \ \ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\&\ \mbox{\hyperlink{class_source_multi_shapelets_a1acc037d4447662efab600902d146ecd}{operator[]\ }}(std::size\_t\ i)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordflow}{if}(i\ <\ galaxies.size())}
+\DoxyCodeLine{00267\ \ \ \ \textcolor{keywordflow}{return}\ galaxies[i];}
+\DoxyCodeLine{00268\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00269\ \ \}}
+\DoxyCodeLine{00270\ \ \ \ \ }
+\DoxyCodeLine{00271\ \ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\&\ CurrentGalaxy()\{}
+\DoxyCodeLine{00272\ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00273\ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ }
+\DoxyCodeLine{00276\ \ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\&\ \mbox{\hyperlink{class_source_multi_shapelets_ad457c829288a5acf9d0271a5f1c745b2}{setBand}}\ (\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ b,\textcolor{keywordtype}{double}\ zeropoint)\{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ band\ =\ b;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ galaxies.size();\ i++)}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ galaxies[i].setActiveBand(band);}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ galaxies[index];}
+\DoxyCodeLine{00281\ \ \ \}}
+\DoxyCodeLine{00282\ \ \ }
+\DoxyCodeLine{00284\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_source_multi_shapelets_a1087d18747846cc7290228b8344e4794}{locateZ}}(PosType\ z)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{Utilities::locate<SourceShapelets,PosType>}}(galaxies,\ z,\ [](PosType\ z,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ \&s)\{\textcolor{keywordflow}{return}\ (z\ <\ s.\mbox{\hyperlink{class_source_a6deb99f07cb87642b83b20ff294791be}{getZ}}());\});}
+\DoxyCodeLine{00286\ \ \ \}}
+\DoxyCodeLine{00287\ \ \ }
+\DoxyCodeLine{00288\ \ \ \textcolor{keywordtype}{int}\ getCurrentID()\{}
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordflow}{return}\ galaxies[index].id;}
+\DoxyCodeLine{00290\ \ \ \}}
+\DoxyCodeLine{00291\ \ }
+\DoxyCodeLine{00292\ \ \ std::vector<SourceShapelets>\ galaxies;}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00295\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00296\ \ \ std::size\_t\ index;}
+\DoxyCodeLine{00297\ \ \ \textcolor{keywordtype}{float}\ max\_mag\_limit;}
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{float}\ min\_mag\_limit;}
+\DoxyCodeLine{00299\ \ \ \textcolor{keywordtype}{float}\ z\_max;\ \ \textcolor{comment}{//\ maximum\ redshift\ allowed}}
+\DoxyCodeLine{00300\ \ \ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band;}
+\DoxyCodeLine{00301\ \ \ \textcolor{keywordtype}{double}\ radius\_max;}
+\DoxyCodeLine{00302\ \ }
+\DoxyCodeLine{00303\ \ \ \textcolor{keywordtype}{void}\ readCatalog();}
+\DoxyCodeLine{00304\ \ std::string\ shapelets\_folder;}
+\DoxyCodeLine{00305\ \};}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \textcolor{keywordtype}{bool}\ redshiftcompare\_shap(\mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ s1,\mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ s2);}
+\DoxyCodeLine{00308\ \textcolor{keywordtype}{bool}\ magcompare\_shap(\mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ s1,\mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ s2);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SOURCE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

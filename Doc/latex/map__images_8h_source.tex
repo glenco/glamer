@@ -1,0 +1,76 @@
+\doxysection{map\+\_\+images.\+h}
+\hypertarget{map__images_8h_source}{}\label{map__images_8h_source}\index{SLsimLib/include/map\_images.h@{SLsimLib/include/map\_images.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ map\_images.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Oct\ 6,\ 2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ bmetcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MAP\_IMAGES\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MAP\_IMAGES\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <lens.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <grid\_maintenance.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_image_finding}{ImageFinding}}\{}
+\DoxyCodeLine{00018\ \ \ }
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ map\_images(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{class_source}{Source}}\ *source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\textcolor{keywordtype}{int}\ *Nimages}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ xmax,\textcolor{keywordtype}{double}\ xmin,\textcolor{keywordtype}{double}\ initial\_size}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,ExitCriterion\ criterion,\textcolor{keywordtype}{bool}\ FindCenter,\textcolor{keywordtype}{bool}\ divide\_images);}
+\DoxyCodeLine{00023\ \ \ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_aa7596607b563fc41789b2db5a2277a2c}{map\_images\_fixedgrid}}(\mbox{\hyperlink{class_source}{Source}}\ *source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid\ ,\textcolor{keywordtype}{int}\ *Nimages}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ xmax\ ,\textcolor{keywordtype}{bool}\ divide\_images,\textcolor{keywordtype}{bool}\ find\_borders);}
+\DoxyCodeLine{00027\ \ \ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_a70bbca22cc631872b33de04441c20b99}{map\_imagesISOP}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{class_source}{Source}}\ *source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\textcolor{keywordtype}{int}\ *Nimages}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{double}\ rmax}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ res\_min,\textcolor{keywordtype}{double}\ initial\_size,ExitCriterion\ criterion}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ divide\_images,\textcolor{keywordtype}{bool}\ int\_on\ =\ \textcolor{keyword}{true},\textcolor{keywordtype}{bool}\ verbos=\textcolor{keyword}{false});}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{namespace\ }IF\_routines\{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ refine\_grid\_on\_image(\mbox{\hyperlink{class_lens}{Lens}}\ *lens,\mbox{\hyperlink{class_source}{Source}}\ *source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\textcolor{keywordtype}{double}\ maxflux}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{int}\ *Nimages}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&sourceinfo,\textcolor{keywordtype}{int}\ Nsources}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ res\_target,ExitCriterion\ criterion}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ divide\_images,\textcolor{keywordtype}{bool}\ batch=\textcolor{keyword}{true});}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ check\_sb\_add(\mbox{\hyperlink{class_source}{Source}}\ *source,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo,\mbox{\hyperlink{struct_point}{Point}}\ *i\_points,\textcolor{keywordtype}{double}\ maxflux,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \&Nold,\textcolor{keywordtype}{int}\ \&number\_of\_refined);}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ RefinePoint(\mbox{\hyperlink{struct_point}{Point}}\ *point,\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\textcolor{keywordtype}{double}\ image\_area,\textcolor{keywordtype}{double}\ total\_area,ExitCriterion\ criterion}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ res\_target,Kist<Point>\ *\ nearest);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ RefinePoint2(\mbox{\hyperlink{struct_point}{Point}}\ *point,\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\textcolor{keywordtype}{double}\ image\_area,\textcolor{keywordtype}{double}\ total\_area,\textcolor{keywordtype}{double}\ maxflux,ExitCriterion\ criterion}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ res\_target,Kist<Point>\ *\ nearest);}
+\DoxyCodeLine{00048\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ RefinePoint\_sb(\mbox{\hyperlink{struct_point}{Point}}\ *point,\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\textcolor{keywordtype}{double}\ image\_area,\textcolor{keywordtype}{double}\ total\_area}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ sb\_limit,PosType\ maxflux,Kist<Point>\ *\ nearest);}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ RefinePoint\_smallsize(\mbox{\hyperlink{struct_point}{Point}}\ *point,\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\textcolor{keywordtype}{double}\ image\_area,\textcolor{keywordtype}{double}\ total\_area}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ smallsize,PosType\ maxflux,Kist<Point>\ *\ nearest);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ IntegrateFluxInCell(\mbox{\hyperlink{struct_point}{Point}}\ *point,\mbox{\hyperlink{class_source}{Source}}\ \&source,\textcolor{keywordtype}{float}\ tolerance,Boo\ \&outcome);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ IntegrateCellsParallel(Kist<Point>::iterator\ it1}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Kist<Point>::iterator\ it2,\mbox{\hyperlink{class_source}{Source}}\ *source,PosType\ *area,\textcolor{keywordtype}{size\_t}\ *count);}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ interpfrom2Points(\mbox{\hyperlink{struct_point}{Point}}\ \textcolor{keyword}{const}\ *\ p1,\mbox{\hyperlink{struct_point}{Point}}\ \textcolor{keyword}{const}\ *\ p2,PosType\ *x,PosType\ *y);}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ UniformMagCheck(\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo);}
+\DoxyCodeLine{00061\ \ \ }
+\DoxyCodeLine{00062\ \ \ }
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ refine\_grid\_on\_imageISOP(\mbox{\hyperlink{class_lens}{Lens}}\ *lens,\mbox{\hyperlink{class_source}{Source}}\ *source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{int}\ Nsources}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ res\_target,\textcolor{keywordtype}{double}\ res\_min}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ res\_source\_area,ExitCriterion\ criterion}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ divide\_images);}
+\DoxyCodeLine{00069\ \ \ }
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00071\ \}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

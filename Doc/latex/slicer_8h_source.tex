@@ -1,0 +1,293 @@
+\doxysection{slicer.\+h}
+\hypertarget{slicer_8h_source}{}\label{slicer_8h_source}\index{SLsimLib/include/slicer.h@{SLsimLib/include/slicer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ slicer.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Robert\ Benton\ Metcalf\ on\ 15/05/2020.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ slicer\_h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ slicer\_h}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ V,\textcolor{keyword}{typename}\ L,\textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_slicer}{Slicer}}\{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{class_slicer_a6dab6a098f74e9f7fe179f1c21f4a696}{Slicer}}(\textcolor{keywordtype}{int}\ Dim\ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ V\ \&scale\ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ kmax\ =\ 10\ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ ):}
+\DoxyCodeLine{00027\ \ \ w(scale),Kmax(kmax),dim(Dim),n\_evals(0)\{}
+\DoxyCodeLine{00028\ \ \ \ \ assert(scale.size()>=Dim);}
+\DoxyCodeLine{00029\ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_slicer_a38e38b746545263ef48867dda21b0486}{run}}(L\ \&lnprob\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<V>\ \&chain\ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ ,V\ xo\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ ,R\ \&ran\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ step\_type\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{if}(lnprob(xo)\ <=\ -\/1.0e20)\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Slicer:\ Initial\ point\ has\ 0\ probability"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}bad\ point"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ n\_evals=0;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ chain.size();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ 0;}
+\DoxyCodeLine{00046\ \ \ \ \ chain[0]\ =\ xo;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=1;i<n;++i)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ chain[i]\ =\ chain[i-\/1];}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(step\_type)\ step\_double(chain[i],lnprob,k,ran);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ step\_out(chain[i],lnprob,k,ran);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ k\ =\ (k+1)\%dim;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ n\_evals\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ chain[i]\ <<\ std::endl;}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_slicer_af38d698d9ecbf2f30f02ef256f191bb2}{number\_evaluations}}()\{\ \textcolor{keywordflow}{return}\ n\_evals;\}}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ V\ xl,xr,ll,rr,lshrink,rshrink,x\_new;}
+\DoxyCodeLine{00062\ \ \ \textcolor{keyword}{const}\ V\ w;}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Kmax;}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ dim;}
+\DoxyCodeLine{00065\ \ \ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{size\_t}\ n\_evals;}
+\DoxyCodeLine{00067\ \ \ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ step\_double(V\ \&x,L\ \&lnprob,\textcolor{keywordtype}{int}\ i,R\ \&ran)\{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//double\ y\ =\ prob(x)\ *\ ran();}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{double}\ y\ =\ lnprob(x)\ +\ log(ran());\ ++n\_evals;}
+\DoxyCodeLine{00071\ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ assert(!std::isnan(y));}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ find\ range}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ Kmax;}
+\DoxyCodeLine{00075\ \ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ xl\ =\ x;\ xl[i]\ =\ x[i]\ -\/\ w[i]\ *\ ran();;}
+\DoxyCodeLine{00077\ \ \ \ \ xr\ =\ x;\ xr[i]\ =\ xl[i]\ +\ w[i];}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{double}\ lprob\ =\ lnprob(xl);\ ++n\_evals;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{double}\ rprob\ =\ lnprob(xr);\ ++n\_evals;}
+\DoxyCodeLine{00081\ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{while}(\ k\ >\ 0\ \&\&\ (\ y\ <\ lprob\ ||\ y\ <\ rprob\ ))\{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ u\ =\ ran();}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(u<0.5)\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ xl[i]\ =\ 2*xl[i]\ -\/\ xr[i];}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ lprob\ =\ lnprob(xl);\ ++n\_evals;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ xr[i]\ =\ 2*xr[i]\ -\/\ xl[i];}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ rprob\ =\ lnprob(xr);\ ++n\_evals;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ -\/-\/k;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ shrink\ the\ range}}
+\DoxyCodeLine{00095\ \ \ \ \ lshrink\ =\ xl;}
+\DoxyCodeLine{00096\ \ \ \ \ rshrink\ =\ xr;}
+\DoxyCodeLine{00097\ \ \ \ \ x\_new\ =\ x;}
+\DoxyCodeLine{00098\ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{for}(;;)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ x\_new[i]\ =\ lshrink[i]\ +\ ran()*(\ rshrink[i]\ -\/\ lshrink[i]\ );}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ ++n\_evals;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ y\ <\ lnprob(x\_new)\ \&\&\ accept(y,x,x\_new,i,lnprob))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x\_new[i]\ <\ x[i])\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ lshrink[i]\ =\ x\_new[i];}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ rshrink[i]\ =\ x\_new[i];}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ swap(x,x\_new);}
+\DoxyCodeLine{00111\ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ step\_out(V\ \&x,L\ \&lnprob,\textcolor{keywordtype}{int}\ i,R\ \&ran)\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \textcolor{comment}{//double\ y\ =\ prob(x)\ *\ ran();}}
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{double}\ y\ =\ lnprob(x)\ +\ log(ran());\ ++n\_evals;}
+\DoxyCodeLine{00117\ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \textcolor{comment}{//\ find\ range}}
+\DoxyCodeLine{00119\ \ \ \ \ xl\ =\ xr\ =\ x;}
+\DoxyCodeLine{00120\ \ \ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ xl[i]\ =\ x[i]\ -\/\ w[i]\ *\ ran();;}
+\DoxyCodeLine{00122\ \ \ \ \ xr[i]\ =\ xl[i]\ +\ w[i];}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ floor(Kmax*ran());}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ Kmax\ -\/\ 1\ -\/\ j;}
+\DoxyCodeLine{00125\ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{while}(\ j\ >\ 0\ \&\&\ y\ <\ lnprob(xl))\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ ++n\_evals;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ xl[i]\ =\ xl[i]\ -\/\ w[i];}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ -\/-\/j;}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordflow}{while}(\ k\ >\ 0\ \&\&\ y\ <\ lnprob(xr))\{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ ++n\_evals;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ xr[i]\ =\ xr[i]\ +\ w[i];}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ -\/-\/k;}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ shrink\ the\ range}}
+\DoxyCodeLine{00138\ \ \ \ \ lshrink\ =\ xl;}
+\DoxyCodeLine{00139\ \ \ \ \ rshrink\ =\ xr;}
+\DoxyCodeLine{00140\ \ \ \ \ x\_new\ =\ x;}
+\DoxyCodeLine{00141\ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{for}(;;)\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ x\_new[i]\ =\ lshrink[i]\ +\ ran()*(\ rshrink[i]\ -\/\ lshrink[i]\ );}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ ++n\_evals;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ y\ <\ lnprob(x\_new)\ )\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x\_new[i]\ <\ x[i])\{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ lshrink[i]\ =\ x\_new[i];}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ rshrink[i]\ =\ x\_new[i];}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ swap(x,x\_new);}
+\DoxyCodeLine{00154\ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ }
+\DoxyCodeLine{00156\ \ \ \textcolor{keywordtype}{bool}\ accept(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ y,V\ \&xo,V\ \&x1,\textcolor{keywordtype}{int}\ i,L\ \&lnprob)\{}
+\DoxyCodeLine{00157\ \ \ \ \ ll\ =\ xl;}
+\DoxyCodeLine{00158\ \ \ \ \ rr\ =\ xr;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{bool}\ D\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00160\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{double}\ lprob\ =\ lnprob(ll);\ ++n\_evals;}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{double}\ rprob\ =\ lnprob(rr);\ ++n\_evals;}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{while}(\ (rr[i]\ -\/\ ll[i])\ >\ 1.1\ *\ w[i])\{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ m\ =\ (ll[i]+rr[i])/2;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ (xo[i]\ <\ m)*(x1[i]\ >=\ m)\ ||}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ (xo[i]\ >=\ m)*(x1[i]\ <\ m)\ )\ D\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x\_new[i]\ <\ m\ )\{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ rr[i]\ =\ m;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ rprob\ =\ lnprob(rr);\ ++n\_evals;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ ll[i]\ =\ m;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ lprob\ =\ lnprob(ll);\ ++n\_evals;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(D\ \&\&\ y\ >=\ lprob\ \&\&\ y\ >=\ rprob\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00179\ \ \ \}}
+\DoxyCodeLine{00180\ \};}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ V,\textcolor{keyword}{typename}\ L,\textcolor{keyword}{typename}\ R>}
+\DoxyCodeLine{00183\ \textcolor{keyword}{class\ }SimpleMH\_MCMC\{}
+\DoxyCodeLine{00184\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00185\ \ }
+\DoxyCodeLine{00186\ \ \ \textcolor{keyword}{const}\ V\ w;}
+\DoxyCodeLine{00187\ \ \ \textcolor{keywordtype}{int}\ dim;}
+\DoxyCodeLine{00188\ \ \ }
+\DoxyCodeLine{00189\ \ \ \textcolor{keywordtype}{size\_t}\ n\_evals;}
+\DoxyCodeLine{00190\ \ \ std::vector<int>\ active;}
+\DoxyCodeLine{00191\ \ \ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00193\ \ \ SimpleMH\_MCMC(\textcolor{keywordtype}{int}\ Dim\ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ V\ \&scale\ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ ,std::vector<int>\ active\_parameters\ \ =\ \{\}\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ ):}
+\DoxyCodeLine{00197\ \ \ w(scale),dim(Dim),n\_evals(0),active(active\_parameters)}
+\DoxyCodeLine{00198\ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keywordflow}{if}(active.size()\ ==\ 0)\{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ for(int\ i\ ;\ i<dim\ ;\ ++i)\ active.push\_back(i);}
+\DoxyCodeLine{00202\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ if(dim\ >\ active.size())\ dim\ =\ active.size();}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ assert(scale.size()\ >=\ dim);}
+\DoxyCodeLine{00207\ \ \ \ \ assert(active.size()\ >=\ dim);}
+\DoxyCodeLine{00208\ \ \ \}}
+\DoxyCodeLine{00209\ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \textcolor{keywordtype}{void}\ run(L\ \&lnprob\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<V>\ \&chain\ \ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ ,V\ xo\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ ,R\ \&ran\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ cyclic\ =\ \textcolor{keyword}{true}\ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \textcolor{keywordtype}{double}\ lnp\ =\ lnprob(xo);}
+\DoxyCodeLine{00220\ \ \ \ \ \ n\_evals=0;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ chain.size();}
+\DoxyCodeLine{00222\ \ \ \ \ \ chain[0]\ =\ xo;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00224\ \ \ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \textcolor{keywordtype}{int}\ k=0;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=1;i<n;++i)\{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ chain[i]\ =\ chain[i-\/1];}
+\DoxyCodeLine{00228\ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cyclic)\{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ active[k];}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ chain[i][j]\ +=\ w[j]*ran.gauss();}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ k\ =\ (k+1)\ \%\ dim;}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<dim;++j)\{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ k\ =\ active[k];}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ chain[i][j]\ +=\ w[j]*ran.gauss();}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lnp2\ =\ lnprob(chain[i]);}
+\DoxyCodeLine{00240\ \ \ \ \ \ }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ lnp2\ <=\ lnp\ \&\&\ exp(lnp2\ -\/\ lnp)\ <\ ran()\ )\{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ chain[i]\ =\ chain[i-\/1];}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ lnp\ =\ lnp2;}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ ++n\_evals;}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ n\_evals\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ chain[i]\ <<\ std::endl;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ }
+\DoxyCodeLine{00253\ \ \ \ \textcolor{keywordtype}{void}\ runAux(L\ \&lnprob\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<V>\ \&chain\ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ ,V\ xo\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ ,R\ \&ran\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ cyclic\ =\ \textcolor{keyword}{true}\ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00260\ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \textcolor{keywordtype}{double}\ lnp\ =\ lnprob(xo);}
+\DoxyCodeLine{00262\ \ \ \ \ \ n\_evals=0;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ chain.size();}
+\DoxyCodeLine{00264\ \ \ \ \ \ chain[0]\ =\ xo;}
+\DoxyCodeLine{00265\ \ \ \ \ \ lnprob.aux\_update(ran,lnp);}
+\DoxyCodeLine{00266\ \ \ \ \ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00268\ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \textcolor{keywordtype}{int}\ k=0;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=1;i<n;++i)\{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ chain[i]\ =\ chain[i-\/1];}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\%dim\ ==\ 0)\{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ lnprob.aux\_update(ran,lnp);}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cyclic)\{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ chain[i][k]\ +=\ w[k]*ran.gauss();}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ k\ =\ (k+1)\ \%\ dim;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<dim;++j)\{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ chain[i][j]\ +=\ w[j]*ran.gauss();}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lnp2\ =\ lnprob(chain[i]);}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ lnp2\ <=\ lnp\ \&\&\ exp(lnp2\ -\/\ lnp)\ <\ ran()\ )\{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ chain[i]\ =\ chain[i-\/1];}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ lnp\ =\ lnp2;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ ++n\_evals;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ n\_evals\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ chain[i]\ <<\ std::endl;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \}}
+\DoxyCodeLine{00295\ \ \ \ \}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{size\_t}\ number\_evaluations()\{\ \textcolor{keywordflow}{return}\ n\_evals;\}}
+\DoxyCodeLine{00299\ \ \ }
+\DoxyCodeLine{00300\ \};}
+\DoxyCodeLine{00301\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ slicer\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

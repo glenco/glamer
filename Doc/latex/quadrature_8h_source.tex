@@ -1,0 +1,236 @@
+\doxysection{quadrature.\+h}
+\hypertarget{quadrature_8h_source}{}\label{quadrature_8h_source}\index{SLsimLib/include/quadrature.h@{SLsimLib/include/quadrature.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_i_s_o_p}{ISOP}}}
+\DoxyCodeLine{00008\ \{\ }
+\DoxyCodeLine{00009\ \ \textcolor{keyword}{namespace\ }detail}
+\DoxyCodeLine{00010\ \ \{}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_s_o_p_1_1detail_1_1quadrature__task}{quadrature\_task}}}
+\DoxyCodeLine{00013\ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \mbox{\hyperlink{struct_i_s_o_p_1_1detail_1_1quadrature__task}{quadrature\_task}}(\textcolor{keywordtype}{double}\ value,\ \textcolor{keywordtype}{double}\ error,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ a0,\ \textcolor{keywordtype}{double}\ b0,\ \textcolor{keywordtype}{double}\ a1,\ \textcolor{keywordtype}{double}\ b1,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ x00,\ \textcolor{keywordtype}{double}\ x0c,\ \textcolor{keywordtype}{double}\ x0n,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ xc0,\ \textcolor{keywordtype}{double}\ xcc,\ \textcolor{keywordtype}{double}\ xcn,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ xn0,\ \textcolor{keywordtype}{double}\ xnc,\ \textcolor{keywordtype}{double}\ xnn)}
+\DoxyCodeLine{00019\ \ \ \ :\ value(value),\ error(error),}
+\DoxyCodeLine{00020\ \ \ \ \ \ a0(a0),\ b0(b0),\ a1(a1),\ b1(b1),}
+\DoxyCodeLine{00021\ \ \ \ \ \ x00(x00),\ x0c(x0c),\ x0n(x0n),}
+\DoxyCodeLine{00022\ \ \ \ \ \ xc0(xc0),\ xcc(xcc),\ xcn(xcn),}
+\DoxyCodeLine{00023\ \ \ \ \ \ xn0(xn0),\ xnc(xnc),\ xnn(xnn)}
+\DoxyCodeLine{00024\ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_i_s_o_p_1_1detail_1_1quadrature__task}{quadrature\_task}}\&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{\ \ \ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ std::abs(error)\ <\ std::abs(other.error);}
+\DoxyCodeLine{00030\ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \textcolor{keywordtype}{double}\ value;}
+\DoxyCodeLine{00033\ \ \ \ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00034\ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \textcolor{keywordtype}{double}\ a0;}
+\DoxyCodeLine{00036\ \ \ \ \textcolor{keywordtype}{double}\ b0;}
+\DoxyCodeLine{00037\ \ \ \ \textcolor{keywordtype}{double}\ a1;}
+\DoxyCodeLine{00038\ \ \ \ \textcolor{keywordtype}{double}\ b1;}
+\DoxyCodeLine{00039\ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \textcolor{keywordtype}{double}\ x00,\ x0c,\ x0n;}
+\DoxyCodeLine{00041\ \ \ \ \textcolor{keywordtype}{double}\ xc0,\ xcc,\ xcn;}
+\DoxyCodeLine{00042\ \ \ \ \textcolor{keywordtype}{double}\ xn0,\ xnc,\ xnn;}
+\DoxyCodeLine{00043\ \ \ \};}
+\DoxyCodeLine{00044\ \ \}}
+\DoxyCodeLine{00045\ \ }
+\DoxyCodeLine{00047\ \ \textcolor{keyword}{namespace\ }Rules}
+\DoxyCodeLine{00048\ \ \{}
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_s_o_p_1_1_rules_1_1_clenshaw_curtis}{ClenshawCurtis}}}
+\DoxyCodeLine{00052\ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ 2*N-\/1;}
+\DoxyCodeLine{00054\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ p[n];}
+\DoxyCodeLine{00055\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ w[n];}
+\DoxyCodeLine{00056\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ e[n];}
+\DoxyCodeLine{00057\ \ \ \};}
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ N>}
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_s_o_p_1_1_rules_1_1_lobatto_kronrod}{LobattoKronrod}}}
+\DoxyCodeLine{00062\ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ 2*N-\/1;}
+\DoxyCodeLine{00064\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ p[n];}
+\DoxyCodeLine{00065\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ w[n];}
+\DoxyCodeLine{00066\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ e[n];}
+\DoxyCodeLine{00067\ \ \ \};}
+\DoxyCodeLine{00068\ \ \}}
+\DoxyCodeLine{00069\ \ }
+\DoxyCodeLine{00071\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_s_o_p_1_1quadrature__result}{quadrature\_result}}}
+\DoxyCodeLine{00072\ \ \{}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{double}\ value;}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{double}\ error;}
+\DoxyCodeLine{00075\ \ \};}
+\DoxyCodeLine{00076\ \ }
+\DoxyCodeLine{00077\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Rule,\ \textcolor{keyword}{typename}\ Function>}
+\DoxyCodeLine{00078\ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_i_s_o_p_1_1quadrature__result}{quadrature\_result}}\ quadrature(Function\ f,\ \textcolor{keywordtype}{double}\ a0,\ \textcolor{keywordtype}{double}\ b0,\ \textcolor{keywordtype}{double}\ a1,\ \textcolor{keywordtype}{double}\ b1,\ \textcolor{keywordtype}{double}\ pg,\ \textcolor{keywordtype}{double}\ ag)}
+\DoxyCodeLine{00079\ \ \{}
+\DoxyCodeLine{00080\ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{struct_i_s_o_p_1_1detail_1_1quadrature__task}{detail::quadrature\_task}};}
+\DoxyCodeLine{00081\ \ \ }
+\DoxyCodeLine{00082\ \ \ \textcolor{comment}{//\ container\ type\ for\ queue}}
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{typedef}\ std::vector<quadrature\_task>\ queue\_container;}
+\DoxyCodeLine{00084\ \ \ }
+\DoxyCodeLine{00085\ \ \ \textcolor{comment}{//\ iterator\ types\ for\ queue}}
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{typedef}\ queue\_container::const\_iterator\ queue\_iterator;}
+\DoxyCodeLine{00087\ \ \ }
+\DoxyCodeLine{00088\ \ \ \textcolor{comment}{//\ calculated\ function\ values}}
+\DoxyCodeLine{00089\ \ \ \textcolor{keywordtype}{double}\ values[Rule::n][Rule::n];}
+\DoxyCodeLine{00090\ \ \ }
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ constants\ for\ easier\ access}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ Rule::n-\/1;}
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ c\ =\ (Rule::n-\/1)/2;}
+\DoxyCodeLine{00094\ \ \ }
+\DoxyCodeLine{00095\ \ \ \textcolor{comment}{//\ do\ initial\ quadrature}}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Rule::n;\ ++i)}
+\DoxyCodeLine{00097\ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ Rule::n;\ ++j)}
+\DoxyCodeLine{00098\ \ \ \ \ values[i][j]\ =\ f(0.5*((b0-\/a0)*Rule::p[i]+a0+b0),\ 0.5*((b1-\/a1)*Rule::p[j]+a1+b1));}
+\DoxyCodeLine{00099\ \ \ }
+\DoxyCodeLine{00100\ \ \ \textcolor{comment}{//\ calculate\ initial\ result}}
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{struct_i_s_o_p_1_1quadrature__result}{quadrature\_result}}\ result\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Rule::n;\ ++i)}
+\DoxyCodeLine{00103\ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ Rule::n;\ ++j)}
+\DoxyCodeLine{00105\ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ result.value\ +=\ Rule::w[i]*Rule::w[j]*values[i][j];}
+\DoxyCodeLine{00107\ \ \ \ \ result.error\ +=\ Rule::e[i]*Rule::e[j]*values[i][j];}
+\DoxyCodeLine{00108\ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \}}
+\DoxyCodeLine{00110\ \ \ result.value\ =\ 0.25*(b0-\/a0)*(b1-\/a1)*result.value;}
+\DoxyCodeLine{00111\ \ \ result.error\ =\ 0.25*(b0-\/a0)*(b1-\/a1)*std::abs(result.error);}
+\DoxyCodeLine{00112\ \ \ }
+\DoxyCodeLine{00113\ \ \ \textcolor{comment}{//\ queue\ of\ subdivisions\ to\ refine}}
+\DoxyCodeLine{00114\ \ \ queue\_container\ queue;}
+\DoxyCodeLine{00115\ \ \ std::make\_heap(queue.begin(),\ queue.end());}
+\DoxyCodeLine{00116\ \ \ }
+\DoxyCodeLine{00117\ \ \ \textcolor{comment}{//\ push\ initial\ task\ to\ queue}}
+\DoxyCodeLine{00118\ \ \ queue.push\_back(quadrature\_task(}
+\DoxyCodeLine{00119\ \ \ \ result.value,\ result.error,}
+\DoxyCodeLine{00120\ \ \ \ a0,\ b0,\ a1,\ b1,}
+\DoxyCodeLine{00121\ \ \ \ values[0][0],\ values[0][c],\ values[0][n],}
+\DoxyCodeLine{00122\ \ \ \ values[c][0],\ values[c][c],\ values[c][n],}
+\DoxyCodeLine{00123\ \ \ \ values[n][0],\ values[n][c],\ values[n][n]}
+\DoxyCodeLine{00124\ \ \ ));}
+\DoxyCodeLine{00125\ \ \ std::push\_heap(queue.begin(),\ queue.end());}
+\DoxyCodeLine{00126\ \ \ }
+\DoxyCodeLine{00127\ \ \ \textcolor{comment}{//\ refine\ until\ accuracy\ or\ precision\ goal\ is\ reached}}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordflow}{while}(result.error\ >\ std::abs(result.value)*pg\ \&\&\ result.error\ >\ ag)}
+\DoxyCodeLine{00129\ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \textcolor{comment}{//\ get\ top\ task\ from\ queue}}
+\DoxyCodeLine{00131\ \ \ \ quadrature\_task\ task\ =\ queue.front();}
+\DoxyCodeLine{00132\ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \textcolor{comment}{//\ pop\ task\ from\ queue}}
+\DoxyCodeLine{00134\ \ \ \ std::pop\_heap(queue.begin(),\ queue.end());}
+\DoxyCodeLine{00135\ \ \ \ queue.pop\_back();}
+\DoxyCodeLine{00136\ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \textcolor{comment}{//\ subdivide\ area}}
+\DoxyCodeLine{00138\ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ 4;\ ++k)}
+\DoxyCodeLine{00139\ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//\ four\ quadrants\ for\ subdivision}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordflow}{switch}(k)}
+\DoxyCodeLine{00142\ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ a0\ =\ task.a0;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ b0\ =\ 0.5*(task.a0+task.b0);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ a1\ =\ task.a1;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ b1\ =\ 0.5*(task.a1+task.b1);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ values[0][0]\ =\ task.x00;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ values[0][n]\ =\ task.x0c;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ values[n][0]\ =\ task.xc0;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ values[n][n]\ =\ task.xcc;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ a0\ =\ 0.5*(task.a0+task.b0);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ b0\ =\ task.b0;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ a1\ =\ task.a1;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ b1\ =\ 0.5*(task.a1+task.b1);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ values[0][0]\ =\ task.xc0;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ values[0][n]\ =\ task.xcc;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ values[n][0]\ =\ task.xn0;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ values[n][n]\ =\ task.xnc;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ a0\ =\ task.a0;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ b0\ =\ 0.5*(task.a0+task.b0);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ a1\ =\ 0.5*(task.a1+task.b1);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ b1\ =\ task.b1;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ values[0][0]\ =\ task.x0c;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ values[0][n]\ =\ task.x0n;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ values[n][0]\ =\ task.xcc;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ values[n][n]\ =\ task.xcn;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ a0\ =\ 0.5*(task.a0+task.b0);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ b0\ =\ task.b0;}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ a1\ =\ 0.5*(task.a1+task.b1);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ b1\ =\ task.b1;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ values[0][0]\ =\ task.xcc;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ values[0][n]\ =\ task.xcn;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ values[n][0]\ =\ task.xnc;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ values[n][n]\ =\ task.xnn;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//\ do\ subdivision\ quadrature}}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <\ n;\ ++j)}
+\DoxyCodeLine{00190\ \ \ \ \ \ values[0][j]\ =\ f(0.5*((b0-\/a0)*Rule::p[0]+a0+b0),\ 0.5*((b1-\/a1)*Rule::p[j]+a1+b1));}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ n;\ ++i)}
+\DoxyCodeLine{00192\ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ Rule::n;\ ++j)}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ values[i][j]\ =\ f(0.5*((b0-\/a0)*Rule::p[i]+a0+b0),\ 0.5*((b1-\/a1)*Rule::p[j]+a1+b1));}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <\ n;\ ++j)}
+\DoxyCodeLine{00195\ \ \ \ \ \ values[n][j]\ =\ f(0.5*((b0-\/a0)*Rule::p[n]+a0+b0),\ 0.5*((b1-\/a1)*Rule::p[j]+a1+b1));}
+\DoxyCodeLine{00196\ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{comment}{//\ calculate\ subdivision\ result}}
+\DoxyCodeLine{00198\ \ \ \ \ quadrature\_result\ sub\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Rule::n;\ ++i)}
+\DoxyCodeLine{00200\ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ Rule::n;\ ++j)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ sub.value\ +=\ Rule::w[i]*Rule::w[j]*values[i][j];}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ sub.error\ +=\ Rule::e[i]*Rule::e[j]*values[i][j];}
+\DoxyCodeLine{00205\ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ sub.value\ =\ 0.25*(b0-\/a0)*(b1-\/a1)*sub.value;}
+\DoxyCodeLine{00208\ \ \ \ \ sub.error\ =\ 0.25*(b0-\/a0)*(b1-\/a1)*sub.error;}
+\DoxyCodeLine{00209\ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ push\ subdivision\ task\ to\ queue}}
+\DoxyCodeLine{00211\ \ \ \ \ queue.push\_back(quadrature\_task(}
+\DoxyCodeLine{00212\ \ \ \ \ \ sub.value,\ sub.error,}
+\DoxyCodeLine{00213\ \ \ \ \ \ a0,\ b0,\ a1,\ b1,}
+\DoxyCodeLine{00214\ \ \ \ \ \ values[0][0],\ values[0][c],\ values[0][n],}
+\DoxyCodeLine{00215\ \ \ \ \ \ values[c][0],\ values[c][c],\ values[c][n],}
+\DoxyCodeLine{00216\ \ \ \ \ \ values[n][0],\ values[n][c],\ values[n][n]}
+\DoxyCodeLine{00217\ \ \ \ \ ));}
+\DoxyCodeLine{00218\ \ \ \ \ std::push\_heap(queue.begin(),\ queue.end());}
+\DoxyCodeLine{00219\ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ }
+\DoxyCodeLine{00221\ \ \ \ \textcolor{comment}{//\ update\ result\ value\ and\ error}}
+\DoxyCodeLine{00222\ \ \ \ result.value\ =\ 0;}
+\DoxyCodeLine{00223\ \ \ \ result.error\ =\ 0;}
+\DoxyCodeLine{00224\ \ \ \ \textcolor{keywordflow}{for}(queue\_iterator\ it\ =\ queue.begin();\ it\ !=\ queue.end();\ ++it)}
+\DoxyCodeLine{00225\ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ result.value\ +=\ it-\/>value;}
+\DoxyCodeLine{00227\ \ \ \ \ result.error\ +=\ it-\/>error;}
+\DoxyCodeLine{00228\ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ result.error\ =\ std::abs(result.error);}
+\DoxyCodeLine{00230\ \ \ \}}
+\DoxyCodeLine{00231\ \ \ }
+\DoxyCodeLine{00232\ \ \ \textcolor{comment}{//\ done}}
+\DoxyCodeLine{00233\ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00234\ \ \}}
+\DoxyCodeLine{00235\ \}}
+
+\end{DoxyCode}

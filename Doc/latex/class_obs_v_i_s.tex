@@ -1,0 +1,127 @@
+\doxysection{Obs\+VIS Class Reference}
+\hypertarget{class_obs_v_i_s}{}\label{class_obs_v_i_s}\index{ObsVIS@{ObsVIS}}
+
+
+It creates a realistic image from the output of a ray-\/tracing simulation.  
+
+
+
+
+{\ttfamily \#include $<$image\+\_\+processing.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_obs_v_i_s_a1b1bb4c8159cdecfb3df9c23685d32b4}{Obs\+VIS}} (size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, int oversample, double resolution=0.\+1 \texorpdfstring{$\ast$}{*}arcsec\+TOradians)
+\begin{DoxyCompactList}\small\item\em exposure times are set to wide survey expectations \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_obs_v_i_s_a08afa2bd9051719a3a70f3c0c4ba1003}{Obs\+VIS}} (size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, const std\+::vector$<$ double $>$ \&exposure\+\_\+times, int oversample)
+\begin{DoxyCompactList}\small\item\em background set to 0.\+0015 and 0.\+1\textquotesingle{}\textquotesingle{} pixels \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_obs_v_i_s_a202506f34977d1f902c3c0fd7d19eafa}{Obs\+VIS}} (size\+\_\+t Npix\+\_\+x, size\+\_\+t Npix\+\_\+y, const std\+::vector$<$ double $>$ \&exposure\+\_\+times, int oversample, double resolution, double background\+\_\+sigma, double calibration\+\_\+exposure\+\_\+time)
+\item 
+\Hypertarget{class_obs_v_i_s_add9123950530626b93991a22e2303eef}\label{class_obs_v_i_s_add9123950530626b93991a22e2303eef} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries Add\+Poisson} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&pmap, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
+\begin{DoxyCompactList}\small\item\em add poisson noise to an image that is in units of electrons \end{DoxyCompactList}\item 
+\Hypertarget{class_obs_v_i_s_ac79e987f52839efe536d0c97b75fc92d}\label{class_obs_v_i_s_ac79e987f52839efe536d0c97b75fc92d} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries Add\+Noise} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&pmap, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&error\+\_\+map, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran, bool cosmic=true)
+\begin{DoxyCompactList}\small\item\em Applies noise (read-\/out + Poisson) on an image, returns noise map. \end{DoxyCompactList}\item 
+\Hypertarget{class_obs_v_i_s_a14c14d8687852154e8384901a5ee2b49}\label{class_obs_v_i_s_a14c14d8687852154e8384901a5ee2b49} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries Convert} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&map\+\_\+in, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&map\+\_\+out, \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&error\+\_\+map, bool psf, bool noise, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran, bool cosmic=false)
+\item 
+\Hypertarget{class_obs_v_i_s_aa85741b3aad8974f1c453bf0c40d4d05}\label{class_obs_v_i_s_aa85741b3aad8974f1c453bf0c40d4d05} 
+double {\bfseries mag\+\_\+to\+\_\+counts} (double m) const
+\item 
+\Hypertarget{class_obs_v_i_s_a936c246b0b501aa53be788d2db2d227a}\label{class_obs_v_i_s_a936c246b0b501aa53be788d2db2d227a} 
+double {\bfseries counts\+\_\+to\+\_\+mag} (double flux) const
+\item 
+\Hypertarget{class_obs_v_i_s_a85997ac0faed1bfebb67aed82e203a16}\label{class_obs_v_i_s_a85997ac0faed1bfebb67aed82e203a16} 
+double {\bfseries zeropoint} () const
+\item 
+\Hypertarget{class_obs_v_i_s_a1f0471d949b9e761e59ac1b89d7c4931}\label{class_obs_v_i_s_a1f0471d949b9e761e59ac1b89d7c4931} 
+void {\bfseries set\+Zeropoint} (double zpoint)
+\item 
+\Hypertarget{class_obs_v_i_s_af0b0e08351ab37c295adf6b1d361e93b}\label{class_obs_v_i_s_af0b0e08351ab37c295adf6b1d361e93b} 
+float {\bfseries get\+Background\+Noise} () const
+\begin{DoxyCompactList}\small\item\em returns std of pixels in e-\/ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It creates a realistic image from the output of a ray-\/tracing simulation. 
+
+It translates pixel values in observed units (counts/sec), applies PSF and noise. Input must be in ergs/(s\texorpdfstring{$\ast$}{*}cm\texorpdfstring{$^\wedge$}{\string^}2\texorpdfstring{$\ast$}{*}\+Hz).
+
+The {\ttfamily oversample} parameter is the ratio between the pixel size of the input image to the output image. The input image must have the same resolution as the PSF so {\ttfamily oversample} is slao the oversampling of the PSF.
+
+see \href{https://www.ucolick.org/~bolte/AY257/s_n.pdf}{\texttt{ https\+://www.\+ucolick.\+org/\texorpdfstring{$\sim$}{\string~}bolte/\+AY257/s\+\_\+n.\+pdf}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_obs_v_i_s_a1b1bb4c8159cdecfb3df9c23685d32b4}\index{ObsVIS@{ObsVIS}!ObsVIS@{ObsVIS}}
+\index{ObsVIS@{ObsVIS}!ObsVIS@{ObsVIS}}
+\doxysubsubsection{\texorpdfstring{ObsVIS()}{ObsVIS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_obs_v_i_s_a1b1bb4c8159cdecfb3df9c23685d32b4} 
+Obs\+VIS\+::\+Obs\+VIS (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Npix\+\_\+x}{, }\item[{size\+\_\+t}]{Npix\+\_\+y}{, }\item[{int}]{oversample}{, }\item[{double}]{resolution}{ = {\ttfamily 0.1\texorpdfstring{$\ast$}{*}arcsecTOradians}}\end{DoxyParamCaption})}
+
+
+
+exposure times are set to wide survey expectations 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Npix\+\_\+x} & number of pixels in final observation  \\
+\hline
+{\em Npix\+\_\+y} & number of pixels in final observation  \\
+\hline
+{\em oversample} & oversampling factor for input image, \texorpdfstring{$>$}{>}= 1  \\
+\hline
+{\em resolution} & pixel size in radians \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_obs_v_i_s_a08afa2bd9051719a3a70f3c0c4ba1003}\index{ObsVIS@{ObsVIS}!ObsVIS@{ObsVIS}}
+\index{ObsVIS@{ObsVIS}!ObsVIS@{ObsVIS}}
+\doxysubsubsection{\texorpdfstring{ObsVIS()}{ObsVIS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_obs_v_i_s_a08afa2bd9051719a3a70f3c0c4ba1003} 
+Obs\+VIS\+::\+Obs\+VIS (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Npix\+\_\+x}{, }\item[{size\+\_\+t}]{Npix\+\_\+y}{, }\item[{const std\+::vector$<$ double $>$ \&}]{exposure\+\_\+times}{, }\item[{int}]{oversample}{}\end{DoxyParamCaption})}
+
+
+
+background set to 0.\+0015 and 0.\+1\textquotesingle{}\textquotesingle{} pixels 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Npix\+\_\+x} & number of pixels in final observation  \\
+\hline
+{\em Npix\+\_\+y} & number of pixels in final observation  \\
+\hline
+{\em exposure\+\_\+times} & in seconds for each dither  \\
+\hline
+{\em oversample} & oversampling factor for input image, \texorpdfstring{$>$}{>}= 1 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_obs_v_i_s_a202506f34977d1f902c3c0fd7d19eafa}\index{ObsVIS@{ObsVIS}!ObsVIS@{ObsVIS}}
+\index{ObsVIS@{ObsVIS}!ObsVIS@{ObsVIS}}
+\doxysubsubsection{\texorpdfstring{ObsVIS()}{ObsVIS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_obs_v_i_s_a202506f34977d1f902c3c0fd7d19eafa} 
+Obs\+VIS\+::\+Obs\+VIS (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Npix\+\_\+x}{, }\item[{size\+\_\+t}]{Npix\+\_\+y}{, }\item[{const std\+::vector$<$ double $>$ \&}]{exposure\+\_\+times}{, }\item[{int}]{oversample}{, }\item[{double}]{resolution}{, }\item[{double}]{background\+\_\+sigma}{, }\item[{double}]{calibration\+\_\+exposure\+\_\+time}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em Npix\+\_\+x} & number of pixels in final observation  \\
+\hline
+{\em Npix\+\_\+y} & number of pixels in final observation  \\
+\hline
+{\em exposure\+\_\+times} & in seconds for each dither  \\
+\hline
+{\em oversample} & oversampling factor for input image, \texorpdfstring{$>$}{>}= 1  \\
+\hline
+{\em resolution} & pixel size in radians  \\
+\hline
+{\em background\+\_\+sigma} & background rms in output units  \\
+\hline
+{\em calibration\+\_\+exposure\+\_\+time} & the exposure time corresponding to background\+\_\+sigma \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+SLsim\+Lib/include/image\+\_\+processing.\+h\item 
+SLsim\+Lib/\+Image\+Processing/observation.\+cpp\end{DoxyCompactItemize}

@@ -1,5 +1,5 @@
-\hypertarget{class_make_particle_lenses}{}\doxysection{Make\+Particle\+Lenses Class Reference}
-\label{class_make_particle_lenses}\index{MakeParticleLenses@{MakeParticleLenses}}
+\doxysection{Make\+Particle\+Lenses Class Reference}
+\hypertarget{class_make_particle_lenses}{}\label{class_make_particle_lenses}\index{MakeParticleLenses@{MakeParticleLenses}}
 
 
 A class for constructing Lens\+Halos from particles in a data file.  
@@ -9,50 +9,50 @@ A class for constructing Lens\+Halos from particles in a data file.
 
 {\ttfamily \#include $<$particle\+\_\+halo.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_make_particle_lenses_afc22f57bce9965e868884226096a7b40}\label{class_make_particle_lenses_afc22f57bce9965e868884226096a7b40}} 
-std\+::vector$<$ size\+\_\+t $>$ \mbox{\hyperlink{class_make_particle_lenses_afc22f57bce9965e868884226096a7b40}{getnp}} ()
+\Hypertarget{class_make_particle_lenses_a3404c6972f0e86a719016cb998128be6}\label{class_make_particle_lenses_a3404c6972f0e86a719016cb998128be6} 
+std\+::vector$<$ size\+\_\+t $>$ {\bfseries getnp} ()
 \begin{DoxyCompactList}\small\item\em returns number of particles of each type \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_aaad77f8b2615f4e5397450a133186c78}\label{class_make_particle_lenses_aaad77f8b2615f4e5397450a133186c78}} 
-std\+::vector$<$ float $>$ \mbox{\hyperlink{class_make_particle_lenses_aaad77f8b2615f4e5397450a133186c78}{getmp}} ()
+\Hypertarget{class_make_particle_lenses_a68f3ec782d5e6bf1106697ed4170d706}\label{class_make_particle_lenses_a68f3ec782d5e6bf1106697ed4170d706} 
+std\+::vector$<$ float $>$ {\bfseries getmp} ()
 \begin{DoxyCompactList}\small\item\em returns mass of particles of each type, if 0 they can have different masses \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_a350b46da6e51256c778759b71f1ea8d5}\label{class_make_particle_lenses_a350b46da6e51256c778759b71f1ea8d5}} 
-double \mbox{\hyperlink{class_make_particle_lenses_a350b46da6e51256c778759b71f1ea8d5}{sim\+\_\+redshift}} ()
+\Hypertarget{class_make_particle_lenses_a350b46da6e51256c778759b71f1ea8d5}\label{class_make_particle_lenses_a350b46da6e51256c778759b71f1ea8d5} 
+double {\bfseries sim\+\_\+redshift} ()
 \begin{DoxyCompactList}\small\item\em returns original redshift of snapshot, redshifts of the halos can be changed \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8}{Make\+Particle\+Lenses}} (const std\+::string \&filename, \mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{Sim\+File\+Format}} format, int Nsmooth, bool recenter, bool ignore\+\_\+type\+\_\+in\+\_\+smoothing=false)
 \item 
 \mbox{\hyperlink{class_make_particle_lenses_ae68de500403261e573a54bc8e4768079}{Make\+Particle\+Lenses}} (const std\+::string \&filename, bool recenter)
 \item 
-\mbox{\Hypertarget{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}\label{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}} 
-void \mbox{\hyperlink{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}{Recenter}} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ x)
+\Hypertarget{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}\label{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c} 
+void {\bfseries Recenter} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ x)
 \begin{DoxyCompactList}\small\item\em recenter the particles to 3d point in physical Mpc/h units If the halos have already been created they will be destroyed. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{Create\+Halos}} (const C\+O\+S\+M\+O\+L\+O\+GY \&cosmo, double redshift, double inv\+\_\+area)
+void \mbox{\hyperlink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{Create\+Halos}} (const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cosmo, double redshift, double inv\+\_\+area)
 \item 
 void \mbox{\hyperlink{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74}{radial\+Cut}} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ center, double radius)
 \begin{DoxyCompactList}\small\item\em remove particles that are beyond radius (Mpc/h) from center \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}{cylindrical\+Cut}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center, double radius)
 \begin{DoxyCompactList}\small\item\em remove particles that are beyond cylindrical radius (Mpc/h) of center \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_a155bf7180f088703478321a0f06c7dfa}\label{class_make_particle_lenses_a155bf7180f088703478321a0f06c7dfa}} 
-\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}} \mbox{\hyperlink{class_make_particle_lenses_a155bf7180f088703478321a0f06c7dfa}{get\+Center\+Of\+Mass}} () const
+\Hypertarget{class_make_particle_lenses_a155bf7180f088703478321a0f06c7dfa}\label{class_make_particle_lenses_a155bf7180f088703478321a0f06c7dfa} 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}} {\bfseries get\+Center\+Of\+Mass} () const
 \begin{DoxyCompactList}\small\item\em returns the original center of mass of all the particles \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_af2890c8549b7a386c724337e3d718031}\label{class_make_particle_lenses_af2890c8549b7a386c724337e3d718031}} 
-\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}} \mbox{\hyperlink{class_make_particle_lenses_af2890c8549b7a386c724337e3d718031}{densest\+\_\+particle}} () const
+\Hypertarget{class_make_particle_lenses_af2890c8549b7a386c724337e3d718031}\label{class_make_particle_lenses_af2890c8549b7a386c724337e3d718031} 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}} {\bfseries densest\+\_\+particle} () const
 \begin{DoxyCompactList}\small\item\em returns the location of the densest particle in (Mpc/h) \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_afff6abc86f9ff46772e02c97a2df7910}\label{class_make_particle_lenses_afff6abc86f9ff46772e02c97a2df7910}} 
-void \mbox{\hyperlink{class_make_particle_lenses_afff6abc86f9ff46772e02c97a2df7910}{get\+Bounding\+Box}} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ \&Xmin, \mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ \&Xmax) const
+\Hypertarget{class_make_particle_lenses_afff6abc86f9ff46772e02c97a2df7910}\label{class_make_particle_lenses_afff6abc86f9ff46772e02c97a2df7910} 
+void {\bfseries get\+Bounding\+Box} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ \&Xmin, \mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$ \&Xmax) const
 \begin{DoxyCompactList}\small\item\em return the maximum and minimum coordinates of the particles in each dimension in for the original simulation in Mpc/h \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_a6048290054664afdcc654007fc2c5156}\label{class_make_particle_lenses_a6048290054664afdcc654007fc2c5156}} 
+\Hypertarget{class_make_particle_lenses_a6048290054664afdcc654007fc2c5156}\label{class_make_particle_lenses_a6048290054664afdcc654007fc2c5156} 
 double {\bfseries get\+Zoriginal} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_make_particle_lenses_a443665691944437629a0bfaf360db54c}\label{class_make_particle_lenses_a443665691944437629a0bfaf360db54c}} 
-std\+::vector$<$ \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ Particle\+Type$<$ float $>$ $>$ $\ast$ $>$ \mbox{\hyperlink{class_make_particle_lenses_a443665691944437629a0bfaf360db54c}{halos}}
+\Hypertarget{class_make_particle_lenses_a443665691944437629a0bfaf360db54c}\label{class_make_particle_lenses_a443665691944437629a0bfaf360db54c} 
+std\+::vector$<$ \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ Particle\+Type$<$ float $>$ $>$ \texorpdfstring{$\ast$}{*} $>$ {\bfseries halos}
 \begin{DoxyCompactList}\small\item\em vector of Lens\+Halos, one for each type of particle type \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_make_particle_lenses_a2684053ea311d92942a0ba33bf9b1eb7}\label{class_make_particle_lenses_a2684053ea311d92942a0ba33bf9b1eb7}} 
+\Hypertarget{class_make_particle_lenses_a2684053ea311d92942a0ba33bf9b1eb7}\label{class_make_particle_lenses_a2684053ea311d92942a0ba33bf9b1eb7} 
 std\+::vector$<$ Particle\+Type$<$ float $>$ $>$ {\bfseries data}
 \end{DoxyCompactItemize}
 
@@ -60,91 +60,91 @@ std\+::vector$<$ Particle\+Type$<$ float $>$ $>$ {\bfseries data}
 \doxysubsection{Detailed Description}
 A class for constructing Lens\+Halos from particles in a data file. 
 
-The particle data is stored in this structure so the \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}} should not be copied and then this object allowed to be destroyed. The halos will be destroyed when this structure is destroyed.
+The particle data is stored in this structure so the \doxylink{class_lens_halo_particles}{Lens\+Halo\+Particles} should not be copied and then this object allowed to be destroyed. The halos will be destroyed when this structure is destroyed.
 
-A separate \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}} is made for each type of particle that is present in the gadget file. The nearest N neighbour smoothing is done in 3D on construction separately for each type of particle. The smoothing sizes are automatically saved to files and used again if the class is constructed again with the same file and smoothing number.
+A separate \doxylink{class_lens_halo_particles}{Lens\+Halo\+Particles} is made for each type of particle that is present in the gadget file. The nearest N neighbour smoothing is done in 3D on construction separately for each type of particle. The smoothing sizes are automatically saved to files and used again if the class is constructed again with the same file and smoothing number.
 
-On construction the Lens\+Halos are not constructed. You nead to run the {\ttfamily \mbox{\hyperlink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{Create\+Halos()}}} method the them to be created.
+On construction the Lens\+Halos are not constructed. You nead to run the {\ttfamily \doxylink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{Create\+Halos()}} method the them to be created.
 
 The data file formats are \+:
 
-gadget2 -\/ standard Gadget-\/2 output. A different \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} is made for each type of particle. The nearest neighbour smoothing scales are calculated within particle type. The sph density of gas particles are not used.
+gadget2 -\/ standard Gadget-\/2 output. A different \doxylink{class_lens_halo}{Lens\+Halo} is made for each type of particle. The nearest neighbour smoothing scales are calculated within particle type. The sph density of gas particles are not used.
 
-csv3,csv4,csv5,csv6 -\/ C\+SV ascii format without header. The first three columns are the positions. Next columns are used for the other formats being and interpreted as (column 4) masses are in Msun/h, (column 5) the paricle smoothing size in Mpc/h and (column 6) an integer for type of particle. There can be more columns in the file than are uesed. In the case of csv6, when there are more then one type of halo each type will be in a differeent \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}} with differnt smoothing.
+csv3,csv4,csv5,csv6 -\/ CSV ascii format without header. The first three columns are the positions. Next columns are used for the other formats being and interpreted as (column 4) masses are in Msun/h, (column 5) the paricle smoothing size in Mpc/h and (column 6) an integer for type of particle. There can be more columns in the file than are uesed. In the case of csv6, when there are more then one type of halo each type will be in a differeent \doxylink{class_lens_halo_particles}{Lens\+Halo\+Particles} with differnt smoothing.
 
-glmb -\/ This is a binary format internal to G\+L\+A\+M\+ER used to store the positions, masses and sizes of the particles. If G\+L\+A\+M\+ER has generated one, it should be all that is needed to recreate the \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}.
+glmb -\/ This is a binary format internal to GLAMER used to store the positions, masses and sizes of the particles. If GLAMER has generated one, it should be all that is needed to recreate the \doxylink{class_lens_halo_particles}{Lens\+Halo\+Particles}.
 
-ascii2 -\/ This is the original ascii G\+L\+A\+M\+ER format. Three floats for positions in comoving Mpc (no h factor). The lines \char`\"{}\# nparticles ....\char`\"{} and \char`\"{}\# mass ....\char`\"{} must be in header at the top of the file. \# is otherwise a comment character. Only one type of particle in a single input file.
+ascii2 -\/ This is the original ascii GLAMER format. Three floats for positions in comoving Mpc (no h factor). The lines "{}\# nparticles ...."{} and "{}\# mass ...."{} must be in header at the top of the file. \# is otherwise a comment character. Only one type of particle in a single input file.
 
 example of use\+:
 
-C\+O\+S\+M\+O\+L\+O\+GY cosmo(\+Planck);
+\doxylink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY} cosmo(\+Planck);
 
 double zs = 2,zl = 0.\+5; double Dl = cosmo.\+coor\+Dist(zl);
 
-std\+::string filename = \char`\"{}\+Data\+Files/snap\+\_\+058\+\_\+centered.\+txt\char`\"{};
+std\+::string filename = "{}\+Data\+Files/snap\+\_\+058\+\_\+centered.\+txt"{};
 
-\mbox{\hyperlink{class_make_particle_lenses}{Make\+Particle\+Lenses}} halomaker(filename,csv4,30,false);
+\doxylink{class_make_particle_lenses}{Make\+Particle\+Lenses} halomaker(filename,csv4,30,false);
 
-\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}} Xmax,Xmin;
+\doxylink{struct_point__3d}{Point\+\_\+3d} Xmax,Xmin;
 
 halomaker.\+get\+Bounding\+Box(\+Xmin, Xmax);
 
-\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}} c\+\_\+mass = halomaker.\+get\+Center\+Of\+Mass(); \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center;
+\doxylink{struct_point__3d}{Point\+\_\+3d} c\+\_\+mass = halomaker.\+get\+Center\+Of\+Mass(); \doxylink{struct_point__2d}{Point\+\_\+2d} center;
 
 center\mbox{[}0\mbox{]} = c\+\_\+mass\mbox{[}0\mbox{]}; center\mbox{[}1\mbox{]} = c\+\_\+mass\mbox{[}1\mbox{]};
 
 cut out a cylinder, could also do a ball halomaker.\+cylindrical\+Cut(center,(Xmax\mbox{[}0\mbox{]}-\/Xmin\mbox{[}0\mbox{]}/2));
 
-long seed = 88277394; \mbox{\hyperlink{class_lens}{Lens}} lens(\&seed,zs);
+long seed = 88277394; \doxylink{class_lens}{Lens} lens(\&seed,zs);
 
-double range = (Xmax\mbox{[}0\mbox{]}-\/Xmin\mbox{[}0\mbox{]})$\ast$1.05$\ast$cosmo.gethubble()/\+Dl; // angular range of simulation
+double range = (Xmax\mbox{[}0\mbox{]}-\/Xmin\mbox{[}0\mbox{]})\texorpdfstring{$\ast$}{*}1.05\texorpdfstring{$\ast$}{*}cosmo.gethubble()/\+Dl; // angular range of simulation
 
-center $\ast$= cosmo.\+gethubble()/\+Dl; // convert to angular coordinates
+center \texorpdfstring{$\ast$}{*}= cosmo.\+gethubble()/\+Dl; // convert to angular coordinates
 
 halomaker.\+Create\+Halos(cosmo,zl);
 
 for(auto h \+: halomaker.\+halos)\{ lens.\+insert\+Main\+Halo(h,zl, true); \}
 
-\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} gridmap(\&lens, 2049,center.\+x,range);
+\doxylink{struct_grid_map}{Grid\+Map} gridmap(\&lens, 2049,center.\+x,range);
 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} pmap = gridmap.\+write\+Pixel\+Map\+Uniform(\+K\+A\+P\+P\+A); pmap.\+print\+F\+I\+TS(\char`\"{}!\char`\"{} + filename + \char`\"{}.\+kappa.\+fits\char`\"{});
+\doxylink{class_pixel_map}{Pixel\+Map} pmap = gridmap.\+write\+Pixel\+Map\+Uniform(\+KAPPA); pmap.\+print\+FITS("{}!"{} + filename + "{}.\+kappa.\+fits"{});
 
-pmap = gridmap.\+write\+Pixel\+Map\+Uniform(\+A\+L\+P\+H\+A1); pmap.\+print\+F\+I\+TS(\char`\"{}!\char`\"{} + filename + \char`\"{}.\+alpha1.\+fits\char`\"{});
+pmap = gridmap.\+write\+Pixel\+Map\+Uniform(\+ALPHA1); pmap.\+print\+FITS("{}!"{} + filename + "{}.\+alpha1.\+fits"{});
 
-pmap = gridmap.\+write\+Pixel\+Map\+Uniform(\+A\+L\+P\+H\+A2); pmap.\+print\+F\+I\+TS(\char`\"{}!\char`\"{} + filename + \char`\"{}.\+alpha2.\+fits\char`\"{});
+pmap = gridmap.\+write\+Pixel\+Map\+Uniform(\+ALPHA2); pmap.\+print\+FITS("{}!"{} + filename + "{}.\+alpha2.\+fits"{});
 
-$<${\ttfamily } $>$ 
+\texorpdfstring{$<$}{<}{\ttfamily } \texorpdfstring{$>$}{>} 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8}\label{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8}} 
-\index{MakeParticleLenses@{MakeParticleLenses}!MakeParticleLenses@{MakeParticleLenses}}
+\Hypertarget{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8}\index{MakeParticleLenses@{MakeParticleLenses}!MakeParticleLenses@{MakeParticleLenses}}
 \index{MakeParticleLenses@{MakeParticleLenses}!MakeParticleLenses@{MakeParticleLenses}}
 \doxysubsubsection{\texorpdfstring{MakeParticleLenses()}{MakeParticleLenses()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Make\+Particle\+Lenses\+::\+Make\+Particle\+Lenses (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{Sim\+File\+Format}}}]{format,  }\item[{int}]{Nsmooth,  }\item[{bool}]{recenter,  }\item[{bool}]{ignore\+\_\+type\+\_\+in\+\_\+smoothing = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8} 
+Make\+Particle\+Lenses\+::\+Make\+Particle\+Lenses (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{Sim\+File\+Format}}}]{format}{, }\item[{int}]{Nsmooth}{, }\item[{bool}]{recenter}{, }\item[{bool}]{ignore\+\_\+type\+\_\+in\+\_\+smoothing}{ = {\ttfamily false}}\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em filename} & path / root name of gadget-\/2 snapshot \\
+{\em filename} & path / root name of gadget-\/2 snapshot  \\
 \hline
-{\em format} & format of data file \\
+{\em format} & format of data file  \\
 \hline
-{\em Nsmooth} & number of nearest neighbors used for smoothing \\
+{\em Nsmooth} & number of nearest neighbors used for smoothing  \\
 \hline
-{\em recenter} & recenter so that the Lens\+Halos are centered on the center of mass \\
+{\em recenter} & recenter so that the Lens\+Halos are centered on the center of mass  \\
 \hline
 {\em ignore\+\_\+type\+\_\+in\+\_\+smoothing} & used only when format == gadget2, nearest neighbour smoothing is done amongst particles by type if set to false \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_make_particle_lenses_ae68de500403261e573a54bc8e4768079}\label{class_make_particle_lenses_ae68de500403261e573a54bc8e4768079}} 
-\index{MakeParticleLenses@{MakeParticleLenses}!MakeParticleLenses@{MakeParticleLenses}}
+\Hypertarget{class_make_particle_lenses_ae68de500403261e573a54bc8e4768079}\index{MakeParticleLenses@{MakeParticleLenses}!MakeParticleLenses@{MakeParticleLenses}}
 \index{MakeParticleLenses@{MakeParticleLenses}!MakeParticleLenses@{MakeParticleLenses}}
 \doxysubsubsection{\texorpdfstring{MakeParticleLenses()}{MakeParticleLenses()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Make\+Particle\+Lenses\+::\+Make\+Particle\+Lenses (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{recenter }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_make_particle_lenses_ae68de500403261e573a54bc8e4768079} 
+Make\+Particle\+Lenses\+::\+Make\+Particle\+Lenses (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{bool}]{recenter}{}\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em filename} & path / name of glmb file \\
+{\em filename} & path / name of glmb file  \\
 \hline
 {\em recenter} & recenter so that the Lens\+Halos are centered on the center of mass \\
 \hline
@@ -152,27 +152,27 @@ $<${\ttfamily } $>$
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}\label{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}} 
-\index{MakeParticleLenses@{MakeParticleLenses}!CreateHalos@{CreateHalos}}
+\Hypertarget{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}\index{MakeParticleLenses@{MakeParticleLenses}!CreateHalos@{CreateHalos}}
 \index{CreateHalos@{CreateHalos}!MakeParticleLenses@{MakeParticleLenses}}
 \doxysubsubsection{\texorpdfstring{CreateHalos()}{CreateHalos()}}
-{\footnotesize\ttfamily void Make\+Particle\+Lenses\+::\+Create\+Halos (\begin{DoxyParamCaption}\item[{const C\+O\+S\+M\+O\+L\+O\+GY \&}]{cosmo,  }\item[{double}]{redshift,  }\item[{double}]{inv\+\_\+area }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4} 
+void Make\+Particle\+Lenses\+::\+Create\+Halos (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{double}]{redshift}{, }\item[{double}]{inv\+\_\+area}{}\end{DoxyParamCaption})}
 
-how do you set up inv\+\_\+area in general ???\mbox{\Hypertarget{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}\label{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}} 
-\index{MakeParticleLenses@{MakeParticleLenses}!cylindricalCut@{cylindricalCut}}
+how do you set up inv\+\_\+area in general ???\Hypertarget{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}\index{MakeParticleLenses@{MakeParticleLenses}!cylindricalCut@{cylindricalCut}}
 \index{cylindricalCut@{cylindricalCut}!MakeParticleLenses@{MakeParticleLenses}}
 \doxysubsubsection{\texorpdfstring{cylindricalCut()}{cylindricalCut()}}
-{\footnotesize\ttfamily void Make\+Particle\+Lenses\+::cylindrical\+Cut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{center,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713} 
+void Make\+Particle\+Lenses\+::cylindrical\+Cut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{center}{, }\item[{double}]{radius}{}\end{DoxyParamCaption})}
 
 
 
 remove particles that are beyond cylindrical radius (Mpc/h) of center 
 
-resort by type\mbox{\Hypertarget{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74}\label{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74}} 
-\index{MakeParticleLenses@{MakeParticleLenses}!radialCut@{radialCut}}
+resort by type\Hypertarget{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74}\index{MakeParticleLenses@{MakeParticleLenses}!radialCut@{radialCut}}
 \index{radialCut@{radialCut}!MakeParticleLenses@{MakeParticleLenses}}
 \doxysubsubsection{\texorpdfstring{radialCut()}{radialCut()}}
-{\footnotesize\ttfamily void Make\+Particle\+Lenses\+::radial\+Cut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$}]{center,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74} 
+void Make\+Particle\+Lenses\+::radial\+Cut (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$$>$}]{center}{, }\item[{double}]{radius}{}\end{DoxyParamCaption})}
 
 
 
@@ -182,5 +182,5 @@ resort by type
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/particle\+\_\+halo.\+h\item 
-S\+Lsim\+Lib/\+Multi\+Plane/particle\+\_\+lens.\+cpp\end{DoxyCompactItemize}
+SLsim\+Lib/include/particle\+\_\+halo.\+h\item 
+SLsim\+Lib/\+Multi\+Plane/particle\+\_\+lens.\+cpp\end{DoxyCompactItemize}

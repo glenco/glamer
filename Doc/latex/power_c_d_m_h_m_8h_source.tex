@@ -1,0 +1,70 @@
+\doxysection{power\+CDMHM.\+h}
+\hypertarget{power_c_d_m_h_m_8h_source}{}\label{power_c_d_m_h_m_8h_source}\index{CosmoLib/include/powerCDMHM.h@{CosmoLib/include/powerCDMHM.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ halo.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Oct\ 23,\ 2012}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ cgiocoli}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ This\ class\ implement\ the\ non-\/linear\ power\ spectrum\ using\ the\ Halo\ Model}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ POWERCDMHM\_H\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ POWERCDMHM\_H\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cosmo.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <halo.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <utilities.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifdef\ ENABLE\_GSL}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_errno.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_integration.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_sf.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_math.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_spline.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <gsl/gsl\_rng.h>}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }POWERCDMHM\{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ POWERCDMHM(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *co,\ \textcolor{keywordtype}{double}\ redshift,\ \textcolor{keywordtype}{double}\ minHalomass,\ \textcolor{keywordtype}{double}\ sigma=0.25,\textcolor{keywordtype}{int}\ cmRelation=0,\textcolor{keywordtype}{double}\ slope=-\/0.1);}
+\DoxyCodeLine{00033\ \ \ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{double}\ nonlinpowerCDMHM(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{double}\ nonlinpowerCDMHM1Halo(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{double}\ nonlinpowerCDMHM2Halo(\textcolor{keywordtype}{double}\ k);}
+\DoxyCodeLine{00037\ \ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{double}\ nonlinKAPPApowerCDMHM(\textcolor{keywordtype}{double}\ l,\ \textcolor{keywordtype}{double}\ zs);}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{double}\ nonlinKAPPApowerCDMHM1Halo(\textcolor{keywordtype}{double}\ l,\ \textcolor{keywordtype}{double}\ zs);}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{double}\ nonlinKAPPApowerCDMHM2Halo(\textcolor{keywordtype}{double}\ l,\ \textcolor{keywordtype}{double}\ zs);}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{double}\ linKAPPApowerCDMHM(\textcolor{keywordtype}{double}\ l,\ \textcolor{keywordtype}{double}\ zs);}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{double}\ nonlinfitKAPPApowerCDMHM(\textcolor{keywordtype}{double}\ l,\ \textcolor{keywordtype}{double}\ zs);}
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{virtual}\ \string~POWERCDMHM\ ();}
+\DoxyCodeLine{00044\ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00046\ \ \ gsl\_function\ intPk1,intPk2;}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{double}\ Pklin,Pk1,Pk2;}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{double}\ Pk20;}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{double}\ weight\ (\textcolor{keywordtype}{double}\ z1,\ \textcolor{keywordtype}{double}\ z2);}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{double}\ weight\ (\textcolor{keywordtype}{double}\ z0);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{struct\ }weightfnc\{}
+\DoxyCodeLine{00053\ \ \ \ \ std::vector<double>\ ai;}
+\DoxyCodeLine{00054\ \ \ \ \ std::vector<double>\ wi;}
+\DoxyCodeLine{00055\ \ \ \};}
+\DoxyCodeLine{00056\ \ \ weightfnc\ wgf;\ \textcolor{comment}{//\ weight\ function}}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ Initweight(\textcolor{keywordtype}{double}\ zs);}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{float}\ *xf,*wf;}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ POWERCDMHM\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+
+\end{DoxyCode}

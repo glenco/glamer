@@ -1,0 +1,903 @@
+\doxysection{multimap.\+h}
+\hypertarget{multimap_8h_source}{}\label{multimap_8h_source}\index{SLsimLib/include/multimap.h@{SLsimLib/include/multimap.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ MOKAlens.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ MultiLENS\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MultiLENS\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}profile.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_params_8h}{InputParams.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}lens\_halos.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}grid\_maintenance.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}cpfits.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ this\ is\ just\ to\ make\ sure\ no\ plan\ is\ executed\ with\ the\ wrong\ dimensions}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }my\_fftw\_plan\{}
+\DoxyCodeLine{00020\ \ \ fftw\_plan\ plan\_r2c;}
+\DoxyCodeLine{00021\ \ \ fftw\_plan\ plan\_c2r;}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{size\_t}\ nx;}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{size\_t}\ ny;}
+\DoxyCodeLine{00024\ \ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ initialize(\textcolor{keywordtype}{size\_t}\ \_nx\_,\textcolor{keywordtype}{size\_t}\ \_ny\_)\{}
+\DoxyCodeLine{00026\ \ \ \ \ nx\ =\ \_nx\_;}
+\DoxyCodeLine{00027\ \ \ \ \ ny\ =\ \_ny\_;}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<double>\ rdummy(nx*ny);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Nkx\ =\ (nx/2+1);}
+\DoxyCodeLine{00031\ \ \ \ \ fftw\_complex\ *cdummy\ =\ \textcolor{keyword}{new}\ fftw\_complex[ny*Nkx];}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ plan\_r2c\ =\ fftw\_plan\_dft\_r2c\_2d(ny,nx,rdummy.data(),cdummy}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,FFTW\_ESTIMATE);}
+\DoxyCodeLine{00035\ \ \ \ \ plan\_c2r\ =\ fftw\_plan\_dft\_c2r\_2d(ny,nx,cdummy,rdummy.data()}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,FFTW\_MEASURE);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{delete}[]\ cdummy;}
+\DoxyCodeLine{00038\ \ \ \}}
+\DoxyCodeLine{00039\ \ \ }
+\DoxyCodeLine{00040\ \ \ \string~my\_fftw\_plan()\{}
+\DoxyCodeLine{00041\ \ \ \ \ fftw\_destroy\_plan(plan\_r2c);}
+\DoxyCodeLine{00042\ \ \ \ \ fftw\_destroy\_plan(plan\_c2r);}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_lens_map}{LensMap}}\{}
+\DoxyCodeLine{00057\ \ \ }
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}():nx(0),ny(0),boxlMpc(0),angular\_pixel\_size(0)\{\};}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00060\ \ \ \textcolor{comment}{//\ move\ operators}}
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}(\mbox{\hyperlink{struct_lens_map}{LensMap}}\ \&\&m);}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}\&\ operator=(\mbox{\hyperlink{struct_lens_map}{LensMap}}\ \&\&m);}
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00065\ \ std::valarray<double>\ \mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}};\ \ \textcolor{comment}{//\ Msun\ /\ Mpc\string^2}}
+\DoxyCodeLine{00066\ \ std::valarray<float>\ alpha1\_bar;\ \ \textcolor{comment}{//\ Msun\ /\ Mpc}}
+\DoxyCodeLine{00067\ \ std::valarray<float>\ alpha2\_bar;\ \ \textcolor{comment}{//\ Msun\ /\ Mpc}}
+\DoxyCodeLine{00068\ \ std::valarray<float>\ gamma1\_bar;\ \ \textcolor{comment}{//\ Msun\ /\ Mpc\string^2}}
+\DoxyCodeLine{00069\ \ std::valarray<float>\ gamma2\_bar;\ \ \textcolor{comment}{//\ Msun\ /\ Mpc\string^2}}
+\DoxyCodeLine{00070\ \ \ std::valarray<float>\ phi\_bar;\ \ \ \ \ \textcolor{comment}{//\ Msun\ \ }}
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{int}\ nx,ny;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{double}\ boxlMpc;\ \ \ \textcolor{comment}{//\ range\ in\ Mpc}}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{double}\ angular\_pixel\_size;\ \ \textcolor{comment}{//\ in\ radians}}
+\DoxyCodeLine{00075\ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ center;}
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ lowerleft;\ \ }
+\DoxyCodeLine{00077\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{struct_lens_map_a9d35d54d06ceb6823d69134e5d485ada}{upperright}};\ }
+\DoxyCodeLine{00078\ \ \ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_lens_map_aaf40fc79305c8279315a79a78c2a7969}{x\_resolution}}()\{\textcolor{keywordflow}{return}\ boxlMpc\ /\ nx\ ;\}}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{double}\ y\_resolution()\{\textcolor{keywordflow}{return}\ (\mbox{\hyperlink{struct_lens_map_a9d35d54d06ceb6823d69134e5d485ada}{upperright}}[1]-\/lowerleft[1])/ny;\}}
+\DoxyCodeLine{00082\ \ \ \textcolor{comment}{//\ \#\ of\ pixels\ times\ resolution}}
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{double}\ x\_range()\{\textcolor{keywordflow}{return}\ boxlMpc;\}}
+\DoxyCodeLine{00084\ \ \ \textcolor{comment}{//\ \#\ of\ pixels\ times\ resolution}}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{double}\ y\_range()\{\textcolor{keywordflow}{return}\ (\mbox{\hyperlink{struct_lens_map_a9d35d54d06ceb6823d69134e5d485ada}{upperright}}[1]-\/lowerleft[1]);\}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{bool}\ evaluate(\textcolor{keyword}{const}\ PosType\ *x,KappaType\ \&sigma,KappaType\ *gamma,PosType\ *alpha);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}(std::string\ fits\_input\_file,\textcolor{keywordtype}{double}\ angDist)\{}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{struct_lens_map_a473194bfbf830c18f993cb1704769c15}{read}}(fits\_input\_file,angDist);}
+\DoxyCodeLine{00091\ \ \ \}}
+\DoxyCodeLine{00092\ \ \ }
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a473194bfbf830c18f993cb1704769c15}{read}}(std::string\ input\_fits,\textcolor{keywordtype}{double}\ angDist);\textcolor{comment}{//,float\ h,float\ z);}}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a4e5f0a2b7660a21d925c57bcb887cc5c}{Myread}}(std::string\ fits\_input\_file);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ }
+\DoxyCodeLine{00100\ \ \ \textcolor{comment}{//void\ read\_header(std::string\ input\_fits,float\ h,float\ z);}}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a756c8cfc07cf5674f42678466bbe056f}{read\_header}}(std::string\ input\_fits,\textcolor{keywordtype}{double}\ angDist);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \textcolor{comment}{//\ \ void\ read\_sub(std::string\ input\_fits}}
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,const\ std::vector<long>\ \&first}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,const\ std::vector<long>\ \&last}}
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,double\ Dist}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}}
+\DoxyCodeLine{00109\ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a0b05178fa65738ec4db3f31eb753eb7a}{read\_sub}}(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&cpfits}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<long>\ \&first}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<long>\ \&last}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Dist}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_ab5420fee6ae287a89107d6b27f2dced5}{write}}(std::string\ filename);}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_ab5420fee6ae287a89107d6b27f2dced5}{write}}(std::string\ filename,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ quant);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \textcolor{comment}{//\ this\ calculates\ the\ other\ lensing\ quantities\ from\ the\ density\ map}}
+\DoxyCodeLine{00121\ \ \ }
+\DoxyCodeLine{00122\ \ \ \textcolor{comment}{//std::mutex\ mutex\_lensmap;}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{comment}{//\ these\ are\ thread\ safe\ versions}}
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{ProcessFFTs}}(\textcolor{keywordtype}{float}\ zerosize}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ Wphi\_of\_k}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,my\_fftw\_plan\ \&plan\_padded\ \textcolor{comment}{//\ the\ plan\ must\ be\ initialized\ with\ thr\ right\ size\ arrays}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00130\ \ \ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{ProcessFFTs}}(T\ Wphi\_of\_k}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,my\_fftw\_plan\ \&plan\ \ \ \textcolor{comment}{//\ the\ plan\ must\ be\ initialized\ with\ thr\ right\ size\ arrays}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ }
+\DoxyCodeLine{00137\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00138\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{ProcessFFTs}}(\textcolor{keywordtype}{float}\ zerosize}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ Wphi\_of\_k}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00141\ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00143\ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{ProcessFFTs}}(T\ Wphi\_of\_k}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordtype}{void}\ make\_fftw\_plans(}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ my\_fftw\_plan\ \&plans}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ zerosize}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00150\ \ \ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Nnx=int(zerosize*nx);}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Nny=int(zerosize*ny);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ plans.nx\ =\ Nnx;}
+\DoxyCodeLine{00155\ \ \ \ \ plans.ny\ =\ Nny;}
+\DoxyCodeLine{00156\ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ std::vector<double>\ rdummy(Nnx*Nny);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Nkx\ =\ (Nnx/2+1);}
+\DoxyCodeLine{00159\ \ \ \ \ fftw\_complex\ *cdummy\ =\ \textcolor{keyword}{new}\ fftw\_complex[Nny*Nkx];}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ plans.plan\_r2c\ =\ fftw\_plan\_dft\_r2c\_2d(Nny,Nnx,rdummy.data(),cdummy}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,FFTW\_ESTIMATE);}
+\DoxyCodeLine{00163\ \ \ \ \ plans.plan\_c2r\ =\ fftw\_plan\_dft\_c2r\_2d(Nny,Nnx,cdummy,rdummy.data()}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,FFTW\_MEASURE);}
+\DoxyCodeLine{00165\ \ \ \ \ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{delete}[]\ cdummy;}
+\DoxyCodeLine{00167\ \ \ \}}
+\DoxyCodeLine{00168\ \};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_multi_map}{LensHaloMultiMap}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}}
+\DoxyCodeLine{00177\ \{}
+\DoxyCodeLine{00178\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}(}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fitsfile\ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ dir\_data}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ redshift}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ mass\_unit\ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ npane\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ number\_of\_subfields\ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&c}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ write\_subfields\ =\ \textcolor{keyword}{false}\ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ dir\_scratch\ =\ \textcolor{stringliteral}{"{}"{}}\ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ subtract\_ave\ =\ \textcolor{keyword}{true}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ ffactor\ =\ 5\ \ \ \textcolor{comment}{//\ coarse\ grid\ size\ in\ units\ of\ smoothing\ size}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ gfactor\ =\ 5\ \ \ \textcolor{comment}{//\ ratio\ of\ the\ border\ size\ to\ the\ smoothing\ scale}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ rsmooth2\ =\ 0\ \textcolor{comment}{//\ smoothing\ scale\ on\ potential}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map}{\string~LensHaloMultiMap}}()\{}
+\DoxyCodeLine{00197\ \ \ \ \ -\/-\/count;}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{if}(count\ ==\ 0)\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ plans\_set\_up\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00200\ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \};}
+\DoxyCodeLine{00202\ \ }
+\DoxyCodeLine{00204\ \ \ }
+\DoxyCodeLine{00205\ \ \ \textcolor{keyword}{static}\ my\_fftw\_plan\ \mbox{\hyperlink{class_lens_halo_multi_map_a1c478f3e241ab0134ba0281e241f3957}{plan\_short\_range}};}
+\DoxyCodeLine{00206\ \ \ \textcolor{comment}{//static\ fftw\_plan\ plan\_c2r\_short\_range;}}
+\DoxyCodeLine{00207\ \ \ \textcolor{keyword}{static}\ my\_fftw\_plan\ plan\_long\_range;}
+\DoxyCodeLine{00208\ \ \ \textcolor{comment}{//static\ fftw\_plan\ plan\_c2r\_long\_range;}}
+\DoxyCodeLine{00209\ \ \ \textcolor{keyword}{static}\ std::mutex\ mutex\_multimap;}
+\DoxyCodeLine{00210\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ plans\_set\_up;}
+\DoxyCodeLine{00211\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ nx\_sub;\ \ \textcolor{comment}{//\ size\ of\ used\ highres\ field}}
+\DoxyCodeLine{00212\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ ny\_sub;}
+\DoxyCodeLine{00213\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ nx\_long;\ \ \textcolor{comment}{//\ size\ of\ used\ highres\ field}}
+\DoxyCodeLine{00214\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ ny\_long;}
+\DoxyCodeLine{00215\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ nx\_sub\_extended;\ \textcolor{comment}{//\ size\ of\ highres\ field\ with\ borders}}
+\DoxyCodeLine{00216\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ ny\_sub\_extended;}
+\DoxyCodeLine{00217\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ count;}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \textcolor{comment}{//const\ double\ ffactor\ =\ 5,gfactor\ =\ 5;}}
+\DoxyCodeLine{00220\ \ \ \textcolor{keywordtype}{double}\ ffactor;}
+\DoxyCodeLine{00221\ \ \ \textcolor{keywordtype}{double}\ gfactor;}
+\DoxyCodeLine{00222\ \ \ \textcolor{comment}{//const\ double\ ffactor\ =\ 10,gfactor\ =\ 10;}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ }
+\DoxyCodeLine{00229\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_multi_map_a30ed57c69b9bec07ac44a617bfe01718}{resetsubmap}}(}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ \ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<long>\ \&lower\_left\_pix\ \ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00233\ \ \ }
+\DoxyCodeLine{00235\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}{resetsubmapPhys}}(\textcolor{keywordtype}{int}\ i,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ll);}
+\DoxyCodeLine{00236\ \ \ \textcolor{keywordtype}{void}\ resetsubmapAngular(\textcolor{keywordtype}{int}\ i,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ll)\{}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{if}(i\ >=\ short\_range\_maps.size())\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{double}\ D\ =\ \mbox{\hyperlink{class_lens_halo_a50bd89dc5d7d11932c757eb4e962b6ba}{getDist}}();}
+\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_multi_map_a3ec68c906a7a1cdf23709e4eb6234843}{resetsubmapPhys}}(i,ll*D);}
+\DoxyCodeLine{00240\ \ \ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \textcolor{keywordtype}{void}\ force\_halo(\textcolor{keywordtype}{double}\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xcm,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1.0);}
+\DoxyCodeLine{00243\ \ \ }
+\DoxyCodeLine{00244\ \ \textcolor{keywordtype}{void}\ writeImage(std::string\ fn);}
+\DoxyCodeLine{00245\ \ \ }
+\DoxyCodeLine{00247\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a62574c4e60b6aea190a3f623815a50b0}{getLowerLeft\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.lowerleft;\ \}}
+\DoxyCodeLine{00249\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_aa75e10a37d94aa14efac48785aa4309f}{getUpperRight\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.\mbox{\hyperlink{struct_lens_map_a9d35d54d06ceb6823d69134e5d485ada}{upperright}};\ \}}
+\DoxyCodeLine{00251\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a17decbf5feed2c78edab1162b13ec4b9}{getCenter\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.center;\ \}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00254\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a35620fb0b5da1a49046fedb0503a58f6}{getLowerLeft\_sr}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ short\_range\_maps[i].lowerleft;\ \}}
+\DoxyCodeLine{00256\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_ac6d882347d9f49f7ba74672f6fa4b2b7}{getUpperRight\_sr}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ short\_range\_maps[i].upperright;\ \}}
+\DoxyCodeLine{00258\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a6b899c88e491207990d5b95b5d633591}{getCenter\_sr}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ short\_range\_maps[i].center;\ \}}
+\DoxyCodeLine{00259\ \ \ }
+\DoxyCodeLine{00261\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_lens_halo_multi_map_a422b0d05144688192f6bc80b0ea51d3e}{NumberOfShortRangeMaps}}()\{\textcolor{keywordflow}{return}\ short\_range\_maps.size();\}}
+\DoxyCodeLine{00262\ \ \ }
+\DoxyCodeLine{00264\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_lens_halo_multi_map_acc889a0d4e16f6de4d53e7dc6e875545}{getRangeMpc\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.boxlMpc;\ \}}
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_lens_halo_multi_map_a9afa958352ef80a28be702a102a3d985}{getRangeMpc\_sr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ nx\_sub*resolution\_mpc;\ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00269\ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_multi_map_a5ee649c177483e8a3bf45d381496e050}{getNx\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.nx;\ \}}
+\DoxyCodeLine{00271\ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_multi_map_a577dfa81bd1e33e9fcd12861c107efeb}{getNy\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.ny;\ \}}
+\DoxyCodeLine{00272\ \ }
+\DoxyCodeLine{00274\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_multi_map_a1c1942ea8a9844a1b26445fb055e557c}{getNx\_sr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ nx\_sub;\ \}}
+\DoxyCodeLine{00276\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_multi_map_a01e4daccf7432a38b3a6ec2003717ab5}{getNy\_sr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ ny\_sub;\ \}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00279\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_multi_map_ac2144fead49404f2ed827906c089e904}{getNx}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Noriginal[0];\ \}}
+\DoxyCodeLine{00281\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_multi_map_ac7cbe45757cae1d4a3a6f292fffdea03}{getNy}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Noriginal[1];\ \}}
+\DoxyCodeLine{00282\ \ \ }
+\DoxyCodeLine{00283\ \ \ \textcolor{keywordtype}{double}\ getMax()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ max\_pix;\}}
+\DoxyCodeLine{00284\ \ \ \textcolor{keywordtype}{double}\ getMin()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ min\_pix;\}}
+\DoxyCodeLine{00285\ \ \ \textcolor{keywordtype}{double}\ getResolutionMpc()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ resolution\_mpc;\}}
+\DoxyCodeLine{00286\ \ \ \textcolor{keywordtype}{double}\ getResolutionAngular()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ angular\_resolution;\}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \textcolor{keywordtype}{void}\ operator\ =(\mbox{\hyperlink{class_lens_halo_multi_map}{LensHaloMultiMap}}\ \&\&m)\{}
+\DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(std::move(m));}
+\DoxyCodeLine{00290\ \ \ \ \ cosmo\ =\ m.cosmo;}
+\DoxyCodeLine{00291\ \ \ \ \ long\_range\_map\ =\ std::move(m.long\_range\_map);}
+\DoxyCodeLine{00292\ \ \ \ \ short\_range\_maps\ =\ std::move(m.short\_range\_maps);}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{comment}{//single\_grid\ =\ m.single\_grid;}}
+\DoxyCodeLine{00294\ \ \ \ \ cpfits\ =\ std::move(m.cpfits);}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{comment}{//m.cpfits\ =\ nullptr;}}
+\DoxyCodeLine{00296\ \ \ \ \ max\_pix\ =\ m.max\_pix;}
+\DoxyCodeLine{00297\ \ \ \ \ min\_pix\ =\ m.min\_pix;}
+\DoxyCodeLine{00298\ \ \ \ \ mass\_unit\ =\ m.mass\_unit;}
+\DoxyCodeLine{00299\ \ \ \ \ Noriginal[0]\ =\ m.Noriginal[0];}
+\DoxyCodeLine{00300\ \ \ \ \ Noriginal[1]\ =\ m.Noriginal[1];}
+\DoxyCodeLine{00301\ \ \ \ \ resolution\_mpc\ =\ m.resolution\_mpc;}
+\DoxyCodeLine{00302\ \ \ \ \ angular\_resolution\ =\ m.angular\_resolution;}
+\DoxyCodeLine{00303\ \ \ \ \ border\_width\_pix\ =\ m.border\_width\_pix;}
+\DoxyCodeLine{00304\ \ \ \ \ fitsfilename\ =\ m.fitsfilename;}
+\DoxyCodeLine{00305\ \ \ \ \ rs2\ =\ m.rs2;}
+\DoxyCodeLine{00306\ \ \ \ \ rsmooth2\ =\ m.rsmooth2;}
+\DoxyCodeLine{00307\ \ \ \ \ zerosize\ =\ m.zerosize;}
+\DoxyCodeLine{00308\ \ \ \ \ unit\ =\ m.unit;}
+\DoxyCodeLine{00309\ \ \ \ \ wsr\ =\ m.wsr;}
+\DoxyCodeLine{00310\ \ \ \ \ wlr\ =\ m.wlr;}
+\DoxyCodeLine{00311\ \ \ \ \ wsr\_smooth\ =\ m.wsr\_smooth;}
+\DoxyCodeLine{00312\ \ \ \ \ ave\_ang\_sd\ =\ m.ave\_ang\_sd;}
+\DoxyCodeLine{00313\ \ \ \ \ subfield\_filename\ =\ m.subfield\_filename;}
+\DoxyCodeLine{00314\ \ \ \ \ write\_shorts\ =\ m.write\_shorts;}
+\DoxyCodeLine{00315\ \ \ \ \ ffactor\ =\ m.ffactor;}
+\DoxyCodeLine{00316\ \ \ \ \ gfactor\ =\ m.gfactor;}
+\DoxyCodeLine{00317\ \ \ \}}
+\DoxyCodeLine{00318\ \ \ }
+\DoxyCodeLine{00319\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}(\mbox{\hyperlink{class_lens_halo_multi_map}{LensHaloMultiMap}}\ \&\&m):}
+\DoxyCodeLine{00320\ \ \ \mbox{\hyperlink{class_lens_halo}{LensHalo}}(std::move(m)),cosmo(m.cosmo),cpfits(std::move(m.cpfits))}
+\DoxyCodeLine{00321\ \ \ \{}
+\DoxyCodeLine{00322\ \ \ \ \ long\_range\_map\ =\ std::move(m.long\_range\_map);}
+\DoxyCodeLine{00323\ \ \ \ \ short\_range\_maps\ =\ std::move(m.short\_range\_maps);}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{comment}{//single\_grid\ =\ m.single\_grid;}}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{comment}{//cpfits\ =\ std::move(m.cpfits);}}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{comment}{//cpfits\ =\ m.cpfits;}}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{comment}{//m.cpfits\ =\ nullptr;}}
+\DoxyCodeLine{00328\ \ \ \ \ max\_pix\ =\ m.max\_pix;}
+\DoxyCodeLine{00329\ \ \ \ \ min\_pix\ =\ m.min\_pix;}
+\DoxyCodeLine{00330\ \ \ \ \ mass\_unit\ =\ m.mass\_unit;}
+\DoxyCodeLine{00331\ \ \ \ \ Noriginal[0]\ =\ m.Noriginal[0];}
+\DoxyCodeLine{00332\ \ \ \ \ Noriginal[1]\ =\ m.Noriginal[1];}
+\DoxyCodeLine{00333\ \ \ \ \ resolution\_mpc\ =\ m.resolution\_mpc;}
+\DoxyCodeLine{00334\ \ \ \ \ angular\_resolution\ =\ m.angular\_resolution;}
+\DoxyCodeLine{00335\ \ \ \ \ border\_width\_pix\ =\ m.border\_width\_pix;}
+\DoxyCodeLine{00336\ \ \ \ \ fitsfilename\ =\ m.fitsfilename;}
+\DoxyCodeLine{00337\ \ \ \ \ rs2\ =\ m.rs2;}
+\DoxyCodeLine{00338\ \ \ \ \ rsmooth2\ =\ m.rsmooth2;}
+\DoxyCodeLine{00339\ \ \ \ \ zerosize\ =\ m.zerosize;}
+\DoxyCodeLine{00340\ \ \ \ \ unit\ =\ m.unit;}
+\DoxyCodeLine{00341\ \ \ \ \ wsr\ =\ m.wsr;}
+\DoxyCodeLine{00342\ \ \ \ \ wlr\ =\ m.wlr;}
+\DoxyCodeLine{00343\ \ \ \ \ wsr\_smooth\ =\ m.wsr\_smooth;}
+\DoxyCodeLine{00344\ \ \ \ \ ave\_ang\_sd\ =\ m.ave\_ang\_sd;}
+\DoxyCodeLine{00345\ \ \ \ \ subfield\_filename\ =\ m.subfield\_filename;}
+\DoxyCodeLine{00346\ \ \ \ \ write\_shorts\ =\ m.write\_shorts;}
+\DoxyCodeLine{00347\ \ \ \ \ ffactor\ =\ m.ffactor;}
+\DoxyCodeLine{00348\ \ \ \ \ gfactor\ =\ m.gfactor;}
+\DoxyCodeLine{00349\ \ \ \}}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00352\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}\ long\_range\_map;}
+\DoxyCodeLine{00353\ \ \ std::vector<LensMap>\ short\_range\_maps;}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \textcolor{keywordtype}{bool}\ write\_shorts;}
+\DoxyCodeLine{00358\ \ \ \textcolor{comment}{//bool\ single\_grid;}}
+\DoxyCodeLine{00359\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo;}
+\DoxyCodeLine{00360\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ cpfits;}
+\DoxyCodeLine{00361\ \ \ }
+\DoxyCodeLine{00362\ \ \ \textcolor{keywordtype}{double}\ ave\_ang\_sd;}
+\DoxyCodeLine{00363\ \ \ }
+\DoxyCodeLine{00364\ \ \ \textcolor{keywordtype}{double}\ max\_pix\ =\ std::numeric\_limits<double>::lowest();}
+\DoxyCodeLine{00365\ \ \ \textcolor{keywordtype}{double}\ min\_pix\ =\ std::numeric\_limits<double>::max();}
+\DoxyCodeLine{00366\ \ \ \textcolor{keywordtype}{double}\ rsmooth2;}
+\DoxyCodeLine{00367\ \ \ }
+\DoxyCodeLine{00368\ \ \ \textcolor{keywordtype}{double}\ mass\_unit;}
+\DoxyCodeLine{00369\ \ \ }
+\DoxyCodeLine{00370\ \ \ \textcolor{keywordtype}{size\_t}\ Noriginal[2];\ \textcolor{comment}{//\ number\ of\ pixels\ in\ each\ dimension\ in\ original\ image}}
+\DoxyCodeLine{00371\ \ \ \textcolor{keywordtype}{double}\ resolution\_mpc;\ \ \ \textcolor{comment}{//\ resolution\ of\ original\ image\ and\ short\ range\ image\ in\ Mpc}}
+\DoxyCodeLine{00372\ \ \ \textcolor{keywordtype}{double}\ angular\_resolution;\ \ \textcolor{comment}{//\ angular\ resolution\ of\ original\ image}}
+\DoxyCodeLine{00373\ \ \ \textcolor{keywordtype}{long}\ border\_width\_pix;\ \ \ \textcolor{comment}{//\ width\ of\ short\ range\ maps\ padding}}
+\DoxyCodeLine{00374\ \ \ std::string\ fitsfilename;}
+\DoxyCodeLine{00375\ \ \ std::string\ subfield\_filename;}
+\DoxyCodeLine{00376\ \ \ }
+\DoxyCodeLine{00377\ \ \ \textcolor{keywordtype}{double}\ rs2;}
+\DoxyCodeLine{00378\ \ \ }
+\DoxyCodeLine{00379\ \ \textcolor{comment}{//const\ COSMOLOGY\&\ cosmo;}}
+\DoxyCodeLine{00380\ \ \ \textcolor{keywordtype}{int}\ zerosize;}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \ \ \textcolor{comment}{//\ setsup\ everything\ for\ the\ given\ short\ range\ map.}}
+\DoxyCodeLine{00383\ \ \ \textcolor{keywordtype}{void}\ setsubmap(\mbox{\hyperlink{struct_lens_map}{LensMap}}\ \&short\_range\_map}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<long>\ \&lower\_left}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//,const\ std::vector<long>\ \&upper\_right}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00387\ \ \ \textcolor{keyword}{struct\ }UNIT\{}
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordtype}{int}\ operator()(\textcolor{keywordtype}{float}\ k2)\{\textcolor{keywordflow}{return}\ 1;\}}
+\DoxyCodeLine{00389\ \ \ \};}
+\DoxyCodeLine{00390\ \ \ \textcolor{keyword}{struct\ }WLR\{}
+\DoxyCodeLine{00391\ \ \ \ \ \textcolor{keywordtype}{float}\ rs2;}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{float}\ operator()(\textcolor{keywordtype}{float}\ k2)\{\textcolor{keywordflow}{return}\ exp(-\/k2*rs2);\}}
+\DoxyCodeLine{00393\ \ \ \};}
+\DoxyCodeLine{00394\ \ \ \textcolor{keyword}{struct\ }WSR\{}
+\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordtype}{float}\ rs2;}
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keywordtype}{float}\ operator()(\textcolor{keywordtype}{float}\ k2)\{\textcolor{keywordflow}{return}\ 1\ -\/\ exp(-\/k2*rs2);\}}
+\DoxyCodeLine{00397\ \ \ \};}
+\DoxyCodeLine{00398\ \ \ }
+\DoxyCodeLine{00399\ \ \ \textcolor{keyword}{struct\ }WSRSMOOTH\ \{}
+\DoxyCodeLine{00400\ \ \ \ \ \textcolor{keywordtype}{float}\ rs2;}
+\DoxyCodeLine{00401\ \ \ \ \ \textcolor{keywordtype}{float}\ r\_sm2;\ \textcolor{comment}{//\ smoothing\ scale}}
+\DoxyCodeLine{00402\ \ \ \ \ \textcolor{keywordtype}{float}\ operator()(\textcolor{keywordtype}{float}\ k2)\{\textcolor{keywordflow}{return}\ (1\ -\/\ exp(-\/k2*rs2))\ *\ exp(-\/k2*r\_sm2);\}}
+\DoxyCodeLine{00403\ \ \ \};}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00405\ \ \ UNIT\ unit;}
+\DoxyCodeLine{00406\ \ \ WSRSMOOTH\ wsr\_smooth;}
+\DoxyCodeLine{00407\ \ \ WSR\ wsr;}
+\DoxyCodeLine{00408\ \ \ WLR\ wlr;}
+\DoxyCodeLine{00409\ \};}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00416\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00417\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{LensMap::ProcessFFTs}}(}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zerosize}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ Wphi\_of\_k}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha)\{}
+\DoxyCodeLine{00421\ \ \ my\_fftw\_plan\ plan\_padded;}
+\DoxyCodeLine{00422\ \ \ }
+\DoxyCodeLine{00423\ \ \ make\_fftw\_plans(plan\_padded,zerosize);}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \ \ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{ProcessFFTs<T>}}(zerosize,Wphi\_of\_k,plan\_padded,do\_alpha);}
+\DoxyCodeLine{00426\ \}}
+\DoxyCodeLine{00427\ }
+\DoxyCodeLine{00429\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00430\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{LensMap::ProcessFFTs}}(}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ zerosize}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ Wphi\_of\_k}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,my\_fftw\_plan\ \&plan\_padded\ \textcolor{comment}{//\ the\ plan\ must\ be\ initialized\ with\ thr\ right\ size\ arrays}}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha)\{}
+\DoxyCodeLine{00435\ \ \ }
+\DoxyCodeLine{00436\ \ \ assert(\mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}.size()\ ==\ nx*ny);}
+\DoxyCodeLine{00437\ }
+\DoxyCodeLine{00438\ \ \ \textcolor{comment}{//\ size\ of\ the\ new\ map\ in\ x\ and\ y\ directions,\ factor\ by\ which\ each\ size\ is\ increased}}
+\DoxyCodeLine{00439\ \ \ \textcolor{keywordtype}{int}\ Nnx=int(zerosize*nx);}
+\DoxyCodeLine{00440\ \ \ \textcolor{keywordtype}{int}\ Nny=int(zerosize*ny);}
+\DoxyCodeLine{00441\ \ \ \textcolor{keywordtype}{size\_t}\ NN\ =\ Nnx*Nny;}
+\DoxyCodeLine{00442\ \ \ \textcolor{keywordtype}{double}\ boxlx\ =\ boxlMpc*zerosize;}
+\DoxyCodeLine{00443\ \ \ \textcolor{keywordtype}{double}\ boxly\ =\ ny*boxlMpc*zerosize/nx;}
+\DoxyCodeLine{00444\ \ \ }
+\DoxyCodeLine{00445\ \ \ assert(\ (plan\_padded.nx\ ==\ Nnx)*(plan\_padded.ny\ ==\ Nny)\ );}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00447\ \ \ \textcolor{keywordtype}{int}\ imin\ =\ (Nnx-\/nx)/2;}
+\DoxyCodeLine{00448\ \ \ \textcolor{keywordtype}{int}\ imax\ =\ (Nnx+nx)/2;}
+\DoxyCodeLine{00449\ \ \ \textcolor{keywordtype}{int}\ jmin\ =\ (Nny-\/ny)/2;}
+\DoxyCodeLine{00450\ \ \ \textcolor{keywordtype}{int}\ jmax\ =\ (Nny+ny)/2;}
+\DoxyCodeLine{00451\ \ \ }
+\DoxyCodeLine{00452\ \ \ \textcolor{keywordtype}{size\_t}\ Nkx\ =\ (Nnx/2+1);}
+\DoxyCodeLine{00453\ \ \ }
+\DoxyCodeLine{00454\ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ 2.*M\_PI/boxlx;}
+\DoxyCodeLine{00455\ \ \ std::vector<double>\ kxs(Nkx);}
+\DoxyCodeLine{00456\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00457\ \ \ \ \ kxs[i]\ =\ i*tmp;}
+\DoxyCodeLine{00458\ \ \ \}}
+\DoxyCodeLine{00459\ \ \ tmp\ =\ 2.*M\_PI/boxly;}
+\DoxyCodeLine{00460\ \ \ std::vector<double>\ kys(Nny);}
+\DoxyCodeLine{00461\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00462\ \ \ \ \ kys[j]=(j<Nny/2)?\textcolor{keywordtype}{double}(j):double(j-\/Nny);}
+\DoxyCodeLine{00463\ \ \ \ \ kys[j]\ *=\ tmp;}
+\DoxyCodeLine{00464\ \ \ \}}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00466\ \ \ std::vector<double>\ extended\_map(\ NN\ );}
+\DoxyCodeLine{00467\ \ \ }
+\DoxyCodeLine{00468\ \ \ \textcolor{comment}{//\ assume\ locate\ in\ a\ rectangular\ map\ and\ build\ up\ the\ new\ one}}
+\DoxyCodeLine{00469\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00470\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nnx;\ i++\ )\{}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i>=imin\ \&\&\ i<imax\ \&\&\ j>=jmin\ \&\&\ j<jmax)\{}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i-\/imin;}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j-\/jmin;}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ii>=nx\ ||\ jj>=ny)\{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ 1\ error\ mapping\ "{}}\ <<\ ii\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ jj\ <<\ std::endl;}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ii<0\ ||\ jj<0)\{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}\ 2\ error\ mapping\ "{}}\ <<\ ii\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ jj\ <<\ std::endl;}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ assert(ii+nx*jj\ <\ \mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}.size());}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ assert(i+Nnx*j\ <\ extended\_map.size());}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ extended\_map[i+Nnx*j]\ =\ \mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}[ii+nx*jj];}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \textcolor{comment}{//float\ tmp\ =\ extended\_map[i+Nnx*j];}}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ assert(!isnan(extended\_map[i+Nnx*j]));}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(isinf(extended\_map[i+Nnx*j]))\{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ extended\_map[i+Nnx*j]\ =\ 0;}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00491\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ extended\_map[i+Nnx*j]\ =\ 0;}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00494\ \ \ }
+\DoxyCodeLine{00495\ \ \ \ \ \}}
+\DoxyCodeLine{00496\ \ \ \}}
+\DoxyCodeLine{00497\ \ \ }
+\DoxyCodeLine{00498\ \ \ \textcolor{comment}{//std::vector<fftw\_complex>\ fNmap(Nny*(Nnx/2+1));}}
+\DoxyCodeLine{00499\ \ \ \textcolor{comment}{//std::vector<fftw\_complex>\ fphi(\ Nny*(Nnx/2+1)\ );}}
+\DoxyCodeLine{00500\ \ \ fftw\_complex\ *fphi\ =\ \textcolor{keyword}{new}\ fftw\_complex[Nny*Nkx];}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ fftw\_execute\_dft\_r2c(plan\_padded.plan\_r2c}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,extended\_map.data(),fphi);}
+\DoxyCodeLine{00504\ }
+\DoxyCodeLine{00505\ \ }
+\DoxyCodeLine{00506\ \ \ \textcolor{comment}{//\ fourier\ space}}
+\DoxyCodeLine{00507\ \ \ \textcolor{comment}{//\ std::\ cout\ <<\ "{}\ allocating\ fourier\ space\ maps\ "{}\ <<\ std::\ endl;}}
+\DoxyCodeLine{00508\ \ \ }
+\DoxyCodeLine{00509\ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00510\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ k2\ =\ kxs[i]*kxs[i]\ +\ kys[j]*kys[j];}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \textcolor{comment}{//\ null\ for\ k2\ =\ 0\ no\ divergence}}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k2\ ==\ 0)\{}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ fphi[k][0]\ =\ 0.;}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ fphi[k][1]\ =\ 0.;}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ }
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(k\ <\ Nny*Nkx);}}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(!isnan(fphi[k][0]));}}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ }
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fphi}}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \textcolor{comment}{//fphi[i+(Nkx)*j][0]=\ -\/2.*fNmap[i+(Nkx)*j][0]/k2;}}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{comment}{//fphi[i+(Nkx)*j][1]=\ -\/2.*fNmap[i+(Nkx)*j][1]/k2;}}
+\DoxyCodeLine{00528\ }
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fphi}}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ fphi[k][0]\ *=\ -\/2./k2;}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ fphi[k][1]\ *=\ -\/2./k2;}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ window\ function}}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ w\ =\ Wphi\_of\_k(k2);}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ fphi[k][0]\ *=\ w;}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ fphi[k][1]\ *=\ w;}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00538\ \ \ \ \ \}}
+\DoxyCodeLine{00539\ \ \ \}}
+\DoxyCodeLine{00540\ \ \ }
+\DoxyCodeLine{00541\ \ \ fftw\_complex\ *fft=\ \textcolor{keyword}{new}\ fftw\_complex[Nny*(Nkx)];}
+\DoxyCodeLine{00542\ \ \ \textcolor{comment}{//double\ *realsp\ =\ new\ double[Nnx*Nny];}}
+\DoxyCodeLine{00543\ \ \ }
+\DoxyCodeLine{00544\ \ \ \textcolor{comment}{//std::vector<fftw\_complex>\ fft(\ Nny*(Nkx)\ );}}
+\DoxyCodeLine{00545\ \ \ std::vector<double>\ realsp(Nnx*Nny);}
+\DoxyCodeLine{00546\ \ \ }
+\DoxyCodeLine{00547\ \ \ \textcolor{keywordflow}{if}(do\_alpha)\{}
+\DoxyCodeLine{00548\ \ \ \textcolor{comment}{//\ alpha1}}
+\DoxyCodeLine{00549\ \ \ \{}
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ -\/kxs[i]*fphi[k][1];}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ \ kxs[i]*fphi[k][0];}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(!isnan(fft[k][0]));}}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00559\ \ \ \ \ \}}
+\DoxyCodeLine{00560\ \ \ \ \ }
+\DoxyCodeLine{00561\ \ \ \ \ fftw\_execute\_dft\_c2r(plan\_padded.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00562\ \ \ \ \ }
+\DoxyCodeLine{00563\ \ \ \ \ alpha1\_bar.resize(nx*ny,0);}
+\DoxyCodeLine{00564\ \ \ \ \ }
+\DoxyCodeLine{00565\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=jmin;\ j<jmax;\ j++\ )\{}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j-\/jmin;}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=imin;\ i<imax;\ i++\ )\{}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i-\/imin;}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ alpha1\_bar[ii+nx*jj]\ =\ -\/1*float(realsp[i+Nnx*j]/NN);}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00572\ \ \ \ \ \}}
+\DoxyCodeLine{00573\ \ \ \}}
+\DoxyCodeLine{00574\ }
+\DoxyCodeLine{00575\ \ \ \textcolor{comment}{//\ alpha2}}
+\DoxyCodeLine{00576\ \ \ \{}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00578\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ alpha}}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ -\/kys[j]*fphi[k][1];}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ \ kys[j]*fphi[k][0];}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00587\ \ \ \ \ \}}
+\DoxyCodeLine{00588\ \ \ \ \ }
+\DoxyCodeLine{00589\ \ \ \ \ fftw\_execute\_dft\_c2r(plan\_padded.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00590\ }
+\DoxyCodeLine{00591\ \ \ \ \ alpha2\_bar.resize(nx*ny,0);}
+\DoxyCodeLine{00592\ \ \ \ \ }
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=jmin;\ j<jmax;\ j++\ )\{}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j-\/jmin;}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=imin;\ i<imax;\ i++\ )\{}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i-\/imin;}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ alpha2\_bar[ii+nx*jj]\ =\ -\/1*float(realsp[i+Nnx*j]/NN);}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00600\ \ \ \ \ \}}
+\DoxyCodeLine{00601\ \ \ \}}
+\DoxyCodeLine{00602\ \ \ \}}
+\DoxyCodeLine{00603\ \ \ \textcolor{comment}{//\ gamma1}}
+\DoxyCodeLine{00604\ \ \ \{}
+\DoxyCodeLine{00605\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ gamma}}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ fft[k][0]\ =\ 0.5*(kxs[i]*kxs[i]-\/kys[j]*kys[j])*fphi[k][0];}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ fft[k][1]\ =\ 0.5*(kxs[i]*kxs[i]-\/kys[j]*kys[j])*fphi[k][1];}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00614\ \ \ \ \ \}}
+\DoxyCodeLine{00615\ \ \ \ \ }
+\DoxyCodeLine{00616\ \ \ \ \ fftw\_execute\_dft\_c2r(plan\_padded.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00618\ \ \ \ \ gamma1\_bar.resize(nx*ny,0);}
+\DoxyCodeLine{00619\ \ \ \ \ }
+\DoxyCodeLine{00620\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=jmin;\ j<jmax;\ j++\ )\{}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j-\/jmin;}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=imin;\ i<imax;\ i++\ )\{}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i-\/imin;}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ gamma1\_bar[ii+nx*jj]\ =\ float(\ realsp[i+Nnx*j]/NN);}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00627\ \ \ \ \ \}}
+\DoxyCodeLine{00628\ \ \ \}}
+\DoxyCodeLine{00629\ \ \ \textcolor{comment}{//\ gamma2}}
+\DoxyCodeLine{00630\ \ \ \{}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ gamma}}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ kxs[i]*kys[j]*fphi[k][0];}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ kxs[i]*kys[j]*fphi[k][1];}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00642\ \ \ \ \ \}}
+\DoxyCodeLine{00643\ \ \ \ \ }
+\DoxyCodeLine{00644\ \ \ \ \ fftw\_execute\_dft\_c2r(plan\_padded.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00646\ \ \ \ \ gamma2\_bar.resize(nx*ny);}
+\DoxyCodeLine{00647\ \ \ \ \ }
+\DoxyCodeLine{00648\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j+jmin;}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<nx;\ i++\ )\{}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i+imin;}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ gamma2\_bar[i+nx*j]\ =\ float(-\/realsp[ii+Nnx*jj]/NN);}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00655\ \ \ \ \ \}}
+\DoxyCodeLine{00656\ \ \ \}}
+\DoxyCodeLine{00657\ }
+\DoxyCodeLine{00658\ \ \ \textcolor{comment}{//\ kappa\ -\/\ this\ is\ done\ over\ because\ of\ the\ window\ in\ Fourier\ space}}
+\DoxyCodeLine{00659\ \ \ \{}
+\DoxyCodeLine{00660\ \ \ \ \ }
+\DoxyCodeLine{00661\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00662\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ k2\ =\ -\/(kxs[i]*kxs[i]\ +\ kys[j]*kys[j])/2;}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ surface\ density}}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ k2*fphi[k][0];}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ k2*fphi[k][1];}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00674\ \ \ \ \ \}}
+\DoxyCodeLine{00675\ \ \ \ \ }
+\DoxyCodeLine{00676\ \ \ \ \ assert(\ (plan\_padded.nx\ ==\ Nnx)*(plan\_padded.ny\ ==\ Nny)\ );}
+\DoxyCodeLine{00677\ \ \ \ \ fftw\_execute\_dft\_c2r(plan\_padded.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=jmin;\ j<jmax;\ j++\ )\{}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j-\/jmin;}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=imin;\ i<imax;\ i++\ )\{}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i-\/imin;}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}[ii+nx*jj]\ =\ float(realsp[i+Nnx*j]/NN);}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00687\ \ \ \ \ \}}
+\DoxyCodeLine{00688\ \ \ \}}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00690\ \ \ \textcolor{comment}{//\ phi}}
+\DoxyCodeLine{00691\ \ \ \{}
+\DoxyCodeLine{00692\ \ \ \ \ }
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00694\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<Nny;\ j++\ )\{}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ surface\ density}}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ fphi[k][0];}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ fphi[k][1];}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00703\ \ \ \ \ \}}
+\DoxyCodeLine{00704\ \ \ \ \ }
+\DoxyCodeLine{00705\ \ \ \ \ assert(\ (plan\_padded.nx\ ==\ Nnx)*(plan\_padded.ny\ ==\ Nny)\ );}
+\DoxyCodeLine{00706\ \ \ \ \ fftw\_execute\_dft\_c2r(plan\_padded.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00707\ \ \ \ \ }
+\DoxyCodeLine{00708\ \ \ \ \ phi\_bar.resize(nx*ny);}
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=jmin;\ j<jmax;\ j++\ )\{}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ jj\ =\ j-\/jmin;}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=imin;\ i<imax;\ i++\ )\{}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ i-\/imin;}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ phi\_bar[ii+nx*jj]\ =\ float(realsp[i+Nnx*j]/NN);}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00717\ \ \ \ \ \}}
+\DoxyCodeLine{00718\ \ \ \}}
+\DoxyCodeLine{00719\ }
+\DoxyCodeLine{00720\ \ \ \textcolor{comment}{//\ std::\ cout\ <<\ "{}\ remapping\ the\ map\ in\ the\ original\ size\ "{}\ <<\ std::\ endl;}}
+\DoxyCodeLine{00721\ \ \ \textcolor{keyword}{delete}[]\ fft;}
+\DoxyCodeLine{00722\ \ \ \textcolor{keyword}{delete}[]\ fphi;}
+\DoxyCodeLine{00723\ \}}
+\DoxyCodeLine{00724\ }
+\DoxyCodeLine{00726\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00727\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{LensMap::ProcessFFTs}}(T\ Wphi\_of\_k}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha)\{}
+\DoxyCodeLine{00729\ \ \ \ my\_fftw\_plan\ plan;}
+\DoxyCodeLine{00730\ \ \ }
+\DoxyCodeLine{00731\ \ \ \ make\_fftw\_plans(plan,1.0);}
+\DoxyCodeLine{00732\ \ \ \ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{ProcessFFTs<T>}}(Wphi\_of\_k,plan,do\_alpha);}
+\DoxyCodeLine{00733\ \ \}}
+\DoxyCodeLine{00734\ }
+\DoxyCodeLine{00735\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00736\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a3f78a3b3944e373247f0f59c878c48d0}{LensMap::ProcessFFTs}}(T\ Wphi\_of\_k}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,my\_fftw\_plan\ \&plan\ \ \ \textcolor{comment}{//\ the\ plan\ must\ be\ initialized\ with\ thr\ right\ size\ arrays}}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ do\_alpha)\{}
+\DoxyCodeLine{00739\ }
+\DoxyCodeLine{00740\ \ \ }
+\DoxyCodeLine{00741\ \ \ assert(\mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}.size()\ ==\ nx*ny);}
+\DoxyCodeLine{00742\ \ \ assert(\ (plan.nx\ ==\ nx)*(plan.ny\ ==\ ny)\ );}
+\DoxyCodeLine{00743\ }
+\DoxyCodeLine{00744\ \ \ \textcolor{comment}{//\ size\ of\ the\ new\ map\ in\ x\ and\ y\ directions,\ factor\ by\ which\ each\ size\ is\ increased}}
+\DoxyCodeLine{00745\ \ \ }
+\DoxyCodeLine{00746\ \ \ \textcolor{keywordtype}{size\_t}\ Nkx\ =\ (nx/2+1);}
+\DoxyCodeLine{00747\ \ \ \textcolor{keywordtype}{size\_t}\ NN\ =\ nx*ny;}
+\DoxyCodeLine{00748\ \ \ }
+\DoxyCodeLine{00749\ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ 2.*M\_PI/boxlMpc;}
+\DoxyCodeLine{00750\ \ \ }
+\DoxyCodeLine{00751\ \ \ std::vector<double>\ kxs(Nkx);}
+\DoxyCodeLine{00752\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00753\ \ \ \ \ kxs[i]\ =\ i*tmp;}
+\DoxyCodeLine{00754\ \ \ \}}
+\DoxyCodeLine{00755\ \ \ tmp\ =\ 2.*M\_PI\ *\ nx\ /boxlMpc\ /\ ny;}
+\DoxyCodeLine{00756\ \ \ std::vector<double>\ kys(ny);}
+\DoxyCodeLine{00757\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00758\ \ \ \ \ kys[j]=(j<ny/2)?\textcolor{keywordtype}{double}(j):double(j-\/ny);}
+\DoxyCodeLine{00759\ \ \ \ \ kys[j]\ *=\ tmp;}
+\DoxyCodeLine{00760\ \ \ \}}
+\DoxyCodeLine{00761\ \ \ }
+\DoxyCodeLine{00762\ \ \ \textcolor{comment}{//std::vector<double>\ extended\_map(\ Nnx*Nny\ );}}
+\DoxyCodeLine{00763\ \ \ fftw\_complex\ *fphi\ \ \ =\ \textcolor{keyword}{new}\ fftw\_complex[ny*Nkx];}
+\DoxyCodeLine{00764\ \ \ fftw\_complex\ *fft=\ \textcolor{keyword}{new}\ fftw\_complex[ny*(Nkx)];}
+\DoxyCodeLine{00765\ \ \ std::vector<double>\ realsp(NN);}
+\DoxyCodeLine{00766\ \ }
+\DoxyCodeLine{00767\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00768\ \textcolor{comment}{\ \ fftw\_plan\ plan\_r2c,plan\_c2r;}}
+\DoxyCodeLine{00769\ \textcolor{comment}{\ \ \{}}
+\DoxyCodeLine{00770\ \textcolor{comment}{\ \ \ \ std::lock\_guard<std::mutex>\ hold(mu);}}
+\DoxyCodeLine{00771\ \textcolor{comment}{\ \ \ \ plan\_r2c\ =\ fftw\_plan\_dft\_r2c\_2d(ny,nx,\&(surface\_density[0])}}
+\DoxyCodeLine{00772\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,fphi,FFTW\_ESTIMATE);}}
+\DoxyCodeLine{00773\ \textcolor{comment}{\ \ \ \ plan\_c2r\ =\ fftw\_plan\_dft\_c2r\_2d(ny,nx,fft,realsp.data(),FFTW\_MEASURE);}}
+\DoxyCodeLine{00774\ \textcolor{comment}{\ \ \}}}
+\DoxyCodeLine{00775\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00776\ \ \ }
+\DoxyCodeLine{00777\ \ \ fftw\_execute\_dft\_r2c(plan.plan\_r2c,\&(\mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}[0]),fphi);}
+\DoxyCodeLine{00778\ \ \ }
+\DoxyCodeLine{00779\ \ \ \textcolor{comment}{//\ fourier\ space}}
+\DoxyCodeLine{00780\ \ \ \textcolor{comment}{//\ std::\ cout\ <<\ "{}\ allocating\ fourier\ space\ maps\ "{}\ <<\ std::\ endl;}}
+\DoxyCodeLine{00781\ \ \ }
+\DoxyCodeLine{00782\ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00783\ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00784\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ }
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ k2\ =\ kxs[i]*kxs[i]\ +\ kys[j]*kys[j];}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ }
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \textcolor{comment}{//\ null\ for\ k2\ =\ 0\ no\ divergence}}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k2\ ==\ 0)\{}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ fphi[k][0]\ =\ 0.;}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ fphi[k][1]\ =\ 0.;}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(k\ <\ Nny*Nkx);}}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(!isnan(fphi[k][0]));}}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fphi}}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \textcolor{comment}{//fphi[i+(Nkx)*j][0]=\ -\/2.*fNmap[i+(Nkx)*j][0]/k2;}}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \textcolor{comment}{//fphi[i+(Nkx)*j][1]=\ -\/2.*fNmap[i+(Nkx)*j][1]/k2;}}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fphi}}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ fphi[k][0]\ *=\ -\/2./k2;}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ fphi[k][1]\ *=\ -\/2./k2;}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ window\ function}}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ w\ =\ Wphi\_of\_k(k2);}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ fphi[k][0]\ *=\ w;}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ fphi[k][1]\ *=\ w;}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00811\ \ \ \ \ \}}
+\DoxyCodeLine{00812\ \ \ \}}
+\DoxyCodeLine{00813\ \ \ }
+\DoxyCodeLine{00814\ \ \ \textcolor{keywordflow}{if}(do\_alpha)\{}
+\DoxyCodeLine{00815\ \ \ \textcolor{comment}{//\ alpha1}}
+\DoxyCodeLine{00816\ \ \ \{}
+\DoxyCodeLine{00817\ \ \ \ \ }
+\DoxyCodeLine{00818\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00819\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i\ +\ Nkx\ *\ j;}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ -\/kxs[i]*fphi[k][1];}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ \ kxs[i]*fphi[k][0];}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(!isnan(fft[k][0]));}}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00827\ \ \ \ \ \}}
+\DoxyCodeLine{00828\ \ \ \ \ }
+\DoxyCodeLine{00829\ \ \ \ \ fftw\_execute\_dft\_c2r(plan.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ \ \ \ \ alpha1\_bar.resize(NN);}
+\DoxyCodeLine{00832\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{size\_t}\ i=0;\ i<NN;\ i++\ )\ alpha1\_bar[i]\ =\ -\/1*\textcolor{keywordtype}{float}(realsp[i]/NN);}
+\DoxyCodeLine{00833\ \ \ \}}
+\DoxyCodeLine{00834\ \ \ }
+\DoxyCodeLine{00835\ \ \ \textcolor{comment}{//\ alpha2}}
+\DoxyCodeLine{00836\ \ \ \{}
+\DoxyCodeLine{00837\ \ \ \ \ }
+\DoxyCodeLine{00838\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00839\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ alpha}}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ -\/kys[j]*fphi[k][1];}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ \ kys[j]*fphi[k][0];}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00848\ \ \ \ \ \}}
+\DoxyCodeLine{00849\ \ \ \ \ }
+\DoxyCodeLine{00850\ \ \ \ \ fftw\_execute\_dft\_c2r(plan.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00851\ }
+\DoxyCodeLine{00852\ \ \ \ \ alpha2\_bar.resize(NN);}
+\DoxyCodeLine{00853\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{size\_t}\ i=0;\ i<NN;\ i++\ )\ alpha2\_bar[i]\ =\ -\/1*\textcolor{keywordtype}{float}(realsp[i]/NN);}
+\DoxyCodeLine{00854\ \ \ \}}
+\DoxyCodeLine{00855\ \ \ \ \ }
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{comment}{//\ phi\ }}
+\DoxyCodeLine{00857\ \ \ \ \ \{}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ }
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ fft[k][0]\ =\ fphi[k][0];}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ fft[k][1]\ =\ fphi[k][1];}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ }
+\DoxyCodeLine{00868\ \ \ \ \ \ \ fftw\_execute\_dft\_c2r(plan.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \ \ \ \ \ \ phi\_bar.resize(NN);}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{size\_t}\ i=0;\ i<NN;\ i++\ )\ phi\_bar[i]\ =\ \textcolor{keywordtype}{float}(realsp[i]/NN);}
+\DoxyCodeLine{00872\ \ \ \ \ \}}
+\DoxyCodeLine{00873\ \ \ \}}
+\DoxyCodeLine{00874\ \ \ \textcolor{comment}{//\ gamma1}}
+\DoxyCodeLine{00875\ \ \ \{}
+\DoxyCodeLine{00876\ \ \ \ \ }
+\DoxyCodeLine{00877\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00878\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ 0.5*(kxs[i]*kxs[i]\ -\/\ kys[j]*kys[j]);}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ gamma}}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ tmp\ *\ fphi[k][0];}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ tmp\ *\ fphi[k][1];}
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00887\ \ \ \ \ \}}
+\DoxyCodeLine{00888\ \ \ \ \ }
+\DoxyCodeLine{00889\ \ \ \ \ fftw\_execute\_dft\_c2r(plan.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00890\ }
+\DoxyCodeLine{00891\ \ \ \ \ gamma1\_bar.resize(NN);}
+\DoxyCodeLine{00892\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<NN;\ i++\ )\ gamma1\_bar[i]\ =\ \textcolor{keywordtype}{float}(\ realsp[i]/NN);}
+\DoxyCodeLine{00893\ \ \ \}}
+\DoxyCodeLine{00894\ \ \ \textcolor{comment}{//\ gamma2}}
+\DoxyCodeLine{00895\ \ \ \{}
+\DoxyCodeLine{00896\ \ \ \ \ }
+\DoxyCodeLine{00897\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00898\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ kxs[i]*kys[j];}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ gamma}}
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ tmp\ *\ fphi[k][0];}
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ tmp\ *\ fphi[k][1];}
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00908\ \ \ \ \ \}}
+\DoxyCodeLine{00909\ \ \ \ \ }
+\DoxyCodeLine{00910\ \ \ \ \ fftw\_execute\_dft\_c2r(plan.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00911\ }
+\DoxyCodeLine{00912\ \ \ \ \ gamma2\_bar.resize(NN);}
+\DoxyCodeLine{00913\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{size\_t}\ i=0;\ i<NN;\ i++\ )\ gamma2\_bar[i]\ =\ \textcolor{keywordtype}{float}(-\/realsp[i]/NN);}
+\DoxyCodeLine{00914\ \ \ \}}
+\DoxyCodeLine{00915\ \ \ }
+\DoxyCodeLine{00916\ \ \ \textcolor{comment}{//\ kappa\ -\/\ this\ is\ done\ over\ because\ of\ the\ window\ in\ Fourier\ space}}
+\DoxyCodeLine{00917\ \ \ \{}
+\DoxyCodeLine{00918\ \ \ \ \ }
+\DoxyCodeLine{00919\ \ \ \ \ \textcolor{comment}{//\ build\ modes\ for\ each\ pixel\ in\ the\ fourier\ space}}
+\DoxyCodeLine{00920\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ i=0;\ i<Nkx;\ i++\ )\{}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{int}\ j=0;\ j<ny;\ j++\ )\{}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ k2\ =\ -\/(kxs[i]*kxs[i]\ +\ kys[j]*kys[j])/2;}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i+(Nkx)*j;}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ surface\ density}}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ fft[k][0]\ =\ k2*fphi[k][0];}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ fft[k][1]\ =\ k2*fphi[k][1];}
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00931\ \ \ \ \ \}}
+\DoxyCodeLine{00932\ \ \ \ \ }
+\DoxyCodeLine{00933\ \ \ \ \ fftw\_execute\_dft\_c2r(plan.plan\_c2r,fft,realsp.data());}
+\DoxyCodeLine{00934\ }
+\DoxyCodeLine{00935\ \ \ \ \ \textcolor{keywordflow}{for}(\ \textcolor{keywordtype}{size\_t}\ i=0;\ i<NN;\ i++\ )\ \mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}}[i]\ =\ (realsp[i]/NN);}
+\DoxyCodeLine{00936\ \ \ \}}
+\DoxyCodeLine{00937\ \ \ }
+\DoxyCodeLine{00938\ \ \ \textcolor{comment}{//\ std::\ cout\ <<\ "{}\ remapping\ the\ map\ in\ the\ original\ size\ "{}\ <<\ std::\ endl;}}
+\DoxyCodeLine{00939\ \ \ \textcolor{keyword}{delete}[]\ fft;}
+\DoxyCodeLine{00940\ \ \ \textcolor{keyword}{delete}[]\ fphi;}
+\DoxyCodeLine{00941\ \}}
+\DoxyCodeLine{00942\ }
+\DoxyCodeLine{00943\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00944\ \textcolor{comment}{/*\ MultiLENS\_H\_\ */}}
+\DoxyCodeLine{00945\ }
+\DoxyCodeLine{00946\ }
+\DoxyCodeLine{00947\ }
+
+\end{DoxyCode}

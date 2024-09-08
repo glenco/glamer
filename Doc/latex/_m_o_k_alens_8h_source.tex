@@ -1,0 +1,308 @@
+\doxysection{MOKAlens.\+h}
+\hypertarget{_m_o_k_alens_8h_source}{}\label{_m_o_k_alens_8h_source}\index{SLsimLib/include/MOKAlens.h@{SLsimLib/include/MOKAlens.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ MOKAlens.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ MOKALENS\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MOKALENS\_H\_}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}profile.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_params_8h}{InputParams.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}lens\_halos.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}grid\_maintenance.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\{}
+\DoxyCodeLine{00030\ \ std::valarray<double>\ \mbox{\hyperlink{struct_m_o_k_amap_aff6e7b73ead075f0f59ecaa1b813e885}{surface\_density}};\ \ \textcolor{comment}{//\ Msun\ /\ Mpc\string^2}}
+\DoxyCodeLine{00031\ \ std::valarray<double>\ alpha1\_bar;}
+\DoxyCodeLine{00032\ \ std::valarray<double>\ alpha2\_bar;}
+\DoxyCodeLine{00033\ \ std::valarray<double>\ gamma1\_bar;}
+\DoxyCodeLine{00034\ \ std::valarray<double>\ gamma2\_bar;}
+\DoxyCodeLine{00035\ \ \textcolor{comment}{//std::valarray<double>\ gamma3\_bar;}}
+\DoxyCodeLine{00036\ \ \ std::valarray<double>\ phi\_bar;}
+\DoxyCodeLine{00037\ \ \textcolor{comment}{//std::vector<double>\ x;}}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{int}\ nx,ny;}
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//\ boxlMpc\ is\ Mpc/h\ for\ MOKA}}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_m_o_k_amap_add4e43f7bcdc1b8b06038f022e96d591}{zlens}},m,zsource,Dlens,DLS,DS,c,cS,fsub,mstar,minsubmass;}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_m_o_k_amap_a13a4e159028ca81f4c6901419e104dbe}{boxlarcsec}},boxlMpc,boxlrad;}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_m_o_k_amap_ae4aa8cbe0f88124b50d0beb5787d213b}{omegam}},omegal,h,wq;}
+\DoxyCodeLine{00046\ \ \textcolor{keywordtype}{double}\ inarcsec;}
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}(std::string\ MOKA\_input\_file,\textcolor{keywordtype}{bool}\ zeromean,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo)\{}
+\DoxyCodeLine{00049\ \ \ \ \ read(MOKA\_input\_file,zeromean,cosmo);}
+\DoxyCodeLine{00050\ \ \ \}}
+\DoxyCodeLine{00051\ \ \ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ read(std::string\ MOKA\_input\_file,\textcolor{keywordtype}{bool}\ zeromean,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo);}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{void}\ write(std::string\ filename);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ center;}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00057\ \ \ }
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}()\{\}}
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&map)\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_aff6e7b73ead075f0f59ecaa1b813e885}{surface\_density}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_aff6e7b73ead075f0f59ecaa1b813e885}{surface\_density}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ alpha1\_bar\ =\ map.alpha1\_bar;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ alpha2\_bar\ =\ map.alpha2\_bar;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ gamma1\_bar\ =\ map.gamma1\_bar;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ gamma2\_bar\ =\ map.gamma2\_bar;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \textcolor{comment}{//gamma3\_bar\ =\ map.gamma3;}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ phi\_bar\ =\ map.phi\_bar;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \textcolor{comment}{//Signlambdar\ =\ map.Signlambdar;}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \textcolor{comment}{//Signlambdat\ =\ map.Signlambdat;}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \textcolor{comment}{//x\ =\ map.x;}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ nx\ =\ map.nx;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ ny\ =\ map.ny;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_add4e43f7bcdc1b8b06038f022e96d591}{zlens}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_add4e43f7bcdc1b8b06038f022e96d591}{zlens}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ m\ =\ map.m;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ zsource\ =\ map.zsource;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ Dlens\ =\ map.Dlens;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ DLS\ =\ map.DLS;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ DS\ =\ map.DS;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ c\ =\ map.c;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ cS\ =\ map.cS;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ fsub\ =\ map.fsub;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ mstar\ =\ map.mstar;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ minsubmass\ =\ map.minsubmass;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_a13a4e159028ca81f4c6901419e104dbe}{boxlarcsec}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_a13a4e159028ca81f4c6901419e104dbe}{boxlarcsec}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ boxlMpc\ =\ map.boxlMpc;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ boxlrad\ =\ map.boxlrad;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_ae4aa8cbe0f88124b50d0beb5787d213b}{omegam}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_ae4aa8cbe0f88124b50d0beb5787d213b}{omegam}};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ omegal\ =\ map.omegal;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ h\ =\ map.h;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ wq\ =\ map.wq;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ inarcsec\ =\ map.inarcsec;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ center\ =\ map.center;}
+\DoxyCodeLine{00092\ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}(\mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&\&map)\{}
+\DoxyCodeLine{00095\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(map);}
+\DoxyCodeLine{00096\ \ \ \}}
+\DoxyCodeLine{00097\ \ \ }
+\DoxyCodeLine{00098\ \ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&\ operator=(\mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&\&map)\{}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ !=\ \&map)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_aff6e7b73ead075f0f59ecaa1b813e885}{surface\_density}}\ =\ std::move(map.surface\_density);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ alpha1\_bar\ =\ std::move(map.alpha1\_bar);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ alpha2\_bar\ =\ std::move(map.alpha2\_bar);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ gamma1\_bar\ =\ std::move(map.gamma1\_bar);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ gamma2\_bar\ =\ std::move(map.gamma2\_bar);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \textcolor{comment}{//gamma3\_bar\ =\ std::move(map.gamma3\_bar);}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ phi\_bar\ =\ std::move(map.phi\_bar);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \textcolor{comment}{//Signlambdar\ =\ std::move(map.Signlambdar);}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \textcolor{comment}{//Signlambdat\ =\ std::move(map.Signlambdat);}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \textcolor{comment}{//x\ =\ std::move(map.x);}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ nx\ =\ map.nx;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ ny\ =\ map.ny;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_add4e43f7bcdc1b8b06038f022e96d591}{zlens}}\ =\ map.zlens;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ m\ =\ map.m;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ zsource\ =\ map.zsource;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ Dlens\ =\ map.Dlens;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ DLS\ =\ map.DLS;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ DS\ =\ map.DS;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ c\ =\ map.c;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ cS\ =\ map.cS;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ fsub\ =\ map.fsub;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ mstar\ =\ map.mstar;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ minsubmass\ =\ map.minsubmass;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_a13a4e159028ca81f4c6901419e104dbe}{boxlarcsec}}\ =\ map.boxlarcsec;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ boxlMpc\ =\ map.boxlMpc;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ boxlrad\ =\ map.boxlrad;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_ae4aa8cbe0f88124b50d0beb5787d213b}{omegam}}\ =\ map.omegam;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ omegal\ =\ map.omegal;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ h\ =\ map.h;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ wq\ =\ map.wq;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ inarcsec\ =\ map.inarcsec;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ center\ =\ map.center;}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00135\ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&map)\{}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ !=\ \&map)\{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_aff6e7b73ead075f0f59ecaa1b813e885}{surface\_density}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_aff6e7b73ead075f0f59ecaa1b813e885}{surface\_density}};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ alpha1\_bar\ =\ map.alpha1\_bar;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ alpha2\_bar\ =\ map.alpha2\_bar;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ gamma1\_bar\ =\ map.gamma1\_bar;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ gamma2\_bar\ =\ map.gamma2\_bar;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{comment}{//gamma3\_bar\ =\ map.gamma3\_bar;}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ phi\_bar\ =\ map.phi\_bar;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \textcolor{comment}{//Signlambdar\ =\ map.Signlambdar;}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \textcolor{comment}{//Signlambdat\ =\ map.Signlambdat;}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \textcolor{comment}{//x\ =\ map.x;}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ nx\ =\ map.nx;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ ny\ =\ map.ny;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_add4e43f7bcdc1b8b06038f022e96d591}{zlens}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_add4e43f7bcdc1b8b06038f022e96d591}{zlens}};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ m\ =\ map.m;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ zsource\ =\ map.zsource;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ Dlens\ =\ map.Dlens;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ DLS\ =\ map.DLS;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ DS\ =\ map.DS;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ c\ =\ map.c;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ cS\ =\ map.cS;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ fsub\ =\ map.fsub;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ mstar\ =\ map.mstar;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ minsubmass\ =\ map.minsubmass;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_a13a4e159028ca81f4c6901419e104dbe}{boxlarcsec}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_a13a4e159028ca81f4c6901419e104dbe}{boxlarcsec}};}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ boxlMpc\ =\ map.boxlMpc;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ boxlrad\ =\ map.boxlrad;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \mbox{\hyperlink{struct_m_o_k_amap_ae4aa8cbe0f88124b50d0beb5787d213b}{omegam}}\ =\ map.\mbox{\hyperlink{struct_m_o_k_amap_ae4aa8cbe0f88124b50d0beb5787d213b}{omegam}};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ omegal\ =\ map.omegal;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ h\ =\ map.h;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ wq\ =\ map.wq;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ inarcsec\ =\ map.inarcsec;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ center\ =\ map.center;}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00173\ \ \ \}}
+\DoxyCodeLine{00174\ \ \ }
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_m_o_k_amap_af727bfd358c85542536abf46e21a24a1}{PreProcessFFTWMap}}(\textcolor{keywordtype}{float}\ zerosize);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}}
+\DoxyCodeLine{00190\ \{}
+\DoxyCodeLine{00191\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00192\ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(\textcolor{keyword}{const}\ std::string\&\ filename}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}{PixelMapType}}\ maptype}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ pixel\_map\_zeropad}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ my\_zeromean}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ lenscosmo}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00198\ \ \ }
+\DoxyCodeLine{00199\ \ \ \textcolor{comment}{//LensHaloMassMap(PixelMap\ \&map,double\ massconvertion,double\ zlens,double\ zsource,int\ pixel\_map\_zeropad,const\ COSMOLOGY\&\ lenscosmo);}}
+\DoxyCodeLine{00200\ \ \ }
+\DoxyCodeLine{00201\ \ \textcolor{comment}{//LensHaloMassMap(InputParams\&\ params,\ COSMOLOGY\&\ lenscosmo);}}
+\DoxyCodeLine{00202\ \ }
+\DoxyCodeLine{00203\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_pixel_map}{PixelMap<double>}}\ \&MassMap\ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ massconvertion\ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ redshift\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ pixel\_map\_zeropad\ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ my\_zeromean\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ lenscosmo\ \ }
+\DoxyCodeLine{00210\ \ \ );}
+\DoxyCodeLine{00211\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ \&MassMap\ \ \ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ massconvertion\ \ \ \ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ redshift\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ pixel\_map\_zeropad\ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ my\_zeromean\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ lenscosmo\ \ }
+\DoxyCodeLine{00218\ \ \ );}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00221\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(\textcolor{keywordtype}{double}\ mass\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ center\ \ \ \ \ \ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ range\ \ \ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ resolution\ \ \ \ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ zeropadding\ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ redshift\ \ \ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00229\ \ \ }
+\DoxyCodeLine{00230\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ \&h):\mbox{\hyperlink{class_lens_halo_a813618bcd6d1f26dafa49a2e509a37db}{LensHalo}}(h),cosmo(h.cosmo)\{}
+\DoxyCodeLine{00231\ \ \ \ \ maptype\ =\ h.maptype;}
+\DoxyCodeLine{00232\ \ \ \ \ map\ =\ h.map;}
+\DoxyCodeLine{00233\ \ \ \ \ zerosize\ =\ h.zerosize;}
+\DoxyCodeLine{00234\ \ \ \ \ zeromean\ =\ h.zeromean;}
+\DoxyCodeLine{00235\ \ \ \}}
+\DoxyCodeLine{00236\ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(\mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ \&\&h):cosmo(h.cosmo)\{}
+\DoxyCodeLine{00237\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(h);}
+\DoxyCodeLine{00238\ \ \ \}}
+\DoxyCodeLine{00239\ \ \ }
+\DoxyCodeLine{00240\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ \&\ operator=(\mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ \&h)\{}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{if}(\&h\ !=\ \textcolor{keyword}{this})\{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(h);}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \textcolor{comment}{//cosmo\ =\ h.cosmo;}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ maptype\ =\ h.maptype;}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ map\ =\ h.map;}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ zerosize\ =\ h.zerosize;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ zeromean\ =\ h.zeromean;}
+\DoxyCodeLine{00248\ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00250\ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ \&\ operator=(\mbox{\hyperlink{class_lens_halo_mass_map}{LensHaloMassMap}}\ \&\&h)\{}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{if}(\&h\ !=\ \textcolor{keyword}{this})\{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(h);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \textcolor{comment}{//cosmo\ =\ h.cosmo;}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ maptype\ =\ h.maptype;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ map\ =\ std::move(h.map);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ zerosize\ =\ h.zerosize;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ zeromean\ =\ h.zeromean;}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00261\ \ \ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \mbox{\hyperlink{class_lens_halo_mass_map}{\string~LensHaloMassMap}}();}
+\DoxyCodeLine{00264\ \ }
+\DoxyCodeLine{00265\ \ std::string\ MOKA\_input\_file;}
+\DoxyCodeLine{00267\ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_lens_halo_mass_map_ac9c631785aa3b2d1d756e359250c2602}{flag\_MOKA\_analyze}};}
+\DoxyCodeLine{00268\ \ \textcolor{keywordtype}{int}\ flag\_background\_field;}
+\DoxyCodeLine{00269\ \ }
+\DoxyCodeLine{00270\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_mass_map_a143fceb361040d085a606556b98c92c0}{assignParams}}(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_mass_map_afb6416d108ed824204166b6c7d763eb0}{checkCosmology}}();}
+\DoxyCodeLine{00273\ \ }
+\DoxyCodeLine{00274\ \ \textcolor{comment}{//void\ saveImage(bool\ saveprofile=true);}}
+\DoxyCodeLine{00275\ \ \textcolor{comment}{//void\ saveKappaProfile();}}
+\DoxyCodeLine{00276\ \ \textcolor{comment}{//void\ saveGammaProfile();}}
+\DoxyCodeLine{00277\ \ \textcolor{comment}{//void\ saveProfiles(double\ \&RE3,\ double\ \&xxc,\ double\ \&yyc);}}
+\DoxyCodeLine{00278\ \ \ \ \ }
+\DoxyCodeLine{00279\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_mass_map_a7539cfc750a26eda61672263a2f75eb4}{force\_halo}}(\textcolor{keywordtype}{double}\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xcm,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1.0);}
+\DoxyCodeLine{00280\ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \textcolor{comment}{//void\ saveImage(GridHndl\ grid,bool\ saveprofiles);}}
+\DoxyCodeLine{00282\ \ }
+\DoxyCodeLine{00283\ \ \textcolor{comment}{//void\ estSignLambdas();}}
+\DoxyCodeLine{00284\ \ \textcolor{comment}{//void\ EinsteinRadii(double\ \&RE1,\ double\ \&RE2,\ double\ \&xxc,\ double\ \&yyc);}}
+\DoxyCodeLine{00285\ \ }
+\DoxyCodeLine{00286\ \ \textcolor{keywordtype}{void}\ getDims();}
+\DoxyCodeLine{00287\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_mass_map_a94ae7e7e4e71b54e4c89afa324e29f24}{readMap}}();}
+\DoxyCodeLine{00288\ \ \ \textcolor{comment}{//\ set\ up\ map\ from\ a\ PixelMap\ of\ the\ surface\ density}}
+\DoxyCodeLine{00289\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00290\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_mass_map_a459771fced3913bb2094fb62a027f5dd}{setMap}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&inputmap,\textcolor{keywordtype}{double}\ convertionfactor,\textcolor{keywordtype}{double}\ z);}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_mass_map_aa890ed7562990f4794cd5041cf391293}{writeImage}}(std::string\ fn);}
+\DoxyCodeLine{00293\ \ \ }
+\DoxyCodeLine{00295\ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_mass_map_a678e3f2d53a0850b93c65142d2a373b8}{getCenter}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ map.center;\ \}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00298\ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_lens_halo_mass_map_ac9236e51a98fd875e0f98da79744dd63}{getRangeRad}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ map.boxlrad;\ \}}
+\DoxyCodeLine{00300\ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_lens_halo_mass_map_a221862169c8e050b04ce49758b091b7f}{getRangeMpc}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ map.boxlMpc;\ \}}
+\DoxyCodeLine{00302\ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_mass_map_a61bc6072d02b4bde2a71228476c0f558}{getN}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00303\ \textcolor{keyword}{\ }\{}
+\DoxyCodeLine{00304\ \ \ \textcolor{keywordflow}{if}(map.nx\ !=\ map.ny)}
+\DoxyCodeLine{00305\ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}mass\ map\ is\ not\ square"{}});}
+\DoxyCodeLine{00306\ \ \ \textcolor{keywordflow}{return}\ map.nx;}
+\DoxyCodeLine{00307\ \ \}}
+\DoxyCodeLine{00309\ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_mass_map_aeaea36f2eae141c1cbd67157c30c31d0}{getNx}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ map.nx;\ \}}
+\DoxyCodeLine{00311\ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lens_halo_mass_map_a447b6fa6e3eb58ebb6df8b13fbc37381}{getNy}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ map.ny;\ \}}
+\DoxyCodeLine{00312\ \ \ }
+\DoxyCodeLine{00313\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00314\ \ \mbox{\hyperlink{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}{PixelMapType}}\ maptype;}
+\DoxyCodeLine{00315\ \ \textcolor{keywordtype}{void}\ initMap();}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \textcolor{keywordtype}{void}\ convertmap(\mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ \&map,\mbox{\hyperlink{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}{PixelMapType}}\ maptype);}
+\DoxyCodeLine{00318\ \ \mbox{\hyperlink{struct_m_o_k_amap}{MOKAmap}}\ map;}
+\DoxyCodeLine{00319\ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo;}
+\DoxyCodeLine{00320\ \ \ \textcolor{keywordtype}{int}\ zerosize;}
+\DoxyCodeLine{00321\ \ \ \textcolor{keywordtype}{bool}\ zeromean;}
+\DoxyCodeLine{00322\ \ \ }
+\DoxyCodeLine{00323\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00324\ \ \ \mbox{\hyperlink{class_lens_halo_mass_map_a56bc6d67fd3dd85564794bdebd75c2d9}{LensHaloMassMap}}(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&c):cosmo(c)\{\}}
+\DoxyCodeLine{00325\ \};}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \textcolor{keywordtype}{void}\ make\_friendship(\textcolor{keywordtype}{int}\ ii,\textcolor{keywordtype}{int}\ ji,\textcolor{keywordtype}{int}\ np,std::\ vector<int>\ \&friends,\ std::\ vector<double>\ \&pointdist);}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \textcolor{keywordtype}{int}\ fof(\textcolor{keywordtype}{double}\ l,std::\ vector<double>\ xci,\ std::\ vector<double>\ yci,\ std::\ vector<int>\ \&groupid);}
+\DoxyCodeLine{00330\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00331\ \textcolor{comment}{/*\ MOKALENS\_H\_\ */}}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ }
+
+\end{DoxyCode}

@@ -1,51 +1,46 @@
-\hypertarget{nsie_8cpp}{}\doxysection{S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/nsie.cpp File Reference}
-\label{nsie_8cpp}\index{SLsimLib/AnalyticNSIE/nsie.cpp@{SLsimLib/AnalyticNSIE/nsie.cpp}}
+\doxysection{SLsim\+Lib/\+Analytic\+NSIE/nsie.cpp File Reference}
+\hypertarget{nsie_8cpp}{}\label{nsie_8cpp}\index{SLsimLib/AnalyticNSIE/nsie.cpp@{SLsimLib/AnalyticNSIE/nsie.cpp}}
 
 
 routines for calculating the lensing properties of a non-\/singular isothermal ellipsoid written by R.\+B. Metcalf, March 18, 2009 based on the analytic solutions of Kormann et al. 1993 convention here is gamma\+\_\+1 = -\/(Axx-\/\+Ayy)/2 and gamma\+\_\+2= -\/Axy  
 
 
-{\ttfamily \#include \char`\"{}base\+\_\+analens.\+h\char`\"{}}\newline
+{\ttfamily \#include "{}base\+\_\+analens.\+h"{}}\newline
 {\ttfamily \#include $<$complex$>$}\newline
-Include dependency graph for nsie.\+cpp\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=326pt]{nsie_8cpp__incl}
-\end{center}
-\end{figure}
-\doxysubsection*{Namespaces}
+Include dependency graph for nsie.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
- \mbox{\hyperlink{namespace_utilities}{Utilities}}
+namespace \mbox{\hyperlink{namespace_utilities}{Utilities}}
 \begin{DoxyCompactList}\small\item\em 
 \begin{DoxyItemize}
 \item 
 \end{DoxyItemize}\end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8}{alpha\+N\+S\+IE}} (Pos\+Type $\ast$alpha, Pos\+Type const $\ast$xt, Pos\+Type f, Pos\+Type bc, Pos\+Type theta)
+void \mbox{\hyperlink{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8}{alpha\+NSIE}} (Pos\+Type \texorpdfstring{$\ast$}{*}alpha, Pos\+Type const \texorpdfstring{$\ast$}{*}xt, Pos\+Type f, Pos\+Type bc, Pos\+Type theta)
 \begin{DoxyCompactList}\small\item\em Deflection angle for non-\/singular isothermal ellipsoid in units of Einstein radii. \end{DoxyCompactList}\item 
-Kappa\+Type \mbox{\hyperlink{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a}{kappa\+N\+S\+IE}} (Pos\+Type const $\ast$xt, Pos\+Type f, Pos\+Type bc, Pos\+Type theta)
+Kappa\+Type \mbox{\hyperlink{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a}{kappa\+NSIE}} (Pos\+Type const \texorpdfstring{$\ast$}{*}xt, Pos\+Type f, Pos\+Type bc, Pos\+Type theta)
 \begin{DoxyCompactList}\small\item\em Convergence for non-\/singular isothermal ellipsoid, units $ \frac{r_{einstein}}{units(x)} $ or $ \frac{\sigma^2}{\Sigma_{crit}G\, units(xt) } $. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014}{gamma\+N\+S\+IE}} (Kappa\+Type $\ast$gam, Pos\+Type const $\ast$xt, Pos\+Type f, Pos\+Type bc, Pos\+Type theta)
+void \mbox{\hyperlink{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014}{gamma\+NSIE}} (Kappa\+Type \texorpdfstring{$\ast$}{*}gam, Pos\+Type const \texorpdfstring{$\ast$}{*}xt, Pos\+Type f, Pos\+Type bc, Pos\+Type theta)
 \begin{DoxyCompactList}\small\item\em Shear for non-\/singular isothermal ellipsoid, units $ \frac{r_{einstein}}{units(x)} $ or $ \frac{\sigma^2}{\Sigma_{crit}G\, units(xt) } $. \end{DoxyCompactList}\item 
-Pos\+Type \mbox{\hyperlink{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f}{rmax\+N\+S\+IE}} (Pos\+Type sigma, Pos\+Type mass, Pos\+Type f, Pos\+Type rc)
+Pos\+Type \mbox{\hyperlink{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f}{rmax\+NSIE}} (Pos\+Type sigma, Pos\+Type mass, Pos\+Type f, Pos\+Type rc)
 \begin{DoxyCompactList}\small\item\em Elliptical radius $ R^2 = x^2 + f^2 y^2 $ of a Non\+Singular Isothermal Ellipsoid. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{nsie_8cpp_a84aa15948a8af02d1bbcd5fc44de746c}\label{nsie_8cpp_a84aa15948a8af02d1bbcd5fc44de746c}} 
-Pos\+Type \mbox{\hyperlink{nsie_8cpp_a84aa15948a8af02d1bbcd5fc44de746c}{elliptic\+Radius\+N\+S\+IE}} (Pos\+Type const $\ast$x, Pos\+Type f, Pos\+Type pa)
+\Hypertarget{nsie_8cpp_a84aa15948a8af02d1bbcd5fc44de746c}\label{nsie_8cpp_a84aa15948a8af02d1bbcd5fc44de746c} 
+Pos\+Type {\bfseries elliptic\+Radius\+NSIE} (Pos\+Type const \texorpdfstring{$\ast$}{*}x, Pos\+Type f, Pos\+Type pa)
 \begin{DoxyCompactList}\small\item\em Elliptical radius $ R^2 = x^2 + f^2 y^2 $ given f and position angle of model. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{nsie_8cpp_a9b23e9ba1fbcc6a8af6c363b924445e8}\label{nsie_8cpp_a9b23e9ba1fbcc6a8af6c363b924445e8}} 
-Kappa\+Type {\bfseries invmag\+N\+S\+IE} (Pos\+Type $\ast$x, Pos\+Type f, Pos\+Type bc, Pos\+Type theta, Kappa\+Type $\ast$gam, Kappa\+Type kap)
+\Hypertarget{nsie_8cpp_a9b23e9ba1fbcc6a8af6c363b924445e8}\label{nsie_8cpp_a9b23e9ba1fbcc6a8af6c363b924445e8} 
+Kappa\+Type {\bfseries invmag\+NSIE} (Pos\+Type \texorpdfstring{$\ast$}{*}x, Pos\+Type f, Pos\+Type bc, Pos\+Type theta, Kappa\+Type \texorpdfstring{$\ast$}{*}gam, Kappa\+Type kap)
 \item 
-\mbox{\Hypertarget{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5}\label{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5}} 
-void \mbox{\hyperlink{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5}{Utilities\+::rotation}} (float $\ast$xout, float $\ast$xin, Pos\+Type theta)
+\Hypertarget{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5}\label{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5} 
+void {\bfseries Utilities\+::rotation} (float \texorpdfstring{$\ast$}{*}xout, float \texorpdfstring{$\ast$}{*}xin, Pos\+Type theta)
 \begin{DoxyCompactList}\small\item\em Rotates 2 dimensional point without changing input point. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{namespace_utilities_a8ad140aa2e74c584b82ff6416ff16622}\label{namespace_utilities_a8ad140aa2e74c584b82ff6416ff16622}} 
-void \mbox{\hyperlink{namespace_utilities_a8ad140aa2e74c584b82ff6416ff16622}{Utilities\+::rotation}} (Pos\+Type $\ast$xout, Pos\+Type const $\ast$xin, Pos\+Type theta)
+\Hypertarget{namespace_utilities_a8ad140aa2e74c584b82ff6416ff16622}\label{namespace_utilities_a8ad140aa2e74c584b82ff6416ff16622} 
+void {\bfseries Utilities\+::rotation} (Pos\+Type \texorpdfstring{$\ast$}{*}xout, Pos\+Type const \texorpdfstring{$\ast$}{*}xin, Pos\+Type theta)
 \begin{DoxyCompactList}\small\item\em Rotates 2 dimensional point without changing input point. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{nsie_8cpp_a2711241a6516012a871186a72906f392}{quad\+Mom\+N\+S\+IE}} (float mass, float Rsize, float f, float rc, float theta, Pos\+Type $\ast$quad)
+void \mbox{\hyperlink{nsie_8cpp_a2711241a6516012a871186a72906f392}{quad\+Mom\+NSIE}} (float mass, float Rsize, float f, float rc, float theta, Pos\+Type \texorpdfstring{$\ast$}{*}quad)
 \end{DoxyCompactItemize}
 
 
@@ -55,11 +50,11 @@ routines for calculating the lensing properties of a non-\/singular isothermal e
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8}\label{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8}} 
-\index{nsie.cpp@{nsie.cpp}!alphaNSIE@{alphaNSIE}}
+\Hypertarget{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8}\index{nsie.cpp@{nsie.cpp}!alphaNSIE@{alphaNSIE}}
 \index{alphaNSIE@{alphaNSIE}!nsie.cpp@{nsie.cpp}}
 \doxysubsubsection{\texorpdfstring{alphaNSIE()}{alphaNSIE()}}
-{\footnotesize\ttfamily void alpha\+N\+S\+IE (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Pos\+Type const $\ast$}]{xt,  }\item[{Pos\+Type}]{f,  }\item[{Pos\+Type}]{bc,  }\item[{Pos\+Type}]{theta }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8} 
+void alpha\+NSIE (\begin{DoxyParamCaption}\item[{Pos\+Type \texorpdfstring{$\ast$}{*}}]{alpha}{, }\item[{Pos\+Type const \texorpdfstring{$\ast$}{*}}]{xt}{, }\item[{Pos\+Type}]{f}{, }\item[{Pos\+Type}]{bc}{, }\item[{Pos\+Type}]{theta}{}\end{DoxyParamCaption})}
 
 
 
@@ -67,22 +62,22 @@ Deflection angle for non-\/singular isothermal ellipsoid in units of Einstein ra
 
 
 \begin{DoxyParams}{Parameters}
-{\em alpha} & Deflection angle in units of the Einstein radius \\
+{\em alpha} & Deflection angle in units of the Einstein radius  \\
 \hline
-{\em xt} & position on the image plane in Einstein radius units \\
+{\em xt} & position on the image plane in Einstein radius units  \\
 \hline
-{\em f} & axis ratio of mass \\
+{\em f} & axis ratio of mass  \\
 \hline
-{\em bc} & core size in same units as alpha \\
+{\em bc} & core size in same units as alpha  \\
 \hline
 {\em theta} & position angle of ellipsoid \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014}\label{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014}} 
-\index{nsie.cpp@{nsie.cpp}!gammaNSIE@{gammaNSIE}}
+\Hypertarget{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014}\index{nsie.cpp@{nsie.cpp}!gammaNSIE@{gammaNSIE}}
 \index{gammaNSIE@{gammaNSIE}!nsie.cpp@{nsie.cpp}}
 \doxysubsubsection{\texorpdfstring{gammaNSIE()}{gammaNSIE()}}
-{\footnotesize\ttfamily void gamma\+N\+S\+IE (\begin{DoxyParamCaption}\item[{Kappa\+Type $\ast$}]{gam,  }\item[{Pos\+Type const $\ast$}]{xt,  }\item[{Pos\+Type}]{f,  }\item[{Pos\+Type}]{bc,  }\item[{Pos\+Type}]{theta }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014} 
+void gamma\+NSIE (\begin{DoxyParamCaption}\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{gam}{, }\item[{Pos\+Type const \texorpdfstring{$\ast$}{*}}]{xt}{, }\item[{Pos\+Type}]{f}{, }\item[{Pos\+Type}]{bc}{, }\item[{Pos\+Type}]{theta}{}\end{DoxyParamCaption})}
 
 
 
@@ -90,22 +85,22 @@ Shear for non-\/singular isothermal ellipsoid, units $ \frac{r_{einstein}}{units
 
 
 \begin{DoxyParams}{Parameters}
-{\em gam} & output shear \\
+{\em gam} & output shear  \\
 \hline
-{\em xt} & position on the image plane in Einstein radius units \\
+{\em xt} & position on the image plane in Einstein radius units  \\
 \hline
-{\em f} & axis ratio of mass \\
+{\em f} & axis ratio of mass  \\
 \hline
-{\em bc} & core size in units of Einstein radius \\
+{\em bc} & core size in units of Einstein radius  \\
 \hline
 {\em theta} & position angle of ellipsoid \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a}\label{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a}} 
-\index{nsie.cpp@{nsie.cpp}!kappaNSIE@{kappaNSIE}}
+\Hypertarget{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a}\index{nsie.cpp@{nsie.cpp}!kappaNSIE@{kappaNSIE}}
 \index{kappaNSIE@{kappaNSIE}!nsie.cpp@{nsie.cpp}}
 \doxysubsubsection{\texorpdfstring{kappaNSIE()}{kappaNSIE()}}
-{\footnotesize\ttfamily Kappa\+Type kappa\+N\+S\+IE (\begin{DoxyParamCaption}\item[{Pos\+Type const $\ast$}]{xt,  }\item[{Pos\+Type}]{f,  }\item[{Pos\+Type}]{bc,  }\item[{Pos\+Type}]{theta }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a} 
+Kappa\+Type kappa\+NSIE (\begin{DoxyParamCaption}\item[{Pos\+Type const \texorpdfstring{$\ast$}{*}}]{xt}{, }\item[{Pos\+Type}]{f}{, }\item[{Pos\+Type}]{bc}{, }\item[{Pos\+Type}]{theta}{}\end{DoxyParamCaption})}
 
 
 
@@ -113,41 +108,41 @@ Convergence for non-\/singular isothermal ellipsoid, units $ \frac{r_{einstein}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em xt} & position on the image plane in Einstein radius units \\
+{\em xt} & position on the image plane in Einstein radius units  \\
 \hline
-{\em f} & axis ratio of mass \\
+{\em f} & axis ratio of mass  \\
 \hline
-{\em bc} & core size in units of Einstein radius \\
+{\em bc} & core size in units of Einstein radius  \\
 \hline
 {\em theta} & position angle of ellipsoid \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{nsie_8cpp_a2711241a6516012a871186a72906f392}\label{nsie_8cpp_a2711241a6516012a871186a72906f392}} 
-\index{nsie.cpp@{nsie.cpp}!quadMomNSIE@{quadMomNSIE}}
+\Hypertarget{nsie_8cpp_a2711241a6516012a871186a72906f392}\index{nsie.cpp@{nsie.cpp}!quadMomNSIE@{quadMomNSIE}}
 \index{quadMomNSIE@{quadMomNSIE}!nsie.cpp@{nsie.cpp}}
 \doxysubsubsection{\texorpdfstring{quadMomNSIE()}{quadMomNSIE()}}
-{\footnotesize\ttfamily void quad\+Mom\+N\+S\+IE (\begin{DoxyParamCaption}\item[{float}]{mass,  }\item[{float}]{Rsize,  }\item[{float}]{f,  }\item[{float}]{rc,  }\item[{float}]{theta,  }\item[{Pos\+Type $\ast$}]{quad }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{nsie_8cpp_a2711241a6516012a871186a72906f392} 
+void quad\+Mom\+NSIE (\begin{DoxyParamCaption}\item[{float}]{mass}{, }\item[{float}]{Rsize}{, }\item[{float}]{f}{, }\item[{float}]{rc}{, }\item[{float}]{theta}{, }\item[{Pos\+Type \texorpdfstring{$\ast$}{*}}]{quad}{}\end{DoxyParamCaption})}
 
-Quadropole moment of an elliptically truncated N\+S\+IE Units are unit\mbox{[}mass\mbox{]}$\ast$unit\mbox{[}Rsize\mbox{]}$^\wedge$2 
+Quadropole moment of an elliptically truncated NSIE Units are unit\mbox{[}mass\mbox{]}\texorpdfstring{$\ast$}{*}unit\mbox{[}Rsize\mbox{]}\texorpdfstring{$^\wedge$}{\string^}2 
 \begin{DoxyParams}{Parameters}
-{\em mass} & total mass \\
+{\em mass} & total mass  \\
 \hline
-{\em Rsize} & elliptical maximum radius \\
+{\em Rsize} & elliptical maximum radius  \\
 \hline
-{\em f} & axis ratio of mass \\
+{\em f} & axis ratio of mass  \\
 \hline
-{\em rc} & core size in same units as Rsize \\
+{\em rc} & core size in same units as Rsize  \\
 \hline
-{\em theta} & position angle of ellipsoid \\
+{\em theta} & position angle of ellipsoid  \\
 \hline
 {\em quad} & output \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f}\label{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f}} 
-\index{nsie.cpp@{nsie.cpp}!rmaxNSIE@{rmaxNSIE}}
+\Hypertarget{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f}\index{nsie.cpp@{nsie.cpp}!rmaxNSIE@{rmaxNSIE}}
 \index{rmaxNSIE@{rmaxNSIE}!nsie.cpp@{nsie.cpp}}
 \doxysubsubsection{\texorpdfstring{rmaxNSIE()}{rmaxNSIE()}}
-{\footnotesize\ttfamily Pos\+Type rmax\+N\+S\+IE (\begin{DoxyParamCaption}\item[{Pos\+Type}]{sigma,  }\item[{Pos\+Type}]{mass,  }\item[{Pos\+Type}]{f,  }\item[{Pos\+Type}]{rc }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f} 
+Pos\+Type rmax\+NSIE (\begin{DoxyParamCaption}\item[{Pos\+Type}]{sigma}{, }\item[{Pos\+Type}]{mass}{, }\item[{Pos\+Type}]{f}{, }\item[{Pos\+Type}]{rc}{}\end{DoxyParamCaption})}
 
 
 
@@ -155,11 +150,11 @@ Elliptical radius $ R^2 = x^2 + f^2 y^2 $ of a Non\+Singular Isothermal Ellipsoi
 
 
 \begin{DoxyParams}{Parameters}
-{\em sigma} & velocity dispersion in km/s \\
+{\em sigma} & velocity dispersion in km/s  \\
 \hline
-{\em mass} & mass in Msun \\
+{\em mass} & mass in Msun  \\
 \hline
-{\em f} & axis ratio \\
+{\em f} & axis ratio  \\
 \hline
 {\em rc} & core radius Mpc \\
 \hline

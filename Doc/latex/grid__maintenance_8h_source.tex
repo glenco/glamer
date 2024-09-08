@@ -1,0 +1,952 @@
+\doxysection{grid\+\_\+maintenance.\+h}
+\hypertarget{grid__maintenance_8h_source}{}\label{grid__maintenance_8h_source}\index{SLsimLib/include/grid\_maintenance.h@{SLsimLib/include/grid\_maintenance.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ grid\_maintenance.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Oct\ 12,\ 2011}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ bmetcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_grid\_maintenance\_declare\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_grid\_maintenance\_declare\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}lens.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Tree.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}source.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <utilities\_slsim.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}concave\_hull.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }LensHaloBaseNSIE;}
+\DoxyCodeLine{00020\ \textcolor{comment}{//class\ LensHaloMassMap;}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_grid}{Grid}}\{}
+\DoxyCodeLine{00026\ \ \ }
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}{Grid}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N1d,\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[2],\textcolor{keywordtype}{double}\ range);}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}{Grid}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens\ ,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Nx\ ,\textcolor{keyword}{const}\ PosType\ center[2]\ ,PosType\ rangeX\ ,PosType\ rangeY);}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{struct_grid_a3661d0a7f998caaaf8627d7a67072116}{\string~Grid}}();}
+\DoxyCodeLine{00030\ \ \ }
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{struct_grid}{Grid}}\ \mbox{\hyperlink{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}{ReInitialize}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens);}
+\DoxyCodeLine{00032\ \ \ \textcolor{comment}{//void\ ReShoot(LensHndl\ lens);}}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}{zoom}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\textcolor{keywordtype}{double}\ *center,\textcolor{keywordtype}{double}\ scale,\mbox{\hyperlink{struct_branch}{Branch}}\ *top\ =\ NULL);}
+\DoxyCodeLine{00034\ \ \ }
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//unsigned\ long\ PruneTrees(double\ resolution,bool\ useSB,double\ fluxlimit);}}
+\DoxyCodeLine{00036\ \ \ \textcolor{comment}{//unsigned\ long\ PrunePointsOutside(double\ resolution,double\ *y,double\ r\_in\ ,double\ r\_out);}}
+\DoxyCodeLine{00037\ \ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_grid_a0974cb2286d5bc2ff4220fe57ab59875}{RefreshSurfaceBrightnesses}}(\mbox{\hyperlink{class_source}{Source}}*\ source);}
+\DoxyCodeLine{00039\ \ \ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_grid_a277e7811838b96b41b578c83879b7afa}{AddSurfaceBrightnesses}}(\mbox{\hyperlink{class_source}{Source}}*\ source);}
+\DoxyCodeLine{00041\ \ \ }
+\DoxyCodeLine{00042\ \ \ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}{mark\_closest\_point\_source\_images}}(}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ y\_source\ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ r\_source\_max\ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ luminosity}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}{find\_point\_source\_images}}(}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ y\_source\ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ r\_source\ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ z\_source\ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<RAY>\ \&images\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_grid_a25db542a5491a1b59f3c36278b830407}{ClearSurfaceBrightnesses}}();}
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ /***\ Refine\ the\ gris\ based\ on\ the\ smoothness\ of\ the\ surface\ brightness.}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ \ \ Return\ new\ total\ flux.}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ \ \ }}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ May\ be\ slow.}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{double}\ refine\_on\_surfacebrightness(\mbox{\hyperlink{class_lens}{Lens}}\ \&lens,\mbox{\hyperlink{class_source}{Source}}\ \&source);}
+\DoxyCodeLine{00065\ \ \ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}{getNumberOfPoints}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ \ \ PosType\ \mbox{\hyperlink{struct_grid_a27fc09f6be7248237f1edea5830bab43}{EinsteinArea}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ \ \ }
+\DoxyCodeLine{00071\ \ \ \mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}};}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ \mbox{\hyperlink{struct_grid_abeda62e6b854e898781e85abd5a8e751}{s\_tree}};}
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_grid_a338a0b60a7c609ab3b9883cc5facb28b}{getInitNgrid}}()\{\textcolor{keywordflow}{return}\ Ngrid\_init;\}}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_grid_aff8c6c31b94541725e8f6ebb68e28366}{getNgrid\_block}}()\{\textcolor{keywordflow}{return}\ Ngrid\_block;\}}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_grid_aafb414f884497255df53b5ba7ceb0f24}{getInitRange}}()\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_acec6d68525f890c9938e2ad4b5e68aca}{getTop}}()-\/>boundary\_p2[0]\ -\/\ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_acec6d68525f890c9938e2ad4b5e68aca}{getTop}}()-\/>boundary\_p1[0];\}}
+\DoxyCodeLine{00081\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ getInitCenter();}
+\DoxyCodeLine{00082\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *\ \mbox{\hyperlink{struct_grid_aef2864fc3791c44eed90c2e980777884}{RefineLeaf}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_point}{Point}}\ *point);}
+\DoxyCodeLine{00083\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *\ \mbox{\hyperlink{struct_grid_a8d7eed9868d59171a38dac0423cc25e7}{RefineLeaves}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,std::vector<Point\ *>\&\ points);}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}{ClearAllMarks}}();}
+\DoxyCodeLine{00085\ \ \ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//void\ test\_mag\_matrix();}}
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{writeFits}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[],\textcolor{keywordtype}{size\_t}\ Npixels,\textcolor{keywordtype}{double}\ resolution,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar,std::string\ filename);}
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{writeFits}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[],\textcolor{keywordtype}{size\_t}\ Nx,\textcolor{keywordtype}{size\_t}\ Ny,\textcolor{keywordtype}{double}\ resolution,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar,std::string\ filename);}
+\DoxyCodeLine{00091\ \ \ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{writeFits}}(}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ strech\ \ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00099\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_aef25408943531718b008996d5eddb9cb}{writePixelFits}}(\textcolor{keywordtype}{size\_t}\ Nx\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00104\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_af6db6d5bdc63482cae8b00b7bdd8f9f7}{writeFitsVector}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[],\textcolor{keywordtype}{size\_t}\ Npixels,\textcolor{keywordtype}{double}\ resolution,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar,std::string\ filename);}
+\DoxyCodeLine{00106\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00107\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{writePixelMap}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[],\textcolor{keywordtype}{size\_t}\ Npixels,\textcolor{keywordtype}{double}\ resolution,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar);}
+\DoxyCodeLine{00108\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00109\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{writePixelMap}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ center[],\textcolor{keywordtype}{size\_t}\ Nx,\textcolor{keywordtype}{size\_t}\ Ny,\textcolor{keywordtype}{double}\ resolution,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar);}
+\DoxyCodeLine{00110\ \ \ }
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00113\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{writePixelMap}}(\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar);}
+\DoxyCodeLine{00114\ \ \ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a4b5fc463ba0a735c5549dc4db2592b41}{MapSurfaceBrightness}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map)\{}
+\DoxyCodeLine{00118\ \ \ \ \ map.Clean();}
+\DoxyCodeLine{00119\ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_a2ddead4c956462ef153fff9fe3c2bafc}{AddGridBrightness}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00120\ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00123\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a4b5fc463ba0a735c5549dc4db2592b41}{MapSurfaceBrightness}}(\textcolor{keywordtype}{double}\ resolution);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00126\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_af8a42e04085607e44ba84a08dc57573b}{writePixelMapUniform}}(\textcolor{keyword}{const}\ PosType\ center[],\textcolor{keywordtype}{size\_t}\ Nx,\textcolor{keywordtype}{size\_t}\ Ny,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar);}
+\DoxyCodeLine{00127\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_af8a42e04085607e44ba84a08dc57573b}{writePixelMapUniform}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar);}
+\DoxyCodeLine{00129\ \ \ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a39b2d1ed7a7fc6c6798049885a2e0f8c}{writeFitsUniform}}(\textcolor{keyword}{const}\ PosType\ center[],\textcolor{keywordtype}{size\_t}\ Nx,\textcolor{keywordtype}{size\_t}\ Ny,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar,std::string\ filename);}
+\DoxyCodeLine{00132\ \ \ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}{find\_images}}(}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PosType\ *y\_source}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ r\_source}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ \&Nimages}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \&Nimagepoints}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00140\ \ }
+\DoxyCodeLine{00141\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a08fbb68b8796b638083812ca5f46d030}{map\_images}}(}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lens}{Lens}}*\ lens}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_source}{Source}}\ *source}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ *Nimages}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ImageInfo>\ \&imageinfo}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ xmax}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ xmin}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ initial\_size}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,ExitCriterion\ criterion}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ FindCenter}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ divide\_images}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00153\ \ }
+\DoxyCodeLine{00154\ \ \ \mbox{\hyperlink{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}{Grid}}(\mbox{\hyperlink{struct_grid}{Grid}}\ \&\&grid)\{}
+\DoxyCodeLine{00155\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(grid);}
+\DoxyCodeLine{00156\ \ \ \}}
+\DoxyCodeLine{00157\ \ \ }
+\DoxyCodeLine{00158\ \ \ \mbox{\hyperlink{struct_grid}{Grid}}\ operator=(\mbox{\hyperlink{struct_grid}{Grid}}\ \&grid)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00159\ \ \ \mbox{\hyperlink{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}{Grid}}(\mbox{\hyperlink{struct_grid}{Grid}}\ \&grid)\ =\ \ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00160\ \ \ }
+\DoxyCodeLine{00161\ \ \ \mbox{\hyperlink{struct_grid}{Grid}}\ \&\ operator=(\mbox{\hyperlink{struct_grid}{Grid}}\ \&\&grid)\{}
+\DoxyCodeLine{00162\ \ \ \ \ assert(\&grid\ !=\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00163\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}\ =\ grid.i\_tree;}
+\DoxyCodeLine{00165\ \ \ \ \ grid.i\_tree\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{struct_grid_abeda62e6b854e898781e85abd5a8e751}{s\_tree}}\ =\ grid.s\_tree;}
+\DoxyCodeLine{00167\ \ \ \ \ grid.s\_tree\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00168\ \ \ \ \ neighbors\ =\ grid.neighbors;}
+\DoxyCodeLine{00169\ \ \ \ \ grid.neighbors\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{//trashkist\ =\ grid.trashkist;}}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{comment}{//grid.trashkist\ =\ nullptr;}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ Ngrid\_init\ =\ grid.Ngrid\_init;}
+\DoxyCodeLine{00174\ \ \ \ \ Ngrid\_init2\ =\ grid.Ngrid\_init2;}
+\DoxyCodeLine{00175\ \ \ \ \ Ngrid\_block\ =\ grid.Ngrid\_block;}
+\DoxyCodeLine{00176\ \ \ \ \ initialized\ =\ grid.initialized;}
+\DoxyCodeLine{00177\ \ \ \ \ maglimit\ =\ grid.maglimit;}
+\DoxyCodeLine{00178\ \ \ \ \ pointID\ =\ grid.pointID;}
+\DoxyCodeLine{00179\ \ \ \ \ axisratio\ =\ grid.axisratio;}
+\DoxyCodeLine{00180\ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ point\_factory.clear();}
+\DoxyCodeLine{00182\ \ \ \ \ point\_factory=std::move(grid.point\_factory);}
+\DoxyCodeLine{00183\ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00185\ \ \ \}}
+\DoxyCodeLine{00186\ \ \ }
+\DoxyCodeLine{00188\ \ \ PosType\ \mbox{\hyperlink{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}{magnification}}(\textcolor{keywordtype}{double}\ sblimit=-\/1.0e12)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00189\ \ \ PosType\ UnlensedFlux(\textcolor{keywordtype}{double}\ sblimit=-\/1.0e12)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00190\ \ \ PosType\ LensedFlux(\textcolor{keywordtype}{double}\ sblimit=-\/1.0e12)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00191\ \ \ }
+\DoxyCodeLine{00192\ \ \ \textcolor{comment}{//PosType\ magnification2()\ const;}}
+\DoxyCodeLine{00193\ \ \ \textcolor{comment}{//PosType\ magnification3()\ const;}}
+\DoxyCodeLine{00195\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{struct_grid_aedfddf45465203922ce4ac592da07bb0}{centroid}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00196\ \ \ }
+\DoxyCodeLine{00197\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00198\ \ \ \textcolor{keywordtype}{void}\ xygridpoints(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{double}\ range,\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ *center,\textcolor{keywordtype}{long}\ Ngrid}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{short}\ remove\_center);}
+\DoxyCodeLine{00200\ \ \ }
+\DoxyCodeLine{00202\ \ \ \textcolor{keywordtype}{int}\ Ngrid\_init;}
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{int}\ Ngrid\_init2;}
+\DoxyCodeLine{00204\ \ \ }
+\DoxyCodeLine{00206\ \ \ \textcolor{keywordtype}{int}\ Ngrid\_block;}
+\DoxyCodeLine{00207\ \ \ \textcolor{keywordtype}{bool}\ initialized;}
+\DoxyCodeLine{00208\ \ \ \textcolor{comment}{//Kist<Point>\ *\ trashkist;}}
+\DoxyCodeLine{00209\ \ \ }
+\DoxyCodeLine{00210\ \ \ \textcolor{keywordtype}{double}\ maglimit;}
+\DoxyCodeLine{00211\ \ \ Kist<Point>\ *\ neighbors;}
+\DoxyCodeLine{00212\ \ \ \textcolor{keywordtype}{bool}\ find\_mag\_matrix(\textcolor{keywordtype}{double}\ *a,\mbox{\hyperlink{struct_point}{Point}}\ *p0,\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2);}
+\DoxyCodeLine{00213\ \ \ }
+\DoxyCodeLine{00214\ \ \ \textcolor{keywordtype}{bool}\ uniform\_mag\_from\_deflect(\textcolor{keywordtype}{double}\ *a,\mbox{\hyperlink{struct_point}{Point}}\ *point);}
+\DoxyCodeLine{00215\ \ \ \textcolor{comment}{//bool\ uniform\_mag\_from\_shooter(double\ *a,Point\ *point);}}
+\DoxyCodeLine{00216\ \ \ }
+\DoxyCodeLine{00217\ \ \ \textcolor{keywordtype}{double}\ mag\_from\_deflect(\mbox{\hyperlink{struct_point}{Point}}\ *point)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00218\ \ \ }
+\DoxyCodeLine{00219\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ pointID;}
+\DoxyCodeLine{00220\ \ \ PosType\ axisratio;}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00223\ \ \ \textcolor{keywordtype}{void}\ writePixelMapUniform\_(\mbox{\hyperlink{struct_point}{Point}}\ *head,\textcolor{keywordtype}{size\_t}\ N}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ *map,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ val);}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \textcolor{comment}{//\ cluge\ to\ make\ compatible\ with\ old\ method\ of\ producing\ points}}
+\DoxyCodeLine{00227\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *\ NewPointArray(\textcolor{keywordtype}{size\_t}\ N)\{}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *\ p\ =\ point\_factory(N);}
+\DoxyCodeLine{00229\ \ \ \ \ p[0].head\ =\ N;}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=1;\ i\ <\ N\ ;\ ++i)\ p[i].head\ =\ 0;}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00232\ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank<Point>}}\ point\_factory;}
+\DoxyCodeLine{00234\ \ \ \textcolor{keyword}{static}\ std::mutex\ grid\_mutex;}
+\DoxyCodeLine{00235\ \};}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_grid}{Grid}}*\ \mbox{\hyperlink{struct_grid}{GridHndl}};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00240\ std::string\ to\_string(CritType\ crit);}
+\DoxyCodeLine{00241\ \ }
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ in\ image\_finder\_kist.c}}
+\DoxyCodeLine{00243\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_image_finding}{ImageFinding}}\{}
+\DoxyCodeLine{00244\ \ \ }
+\DoxyCodeLine{00245\ \ \ \textcolor{keyword}{struct\ }CriticalCurve\{}
+\DoxyCodeLine{00246\ \ \ \ \ }
+\DoxyCodeLine{00247\ \ \ \ \ CriticalCurve()\{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ critical\_center[0]\ =\ critical\_center[1]\ =\ 0.0;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ caustic\_center[0]\ =\ caustic\_center[1]\ =\ 0.0;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ critical\_area\ =\ 0.0;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ caustic\_area\ =\ 0.0;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ contour\_ell\ =\ 0.0;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ ellipse\_area\ =\ 0.0;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ z\_source\ =\ 0.0;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ type\ =\ CritType::ND;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ caustic\_intersections\ =\ -\/1;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ touches\_edge\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00258\ \ \ \ \ \};}
+\DoxyCodeLine{00259\ \ \ \ \ }
+\DoxyCodeLine{00260\ \ \ \ \ CriticalCurve(\textcolor{keyword}{const}\ CriticalCurve\ \&p)\{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ critcurve\ =\ p.critcurve;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \textcolor{comment}{//critical\_curve\ =\ p.critical\_curve;}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ caustic\_curve\_outline\ =\ p.caustic\_curve\_outline;}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ caustic\_curve\_intersecting\ =\ p.caustic\_curve\_intersecting;}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ critical\_center\ =\ p.critical\_center;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ caustic\_center\ =\ p.caustic\_center;}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ critical\_area\ =\ p.critical\_area;}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ caustic\_area\ =\ p.caustic\_area;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ ellipse\_curve\ =\ p.ellipse\_curve;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ contour\_ell\ =\ p.contour\_ell;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ ellipse\_area\ =\ p.ellipse\_area;}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ z\_source\ =\ p.z\_source;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ type\ =\ p.type;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ caustic\_intersections\ =\ p.caustic\_intersections;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ touches\_edge\ =\ p.touches\_edge;}
+\DoxyCodeLine{00276\ \ \ \ \}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ CriticalCurve\ \&\ operator=(\textcolor{keyword}{const}\ CriticalCurve\ \&p)\{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ critcurve\ =\ p.critcurve;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \textcolor{comment}{//critical\_curve\ =\ p.critical\_curve;}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ caustic\_curve\_outline\ =\ p.caustic\_curve\_outline;}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ caustic\_curve\_intersecting\ =\ p.caustic\_curve\_intersecting;}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ critical\_center\ =\ p.critical\_center;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ caustic\_center\ =\ p.caustic\_center;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ critical\_area\ =\ p.critical\_area;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ caustic\_area\ =\ p.caustic\_area;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ ellipse\_curve\ =\ p.ellipse\_curve;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ contour\_ell\ =\ p.contour\_ell;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ ellipse\_area\ =\ p.ellipse\_area;}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ z\_source\ =\ p.z\_source;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ type\ =\ p.type;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ caustic\_intersections\ =\ p.caustic\_intersections;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ touches\_edge\ =\ p.touches\_edge;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00297\ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ }
+\DoxyCodeLine{00299\ \ \ \ \ std::vector<RAY>\ critcurve;}
+\DoxyCodeLine{00300\ \ \ \ \ std::vector<Point\_2d>\ caustic\_curve\_outline;}
+\DoxyCodeLine{00301\ \ \ \ \ std::vector<Point\_2d>\ caustic\_curve\_intersecting;}
+\DoxyCodeLine{00302\ \ \ \ \ std::vector<Point\_2d>\ ellipse\_curve;}
+\DoxyCodeLine{00303\ \ \ \ \ }
+\DoxyCodeLine{00304\ \ \ \ \ PosType\ z\_source;}
+\DoxyCodeLine{00306\ \ \ \ \ CritType\ type;}
+\DoxyCodeLine{00308\ \ \ \ \ \textcolor{keywordtype}{int}\ caustic\_intersections;}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00311\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ critical\_center;}
+\DoxyCodeLine{00313\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ caustic\_center;}
+\DoxyCodeLine{00314\ \ \ \ \ }
+\DoxyCodeLine{00316\ \ \ \ \ PosType\ critical\_area;}
+\DoxyCodeLine{00318\ \ \ \ \ PosType\ caustic\_area;}
+\DoxyCodeLine{00319\ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ PosType\ contour\_ell;}
+\DoxyCodeLine{00323\ \ \ \ \ PosType\ ellipse\_area;}
+\DoxyCodeLine{00324\ \ \ \ \ }
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{bool}\ touches\_edge;}
+\DoxyCodeLine{00327\ \ \ \ \ }
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordtype}{bool}\ inCausticCurve(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x)\{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Utilities::inhull(x.x,caustic\_curve\_outline);}
+\DoxyCodeLine{00332\ \ \ \ \ \}}
+\DoxyCodeLine{00333\ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keywordtype}{bool}\ intersectingCausticCurve(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x,\textcolor{keywordtype}{double}\ r)\{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_utilities_afc0243f1746707bddd91dd1295795f9e}{Utilities::circleIntersetsCurve}}(x,\ r,\ caustic\_curve\_outline);}
+\DoxyCodeLine{00337\ \ \ \ \ \}}
+\DoxyCodeLine{00338\ \ }
+\DoxyCodeLine{00339\ \ \ \ \ }
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordtype}{bool}\ inCriticalCurve(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x)\{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_utilities_a85c8c08716d4ebdceb0b8c31d543773a}{Utilities::inhull<RAY>}}(x.x,critcurve);}
+\DoxyCodeLine{00343\ \ \ \ \ \}}
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keywordtype}{bool}\ EntirelyinCausticCurve(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x,\ PosType\ sourceRadius)}
+\DoxyCodeLine{00347\ \ \ \ \ \{}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \textcolor{comment}{//\ Testing\ if\ the\ center\ of\ the\ source\ is\ within\ the\ caustic\ :}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsInCurve\ =\ Utilities::inCurve(x,caustic\_curve\_outline);}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ }
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \textcolor{comment}{//\ Testing\ now\ that\ it\ is\ not\ too\ close\ from\ it\ (i.e.\ farther\ than\ source\ radius)\ :}}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i=0;\ \textcolor{comment}{//\ index\ going\ over\ the\ different\ points\ of\ the\ caustic\ curve}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ PosType\ DistSourceToCautic;\ \textcolor{comment}{//\ distance\ between\ the\ source\ center\ and\ the\ considered\ point\ of\ the\ caustic\ line.}}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ }
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(IsInCurve\ ==\ \textcolor{keyword}{true})\ \textcolor{comment}{//\ center\ inside\ the\ caustic}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(i<caustic\_curve\_outline.size())\ \textcolor{comment}{//\ testing\ that\ the\ source\ size\ does\ not\ overlap\ with\ the\ caustic\ line.}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ DistSourceToCautic\ =\ sqrt((caustic\_curve\_outline[i].x[0]\ -\/\ x.x[0])*(caustic\_curve\_outline[i].x[0]\ -\/\ x.x[0])\ +\ (caustic\_curve\_outline[i].x[1]\ -\/\ x.x[1])*(caustic\_curve\_outline[i].x[1]\ -\/\ x.x[1]));}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DistSourceToCautic\ <\ sourceRadius)\ \textcolor{keywordflow}{return}\ false\ ;\ \textcolor{comment}{//\ source\ too\ close,\ we\ return\ false\ and\ don't\ consider\ the\ point.}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ true\ ;\ \textcolor{comment}{//\ if\ not\ we\ return\ true\ (the\ source\ is\ valid)}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ false\ ;\ \textcolor{comment}{//\ center\ not\ inside\ the\ caustic}}
+\DoxyCodeLine{00366\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ }
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keywordtype}{bool}\ EntirelyinCriticalCurve(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x,\ PosType\ sourceRadius)}
+\DoxyCodeLine{00370\ \ \ \ \ \{}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \textcolor{comment}{//\ Testing\ if\ the\ center\ of\ the\ source\ is\ within\ the\ critical\ curve\ :}}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsInCurve\ =\ Utilities::inCurve(x,caustic\_curve\_outline);}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \textcolor{comment}{//\ Testing\ now\ that\ it\ is\ not\ too\ close\ from\ it\ (i.e.\ farther\ than\ source\ radius)\ :}}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i=0;\ \textcolor{comment}{//\ index\ going\ over\ the\ different\ points\ of\ the\ critical\ curve}}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ PosType\ DistSourceToCritCurve;\ \textcolor{comment}{//\ distance\ between\ the\ source\ center\ and\ the\ considered\ point\ of\ the\ critical\ line.}}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ }
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(IsInCurve\ ==\ \textcolor{keyword}{true})\ \textcolor{comment}{//\ center\ inside\ the\ critical\ line}}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(i<critcurve.size())\ \textcolor{comment}{//\ testing\ that\ the\ source\ size\ does\ not\ overlap\ with\ the\ critical\ line.}}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ DistSourceToCritCurve\ =\ sqrt((critcurve[i].x[0]\ -\/\ x.x[0])*(critcurve[i].x[0]\ -\/\ x.x[0])\ +\ (critcurve[i].x[1]\ -\/\ x.x[1])*(critcurve[i].x[1]\ -\/\ x.x[1]));}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (DistSourceToCritCurve\ <\ sourceRadius)\ \textcolor{keywordflow}{return}\ false\ ;\ \textcolor{comment}{//\ source\ too\ close,\ we\ return\ false\ and\ don't\ consider\ the\ point.}}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ true\ ;\ \textcolor{comment}{//\ if\ not\ we\ return\ true\ (the\ source\ is\ valid)}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ false\ ;\ \textcolor{comment}{//\ center\ not\ inside\ the\ critical\ line}}
+\DoxyCodeLine{00389\ \ \ \ \ \}}
+\DoxyCodeLine{00390\ \ \ \ \ }
+\DoxyCodeLine{00391\ \ \ \ \ }
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{keywordtype}{void}\ RandomSourcesWithinCaustic(}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<Point\_2d>\ \&y\ \ }
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rng\ \ }
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00399\ \ \ \ \ }
+\DoxyCodeLine{00400\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ RandomSourceWithinCaustic(}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rng\ \ }
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{keywordtype}{void}\ RandomSourcesNearCaustic(\textcolor{keywordtype}{double}\ R}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ N\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<Point\_2d>\ \&y\ \ }
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rng\ \ }
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00413\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ RandomSourceNearCaustic(\textcolor{keywordtype}{double}\ R}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rng\ \ }
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ \ \ \ \ }
+\DoxyCodeLine{00420\ \ \ \ \ \textcolor{keywordtype}{void}\ RandomSourceStrictlyWithinCaustic(\textcolor{keywordtype}{int}\ N\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<Point\_2d>\ \&y\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rng\ \ }
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ sourceRadius\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ distSourceToCaustic\ \ \ \ \ \ \ }
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordtype}{void}\ CritRange(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p1,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p2);}
+\DoxyCodeLine{00429\ \ \ \ \ \textcolor{keywordtype}{void}\ CausticRange(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p1,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p2);}
+\DoxyCodeLine{00430\ \ \ \ \ }
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keywordtype}{void}\ CriticalRadius(PosType\ \&rmax,PosType\ \&rmin,PosType\ \&rave)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(critcurve.size()\ <\ 2)\{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ rave\ =\ rmax\ =\ rmin\ =\ 0.0;}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ }
+\DoxyCodeLine{00438\ \ \ \ \ \ \ rave\ =\ rmin\ =\ rmax\ =\ (critical\_center\ -\/\ critcurve[0].x).length();}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ PosType\ rad;}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ }
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ ii=1;\ ii<\ critcurve.size();\ ++ii)\{}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ rad\ =\ (critical\_center\ -\/\ critcurve[ii].x).length();}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ rave\ +=\ rad;}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rad\ <\ rmin)\ rmin\ =\ rad;}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rad\ >\ rmax)\ rmax\ =\ rad;}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ }
+\DoxyCodeLine{00449\ \ \ \ \ \ \ rave\ /=\ critcurve.size();}
+\DoxyCodeLine{00450\ \ \ \ \ \}}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{void}\ CausticRadius(PosType\ \&rmax,PosType\ \&rmin,PosType\ \&rave)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(caustic\_curve\_outline.size()\ <\ 2)\{}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ rave\ =\ rmax\ =\ rmin\ =\ 0.0;}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ }
+\DoxyCodeLine{00458\ \ \ \ \ \ \ rave\ =\ rmin\ =\ rmax\ =\ (caustic\_center\ -\/\ caustic\_curve\_outline[0]).length();}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \ \ \ \ \ \ PosType\ rad;}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ }
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ ii=1;\ ii<\ caustic\_curve\_outline.size();\ ++ii)\{}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ rad\ =\ (caustic\_center\ -\/\ caustic\_curve\_outline[ii]).length();}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ rave\ +=\ rad;}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rad\ <\ rmin)\ rmin\ =\ rad;}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rad\ >\ rmax)\ rmax\ =\ rad;}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ }
+\DoxyCodeLine{00470\ \ \ \ \ \ \ rave\ /=\ caustic\_curve\_outline.size();}
+\DoxyCodeLine{00471\ \ \ \ \ \}}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordtype}{double}\ AreaNearCaustic(\textcolor{keywordtype}{double}\ R\ }
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ }
+\DoxyCodeLine{00477\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00478\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ p1,p2;}
+\DoxyCodeLine{00479\ \ \ \};}
+\DoxyCodeLine{00480\ \ \ }
+\DoxyCodeLine{00481\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{find\_images\_kist}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,PosType\ *y\_source,PosType\ r\_source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ *Nimages,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *Nimagepoints}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ initial\_size,\textcolor{keywordtype}{bool}\ splitimages,\textcolor{keywordtype}{short}\ edge\_refinement}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00485\ \ \ }
+\DoxyCodeLine{00486\ \ \ \textcolor{comment}{//void\ find\_image\_simple(LensHndl\ lens,Point\_2d\ y\_source,PosType\ z\_source,Point\_2d\ \&image\_x}}
+\DoxyCodeLine{00487\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ xtol2,PosType\ \&fret);}}
+\DoxyCodeLine{00488\ \ \ }
+\DoxyCodeLine{00489\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_a4df229d3fd4cccd2a4ae17fa7edfa258}{find\_images\_microlens}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\textcolor{keywordtype}{double}\ *y\_source,\textcolor{keywordtype}{double}\ r\_source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ *Nimages,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *Nimagepoints}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ initial\_size,\textcolor{keywordtype}{double}\ mu\_min,\textcolor{keywordtype}{bool}\ splitimages,\textcolor{keywordtype}{short}\ edge\_refinement}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00493\ \ \ }
+\DoxyCodeLine{00494\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_ae87006a0aa4fab4fda4f60f6689f0ec3}{find\_images\_microlens\_exper}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,PosType\ *y\_source,PosType\ r\_source}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\textcolor{keywordtype}{int}\ *Nimages,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *Nimagepoints,PosType\ initial\_size\ ,PosType\ mu\_min}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ splitimages,\textcolor{keywordtype}{short}\ edge\_refinement,\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00497\ \ \ }
+\DoxyCodeLine{00498\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_aa1d61941f50776c7133ead2f5ea87117}{image\_finder\_kist}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\ PosType\ *y\_source,PosType\ r\_source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ *Nimages,std::vector<ImageInfo>\ \&imageinfo,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *Nimagepoints}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{short}\ splitparities,\textcolor{keywordtype}{short}\ true\_images);}
+\DoxyCodeLine{00501\ \ \ }
+\DoxyCodeLine{00502\ \ \ }
+\DoxyCodeLine{00503\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}{find\_crit}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,std::vector<CriticalCurve>\ \&crtcurve,\textcolor{keywordtype}{int}\ *Ncrits}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ resolution,\textcolor{keywordtype}{double}\ invmag\_min\ =\ 0.0,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false},\textcolor{keywordtype}{bool}\ test=\textcolor{keyword}{false});}
+\DoxyCodeLine{00505\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_aeddf360f46ff1014096ff17d160d3d3d}{find\_crit}}(\mbox{\hyperlink{class_lens}{Lens}}\ \&lens,\mbox{\hyperlink{struct_grid_map}{GridMap}}\ \&gridmap,std::vector<CriticalCurve>\ \&crtcurves,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00506\ \ \ }
+\DoxyCodeLine{00507\ \ \ \textcolor{comment}{//\ finds\ the\ contours\ of\ magnification\ and\ source\ plane\ curve}}
+\DoxyCodeLine{00508\ \ \ \textcolor{keywordtype}{void}\ find\_magnification\_contour(}
+\DoxyCodeLine{00509\ \ \ \ \ \mbox{\hyperlink{class_lens}{Lens}}\ \&lens}
+\DoxyCodeLine{00510\ \ \ \ \ ,\mbox{\hyperlink{struct_grid_map}{GridMap}}\ \&gridmap}
+\DoxyCodeLine{00511\ \ \ \ \ ,\textcolor{keywordtype}{double}\ invmag}
+\DoxyCodeLine{00512\ \ \ \ \ ,std::vector<std::vector<RAY>\ >\ \&contour}
+\DoxyCodeLine{00513\ \ \ \ \ ,std::vector<bool>\ \&hits\_boundary}
+\DoxyCodeLine{00514\ \ \ );}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00516\ \ \ \textcolor{comment}{//void\ find\_crit2(LensHndl\ lens,GridHndl\ grid,std::vector<CriticalCurve>\ \&critcurve,int\ *Ncrits}}
+\DoxyCodeLine{00517\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,double\ resolution,bool\ *orderingsuccess,bool\ ordercurve,bool\ dividecurves,double\ invmag\_min\ =\ 0.0,bool\ verbose\ =\ false);}}
+\DoxyCodeLine{00518\ \ \ }
+\DoxyCodeLine{00519\ \ \ CritType\ \mbox{\hyperlink{namespace_image_finding_ac423dd72b206974de345741c56783d61}{find\_pseudo}}(\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ \&pseudocurve,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ \&negimage}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ pseudolimit,\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ resolution,Kist<Point>\ \&paritypoints,\textcolor{keywordtype}{bool}\ TEST=\textcolor{keyword}{false});}
+\DoxyCodeLine{00522\ \ \ }
+\DoxyCodeLine{00523\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_image_finding_ada031993e8ed6cfead17ecc83951a197}{find\_contour}}(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,std::vector<CriticalCurve>\ \&contour,\textcolor{keywordtype}{int}\ *Ncrits,PosType\ resolution,\textcolor{keywordtype}{bool}\ *orderingsuccess,\textcolor{keywordtype}{bool}\ ordercurve,\ \textcolor{keywordtype}{bool}\ dividecurves,\ \textcolor{keywordtype}{double}\ contour\_value,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ contour\_type,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00524\ \ \ }
+\DoxyCodeLine{00525\ \ \ \textcolor{keyword}{namespace\ }Temporary\{}
+\DoxyCodeLine{00526\ \ \ \ \ \textcolor{comment}{//PosType\ *y;}}
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{comment}{//Lens\ *\ lens;}}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{comment}{//Point\ *point;}}
+\DoxyCodeLine{00529\ \ \ \ \ }
+\DoxyCodeLine{00530\ \ \ \ \ PosType\ mindyfunc(PosType\ *x);}
+\DoxyCodeLine{00531\ \ \ \}}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \ \ \textcolor{keyword}{namespace\ }IF\_routines\{}
+\DoxyCodeLine{00534\ \ \ \ \ \textcolor{keywordtype}{int}\ refine\_grid\_kist(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nimages,\textcolor{keywordtype}{double}\ res\_target,\textcolor{keywordtype}{short}\ criterion}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Kist<Point>\ *\ newpointkist\ =\ NULL,\textcolor{keywordtype}{bool}\ batch=\textcolor{keyword}{true});}
+\DoxyCodeLine{00537\ \ \ \ \ }
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{keywordtype}{void}\ refine\_crit\_in\_image(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\textcolor{keywordtype}{double}\ r\_source,\textcolor{keywordtype}{double}\ x\_source[],\textcolor{keywordtype}{double}\ resolution);}
+\DoxyCodeLine{00540\ \ \ \ \ }
+\DoxyCodeLine{00541\ \ \ \ \ \textcolor{keywordtype}{int}\ refine\_grid(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\mbox{\hyperlink{struct_old_image_info}{OldImageInfo}}\ *imageinfo}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Nimages,\textcolor{keywordtype}{double}\ res\_target,\textcolor{keywordtype}{short}\ criterion,\textcolor{keywordtype}{bool}\ batch=\textcolor{keyword}{true});}
+\DoxyCodeLine{00543\ \ \ \ \ }
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordtype}{long}\ refine\_edges(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nimages,\textcolor{keywordtype}{double}\ res\_target,\textcolor{keywordtype}{short}\ criterion}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Kist<Point>\ *\ newpointkist\ =\ NULL,\textcolor{keywordtype}{bool}\ batch=\textcolor{keyword}{true});}
+\DoxyCodeLine{00547\ \ \ \ \ }
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{keywordtype}{long}\ refine\_edges2(\mbox{\hyperlink{class_lens}{LensHndl}}\ lens,\textcolor{keywordtype}{double}\ *y\_source,\textcolor{keywordtype}{double}\ r\_source,\mbox{\hyperlink{struct_grid}{GridHndl}}\ grid}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo,\textcolor{keywordtype}{bool}\ *image\_overlap,\textcolor{keywordtype}{int}\ Nimages,\textcolor{keywordtype}{double}\ res\_target}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{short}\ criterion,\textcolor{keywordtype}{bool}\ batch=\textcolor{keyword}{true});}
+\DoxyCodeLine{00551\ \ \ \ \ }
+\DoxyCodeLine{00552\ \ \ \ \ \textcolor{keywordtype}{void}\ sort\_out\_points(\mbox{\hyperlink{struct_point}{Point}}\ *i\_points,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo,\textcolor{keywordtype}{double}\ r\_source,\textcolor{keywordtype}{double}\ y\_source[]);}
+\DoxyCodeLine{00553\ }
+\DoxyCodeLine{00554\ \ \ \}}
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00556\ \ \ \textcolor{keywordtype}{void}\ printCriticalCurves(std::string\ filename}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<ImageFinding::CriticalCurve>\ \&critcurves);}
+\DoxyCodeLine{00558\ \ \ }
+\DoxyCodeLine{00562\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00563\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{namespace_image_finding_a9d3a552791405d6cf80f3ebb0e9f5de0}{mapCriticalCurves}}(}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ImageFinding::CriticalCurve>\ \&critcurves,}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Nx}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00569\ \ \ }
+\DoxyCodeLine{00573\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00574\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{namespace_image_finding_a250d141e670a4630561cd89297c65af5}{mapCausticCurves}}(\textcolor{keyword}{const}\ std::vector<ImageFinding::CriticalCurve>\ \&critcurves\ }
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nx\ }
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00577\ \}}
+\DoxyCodeLine{00578\ }
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00580\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \textcolor{keyword}{const}\ ImageFinding::CriticalCurve\ \&p);}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \textcolor{comment}{//void\ saveImage(LensHaloMassMap\ *mokahalo,\ GridHndl\ grid,\ bool\ saveprofile=true);}}
+\DoxyCodeLine{00583\ }
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00586\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00587\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{Grid::writeFits}}(}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ \ \ \ }
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npixels\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ resolution\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ \ }
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00594\ \ \ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{writeFits<T>}}(center,Npixels,Npixels,resolution,lensvar,filename);}
+\DoxyCodeLine{00595\ \}}
+\DoxyCodeLine{00597\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00598\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{Grid::writeFits}}(}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ \ \ \ }
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Nx\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Ny\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ resolution\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ \ }
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00606\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map(center,\ Nx,Ny,\ resolution);}
+\DoxyCodeLine{00607\ \ \ std::string\ tag;}
+\DoxyCodeLine{00608\ \ \ }
+\DoxyCodeLine{00609\ \ \ \textcolor{keywordflow}{switch}\ (lensvar)\ \{}
+\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a2d2826ba881a98b69365e70359961d9d}{LensingVariable::DELAYT}}:}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.dt.fits"{}};}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00613\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a5c555a644af81fa1f8998d6b41715bca}{LensingVariable::ALPHA1}}:}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alpha1.fits"{}};}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00616\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a4241fd768d3bb716ed576d02065878f2}{LensingVariable::ALPHA2}}:}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alpha2.fits"{}};}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a002101f8725e5c78d9f30d87f3fa4c87}{LensingVariable::ALPHA}}:}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alpha.fits"{}};}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00622\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a55b8000cc76d015e79c6faf29593a5b6}{LensingVariable::KAPPA}}:}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.kappa.fits"{}};}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a441c1844d7fef95b423c90c8490b188b}{LensingVariable::GAMMA1}}:}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma1.fits"{}};}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00628\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a256fc80c11d5a8c917e8b576b137d4a1}{LensingVariable::GAMMA2}}:}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma2.fits"{}};}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a357ff5cb664a231edcc23973ca09cdda}{LensingVariable::GAMMA3}}:}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma3.fits"{}};}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00634\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a469bb22a9f1f560331b06cd6ef0da944}{LensingVariable::GAMMA}}:}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma.fits"{}};}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00637\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a915ba350a9aab6451e02bef54cd0f4fa}{LensingVariable::INVMAG}}:}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.invmag.fits"{}};}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a42a29ddbba2a43362a7336bc210dad2c}{LensingVariable::SurfBrightness}}:}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.surfbright.fits"{}};}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00643\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00645\ \ \ \}}
+\DoxyCodeLine{00646\ \ \ }
+\DoxyCodeLine{00647\ \ \ map.\mbox{\hyperlink{class_pixel_map_ae0ff75f357f02175e649a051441aa0d4}{AddGrid}}(*\textcolor{keyword}{this},lensvar);}
+\DoxyCodeLine{00648\ \ \ map.\mbox{\hyperlink{class_pixel_map_a710ed995171bd6778ac634c559e7a781}{printFITS}}(filename\ +\ tag);}
+\DoxyCodeLine{00649\ }
+\DoxyCodeLine{00650\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00651\ \}}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00654\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00655\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{Grid::writePixelMap}}(}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ \ \ \ }
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npixels\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ resolution\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00661\ \ \ }
+\DoxyCodeLine{00662\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{writePixelMap<T>}}(center,Npixels,Npixels,resolution,lensvar);}
+\DoxyCodeLine{00663\ \}}
+\DoxyCodeLine{00665\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00666\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{Grid::writePixelMap}}(}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ \ \ \ }
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Nx\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Ny\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ resolution\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00672\ )\{}
+\DoxyCodeLine{00673\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map(center,\ Nx,\ Ny,\ resolution);}
+\DoxyCodeLine{00674\ \ \ map.\mbox{\hyperlink{class_pixel_map_ae0ff75f357f02175e649a051441aa0d4}{AddGrid}}(*\textcolor{keyword}{this},lensvar);}
+\DoxyCodeLine{00675\ \ \ }
+\DoxyCodeLine{00676\ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{00677\ \}}
+\DoxyCodeLine{00679\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00680\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{Grid::writePixelMap}}(}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00682\ )\{}
+\DoxyCodeLine{00683\ \ \ }
+\DoxyCodeLine{00684\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ *branch\ =\ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_acec6d68525f890c9938e2ad4b5e68aca}{getTop}}();}
+\DoxyCodeLine{00685\ \ \ \textcolor{keywordtype}{double}\ resolution\ =\ (branch-\/>boundary\_p2[0]\ -\/\ branch-\/>boundary\_p1[0])/Ngrid\_init;}
+\DoxyCodeLine{00686\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map(branch-\/>center,\ Ngrid\_init,\ Ngrid\_init2,\ resolution);}
+\DoxyCodeLine{00687\ \ \ map.\mbox{\hyperlink{class_pixel_map_ae0ff75f357f02175e649a051441aa0d4}{AddGrid}}(*\textcolor{keyword}{this},lensvar);}
+\DoxyCodeLine{00688\ \ \ }
+\DoxyCodeLine{00689\ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{00690\ \}}
+\DoxyCodeLine{00691\ }
+\DoxyCodeLine{00692\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00693\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \ \mbox{\hyperlink{struct_grid_a4b5fc463ba0a735c5549dc4db2592b41}{Grid::MapSurfaceBrightness}}(\textcolor{keywordtype}{double}\ resolution)\{}
+\DoxyCodeLine{00694\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ *branch\ =\ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_acec6d68525f890c9938e2ad4b5e68aca}{getTop}}();}
+\DoxyCodeLine{00695\ \ \ \textcolor{keywordtype}{int}\ Nx\ =\ (int)(\ (branch-\/>boundary\_p2[0]\ -\/\ branch-\/>boundary\_p1[0])/resolution\ );}
+\DoxyCodeLine{00696\ \ \ \textcolor{keywordtype}{int}\ Ny\ =\ (int)(\ (branch-\/>boundary\_p2[1]\ -\/\ branch-\/>boundary\_p1[1])/resolution\ );}
+\DoxyCodeLine{00697\ \ \ }
+\DoxyCodeLine{00698\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map(branch-\/>center,Nx,Ny,resolution);}
+\DoxyCodeLine{00699\ \ \ map.\mbox{\hyperlink{class_pixel_map_a2ddead4c956462ef153fff9fe3c2bafc}{AddGridBrightness}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00700\ }
+\DoxyCodeLine{00701\ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{00702\ \}}
+\DoxyCodeLine{00703\ }
+\DoxyCodeLine{00706\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00707\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_aef25408943531718b008996d5eddb9cb}{Grid::writePixelFits}}(}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Nx\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ \ }
+\DoxyCodeLine{00711\ )\{}
+\DoxyCodeLine{00712\ \ \ }
+\DoxyCodeLine{00713\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ center\ =\ getInitCenter();}
+\DoxyCodeLine{00714\ \ \ PosType\ resolution\ =\ \ \mbox{\hyperlink{struct_grid_aafb414f884497255df53b5ba7ceb0f24}{getInitRange}}()/Nx;}
+\DoxyCodeLine{00715\ \ \ \textcolor{keywordtype}{size\_t}\ Ny\ =\ (size\_t)(Nx*axisratio);}
+\DoxyCodeLine{00716\ \ \ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{writeFits<T>}}(center.x,Nx,Ny,resolution,\ lensvar,\ filename);}
+\DoxyCodeLine{00717\ \ \ }
+\DoxyCodeLine{00718\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00719\ \}}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00728\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00729\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a39b2d1ed7a7fc6c6798049885a2e0f8c}{Grid::writeFitsUniform}}(}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ }
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Nx\ \ \ \ \ \ \ }
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Ny\ \ \ \ \ \ \ }
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ \ }
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00736\ \ \ std::string\ tag;}
+\DoxyCodeLine{00737\ \ \ }
+\DoxyCodeLine{00738\ \ \ \textcolor{keywordflow}{switch}\ (lensvar)\ \{}
+\DoxyCodeLine{00739\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a2d2826ba881a98b69365e70359961d9d}{LensingVariable::DELAYT}}:}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.dt.fits"{}};}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00742\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a5c555a644af81fa1f8998d6b41715bca}{LensingVariable::ALPHA1}}:}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alpha1.fits"{}};}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00745\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a4241fd768d3bb716ed576d02065878f2}{LensingVariable::ALPHA2}}:}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alpha2.fits"{}};}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a002101f8725e5c78d9f30d87f3fa4c87}{LensingVariable::ALPHA}}:}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alpha.fits"{}};}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00751\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a55b8000cc76d015e79c6faf29593a5b6}{LensingVariable::KAPPA}}:}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.kappa.fits"{}};}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00754\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a441c1844d7fef95b423c90c8490b188b}{LensingVariable::GAMMA1}}:}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma1.fits"{}};}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00757\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a256fc80c11d5a8c917e8b576b137d4a1}{LensingVariable::GAMMA2}}:}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma2.fits"{}};}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00760\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a357ff5cb664a231edcc23973ca09cdda}{LensingVariable::GAMMA3}}:}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma3.fits"{}};}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00763\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a469bb22a9f1f560331b06cd6ef0da944}{LensingVariable::GAMMA}}:}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gamma.fits"{}};}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00766\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a915ba350a9aab6451e02bef54cd0f4fa}{LensingVariable::INVMAG}}:}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.invmag.fits"{}};}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00769\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a42a29ddbba2a43362a7336bc210dad2c}{LensingVariable::SurfBrightness}}:}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.surfbright.fits"{}};}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00772\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00774\ \ \ \}}
+\DoxyCodeLine{00775\ }
+\DoxyCodeLine{00776\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map\ =\ \mbox{\hyperlink{struct_grid_af8a42e04085607e44ba84a08dc57573b}{writePixelMapUniform<T>}}(center,Nx,Ny,lensvar);}
+\DoxyCodeLine{00777\ \ \ map.\mbox{\hyperlink{class_pixel_map_a710ed995171bd6778ac634c559e7a781}{printFITS}}(filename\ +\ tag);}
+\DoxyCodeLine{00778\ \}}
+\DoxyCodeLine{00779\ }
+\DoxyCodeLine{00787\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00788\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \mbox{\hyperlink{struct_grid_af8a42e04085607e44ba84a08dc57573b}{Grid::writePixelMapUniform}}(}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ }
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Nx\ \ \ \ \ \ \ }
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Ny\ \ \ \ \ \ \ }
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00794\ \ \ }
+\DoxyCodeLine{00795\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}{getNumberOfPoints}}()\ ==0\ )\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}();}
+\DoxyCodeLine{00796\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map(center,\ Nx,\ Ny,\mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_a18020df556ff80dedecd9425afe72d24}{pointlist}}.Top()-\/>gridsize);}
+\DoxyCodeLine{00797\ \ \ map.Clean();}
+\DoxyCodeLine{00798\ \ \ }
+\DoxyCodeLine{00799\ \ \ \textcolor{comment}{//int\ Nblocks\ =\ Utilities::GetNThreads();}}
+\DoxyCodeLine{00800\ \ \ \textcolor{keywordtype}{int}\ Nblocks\ =\ 16;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00802\ \ \ \textcolor{comment}{//std::vector<PointList>\ lists(Nblocks);}}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00804\ \ \ std::vector<Point\ *>\ heads(Nblocks);}
+\DoxyCodeLine{00805\ \ \ std::vector<size\_t>\ sizes(Nblocks,0);}
+\DoxyCodeLine{00806\ \ \ }
+\DoxyCodeLine{00807\ \ \ \textcolor{keywordtype}{bool}\ allowDecent;}
+\DoxyCodeLine{00808\ \ \ \mbox{\hyperlink{class_tree_struct_1_1iterator}{TreeStruct::iterator}}\ i\_tree\_it(\mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}});}
+\DoxyCodeLine{00809\ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00811\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00812\ \ \ \ \ \textcolor{keywordflow}{if}((*i\_tree\_it)-\/>level\ ==\ 4)\{}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ }
+\DoxyCodeLine{00814\ \ \ \ \ \ \ heads[i]\ =\ (*i\_tree\_it)-\/>points;}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ sizes[i]\ =\ (*i\_tree\_it)-\/>npoints;}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ }
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \textcolor{comment}{//lists[i].setTop(\ (*i\_tree\_it)-\/>points\ );}}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \textcolor{comment}{//lists[i].setN(\ (*i\_tree\_it)-\/>npoints\ );}}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ allowDecent\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00821\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ allowDecent\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00823\ \ \ \ \ \}}
+\DoxyCodeLine{00824\ \ \ \}\textcolor{keywordflow}{while}(i\_tree\_it.\mbox{\hyperlink{class_tree_struct_1_1iterator_acf3c7cf936f921ebf1b6d10879773188}{TreeWalkStep}}(allowDecent)\ \&\&\ i\ <\ Nblocks);}
+\DoxyCodeLine{00825\ \ \ }
+\DoxyCodeLine{00826\ \ \ std::vector<std::thread>\ thrs;}
+\DoxyCodeLine{00827\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ ii\ =\ 0;\ ii\ <\ i\ ;++ii)\{}
+\DoxyCodeLine{00828\ \ \ \textcolor{comment}{//writePixelMapUniform\_(heads[ii],sizes[ii],\&map,lensvar);}}
+\DoxyCodeLine{00829\ \ \ \textcolor{comment}{//thrs.push\_back(std::thread(\&Grid::writePixelMapUniform\_,this,lists[ii],\&map,lensvar));}}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ \ \ \ \ thrs.push\_back(std::thread(\&Grid::writePixelMapUniform\_<T>,\textcolor{keyword}{this},heads[ii],sizes[ii],\&map,lensvar));}
+\DoxyCodeLine{00832\ \ \ \}}
+\DoxyCodeLine{00833\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ ii\ =\ 0;\ ii\ <\ i\ ;++ii)\ thrs[ii].join();}
+\DoxyCodeLine{00834\ \ \ }
+\DoxyCodeLine{00835\ \ \ \textcolor{keywordflow}{return}\ map;}
+\DoxyCodeLine{00836\ \}}
+\DoxyCodeLine{00837\ }
+\DoxyCodeLine{00838\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00839\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_af8a42e04085607e44ba84a08dc57573b}{Grid::writePixelMapUniform}}(}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00843\ \ \ }
+\DoxyCodeLine{00844\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}{getNumberOfPoints}}()\ ==0\ )\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00845\ \ \ }
+\DoxyCodeLine{00846\ \ \ map.Clean();}
+\DoxyCodeLine{00847\ \ \ \textcolor{keywordtype}{int}\ Nblocks\ =\ 16;}
+\DoxyCodeLine{00848\ \ \ \textcolor{comment}{//std::vector<PointList>\ lists(Nblocks);}}
+\DoxyCodeLine{00849\ \ \ \mbox{\hyperlink{class_tree_struct_1_1iterator}{TreeStruct::iterator}}\ i\_tree\_it(\mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}});}
+\DoxyCodeLine{00850\ }
+\DoxyCodeLine{00851\ \ \ std::vector<Point\ *>\ heads(Nblocks);}
+\DoxyCodeLine{00852\ \ \ std::vector<size\_t>\ sizes(Nblocks,0);}
+\DoxyCodeLine{00853\ }
+\DoxyCodeLine{00854\ \ \ }
+\DoxyCodeLine{00855\ \ \ \textcolor{keywordtype}{bool}\ allowDecent;}
+\DoxyCodeLine{00856\ \ \ i\_tree\_it.movetop();}
+\DoxyCodeLine{00857\ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{00858\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordflow}{if}((*i\_tree\_it)-\/>level\ ==\ 4)\{}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ assert(i\ <\ 16);}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \textcolor{comment}{//lists[i].setTop(\ (*i\_tree\_it)-\/>points\ );}}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \textcolor{comment}{//lists[i].setN(\ (*i\_tree\_it)-\/>npoints\ );}}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ heads[i]\ =\ (*i\_tree\_it)-\/>points;}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ sizes[i]\ =\ (*i\_tree\_it)-\/>npoints;}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ }
+\DoxyCodeLine{00866\ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ allowDecent\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00868\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ allowDecent\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00870\ \ \ \ \ \}}
+\DoxyCodeLine{00871\ \ \ \}\textcolor{keywordflow}{while}(i\_tree\_it.\mbox{\hyperlink{class_tree_struct_1_1iterator_acf3c7cf936f921ebf1b6d10879773188}{TreeWalkStep}}(allowDecent)\ \&\&\ i\ <\ Nblocks);}
+\DoxyCodeLine{00872\ \ \ }
+\DoxyCodeLine{00873\ \ \ std::vector<std::thread>\ thr;}
+\DoxyCodeLine{00874\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ ii\ =\ 0;\ ii\ <\ i\ ;++ii)\{}
+\DoxyCodeLine{00875\ \ \ \ \ thr.push\_back(std::thread(\&Grid::writePixelMapUniform\_<T>,\textcolor{keyword}{this},heads[ii],sizes[ii],\&map,lensvar));}
+\DoxyCodeLine{00876\ \ \ \}}
+\DoxyCodeLine{00877\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&t\ :\ thr)\ t.join();}
+\DoxyCodeLine{00878\ \}}
+\DoxyCodeLine{00879\ }
+\DoxyCodeLine{00880\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00881\ \textcolor{keywordtype}{void}\ Grid::writePixelMapUniform\_(\mbox{\hyperlink{struct_point}{Point}}\ *head,\textcolor{keywordtype}{size\_t}\ N,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ *map,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ val)\{}
+\DoxyCodeLine{00882\ \ \ \textcolor{keywordtype}{double}\ tmp;}
+\DoxyCodeLine{00883\ \ \ PosType\ tmp2[2];}
+\DoxyCodeLine{00884\ \ \ \textcolor{keywordtype}{long}\ index;}
+\DoxyCodeLine{00885\ \ \ }
+\DoxyCodeLine{00886\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *ppoint\ =\ head;}
+\DoxyCodeLine{00887\ \ \ }
+\DoxyCodeLine{00888\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i<\ N;\ ++i)\{}
+\DoxyCodeLine{00889\ \ \ \ \ }
+\DoxyCodeLine{00890\ \ \ \ \ \textcolor{keywordflow}{switch}\ (val)\ \{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a002101f8725e5c78d9f30d87f3fa4c87}{LensingVariable::ALPHA}}:}
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ tmp2[0]\ =\ ppoint-\/>x[0]\ -\/\ ppoint-\/>image-\/>x[0];}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ tmp2[1]\ =\ ppoint-\/>x[1]\ -\/\ ppoint-\/>image-\/>x[1];}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ tmp\ =\ sqrt(tmp2[0]*tmp2[0]\ +\ tmp2[1]*tmp2[1]);}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a5c555a644af81fa1f8998d6b41715bca}{LensingVariable::ALPHA1}}:}
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ tmp\ =\ (ppoint-\/>x[0]\ -\/\ ppoint-\/>image-\/>x[0]);}
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a4241fd768d3bb716ed576d02065878f2}{LensingVariable::ALPHA2}}:}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ tmp\ =\ (ppoint-\/>x[1]\ -\/\ ppoint-\/>image-\/>x[1]);}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a55b8000cc76d015e79c6faf29593a5b6}{LensingVariable::KAPPA}}:}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>kappa();}
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a469bb22a9f1f560331b06cd6ef0da944}{LensingVariable::GAMMA}}:}
+\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ tmp2[0]\ =\ ppoint-\/>gamma1();}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ tmp2[1]\ =\ ppoint-\/>gamma2();}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ tmp\ =\ sqrt(tmp2[0]*tmp2[0]\ +\ tmp2[1]*tmp2[1]);}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a441c1844d7fef95b423c90c8490b188b}{LensingVariable::GAMMA1}}:}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>gamma1();}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a256fc80c11d5a8c917e8b576b137d4a1}{LensingVariable::GAMMA2}}:}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>gamma2();}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a357ff5cb664a231edcc23973ca09cdda}{LensingVariable::GAMMA3}}:}
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>gamma3();}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a915ba350a9aab6451e02bef54cd0f4fa}{LensingVariable::INVMAG}}:}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>invmag();}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a2d2826ba881a98b69365e70359961d9d}{LensingVariable::DELAYT}}:}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>dt;}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a42a29ddbba2a43362a7336bc210dad2c}{LensingVariable::SurfBrightness}}:}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ tmp\ =\ ppoint-\/>surface\_brightness;}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}PixelMap<T>::AddGrid()\ does\ not\ work\ for\ the\ input\ LensingVariable"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}PixelMap<T>::AddGrid()\ does\ not\ work\ for\ the\ input\ LensingVariable"{}});}
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ this\ list\ is\ to\ be\ expanded\ to\ include\ ALPHA\ or\ GAMMA\ take\ care\ to\ add\ them\ as\ vectors}}
+\DoxyCodeLine{00933\ \ \ \ \ \}}
+\DoxyCodeLine{00934\ \ \ \ \ }
+\DoxyCodeLine{00935\ \ \ \ \ index\ =\ map-\/>\mbox{\hyperlink{class_pixel_map_ad790d8c0bf6a429502f3bb53c386d16d}{find\_index}}(ppoint-\/>x);}
+\DoxyCodeLine{00936\ \ \ \ \ \textcolor{keywordflow}{if}(index\ !=\ -\/1)(*map)[index]\ =\ tmp;}
+\DoxyCodeLine{00937\ \ \ \ \ }
+\DoxyCodeLine{00938\ \ \ \ \ ppoint\ =\ ppoint-\/>next;}
+\DoxyCodeLine{00939\ \ \ \}}
+\DoxyCodeLine{00940\ \}}
+\DoxyCodeLine{00941\ }
+\DoxyCodeLine{00943\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00944\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_af6db6d5bdc63482cae8b00b7bdd8f9f7}{Grid::writeFitsVector}}(}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ center[]\ \ \ \ \ }
+\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npixels\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ resolution\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ \ }
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::string\ filename\ \ \ \ \ }
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00951\ \ \ \textcolor{comment}{//throw\ std::runtime\_error("{}Not\ done\ yet!"{});}}
+\DoxyCodeLine{00952\ \ \ }
+\DoxyCodeLine{00953\ \ \ PosType\ range\ =\ Npixels*resolution,tmp\_x[2];}
+\DoxyCodeLine{00954\ \ \ \mbox{\hyperlink{struct_image_info}{ImageInfo}}\ tmp\_image,tmp\_image\_theta;}
+\DoxyCodeLine{00955\ \ \ \textcolor{keywordtype}{size\_t}\ i;}
+\DoxyCodeLine{00956\ \ \ std::string\ tag;}
+\DoxyCodeLine{00957\ \ \ }
+\DoxyCodeLine{00958\ \ \ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_a43e87679f878529623577aae8af1288b}{PointsWithinKist}}(center,range/sqrt(2.),tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}},0);}
+\DoxyCodeLine{00959\ \ \ \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\_tree}}-\/>\mbox{\hyperlink{struct_tree_struct_a43e87679f878529623577aae8af1288b}{PointsWithinKist}}(center,range/sqrt(2.),tmp\_image\_theta.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}},0);}
+\DoxyCodeLine{00960\ \ \ }
+\DoxyCodeLine{00961\ \ \ std::vector<PosType>\ tmp\_sb\_vec(tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>Nunits());}
+\DoxyCodeLine{00962\ \ \ }
+\DoxyCodeLine{00963\ \ \ \textcolor{keywordflow}{for}(tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>MoveToTop(),i=0;i<tmp\_sb\_vec.size();++i,tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>Down())\{}
+\DoxyCodeLine{00964\ \ \ \ \ tmp\_sb\_vec[i]\ =\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>surface\_brightness;}
+\DoxyCodeLine{00965\ \ \ \ \ \textcolor{keywordflow}{switch}\ (lensvar)\ \{}
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a5c555a644af81fa1f8998d6b41715bca}{LensingVariable::ALPHA1}}:}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ tmp\_x[0]\ =\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>x[0]}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>image-\/>x[0];}
+\DoxyCodeLine{00969\ }
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ tmp\_x[1]\ =\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>x[1]}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>image-\/>x[1];}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ }
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>surface\_brightness\ =\ sqrt(\ tmp\_x[0]*tmp\_x[0]\ +\ tmp\_x[1]*tmp\_x[1]);}
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ tmp\_image\_theta.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>surface\_brightness\ =\ atan2(tmp\_x[1],tmp\_x[0]);}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.alphaV.fits"{}};}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a469bb22a9f1f560331b06cd6ef0da944}{LensingVariable::GAMMA}}:}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ tmp\_x[0]\ =\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>gamma1();}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ tmp\_x[1]\ =\ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>gamma2();}
+\DoxyCodeLine{00982\ }
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>surface\_brightness\ =\ sqrt(\ tmp\_x[0]*tmp\_x[0]\ +\ tmp\_x[1]*tmp\_x[1]);}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ tmp\_image\_theta.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>surface\_brightness\ =\ atan2(tmp\_x[1],tmp\_x[0])/2;}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ tag\ =\ \textcolor{stringliteral}{"{}.gammaV.fits"{}};}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Grid::writeFitsVector()\ does\ not\ support\ the\ LensVariable\ you\ are\ using."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00991\ \ \ \ \ \}}
+\DoxyCodeLine{00992\ \ \ \}}
+\DoxyCodeLine{00993\ \ \ }
+\DoxyCodeLine{00994\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map\_m(center,\ Npixels,\ resolution),map\_t(center,Npixels,resolution);}
+\DoxyCodeLine{00995\ \ \ }
+\DoxyCodeLine{00996\ \ \ map\_m.Clean();}
+\DoxyCodeLine{00997\ \ \ map\_m.AddImages(\&tmp\_image,1,-\/1);}
+\DoxyCodeLine{00998\ \ \ map\_m\ =\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}(map\_m,4);}
+\DoxyCodeLine{00999\ \ \ map\_m\ =\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}(map\_m,1/4.);}
+\DoxyCodeLine{01000\ \ \ \ \ }
+\DoxyCodeLine{01001\ \ \ map\_t.Clean();}
+\DoxyCodeLine{01002\ \ \ map\_t.\mbox{\hyperlink{class_pixel_map_aa099074dcde4e989b474626ac8bde801}{AddImages}}(\&tmp\_image\_theta,1,-\/1);}
+\DoxyCodeLine{01003\ }
+\DoxyCodeLine{01004\ \ \ map\_m.printFITS(filename\ +\ tag);}
+\DoxyCodeLine{01005\ \ \ }
+\DoxyCodeLine{01006\ \ \ \textcolor{keywordflow}{for}(tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>MoveToTop(),i=0;i<tmp\_sb\_vec.size();++i,tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>Down())}
+\DoxyCodeLine{01007\ \ \ \ \ tmp\_image.\mbox{\hyperlink{struct_image_info_a0ecd112e8ba2f1217c66d605c0f81013}{imagekist}}-\/>getCurrent()-\/>surface\_brightness\ =\ tmp\_sb\_vec[i];}
+\DoxyCodeLine{01008\ \}}
+\DoxyCodeLine{01009\ }
+\DoxyCodeLine{01010\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01011\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{Grid::writeFits}}(\textcolor{keywordtype}{double}\ strech,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ lensvar\ ,std::string\ filename)\{}
+\DoxyCodeLine{01012\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ center\ =\ getInitCenter();}
+\DoxyCodeLine{01013\ \ \ \textcolor{keywordtype}{size\_t}\ N1\ =\ (size\_t)(strech*Ngrid\_init);}
+\DoxyCodeLine{01014\ \ \ \textcolor{keywordtype}{size\_t}\ N2\ =\ (size\_t)(strech*Ngrid\_init2);}
+\DoxyCodeLine{01015\ \ \ }
+\DoxyCodeLine{01016\ \ \ \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{writeFits<T>}}(center.x,N1,N2,\mbox{\hyperlink{struct_grid_aafb414f884497255df53b5ba7ceb0f24}{getInitRange}}()/N1,lensvar,filename);}
+\DoxyCodeLine{01017\ \}}
+\DoxyCodeLine{01018\ }
+\DoxyCodeLine{01019\ }
+\DoxyCodeLine{01020\ }
+\DoxyCodeLine{01021\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

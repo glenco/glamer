@@ -1,0 +1,541 @@
+\doxysection{utilities.\+h}
+\hypertarget{utilities_8h_source}{}\label{utilities_8h_source}\index{CosmoLib/include/utilities.h@{CosmoLib/include/utilities.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ utilities.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ UTILITIES\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ UTILITIES\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#ifndef\ PosType\_declare}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ PosType\_declare}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ PosType;}
+\DoxyCodeLine{00022\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ ULONG;}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>\ \textcolor{keywordtype}{int}\ sgn(T\ val)\ \{}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordflow}{return}\ (T(0)\ <\ val)\ -\/\ (val\ <\ T(0));}
+\DoxyCodeLine{00027\ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00030\ \textcolor{keyword}{inline}\ T\ min(T\ x,T\ y)\{}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordflow}{return}\ (x\ <\ y)\ ?\ x\ :\ y;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00034\ \textcolor{keyword}{inline}\ T\ max(T\ x,T\ y)\{}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordflow}{return}\ (x\ >\ y)\ ?\ x\ :\ y;}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utilities}{Utilities}}\{}
+\DoxyCodeLine{00040\ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ print\_date()\{}
+\DoxyCodeLine{00042\ \ \ \ \ time\_t\ now\ =\ time(0);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }tm\ date\ =\ *localtime(\&now);}
+\DoxyCodeLine{00044\ \ \ \ \ std::cout\ <<\ date.tm\_hour\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ date.tm\_min\ <<\ \textcolor{stringliteral}{"{}\ \ \ "{}}\ <<\ date.tm\_mday\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ date.tm\_mon\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ date.tm\_year\ +\ 1900\ <<\ std::endl;}
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nXbin=64.;}
+\DoxyCodeLine{00049\ \ \ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a380f0a954728d751781e61918facba0e}{fill\_linear}}\ (\ std::vector<T>\ \&v,\ \textcolor{keywordtype}{size\_t}\ n,\ T\ min,\ T\ max\ )\{}
+\DoxyCodeLine{00055\ \ \ \ \ v.resize\ (\ n\ );}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++\ )}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ v[i]\ =\ min\ +\ (max\ -\/\ min)\ *\ T\ (i)/T\ (n-\/1);}
+\DoxyCodeLine{00058\ \ \ \}}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a47aedfd83edf6f6637cc03da5413e94a}{fill\_logarithmic}}\ (\ std::vector<T>\ \&v,\ \textcolor{keywordtype}{size\_t}\ n,\ T\ min,\ T\ max\ )\{}
+\DoxyCodeLine{00065\ \ \ \ \ v.resize\ (n);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{for}\ (\ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++\ )}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ v[i]\ =\ exp\ (\ log\ (min)\ +\ (\ log\ (max)\ -\/\ log\ (min)\ )\ *\ T\ (i)/T\ (n-\/1)\ );}
+\DoxyCodeLine{00068\ \ \ \}}
+\DoxyCodeLine{00069\ \ \ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{locate}}\ (\textcolor{keyword}{const}\ std::vector<T>\ \&v,\ \textcolor{keyword}{const}\ T\ x)}
+\DoxyCodeLine{00077\ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{long}\ n\ =\ v.size\ ();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}(n==0)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ v[0])}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ v[n-\/1])}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n-\/1;}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{long}\ jl\ =\ -\/1;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{long}\ ju\ =\ n;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ as\ =\ (v[n-\/1]\ >=\ v[0]);}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{while}\ (ju-\/jl\ >\ 1)}
+\DoxyCodeLine{00090\ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ jm\ =\ (ju+jl)/2;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((x\ >=\ v[jm])\ ==\ as)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ jl=jm;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ ju=jm;}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{return}\ jl;}
+\DoxyCodeLine{00099\ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T,\textcolor{keyword}{class}\ F>}
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{locate}}\ (\textcolor{keyword}{const}\ std::vector<T>\ \&v,F\ x,std::function<\textcolor{keywordtype}{bool}\ (F\ ,\textcolor{keyword}{const}\ T\ \&)>\ less\_than)}
+\DoxyCodeLine{00107\ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{long}\ n\ =\ v.size\ ();}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordflow}{if}\ (less\_than(x,v[0]))}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{if}\ (!less\_than(x,v[n-\/1]))}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ n-\/1;}
+\DoxyCodeLine{00114\ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{long}\ jl\ =\ -\/1;}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{long}\ ju\ =\ n;}
+\DoxyCodeLine{00117\ \ \ \ \ }
+\DoxyCodeLine{00118\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{while}\ (ju-\/jl\ >\ 1)}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ jm\ =\ (ju+jl)/2;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ less\_than(x,v[jm])\ )}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ ju=jm;}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ jl=jm;}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{return}\ jl;}
+\DoxyCodeLine{00129\ \ \ \}}
+\DoxyCodeLine{00130\ \ \ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{locate}}\ (T\ *v,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ n,\ T\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *index)}
+\DoxyCodeLine{00133\ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ v[0])\{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ *index\ =\ 0;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ v[n-\/1])\{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ *index\ =\ n-\/1;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{long}\ jl\ =\ -\/1;}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{long}\ ju\ =\ n;}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ as\ =\ (v[n-\/1]\ >=\ v[0]);}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{while}\ (ju-\/jl\ >\ 1)}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ jm\ =\ (ju+jl)/2;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((x\ >=\ v[jm])\ ==\ as)}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ jl=jm;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ ju=jm;}
+\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00154\ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ *index\ =\ jl;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00157\ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{locate}}(\textcolor{keyword}{const}\ std::vector<T>\ \&v\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<size\_t>\ \&sorted\_index\ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ value\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ \&rank\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ )\{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ v.size();}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(n<=1)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(n\ !=\ sorted\_index.size()\ )\{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}sorted\_index\ is\ the\ wrong\ size."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}wrong\ size"{}});}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ imin=0,imax=v.size()-\/1;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ fmax\ =\ v[sorted\_index[imax]];}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ fmin\ =\ v[sorted\_index[imin]];}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fmin\ >\ fmax)\{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(imin,imax);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(fmin,fmax);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(value\ <=\ fmin)\ \textcolor{keywordflow}{return}\ sorted\_index[imin];}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(value\ >=\ fmax)\ \textcolor{keywordflow}{return}\ sorted\_index[imax];}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ icurrent\ =\ (imax+imin)/2;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ fcurrent\ =\ v[sorted\_index[icurrent]];}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\ abs(imax-\/imin)\ >\ 1\ )\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fcurrent\ >\ value)\{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmax\ =\ fcurrent;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ imax\ =\ icurrent;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fmin\ =\ fcurrent;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ imin\ =\ icurrent;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ icurrent\ =\ (imax+imin)/2;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ fcurrent\ =\ v[sorted\_index[icurrent]];}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ rank=imin;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sorted\_index[imin];}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00212\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00213\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{namespace_utilities_aa80185750e610681c64de174516f9799}{closest}}\ (\textcolor{keyword}{const}\ std::vector<T>\ \&v,\ \textcolor{keyword}{const}\ T\ x)}
+\DoxyCodeLine{00214\ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ \mbox{\hyperlink{namespace_utilities_a929db80c547c245b0d2c2703f33ff85e}{locate}}(v,x);}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{if}(index\ ==\ -\/1)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordflow}{if}(index\ ==\ v.size()-\/1)\ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{00219\ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ -\/\ v[index])\ <\ (v[index+1]\ -\/\ x)\ ?\ index\ :\ index+1;}
+\DoxyCodeLine{00221\ \ \ \}}
+\DoxyCodeLine{00222\ \ \ }
+\DoxyCodeLine{00223\ \ \ }
+\DoxyCodeLine{00224\ \ \ PosType\ \mbox{\hyperlink{namespace_utilities_af5c6f9e86e55bf8ac250ed8a2849ba3e}{InterpolateYvec}}(std::\ vector<PosType>\ \&x,\ std::\ vector<PosType>\ \&y,PosType\ xi);}
+\DoxyCodeLine{00225\ \ \ }
+\DoxyCodeLine{00226\ \ \ PosType\ arctanh(PosType\ x);}
+\DoxyCodeLine{00227\ \ \ }
+\DoxyCodeLine{00228\ \ \ PosType\ fmini(PosType\ a,PosType\ b);}
+\DoxyCodeLine{00229\ \ \ }
+\DoxyCodeLine{00230\ \ \ PosType\ fmaxi(PosType\ a,PosType\ b);}
+\DoxyCodeLine{00231\ \ \ }
+\DoxyCodeLine{00233\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00234\ \ \ T\ \mbox{\hyperlink{namespace_utilities_a1ec52aba262343bc391860a37da4d472}{median}}(std::vector<T>\ vec)\{}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ size\ =\ vec.size();}
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ ==\ 0)\{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \textcolor{comment}{//\ std::\ cout\ <<\ "{}median\ of\ an\ empty\ vector"{}\ <<\ std::\ endl;}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ sort(vec.begin(),\ vec.end());}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ mid\ =\ size/2;}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{return}\ size\ \%\ 2\ ==\ 0\ ?\ (vec[mid]\ +\ vec[mid-\/1])\ /\ 2\ :\ vec[mid];}
+\DoxyCodeLine{00243\ \ \ \}}
+\DoxyCodeLine{00244\ \ \ }
+\DoxyCodeLine{00246\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00247\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_ae60664d77331b21da7b83e6e0cc0c75c}{range}}(std::vector<T>\ vec,T\ \&max,T\ \&min)\{}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}(vec.size()\ ==\ 0)\{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ max\ =\ min\ =\ NAN;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ max\ =\ min\ =\ vec[0];}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ vec)\{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(a\ >\ max)\ max\ =\ a;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(a\ <\ min)\ min\ =\ a;}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ }
+\DoxyCodeLine{00261\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00262\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a85e6e176b88221d17c1a0d6c83a6846d}{polintT}}(T\ xa[],\ T\ ya[],\ \textcolor{keywordtype}{int}\ n,\ T\ x,\ T\ *y,\ T\ *dy)}
+\DoxyCodeLine{00263\ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{int}\ i,m,ns=1;}
+\DoxyCodeLine{00265\ \ \ \ \ T\ den,dif,dift,ho,hp,w;}
+\DoxyCodeLine{00266\ \ \ \ \ T\ *c,*d;}
+\DoxyCodeLine{00267\ \ \ \ \ }
+\DoxyCodeLine{00268\ \ \ \ \ dif=fabs(x-\/xa[1]);}
+\DoxyCodeLine{00269\ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ c\ =\ \textcolor{keyword}{new}\ T[n+1];}
+\DoxyCodeLine{00271\ \ \ \ \ d\ =\ \textcolor{keyword}{new}\ T[n+1];}
+\DoxyCodeLine{00272\ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordflow}{for}\ (i=1;i<=n;i++)\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (dift=fabs(x-\/xa[i]))\ <\ dif)\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ ns=i;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ dif=dift;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ c[i]=ya[i];}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ d[i]=ya[i];}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ *y=ya[ns-\/-\/];}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordflow}{for}\ (m=1;m<n;m++)\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=1;i<=n-\/m;i++)\ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ ho=xa[i]-\/x;}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ hp=xa[i+m]-\/x;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ w=c[i+1]-\/d[i];}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (den=ho-\/hp)\ ==\ 0.0)\ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Error\ in\ routine\ polint"{}});}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ den=w/den;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ d[i]=hp*den;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ c[i]=ho*den;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ *y\ +=\ (*dy=(2*ns\ <\ (n-\/m)\ ?\ c[ns+1]\ :\ d[ns-\/-\/]));}
+\DoxyCodeLine{00293\ \ \ \ \ \}}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keyword}{delete}[]\ d;}
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{delete}[]\ c;}
+\DoxyCodeLine{00296\ \ \ \}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00299\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ FunctorType,\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00300\ \ \ T\ \mbox{\hyperlink{namespace_utilities_a7679e167450f3450c86c345cd8de373d}{trapz}}(FunctorType\ \&func,\ T\ a,\ T\ b,\ \textcolor{keywordtype}{int}\ n,\ T\ *s2)}
+\DoxyCodeLine{00301\ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ T\ x,tnm,del,sum;}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordtype}{int}\ it,j;}
+\DoxyCodeLine{00304\ \ \ \ \ }
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 1)\ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (*s2=0.5*(b-\/a)*(\ func(a)\ +\ func(b)\ ));}
+\DoxyCodeLine{00307\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ }
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (it=1,j=1;j<n-\/1;j++)\ it\ <<=\ 1;}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ tnm=it;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ del=(b-\/a)/tnm;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ x=a+0.5*del;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (sum=0.0,j=1;j<=it;j++,x+=del)\ sum\ +=\ func(x);}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ *s2=0.5*(*s2+(b-\/a)*sum/tnm);}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ }
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *s2;}
+\DoxyCodeLine{00317\ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \ \ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ FunctorType,\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00321\ \ \ T\ \mbox{\hyperlink{namespace_utilities_afb7f32cbe2c0f17c06a106dee6726e98}{nintegrateF}}(}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FunctorType\ func\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ a\ \ \ \ \ \ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ b\ \ \ \ \ \ }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ tols\ \ \ }
+\DoxyCodeLine{00326\ \ \ )}
+\DoxyCodeLine{00327\ \ \ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ JMAX\ =\ 34,K=6;}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ JMAXP\ =\ JMAX+1;}
+\DoxyCodeLine{00330\ \ \ \ \ }
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordflow}{if}(a==b)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00332\ \ \ \ \ }
+\DoxyCodeLine{00333\ \ \ \ \ T\ ss,dss;}
+\DoxyCodeLine{00334\ \ \ \ \ T\ s2[JMAXP],h2[JMAXP+1];}
+\DoxyCodeLine{00335\ \ \ \ \ T\ ss2=0;}
+\DoxyCodeLine{00336\ \ \ \ \ }
+\DoxyCodeLine{00337\ \ \ \ \ h2[1]=1.0;}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=1;j<=JMAX;j++)\ \{}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ s2[j]\ =\ \mbox{\hyperlink{namespace_utilities_a7679e167450f3450c86c345cd8de373d}{Utilities::trapz<FunctorType,T>}}(func,a,b,j,\&ss2);}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j>=K)\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utilities_a85e6e176b88221d17c1a0d6c83a6846d}{Utilities::polintT<T>}}(\&h2[j-\/K],\&s2[j-\/K],K,0.0,\&ss,\&dss);}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fabs(dss)\ <=\ tols*fabs(ss))\ \textcolor{keywordflow}{return}\ ss;}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ h2[j+1]=0.25*h2[j];}
+\DoxyCodeLine{00346\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}s2=\ "{}};\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=1;j<=JMAX;j++)\ std::cout\ <<\ s2[j]\ <<\ \textcolor{stringliteral}{"{}\ \ "{}};}
+\DoxyCodeLine{00348\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}Too\ many\ steps\ in\ routine\ nintegrate<>\(\backslash\)n"{}};}
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ steps\ in\ routine\ nintegrate<>"{}});}
+\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00351\ \ \ \}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00429\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ FunctorType,\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00430\ \ \ T\ nintegrate(}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FunctorType\ \&func\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ a\ \ \ \ \ \ }
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ b\ \ \ \ \ \ }
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ tols\ \ \ }
+\DoxyCodeLine{00435\ \ \ )}
+\DoxyCodeLine{00436\ \ \ \{}
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ JMAX\ =\ 34,K=6;}
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ JMAXP\ =\ JMAX+1;}
+\DoxyCodeLine{00439\ \ \ \ \ }
+\DoxyCodeLine{00440\ \ \ \ \ T\ ss,dss;}
+\DoxyCodeLine{00441\ \ \ \ \ T\ s2[JMAXP],h2[JMAXP+1];}
+\DoxyCodeLine{00442\ \ \ \ \ T\ ss2=0;}
+\DoxyCodeLine{00443\ \ \ \ \ }
+\DoxyCodeLine{00444\ \ \ \ \ h2[1]=1.0;}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=1;j<=JMAX;j++)\ \{}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ s2[j]\ =\ \mbox{\hyperlink{namespace_utilities_a7679e167450f3450c86c345cd8de373d}{Utilities::trapz<FunctorType,T>}}(func,a,b,j,\&ss2);}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j>=K)\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utilities_a85e6e176b88221d17c1a0d6c83a6846d}{Utilities::polintT<T>}}(\&h2[j-\/K],\&s2[j-\/K],K,0.0,\&ss,\&dss);}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fabs(dss)\ <=\ tols*fabs(ss))\ \textcolor{keywordflow}{return}\ ss;}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ h2[j+1]=0.25*h2[j];}
+\DoxyCodeLine{00452\ \ \ \ \ \}}
+\DoxyCodeLine{00453\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}s2=\ "{}};\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=1;j<=JMAX;j++)\ std::cout\ <<\ s2[j]\ <<\ \textcolor{stringliteral}{"{}\ \ "{}};}
+\DoxyCodeLine{00454\ \ \ \ \ std::cout\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}Too\ many\ steps\ in\ routine\ nintegrate<>\(\backslash\)n"{}};}
+\DoxyCodeLine{00455\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ steps\ in\ routine\ nintegrate<>"{}});}
+\DoxyCodeLine{00456\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00457\ \ \ \}}
+\DoxyCodeLine{00458\ }
+\DoxyCodeLine{00460\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ F,\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00461\ \ \ \textcolor{keywordtype}{double}\ bisection\_search(}
+\DoxyCodeLine{00462\ \ \ \ \ F\ \&func\ \ \ \ \ \ }
+\DoxyCodeLine{00463\ \ \ \ \ ,T\ fvalue\ \ \ \ }
+\DoxyCodeLine{00464\ \ \ \ \ ,T\ x1\ \ \ \ \ \ \ }
+\DoxyCodeLine{00465\ \ \ \ \ ,T\ x2}
+\DoxyCodeLine{00466\ \ \ \ \ ,T\ xacc\ \ \ \ }
+\DoxyCodeLine{00467\ \ \ \ \ )\{}
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keywordtype}{int}\ Nmax\ =\ 100000000,count=0;}
+\DoxyCodeLine{00469\ \ \ \ \ }
+\DoxyCodeLine{00470\ \ \ \ \ T\ f1\ =\ func(x1)\ -\/\ fvalue;}
+\DoxyCodeLine{00471\ \ \ \ \ T\ f2\ =\ func(x2)\ -\/\ fvalue;}
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{keywordflow}{if}(\ f1/f2\ >\ 0\ )\{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}not\ bracketed"{}});}
+\DoxyCodeLine{00474\ \ \ \ \ \}}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordflow}{while}(\ fabs(x1-\/x2)\ >\ xacc\ \&\&\ count\ <\ Nmax\ )\{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ T\ xnew\ =\ (x1\ +\ x2)/2;}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ T\ fnew\ =\ func(xnew)\ -\/\ fvalue;}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ fnew/f1\ <\ 0\ )\{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ x2\ =\ xnew;}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ f2\ =\ fnew;}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ x1\ =\ xnew;}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ f1\ =\ fnew;}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00486\ \ \ \ \ \}}
+\DoxyCodeLine{00487\ \ \ \ \ }
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordflow}{return}\ (x1+x2)/2;}
+\DoxyCodeLine{00489\ \ \ \}}
+\DoxyCodeLine{00490\ \ \ }
+\DoxyCodeLine{00492\ \ \ \textcolor{keyword}{namespace\ }stats\{}
+\DoxyCodeLine{00493\ \ \ \textcolor{comment}{//**********************************************************}}
+\DoxyCodeLine{00494\ \ \ \textcolor{comment}{//***\ some\ routines\ for\ statistics\ of\ vectors\ **************}}
+\DoxyCodeLine{00495\ \ \ \textcolor{comment}{//**********************************************************}}
+\DoxyCodeLine{00497\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00498\ \ \ \textcolor{keywordtype}{void}\ vector\_maxmin(\textcolor{keyword}{const}\ std::vector<T>\ \&v,T\ \&max,T\ \&min\ )\{}
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00500\ \ \ \ \ \ \ max\ =\ min\ =\ v[0];}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordflow}{for}(T\ d\ :\ v)\{}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ max\ =\ (max\ >\ d)\ ?\ max\ :\ d;}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ min\ =\ (min\ <\ d)\ ?\ min\ :\ d;}
+\DoxyCodeLine{00504\ \ \ \ \ \}}
+\DoxyCodeLine{00505\ \ \ \}}
+\DoxyCodeLine{00506\ \ \ }
+\DoxyCodeLine{00508\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00509\ \ \ T\ vector\_mean(\textcolor{keyword}{const}\ std::vector<T>\ \&v)\{}
+\DoxyCodeLine{00510\ \ \ \ \ T\ ans\ =\ 0;}
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ v)\ ans\ +=\ a;}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keywordflow}{return}\ ans/v.size();}
+\DoxyCodeLine{00513\ \ \ \}}
+\DoxyCodeLine{00514\ \ \ }
+\DoxyCodeLine{00516\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00517\ \ \ T\ vector\_variance(\textcolor{keyword}{const}\ std::vector<T>\ \&v)\{}
+\DoxyCodeLine{00518\ \ \ \ \ T\ m\ =\ vector\_mean(v);}
+\DoxyCodeLine{00519\ \ \ \ \ T\ ans\ =\ 0;}
+\DoxyCodeLine{00520\ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ v)\ ans\ +=\ (a\ -\/\ m)*(a\ -\/\ m);}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordflow}{return}\ ans/(v.size()\ -\/\ 1);}
+\DoxyCodeLine{00522\ \ \ \}}
+\DoxyCodeLine{00523\ \ \ }
+\DoxyCodeLine{00524\ \ \ \textcolor{comment}{//\ Pearson's\ correlation\ coefficient}}
+\DoxyCodeLine{00525\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00526\ \ \ T\ vector\_correlation(\textcolor{keyword}{const}\ std::vector<T>\ \&v1,\textcolor{keyword}{const}\ std::vector<T>\ \&v2)\{}
+\DoxyCodeLine{00527\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ v1.size();}
+\DoxyCodeLine{00528\ \ \ \ \ \textcolor{keywordflow}{if}(v2.size()\ !=\ N)\{}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}vectors\ are\ not\ the\ same\ size"{}});}
+\DoxyCodeLine{00530\ \ \ \ \ \}}
+\DoxyCodeLine{00531\ \ \ \ \ }
+\DoxyCodeLine{00532\ \ \ \ \ T\ m1\ =\ vector\_mean(v1);}
+\DoxyCodeLine{00533\ \ \ \ \ T\ m2\ =\ vector\_mean(v2);}
+\DoxyCodeLine{00534\ \ \ \ \ T\ var1\ =\ vector\_variance(v1);}
+\DoxyCodeLine{00535\ \ \ \ \ T\ var2\ =\ vector\_variance(v2);}
+\DoxyCodeLine{00536\ \ \ \ \ }
+\DoxyCodeLine{00537\ \ \ \ \ T\ ans\ =\ 0;}
+\DoxyCodeLine{00538\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0\ ;\ i\ <\ N\ ;\ ++i)\{}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ ans\ +=\ (v1[i]-\/m1)*(v2[i]-\/m2);}
+\DoxyCodeLine{00540\ \ \ \ \ \}}
+\DoxyCodeLine{00541\ \ \ \ \ ans\ /=\ (N-\/1)*sqrt(var1*var2);}
+\DoxyCodeLine{00542\ \ \ \ \ }
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordflow}{return}\ ans;}
+\DoxyCodeLine{00544\ \ \ \}}
+\DoxyCodeLine{00545\ \ \ }
+\DoxyCodeLine{00546\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00547\ \ \ \textcolor{keyword}{class\ }Accumulater\{}
+\DoxyCodeLine{00548\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00549\ \ \ \ \ Accumulater(\textcolor{keywordtype}{int}\ size):}
+\DoxyCodeLine{00550\ \ \ \ \ sum(0),count(0),N(size)}
+\DoxyCodeLine{00551\ \ \ \ \ \{}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ products.resize(N*N,0);}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ sums.resize(N,0);}
+\DoxyCodeLine{00554\ \ \ \ \ \}}
+\DoxyCodeLine{00555\ \ \ \ \ }
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keywordtype}{void}\ add(\textcolor{keyword}{const}\ std::vector<T>\ \&v)\{}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(v.size()\ !=\ N\ )\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}wrong\ size\ vector"{}});}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ v)\ sum\ +=\ a;}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0\ ;\ i\ <\ N\ ;\ ++i)\{}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ sums[i]\ +=\ v[i];}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j\ =\ 0\ ;\ j\ <\ N\ ;\ ++j)\{}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ products[j\ +\ i*N]\ +=\ v[i]*v[j];}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00568\ \ \ \ \ \}}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keywordtype}{void}\ add(T\ a)\{}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(1\ !=\ N\ )\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}wrong\ size\ vector"{}});}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ sum\ +=\ a;}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ }
+\DoxyCodeLine{00575\ \ \ \ \ \ \ sums[0]\ +=\ a;}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ products[0]\ +=\ a*a;}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00578\ \ \ \ \ \}}
+\DoxyCodeLine{00579\ }
+\DoxyCodeLine{00581\ \ \ \ \ T\ mean()\{}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ T\ sum\ =\ 0;}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ d\ :\ sums)\ sum\ +=\ d;}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sum/count/N;}
+\DoxyCodeLine{00585\ \ \ \ \ \}}
+\DoxyCodeLine{00587\ \ \ \ \ T\ mean(\textcolor{keywordtype}{size\_t}\ i)\{\textcolor{keywordflow}{return}\ sums[i]/count;\}}
+\DoxyCodeLine{00588\ \ \ \ \ \textcolor{keywordtype}{void}\ means(std::vector<T>\ \&mm)\{}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ mm\ =\ sums;}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ \&m\ :\ mm)\ m\ /=\ count;}
+\DoxyCodeLine{00591\ \ \ \ \ \}}
+\DoxyCodeLine{00592\ \ \ \ \ }
+\DoxyCodeLine{00594\ \ \ \ \ T\ covariance(\textcolor{keywordtype}{size\_t}\ i,\textcolor{keywordtype}{size\_t}\ j)\{}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (products[j\ +\ i*N]\ -\/\ sums[i]*sums[j]/count)/(count\ -\/\ 1);}
+\DoxyCodeLine{00596\ \ \ \ \ \}}
+\DoxyCodeLine{00597\ \ \ \ \ }
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keywordtype}{void}\ variances(std::vector<T>\ \&mm)\{}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ mm.resize(N);}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i\ <\ N\ ;\ ++i)\{}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ mm[i]\ =\ covariance(i,i);}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00603\ \ \ \ \ \}}
+\DoxyCodeLine{00604\ \ \ \ \ }
+\DoxyCodeLine{00605\ \ \ \ \ T\ ave\_variances()\{}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ T\ ans\ =\ 0;}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i\ <\ N\ ;\ ++i)\{}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ ans\ +=\ covariance(i,i);}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ans/N;}
+\DoxyCodeLine{00611\ \ \ \ \ \}}
+\DoxyCodeLine{00612\ \ \ \ \ }
+\DoxyCodeLine{00614\ \ \ \ \ \textcolor{keywordtype}{void}\ cov\_matrix(std::vector<T>\ \&mm)\{}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ mm.resize(N*N);}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0\ ;\ i<N\ ;\ ++i)\{}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ T\ avi\ =\ sums[i]/count;}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j\ =\ i\ ;\ j<N\ ;\ ++j)\{}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i\ +\ j*N;}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ mm[k]\ =\ (products[k]\ -\/\ avi*sums[j])/(count\ -\/\ 1);}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ mm[j\ +\ i*N]\ =\ mm[k];}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00624\ \ \ \ \ \}}
+\DoxyCodeLine{00625\ \ \ \ \ }
+\DoxyCodeLine{00626\ \ \ \ \ \textcolor{keywordtype}{void}\ cov\_matrix\_normalized(std::vector<T>\ \&mm)\{}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ std::vector<T>\ var;}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ variances(var);}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ }
+\DoxyCodeLine{00630\ \ \ \ \ \ \ mm.resize(N*N);}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0\ ;\ i<N\ ;\ ++i)\{}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ T\ avi\ =\ sums[i]/count;}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j\ =\ i\ ;\ j<N\ ;\ ++j)\{}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ i\ +\ j*N;}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ mm[k]\ =\ (products[k]\ -\/\ avi*sums[j])/(count\ -\/\ 1)/sqrt(\ var[i]*var[j]\ );}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \ \ mm[j\ +\ i*N]\ =\ mm[k];}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00639\ \ \ \ \ \}}
+\DoxyCodeLine{00640\ \ \ \ \ }
+\DoxyCodeLine{00641\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00642\ \ \ \ \ T\ sum;}
+\DoxyCodeLine{00643\ \ \ \ \ std::vector<T>\ products;}
+\DoxyCodeLine{00644\ \ \ \ \ std::vector<T>\ sums;}
+\DoxyCodeLine{00645\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ count;}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N;}
+\DoxyCodeLine{00647\ \ \ \};}
+\DoxyCodeLine{00648\ }
+\DoxyCodeLine{00649\ \ \ \}}
+\DoxyCodeLine{00650\ \}}
+\DoxyCodeLine{00651\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ UTILITIES\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

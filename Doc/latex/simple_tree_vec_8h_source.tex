@@ -1,0 +1,1075 @@
+\doxysection{simple\+Tree\+Vec.\+h}
+\hypertarget{simple_tree_vec_8h_source}{}\label{simple_tree_vec_8h_source}\index{SLsimLib/include/simpleTreeVec.h@{SLsimLib/include/simpleTreeVec.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SIMP\_TREE\_V\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SIMP\_TREE\_V\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Tree.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D\ =\ PosType>}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ }
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{class_tree_simple_vec_a3c16345dc674e6c70585ad8fd75a8b18}{TreeSimpleVec}}(}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *xpt\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,IndexType\ Npoints\ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ bucket\ =\ 5\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ dimensions\ =\ 2\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ median\ =\ \textcolor{keyword}{true}\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ ,PosType\ *(*Mypos)(T\&)\ =\ defaultposition\ \ ///\ function\ that\ takes}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,D\ *(*Mypos)(T\&)\ =\ [](T\&\ in)\{\textcolor{keywordflow}{return}\ in.x;\}\ \ }
+\DoxyCodeLine{00033\ \ \ ):Nparticles(Npoints),median\_cut(median),Nbucket(bucket),realray(dimensions),}
+\DoxyCodeLine{00034\ \ \ points(xpt),position(Mypos),\mbox{\hyperlink{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}{Nbranches}}(0),\mbox{\hyperlink{class_tree_simple_vec_aee0947fb0dc9b75c1a217ba17c9a0d52}{Ndimensions}}(dimensions)}
+\DoxyCodeLine{00035\ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ index.resize(Nparticles);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{for}(IndexType\ ii=0;ii<Npoints;++ii)\ index[ii]\ =\ ii;}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ BuildTree();}
+\DoxyCodeLine{00040\ \ \ \}}
+\DoxyCodeLine{00041\ \ \ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tree_simple_vec}{\string~TreeSimpleVec}}()}
+\DoxyCodeLine{00043\ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//delete\ top\_ptr;}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//freeTree();}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//delete[]\ index;}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//assert(Nbranches\ ==\ 0);}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//return;}}
+\DoxyCodeLine{00049\ \ \ \};}
+\DoxyCodeLine{00050\ \ \ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}{PointsWithinCircle}}(D\ center[2],\textcolor{keywordtype}{float}\ radius,std::list<unsigned\ long>\ \&neighborkist);}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a35f2659d431f1ccae4c48f5db4c8eb4d}{PointsWithinEllipse}}(D\ center[2],\textcolor{keywordtype}{float}\ a\_max,\textcolor{keywordtype}{float}\ a\_min,\textcolor{keywordtype}{float}\ posangle,std::list<unsigned\ long>\ \&neighborkist);}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a656687586737eedb85a0686005fc29a0}{NearestNeighbors}}(D\ *ray,\textcolor{keywordtype}{int}\ Nneighbors,std::vector<D>\ \&radii}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<IndexType>\ \&neighbors);}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a02207879f7bfde45151630c54fc17e7a}{NearestNeighbor}}(D\ *ray,D\ \&radius,IndexType\ \&neighbor);}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a4ebbaa4a5dffb04458d1cf71f241575a}{pop}}(IndexType\ index\_of\_point)\{}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//print();}}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{while}(index[n]\ !=\ index\_of\_point\ \&\&\ n\ <\ Nparticles)\ ++n;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{if}(n\ ==\ Nparticles)\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ particle\ not\ in\ tree}}
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ std::shared\_ptr<BranchV>\ leaf;}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//bool\ leaf\_found\ =\ false;}}
+\DoxyCodeLine{00072\ \ \ \ \ moveTop();}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ p\ =\ current-\/>branch\_index\ -\/\ index.data();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(atLeaf()\ \&\&\ n\ >=\ p\ \&\&\ n\ <\ p\ +\ current-\/>nparticles\ )\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ leaf=current;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p\ >\ n)\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ current-\/>branch\_index\ -\/=\ 1;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \}\textcolor{keywordflow}{while}(TreeWalkStep(\textcolor{keyword}{true}));}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ assert(leaf-\/>child1\_ptr==\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00084\ \ \ \ \ assert(leaf-\/>child2\_ptr==\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//BranchV\ *tmp\ =\ leaf;}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{while}(leaf\ !=\ top\_ptr)\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(leaf-\/>nparticles\ >\ 0)\ leaf-\/>nparticles\ -\/=\ 1;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ leaf\ =\ leaf-\/>prev\_ptr;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ leaf-\/>nparticles\ -\/=\ 1;}
+\DoxyCodeLine{00092\ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ remove\ from\ index}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ n\ ;\ i\ <\ Nparticles\ -\/\ 1\ ;\ ++i)\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ index[i]\ =\ index[i+1];}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ -\/-\/Nparticles;}
+\DoxyCodeLine{00098\ \ \ \ \ index.pop\_back();}
+\DoxyCodeLine{00099\ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{comment}{//print();}}
+\DoxyCodeLine{00101\ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \}}
+\DoxyCodeLine{00103\ \ \ }
+\DoxyCodeLine{00105\ \ \ std::vector<IndexType>\ \mbox{\hyperlink{class_tree_simple_vec_a56b9e9e607df32ada57c3a666d7a6470}{get\_index}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{00107\ \ \ \}}
+\DoxyCodeLine{00108\ \ \ }
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{void}\ print()\{}
+\DoxyCodeLine{00110\ \ \ \ \ moveTop();}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<current-\/>level\ ;\ ++i\ )\ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ \ "{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ std::cout\ <<\ current-\/>level\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ current-\/>nparticles\ <<\ \textcolor{stringliteral}{"{}\ :\ "{}};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<current-\/>nparticles\ ;\ ++i)\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ std::cout\ <<\ *(current-\/>branch\_index+i)\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ ;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00118\ \ \ \ \ \}\textcolor{keywordflow}{while}(TreeWalkStep(\textcolor{keyword}{true}));}
+\DoxyCodeLine{00119\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00120\ \ \ \}}
+\DoxyCodeLine{00121\ \ \ }
+\DoxyCodeLine{00125\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}}\{}
+\DoxyCodeLine{00126\ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{int}\ Ndim;}
+\DoxyCodeLine{00129\ \ \ \ \ IndexType\ *\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ad56cf137540098c32c495daa50903eef}{branch\_index}};}
+\DoxyCodeLine{00130\ \ \ \ \ IndexType\ nparticles;}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ab15615707ba41f0acda067454c8def56}{level}};}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ number;}
+\DoxyCodeLine{00135\ \ \ \ \ D\ *\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7c3a70f4d24bc9e454cf1e47deabc120}{boundary\_p1}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00137\ \ \ \ \ D\ *\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7bd65cbad75a5f324a2680a14b516125}{boundary\_p2}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00138\ \ \ \ \ std::vector<D>\ bank;}
+\DoxyCodeLine{00139\ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ std::shared\_ptr<BranchV>\ child1\_ptr;}
+\DoxyCodeLine{00141\ \ \ \ \ std::shared\_ptr<BranchV>\ child2\_ptr;}
+\DoxyCodeLine{00143\ \ \ \ \ std::shared\_ptr<BranchV>\ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ac7af19fda56c02f42ab168f563543af8}{prev\_ptr}};}
+\DoxyCodeLine{00146\ \ \ \ \ std::shared\_ptr<BranchV>\ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_af088414e7e44be398f567b800e7b3eb7}{brother\_ptr}};}
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}}(\textcolor{keywordtype}{int}\ my\_Ndim,IndexType\ *my\_branch\_index,IndexType\ my\_nparticles}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ ,D\ my\_boundary\_p1[],D\ my\_boundary\_p2[]}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ my\_level,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_BranchVnumber)}
+\DoxyCodeLine{00152\ \ \ \ \ :Ndim(my\_Ndim),\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ad56cf137540098c32c495daa50903eef}{branch\_index}}(my\_branch\_index),nparticles(my\_nparticles)}
+\DoxyCodeLine{00153\ \ \ \ \ ,\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ab15615707ba41f0acda067454c8def56}{level}}(my\_level),number(my\_BranchVnumber)}
+\DoxyCodeLine{00154\ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ bank.resize(Ndim*2);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7c3a70f4d24bc9e454cf1e47deabc120}{boundary\_p1}}\ =\ bank.data();}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7bd65cbad75a5f324a2680a14b516125}{boundary\_p2}}\ =\ bank.data()\ +\ Ndim;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Ndim;++i)\{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7c3a70f4d24bc9e454cf1e47deabc120}{boundary\_p1}}[i]=\ my\_boundary\_p1[i];}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7bd65cbad75a5f324a2680a14b516125}{boundary\_p2}}[i]=\ my\_boundary\_p2[i];}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ child1\_ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ child2\_ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ac7af19fda56c02f42ab168f563543af8}{prev\_ptr}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_af088414e7e44be398f567b800e7b3eb7}{brother\_ptr}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00169\ \ \ \ \ \};}
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}}(\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v}{BranchV}}\ \&branch)\{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ Ndim\ =\ branch.Ndim;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ad56cf137540098c32c495daa50903eef}{branch\_index}}\ =\ branch.\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ad56cf137540098c32c495daa50903eef}{branch\_index}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ nparticles\ =\ branch.nparticles;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ab15615707ba41f0acda067454c8def56}{level}}\ =\ branch.\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ab15615707ba41f0acda067454c8def56}{level}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ number\ =\ branch.number;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ bank.resize(Ndim*2);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7c3a70f4d24bc9e454cf1e47deabc120}{boundary\_p1}}\ =\ bank.data();}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7bd65cbad75a5f324a2680a14b516125}{boundary\_p2}}\ =\ bank.data()\ +\ Ndim;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Ndim;++i)\{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7c3a70f4d24bc9e454cf1e47deabc120}{boundary\_p1}}[i]=\ branch.\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7c3a70f4d24bc9e454cf1e47deabc120}{boundary\_p1}}[i];}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7bd65cbad75a5f324a2680a14b516125}{boundary\_p2}}[i]=\ branch.\mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_a7bd65cbad75a5f324a2680a14b516125}{boundary\_p2}}[i];}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ child1\_ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ child2\_ptr\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_ac7af19fda56c02f42ab168f563543af8}{prev\_ptr}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \mbox{\hyperlink{struct_tree_simple_vec_1_1_branch_v_af088414e7e44be398f567b800e7b3eb7}{brother\_ptr}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00191\ \ \ \ \ \};}
+\DoxyCodeLine{00192\ \ \ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \string~BranchV()\{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \textcolor{comment}{//delete\ child1\_ptr;}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \textcolor{comment}{//delete\ child2\_ptr;}}
+\DoxyCodeLine{00196\ \ \ \ \ \};}
+\DoxyCodeLine{00197\ \ \ \};}
+\DoxyCodeLine{00198\ \ \ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00200\ \ \ }
+\DoxyCodeLine{00201\ \ \ \textcolor{keywordtype}{int}\ incell,incell2;}
+\DoxyCodeLine{00202\ \ \ std::vector<IndexType>\ index;}
+\DoxyCodeLine{00203\ \ \ IndexType\ Nparticles;}
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordtype}{bool}\ median\_cut;}
+\DoxyCodeLine{00205\ \ \ \textcolor{keywordtype}{int}\ Nbucket;}
+\DoxyCodeLine{00206\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<D>}}\ realray;}
+\DoxyCodeLine{00207\ \ \ T\ *points;}
+\DoxyCodeLine{00208\ \ \ D\ *(*position)(T\&);}
+\DoxyCodeLine{00209\ \ \ }
+\DoxyCodeLine{00210\ \ \ std::vector<D>\ workspace;}
+\DoxyCodeLine{00211\ \ \ }
+\DoxyCodeLine{00212\ \ \ std::shared\_ptr<BranchV>\ top\_ptr;}
+\DoxyCodeLine{00213\ \ \ std::shared\_ptr<BranchV>\ current;}
+\DoxyCodeLine{00215\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_tree_simple_vec_a4ec681692fe5b2aadc538da7a7bcf5aa}{Nbranches}};}
+\DoxyCodeLine{00217\ \ \ \textcolor{keywordtype}{short}\ \mbox{\hyperlink{class_tree_simple_vec_aee0947fb0dc9b75c1a217ba17c9a0d52}{Ndimensions}};}
+\DoxyCodeLine{00218\ \ \ }
+\DoxyCodeLine{00219\ \ \ \textcolor{keywordtype}{void}\ BuildTree();}
+\DoxyCodeLine{00220\ \ \ }
+\DoxyCodeLine{00221\ \ \ \textcolor{keywordtype}{void}\ \_BuildTree(IndexType\ nparticles,IndexType\ *tmp\_index);}
+\DoxyCodeLine{00222\ \ \ }
+\DoxyCodeLine{00223\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a06807f5aedea8aad3d836b6b56b7b1c6}{\_PointsWithin}}(D\ *ray,\textcolor{keywordtype}{float}\ *rmax,std::list<unsigned\ long>\ \&neighborkist);}
+\DoxyCodeLine{00224\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_ac71ffe3e4d77b7c17205d797d7429ae6}{\_NearestNeighbors}}(D\ *ray,\textcolor{keywordtype}{int}\ Nneighbors,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *neighbors,D\ *rneighbors);}
+\DoxyCodeLine{00225\ \ \ }
+\DoxyCodeLine{00226\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}{freeTree}}();}
+\DoxyCodeLine{00227\ \ \ }
+\DoxyCodeLine{00228\ \ \ \textcolor{comment}{//short\ clearTree();}}
+\DoxyCodeLine{00229\ \ \ \textcolor{comment}{//void\ \_freeTree(short\ child);}}
+\DoxyCodeLine{00230\ \ \ \textcolor{keywordtype}{bool}\ isEmpty();}
+\DoxyCodeLine{00231\ \ \ \textcolor{keywordtype}{bool}\ atTop();}
+\DoxyCodeLine{00232\ \ \ \textcolor{keywordtype}{bool}\ noChild();}
+\DoxyCodeLine{00233\ \ \ \textcolor{keywordtype}{bool}\ offEnd();}
+\DoxyCodeLine{00234\ \ \ \textcolor{keywordtype}{void}\ getCurrent(IndexType\ *branch\_index,IndexType\ *nparticles);}
+\DoxyCodeLine{00235\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ getNbranches();}
+\DoxyCodeLine{00236\ \ \ \textcolor{keywordtype}{void}\ moveTop();}
+\DoxyCodeLine{00237\ \ \ \textcolor{keywordtype}{void}\ moveUp();}
+\DoxyCodeLine{00238\ \ \ \textcolor{keywordtype}{void}\ moveToChild(\textcolor{keywordtype}{int}\ child);}
+\DoxyCodeLine{00239\ \ \ \textcolor{keywordtype}{void}\ attachChildToCurrent(IndexType\ *branch\_index,IndexType\ nparticles}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,D\ boundary\_p1[],D\ boundary\_p2[]}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ child);}
+\DoxyCodeLine{00242\ \ \ \textcolor{keywordtype}{void}\ attachChildToCurrent(BranchV\ \&data,\textcolor{keywordtype}{int}\ child);}
+\DoxyCodeLine{00243\ \ \ \textcolor{keywordtype}{bool}\ TreeWalkStep(\textcolor{keywordtype}{bool}\ allowDescent);}
+\DoxyCodeLine{00244\ \ \ }
+\DoxyCodeLine{00245\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ atLeaf()\{}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keywordflow}{return}\ (current-\/>child1\_ptr\ ==\ \textcolor{keyword}{nullptr})*(current-\/>child2\_ptr\ ==\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00247\ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inbox(\textcolor{keyword}{const}\ D*\ center,D\ *p1,D\ *p2)\{}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordtype}{int}\ tt=1;}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<\mbox{\hyperlink{class_tree_simple_vec_aee0947fb0dc9b75c1a217ba17c9a0d52}{Ndimensions}};++i)\ tt\ *=\ (center[i]>=p1[i]);}
+\DoxyCodeLine{00251\ \ \ \ \ }
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{return}\ tt;}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ (center[0]>=p1[0])*(center[0]<=p2[0])*(center[1]>=p1[1])*(center[1]<=p2[1]);}}
+\DoxyCodeLine{00254\ \ \ \}}
+\DoxyCodeLine{00255\ \ \ }
+\DoxyCodeLine{00256\ \ \ }
+\DoxyCodeLine{00257\ \ \ \textcolor{keywordtype}{int}\ cutbox(\textcolor{keyword}{const}\ D\ *center,D\ *p1,D\ *p2,\textcolor{keywordtype}{float}\ rmax);}
+\DoxyCodeLine{00258\ \};}
+\DoxyCodeLine{00259\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00260\ \textcolor{comment}{template\ <class\ T>}}
+\DoxyCodeLine{00261\ \textcolor{comment}{TreeSimpleVec<T>::TreeSimpleVec<T>(T\ *xpt,IndexType\ Npoints,int\ bucket,int\ dimensions,bool\ median)\{}}
+\DoxyCodeLine{00262\ \textcolor{comment}{\ \ \ \ \ \ \ \ index\ =\ new\ IndexType[Npoints];}}
+\DoxyCodeLine{00263\ \textcolor{comment}{\ \ \ \ \ \ \ \ IndexType\ ii;}}
+\DoxyCodeLine{00264\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00265\ \textcolor{comment}{\ \ \ \ \ \ \ \ Nbucket\ =\ bucket;}}
+\DoxyCodeLine{00266\ \textcolor{comment}{\ \ \ \ \ \ \ \ Ndimensions\ =\ dimensions;}}
+\DoxyCodeLine{00267\ \textcolor{comment}{\ \ \ \ \ \ \ \ median\_cut\ =\ median;}}
+\DoxyCodeLine{00268\ \textcolor{comment}{\ \ \ \ \ \ \ \ Nparticles\ =\ Npoints;}}
+\DoxyCodeLine{00269\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00270\ \textcolor{comment}{\ \ \ \ \ \ \ \ points\ =\ xpt;}}
+\DoxyCodeLine{00271\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00272\ \textcolor{comment}{\ \ \ \ \ \ \ \ for(ii=0;ii<Npoints;++ii)\ index[ii]\ =\ ii;}}
+\DoxyCodeLine{00273\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00274\ \textcolor{comment}{\ \ \ \ \ \ \ \ BuildTree();}}
+\DoxyCodeLine{00275\ \textcolor{comment}{\};*/}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00278\ \textcolor{comment}{\ *\ NewBranchV}}
+\DoxyCodeLine{00279\ \textcolor{comment}{\ *\ Returns\ pointer\ to\ new\ BranchV\ struct.\ \ Initializes\ children\ pointers\ to\ nullptr,}}
+\DoxyCodeLine{00280\ \textcolor{comment}{\ *\ and\ sets\ data\ field\ to\ input.\ \ Private.}}
+\DoxyCodeLine{00281\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00286\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a35f2659d431f1ccae4c48f5db4c8eb4d}{TreeSimpleVec<T,D>::PointsWithinEllipse}}(}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ D\ *ray\ \ \ \ \ }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ rmax\ \ \ \ \ \ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ rmin\ \ \ \ \ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ posangle\ \ }
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::list\ <unsigned\ long>\ \&neighborlist\ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00293\ \ D\ x,y,cs,sn;}
+\DoxyCodeLine{00294\ \ \ \ \ }
+\DoxyCodeLine{00295\ \ \ \ \ }
+\DoxyCodeLine{00296\ \ \textcolor{keywordflow}{if}(rmax\ <\ rmin)\{\textcolor{keywordtype}{float}\ tmp\ =\ rmax;\ rmax=rmin;\ rmin=tmp;\}}
+\DoxyCodeLine{00297\ \ \ \ \ }
+\DoxyCodeLine{00298\ \ \textcolor{keywordflow}{if}(rmax\ <=0.0\ ||\ rmin\ <=\ 0.0)\{\ neighborlist.clear();\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00299\ \ \ \ \ }
+\DoxyCodeLine{00300\ \ \textcolor{comment}{//\ find\ point\ within\ a\ circle\ circumscribes\ the\ ellipse}}
+\DoxyCodeLine{00301\ \ PointsWithinCircle(ray,rmax,neighborlist);}
+\DoxyCodeLine{00302\ \ \ \ \ }
+\DoxyCodeLine{00303\ \ cs\ =\ cos(posangle);}
+\DoxyCodeLine{00304\ \ sn\ =\ sin(posangle);}
+\DoxyCodeLine{00305\ \ \textcolor{comment}{//\ go\ through\ points\ within\ the\ circle\ and\ reject\ points\ outside\ the\ ellipse}}
+\DoxyCodeLine{00306\ \ \textcolor{keywordflow}{for}(\ \ std::list<unsigned\ long>::iterator\ it\ =\ neighborlist.begin();it\ !=\ neighborlist.end();)\{}
+\DoxyCodeLine{00307\ \ \ x\ =\ points[*it][0]*cs\ -\/\ points[*it][1]*sn;}
+\DoxyCodeLine{00308\ \ \ y\ =\ points[*it][0]*sn\ +\ points[*it][1]*cs;}
+\DoxyCodeLine{00309\ \ \ \textcolor{keywordflow}{if}(\ (\ pow(x/rmax,2)\ +\ pow(y/rmin,2)\ )\ >\ 1)\ it\ =\ neighborlist.erase(it);}
+\DoxyCodeLine{00310\ \ \ \textcolor{keywordflow}{else}\ ++it;}
+\DoxyCodeLine{00311\ \ \}}
+\DoxyCodeLine{00312\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00313\ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00316\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_ae2d07609caf4984e031bac2c1a7c8095}{TreeSimpleVec<T,D>::PointsWithinCircle}}(}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ D\ *ray\ \ \ \ \ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ rmax\ \ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::list\ <unsigned\ long>\ \&neighborlist\ \ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00321\ \ \ \ \ }
+\DoxyCodeLine{00322\ \ \ \ \ neighborlist.clear();}
+\DoxyCodeLine{00323\ \ \ \ \ }
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{comment}{//realray[0]=ray[0];}}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{comment}{//realray[1]=ray[1];}}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0\ ;\ j<Ndimensions\ ;\ ++j)\ realray[j]=ray[j];}
+\DoxyCodeLine{00327\ \ \ \ \ }
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}ray\ =\ "{}\ <<\ ray[0]\ <<\ "{}\ "{}\ <<\ ray[1]\ <<\ "{}\ rmax\ =\ "{}\ <<\ rmax\ <<\ endl;}}
+\DoxyCodeLine{00329\ \ \ \ \ moveTop();}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordflow}{if}(\ inbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2)\ ==\ 0\ )\{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<Ndimensions\ ;\ ++i)\{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ ray[i]\ =\ (ray[i]\ >\ current-\/>boundary\_p1[i])\ ?\ ray[i]\ :\ current-\/>boundary\_p1[i];}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ ray[i]\ =\ (ray[i]\ <\ current-\/>boundary\_p2[i])\ ?\ ray[i]\ :\ current-\/>boundary\_p2[i];}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ }
+\DoxyCodeLine{00337\ \ \ \ \ \}}
+\DoxyCodeLine{00338\ \ \ \ \ incell=1;}
+\DoxyCodeLine{00339\ \ \ \ \ }
+\DoxyCodeLine{00340\ \ \ \ \ \_PointsWithin(ray,\&rmax,neighborlist);}
+\DoxyCodeLine{00341\ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{comment}{//for(auto\ i\ :\ neighborlist)\{}}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{comment}{//\ \ assert(\ rmax*rmax\ >\ (position(points[i])[0]-\/ray[0])*(position(points[i])[0]-\/ray[0])\ +\ (position(points[i])[1]-\/ray[1])*(position(points[i])[1]-\/ray[1])\ );}}
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00346\ \}}
+\DoxyCodeLine{00349\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00350\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a06807f5aedea8aad3d836b6b56b7b1c6}{TreeSimpleVec<T,D>::\_PointsWithin}}(D\ *ray,\textcolor{keywordtype}{float}\ *rmax,std::list\ <unsigned\ long>\ \&neighborlist)\{}
+\DoxyCodeLine{00351\ \ \ \ \ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{int}\ j,incell2=1;}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i;}
+\DoxyCodeLine{00354\ \ \ \ \ D\ radius;}
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keywordtype}{short}\ pass;}
+\DoxyCodeLine{00356\ \ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keywordflow}{if}(incell)\{\ \ \textcolor{comment}{//\ not\ found\ cell\ yet}}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ inbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2)\ )\{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}\ \ \ In\ box"{}\ <<\ endl;}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ found\ the\ box\ small\ enough}}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if(\ cutbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2,*rmax)==1}}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ ||\ atLeaf()\ )\{}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ atLeaf()\ )\{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}\ \ \ Found\ cell"{}\ <<\ endl;}}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ whole\ box\ in\ circle\ or\ a\ leaf\ with\ ray\ in\ it}}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ incell=0;}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ray[0]=realray[0];}}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ray[1]=realray[1];}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<Ndimensions;++j)\ ray[j]=realray[j];}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ atLeaf()\ )\{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ leaf\ calculate\ the\ distance\ to\ all\ the\ points\ in\ cell}}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<current-\/>nparticles;++i)\{}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0,radius=0.0;j<2;++j)\ radius+=pow(position(points[current-\/>branch\_index[i]])[j]-\/ray[j],2);}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ radius\ <\ *rmax**rmax\ )\{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neighborlist.push\_back(current-\/>branch\_index[i]);}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}add\ point\ to\ list"{}\ <<\ neighborlist.size()\ <<\ endl;}}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//InsertAfterCurrentKist(neighborlist,current-\/>branch\_index[i]);}}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \textcolor{comment}{//\ put\ all\ of\ points\ in\ box\ into\ getCurrentKist(imagelist)}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<current-\/>nparticles;++i)\{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neighborlist.push\_back(current-\/>branch\_index[i]);}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//InsertAfterCurrentKist(neighborlist,current-\/>branch\_index[i]);}}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}add\ point\ to\ list"{}\ <<\ neighborlist.size()\ <<\ endl;}}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \textcolor{comment}{//\ keep\ going\ down\ the\ tree}}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PointsWithin(ray,rmax,neighborlist);}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ incell2=incell;}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child2\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(2);}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PointsWithin(ray,rmax,neighborlist);}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ ray\ found\ in\ second\ child\ go\ back\ to\ first\ to\ search\ for\ neighbors}}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ (incell2==1)\ \&\&\ (incell==0)\ )\{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PointsWithin(ray,rmax,neighborlist);}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \}\ \ \textcolor{comment}{//\ not\ in\ the\ box}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00421\ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \ \ \ \textcolor{comment}{//\ found\ cell}}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ pass\ =\ cutbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2,*rmax);}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ does\ radius\ cut\ into\ the\ box}}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ pass\ )\{}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cout\ <<\ "{}\ \ \ Cell\ found\ searching\ other\ cells"{}\ <<\ endl;}}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ atLeaf()\ \ )\{\ \ \textcolor{comment}{/*\ leaf\ case\ */}}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<current-\/>nparticles;++i)\{}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0,radius=0.0;j<2;++j)\ radius+=pow(position(points[current-\/>branch\_index[i]])[j]-\/ray[j],2);}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ radius\ <\ *rmax**rmax\ )\{}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neighborlist.push\_back(current-\/>branch\_index[i]);}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}else\ if(pass==1)\{\ //\ whole\ box\ is\ inside\ radius}}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ for(i=0;i<current-\/>nparticles;++i)\{}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ neighborlist.push\_back(current-\/>branch\_index[i]);\ ?????}}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PointsWithin(ray,rmax,neighborlist);}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child2\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(2);}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PointsWithin(ray,rmax,neighborlist);}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00455\ \ \ \ \ \}}
+\DoxyCodeLine{00456\ \ \ \ \ }
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00458\ \}}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00463\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00464\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a656687586737eedb85a0686005fc29a0}{TreeSimpleVec<T,D>::NearestNeighbors}}(}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ D\ *ray\ \ \ \ \ \ \ }
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nneighbors\ \ \ \ }
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<D>\ \&radii\ \ \ \ \ }
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<IndexType>\ \&neighbors\ \ }
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00470\ \ \ \ \ IndexType\ i;}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keywordtype}{short}\ j;}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \ \ \ \ }
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordflow}{if}(top\_ptr-\/>nparticles\ <=\ Nneighbors)\{}
+\DoxyCodeLine{00475\ \ \ }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ std::vector<D>\ tmp(Nparticles);}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ std::vector<size\_t>\ sort\_index(Nparticles);}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i<\ Nparticles\ ;\ ++i)\{}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ tmp[i]\ =\ pow(position(points[i])[0]-\/ray[0],2)\ +\ pow(position(points[i])[1]-\/ray[1],2);}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ sort\_index[i]=i;}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ }
+\DoxyCodeLine{00483\ \ \ \ \ \ \ std::sort(sort\_index.begin(),sort\_index.end(),[\&tmp](\textcolor{keywordtype}{size\_t}\ i,\textcolor{keywordtype}{size\_t}\ j)\{return\ tmp[i]\ <\ tmp[j];\});}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ }
+\DoxyCodeLine{00485\ \ \ \ \ \ \ radii.resize(Nparticles);}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ neighbors.resize(Nparticles);}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i<\ Nparticles\ ;\ ++i)\{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ neighbors[i]\ =\ index[sort\_index[i]];}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ radii[i]\ =\ tmp[sort\_index[i]];}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ }
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00494\ \ \ \ \ \}}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00496\ \ \ \ \ radii.resize(Nneighbors+Nbucket);}
+\DoxyCodeLine{00497\ \ \ \ \ neighbors.resize(Nneighbors+Nbucket);}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ \ \ \ \ }
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{comment}{/*\ initalize\ distance\ to\ neighbors\ to\ a\ large\ number\ */}}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<Nbucket+Nneighbors;++i)\{}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ radii[i]\ =\ (10*(top\_ptr-\/>boundary\_p2[0]-\/top\_ptr-\/>boundary\_p1[0]));}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ neighbors[i]\ =\ 0;}
+\DoxyCodeLine{00504\ \ \ \ \ \}}
+\DoxyCodeLine{00505\ \ \ \ \ }
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<Ndimensions;++j)\ realray[j]=ray[j];}
+\DoxyCodeLine{00507\ \ \ \ \ }
+\DoxyCodeLine{00508\ \ \ \ \ moveTop();}
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keywordflow}{if}(\ inbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2)\ ==\ 0\ )\{}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ERROR\_MESSAGE();}}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ ray[j]\ =\ (ray[j]\ >\ current-\/>boundary\_p1[j])\ ?\ ray[j]\ :\ current-\/>boundary\_p1[j];}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ ray[j]\ =\ (ray[j]\ <\ current-\/>boundary\_p2[j])\ ?\ ray[j]\ :\ current-\/>boundary\_p2[j];}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00516\ \ \ \ \ \}}
+\DoxyCodeLine{00517\ \ \ \ \ incell\ =\ 1;}
+\DoxyCodeLine{00518\ \ \ \ \ }
+\DoxyCodeLine{00519\ \ \ \ \ \_NearestNeighbors(ray,Nneighbors,neighbors.data(),radii.data());}
+\DoxyCodeLine{00520\ \ \ \ \ }
+\DoxyCodeLine{00521\ \ \ \ \ neighbors.resize(Nneighbors);}
+\DoxyCodeLine{00522\ \ \ \ \ radii.resize(Nneighbors);}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00525\ \}}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00530\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00531\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a02207879f7bfde45151630c54fc17e7a}{TreeSimpleVec<T,D>::NearestNeighbor}}(}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ D\ *ray\ \ \ \ \ \ \ }
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,D\ \&radius\ \ \ \ \ }
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,IndexType\ \&neighbor\ \ }
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00536\ \ \ \ \ IndexType\ i;}
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{comment}{//static\ int\ count=0,oldNneighbors=-\/1;}}
+\DoxyCodeLine{00538\ \ \ \ \ \textcolor{comment}{//short\ j;}}
+\DoxyCodeLine{00539\ \ \ \ \ }
+\DoxyCodeLine{00540\ \ \ \ \ D\ rneighbors[1+Nbucket];}
+\DoxyCodeLine{00541\ \ \ \ \ IndexType\ neighbors[1+Nbucket];}
+\DoxyCodeLine{00542\ \ \ \ \ }
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordflow}{if}(top\_ptr-\/>nparticles\ <\ 1)\{}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}ERROR:\ in\ NearestNeighbors,\ number\ of\ neighbors\ >\ total\ number\ of\ particles\(\backslash\)n"{}});}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Asked\ for\ too\ many\ neighbors"{}});}
+\DoxyCodeLine{00547\ \ \ \ \ \}}
+\DoxyCodeLine{00548\ \ \ \ \ }
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{comment}{/*\ initalize\ distance\ to\ neighbors\ to\ a\ large\ number\ */}}
+\DoxyCodeLine{00550\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<Nbucket+1;++i)\{}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ rneighbors[i]\ =\ (10*(top\_ptr-\/>boundary\_p2[0]-\/top\_ptr-\/>boundary\_p1[0]));}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ neighbors[i]\ =\ 0;}
+\DoxyCodeLine{00553\ \ \ \ \ \}}
+\DoxyCodeLine{00554\ \ \ \ \ }
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<Ndimensions;++j)\ realray.x[j]=ray[j];}
+\DoxyCodeLine{00556\ \ \ \ \ }
+\DoxyCodeLine{00557\ \ \ \ \ moveTop();}
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordflow}{if}(\ inbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2)\ ==\ 0\ )\{}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ERROR\_MESSAGE();}}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ ray[j]\ =\ (ray[j]\ >\ current-\/>boundary\_p1[j])\ ?\ ray[j]\ :\ current-\/>boundary\_p1[j];}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ ray[j]\ =\ (ray[j]\ <\ current-\/>boundary\_p2[j])\ ?\ ray[j]\ :\ current-\/>boundary\_p2[j];}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00565\ \ \ \ \ \}}
+\DoxyCodeLine{00566\ \ \ \ \ incell\ =\ 1;}
+\DoxyCodeLine{00567\ \ \ \ \ }
+\DoxyCodeLine{00568\ \ \ \ \ \_NearestNeighbors(ray,1,neighbors,rneighbors);}
+\DoxyCodeLine{00569\ \ \ \ \ }
+\DoxyCodeLine{00570\ \ \ \ \ neighbor\ =\ neighbors[0];}
+\DoxyCodeLine{00571\ \ \ \ \ radius\ =\ rneighbors[0];}
+\DoxyCodeLine{00572\ \ \ \ \ }
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00574\ \}}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00576\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00577\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_ac71ffe3e4d77b7c17205d797d7429ae6}{TreeSimpleVec<T,D>::\_NearestNeighbors}}(D\ *ray,\textcolor{keywordtype}{int}\ Nneighbors,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ *neighbors,D\ *rneighbors)\{}
+\DoxyCodeLine{00578\ \ \ \ \ }
+\DoxyCodeLine{00579\ \ \ \ \ \textcolor{keywordtype}{int}\ incellNB2=1;}
+\DoxyCodeLine{00580\ \ \ \ \ IndexType\ i;}
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keywordtype}{short}\ j;}
+\DoxyCodeLine{00582\ \ \ \ \ }
+\DoxyCodeLine{00583\ \ \ \ \ \textcolor{keywordflow}{if}(incell)\{\ \ \textcolor{comment}{/*\ not\ found\ cell\ yet\ */}}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ inbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2)\ )\{}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ found\ the\ box\ small\ enough\ */}}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>nparticles\ <=\ Nneighbors+Nbucket\ )\{}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ incell=0;}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<Ndimensions;++j)\ ray[j]=realray[j];}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ calculate\ the\ distance\ to\ all\ the\ particles\ in\ cell\ */}}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<current-\/>nparticles;++i)\{}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0,rneighbors[i]=0.0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rneighbors[i]\ +=\ pow(position(points[current-\/>branch\_index[i]])[j]-\/ray[j],2);}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rneighbors[i]=sqrt(\ rneighbors[i]\ );}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(rneighbors[i]\ <\ 10);}}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neighbors[i]=current-\/>branch\_index[i];}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Utilities::quicksort(neighbors,rneighbors,current-\/>nparticles);}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \textcolor{comment}{/*\ keep\ going\ down\ the\ tree\ */}}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_NearestNeighbors(ray,Nneighbors,neighbors,rneighbors);}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*printf("{}moving\ up\ from\ level\ \%i\(\backslash\)n"{},current-\/>level);*/}}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ incellNB2=incell;}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child2\_ptr\ !=\textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*printf("{}moving\ to\ child2\ from\ level\ \%i\(\backslash\)n"{},current-\/>level);*/}}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(2);}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_NearestNeighbors(ray,Nneighbors,neighbors,rneighbors);}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*printf("{}moving\ up\ from\ level\ \%i\(\backslash\)n"{},current-\/>level);*/}}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ (incellNB2==1)\ \&\&\ (incell==0)\ )\{}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_NearestNeighbors(ray,Nneighbors,neighbors,rneighbors);}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00633\ \ \ \ \ \}\textcolor{keywordflow}{else}\{\ \textcolor{comment}{//\ found\ cell}}
+\DoxyCodeLine{00634\ \ \ \textcolor{comment}{//\ does\ radius\ cut\ into\ the\ box}}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ cutbox(ray,current-\/>boundary\_p1,current-\/>boundary\_p2,rneighbors[Nneighbors-\/1])\ )\{}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ (current-\/>child1\_ptr\ ==\ \textcolor{keyword}{nullptr})*(current-\/>child2\_ptr\ ==\ \textcolor{keyword}{nullptr}))\{\ \ \textcolor{comment}{/*\ leaf\ case\ */}}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ combine\ found\ neighbors\ with\ particles\ in\ box\ and\ resort\ */}}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=Nneighbors;i<(current-\/>nparticles+Nneighbors);++i)\{}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0,rneighbors[i]=0.0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rneighbors[i]+=pow(position(points[current-\/>branch\_index[i-\/Nneighbors]])[j]-\/ray[j],2);}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rneighbors[i]=sqrt(\ rneighbors[i]\ );}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//assert(rneighbors[i]\ <\ 10);}}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ neighbors[i]=current-\/>branch\_index[i-\/Nneighbors];}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Utilities::quicksort(neighbors,rneighbors,Nneighbors+Nbucket);}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_NearestNeighbors(ray,Nneighbors,neighbors,rneighbors);}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child2\_ptr\ !=\textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveToChild(2);}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_NearestNeighbors(ray,Nneighbors,neighbors,rneighbors);}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00666\ \ \ \ \ \}}
+\DoxyCodeLine{00667\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00668\ \}}
+\DoxyCodeLine{00669\ }
+\DoxyCodeLine{00670\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00671\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::BuildTree}}()\{}
+\DoxyCodeLine{00672\ \ \ \ \ IndexType\ i;}
+\DoxyCodeLine{00673\ \ \ \ \ \textcolor{keywordtype}{short}\ j;}
+\DoxyCodeLine{00674\ \ \ std::vector<D>\ p1(Ndimensions),p2(Ndimensions);}
+\DoxyCodeLine{00675\ \ \ }
+\DoxyCodeLine{00676\ \ \ \textcolor{keywordflow}{if}(Nparticles\ >\ 0)\{}
+\DoxyCodeLine{00677\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ p1[j]\ =\ position(points[0])[j];}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ p2[j]\ =\ position(points[0])[j];}
+\DoxyCodeLine{00680\ \ \ \ \ \}}
+\DoxyCodeLine{00681\ \ \ \ \ }
+\DoxyCodeLine{00682\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<Nparticles;++i)\{}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(position(points[i])[j]\ <\ p1[j]\ )\ p1[j]\ =\ position(points[i])[j];}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(position(points[i])[j]\ >\ p2[j]\ )\ p2[j]\ =\ position(points[i])[j];}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00687\ \ \ \ \ \}}
+\DoxyCodeLine{00688\ \ \ \ \ }
+\DoxyCodeLine{00689\ \ \ \ \ \textcolor{comment}{/*\ Initialize\ tree\ root\ */}}
+\DoxyCodeLine{00690\ \ \ \ \ top\_ptr.reset(\textcolor{keyword}{new}\ BranchV(Ndimensions,index.data(),Nparticles,p1.data(),p2.data(),0,0));}
+\DoxyCodeLine{00691\ \ \ \ \ current\ =\ top\_ptr;}
+\DoxyCodeLine{00692\ \ \ \ \ ++Nbranches;}
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(top\_ptr))\{}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\textcolor{stringliteral}{"{}allocation\ failure\ in\ NewTree()\(\backslash\)n"{}});}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00696\ \ \ \ \ \}}
+\DoxyCodeLine{00697\ \ \ }
+\DoxyCodeLine{00698\ \ \ }
+\DoxyCodeLine{00699\ \ \ \ \ \textcolor{comment}{/*\ build\ the\ tree\ */}}
+\DoxyCodeLine{00700\ \ \ \ \ workspace.resize(Nparticles);}
+\DoxyCodeLine{00701\ \ \ \ \ \_BuildTree(Nparticles,index.data());}
+\DoxyCodeLine{00702\ \ \ \ \ workspace.clear();}
+\DoxyCodeLine{00703\ \ \ \ \ workspace.shrink\_to\_fit();}
+\DoxyCodeLine{00704\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00705\ \ \ \ \ }
+\DoxyCodeLine{00706\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<Ndimensions;++j)\{}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ p1[j]\ *=\ 0;}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ p2[j]\ *=\ 0;}
+\DoxyCodeLine{00709\ \ \ \ \ \}}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00711\ \ \ \ \ top\_ptr.reset(\textcolor{keyword}{new}\ BranchV(Ndimensions,index.data(),0,p1.data(),p2.data(),0,0));}
+\DoxyCodeLine{00712\ \ \ \ \ current\ =\ top\_ptr;}
+\DoxyCodeLine{00713\ \ \ \ \ ++Nbranches;}
+\DoxyCodeLine{00714\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(top\_ptr))\{}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\textcolor{stringliteral}{"{}allocation\ failure\ in\ NewTree()\(\backslash\)n"{}});}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00717\ \ \ \ \ \}}
+\DoxyCodeLine{00718\ \ \ \}}
+\DoxyCodeLine{00719\ \ \ \ \ \textcolor{comment}{/*\ visit\ every\ branch\ to\ find\ center\ of\ mass\ and\ cutoff\ scale\ */}}
+\DoxyCodeLine{00720\ \ \ \ \ moveTop();}
+\DoxyCodeLine{00721\ \}}
+\DoxyCodeLine{00722\ }
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \textcolor{comment}{//\ tree\ must\ be\ created\ and\ first\ branch\ must\ be\ set\ before\ start}}
+\DoxyCodeLine{00725\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00726\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::\_BuildTree}}(IndexType\ nparticles,IndexType\ *tmp\_index)\{}
+\DoxyCodeLine{00727\ \ \ \ \ IndexType\ i,cut,dimension;}
+\DoxyCodeLine{00728\ \ \ \ \ BranchV\ branch1(*current),branch2(*current);}
+\DoxyCodeLine{00729\ \ \ \ \ D\ xcut;}
+\DoxyCodeLine{00730\ \ \ std::shared\_ptr<BranchV>\ cbranch;}
+\DoxyCodeLine{00731\ \ \ \ \ }
+\DoxyCodeLine{00732\ \ \ \ \ cbranch=current;\ \textcolor{comment}{//\ pointer\ to\ current\ branch}}
+\DoxyCodeLine{00733\ \ \ }
+\DoxyCodeLine{00734\ \ \ \ \ \textcolor{comment}{//\ leaf\ case}}
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keywordflow}{if}(cbranch-\/>nparticles\ <=\ Nbucket)\{}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00737\ \ \ \ \ \}}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \textcolor{comment}{//cbranch-\/>big\_particle=0;}}
+\DoxyCodeLine{00739\ \ \ \ \ }
+\DoxyCodeLine{00740\ \ \ \ \ \textcolor{comment}{//\ ****\ makes\ sure\ force\ does\ not\ require\ nbucket\ at\ leaf}}
+\DoxyCodeLine{00741\ \ \ \ \ }
+\DoxyCodeLine{00742\ \ \ \ \ \textcolor{comment}{//\ set\ dimension\ to\ cut\ box}}
+\DoxyCodeLine{00743\ \ \ \ \ dimension=(cbranch-\/>level\ \%\ Ndimensions);}
+\DoxyCodeLine{00744\ \ \ }
+\DoxyCodeLine{00745\ \ \ \ \textcolor{comment}{//\ D\ *x\ =\ new\ D[cbranch-\/>nparticles];}}
+\DoxyCodeLine{00746\ \ \ \ \ D\ *x\ =\ workspace.data();}
+\DoxyCodeLine{00747\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<cbranch-\/>nparticles;++i)\ x[i]\ =\ position(points[tmp\_index[i]])[dimension];}
+\DoxyCodeLine{00748\ \ \ \ \ }
+\DoxyCodeLine{00749\ \ \ \ \ \textcolor{keywordflow}{if}(median\_cut)\{}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ Utilities::quicksort(tmp\_index,x,cbranch-\/>nparticles);}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ cut=(cbranch-\/>nparticles)/2;}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ branch1.boundary\_p2[dimension]=x[cut];}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ branch2.boundary\_p1[dimension]=x[cut];}
+\DoxyCodeLine{00755\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ xcut=(cbranch-\/>boundary\_p1[dimension]+cbranch-\/>boundary\_p2[dimension])/2;}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ branch1.boundary\_p2[dimension]=xcut;}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ branch2.boundary\_p1[dimension]=xcut;}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ Utilities::quickPartition(xcut,\&cut,tmp\_index}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,x,cbranch-\/>nparticles);}
+\DoxyCodeLine{00762\ \ \ \ \ \}}
+\DoxyCodeLine{00763\ \ \ \ \ }
+\DoxyCodeLine{00764\ \ \ \ \ \textcolor{comment}{//\ set\ particle\ numbers\ and\ pointers\ to\ my\_index}}
+\DoxyCodeLine{00765\ \ \ \ \ branch1.prev\_ptr\ =\ cbranch;}
+\DoxyCodeLine{00766\ \ \ \ \ branch1.nparticles=cut;}
+\DoxyCodeLine{00767\ \ \ }
+\DoxyCodeLine{00768\ \ \ \ \ branch2.prev\_ptr\ =\ cbranch;}
+\DoxyCodeLine{00769\ \ \ \ \ branch2.nparticles=cbranch-\/>nparticles\ -\/\ cut;}
+\DoxyCodeLine{00770\ \ \ \ \ \textcolor{keywordflow}{if}(cut\ <\ (cbranch-\/>nparticles)\ )}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ branch2.branch\_index\ =\ \&tmp\_index[cut];}
+\DoxyCodeLine{00772\ \ \ \ \ \textcolor{keywordflow}{else}\ branch2.branch\_index=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00773\ \ \ }
+\DoxyCodeLine{00774\ \ \ \ \ \textcolor{keywordflow}{if}(branch1.nparticles\ >\ 0)\ attachChildToCurrent(branch1,1);}
+\DoxyCodeLine{00775\ \ \ \ \ \textcolor{keywordflow}{if}(branch2.nparticles\ >\ 0)\ attachChildToCurrent(branch2,2);}
+\DoxyCodeLine{00776\ \ \ \ \ }
+\DoxyCodeLine{00777\ \ \ \ \ \textcolor{comment}{//\ work\ out\ brothers\ for\ children}}
+\DoxyCodeLine{00778\ \ \ \ \ \textcolor{keywordflow}{if}(\ (cbranch-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\ \&\&\ (cbranch-\/>child2\_ptr\ !=\ \textcolor{keyword}{nullptr})\ )\{}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ cbranch-\/>child1\_ptr-\/>brother\_ptr\ =\ cbranch-\/>child2\_ptr;}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ cbranch-\/>child2\_ptr-\/>brother\_ptr\ =\ cbranch-\/>brother\_ptr;}
+\DoxyCodeLine{00781\ \ \ \ \ \}}
+\DoxyCodeLine{00782\ \ \ \ \ \textcolor{keywordflow}{if}(\ (cbranch-\/>child1\_ptr\ ==\ \textcolor{keyword}{nullptr})\ \&\&\ (cbranch-\/>child2\_ptr\ !=\ \textcolor{keyword}{nullptr})\ )}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ cbranch-\/>child2\_ptr-\/>brother\_ptr\ =\ cbranch-\/>brother\_ptr;}
+\DoxyCodeLine{00784\ \ \ \ \ \textcolor{keywordflow}{if}(\ (cbranch-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\ \&\&\ (cbranch-\/>child2\_ptr\ ==\ \textcolor{keyword}{nullptr})\ )}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ cbranch-\/>child1\_ptr-\/>brother\_ptr\ =\ cbranch-\/>brother\_ptr;}
+\DoxyCodeLine{00786\ \ \ \ \ }
+\DoxyCodeLine{00787\ \ \ \ \ }
+\DoxyCodeLine{00788\ \ \ \ \ \textcolor{keywordflow}{if}(\ branch1.nparticles\ >\ 0\ )\{}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ moveToChild(1);}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \_BuildTree(branch1.nparticles,branch1.branch\_index);}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00792\ \ \ \ \ \}}
+\DoxyCodeLine{00793\ \ \ \ \ }
+\DoxyCodeLine{00794\ \ \ \ \ \textcolor{keywordflow}{if}(branch2.nparticles\ >\ 0\ )\{}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ moveToChild(2);}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \_BuildTree(branch2.nparticles,branch2.branch\_index);}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ moveUp();}
+\DoxyCodeLine{00798\ \ \ \ \ \}}
+\DoxyCodeLine{00799\ \ \ \ \ }
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00801\ \}}
+\DoxyCodeLine{00802\ }
+\DoxyCodeLine{00804\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00805\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec_a907fd04223a4aa1c8ab2b23e0a9ee554}{TreeSimpleVec<T,D>::freeTree}}()\{}
+\DoxyCodeLine{00806\ \ \ \ \ }
+\DoxyCodeLine{00807\ \ \textcolor{comment}{//clearTree();}}
+\DoxyCodeLine{00808\ \ \ \textcolor{keyword}{delete}\ top\_ptr;}
+\DoxyCodeLine{00809\ \ \ Nbranches=0;}
+\DoxyCodeLine{00810\ }
+\DoxyCodeLine{00811\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00812\ \}}
+\DoxyCodeLine{00813\ }
+\DoxyCodeLine{00814\ \textcolor{comment}{//template\ <typename\ T,typename\ D>}}
+\DoxyCodeLine{00815\ \textcolor{comment}{//short\ TreeSimpleVec<T,D>::clearTree()\{}}
+\DoxyCodeLine{00816\ \textcolor{comment}{//}}
+\DoxyCodeLine{00817\ \textcolor{comment}{//\ moveTop();}}
+\DoxyCodeLine{00818\ \textcolor{comment}{//\ \_freeTree(0);}}
+\DoxyCodeLine{00819\ \textcolor{comment}{//}}
+\DoxyCodeLine{00820\ \textcolor{comment}{//\ assert(Nbranches\ ==\ 1);}}
+\DoxyCodeLine{00821\ \textcolor{comment}{//}}
+\DoxyCodeLine{00822\ \textcolor{comment}{//\ return\ 1;}}
+\DoxyCodeLine{00823\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00824\ }
+\DoxyCodeLine{00825\ \textcolor{comment}{//template\ <typename\ T,typename\ D>}}
+\DoxyCodeLine{00826\ \textcolor{comment}{//void\ TreeSimpleVec<T,D>::\_freeTree(short\ child)\{}}
+\DoxyCodeLine{00827\ \textcolor{comment}{//\ BranchV\ *branch;}}
+\DoxyCodeLine{00828\ \textcolor{comment}{//}}
+\DoxyCodeLine{00829\ \textcolor{comment}{//\ assert(\ current);}}
+\DoxyCodeLine{00830\ \textcolor{comment}{//}}
+\DoxyCodeLine{00831\ \textcolor{comment}{//\ if(current-\/>child1\ !=\ nullptr)\{}}
+\DoxyCodeLine{00832\ \textcolor{comment}{//\ \ moveToChild(1);}}
+\DoxyCodeLine{00833\ \textcolor{comment}{//\ \ \_freeTree(1);}}
+\DoxyCodeLine{00834\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00835\ \textcolor{comment}{//}}
+\DoxyCodeLine{00836\ \textcolor{comment}{//\ \ \ \ if(current-\/>child2\ !=\ nullptr)\{}}
+\DoxyCodeLine{00837\ \textcolor{comment}{//\ \ \ \ \ \ \ \ moveToChild(2);}}
+\DoxyCodeLine{00838\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \_freeTree(2);}}
+\DoxyCodeLine{00839\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00840\ \textcolor{comment}{//}}
+\DoxyCodeLine{00841\ \textcolor{comment}{//\ \ \ \ if(\ (current-\/>child1\ ==\ nullptr)*(current-\/>child2\ ==\ nullptr)\ )\{}}
+\DoxyCodeLine{00842\ \textcolor{comment}{//}}
+\DoxyCodeLine{00843\ \textcolor{comment}{//\ \ \ \ \ if(atTop())\ return;}}
+\DoxyCodeLine{00844\ \textcolor{comment}{//}}
+\DoxyCodeLine{00845\ \textcolor{comment}{//\ \ \ \ \ branch\ =\ current;}}
+\DoxyCodeLine{00846\ \textcolor{comment}{//\ \ \ \ \ moveUp();}}
+\DoxyCodeLine{00847\ \textcolor{comment}{//\ \ \ \ \ \ delete\ branch;}}
+\DoxyCodeLine{00848\ \textcolor{comment}{//\ \ \ \ \ \ -\/-\/Nbranches;}}
+\DoxyCodeLine{00849\ \textcolor{comment}{//}}
+\DoxyCodeLine{00850\ \textcolor{comment}{//\ \ \ \ \ /*printf("{}***\ removing\ branch\ \%i\ number\ of\ branches\ \%i\(\backslash\)n"{},branch-\/>number}}
+\DoxyCodeLine{00851\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ ,Nbranches-\/1);*/}}
+\DoxyCodeLine{00852\ \textcolor{comment}{//}}
+\DoxyCodeLine{00853\ \textcolor{comment}{//\ \ \ \ \ \ if(child==1)\ current-\/>child1\ =\ nullptr;}}
+\DoxyCodeLine{00854\ \textcolor{comment}{//\ \ \ \ \ if(child==2)\ current-\/>child2\ =\ nullptr;}}
+\DoxyCodeLine{00855\ \textcolor{comment}{//}}
+\DoxyCodeLine{00856\ \textcolor{comment}{//\ \ \ \ \ return;}}
+\DoxyCodeLine{00857\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00858\ \textcolor{comment}{//}}
+\DoxyCodeLine{00859\ \textcolor{comment}{//\ \ \ \ return;}}
+\DoxyCodeLine{00860\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00861\ }
+\DoxyCodeLine{00862\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00863\ \textcolor{comment}{\ *\ isEmpty}}
+\DoxyCodeLine{00864\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ the\ Tree\ is\ empty\ and\ "{}false"{}\ otherwise.\ \ Exported.}}
+\DoxyCodeLine{00865\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00866\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00867\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::isEmpty}}()\{}
+\DoxyCodeLine{00868\ \ \ \ \ \textcolor{keywordflow}{return}(Nbranches\ ==\ 0);}
+\DoxyCodeLine{00869\ \}}
+\DoxyCodeLine{00870\ }
+\DoxyCodeLine{00871\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00872\ \textcolor{comment}{\ *\ atTop}}
+\DoxyCodeLine{00873\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ current\ is\ the\ same\ as\ top\ and\ "{}false"{}\ otherwise.}}
+\DoxyCodeLine{00874\ \textcolor{comment}{\ *\ Exported.}}
+\DoxyCodeLine{00875\ \textcolor{comment}{\ *\ Pre:\ !isEmpty()}}
+\DoxyCodeLine{00876\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00877\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00878\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::atTop}}()\{}
+\DoxyCodeLine{00879\ \ \ \ \ }
+\DoxyCodeLine{00880\ \ \ \ \ \textcolor{keywordflow}{if}(\ isEmpty()\ )\{}
+\DoxyCodeLine{00881\ \ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{00882\ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ atTop()\ on\ empty\ tree\(\backslash\)n"{}});}
+\DoxyCodeLine{00883\ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00884\ \ \ \ \ \}}
+\DoxyCodeLine{00885\ \ \ \ \ \textcolor{keywordflow}{return}(current\ ==\ top\_ptr);}
+\DoxyCodeLine{00886\ \}}
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00888\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00889\ \textcolor{comment}{\ *\ noChild}}
+\DoxyCodeLine{00890\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ the\ child\ of\ the\ current\ BranchV\ does\ not\ exist\ and\ "{}false"{}\ otherwise.}}
+\DoxyCodeLine{00891\ \textcolor{comment}{\ *\ Exported.}}
+\DoxyCodeLine{00892\ \textcolor{comment}{\ *\ Pre:\ !isEmpty()}}
+\DoxyCodeLine{00893\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00894\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00895\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::noChild}}()\{}
+\DoxyCodeLine{00896\ \ \ \ \ }
+\DoxyCodeLine{00897\ \ \ \ \ \textcolor{keywordflow}{if}(\ isEmpty()\ )\{}
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ atTop()\ on\ empty\ tree\(\backslash\)n"{}});}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00901\ \ \ \ \ \}}
+\DoxyCodeLine{00902\ \ \ \ \ }
+\DoxyCodeLine{00903\ \ \ \ \ \textcolor{keywordflow}{if}(\ (current-\/>child1\ ==\ \textcolor{keyword}{nullptr})\ ||\ (current-\/>child2\ ==\ \textcolor{keyword}{nullptr})\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00904\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00905\ \}}
+\DoxyCodeLine{00906\ }
+\DoxyCodeLine{00907\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00908\ \textcolor{comment}{\ *\ offEnd}}
+\DoxyCodeLine{00909\ \textcolor{comment}{\ *\ Returns\ "{}true"{}\ if\ current\ is\ off\ end\ and\ "{}false"{}\ otherwise.\ \ Exported.}}
+\DoxyCodeLine{00910\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00911\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00912\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::offEnd}}()\{}
+\DoxyCodeLine{00913\ \ \ \ \ }
+\DoxyCodeLine{00914\ \ \ \ \ \textcolor{keywordflow}{return}(current\ ==\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00915\ \}}
+\DoxyCodeLine{00916\ }
+\DoxyCodeLine{00917\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00918\ \textcolor{comment}{\ *\ getCurrent}}
+\DoxyCodeLine{00919\ \textcolor{comment}{\ *\ Returns\ the\ particuls\ of\ current.\ \ Exported.}}
+\DoxyCodeLine{00920\ \textcolor{comment}{\ *\ Pre:\ !offEnd()}}
+\DoxyCodeLine{00921\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00922\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00923\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::getCurrent}}(IndexType\ *branch\_index,IndexType\ *nparticles)\{}
+\DoxyCodeLine{00924\ \ \ \ \ }
+\DoxyCodeLine{00925\ \ \ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ getCurrent()\ when\ current\ is\ off\ end\(\backslash\)n"{}});}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00929\ \ \ \ \ \}}
+\DoxyCodeLine{00930\ \ \ \ \ }
+\DoxyCodeLine{00931\ \ \ \ \ *nparticles\ =\ current-\/>nparticles;}
+\DoxyCodeLine{00932\ \ \ \ \ branch\_index\ =\ current-\/>branch\_index;}
+\DoxyCodeLine{00933\ \ \ \ \ }
+\DoxyCodeLine{00934\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00935\ \}}
+\DoxyCodeLine{00936\ }
+\DoxyCodeLine{00937\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00938\ \textcolor{comment}{\ *\ getNbranches}}
+\DoxyCodeLine{00939\ \textcolor{comment}{\ *\ Returns\ the\ NBranchVes\ of\ tree.\ \ Exported.}}
+\DoxyCodeLine{00940\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00941\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00942\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::getNbranches}}()\{}
+\DoxyCodeLine{00943\ \ \ \ \ }
+\DoxyCodeLine{00944\ \ \ \ \ \textcolor{keywordflow}{return}(Nbranches);}
+\DoxyCodeLine{00945\ \}}
+\DoxyCodeLine{00946\ }
+\DoxyCodeLine{00947\ \textcolor{comment}{/*****\ Manipulation\ procedures\ *****/}}
+\DoxyCodeLine{00948\ }
+\DoxyCodeLine{00949\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00950\ \textcolor{comment}{\ *\ moveTop}}
+\DoxyCodeLine{00951\ \textcolor{comment}{\ *\ Moves\ current\ to\ the\ front\ of\ tree.\ \ Exported.}}
+\DoxyCodeLine{00952\ \textcolor{comment}{\ *\ Pre:\ !isEmpty()}}
+\DoxyCodeLine{00953\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00954\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00955\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::moveTop}}()\{}
+\DoxyCodeLine{00956\ \ \ \ }
+\DoxyCodeLine{00957\ \ \ \ \ \textcolor{keywordflow}{if}(\ isEmpty()\ )\{}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ moveTop()\ on\ empty\ tree\(\backslash\)n"{}});}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00961\ \ \ \ \ \}}
+\DoxyCodeLine{00962\ \ \ \ \ }
+\DoxyCodeLine{00963\ \ \ \ \ current\ =\ top\_ptr;}
+\DoxyCodeLine{00964\ \ \ \ \ }
+\DoxyCodeLine{00965\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00966\ \}}
+\DoxyCodeLine{00967\ }
+\DoxyCodeLine{00968\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00969\ \textcolor{comment}{\ *\ movePrev}}
+\DoxyCodeLine{00970\ \textcolor{comment}{\ *\ Moves\ current\ to\ the\ BranchV\ before\ it\ in\ tree.\ \ This\ can\ move\ current}}
+\DoxyCodeLine{00971\ \textcolor{comment}{\ *\ off\ end.\ \ Exported.}}
+\DoxyCodeLine{00972\ \textcolor{comment}{\ *\ Pre:\ !offEnd()}}
+\DoxyCodeLine{00973\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00974\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00975\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::moveUp}}()\{}
+\DoxyCodeLine{00976\ \ \ \ \ }
+\DoxyCodeLine{00977\ \ \ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ call\ to\ moveUp()\ when\ current\ is\ off\ end\(\backslash\)n"{}});}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00980\ \ \ \ \ \}}
+\DoxyCodeLine{00981\ \ \ \ \ \textcolor{keywordflow}{if}(\ current\ ==\ top\_ptr\ )\{}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ call\ to\ moveUp()\ tried\ to\ move\ off\ the\ top\(\backslash\)n"{}});}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00984\ \ \ \ \ \}}
+\DoxyCodeLine{00985\ \ \ \ \ }
+\DoxyCodeLine{00986\ \ \ \ \ current\ =\ current-\/>prev\_ptr;\ \ \textcolor{comment}{/*\ can\ move\ off\ end\ */}}
+\DoxyCodeLine{00987\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00988\ \}}
+\DoxyCodeLine{00989\ }
+\DoxyCodeLine{00990\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{00991\ \textcolor{comment}{\ *\ moveToChild}}
+\DoxyCodeLine{00992\ \textcolor{comment}{\ *\ Moves\ current\ to\ child\ BranchV\ after\ it\ in\ tree.\ \ This\ can\ move\ current\ off}}
+\DoxyCodeLine{00993\ \textcolor{comment}{\ *\ end.\ \ Exported.}}
+\DoxyCodeLine{00994\ \textcolor{comment}{\ *\ Pre:\ !offEnd()}}
+\DoxyCodeLine{00995\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{00996\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{00997\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::moveToChild}}(\textcolor{keywordtype}{int}\ child)\{}
+\DoxyCodeLine{00998\ \ \ \ \ }
+\DoxyCodeLine{00999\ \ \ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ moveChildren()\ when\ current\ is\ off\ end\(\backslash\)n"{}});}
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{01003\ \ \ \ \ \}}
+\DoxyCodeLine{01004\ \ \ \ \ \textcolor{keywordflow}{if}(child==1)\{}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child1\_ptr\ ==\ \textcolor{keyword}{nullptr}\ )\{}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ moveToChild()\ typing\ to\ move\ to\ child1\ when\ it\ doesn't\ exist\(\backslash\)n"{}});}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ current\ =\ current-\/>child1\_ptr;}
+\DoxyCodeLine{01010\ \ \ \ \ \}}
+\DoxyCodeLine{01011\ \ \ \ \ \textcolor{keywordflow}{if}(child==2)\{}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ current-\/>child2\_ptr\ ==\ \textcolor{keyword}{nullptr}\ )\{}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ moveToChild()\ typing\ to\ move\ to\ child2\ when\ it\ doesn't\ exist\(\backslash\)n"{}});}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ current\ =\ current-\/>child2\_ptr;}
+\DoxyCodeLine{01017\ \ \ \ \ \}}
+\DoxyCodeLine{01018\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01019\ \}}
+\DoxyCodeLine{01020\ }
+\DoxyCodeLine{01021\ \textcolor{comment}{/************************************************************************}}
+\DoxyCodeLine{01022\ \textcolor{comment}{\ *\ insertAfterCurrent}}
+\DoxyCodeLine{01023\ \textcolor{comment}{\ *\ Inserts\ a\ new\ BranchV\ after\ the\ current\ BranchV\ in\ the\ tree\ and\ sets\ the}}
+\DoxyCodeLine{01024\ \textcolor{comment}{\ *\ data\ field\ of\ the\ new\ BranchV\ to\ input.\ \ Exported.}}
+\DoxyCodeLine{01025\ \textcolor{comment}{\ *\ Pre:\ !offEnd()}}
+\DoxyCodeLine{01026\ \textcolor{comment}{\ ************************************************************************/}}
+\DoxyCodeLine{01027\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{01028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::attachChildToCurrent}}(IndexType\ *branch\_index,IndexType\ nparticles}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,D\ boundary\_p1[],D\ boundary\_p2[]}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ child)\{}
+\DoxyCodeLine{01031\ \ \ \ \ }
+\DoxyCodeLine{01032\ \ \ \ \ \textcolor{comment}{/*printf("{}attaching\ child\%i\ \ current\ paricle\ number\ \%i\(\backslash\)n"{},child,current-\/>nparticles);*/}}
+\DoxyCodeLine{01033\ \ \ std::shared\_ptr<BranchV>\ branchV(\textcolor{keyword}{new}\ BranchV(Ndimensions,branch\_index,nparticles,boundary\_p1,boundary\_p2}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,current-\/>level+1,Nbranches));}
+\DoxyCodeLine{01035\ \ \ }
+\DoxyCodeLine{01036\ \ \ ++Nbranches;}
+\DoxyCodeLine{01037\ \ \ }
+\DoxyCodeLine{01038\ \ \ \ \ }
+\DoxyCodeLine{01039\ \ \ \ \ \textcolor{keywordflow}{if}(\ offEnd()\ )\{}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ attachChildToCurrent()\ when\ current\ is\ off\ end\(\backslash\)n"{}});}
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{01043\ \ \ \ \ \}}
+\DoxyCodeLine{01044\ \ \ \ \ }
+\DoxyCodeLine{01045\ \ \ \ \ branchV-\/>prev\_ptr\ =\ current;}
+\DoxyCodeLine{01046\ \ \ \ \ }
+\DoxyCodeLine{01047\ \ \ \ \ \textcolor{keywordflow}{if}(child==1)\{}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();\ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ attachChildToCurrent()\ when\ child1\ alread\ exists\(\backslash\)n"{}});}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ current-\/>child1\_ptr\ =\ branchV;}
+\DoxyCodeLine{01053\ \ \ \ \ \}}
+\DoxyCodeLine{01054\ \ \ \ \ \textcolor{keywordflow}{if}(child==2)\{}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>child2\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ ERROR\_MESSAGE();}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Tree\ Error:\ calling\ attachChildToCurrent()\ when\ child2\ alread\ exists\(\backslash\)n\ \ current\ level=\%i\ Nbranches=\%li\(\backslash\)n"{}}}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,current-\/>level,Nbranches);}
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ current-\/>child2\_ptr\ =\ branchV;}
+\DoxyCodeLine{01062\ \ \ \ \ \}}
+\DoxyCodeLine{01063\ \ \ }
+\DoxyCodeLine{01064\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01065\ \}}
+\DoxyCodeLine{01066\ }
+\DoxyCodeLine{01067\ \textcolor{comment}{/*\ same\ as\ above\ but\ takes\ a\ BranchV\ structure\ */}}
+\DoxyCodeLine{01068\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{01069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::attachChildToCurrent}}(BranchV\ \&data,\textcolor{keywordtype}{int}\ child)\{}
+\DoxyCodeLine{01070\ \ \ \ \ }
+\DoxyCodeLine{01071\ \ \ \ \ attachChildToCurrent(data.branch\_index,data.nparticles}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,data.boundary\_p1,data.boundary\_p2,child);}
+\DoxyCodeLine{01073\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01074\ \}}
+\DoxyCodeLine{01075\ }
+\DoxyCodeLine{01076\ \textcolor{comment}{//\ step\ for\ walking\ tree\ by\ iteration\ instead\ of\ recursion}}
+\DoxyCodeLine{01077\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{01078\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::TreeWalkStep}}(\textcolor{keywordtype}{bool}\ allowDescent)\{}
+\DoxyCodeLine{01079\ \ \textcolor{keywordflow}{if}(allowDescent\ \&\&\ current-\/>child1\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{01080\ \ \ moveToChild(1);}
+\DoxyCodeLine{01081\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01082\ \ \}}
+\DoxyCodeLine{01083\ \ \textcolor{keywordflow}{if}(allowDescent\ \&\&\ current-\/>child2\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{01084\ \ \ moveToChild(2);}
+\DoxyCodeLine{01085\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01086\ \ \}}
+\DoxyCodeLine{01087\ \ \ \ \ }
+\DoxyCodeLine{01088\ \ \textcolor{keywordflow}{if}(current-\/>brother\_ptr\ !=\ \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{01089\ \ \ current\ =\ current-\/>brother\_ptr;}
+\DoxyCodeLine{01090\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01091\ \ \}}
+\DoxyCodeLine{01092\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01093\ \}}
+\DoxyCodeLine{01094\ }
+\DoxyCodeLine{01095\ \textcolor{comment}{//\ =\ 0\ if\ not\ possibly\ intersection}}
+\DoxyCodeLine{01096\ \textcolor{comment}{//\ >\ 0\ sphere\ might\ intersect\ box}}
+\DoxyCodeLine{01097\ \textcolor{comment}{//\ =\ 2\ sphere\ completely\ inside\ box}}
+\DoxyCodeLine{01098\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ D>}
+\DoxyCodeLine{01099\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<T,D>::cutbox}}(\textcolor{keyword}{const}\ D\ *center,D\ *p1,D\ *p2,\textcolor{keywordtype}{float}\ rmax)\{}
+\DoxyCodeLine{01100\ \ \ \textcolor{keywordtype}{int}\ intersection\ =\ 1,inside=1;}
+\DoxyCodeLine{01101\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<Ndimensions\ ;\ ++i)\{}
+\DoxyCodeLine{01102\ \ \ \ \ intersection\ *=\ (\ (center[i]\ +\ rmax)\ >\ p1[i]\ )*(\ (center[i]\ -\/\ rmax)\ <\ p2[i]\ );}
+\DoxyCodeLine{01103\ \ \ \ \ inside\ *=\ (\ (center[i]\ -\/\ rmax)\ >\ p1[i]\ )*(\ (center[i]\ +\ rmax)\ <\ p2[i]\ );}
+\DoxyCodeLine{01104\ \ \ \}}
+\DoxyCodeLine{01105\ \ \ }
+\DoxyCodeLine{01106\ \ \ \textcolor{keywordflow}{return}\ intersection\ +\ inside;}
+\DoxyCodeLine{01107\ \}}
+\DoxyCodeLine{01108\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SIMP\_TREE\_V\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

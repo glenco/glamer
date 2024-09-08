@@ -1,0 +1,1091 @@
+\doxysection{particle\+\_\+halo.\+h}
+\hypertarget{particle__halo_8h_source}{}\label{particle__halo_8h_source}\index{SLsimLib/include/particle\_halo.h@{SLsimLib/include/particle\_halo.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ particle\_halo.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ bmetcalf\ on\ 16/06/15.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ GLAMER\_particle\_halo\_h}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ GLAMER\_particle\_halo\_h}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}geometry.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}quadTree.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}simpleTree.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{particle__types_8h}{particle\_types.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}lens\_halos.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}quadTreeHalos.h"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ }
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{class_lens_halo_particles_a9930f80c98af4265ecd12f72419aa7fa}{LensHaloParticles}}(\textcolor{keyword}{const}\ std::string\&\ simulation\_filename\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{SimFileFormat}}\ format\ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate\ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ my\_multimass\ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ inv\_area\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ MinPSize=0\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ rescale\_mass\ =\ 1.0\ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00056\ \ \ );}
+\DoxyCodeLine{00057\ \ }
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{class_lens_halo_particles_abcbba40dce46b265c1873f32820fb71b}{LensHaloParticles}}(std::vector<PType>\ \&pvector\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate\ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_inv\_area\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ MinPSize\ =\ 0\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ max\_range\ =\ -\/1}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00067\ \ \ ):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(redshift,cosmo),min\_size(MinPSize),multimass(true),inv\_area(my\_inv\_area)}
+\DoxyCodeLine{00068\ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ Npoints\ =\ pvector.size();}
+\DoxyCodeLine{00070\ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ std::swap(pvector,trash\_collector);}
+\DoxyCodeLine{00072\ \ \ \ \ pp\ =\ trash\_collector.data();}
+\DoxyCodeLine{00073\ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6}{set\_up}}(redshift,cosmo,theta\_rotate,max\_range,recenter,verbose);}
+\DoxyCodeLine{00075\ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{class_lens_halo_particles_a48d4ed53ba5e81f0af6a1339423fbe66}{LensHaloParticles}}(}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PType\ *begin\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ n}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate\ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_inv\_area\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ MinPSize\ =\ 0\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ max\_range\ =\ -\/1}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{00089\ \ \ ):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(redshift,cosmo),min\_size(MinPSize),multimass(true),inv\_area(my\_inv\_area),Npoints(n)}
+\DoxyCodeLine{00090\ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ pp\ =\ begin;}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6}{set\_up}}(redshift,cosmo,theta\_rotate,max\_range,recenter,verbose);}
+\DoxyCodeLine{00093\ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{\string~LensHaloParticles}}();}
+\DoxyCodeLine{00095\ \ \ }
+\DoxyCodeLine{00096\ \ \ \mbox{\hyperlink{class_lens_halo_particles_a9930f80c98af4265ecd12f72419aa7fa}{LensHaloParticles}}(\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles}}\ \&\&h):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(std::move(h))\{}
+\DoxyCodeLine{00097\ \ \ \ \ mcenter\ =\ h.mcenter;}
+\DoxyCodeLine{00098\ \ \ \ \ densest\_point\ =\ h.densest\_point;}
+\DoxyCodeLine{00099\ \ \ \ \ trash\_collector\ =std::move(h.trash\_collector);}
+\DoxyCodeLine{00100\ \ \ \ \ pp\ =\ trash\_collector.data();}
+\DoxyCodeLine{00101\ \ \ \ \ h.pp\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ min\_size\ =\ h.min\_size;}
+\DoxyCodeLine{00104\ \ \ \ \ multimass\ =\ h.multimass;}
+\DoxyCodeLine{00105\ \ \ \ \ center\ =\ h.center;}
+\DoxyCodeLine{00106\ \ \ \ \ Npoints\ =\ h.Npoints;}
+\DoxyCodeLine{00107\ \ \ \ \ simfile\ =\ h.simfile;}
+\DoxyCodeLine{00108\ \ \ \ \ sizefile\ =\ h.sizefile;}
+\DoxyCodeLine{00109\ \ \ \ \ inv\_area\ =\ h.inv\_area;}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ qtree\ =\ h.qtree;}
+\DoxyCodeLine{00112\ \ \ \ \ h.qtree\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00113\ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>}}\ \&\ operator=(\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>}}\ \&\&h);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{void}\ force\_halo(\textcolor{keywordtype}{double}\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xcm}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1.0);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordtype}{size\_t}\ getN()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Npoints;\ \};}
+\DoxyCodeLine{00121\ \ \ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a6d2a87ae29ff2a1840ffced17599d8a9}{rotate}}(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta);}
+\DoxyCodeLine{00124\ \ \ }
+\DoxyCodeLine{00126\ \ \ \ Point\_3d<>\ \mbox{\hyperlink{class_lens_halo_particles_a5b60131204bd264e6ceb0bc1852f27fb}{CenterOfMass}}()\{\textcolor{keywordflow}{return}\ mcenter;\}}
+\DoxyCodeLine{00128\ \ \ \ Point\_3d<>\ \mbox{\hyperlink{class_lens_halo_particles_a0f055f6c37e1cedb5104c907e159fd6f}{DensestPoint}}()\{\textcolor{keywordflow}{return}\ densest\_point;\}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00134\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a6f74ecb8b18030fe0f01136192d9e4bb}{makeSIE}}(}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ new\_filename\ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ redshift\ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ particle\_mass\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ total\_mass\ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ sigma\ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ q\ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00143\ \ \ }
+\DoxyCodeLine{00148\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleTypeSimple>}}\ \mbox{\hyperlink{class_lens_halo_particles_a46def593bc40d817ca3c45d521b700ce}{SIE}}(}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ PosType\ redshift\ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ particle\_mass\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ total\_mass\ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ sigma\ \ \ \ \ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ q\ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nneighbors\ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ }
+\DoxyCodeLine{00159\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ calculate\_smoothing(\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PType\ *pp}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npoints}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00163\ \ \ }
+\DoxyCodeLine{00164\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a4fbe0f1a990d0e8c070e4f79b5c831b8}{readPositionFileASCII}}(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{00165\ \ \ }
+\DoxyCodeLine{00166\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ writeSizes(\textcolor{keyword}{const}\ std::string\ \&filename}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ PType\ *pp}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npoints}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ readSizesFile(\textcolor{keyword}{const}\ std::string\ \&filename}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PType\ *\ pp}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npoints}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ min\_size);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_make_particle_lenses}{MakeParticleLenses}};}
+\DoxyCodeLine{00179\ \ \ }
+\DoxyCodeLine{00180\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00181\ \ \ \textcolor{comment}{//\ constructure\ for\ derived\ classes}}
+\DoxyCodeLine{00182\ \ \ \mbox{\hyperlink{class_lens_halo_particles_a287284a34695af4542c2dad6bf610baf}{LensHaloParticles}}(\textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{00184\ \ \ ):\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}(redshift,cosmo)\{\}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \textcolor{comment}{//\ This\ constructor\ is\ really\ only\ for\ use\ by\ MakeParticleLenses.\ It\ does\ not\ take}}
+\DoxyCodeLine{00187\ \ \ \textcolor{comment}{//\ possession\ of\ the\ data\ and\ so\ they\ will\ not\ be\ deleted\ on\ destruction}}
+\DoxyCodeLine{00188\ \ \ \mbox{\hyperlink{class_lens_halo_particles_a36d9e0624adb91026d7ac1c648800f8c}{LensHaloParticles}}(PType\ \ *pdata\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Nparticles}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate\ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_inv\_area\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{00196\ \ \ ):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(redshift,cosmo),pp(pdata),min\_size(0),multimass(true),Npoints(Nparticles),inv\_area(my\_inv\_area)}
+\DoxyCodeLine{00197\ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6}{set\_up}}(redshift,cosmo,theta\_rotate,-\/1,recenter,verbose);}
+\DoxyCodeLine{00199\ \ \ \}}
+\DoxyCodeLine{00200\ \ \ }
+\DoxyCodeLine{00201\ \ \ \textcolor{keywordtype}{void}\ rotate\_particles(PosType\ theta\_x,PosType\ theta\_y);}
+\DoxyCodeLine{00202\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ smooth\_(\mbox{\hyperlink{class_tree_simple}{TreeSimple<PType>}}\ *tree3d,PType\ *xp,\textcolor{keywordtype}{size\_t}\ N,\textcolor{keywordtype}{int}\ Nsmooth);}
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ Point\_3d<>\ mcenter;}
+\DoxyCodeLine{00206\ \ \ Point\_3d<>\ densest\_point;}
+\DoxyCodeLine{00207\ \ \ }
+\DoxyCodeLine{00208\ \ \ PType\ *pp;}
+\DoxyCodeLine{00209\ \ \ std::vector<PType>\ trash\_collector;}
+\DoxyCodeLine{00210\ \ \ }
+\DoxyCodeLine{00211\ \ \ PosType\ min\_size;\ \ \textcolor{comment}{//\ minimum\ allowed\ size}}
+\DoxyCodeLine{00212\ \ \ \textcolor{keywordtype}{bool}\ multimass;}
+\DoxyCodeLine{00213\ \ \ }
+\DoxyCodeLine{00214\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities::Geometry::SphericalPoint<>}}\ center;}
+\DoxyCodeLine{00215\ \ \ }
+\DoxyCodeLine{00216\ \ \ \textcolor{keywordtype}{size\_t}\ Npoints;}
+\DoxyCodeLine{00217\ \ \ PosType\ inv\_area;}
+\DoxyCodeLine{00218\ \ \ }
+\DoxyCodeLine{00219\ \ \ std::string\ simfile;}
+\DoxyCodeLine{00220\ \ \ std::string\ sizefile;}
+\DoxyCodeLine{00221\ \ \ }
+\DoxyCodeLine{00222\ \ \ }
+\DoxyCodeLine{00223\ \ \ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>}}\ *\ qtree;}
+\DoxyCodeLine{00224\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6}{set\_up}}(\textcolor{keywordtype}{float}\ redshift,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate,\textcolor{keywordtype}{double}\ max\_range,\textcolor{keywordtype}{bool}\ recenter,\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00225\ \};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00228\ \mbox{\hyperlink{class_lens_halo_particles_a9930f80c98af4265ecd12f72419aa7fa}{LensHaloParticles<PType>::LensHaloParticles}}(\textcolor{keyword}{const}\ std::string\&\ simulation\_filename}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{SimFileFormat}}\ format}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ redshift}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ my\_multimass}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_inv\_area}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ MinPSize}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ massscaling}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00241\ :\mbox{\hyperlink{class_lens_halo}{LensHalo}}(redshift,cosmo),min\_size(MinPSize),multimass(my\_multimass),simfile(simulation\_filename),inv\_area(my\_inv\_area)}
+\DoxyCodeLine{00242\ \{}
+\DoxyCodeLine{00243\ \ \ }
+\DoxyCodeLine{00244\ \ \ \mbox{\hyperlink{class_lens_halo_a3c28739f7088e24bda7d67b14f50d4ba}{LensHalo::setZlens}}(redshift,cosmo);}
+\DoxyCodeLine{00245\ \ \ \mbox{\hyperlink{class_lens_halo_ae93d20b6fdeaaab7d1f0a61a13e6d644}{LensHalo::setCosmology}}(cosmo);}
+\DoxyCodeLine{00246\ \ \ LensHalo::set\_flag\_elliptical(\textcolor{keyword}{false});}
+\DoxyCodeLine{00247\ \ \ }
+\DoxyCodeLine{00248\ \ \ \textcolor{comment}{//stars\_N\ =\ 0;}}
+\DoxyCodeLine{00249\ \ \ \textcolor{comment}{//stars\_implanted\ =\ false;}}
+\DoxyCodeLine{00250\ \ \ }
+\DoxyCodeLine{00251\ \ \ Rmax\ =\ 1.0e3;}
+\DoxyCodeLine{00252\ \ \ LensHalo::setRsize(Rmax);}
+\DoxyCodeLine{00253\ \ \ }
+\DoxyCodeLine{00254\ \ \ \textcolor{keywordflow}{switch}\ (format)\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{case}\ \ \mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2ca5b7f33be48f19c25e1af2f96cffc569f}{SimFileFormat::ascii}}:}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles_a4fbe0f1a990d0e8c070e4f79b5c831b8}{readPositionFileASCII}}(simulation\_filename);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}LensHaloParticles\ does\ not\ accept\ format\ of\ particle\ data\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}bad\ format"{}});}
+\DoxyCodeLine{00261\ \ \ \}}
+\DoxyCodeLine{00262\ \ \ }
+\DoxyCodeLine{00263\ \ \ sizefile\ =\ simfile\ +\ \textcolor{stringliteral}{"{}."{}}\ +\ std::to\_string(Nsmooth)\ +\ \textcolor{stringliteral}{"{}sizes"{}};}
+\DoxyCodeLine{00264\ \ \ }
+\DoxyCodeLine{00265\ \ \ \textcolor{keywordflow}{if}(!readSizesFile(sizefile,pp,Npoints,Nsmooth,min\_size))\{}
+\DoxyCodeLine{00266\ \ \ \ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ calculate\ sizes}}
+\DoxyCodeLine{00268\ \ \ \ \ calculate\_smoothing(Nsmooth,pp,Npoints);}
+\DoxyCodeLine{00269\ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{comment}{//\ save\ result\ to\ a\ file\ for\ future\ use}}
+\DoxyCodeLine{00271\ \ \ \ \ writeSizes(sizefile,Nsmooth,pp,Npoints);}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{comment}{//for(size\_t\ i=0;\ i<Npoints\ ;\ ++i)\ if(sizes[i]\ <\ min\_size)\ sizes[i]\ =\ min\_size;}}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<Npoints\ ;\ ++i)\ \textcolor{keywordflow}{if}(pp[i].size()\ <\ min\_size)\ pp[i].Size\ =\ min\_size;}
+\DoxyCodeLine{00274\ \ \ \}}
+\DoxyCodeLine{00275\ \ \ }
+\DoxyCodeLine{00276\ \ \ \textcolor{keywordtype}{double}\ min\_s\ =\ pp[0].Size;}
+\DoxyCodeLine{00277\ \ \ \textcolor{keywordtype}{size\_t}\ smallest\_part\ =\ 0;}
+\DoxyCodeLine{00278\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 1\ ;\ i<Npoints\ ;\ ++i)\{}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{if}(pp[i].Size\ <\ min\_s)\{}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ min\_s\ =\ pp[i].Size;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ smallest\_part\ =\ i;}
+\DoxyCodeLine{00282\ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ pp[i].Mass\ *=\ massscaling;}
+\DoxyCodeLine{00284\ \ \ \}}
+\DoxyCodeLine{00285\ \ \ }
+\DoxyCodeLine{00286\ \ \ densest\_point[0]\ =\ pp[smallest\_part].x[0];}
+\DoxyCodeLine{00287\ \ \ densest\_point[1]\ =\ pp[smallest\_part].x[1];}
+\DoxyCodeLine{00288\ \ \ densest\_point[2]\ =\ pp[smallest\_part].x[2];}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ }
+\DoxyCodeLine{00291\ \ \ \textcolor{comment}{//\ convert\ from\ comoving\ to\ physical\ coordinates}}
+\DoxyCodeLine{00292\ \ \ PosType\ scale\_factor\ =\ 1/(1+redshift);}
+\DoxyCodeLine{00293\ \ \ mcenter\ *=\ 0.0;}
+\DoxyCodeLine{00294\ \ \ PosType\ max\_mass\ =\ 0.0,min\_mass\ =\ HUGE\_VALF,mass=0;}
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00296\ \ \ \ \ pp[i][0]\ *=\ scale\_factor;}
+\DoxyCodeLine{00297\ \ \ \ \ pp[i][1]\ *=\ scale\_factor;}
+\DoxyCodeLine{00298\ \ \ \ \ pp[i][2]\ *=\ scale\_factor;}
+\DoxyCodeLine{00299\ \ \ \ \ }
+\DoxyCodeLine{00300\ \ \ \ \ mcenter[0]\ +=\ pp[i][0]*pp[multimass*i].mass();}
+\DoxyCodeLine{00301\ \ \ \ \ mcenter[1]\ +=\ pp[i][1]*pp[multimass*i].mass();}
+\DoxyCodeLine{00302\ \ \ \ \ mcenter[2]\ +=\ pp[i][2]*pp[multimass*i].mass();}
+\DoxyCodeLine{00303\ \ \ \ \ }
+\DoxyCodeLine{00304\ \ \ \ \ mass\ +=\ pp[multimass*i].mass();}
+\DoxyCodeLine{00305\ \ \ \ \ }
+\DoxyCodeLine{00306\ \ \ \ \ max\_mass\ =\ (pp[multimass*i].mass()\ >\ max\_mass)\ ?\ pp[multimass*i].mass()\ :\ max\_mass;}
+\DoxyCodeLine{00307\ \ \ \ \ min\_mass\ =\ (pp[multimass*i].mass()\ <\ min\_mass)\ ?\ pp[multimass*i].mass()\ :\ min\_mass;}
+\DoxyCodeLine{00308\ \ \ \}}
+\DoxyCodeLine{00309\ \ \ LensHalo::setMass(mass);}
+\DoxyCodeLine{00310\ \ \ }
+\DoxyCodeLine{00311\ \ \ mcenter\ /=\ mass;}
+\DoxyCodeLine{00312\ \ \ }
+\DoxyCodeLine{00313\ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ Particle\ mass\ range\ :\ "{}}\ <<\ min\_mass\ <<\ \textcolor{stringliteral}{"{}\ to\ "{}}\ <<\ max\_mass\ <<\ \textcolor{stringliteral}{"{}\ \ ratio\ of\ :\ "{}}\ <<\ max\_mass/min\_mass\ <<\ std::endl;}
+\DoxyCodeLine{00314\ \ \ }
+\DoxyCodeLine{00315\ \ \ }
+\DoxyCodeLine{00316\ \ \ \textcolor{keywordflow}{if}(recenter)\{}
+\DoxyCodeLine{00317\ \ \ \ \ PosType\ r2,r2max=0;}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ pp[i][0]\ -\/=\ mcenter[0];}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ pp[i][1]\ -\/=\ mcenter[1];}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ pp[i][2]\ -\/=\ mcenter[2];}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ }
+\DoxyCodeLine{00323\ \ \ \ \ \ \ r2\ =\ pp[i][0]*pp[i][0]\ +\ pp[i][1]*pp[i][1]\ +\ pp[i][2]*pp[i][2];}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(r2\ >\ r2max)\ r2max\ =\ r2;}
+\DoxyCodeLine{00325\ \ \ \ \ \}}
+\DoxyCodeLine{00326\ \ \ \ \ }
+\DoxyCodeLine{00327\ \ \ \ \ LensHalo::setRsize(\ sqrt(r2max)\ );}
+\DoxyCodeLine{00328\ \ \ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ densest\_point\ -\/=\ mcenter;}
+\DoxyCodeLine{00330\ \ \ \ \ }
+\DoxyCodeLine{00331\ \ \ \ \ mcenter\ *=\ 0;}
+\DoxyCodeLine{00332\ \ \ \}}
+\DoxyCodeLine{00333\ \ \ }
+\DoxyCodeLine{00334\ \ \ \textcolor{comment}{//\ rotate\ positions}}
+\DoxyCodeLine{00335\ \ \ rotate\_particles(theta\_rotate[0],theta\_rotate[1]);}
+\DoxyCodeLine{00336\ \ \ }
+\DoxyCodeLine{00337\ \ \ qtree\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>}}(pp,Npoints,-\/1,-\/1,inv\_area,20);}
+\DoxyCodeLine{00338\ \ \ }
+\DoxyCodeLine{00339\ \}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00342\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6}{LensHaloParticles<PType>::set\_up}}(}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta\_rotate\ \ \ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ max\_range}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose}
+\DoxyCodeLine{00349\ )\{}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00351\ \ \ \textcolor{comment}{//LensHalo::setZlens(redshift);}}
+\DoxyCodeLine{00352\ \ \ \textcolor{comment}{//LensHalo::setCosmology(cosmo);}}
+\DoxyCodeLine{00353\ \ \ LensHalo::set\_flag\_elliptical(\textcolor{keyword}{false});}
+\DoxyCodeLine{00354\ \ \ }
+\DoxyCodeLine{00355\ \ \ \textcolor{comment}{//stars\_N\ =\ 0;}}
+\DoxyCodeLine{00356\ \ \ \textcolor{comment}{//stars\_implanted\ =\ false;}}
+\DoxyCodeLine{00357\ \ \ }
+\DoxyCodeLine{00358\ \ \ Rmax\ =\ 1.0e100;}
+\DoxyCodeLine{00359\ \ \ LensHalo::setRsize(Rmax);}
+\DoxyCodeLine{00360\ \ \ }
+\DoxyCodeLine{00361\ \ \ \textcolor{keywordtype}{double}\ min\_s\ =\ pp[0].Size;}
+\DoxyCodeLine{00362\ \ \ \textcolor{keywordtype}{size\_t}\ smallest\_part\ =\ 0;}
+\DoxyCodeLine{00363\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =0\ ;\ i<Npoints\ ;\ ++i)\{}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keywordflow}{if}(pp[i].Size\ <\ min\_s)\{}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ min\_s\ =\ pp[i].Size;}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ smallest\_part\ =\ i;}
+\DoxyCodeLine{00367\ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \ \ \}}
+\DoxyCodeLine{00369\ \ \ }
+\DoxyCodeLine{00370\ \ \ densest\_point[0]\ =\ pp[smallest\_part].x[0];}
+\DoxyCodeLine{00371\ \ \ densest\_point[1]\ =\ pp[smallest\_part].x[1];}
+\DoxyCodeLine{00372\ \ \ densest\_point[2]\ =\ pp[smallest\_part].x[2];}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \textcolor{comment}{//\ convert\ from\ comoving\ to\ physical\ coordinates}}
+\DoxyCodeLine{00375\ \ \ \textcolor{comment}{//PosType\ scale\_factor\ =\ 1/(1+redshift);}}
+\DoxyCodeLine{00376\ \ \ mcenter\ *=\ 0.0;}
+\DoxyCodeLine{00377\ \ \ PosType\ max\_mass\ =\ 0.0,min\_mass\ =\ HUGE\_VALF,mass=0;}
+\DoxyCodeLine{00378\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00379\ \ \ }
+\DoxyCodeLine{00380\ \ \ \ \ mcenter[0]\ +=\ pp[i][0]*pp[i].mass();}
+\DoxyCodeLine{00381\ \ \ \ \ mcenter[1]\ +=\ pp[i][1]*pp[i].mass();}
+\DoxyCodeLine{00382\ \ \ \ \ mcenter[2]\ +=\ pp[i][2]*pp[i].mass();}
+\DoxyCodeLine{00383\ \ \ \ \ }
+\DoxyCodeLine{00384\ \ \ \ \ mass\ +=\ pp[i].mass();}
+\DoxyCodeLine{00385\ \ \ \ \ }
+\DoxyCodeLine{00386\ \ \ \ \ max\_mass\ =\ (pp[i].mass()\ >\ max\_mass)\ ?\ pp[i].mass()\ :\ max\_mass;}
+\DoxyCodeLine{00387\ \ \ \ \ min\_mass\ =\ (pp[i].mass()\ <\ min\_mass)\ ?\ pp[i].mass()\ :\ min\_mass;}
+\DoxyCodeLine{00388\ \ \ \}}
+\DoxyCodeLine{00389\ \ \ LensHalo::setMass(mass);}
+\DoxyCodeLine{00390\ \ \ }
+\DoxyCodeLine{00391\ \ \ mcenter\ /=\ mass;}
+\DoxyCodeLine{00392\ \ \ }
+\DoxyCodeLine{00393\ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ Particle\ mass\ range\ :\ "{}}\ <<\ min\_mass\ <<\ \textcolor{stringliteral}{"{}\ to\ "{}}\ <<\ max\_mass\ <<\ \textcolor{stringliteral}{"{}\ \ ratio\ of\ :\ "{}}\ <<\ max\_mass/min\_mass\ <<\ std::endl;}
+\DoxyCodeLine{00394\ \ \ }
+\DoxyCodeLine{00395\ \ \ \textcolor{keywordflow}{if}(recenter)\{}
+\DoxyCodeLine{00396\ \ \ \ \ PosType\ r2,r2max=0;}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ pp[i][0]\ -\/=\ mcenter[0];}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ pp[i][1]\ -\/=\ mcenter[1];}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ pp[i][2]\ -\/=\ mcenter[2];}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ }
+\DoxyCodeLine{00402\ \ \ \ \ \ \ r2\ =\ pp[i][0]*pp[i][0]\ +\ pp[i][1]*pp[i][1]\ +\ pp[i][2]*pp[i][2];}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(r2\ >\ r2max)\ r2max\ =\ r2;}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ }
+\DoxyCodeLine{00405\ \ \ \ \ \ \ densest\_point\ -\/=\ mcenter;}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ }
+\DoxyCodeLine{00407\ \ \ \ \ \ \ mcenter\ *=\ 0;}
+\DoxyCodeLine{00408\ \ \ \ \ \}}
+\DoxyCodeLine{00409\ \ \ \ \ }
+\DoxyCodeLine{00410\ \ \ \ \ LensHalo::setRsize(\ sqrt(r2max)\ );}
+\DoxyCodeLine{00411\ \ \ \}}
+\DoxyCodeLine{00412\ \ \ }
+\DoxyCodeLine{00413\ \ \ \textcolor{comment}{//\ rotate\ positions}}
+\DoxyCodeLine{00414\ \ \ rotate\_particles(theta\_rotate[0],theta\_rotate[1]);}
+\DoxyCodeLine{00415\ \ \ }
+\DoxyCodeLine{00416\ \ \ qtree\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>}}(pp,Npoints,-\/1,-\/1,inv\_area,20,0.1,\textcolor{keyword}{false},max\_range);}
+\DoxyCodeLine{00417\ \}}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00422\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::\string~LensHaloParticles}}()\{}
+\DoxyCodeLine{00423\ \ \ \textcolor{keyword}{delete}\ qtree;}
+\DoxyCodeLine{00424\ \}}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00426\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00427\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::force\_halo}}(\textcolor{keywordtype}{double}\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xcm}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ subtract\_point,PosType\ screening)\{}
+\DoxyCodeLine{00430\ \ \ qtree-\/>force2D\_recur(xcm,alpha,kappa,gamma,phi);}
+\DoxyCodeLine{00431\ \ \ }
+\DoxyCodeLine{00432\ \ \ alpha[0]\ *=\ -\/1;}
+\DoxyCodeLine{00433\ \ \ alpha[1]\ *=\ -\/1;}
+\DoxyCodeLine{00434\ \}}
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00437\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00438\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a6d2a87ae29ff2a1840ffced17599d8a9}{LensHaloParticles<PType>::rotate}}(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ theta)\{}
+\DoxyCodeLine{00439\ \ \ rotate\_particles(theta[0],theta[1]);}
+\DoxyCodeLine{00440\ \ \ \textcolor{keyword}{delete}\ qtree;}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00442\ \ \ qtree\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<ParticleType<float>}}\ >(pp,Npoints,-\/1,-\/1,inv\_area,20);}
+\DoxyCodeLine{00443\ \}}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00452\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00453\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a4fbe0f1a990d0e8c070e4f79b5c831b8}{LensHaloParticles<PType>::readPositionFileASCII}}(\textcolor{keyword}{const}\ std::string\ \&filename}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00455\ \ \ }
+\DoxyCodeLine{00456\ \ \ \textcolor{keywordtype}{int}\ ncoll\ =\ \mbox{\hyperlink{namespace_utilities_1_1_i_o_ade63c27fa26dbee97f6182ad188c4efe}{Utilities::IO::CountColumns}}(filename);}
+\DoxyCodeLine{00457\ \ \ \textcolor{keywordflow}{if}(!multimass\ \&\&\ ncoll\ !=\ 3\ )\{}
+\DoxyCodeLine{00458\ \ \ \ \ std::cerr\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ should\ have\ three\ columns!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00459\ \ \ \}}
+\DoxyCodeLine{00460\ \ \ \textcolor{keywordflow}{if}(multimass\ \&\&\ ncoll\ !=\ 4\ )\{}
+\DoxyCodeLine{00461\ \ \ \ \ std::cerr\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ should\ have\ four\ columns!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00462\ \ \ \}}
+\DoxyCodeLine{00463\ \ \ }
+\DoxyCodeLine{00464\ \ \ std::ifstream\ myfile(filename);}
+\DoxyCodeLine{00465\ \ \ }
+\DoxyCodeLine{00466\ \ \ \textcolor{comment}{//size\_t\ Npoints\ =\ 0;}}
+\DoxyCodeLine{00467\ \ \ }
+\DoxyCodeLine{00468\ \ \ \textcolor{comment}{//\ find\ number\ of\ particles}}
+\DoxyCodeLine{00469\ \ \ }
+\DoxyCodeLine{00470\ \ \ \textcolor{keywordflow}{if}\ (myfile.is\_open())\{}
+\DoxyCodeLine{00471\ \ \ \ \ }
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{keywordtype}{float}\ tmp\_mass\ =\ 0.0;}
+\DoxyCodeLine{00473\ \ \ \ \ std::string\ str,label;}
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =0;}
+\DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordflow}{while}(std::getline(myfile,\ str))\{}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ ss\ >>\ label;}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label\ ==\ \textcolor{stringliteral}{"{}\#"{}})\{}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ ss\ >>\ label;}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label\ ==\ \textcolor{stringliteral}{"{}nparticles"{}})\{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ ss\ >>\ Npoints;}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!multimass)\{}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label\ ==\ \textcolor{stringliteral}{"{}mass"{}})\{}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ tmp\_mass;}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(multimass\ \&\&\ count\ ==\ 1\ )\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!multimass\ \&\&\ count\ ==\ 2\ )\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00493\ \ \ \ \ \}}
+\DoxyCodeLine{00494\ \ \ \ \ }
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordflow}{if}(count\ ==\ 0)\{}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(multimass)\ std::cerr\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ must\ have\ the\ header\ lines:\ "{}}\ <<\ std::endl}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\#\ nparticles\ \ \ ****"{}}\ <<\ std::endl\ <<\ \textcolor{stringliteral}{"{}\#\ mass\ \ \ ****"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!multimass)\ std::cerr\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ must\ have\ the\ header\ lines:\ "{}}\ <<\ std::endl}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\#\ nparticles\ \ \ ****"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ reading\ error"{}});}
+\DoxyCodeLine{00501\ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ }
+\DoxyCodeLine{00503\ \ \ \ \ trash\_collector.resize(Npoints);\ \ \textcolor{comment}{//\ this\ is\ here\ just\ to\ make\ sure\ this\ is\ deleted}}
+\DoxyCodeLine{00504\ \ \ \ \ pp\ =\ trash\_collector.data();}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{comment}{//xp\ =\ Utilities::PosTypeMatrix(Npoints,3);}}
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{comment}{//if(multimass)\ masses.resize(Npoints);}}
+\DoxyCodeLine{00507\ \ \ \ \ \textcolor{comment}{//else\ masses.push\_back(tmp\_mass);}}
+\DoxyCodeLine{00508\ \ \ \ \ }
+\DoxyCodeLine{00509\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ row\ =\ 0;}
+\DoxyCodeLine{00510\ \ \ \ \ }
+\DoxyCodeLine{00511\ \ \ \ \ \textcolor{comment}{//\ read\ in\ particle\ positions}}
+\DoxyCodeLine{00512\ \ \ \ \ \textcolor{keywordflow}{if}(!multimass)\{}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(std::getline(myfile,\ str)\ \&\&\ row\ <\ Npoints)\{}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(str[0]\ ==\ \textcolor{charliteral}{'\#'})\ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//for\ comments}}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ ss\ >>\ pp[row][0];}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(ss\ >>\ pp[row][1]))\ std::cerr\ <<\ \textcolor{stringliteral}{"{}3\ columns\ are\ expected\ in\ line\ "{}}\ <<\ row}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ of\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(ss\ >>\ pp[row][2]))\ std::cerr\ <<\ \textcolor{stringliteral}{"{}3\ columns\ are\ expected\ in\ line\ "{}}\ <<\ row}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ of\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ row++;}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00525\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(std::getline(myfile,\ str)\ \&\&\ row\ <\ Npoints)\{}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(str[0]\ ==\ \textcolor{charliteral}{'\#'})\ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//for\ comments}}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ ss\ >>\ pp[row][0];}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(ss\ >>\ pp[row][1]))\ std::cerr\ <<\ \textcolor{stringliteral}{"{}4\ columns\ are\ expected\ in\ line\ "{}}\ <<\ row}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ of\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(ss\ >>\ pp[row][2]))\ std::cerr\ <<\ \textcolor{stringliteral}{"{}4\ columns\ are\ expected\ in\ line\ "{}}\ <<\ row}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ of\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(ss\ >>\ pp[row].Mass))\ std::cerr\ <<\ \textcolor{stringliteral}{"{}4\ columns\ are\ expected\ in\ line\ "{}}\ <<\ row}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ of\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ row++;}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00540\ \ \ \ \ \}}
+\DoxyCodeLine{00541\ \ \ \ \ }
+\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keywordflow}{if}(row\ !=\ Npoints)\{}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Number\ of\ data\ rows\ in\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ does\ not\ match\ expected\ number\ of\ particles."{}}}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ reading\ error"{}});}
+\DoxyCodeLine{00546\ \ \ \ \ \}}
+\DoxyCodeLine{00547\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00548\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00549\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ reading\ error"{}});}
+\DoxyCodeLine{00550\ \ \ \}}
+\DoxyCodeLine{00551\ \ \ }
+\DoxyCodeLine{00552\ \ \ std::cout\ <<\ Npoints\ <<\ \textcolor{stringliteral}{"{}\ particle\ positions\ read\ from\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00553\ \ \ }
+\DoxyCodeLine{00554\ \}}
+\DoxyCodeLine{00555\ }
+\DoxyCodeLine{00556\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00557\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::readSizesFile}}(\textcolor{keyword}{const}\ std::string\ \&filename}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PType\ *\ pp}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npoints}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ min\_size)\{}
+\DoxyCodeLine{00562\ \ \ }
+\DoxyCodeLine{00563\ \ \ std::ifstream\ myfile(filename);}
+\DoxyCodeLine{00564\ \ \ }
+\DoxyCodeLine{00565\ \ \ \textcolor{comment}{//\ find\ number\ of\ particles}}
+\DoxyCodeLine{00566\ \ \ }
+\DoxyCodeLine{00567\ \ \ PosType\ min=HUGE\_VALF,max=0.0;}
+\DoxyCodeLine{00568\ \ \ \textcolor{keywordflow}{if}\ (myfile.is\_open())\{}
+\DoxyCodeLine{00569\ \ \ \ \ }
+\DoxyCodeLine{00570\ \ \ \ \ std::string\ str,label;}
+\DoxyCodeLine{00571\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =0;}
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Ntmp;}
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keywordtype}{int}\ NStmp;}
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordflow}{while}(std::getline(myfile,\ str))\{}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ ss\ >>\ label;}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label\ ==\ \textcolor{stringliteral}{"{}\#"{}})\{}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ ss\ >>\ label;}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label\ ==\ \textcolor{stringliteral}{"{}nparticles"{}})\{}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ ss\ >>\ Ntmp;}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(Ntmp\ !=\ Npoints)\{}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Number\ of\ particles\ in\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ does\ not\ match\ expected\ number"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ reading\ error"{}});}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(label\ ==\ \textcolor{stringliteral}{"{}nsmooth"{}})\{}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ ss\ >>\ NStmp;}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(NStmp\ !=\ Nsmooth)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(count\ ==\ 2)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00595\ \ \ \ \ \}}
+\DoxyCodeLine{00596\ \ \ \ \ }
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordflow}{if}(count\ !=\ 2)\{}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}File\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ must\ have\ the\ header\ lines:\ "{}}\ <<\ std::endl}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\#\ nparticles\ \ \ ****"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ reading\ error"{}});}
+\DoxyCodeLine{00601\ \ \ \ \ \}}
+\DoxyCodeLine{00602\ \ \ \ \ }
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ row\ =\ 0;}
+\DoxyCodeLine{00604\ \ \ \ \ }
+\DoxyCodeLine{00605\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}reading\ in\ particle\ sizes\ from\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00606\ \ \ \ \ }
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{comment}{//\ read\ in\ particle\ sizes}}
+\DoxyCodeLine{00608\ \ \ \ \ \textcolor{keywordflow}{while}(std::getline(myfile,\ str))\{}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(str[0]\ ==\ \textcolor{charliteral}{'\#'})\ \textcolor{keywordflow}{continue};\ \textcolor{comment}{//for\ comments}}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ }
+\DoxyCodeLine{00612\ \ \ \ \ \ \ ss\ >>\ pp[row].Size;}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(min\_size\ >\ pp[row].size()\ )\ pp[row].Size\ =\ min\_size;}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ min\ =\ min\ <\ pp[row].size()\ ?\ min\ :\ pp[row].size();}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ max\ =\ max\ >\ pp[row].size()\ ?\ max\ :\ pp[row].size();}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ row++;}
+\DoxyCodeLine{00617\ \ \ \ \ \}}
+\DoxyCodeLine{00618\ \ \ \ \ }
+\DoxyCodeLine{00619\ \ \ \ \ \textcolor{keywordflow}{if}(row\ !=\ Npoints)\{}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Number\ of\ data\ rows\ in\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ does\ not\ match\ expected\ number\ of\ particles."{}}}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ reading\ error"{}});}
+\DoxyCodeLine{00623\ \ \ \ \ \}}
+\DoxyCodeLine{00624\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00626\ \ \ \}}
+\DoxyCodeLine{00627\ \ \ }
+\DoxyCodeLine{00628\ \ \ std::cout\ <<\ Npoints\ <<\ \textcolor{stringliteral}{"{}\ particle\ sizes\ read\ from\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00629\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ maximun\ particle\ sizes\ "{}}\ <<\ max\ <<\ \textcolor{stringliteral}{"{}\ minimum\ "{}}\ <<\ min\ <<\ \textcolor{stringliteral}{"{}\ Mpc"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00630\ \ \ }
+\DoxyCodeLine{00631\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00632\ \}}
+\DoxyCodeLine{00633\ }
+\DoxyCodeLine{00634\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00635\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::rotate\_particles}}(PosType\ theta\_x,PosType\ theta\_y)\{}
+\DoxyCodeLine{00636\ \ \ }
+\DoxyCodeLine{00637\ \ \ \textcolor{keywordflow}{if}(theta\_x\ ==\ 0.0\ \&\&\ theta\_y\ ==\ 0.0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00638\ \ \ }
+\DoxyCodeLine{00639\ \ \ PosType\ coord[3][3];}
+\DoxyCodeLine{00640\ \ \ PosType\ cx,cy,sx,sy;}
+\DoxyCodeLine{00641\ \ \ }
+\DoxyCodeLine{00642\ \ \ cx\ =\ cos(theta\_x);\ sx\ =\ sin(theta\_x);}
+\DoxyCodeLine{00643\ \ \ cy\ =\ cos(theta\_y);\ sy\ =\ sin(theta\_y);}
+\DoxyCodeLine{00644\ \ \ }
+\DoxyCodeLine{00645\ \ \ coord[0][0]\ =\ cy;\ \ coord[1][0]\ =\ -\/sy*sx;\ coord[2][0]\ =\ cx;}
+\DoxyCodeLine{00646\ \ \ coord[0][1]\ =\ 0;\ \ \ coord[1][1]\ =\ cx;\ \ \ \ \ coord[2][1]\ =\ sx;}
+\DoxyCodeLine{00647\ \ \ coord[0][2]\ =\ -\/sy;\ coord[1][2]\ =\ -\/cy*sx;\ coord[2][2]\ =\ cy*cx;}
+\DoxyCodeLine{00648\ \ \ }
+\DoxyCodeLine{00649\ \ \ \textcolor{comment}{//PosType\ tmp[3];}}
+\DoxyCodeLine{00650\ \ \ Point\_3d<>\ tmp;}
+\DoxyCodeLine{00651\ \ \ \textcolor{keywordtype}{int}\ j;}
+\DoxyCodeLine{00652\ \ \ \textcolor{comment}{//\ rotate\ particle\ positions\ */}}
+\DoxyCodeLine{00653\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00654\ \ \ \ \ tmp\ *=\ 0;}
+\DoxyCodeLine{00655\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\{}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ tmp[0]\ +=\ coord[0][j]*pp[i][j];}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ tmp[1]\ +=\ coord[1][j]*pp[i][j];}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ tmp[2]\ +=\ coord[2][j]*pp[i][j];}
+\DoxyCodeLine{00659\ \ \ \ \ \}}
+\DoxyCodeLine{00660\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\ pp[i][j]=tmp[j];}
+\DoxyCodeLine{00661\ \ \ \}}
+\DoxyCodeLine{00662\ \ \ }
+\DoxyCodeLine{00663\ \ \ \textcolor{comment}{//\ rotate\ center\ of\ mass}}
+\DoxyCodeLine{00664\ \ \ tmp\ *=\ 0.0;}
+\DoxyCodeLine{00665\ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\{}
+\DoxyCodeLine{00666\ \ \ \ \ tmp[0]\ +=\ coord[0][j]*mcenter[j];}
+\DoxyCodeLine{00667\ \ \ \ \ tmp[1]\ +=\ coord[1][j]*mcenter[j];}
+\DoxyCodeLine{00668\ \ \ \ \ tmp[2]\ +=\ coord[2][j]*mcenter[j];}
+\DoxyCodeLine{00669\ \ \ \}}
+\DoxyCodeLine{00670\ \ \ mcenter\ =\ tmp;}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \ \ \textcolor{comment}{//\ rotate\ center\ of\ mass}}
+\DoxyCodeLine{00673\ \ \ tmp\ *=\ 0.0;}
+\DoxyCodeLine{00674\ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\{}
+\DoxyCodeLine{00675\ \ \ \ \ tmp[0]\ +=\ coord[0][j]*densest\_point[j];}
+\DoxyCodeLine{00676\ \ \ \ \ tmp[1]\ +=\ coord[1][j]*densest\_point[j];}
+\DoxyCodeLine{00677\ \ \ \ \ tmp[2]\ +=\ coord[2][j]*densest\_point[j];}
+\DoxyCodeLine{00678\ \ \ \}}
+\DoxyCodeLine{00679\ \ \ densest\_point\ =\ tmp;}
+\DoxyCodeLine{00680\ \}}
+\DoxyCodeLine{00681\ }
+\DoxyCodeLine{00682\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00683\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::calculate\_smoothing}}(\textcolor{keywordtype}{int}\ Nsmooth,PType\ *pp}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npoints}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00687\ \ \ }
+\DoxyCodeLine{00688\ \ \ \textcolor{keywordtype}{int}\ nthreads\ =\ \mbox{\hyperlink{namespace_utilities_afa654746e24cd77549f412bed8d3ee26}{Utilities::GetNThreads}}();}
+\DoxyCodeLine{00689\ \ \ }
+\DoxyCodeLine{00690\ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}Calculating\ smoothing\ of\ particles\ ..."{}}\ <<\ std::endl}
+\DoxyCodeLine{00691\ \ \ <<\ Nsmooth\ <<\ \textcolor{stringliteral}{"{}\ neighbors.\ \ If\ there\ are\ a\ lot\ of\ particles\ this\ could\ take\ a\ while."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00692\ \ \ }
+\DoxyCodeLine{00693\ \ \ time\_t\ to,t;}
+\DoxyCodeLine{00694\ \ \ time(\&to);}
+\DoxyCodeLine{00695\ \ \ }
+\DoxyCodeLine{00696\ \ \ \textcolor{comment}{//\ make\ 3d\ tree\ of\ particle\ postions}}
+\DoxyCodeLine{00697\ \ \ \mbox{\hyperlink{class_tree_simple}{TreeSimple<PType>}}\ tree3d(pp,Npoints,2*Nsmooth,3,\textcolor{keyword}{true});}
+\DoxyCodeLine{00698\ \ \ \textcolor{comment}{//\ find\ distance\ to\ nth\ neighbour\ for\ every\ particle}}
+\DoxyCodeLine{00699\ \ \ \textcolor{keywordflow}{if}(Npoints\ <\ 1000)\{}
+\DoxyCodeLine{00700\ \ \ \ \ \textcolor{comment}{//IndexType\ neighbors[Nsmooth];}}
+\DoxyCodeLine{00701\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ pp[i].Size\ =\ tree3d.NNDistance(\&pp[i][0],Nsmooth\ +\ 1);}
+\DoxyCodeLine{00703\ \ \ \ \ \}}
+\DoxyCodeLine{00704\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ chunksize\ =\ Npoints/nthreads;}
+\DoxyCodeLine{00706\ \ \ \ \ std::vector<std::thread>\ thr(nthreads);}
+\DoxyCodeLine{00707\ \ \ \ \ }
+\DoxyCodeLine{00708\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N;}
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ ii\ =\ 0;\ ii\ <\ nthreads\ ;++ii)\{}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ii\ ==\ nthreads\ -\/\ 1)\{}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ N\ =\ Npoints\ -\/\ ii*chunksize;}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ N\ =\ chunksize;}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ }
+\DoxyCodeLine{00714\ \ \ \ \ \ \ thr[ii]\ =\ std::thread(\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::smooth\_}},\&tree3d}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\&(pp[ii*chunksize]),N,Nsmooth);}
+\DoxyCodeLine{00716\ \ \ \ \ \}}
+\DoxyCodeLine{00717\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ ii\ =\ 0;\ ii\ <\ nthreads\ ;++ii)\ thr[ii].join();}
+\DoxyCodeLine{00718\ \ \ \}}
+\DoxyCodeLine{00719\ \ \ time(\&t);}
+\DoxyCodeLine{00720\ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}done\ in\ "{}}\ <<\ difftime(t,to)\ <<\ \textcolor{stringliteral}{"{}\ secs"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00721\ \}}
+\DoxyCodeLine{00722\ }
+\DoxyCodeLine{00723\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00724\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::smooth\_}}(\mbox{\hyperlink{class_tree_simple}{TreeSimple<PType>}}\ *tree3d,PType\ *pp,\textcolor{keywordtype}{size\_t}\ N,\textcolor{keywordtype}{int}\ Nsmooth)\{}
+\DoxyCodeLine{00725\ \ \ }
+\DoxyCodeLine{00726\ \ \ \textcolor{comment}{//IndexType\ neighbors[Nsmooth];}}
+\DoxyCodeLine{00727\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<N;++i)\{}
+\DoxyCodeLine{00728\ \ \ \ \ pp[i].Size\ =\ tree3d-\/>\mbox{\hyperlink{class_tree_simple_a679035c518472da2b5ee4349f6098a02}{NNDistance}}(\&(pp[i][0]),Nsmooth\ +\ 1);}
+\DoxyCodeLine{00729\ \ \ \}}
+\DoxyCodeLine{00730\ \}}
+\DoxyCodeLine{00731\ }
+\DoxyCodeLine{00732\ }
+\DoxyCodeLine{00733\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00734\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::writeSizes}}(\textcolor{keyword}{const}\ std::string\ \&filename,\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ PType\ *pp,\textcolor{keywordtype}{size\_t}\ Npoints}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00737\ \ \ }
+\DoxyCodeLine{00738\ \ \ std::ofstream\ myfile(filename);}
+\DoxyCodeLine{00739\ \ \ }
+\DoxyCodeLine{00740\ \ \ \textcolor{comment}{//\ find\ number\ of\ particles}}
+\DoxyCodeLine{00741\ \ \ }
+\DoxyCodeLine{00742\ \ \ \textcolor{keywordflow}{if}\ (myfile.is\_open())\{}
+\DoxyCodeLine{00743\ \ \ \ \ }
+\DoxyCodeLine{00744\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Writing\ particle\ size\ information\ to\ file\ "{}}\ <<\ filename\ <<\ \textcolor{stringliteral}{"{}\ ...."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00745\ \ \ \ \ }
+\DoxyCodeLine{00746\ \ \ \ \ myfile\ <<\ \textcolor{stringliteral}{"{}\#\ nparticles\ "{}}\ <<\ Npoints\ <<\ std::endl;}
+\DoxyCodeLine{00747\ \ \ \ \ myfile\ <<\ \textcolor{stringliteral}{"{}\#\ nsmooth\ "{}}\ <<\ Nsmooth\ <<\ std::endl;}
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<Npoints;++i)\{}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ myfile\ <<\ pp[i].Size\ <<\ std::endl;}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!myfile)\{}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ write\ to\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ writing\ error"{}});}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00754\ \ \ \ \ \}}
+\DoxyCodeLine{00755\ \ \ \ \ }
+\DoxyCodeLine{00756\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}done"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00757\ \ \ \ \ }
+\DoxyCodeLine{00758\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00759\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ write\ to\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{00760\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ writing\ error"{}});}
+\DoxyCodeLine{00761\ \ \ \}}
+\DoxyCodeLine{00762\ \}}
+\DoxyCodeLine{00763\ }
+\DoxyCodeLine{00764\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00765\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_particles_a6f74ecb8b18030fe0f01136192d9e4bb}{LensHaloParticles<PType>::makeSIE}}(}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ new\_filename\ \ }
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ redshift\ \ \ \ \ }
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ particle\_mass\ }
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ total\_mass\ \ }
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ sigma\ \ \ \ \ \ \ }
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ q\ \ }
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00774\ \ \ }
+\DoxyCodeLine{00775\ \ \ \textcolor{keywordtype}{size\_t}\ Npoints\ =\ total\_mass/particle\_mass;}
+\DoxyCodeLine{00776\ \ \ PosType\ Rmax\ =\ (1+redshift)*total\_mass*Grav*lightspeed*lightspeed/sigma/sigma/2;}
+\DoxyCodeLine{00777\ \ \ Point\_3d<>\ point;}
+\DoxyCodeLine{00778\ \ \ \textcolor{keywordtype}{double}\ qq\ =\ sqrt(q);}
+\DoxyCodeLine{00779\ \ \ }
+\DoxyCodeLine{00780\ \ \ std::ofstream\ datafile;}
+\DoxyCodeLine{00781\ \ \ datafile.open(new\_filename);}
+\DoxyCodeLine{00782\ \ \ }
+\DoxyCodeLine{00783\ \ \ datafile\ <<\ \textcolor{stringliteral}{"{}\#\ nparticles\ "{}}\ <<\ Npoints\ <<\ std::endl;}
+\DoxyCodeLine{00784\ \ \ datafile\ <<\ \textcolor{stringliteral}{"{}\#\ mass\ "{}}\ <<\ particle\_mass\ <<\ std::endl;}
+\DoxyCodeLine{00785\ \ \ \textcolor{comment}{//\ create\ particles}}
+\DoxyCodeLine{00786\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<\ Npoints\ ;++i)\{}
+\DoxyCodeLine{00787\ \ \ \ \ point[0]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}();}
+\DoxyCodeLine{00788\ \ \ \ \ point[1]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}();}
+\DoxyCodeLine{00789\ \ \ \ \ point[2]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}();}
+\DoxyCodeLine{00790\ \ \ \ \ }
+\DoxyCodeLine{00791\ \ \ \ \ point\ *=\ Rmax*ran()/point.length();}
+\DoxyCodeLine{00792\ \ \ \ \ }
+\DoxyCodeLine{00793\ \ \ \ \ point[0]\ *=\ qq;}
+\DoxyCodeLine{00794\ \ \ \ \ point[1]\ /=\ qq;}
+\DoxyCodeLine{00795\ \ \ \ \ }
+\DoxyCodeLine{00796\ \ \ \ \ datafile\ <<\ point[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ point[1]\ <<\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{00797\ \ \ \ \ <<\ point[2]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00798\ \ \ \ \ }
+\DoxyCodeLine{00799\ \ \ \}}
+\DoxyCodeLine{00800\ \ \ }
+\DoxyCodeLine{00801\ \ \ datafile.close();}
+\DoxyCodeLine{00802\ \}}
+\DoxyCodeLine{00803\ }
+\DoxyCodeLine{00804\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00805\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleTypeSimple>}}\ \mbox{\hyperlink{class_lens_halo_particles_a46def593bc40d817ca3c45d521b700ce}{LensHaloParticles<PType>::SIE}}(}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ PosType\ redshift\ \ \ \ \ }
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ particle\_mass\ }
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ total\_mass\ \ }
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ sigma\ \ \ \ \ \ \ }
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ q\ \ }
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nneighbors}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00815\ \ \ \ \ }
+\DoxyCodeLine{00816\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Npoints\ =\ total\_mass/particle\_mass;}
+\DoxyCodeLine{00817\ \ \ \ \ PosType\ Rmax\ =\ total\_mass*Grav*lightspeed*lightspeed/sigma/sigma/2;}
+\DoxyCodeLine{00818\ \ \ \ \ }
+\DoxyCodeLine{00819\ \ \ \ \ \textcolor{keywordtype}{double}\ qq\ =\ sqrt(q);}
+\DoxyCodeLine{00820\ \ \ \ \ }
+\DoxyCodeLine{00821\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}making\ SIE\ LensHaloParticles..."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00822\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\#\ nparticles\ "{}}\ <<\ Npoints\ <<\ std::endl;}
+\DoxyCodeLine{00823\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\#\ mass\ "{}}\ <<\ particle\_mass\ <<\ std::endl;}
+\DoxyCodeLine{00824\ }
+\DoxyCodeLine{00825\ \ \ \ \ std::vector<ParticleTypeSimple>\ parts(Npoints);}
+\DoxyCodeLine{00826\ \ \ \ \ \textcolor{comment}{//\ create\ particles}}
+\DoxyCodeLine{00827\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ parts)\{}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ p[0]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}();}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ p[1]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}();}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ p[2]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}();}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ }
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ Rmax*ran()/sqrt(p[0]*p[0]\ +\ p[1]*p[1]\ +\ p[2]*p[2]\ );}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ p[0]\ *=\ s;}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ p[1]\ *=\ s;}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ p[2]\ *=\ s;}
+\DoxyCodeLine{00836\ }
+\DoxyCodeLine{00837\ \ \ \ \ \ \ p[0]\ *=\ qq;}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ p[1]\ /=\ qq;}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ }
+\DoxyCodeLine{00840\ \ \ \ \ \ \ p.Mass\ =\ particle\_mass;}
+\DoxyCodeLine{00841\ \ \ \ \ \}}
+\DoxyCodeLine{00842\ \ \ \ \ }
+\DoxyCodeLine{00843\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleTypeSimple>\ ::calculate\_smoothing}}(Nneighbors,parts.data(),Npoints);}
+\DoxyCodeLine{00844\ }
+\DoxyCodeLine{00845\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleTypeSimple>}}(parts,redshift}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,cosmo,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}(0,0),\textcolor{keyword}{false},0);}
+\DoxyCodeLine{00847\ \ \ \}}
+\DoxyCodeLine{00848\ }
+\DoxyCodeLine{00849\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00850\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>}}\ \&\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>::operator=}}(\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<PType>}}\ \&\&h)\{}
+\DoxyCodeLine{00851\ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&h)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00852\ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(std::move(h));}
+\DoxyCodeLine{00853\ \ \ mcenter\ =\ h.mcenter;}
+\DoxyCodeLine{00854\ \ \ densest\_point\ =\ h.densest\_point;}
+\DoxyCodeLine{00855\ \ \ trash\_collector\ =std::move(h.trash\_collector);}
+\DoxyCodeLine{00856\ \ \ pp\ =\ h.pp;\ \ \textcolor{comment}{//\ note:\ this\ depends\ on\ std:move\ keeping\ the\ pointer\ valid\ if\ it\ is\ constructed\ with\ the\ public\ constructor}}
+\DoxyCodeLine{00857\ \ \ h.pp\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00858\ \ \ }
+\DoxyCodeLine{00859\ \ \ min\_size\ =\ h.min\_size;}
+\DoxyCodeLine{00860\ \ \ multimass\ =\ h.multimass;}
+\DoxyCodeLine{00861\ \ \ center\ =\ h.center;}
+\DoxyCodeLine{00862\ \ \ Npoints\ =\ h.Npoints;}
+\DoxyCodeLine{00863\ \ \ simfile\ =\ h.simfile;}
+\DoxyCodeLine{00864\ \ \ sizefile\ =\ h.sizefile;}
+\DoxyCodeLine{00865\ \ \ inv\_area\ =\ h.inv\_area;}
+\DoxyCodeLine{00866\ \ \ }
+\DoxyCodeLine{00867\ \ \ qtree\ =\ h.qtree;}
+\DoxyCodeLine{00868\ \ \ h.qtree\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00869\ \ \ }
+\DoxyCodeLine{00870\ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00871\ \}}
+\DoxyCodeLine{00872\ }
+\DoxyCodeLine{00873\ }
+\DoxyCodeLine{00964\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_make_particle_lenses}{MakeParticleLenses}}\{}
+\DoxyCodeLine{00965\ \ \ }
+\DoxyCodeLine{00966\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00967\ \ \ }
+\DoxyCodeLine{00969\ \ \ std::vector<LensHaloParticles<ParticleType<float>\ >\ *>\ \mbox{\hyperlink{class_make_particle_lenses_a443665691944437629a0bfaf360db54c}{halos}};}
+\DoxyCodeLine{00970\ \ \ }
+\DoxyCodeLine{00972\ \ \ std::vector<size\_t>\ \mbox{\hyperlink{class_make_particle_lenses_a3404c6972f0e86a719016cb998128be6}{getnp}}()\{\textcolor{keywordflow}{return}\ nparticles;\}}
+\DoxyCodeLine{00973\ \ \ }
+\DoxyCodeLine{00975\ \ \ std::vector<float>\ \mbox{\hyperlink{class_make_particle_lenses_a68f3ec782d5e6bf1106697ed4170d706}{getmp}}()\{\textcolor{keywordflow}{return}\ masses;\}}
+\DoxyCodeLine{00976\ \ \ }
+\DoxyCodeLine{00978\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_make_particle_lenses_a350b46da6e51256c778759b71f1ea8d5}{sim\_redshift}}()\{\textcolor{keywordflow}{return}\ z\_original;\}}
+\DoxyCodeLine{00979\ \ \ }
+\DoxyCodeLine{00980\ \ \ \mbox{\hyperlink{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8}{MakeParticleLenses}}(\textcolor{keyword}{const}\ std::string\ \&filename\ \ }
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{SimFileFormat}}\ format}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth\ \ \ }
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ }
+\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//,bool\ compensate=false\ \ ///\ if\ true\ a\ negative\ mass\ will\ be\ included\ so\ that\ \ the\ region\ wil\ have\ zero\ massl}}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ ignore\_type\_in\_smoothing\ =\ \textcolor{keyword}{false}\ }
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00987\ \ \ }
+\DoxyCodeLine{00988\ \ \ \mbox{\hyperlink{class_make_particle_lenses_a3f1a58c230e3dd6ed936179473353cb8}{MakeParticleLenses}}(\textcolor{keyword}{const}\ std::string\ \&filename\ \ }
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ recenter\ }
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//,bool\ compensate=false\ \ ///\ if\ true\ a\ negative\ mass\ will\ be\ included\ so\ that\ \ the\ region\ wil\ have\ zero\ massl}}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00992\ \ \ }
+\DoxyCodeLine{00993\ \ \ \mbox{\hyperlink{class_make_particle_lenses}{\string~MakeParticleLenses}}()\{}
+\DoxyCodeLine{00994\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ p\ :\ \mbox{\hyperlink{class_make_particle_lenses_a443665691944437629a0bfaf360db54c}{halos}})\ \textcolor{keyword}{delete}\ p;}
+\DoxyCodeLine{00995\ \ \ \}}
+\DoxyCodeLine{00996\ \ \ }
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{00999\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_make_particle_lenses_a9c881089027b61294077339f8cebef5c}{Recenter}}(Point\_3d<>\ x);}
+\DoxyCodeLine{01000\ }
+\DoxyCodeLine{01001\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_make_particle_lenses_a630543b97c4e4e571852e4accbb065b4}{CreateHalos}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo,\textcolor{keywordtype}{double}\ redshift,\textcolor{keywordtype}{double}\ inv\_area);}
+\DoxyCodeLine{01002\ \ \ }
+\DoxyCodeLine{01004\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_make_particle_lenses_aef610bf4ef8d5b80f36740f9654aab74}{radialCut}}(Point\_3d<>\ center,\textcolor{keywordtype}{double}\ radius);}
+\DoxyCodeLine{01006\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_make_particle_lenses_a55fa4825f80d5020b01691f66012d713}{cylindricalCut}}(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ center,\textcolor{keywordtype}{double}\ radius);}
+\DoxyCodeLine{01007\ }
+\DoxyCodeLine{01009\ \ \ Point\_3d<>\ \mbox{\hyperlink{class_make_particle_lenses_a155bf7180f088703478321a0f06c7dfa}{getCenterOfMass}}()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ cm;\}}
+\DoxyCodeLine{01010\ \ \ }
+\DoxyCodeLine{01012\ \ \ Point\_3d<>\ \mbox{\hyperlink{class_make_particle_lenses_af2890c8549b7a386c724337e3d718031}{densest\_particle}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{01013\ }
+\DoxyCodeLine{01015\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_make_particle_lenses_afff6abc86f9ff46772e02c97a2df7910}{getBoundingBox}}(Point\_3d<>\ \&Xmin,Point\_3d<>\ \&Xmax)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01016\ \ \ \ \ Xmin\ =\ bbox\_ll;}
+\DoxyCodeLine{01017\ \ \ \ \ Xmax\ =\ bbox\_ur;}
+\DoxyCodeLine{01018\ \ \ \}}
+\DoxyCodeLine{01019\ \ \ }
+\DoxyCodeLine{01020\ \ \ \textcolor{keywordtype}{double}\ getZoriginal()\{\textcolor{keywordflow}{return}\ z\_original;\}}
+\DoxyCodeLine{01021\ }
+\DoxyCodeLine{01022\ \ \ std::vector<ParticleType<float>\ >\ data;}
+\DoxyCodeLine{01023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{01024\ \ \ \textcolor{keyword}{const}\ std::string\ filename;}
+\DoxyCodeLine{01025\ \ \ \textcolor{keywordtype}{int}\ Nsmooth;}
+\DoxyCodeLine{01026\ \ \ \textcolor{comment}{//bool\ compensate;}}
+\DoxyCodeLine{01027\ \ \ }
+\DoxyCodeLine{01028\ \ \ Point\_3d<>\ bbox\_ll;\ \ \textcolor{comment}{//\ minumum\ coordinate\ values\ of\ particles}}
+\DoxyCodeLine{01029\ \ \ Point\_3d<>\ bbox\_ur;\ \ \textcolor{comment}{//\ maximim\ coordinate\ values\ of\ particles}}
+\DoxyCodeLine{01030\ \ \ }
+\DoxyCodeLine{01031\ \ \ \textcolor{keywordtype}{double}\ z\_original\ =\ -\/1;}
+\DoxyCodeLine{01032\ \ \ std::vector<size\_t>\ nparticles;}
+\DoxyCodeLine{01033\ \ \ std::vector<float>\ masses;}
+\DoxyCodeLine{01034\ \ \ Point\_3d<>\ cm;}
+\DoxyCodeLine{01035\ }
+\DoxyCodeLine{01036\ \ \ \textcolor{comment}{//\ write\ a\ glamB\ format\ file\ with\ all\ required\ particle\ data}}
+\DoxyCodeLine{01037\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ writeSizesB(\textcolor{keyword}{const}\ std::string\ \&filename}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ParticleType<float>\ >\ \&pv}
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth,std::vector<size\_t>\ numbytype,\textcolor{keywordtype}{double}\ redshift)\{}
+\DoxyCodeLine{01040\ \ \ \ \ }
+\DoxyCodeLine{01041\ \ \ \ \ assert(numbytype.size()\ ==\ 6);}
+\DoxyCodeLine{01042\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ntot\ =\ pv.size();}
+\DoxyCodeLine{01043\ \ \ \ \ std::ofstream\ myfile(filename,\ std::ios::out\ |\ std::ios::binary);}
+\DoxyCodeLine{01044\ \ \ \ \ \textcolor{keywordflow}{if}(!myfile.write((\textcolor{keywordtype}{char}*)\&Nsmooth,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})))\{}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ write\ to\ file\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}file\ writing\ error"{}});}
+\DoxyCodeLine{01047\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ myfile.write((\textcolor{keywordtype}{char}*)\&ntot,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ myfile.write((\textcolor{keywordtype}{char}*)(numbytype.data()),\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t})*6);}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ myfile.write((\textcolor{keywordtype}{char}*)\&redshift,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ myfile.write((\textcolor{keywordtype}{char}*)(pv.data()),\textcolor{keyword}{sizeof}(ParticleType<float>)*ntot);}
+\DoxyCodeLine{01052\ \ \ \ \ \}}
+\DoxyCodeLine{01053\ \ \ \}}
+\DoxyCodeLine{01054\ \ \ }
+\DoxyCodeLine{01055\ \ \ \textcolor{comment}{//\ read\ a\ glamB\ format\ file}}
+\DoxyCodeLine{01056\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ readSizesB(\textcolor{keyword}{const}\ std::string\ \&filename}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ParticleType<float>\ >\ \&pv}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ \&Nsmooth,std::vector<size\_t>\ \&numbytype,\textcolor{keywordtype}{double}\ \&redshift)\{}
+\DoxyCodeLine{01059\ \ \ \ \ }
+\DoxyCodeLine{01060\ \ \ \ \ numbytype.resize(6);}
+\DoxyCodeLine{01061\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ntot\ =\ pv.size();}
+\DoxyCodeLine{01062\ \ \ \ \ std::ifstream\ myfile(filename,\ std::ios::in\ |\ std::ios::binary);}
+\DoxyCodeLine{01063\ \ \ \ \ \textcolor{keywordflow}{if}(!myfile.read((\textcolor{keywordtype}{char}*)\&Nsmooth,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})))\{}
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01065\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01066\ \ \ \ \ \ \ myfile.read((\textcolor{keywordtype}{char}*)\&ntot,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ myfile.read((\textcolor{keywordtype}{char}*)(numbytype.data()),\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t})*6);}
+\DoxyCodeLine{01068\ \ \ \ \ \ \ myfile.read((\textcolor{keywordtype}{char}*)\&redshift,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{01069\ \ \ \ \ \ \ pv.resize(ntot);}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ myfile.read((\textcolor{keywordtype}{char}*)(pv.data()),\textcolor{keyword}{sizeof}(ParticleType<float>)*ntot);}
+\DoxyCodeLine{01071\ \ \ \ \ \}}
+\DoxyCodeLine{01072\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01073\ \ \ \}}
+\DoxyCodeLine{01074\ \ \ }
+\DoxyCodeLine{01075\ \ \ \textcolor{comment}{//\ Read\ particle\ from\ Gadget-\/2\ format\ file}}
+\DoxyCodeLine{01076\ \ \ \textcolor{keywordtype}{bool}\ readGadget2(\textcolor{keywordtype}{bool}\ ignore\_type);}
+\DoxyCodeLine{01077\ \ \ }
+\DoxyCodeLine{01078\ \ \ \textcolor{comment}{//\ Reads\ particles\ from\ first\ 4\ columns\ of\ csv\ file}}
+\DoxyCodeLine{01079\ \ \ \textcolor{keywordtype}{bool}\ readCSV(\textcolor{keywordtype}{int}\ columns\_used);}
+\DoxyCodeLine{01080\ }
+\DoxyCodeLine{01081\ \textcolor{preprocessor}{\#ifdef\ ENABLE\_HDF5}}
+\DoxyCodeLine{01082\ \ \ \textcolor{keywordtype}{bool}\ readHDF5();}
+\DoxyCodeLine{01083\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01084\ }
+\DoxyCodeLine{01085\ \};}
+\DoxyCodeLine{01086\ }
+\DoxyCodeLine{01091\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HType>}
+\DoxyCodeLine{01092\ \textcolor{keyword}{class\ }LensHaloHalos\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}}
+\DoxyCodeLine{01093\ \{}
+\DoxyCodeLine{01094\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{01095\ \ \ }
+\DoxyCodeLine{01096\ \ \ LensHaloHalos(std::vector<HType>\ \&pvector\ }
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ inv\_area}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ my\_theta\_force=0.1}
+\DoxyCodeLine{01101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ mu\_periodic\_buffer\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false}}
+\DoxyCodeLine{01103\ \ \ ):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(redshift,cosmo),inv\_area(inv\_area),theta\_force(my\_theta\_force),periodic\_buffer(mu\_periodic\_buffer)}
+\DoxyCodeLine{01104\ \ \ \{}
+\DoxyCodeLine{01105\ \ \ \ \ std::swap(pvector,trash\_collector);}
+\DoxyCodeLine{01106\ \ \ \ \ Nhalos\ =\ trash\_collector.size();}
+\DoxyCodeLine{01107\ \ \ \ \ vpp.resize(Nhalos);}
+\DoxyCodeLine{01108\ }
+\DoxyCodeLine{01109\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ ii\ =\ 0\ ;\ ii\ <\ Nhalos\ ;\ ++ii)\ vpp[ii]\ =\ \&trash\_collector[ii];}
+\DoxyCodeLine{01110\ \ \ \ \ set\_up(redshift,cosmo,verbose);}
+\DoxyCodeLine{01111\ \ \ \}}
+\DoxyCodeLine{01112\ \ \ \string~LensHaloHalos();}
+\DoxyCodeLine{01113\ \ \ }
+\DoxyCodeLine{01114\ \ \ LensHaloHalos(LensHaloHalos\ \&\&h):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(std::move(h))\{}
+\DoxyCodeLine{01115\ \ \ \ \ mcenter\ =\ h.mcenter;}
+\DoxyCodeLine{01116\ \ \ \ \ trash\_collector\ =std::move(h.trash\_collector);}
+\DoxyCodeLine{01117\ \ \ \ \ vpp\ =\ std::move(h.vpp);}
+\DoxyCodeLine{01118\ \ \ \ \ }
+\DoxyCodeLine{01119\ \ \ \ \ center\ =\ h.center;}
+\DoxyCodeLine{01120\ \ \ \ \ Nhalos\ =\ h.Nhalos;}
+\DoxyCodeLine{01121\ \ \ \ \ }
+\DoxyCodeLine{01122\ \ \ \ \ qtree\ =\ h.qtree;}
+\DoxyCodeLine{01123\ \ \ \ \ h.qtree\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01124\ \ \ \ \ }
+\DoxyCodeLine{01125\ \ \ \ \ inv\_area\ =\ h.inv\_area;}
+\DoxyCodeLine{01126\ \ \ \}}
+\DoxyCodeLine{01127\ \ \ LensHaloHalos\ \&\ operator=(LensHaloHalos\ \&\&h);}
+\DoxyCodeLine{01128\ }
+\DoxyCodeLine{01129\ }
+\DoxyCodeLine{01130\ \ \ \textcolor{keywordtype}{void}\ force\_halo(\textcolor{keywordtype}{double}\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi}
+\DoxyCodeLine{01131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xcm}
+\DoxyCodeLine{01132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1.0);}
+\DoxyCodeLine{01133\ }
+\DoxyCodeLine{01134\ \ \ \textcolor{keywordtype}{size\_t}\ getN()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Nhalos;\ \};}
+\DoxyCodeLine{01135\ \ \ }
+\DoxyCodeLine{01137\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ CenterOfMass()\{\textcolor{keywordflow}{return}\ mcenter;\}}
+\DoxyCodeLine{01138\ \ \ }
+\DoxyCodeLine{01139\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{01140\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ mcenter;}
+\DoxyCodeLine{01141\ \ \ \textcolor{keywordtype}{double}\ inv\_area;}
+\DoxyCodeLine{01142\ \ \ }
+\DoxyCodeLine{01143\ \ \ std::vector<HType\ *>\ vpp;}
+\DoxyCodeLine{01144\ \ \ std::vector<HType>\ trash\_collector;}
+\DoxyCodeLine{01145\ \ \ }
+\DoxyCodeLine{01146\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities::Geometry::SphericalPoint<>}}\ center;}
+\DoxyCodeLine{01147\ \ \ }
+\DoxyCodeLine{01148\ \ \ \textcolor{keywordtype}{size\_t}\ Nhalos;}
+\DoxyCodeLine{01149\ \ }
+\DoxyCodeLine{01150\ \ \ \textcolor{keywordtype}{float}\ theta\_force;}
+\DoxyCodeLine{01151\ \ \ \textcolor{keywordtype}{bool}\ periodic\_buffer;}
+\DoxyCodeLine{01152\ }
+\DoxyCodeLine{01153\ \ \ TreeQuadHalos<HType>\ *\ qtree;}
+\DoxyCodeLine{01154\ \ \ }
+\DoxyCodeLine{01155\ \ \ \textcolor{keywordtype}{void}\ set\_up(\textcolor{keywordtype}{float}\ redshift,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo,\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{01156\ \};}
+\DoxyCodeLine{01157\ }
+\DoxyCodeLine{01158\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HType>}
+\DoxyCodeLine{01159\ \textcolor{keywordtype}{void}\ LensHaloHalos<HType>::set\_up(}
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ redshift\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ cosmo\ \ }
+\DoxyCodeLine{01162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose}
+\DoxyCodeLine{01163\ )\{}
+\DoxyCodeLine{01164\ }
+\DoxyCodeLine{01165\ \ \ LensHalo::set\_flag\_elliptical(\textcolor{keyword}{false});}
+\DoxyCodeLine{01166\ \ \ }
+\DoxyCodeLine{01167\ \ \ Rmax\ =\ 1.0e100;\ \ \textcolor{comment}{//\ ????}}
+\DoxyCodeLine{01168\ \ \ LensHalo::setRsize(Rmax);}
+\DoxyCodeLine{01169\ }
+\DoxyCodeLine{01170\ \ \ \textcolor{comment}{//\ convert\ from\ comoving\ to\ physical\ coordinates}}
+\DoxyCodeLine{01171\ \ \ \textcolor{comment}{//PosType\ scale\_factor\ =\ 1/(1+redshift);}}
+\DoxyCodeLine{01172\ \ \ mcenter\ *=\ 0.0;}
+\DoxyCodeLine{01173\ \ \ PosType\ max\_mass\ =\ 0.0,min\_mass\ =\ HUGE\_VALF,mass=0;}
+\DoxyCodeLine{01174\ }
+\DoxyCodeLine{01175\ \ \ \textcolor{keywordflow}{for}(HType\ \&h\ :\ trash\_collector)\{}
+\DoxyCodeLine{01176\ \ \ \ \ }
+\DoxyCodeLine{01177\ \ \ \ \ mcenter[0]\ +=\ h[0]*h.get\_mass();}
+\DoxyCodeLine{01178\ \ \ \ \ mcenter[1]\ +=\ h[1]*h.get\_mass();}
+\DoxyCodeLine{01179\ \ \ \ \ }
+\DoxyCodeLine{01180\ \ \ \ \ mass\ +=\ h.get\_mass();}
+\DoxyCodeLine{01181\ \ \ \ \ }
+\DoxyCodeLine{01182\ \ \ \ \ max\_mass\ =\ (h.get\_mass()\ >\ max\_mass)\ ?\ h.get\_mass()\ :\ max\_mass;}
+\DoxyCodeLine{01183\ \ \ \ \ min\_mass\ =\ (h.get\_mass()\ <\ min\_mass)\ ?\ h.get\_mass()\ :\ min\_mass;}
+\DoxyCodeLine{01184\ \ \ \}}
+\DoxyCodeLine{01185\ \ \ LensHalo::setMass(mass);}
+\DoxyCodeLine{01186\ \ \ }
+\DoxyCodeLine{01187\ \ \ mcenter\ /=\ mass;}
+\DoxyCodeLine{01188\ \ \ }
+\DoxyCodeLine{01189\ \ \ \textcolor{keywordflow}{if}(verbose)\ std::cout\ <<\ \textcolor{stringliteral}{"{}\ \ \ Particle\ mass\ range\ :\ "{}}\ <<\ min\_mass\ <<\ \textcolor{stringliteral}{"{}\ to\ "{}}\ <<\ max\_mass\ <<\ \textcolor{stringliteral}{"{}\ \ ratio\ of\ :\ "{}}\ <<\ max\_mass/min\_mass\ <<\ std::endl;}
+\DoxyCodeLine{01190\ \ \ }
+\DoxyCodeLine{01191\ \ \ qtree\ =\ \textcolor{keyword}{new}\ TreeQuadHalos<HType>(vpp.data(),Nhalos,inv\_area,5,theta\_force,periodic\_buffer);}
+\DoxyCodeLine{01192\ \}}
+\DoxyCodeLine{01193\ }
+\DoxyCodeLine{01194\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HType>}
+\DoxyCodeLine{01195\ LensHaloHalos<HType>::\string~LensHaloHalos()\{}
+\DoxyCodeLine{01196\ \ \ \textcolor{keyword}{delete}\ qtree;}
+\DoxyCodeLine{01197\ \}}
+\DoxyCodeLine{01198\ }
+\DoxyCodeLine{01199\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HType>}
+\DoxyCodeLine{01200\ \textcolor{keywordtype}{void}\ LensHaloHalos<HType>::force\_halo(\textcolor{keywordtype}{double}\ *alpha,KappaType\ *kappa}
+\DoxyCodeLine{01201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *gamma,KappaType\ *phi}
+\DoxyCodeLine{01202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xcm}
+\DoxyCodeLine{01203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ subtract\_point,PosType\ screening)\{}
+\DoxyCodeLine{01204\ \ \ qtree-\/>force2D(xcm,alpha,kappa,gamma,phi);}
+\DoxyCodeLine{01205\ }
+\DoxyCodeLine{01206\ \ \ \textcolor{comment}{//\ \ \ ?????}}
+\DoxyCodeLine{01207\ \ \ alpha[0]\ *=\ -\/1;}
+\DoxyCodeLine{01208\ \ \ alpha[1]\ *=\ -\/1;}
+\DoxyCodeLine{01209\ \}}
+\DoxyCodeLine{01210\ }
+\DoxyCodeLine{01211\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HType>}
+\DoxyCodeLine{01212\ LensHaloHalos<HType>\ \&\ LensHaloHalos<HType>::operator=(LensHaloHalos<HType>\ \&\&h)\{}
+\DoxyCodeLine{01213\ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&h)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01214\ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(std::move(h));}
+\DoxyCodeLine{01215\ \ \ mcenter\ =\ h.mcenter;}
+\DoxyCodeLine{01216\ }
+\DoxyCodeLine{01217\ \ \ trash\_collector\ =std::move(h.trash\_collector);}
+\DoxyCodeLine{01218\ \ \ vpp\ =\ std::move(h.vpp);\ \ \textcolor{comment}{//\ note:\ this\ depends\ on\ std:move\ keeping\ the\ pointer\ valid\ if\ it\ is\ constructed\ with\ the\ public\ constructor}}
+\DoxyCodeLine{01219\ \ \ }
+\DoxyCodeLine{01220\ \ \ center\ =\ h.center;}
+\DoxyCodeLine{01221\ \ \ Nhalos\ =\ h.Nhalos;}
+\DoxyCodeLine{01222\ \ \ }
+\DoxyCodeLine{01223\ \ \ qtree\ =\ h.qtree;}
+\DoxyCodeLine{01224\ \ \ h.qtree\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01225\ \ \ }
+\DoxyCodeLine{01226\ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01227\ \}}
+\DoxyCodeLine{01228\ }
+\DoxyCodeLine{01229\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

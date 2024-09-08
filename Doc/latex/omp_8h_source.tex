@@ -1,0 +1,113 @@
+\doxysection{omp.\+h}
+\hypertarget{omp_8h_source}{}\label{omp_8h_source}\index{SLsimLib/include/omp.h@{SLsimLib/include/omp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Copyright\ (C)\ 2005,\ 2007,\ 2008,\ 2009,\ 2011\ Free\ Software\ Foundation,\ Inc.}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ Contributed\ by\ Richard\ Henderson\ <rth@redhat.com>.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ This\ file\ is\ part\ of\ the\ GNU\ OpenMP\ Library\ (libgomp).}}
+\DoxyCodeLine{00005\ \textcolor{comment}{}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ Libgomp\ is\ free\ software;\ you\ can\ redistribute\ it\ and/or\ modify\ it}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ under\ the\ terms\ of\ the\ GNU\ General\ Public\ License\ as\ published\ by}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ the\ Free\ Software\ Foundation;\ either\ version\ 3,\ or\ (at\ your\ option)}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ any\ later\ version.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ Libgomp\ is\ distributed\ in\ the\ hope\ that\ it\ will\ be\ useful,\ but\ WITHOUT\ ANY}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ WARRANTY;\ without\ even\ the\ implied\ warranty\ of\ MERCHANTABILITY\ or\ FITNESS}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ FOR\ A\ PARTICULAR\ PURPOSE.\ \ See\ the\ GNU\ General\ Public\ License\ for}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ more\ details.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ Under\ Section\ 7\ of\ GPL\ version\ 3,\ you\ are\ granted\ additional}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ permissions\ described\ in\ the\ GCC\ Runtime\ Library\ Exception,\ version}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ 3.1,\ as\ published\ by\ the\ Free\ Software\ Foundation.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ You\ should\ have\ received\ a\ copy\ of\ the\ GNU\ General\ Public\ License\ and}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ a\ copy\ of\ the\ GCC\ Runtime\ Library\ Exception\ along\ with\ this\ program;}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ see\ the\ files\ COPYING3\ and\ COPYING.RUNTIME\ respectively.\ \ If\ not,\ see}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ <http://www.gnu.org/licenses/>.\ \ */}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ OMP\_H}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ OMP\_H\ 1}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ \_LIBGOMP\_OMP\_LOCK\_DEFINED}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ \_LIBGOMP\_OMP\_LOCK\_DEFINED\ 1}}
+\DoxyCodeLine{00030\ \textcolor{comment}{/*\ These\ two\ structures\ get\ edited\ by\ the\ libgomp\ build\ process\ to\ }}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ reflect\ the\ shape\ of\ the\ two\ types.\ \ Their\ internals\ are\ private}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ to\ the\ library.\ \ */}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_x[64]\ }
+\DoxyCodeLine{00037\ \ \ \ \ \_\_attribute\_\_((\_\_aligned\_\_(8)));}
+\DoxyCodeLine{00038\ \}\ omp\_lock\_t;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \_x[80]\ }
+\DoxyCodeLine{00043\ \ \ \ \ \_\_attribute\_\_((\_\_aligned\_\_(8)));}
+\DoxyCodeLine{00044\ \}\ omp\_nest\_lock\_t;}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ omp\_sched\_t}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ omp\_sched\_static\ =\ 1,}
+\DoxyCodeLine{00050\ \ \ omp\_sched\_dynamic\ =\ 2,}
+\DoxyCodeLine{00051\ \ \ omp\_sched\_guided\ =\ 3,}
+\DoxyCodeLine{00052\ \ \ omp\_sched\_auto\ =\ 4}
+\DoxyCodeLine{00053\ \}\ omp\_sched\_t;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00056\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#\ define\ \_\_GOMP\_NOTHROW\ throw\ ()}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#\ define\ \_\_GOMP\_NOTHROW\ \_\_attribute\_\_((\_\_nothrow\_\_))}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_set\_num\_threads\ (\textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00063\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_get\_num\_threads\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00064\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_get\_max\_threads\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00065\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_get\_thread\_num\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00066\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_get\_num\_procs\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_in\_parallel\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_set\_dynamic\ (\textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00071\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_get\_dynamic\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_set\_nested\ (\textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00074\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_get\_nested\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_init\_lock\ (omp\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00077\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_destroy\_lock\ (omp\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00078\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_set\_lock\ (omp\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00079\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_unset\_lock\ (omp\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00080\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_test\_lock\ (omp\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_init\_nest\_lock\ (omp\_nest\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00083\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_destroy\_nest\_lock\ (omp\_nest\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00084\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_set\_nest\_lock\ (omp\_nest\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00085\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ omp\_unset\_nest\_lock\ (omp\_nest\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00086\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ omp\_test\_nest\_lock\ (omp\_nest\_lock\_t\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{double}\ omp\_get\_wtime\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00089\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{double}\ omp\_get\_wtick\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ omp\_set\_schedule\ (omp\_sched\_t,\ \textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ omp\_get\_schedule\ (omp\_sched\_t\ *,\ \textcolor{keywordtype}{int}\ *)\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00093\ \textcolor{keywordtype}{int}\ omp\_get\_thread\_limit\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ omp\_set\_max\_active\_levels\ (\textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{int}\ omp\_get\_max\_active\_levels\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{int}\ omp\_get\_level\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00097\ \textcolor{keywordtype}{int}\ omp\_get\_ancestor\_thread\_num\ (\textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00098\ \textcolor{keywordtype}{int}\ omp\_get\_team\_size\ (\textcolor{keywordtype}{int})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{int}\ omp\_get\_active\_level\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{keywordtype}{int}\ omp\_in\_final\ (\textcolor{keywordtype}{void})\ \_\_GOMP\_NOTHROW;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00104\ \}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OMP\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

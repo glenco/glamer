@@ -1,0 +1,107 @@
+\doxysection{planes.\+h}
+\hypertarget{planes_8h_source}{}\label{planes_8h_source}\index{SLsimLib/include/planes.h@{SLsimLib/include/planes.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ planes.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ May\ 21,\ 2013}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ mpetkova}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ PLANES\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ PLANES\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}quadTree.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}quadTreeHalos.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}lens\_halos.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_plane}{LensPlane}}\{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \mbox{\hyperlink{class_lens_plane}{LensPlane}}(\textcolor{keywordtype}{float}\ redshift):z(redshift)\ \{\}}
+\DoxyCodeLine{00020\ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_lens_plane}{\string~LensPlane}}()\ \{\}\ }
+\DoxyCodeLine{00021\ \ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ force(PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,PosType\ *xx)\ =\ 0;}
+\DoxyCodeLine{00023\ \ }
+\DoxyCodeLine{00024\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ addHalo(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo)\ =\ 0;}
+\DoxyCodeLine{00025\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ removeHalo(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo)\ =\ 0;}
+\DoxyCodeLine{00026\ \ }
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{virtual}\ std::vector<LensHalo*>\ getHalos()\ =\ 0;}
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{virtual}\ std::vector<const\ LensHalo*>\ getHalos()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ getNeighborHalos(PosType\ ray[],PosType\ rmax,std::vector<LensHalo*>\ \&neighbors)\textcolor{keyword}{\ const}\{\};}
+\DoxyCodeLine{00030\ \ \ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{float}\ z;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_plane}{LensPlane}}\{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}(\textcolor{keywordtype}{float}\ z,\mbox{\hyperlink{class_lens_halo}{LensHalo}}\ **my\_halos,IndexType\ Nhalos,PosType\ my\_sigma\_background,PosType\ my\_inv\_screening\_scale\ =\ 0);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ \&p);}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}(\mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ \&\&p):\mbox{\hyperlink{class_lens_plane}{LensPlane}}(p.z)\{}
+\DoxyCodeLine{00042\ \ \ \ \ std::swap(*\textcolor{keyword}{this},p);}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \mbox{\hyperlink{class_lens_plane_tree}{\string~LensPlaneTree}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ \&p);}
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ \&\ operator=(\mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}}\ \&\&p);}
+\DoxyCodeLine{00049\ \ \ }
+\DoxyCodeLine{00050\ \ \textcolor{keywordtype}{void}\ force(PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,PosType\ *xx);}
+\DoxyCodeLine{00051\ \ \textcolor{keywordtype}{void}\ addHalo(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
+\DoxyCodeLine{00052\ \ \textcolor{keywordtype}{void}\ removeHalo(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
+\DoxyCodeLine{00053\ \ }
+\DoxyCodeLine{00054\ \ std::vector<LensHalo*>\ getHalos();}
+\DoxyCodeLine{00055\ \ std::vector<const\ LensHalo*>\ getHalos()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_plane_tree_a9eeda7521e9b8d7f08f991146243e196}{getNeighborHalos}}(PosType\ ray[],PosType\ rmax,std::vector<LensHalo*>\ \&neighbors)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ std::vector<LensHalo\ *>\ halos;}
+\DoxyCodeLine{00062\ \ \ TreeQuadHalos<LensHalo>\ *\ halo\_tree;}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_plane}{LensPlane}}\{}
+\DoxyCodeLine{00071\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}(\textcolor{keywordtype}{float}\ z,\mbox{\hyperlink{class_lens_halo}{LensHaloHndl}}\ *my\_halos,\ IndexType\ Nhalos);}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ \&p):\mbox{\hyperlink{class_lens_plane}{LensPlane}}(p.z)\{}
+\DoxyCodeLine{00074\ \ \ \ \ halos\ =\ p.halos;}
+\DoxyCodeLine{00075\ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}(\mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ \&\&p):\mbox{\hyperlink{class_lens_plane}{LensPlane}}(p.z)\{}
+\DoxyCodeLine{00077\ \ \ \ \ std::swap(halos,p.halos);}
+\DoxyCodeLine{00078\ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \mbox{\hyperlink{class_lens_plane_singular}{\string~LensPlaneSingular}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ \&p)\{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{if}(\&p\ !=\ \textcolor{keyword}{this})\{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ z\ =\ p.z;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ halos\ =\ p.halos;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00087\ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ \&\ operator=(\mbox{\hyperlink{class_lens_plane_singular}{LensPlaneSingular}}\ \&\&p)\{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{if}(\&p\ !=\ \textcolor{keyword}{this})\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ z\ =\ p.z;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ std::swap(halos,p.halos);}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00094\ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_plane_singular_aae11773b4960c738d6a653813bb78957}{force}}(PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,PosType\ *xx);}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_plane_singular_a652f60c8d63b55c34fd9c11a614aacf6}{addHalo}}(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
+\DoxyCodeLine{00099\ \ \textcolor{keywordtype}{void}\ removeHalo(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
+\DoxyCodeLine{00100\ \ }
+\DoxyCodeLine{00101\ \ std::vector<LensHalo*>\ getHalos();}
+\DoxyCodeLine{00102\ \ std::vector<const\ LensHalo*>\ getHalos()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ getNeighborHalos(PosType\ ray[],PosType\ rmax,std::vector<LensHalo*>\ \&neighbors)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ \ \ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00106\ \ std::vector<LensHalo*>\ halos;\ \ }
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ PLANES\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

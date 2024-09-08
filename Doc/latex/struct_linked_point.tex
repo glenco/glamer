@@ -1,5 +1,5 @@
-\hypertarget{struct_linked_point}{}\doxysection{Linked\+Point Struct Reference}
-\label{struct_linked_point}\index{LinkedPoint@{LinkedPoint}}
+\doxysection{Linked\+Point Struct Reference}
+\hypertarget{struct_linked_point}{}\label{struct_linked_point}\index{LinkedPoint@{LinkedPoint}}
 
 
 A point that automatically has an image point.  
@@ -11,29 +11,142 @@ A point that automatically has an image point.
 
 
 
-Inheritance diagram for Linked\+Point\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=148pt]{struct_linked_point__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for Linked\+Point\+:
+% FIG 0
 
 
-Collaboration diagram for Linked\+Point\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=268pt]{struct_linked_point__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsection*{Public Member Functions}
+Collaboration diagram for Linked\+Point\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_linked_point_a59779e89463be697e7f66459dfa58f97}\label{struct_linked_point_a59779e89463be697e7f66459dfa58f97}} 
+\Hypertarget{struct_linked_point_ac8a11a809d57f254908d6a3ce8852c04}\label{struct_linked_point_ac8a11a809d57f254908d6a3ce8852c04} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \& {\bfseries y} ()
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{struct_point}{Point}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}} ()
+\item 
+{\bfseries Point} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+{\bfseries Point} (Pos\+Type x, Pos\+Type y)
+\item 
+Pos\+Type \texorpdfstring{$\ast$}{*} {\bfseries ptr\+\_\+y} ()
+\item 
+\mbox{\hyperlink{struct_point}{Point}} {\bfseries operator=} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\begin{DoxyCompactList}\small\item\em Only copies position!! \end{DoxyCompactList}\item 
+Kappa\+Type {\bfseries invmag} () const
+\item 
+Kappa\+Type {\bfseries gamma1} () const
+\item 
+Kappa\+Type {\bfseries gamma2} () const
+\item 
+Kappa\+Type {\bfseries gamma3} () const
+\item 
+Kappa\+Type {\bfseries kappa} () const
+\item 
+double {\bfseries flux} ()
+\begin{DoxyCompactList}\small\item\em surface\+\_\+brightness \texorpdfstring{$\ast$}{*} gridsize \texorpdfstring{$\ast$}{*} gridsize \end{DoxyCompactList}\item 
+void {\bfseries Print} ()
+\begin{DoxyCompactList}\small\item\em print out all member data for testing purposes \end{DoxyCompactList}\item 
+bool {\bfseries inverted} ()
+\begin{DoxyCompactList}\small\item\em returns true if the image is double inverted, At very low magnification or when there is a rotation this can fail. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Point\+\_\+2d} (double x1, double x2)
+\item 
+{\bfseries Point\+\_\+2d} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \& {\bfseries operator=} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+{\bfseries Point\+\_\+2d} (const Pos\+Type \texorpdfstring{$\ast$}{*}p)
+\item 
+bool {\bfseries operator==} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p) const
+\item 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p) const
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries operator+} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p) const
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries operator-\/} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p) const
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \& {\bfseries operator+=} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \& {\bfseries operator-\/=} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \& {\bfseries operator/=} (Pos\+Type value)
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries operator/} (Pos\+Type value) const
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \& {\bfseries operator\texorpdfstring{$\ast$}{*}=} (Pos\+Type value)
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (Pos\+Type value) const
+\item 
+Pos\+Type {\bfseries operator\texorpdfstring{$\ast$}{*}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p) const
+\begin{DoxyCompactList}\small\item\em scalar product \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries operator\texorpdfstring{$^\wedge$}{\string^}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p) const
+\begin{DoxyCompactList}\small\item\em outer product \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries length} () const
+\begin{DoxyCompactList}\small\item\em length \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries length\+\_\+sqr} () const
+\begin{DoxyCompactList}\small\item\em length\texorpdfstring{$^\wedge$}{\string^}2 \end{DoxyCompactList}\item 
+void {\bfseries rotate} (Pos\+Type theta)
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries rotated} (Pos\+Type theta) const
+\begin{DoxyCompactList}\small\item\em returns a copy of the point that it rotated \end{DoxyCompactList}\item 
+void {\bfseries unitize} ()
+\begin{DoxyCompactList}\small\item\em rescale to make a unit length vector \end{DoxyCompactList}\item 
+Pos\+Type \texorpdfstring{$\ast$}{*} {\bfseries data} ()
+\item 
+Pos\+Type \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t i)
+\item 
+const Pos\+Type \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (size\+\_\+t i) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{struct_point}{Point}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bfseries orderX} (\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p1, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p2)
+\item 
+static bool {\bfseries order\+Xrev} (\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p1, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p2)
+\item 
+static bool {\bfseries orderY} (\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p1, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p2)
+\item 
+static bool {\bfseries order\+Yrev} (\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p1, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}p2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{struct_point}{Point}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} {\bfseries next} =nullptr
+\item 
+\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} {\bfseries prev} =nullptr
+\item 
+\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} {\bfseries image} =nullptr
+\item 
+unsigned long {\bfseries id} =0
+\item 
+unsigned long {\bfseries head} =0
+\item 
+Boo {\bfseries in\+\_\+image}
+\item 
+double {\bfseries dt}
+\item 
+Matrix2x2$<$ Kappa\+Type $>$ {\bfseries A}
+\item 
+double {\bfseries gridsize}
+\item 
+float {\bfseries surface\+\_\+brightness}
+\item 
+\mbox{\hyperlink{struct_branch}{Branch}} \texorpdfstring{$\ast$}{*} {\bfseries leaf}
+\item 
+bool {\bfseries flag}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}
+\begin{DoxyCompactItemize}
+\item 
+Pos\+Type {\bfseries x} \mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -43,4 +156,4 @@ This does not produce a stack of source plan points that are contigious in memor
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/point.\+h\end{DoxyCompactItemize}
+SLsim\+Lib/include/point.\+h\end{DoxyCompactItemize}

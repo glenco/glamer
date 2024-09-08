@@ -1,0 +1,71 @@
+\doxysection{elliptic.\+h}
+\hypertarget{elliptic_8h_source}{}\label{elliptic_8h_source}\index{SLsimLib/include/elliptic.h@{SLsimLib/include/elliptic.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ elliptic.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ bmetcalf\ on\ 8/5/14.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_GLAMER\_\_elliptic\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_GLAMER\_\_elliptic\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\#include\ "{}slsimlib.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}lens.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_elliptic}{Elliptic}}\{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{class_elliptic_a8753f2219a9ad3137cdb36cf0726be9d}{Elliptic}}(}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_halo}{LensHalo}}\ *isohalo\ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ fratio\ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ inclination\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00032\ \ \ :\ inclination(inclination),isohalo(isohalo)\{}
+\DoxyCodeLine{00033\ \ \ \ \ a\ =\ isohalo-\/>\mbox{\hyperlink{class_lens_halo_a2616defcc052fd9ab1e568cfd8a5c9a9}{getRsize}}()*sqrt(fratio);}
+\DoxyCodeLine{00034\ \ \ \ \ b\ =\ isohalo-\/>\mbox{\hyperlink{class_lens_halo_a2616defcc052fd9ab1e568cfd8a5c9a9}{getRsize}}()/sqrt(fratio);}
+\DoxyCodeLine{00035\ \ \ \};}
+\DoxyCodeLine{00036\ \ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_elliptic_a766deb866e4726d89832f62ce6773754}{alpha}}(PosType\ x[],PosType\ \mbox{\hyperlink{class_elliptic_a766deb866e4726d89832f62ce6773754}{alpha}}[]);}
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ PosType\ a;}
+\DoxyCodeLine{00042\ \ \ PosType\ b;}
+\DoxyCodeLine{00043\ \ \ PosType\ inclination;}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{class_lens_halo}{LensHalo}}\ *isohalo;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{struct\ }DALPHAXDM\{}
+\DoxyCodeLine{00047\ \ \ \ \ DALPHAXDM(PosType\ lambda,PosType\ a2,PosType\ b2,PosType\ X[],\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ isohalo)}
+\DoxyCodeLine{00048\ \ \ \ \ :lambda(lambda),a2(a2),b2(b2),x(X),isohalo(isohalo)\{\};}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ PosType\ operator()(PosType\ m);}
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \ \ PosType\ lambda;}
+\DoxyCodeLine{00053\ \ \ \ \ PosType\ a2;}
+\DoxyCodeLine{00054\ \ \ \ \ PosType\ b2;}
+\DoxyCodeLine{00055\ \ \ \ \ PosType\ *x;}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ isohalo;}
+\DoxyCodeLine{00057\ \ \ \};}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{struct\ }DALPHAYDM\{}
+\DoxyCodeLine{00059\ \ \ \ \ DALPHAYDM(PosType\ lambda,PosType\ a2,PosType\ b2,PosType\ X[],\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ isohalo)}
+\DoxyCodeLine{00060\ \ \ \ \ :lambda(lambda),a2(a2),b2(b2),x(X),isohalo(isohalo)\{\};}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ PosType\ operator()(PosType\ m);}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ PosType\ lambda;}
+\DoxyCodeLine{00065\ \ \ \ \ PosType\ a2;}
+\DoxyCodeLine{00066\ \ \ \ \ PosType\ b2;}
+\DoxyCodeLine{00067\ \ \ \ \ PosType\ *x;}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ isohalo;}
+\DoxyCodeLine{00069\ \ \ \};}
+\DoxyCodeLine{00070\ \ \ }
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ defined(\_\_GLAMER\_\_elliptic\_\_)\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

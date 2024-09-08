@@ -1,0 +1,95 @@
+\doxysection{particle\+\_\+types.\+h}
+\hypertarget{particle__types_8h_source}{}\label{particle__types_8h_source}\index{SLsimLib/include/particle\_types.h@{SLsimLib/include/particle\_types.h}}
+\mbox{\hyperlink{particle__types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ particle\_types.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Ben\ Metcalf\ on\ 12/11/2018.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ particle\_types\_h}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ particle\_types\_h}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{SimFileFormat}}\ \{}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2caa50b244147b57e6d439e93b3bfa985da}{glmb}}\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2cab85ea408a46d98b501b88729e6af391a}{csv3}}\ \ \ \ }
+\DoxyCodeLine{00038\ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2cacc48f8d85a87a6fce4050fe4a4c510ad}{csv4}}\ \ \ \ }
+\DoxyCodeLine{00039\ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2cae8060e8a1a3bae65036db2214a01f4b6}{csv5}}\ \ \ \ }
+\DoxyCodeLine{00040\ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2ca0595921742a1a599dc1d29eb5a93f5be}{csv6}}\ \ \ \ }
+\DoxyCodeLine{00041\ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2ca1c37812c982d5253bae8bf77f3e5562b}{gadget2}}\ }
+\DoxyCodeLine{00042\ \ \ ,\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2ca5b7f33be48f19c25e1af2f96cffc569f}{ascii}}\ \ \ }
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Atomic\ data\ class\ for\ simulation\ particles\ with\ individual\ sizes\ and\ masses}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{float}>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{struct\ }ParticleType\{}
+\DoxyCodeLine{00048\ \ \ T\ \&operator[](\textcolor{keywordtype}{int}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{00049\ \ \ T\ *operator*()\{\textcolor{keywordflow}{return}\ x;\}}
+\DoxyCodeLine{00050\ \ \ T\ x[3];}
+\DoxyCodeLine{00051\ \ \ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{float}\ Mass;}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{float}\ Size;}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{int}\ type;}
+\DoxyCodeLine{00055\ \ \ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{float}\ size()\{\textcolor{keywordflow}{return}\ Size;\}}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{float}\ mass()\{\textcolor{keywordflow}{return}\ Mass;\}}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{//\ Atomic\ data\ class\ for\ simulation\ particles\ with\ individual\ sizes,\ masses\ and\ velocities}}
+\DoxyCodeLine{00061\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{float}>}
+\DoxyCodeLine{00062\ \textcolor{keyword}{struct\ }ParticleTypeV\{}
+\DoxyCodeLine{00063\ \ \ T\ \&operator[](\textcolor{keywordtype}{int}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{00064\ \ \ T\ *operator*()\{\textcolor{keywordflow}{return}\ x;\}}
+\DoxyCodeLine{00065\ \ \ T\ x[3];}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ T\ v[3];}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{float}\ Mass;}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{float}\ Size;}
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{int}\ type;}
+\DoxyCodeLine{00072\ \ \ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{float}\ size()\{\textcolor{keywordflow}{return}\ Size;\}}
+\DoxyCodeLine{00074\ \ \ \textcolor{keywordtype}{float}\ mass()\{\textcolor{keywordflow}{return}\ Mass;\}}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_particle_type_simple}{ParticleTypeSimple}}\{}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{float}\ \&operator[](\textcolor{keywordtype}{int}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{float}\ *operator*()\{\textcolor{keywordflow}{return}\ x;\}}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{float}\ x[3];}
+\DoxyCodeLine{00082\ \ \ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ Mass;}
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ Size;}
+\DoxyCodeLine{00085\ \ \ }
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{float}\ size()\{\textcolor{keywordflow}{return}\ ParticleTypeSimple::Size;\}}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{float}\ mass()\{\textcolor{keywordflow}{return}\ ParticleTypeSimple::Mass;\}}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_particle_type2_d}{ParticleType2D}}\{}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{float}\ \&operator[](\textcolor{keywordtype}{int}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{float}\ *operator*()\{\textcolor{keywordflow}{return}\ x;\}}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{float}\ x[2];}
+\DoxyCodeLine{00095\ \ \ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{float}\ Mass;}
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{float}\ Size;}
+\DoxyCodeLine{00098\ \ \ }
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{float}\ size()\{\textcolor{keywordflow}{return}\ Size;\}}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{float}\ mass()\{\textcolor{keywordflow}{return}\ Mass;\}}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_star_type}{StarType}}\{}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{double}\ \&operator[](\textcolor{keywordtype}{int}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{00106\ \ \ Point\_3d<>\ operator*()\{\textcolor{keywordflow}{return}\ x;\}}
+\DoxyCodeLine{00107\ \ \ Point\_3d<>\ x;}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{float}\ Mass;}
+\DoxyCodeLine{00109\ \ \ }
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{float}\ mass()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Mass;\}}
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ size()\ \{\textcolor{keywordflow}{return}\ 0;\}}
+\DoxyCodeLine{00112\ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ particle\_types\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

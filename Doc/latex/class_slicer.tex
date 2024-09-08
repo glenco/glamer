@@ -1,42 +1,41 @@
-\hypertarget{class_slicer}{}\doxysection{Slicer$<$ V, L, R $>$ Class Template Reference}
-\label{class_slicer}\index{Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}}
+\doxysection{Slicer\texorpdfstring{$<$}{<} V, L, R \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_slicer}{}\label{class_slicer}\index{Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}}
 
 
 {\ttfamily \#include $<$slicer.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_slicer_a6dab6a098f74e9f7fe179f1c21f4a696}{Slicer}} (int Dim, const V \&scale, int kmax=10)
 \item 
 void \mbox{\hyperlink{class_slicer_a38e38b746545263ef48867dda21b0486}{run}} (L \&lnprob, std\+::vector$<$ V $>$ \&chain, V xo, R \&ran, int step\+\_\+type, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em run the MC chain \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_slicer_af38d698d9ecbf2f30f02ef256f191bb2}\label{class_slicer_af38d698d9ecbf2f30f02ef256f191bb2}} 
-size\+\_\+t \mbox{\hyperlink{class_slicer_af38d698d9ecbf2f30f02ef256f191bb2}{number\+\_\+evaluations}} ()
+\Hypertarget{class_slicer_af38d698d9ecbf2f30f02ef256f191bb2}\label{class_slicer_af38d698d9ecbf2f30f02ef256f191bb2} 
+size\+\_\+t {\bfseries number\+\_\+evaluations} ()
 \begin{DoxyCompactList}\small\item\em returns the number of evaluations of the posterior during the last run \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename V, typename L, typename R$>$\newline
 class Slicer$<$ V, L, R $>$}
-
 This is a slice sampler that can be used to do a markov chain without repeated entries in the chain.
 
 types; V is usuatly a std\+::vector$<$float$>$ or std\+::vector$<$double$>$ L is the functor type used for the likelihood function, this functure should have a opertor()(V p) that will return the log of the likeliwood 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_slicer_a6dab6a098f74e9f7fe179f1c21f4a696}\label{class_slicer_a6dab6a098f74e9f7fe179f1c21f4a696}} 
-\index{Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}!Slicer@{Slicer}}
+\Hypertarget{class_slicer_a6dab6a098f74e9f7fe179f1c21f4a696}\index{Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}!Slicer@{Slicer}}
 \index{Slicer@{Slicer}!Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}}
 \doxysubsubsection{\texorpdfstring{Slicer()}{Slicer()}}
-{\footnotesize\ttfamily template$<$typename V , typename L , typename R $>$ \\
-\mbox{\hyperlink{class_slicer}{Slicer}}$<$ V, L, R $>$\+::\mbox{\hyperlink{class_slicer}{Slicer}} (\begin{DoxyParamCaption}\item[{int}]{Dim,  }\item[{const V \&}]{scale,  }\item[{int}]{kmax = {\ttfamily 10} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_slicer_a6dab6a098f74e9f7fe179f1c21f4a696} 
+template$<$typename V , typename L , typename R $>$ \\
+\mbox{\hyperlink{class_slicer}{Slicer}}$<$ V, L, R $>$\mbox{\hyperlink{class_slicer}{\+::\+Slicer}} (\begin{DoxyParamCaption}\item[{int}]{Dim}{, }\item[{const V \&}]{scale}{, }\item[{int}]{kmax}{ = {\ttfamily 10}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em Dim} & number of parameters \\
+{\em Dim} & number of parameters  \\
 \hline
-{\em scale} & initial stepsize in parameter space \\
+{\em scale} & initial stepsize in parameter space  \\
 \hline
 {\em kmax} & maximuma number of attempts made in each step \\
 \hline
@@ -44,12 +43,12 @@ types; V is usuatly a std\+::vector$<$float$>$ or std\+::vector$<$double$>$ L is
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_slicer_a38e38b746545263ef48867dda21b0486}\label{class_slicer_a38e38b746545263ef48867dda21b0486}} 
-\index{Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}!run@{run}}
+\Hypertarget{class_slicer_a38e38b746545263ef48867dda21b0486}\index{Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}!run@{run}}
 \index{run@{run}!Slicer$<$ V, L, R $>$@{Slicer$<$ V, L, R $>$}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
-{\footnotesize\ttfamily template$<$typename V , typename L , typename R $>$ \\
-void \mbox{\hyperlink{class_slicer}{Slicer}}$<$ V, L, R $>$\+::run (\begin{DoxyParamCaption}\item[{L \&}]{lnprob,  }\item[{std\+::vector$<$ V $>$ \&}]{chain,  }\item[{V}]{xo,  }\item[{R \&}]{ran,  }\item[{int}]{step\+\_\+type,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_slicer_a38e38b746545263ef48867dda21b0486} 
+template$<$typename V , typename L , typename R $>$ \\
+void \mbox{\hyperlink{class_slicer}{Slicer}}$<$ V, L, R $>$\+::run (\begin{DoxyParamCaption}\item[{L \&}]{lnprob}{, }\item[{std\+::vector$<$ V $>$ \&}]{chain}{, }\item[{V}]{xo}{, }\item[{R \&}]{ran}{, }\item[{int}]{step\+\_\+type}{, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -57,13 +56,13 @@ run the MC chain
 
 
 \begin{DoxyParams}{Parameters}
-{\em lnprob} & log likelihood function or funtor \\
+{\em lnprob} & log likelihood function or funtor  \\
 \hline
-{\em chain} & will contain the MC chain on return. should be initialized to the desired length \\
+{\em chain} & will contain the MC chain on return. should be initialized to the desired length  \\
 \hline
-{\em xo} & initial point in parameter space \\
+{\em xo} & initial point in parameter space  \\
 \hline
-{\em ran} & rendom number generator \\
+{\em ran} & rendom number generator  \\
 \hline
 {\em step\+\_\+type} & 0 step\+\_\+out, !=0 step\+\_\+double \\
 \hline
@@ -72,4 +71,4 @@ run the MC chain
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/slicer.\+h\end{DoxyCompactItemize}
+SLsim\+Lib/include/slicer.\+h\end{DoxyCompactItemize}

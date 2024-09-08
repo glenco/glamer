@@ -1,0 +1,49 @@
+\doxysection{nestedsampler.\+h}
+\hypertarget{nestedsampler_8h_source}{}\label{nestedsampler_8h_source}\index{SLsimLib/include/nestedsampler.h@{SLsimLib/include/nestedsampler.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *\ nestedsampler.h}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ Created\ on:\ Mar\ 7,\ 2012}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ bmetcalf}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ NSEMAPLER\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ NSEMAPLER\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }Sample\{}
+\DoxyCodeLine{00012\ \ \textcolor{keywordtype}{double}\ *params;}
+\DoxyCodeLine{00013\ \ \textcolor{keywordtype}{double}\ lnL;\ \ \textcolor{comment}{//\ log\ likelihood}}
+\DoxyCodeLine{00014\ \ \textcolor{keywordtype}{double}\ lnW;\ \ \textcolor{comment}{//\ log\ of\ weights\ some\ of\ which\ is\ the\ evidence}}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }NestedSampler\{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ NestedSampler(\textcolor{keywordtype}{double}\ (*lnlikelihood)(\textcolor{keywordtype}{double}\ *),\textcolor{keywordtype}{double}\ (*lnprior)(\textcolor{keywordtype}{double}\ *),\textcolor{keywordtype}{void}\ (*stepper)(\textcolor{keywordtype}{double}\ *),\textcolor{keywordtype}{int}\ Nparams);}
+\DoxyCodeLine{00020\ \ \string~NestedSampler();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \textcolor{keywordtype}{void}\ explore(\textcolor{keywordtype}{int}\ Nsamples);}
+\DoxyCodeLine{00023\ \ \textcolor{keywordtype}{void}\ PrintResults();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \textcolor{comment}{//\ output}}
+\DoxyCodeLine{00026\ \ \textcolor{keywordtype}{double}\ getEvidence();}
+\DoxyCodeLine{00027\ \ \textcolor{keywordtype}{double}\ getInformation();}
+\DoxyCodeLine{00028\ \ \textcolor{keywordtype}{double}\ getSample(std::vector<Sample>\ sample);}
+\DoxyCodeLine{00029\ \ \textcolor{keywordtype}{double}\ getBestFit(\textcolor{keywordtype}{double}\ *param);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \textcolor{keywordtype}{double}\ Z;}
+\DoxyCodeLine{00034\ \ \textcolor{keywordtype}{double}\ H;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \textcolor{keywordtype}{int}\ Nparameters;\ \ \textcolor{comment}{//\ Number\ of\ parameters,\ dimension\ of\ parameter\ space}}
+\DoxyCodeLine{00037\ \ double\ (*lnlikelihood)(\textcolor{keywordtype}{double}\ *params);\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00038\ \ double\ (*lnprior)(\textcolor{keywordtype}{double}\ *params);}
+\DoxyCodeLine{00039\ \ void\ (*stepper)(\textcolor{keywordtype}{double}\ *params);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

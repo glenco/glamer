@@ -1,0 +1,77 @@
+\doxysection{isop.\+h}
+\hypertarget{isop_8h_source}{}\label{isop_8h_source}\index{SLsimLib/include/isop.h@{SLsimLib/include/isop.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}source.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_i_s_o_p}{ISOP}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \textcolor{keyword}{namespace\ }detail}
+\DoxyCodeLine{00009\ \ \{}
+\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ N>\ \textcolor{keywordtype}{double}\ shape\_fun(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta);}
+\DoxyCodeLine{00012\ \ \ }
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<0>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ -\/0.25*(1-\/xi)*(1-\/eta)*(1+xi+eta);\ \}}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<1>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ 0.5*(1-\/xi)*(1+xi)*(1-\/eta);\ \}}
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<2>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ -\/0.25*(1+xi)*(1-\/eta)*(1-\/xi+eta);\ \}}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<3>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ 0.5*(1+xi)*(1+eta)*(1-\/eta);\ \}}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<4>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ -\/0.25*(1+xi)*(1+eta)*(1-\/xi-\/eta);\ \}}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<5>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ 0.5*(1-\/xi)*(1+xi)*(1+eta);\ \}}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<6>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ -\/0.25*(1-\/xi)*(1+eta)*(1+xi-\/eta);\ \}}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{template}<>\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ shape\_fun<7>(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)\ \{\ \textcolor{keywordflow}{return}\ 0.5*(1-\/xi)*(1+eta)*(1-\/eta);\ \}}
+\DoxyCodeLine{00021\ \ \ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ N\ =\ 8>}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ isop(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nodes[],\ \textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)}
+\DoxyCodeLine{00025\ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \textcolor{keywordflow}{return}\ isop<N-\/1>(nodes,\ xi,\ eta)\ +\ nodes[N-\/1]*shape\_fun<N-\/1>(xi,\ eta);}
+\DoxyCodeLine{00027\ \ \ \}}
+\DoxyCodeLine{00028\ \ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ isop<0>(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}[],\ \textcolor{keywordtype}{double},\ \textcolor{keywordtype}{double})}
+\DoxyCodeLine{00031\ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00033\ \ \ \}}
+\DoxyCodeLine{00034\ \ \}}
+\DoxyCodeLine{00035\ \ }
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_i_s_o_p_acffb220f9cfded153355ddc77dcee566}{isop}}(}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nodes[]\ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ ,\ \textcolor{keywordtype}{double}\ xi\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ ,\ \textcolor{keywordtype}{double}\ eta\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00042\ \ \{}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{return}\ detail::isop(nodes,\ xi,\ eta);}
+\DoxyCodeLine{00044\ \ \}}
+\DoxyCodeLine{00045\ \ }
+\DoxyCodeLine{00047\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Function>}
+\DoxyCodeLine{00048\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_i_s_o_p_1_1isop__map}{isop\_map}}}
+\DoxyCodeLine{00049\ \ \{}
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{struct_i_s_o_p_1_1isop__map}{isop\_map}}(Function\ f,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ y)\ :\ f(f),\ x(x),\ y(y)\ \{\}}
+\DoxyCodeLine{00051\ \ \ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ xi,\ \textcolor{keywordtype}{double}\ eta)}
+\DoxyCodeLine{00053\ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \textcolor{keywordflow}{return}\ f(\mbox{\hyperlink{namespace_i_s_o_p_acffb220f9cfded153355ddc77dcee566}{isop}}(x,\ xi,\ eta),\ \mbox{\hyperlink{namespace_i_s_o_p_acffb220f9cfded153355ddc77dcee566}{isop}}(y,\ xi,\ eta));}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00057\ \ \ Function\ f;}
+\DoxyCodeLine{00058\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ x;}
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ y;}
+\DoxyCodeLine{00060\ \ \};}
+\DoxyCodeLine{00061\ \ }
+\DoxyCodeLine{00063\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Function>}
+\DoxyCodeLine{00064\ \ \mbox{\hyperlink{struct_i_s_o_p_1_1isop__map}{isop\_map<Function>}}\ \mbox{\hyperlink{namespace_i_s_o_p_a943d87138828b0edb14a69ab3780967e}{make\_isop\_map}}(Function\ f,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}*\ y)}
+\DoxyCodeLine{00065\ \ \{}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_i_s_o_p_1_1isop__map}{isop\_map<Function>}}(f,\ x,\ y);}
+\DoxyCodeLine{00067\ \ \}}
+\DoxyCodeLine{00068\ \ }
+\DoxyCodeLine{00100\ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_i_s_o_p_a2d64b80f007fc143d7ab35eed009aaf5}{isop\_render}}(}
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{class_source}{Source}}\&\ source\ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ ,\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nodx[]\ }
+\DoxyCodeLine{00103\ \ \ ,\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nody[]\ }
+\DoxyCodeLine{00104\ \ \ ,\textcolor{keywordtype}{double}\ a\_xi\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ ,\textcolor{keywordtype}{double}\ b\_xi\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ ,\textcolor{keywordtype}{double}\ a\_eta\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ ,\textcolor{keywordtype}{double}\ b\_eta\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ );}
+\DoxyCodeLine{00109\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,267 @@
+\doxysection{powell.\+h}
+\hypertarget{powell_8h_source}{}\label{powell_8h_source}\index{SLsimLib/include/powell.h@{SLsimLib/include/powell.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <nrutil.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ TINY\ 1.0e-\/25}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ ITMAX\ 5000}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ ITMAX1\ 500}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SHFT(a,b,c,d)\ (a)=(b);(b)=(c);(c)=(d);}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ CGOLD\ 0.3819660}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ ZEPS\ 1.0e-\/10}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ GOLD\ 1.618034}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ GLIMIT\ 100.0}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ TINY1\ 1.0e-\/20}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ TOL\ 2.0e-\/6}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//shift\ in\ pointer\ that\ goes\ into\ functor\ ?}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00020\ T\ f1dim\_tp(T\ x,std::vector<T>\ \&pcom,std::vector<T>\ \&xicom,F\ \&functor)}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{int}\ j;}
+\DoxyCodeLine{00023\ \ \ T\ f;}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{int}\ ncom\ =\ pcom.size()-\/1;}
+\DoxyCodeLine{00025\ \ \ std::vector<T>\ xt(ncom+1);}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordflow}{for}\ (j=1;j<=ncom;j++)\ xt[j]\ =\ pcom[j]\ +\ x\ *\ xicom[j];}
+\DoxyCodeLine{00027\ \ \ f\ =\ functor(xt.data()\ +\ 1);}
+\DoxyCodeLine{00028\ \ \ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordflow}{return}\ f;}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00033\ T\ brent\_tp(T\ ax,\ T\ bx,\ T\ cx,\ T\ tol,T\ *xmin,std::vector<T>\ \&pcom,std::vector<T>\ \&xicom,F\ \&functor)}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{int}\ iter;}
+\DoxyCodeLine{00036\ \ \ T\ a,b,d,etemp,fu,fv,fw,fx,p,q,r,tol1,tol2,u,v,w,x,xm;}
+\DoxyCodeLine{00037\ \ \ T\ e=0.0;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ a=(ax\ <\ cx\ ?\ ax\ :\ cx);}
+\DoxyCodeLine{00040\ \ \ b=(ax\ >\ cx\ ?\ ax\ :\ cx);}
+\DoxyCodeLine{00041\ \ \ x=w=v=bx;}
+\DoxyCodeLine{00042\ \ \ fw=fv=fx=f1dim\_tp(x,pcom,xicom,functor);}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{for}\ (iter=1;iter<=ITMAX1;iter++)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ xm=0.5*(a+b);}
+\DoxyCodeLine{00045\ \ \ \ \ tol2=2.0*(tol1=tol*fabs(x)+ZEPS);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(x-\/xm)\ <=\ (tol2-\/0.5*(b-\/a)))\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ *xmin=x;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fx;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(e)\ >\ tol1)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ r=(x-\/w)*(fx-\/fv);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ q=(x-\/v)*(fx-\/fw);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ p=(x-\/v)*q-\/(x-\/w)*r;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ q=2.0*(q-\/r);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (q\ >\ 0.0)\ p\ =\ -\/p;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ q=fabs(q);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ etemp=e;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ e=d;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(p)\ >=\ fabs(0.5*q*etemp)\ ||\ p\ <=\ q*(a-\/x)\ ||\ p\ >=\ q*(b-\/x))}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ d=CGOLD*(e=(x\ >=\ xm\ ?\ a-\/x\ :\ b-\/x));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ d=p/q;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ u=x+d;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (u-\/a\ <\ tol2\ ||\ b-\/u\ <\ tol2)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ d=SIGN(tol1,xm-\/x);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ d=CGOLD*(e=(x\ >=\ xm\ ?\ a-\/x\ :\ b-\/x));}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ u=(fabs(d)\ >=\ tol1\ ?\ x+d\ :\ x+SIGN(tol1,d));}
+\DoxyCodeLine{00071\ \ \ \ \ fu=f1dim\_tp(u,pcom,xicom,functor);}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (fu\ <=\ fx)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (u\ >=\ x)\ a=x;\ \textcolor{keywordflow}{else}\ b=x;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ SHFT(v,w,x,u)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ SHFT(fv,fw,fx,fu)}
+\DoxyCodeLine{00076\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (u\ <\ x)\ a=u;\ \textcolor{keywordflow}{else}\ b=u;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fu\ <=\ fw\ ||\ w\ ==\ x)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ v=w;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ w=u;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ fv=fw;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ fw=fu;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fu\ <=\ fv\ ||\ v\ ==\ x\ ||\ v\ ==\ w)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ v=u;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ fv=fu;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Too\ many\ iterations\ in\ brent\_tpd"{}});}
+\DoxyCodeLine{00090\ \ \ *xmin=x;}
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordflow}{return}\ fx;}
+\DoxyCodeLine{00092\ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ mnbrak\_tp(T\ *ax,\ T\ *bx,\ T\ *cx,\ T\ *fa,\ T\ *fb,\ T\ *fc,std::vector<T>\ \&pcom,std::vector<T>\ \&xicom}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,F\ \&functor)}
+\DoxyCodeLine{00098\ \{}
+\DoxyCodeLine{00099\ \ \ T\ ulim,u,r,q,fu,dum;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ *fa=f1dim\_tp(*ax,pcom,xicom,functor);}
+\DoxyCodeLine{00102\ \ \ *fb=f1dim\_tp(*bx,pcom,xicom,functor);}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordflow}{if}\ (*fb\ >\ *fa)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ SHFT(dum,*ax,*bx,dum)}
+\DoxyCodeLine{00105\ \ \ \ \ SHFT(dum,*fb,*fa,dum)}
+\DoxyCodeLine{00106\ \ \ \}}
+\DoxyCodeLine{00107\ \ \ *cx=(*bx)+GOLD*(*bx-\/*ax);}
+\DoxyCodeLine{00108\ \ \ *fc=f1dim\_tp(*cx,pcom,xicom,functor);}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordflow}{while}\ (*fb\ >\ *fc)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ r=(*bx-\/*ax)*(*fb-\/*fc);}
+\DoxyCodeLine{00111\ \ \ \ \ q=(*bx-\/*cx)*(*fb-\/*fa);}
+\DoxyCodeLine{00112\ \ \ \ \ u=(*bx)-\/((*bx-\/*cx)*q-\/(*bx-\/*ax)*r)/}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ (2.0*SIGN(DMAX(fabs(q-\/r),TINY1),q-\/r));}
+\DoxyCodeLine{00114\ \ \ \ \ ulim=(*bx)+GLIMIT*(*cx-\/*bx);}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{if}\ ((*bx-\/u)*(u-\/*cx)\ >\ 0.0)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ fu=f1dim\_tp(u,pcom,xicom,functor);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fu\ <\ *fc)\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ *ax=(*bx);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ *bx=u;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ *fa=(*fb);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ *fb=fu;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (fu\ >\ *fb)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ *cx=u;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ *fc=fu;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ u=(*cx)+GOLD*(*cx-\/*bx);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ fu=f1dim\_tp(u,pcom,xicom,functor);}
+\DoxyCodeLine{00130\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((*cx-\/u)*(u-\/ulim)\ >\ 0.0)\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ fu=f1dim\_tp(u,pcom,xicom,functor);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fu\ <\ *fc)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ SHFT(*bx,*cx,u,*cx+GOLD*(*cx-\/*bx))}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ SHFT(*fb,*fc,fu,f1dim\_tp(u,pcom,xicom,functor))}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((u-\/ulim)*(ulim-\/*cx)\ >=\ 0.0)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ u=ulim;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ fu=f1dim\_tp(u,pcom,xicom,functor);}
+\DoxyCodeLine{00139\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ u=(*cx)+GOLD*(*cx-\/*bx);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ fu=f1dim\_tp(u,pcom,xicom,functor);}
+\DoxyCodeLine{00142\ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ SHFT(*ax,*bx,*cx,u)}
+\DoxyCodeLine{00144\ \ \ \ \ SHFT(*fa,*fb,*fc,fu)}
+\DoxyCodeLine{00145\ \ \ \}}
+\DoxyCodeLine{00146\ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}\ linmind\_tp(T\ p[],\ T\ xi[],\ \textcolor{keywordtype}{int}\ n,\ T\ *fret,\ F\ \&functor)}
+\DoxyCodeLine{00150\ \{}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keywordtype}{int}\ j;}
+\DoxyCodeLine{00153\ \ \ T\ xx,xmin,fx,fb,fa,bx,ax;}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ std::vector<T>\ pcom(n+1);}
+\DoxyCodeLine{00156\ \ \ std::vector<T>\ xicom(n+1);}
+\DoxyCodeLine{00157\ \ \ \textcolor{comment}{//nrfunc=func;}}
+\DoxyCodeLine{00158\ \ \ \textcolor{keywordflow}{for}\ (j=1;j<=n;j++)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ pcom[j]=p[j];}
+\DoxyCodeLine{00160\ \ \ \ \ xicom[j]=xi[j];}
+\DoxyCodeLine{00161\ \ \ \}}
+\DoxyCodeLine{00162\ \ \ ax=0.0;}
+\DoxyCodeLine{00163\ \ \ xx=1.0;}
+\DoxyCodeLine{00164\ \ \ mnbrak\_tp(\&ax,\&xx,\&bx,\&fa,\&fx,\&fb,pcom,xicom,functor);}
+\DoxyCodeLine{00165\ \ \ *fret=brent\_tp(ax,xx,bx,TOL,\&xmin,pcom,xicom,functor);}
+\DoxyCodeLine{00166\ \ \ \textcolor{keywordflow}{for}\ (j=1;j<=n;j++)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ xi[j]\ *=\ xmin;}
+\DoxyCodeLine{00168\ \ \ \ \ p[j]\ +=\ xi[j];}
+\DoxyCodeLine{00169\ \ \ \}}
+\DoxyCodeLine{00170\ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00179\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{00180\ \textcolor{keywordtype}{void}\ powell\_tp(}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ T\ *pp\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \textcolor{keywordtype}{int}\ n\ \ \ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ T\ ftol\ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ \textcolor{keywordtype}{int}\ *iter\ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ T\ *fret\ \ \ \ \ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,F\ \&functor\ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00188\ \{}
+\DoxyCodeLine{00189\ \ \textcolor{keywordtype}{int}\ i,ibig,j;}
+\DoxyCodeLine{00190\ \ T\ del,fp,fptt,t;}
+\DoxyCodeLine{00191\ \ \ T\ *p\ =\ pp-\/1;}
+\DoxyCodeLine{00192\ \ \ }
+\DoxyCodeLine{00193\ \ \ \textcolor{comment}{//Utilities::D2Matrix<T>\ xi(n+1,\ n+1);}}
+\DoxyCodeLine{00194\ \ \ std::vector<T>\ simplex((n+1)*(n+1));}
+\DoxyCodeLine{00195\ \ \ }
+\DoxyCodeLine{00196\ \ \ T\ **xi\ =\ \textcolor{keyword}{new}\ T*[n+1];}
+\DoxyCodeLine{00197\ \ \ xi[0]\ =\ simplex.data();}
+\DoxyCodeLine{00198\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ i\ =\ 1;\ i\ <=\ n;\ ++i)\ xi[i]\ =\ xi[0]\ +\ i\ *\ (n+1);}
+\DoxyCodeLine{00199\ \ \ }
+\DoxyCodeLine{00200\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <=\ n;\ ++i)\{}
+\DoxyCodeLine{00201\ \ \ \ \ xi[i][i]\ =\ 2*sqrt(ftol);}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ j\ =\ i+1;\ j\ <=\ n;\ ++j)\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ xi[i][j]\ =\ xi[j][i]\ =\ 0;}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ std::vector<T>\ pt(n+1);}
+\DoxyCodeLine{00208\ \ std::vector<T>\ ptt(n+1);}
+\DoxyCodeLine{00209\ \ std::vector<T>\ xit(n+1);}
+\DoxyCodeLine{00210\ \ *fret\ =\ functor(p+1);}
+\DoxyCodeLine{00211\ \ \textcolor{keywordflow}{for}\ (j=1;j<=n;j++)\ pt[j]=p[j];}
+\DoxyCodeLine{00212\ \ \textcolor{keywordflow}{for}\ (*iter=1;;++(*iter))\ \{}
+\DoxyCodeLine{00213\ \ \ fp=(*fret);}
+\DoxyCodeLine{00214\ \ \ ibig=0;}
+\DoxyCodeLine{00215\ \ \ del=0.0;}
+\DoxyCodeLine{00216\ \ \ \textcolor{keywordflow}{for}\ (i=1;i<=n;i++)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \textcolor{keywordflow}{for}\ (j=1;j<=n;j++)\ xit[j]=xi[j][i];}
+\DoxyCodeLine{00218\ \ \ \ fptt=(*fret);}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ linmind\_tp(p,xit.data(),n,fret,functor);}
+\DoxyCodeLine{00220\ \ \ \ \textcolor{keywordflow}{if}\ (fptt-\/(*fret)\ >\ del)\ \{}
+\DoxyCodeLine{00221\ \ \ \ \ del=fptt-\/(*fret);}
+\DoxyCodeLine{00222\ \ \ \ \ ibig=i;}
+\DoxyCodeLine{00223\ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \textcolor{keywordflow}{if}\ (2.0*(fp-\/(*fret))\ <=\ ftol*(fabs(fp)+fabs(*fret))+TINY)\ \{}
+\DoxyCodeLine{00226\ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00227\ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{if}\ (*iter\ ==\ ITMAX)\{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}powell\_tp\ exceeding\ maximum\ iterations."{}});}
+\DoxyCodeLine{00230\ \ \ \ \ \};}
+\DoxyCodeLine{00231\ \ \ \textcolor{keywordflow}{for}\ (j=1;j<=n;j++)\ \{}
+\DoxyCodeLine{00232\ \ \ \ ptt[j]=2.0*p[j]-\/pt[j];}
+\DoxyCodeLine{00233\ \ \ \ xit[j]=p[j]-\/pt[j];}
+\DoxyCodeLine{00234\ \ \ \ pt[j]=p[j];}
+\DoxyCodeLine{00235\ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ fptt=functor(ptt.data()+1);}
+\DoxyCodeLine{00237\ \ \ \textcolor{keywordflow}{if}\ (fptt\ <\ fp)\ \{}
+\DoxyCodeLine{00238\ \ \ \ t=2.0*(fp-\/2.0*(*fret)+fptt)*sqrt(fp-\/(*fret)-\/del)-\/del*sqrt(fp-\/fptt);}
+\DoxyCodeLine{00239\ \ \ \ \textcolor{keywordflow}{if}\ (t\ <\ 0.0)\ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ linmind\_tp(p,xit.data(),n,fret,functor);}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{for}\ (j=1;j<=n;j++)\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ xi[j][ibig]=xi[j][n];}
+\DoxyCodeLine{00243\ \ \ \ \ \ xi[j][n]=xit[j];}
+\DoxyCodeLine{00244\ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \}}
+\DoxyCodeLine{00247\ \ \}}
+\DoxyCodeLine{00248\ \ \ \textcolor{keyword}{delete}\ []\ xi;}
+\DoxyCodeLine{00249\ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \textcolor{comment}{/*\ note\ \#undef's\ at\ end\ of\ file\ */}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \textcolor{comment}{/*\ note\ \#undef's\ at\ end\ of\ file\ */}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#undef\ ITMAX}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#undef\ ITMAX1}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#undef\ NRANSI}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#undef\ TOL}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#undef\ GOLD}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#undef\ GLIMIT}}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#undef\ TINY}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#undef\ TINY1}}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#undef\ SHFT}}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#undef\ CGOLD}}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#undef\ ZEPS}}
+\DoxyCodeLine{00268\ }
+
+\end{DoxyCode}

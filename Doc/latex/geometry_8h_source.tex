@@ -1,0 +1,510 @@
+\doxysection{geometry.\+h}
+\hypertarget{geometry_8h_source}{}\label{geometry_8h_source}\index{SLsimLib/include/geometry.h@{SLsimLib/include/geometry.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ geometry.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ bmetcalf\ on\ 7/24/14.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_GLAMER\_\_geometry\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_GLAMER\_\_geometry\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ geometry.h}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ \ Created\ by\ bmetcalf\ on\ 7/23/14.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utilities}{Utilities}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }Geometry\{}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\{}
+\DoxyCodeLine{00031\ \ \ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}(T\ r,T\ theta,T\ phi):}
+\DoxyCodeLine{00034\ \ \ r(r),theta(theta),phi(phi)\{\};}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}():r(0),theta(0),phi(0)\{\};}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}(\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&x)\{}
+\DoxyCodeLine{00037\ \ \ \ \ TOspherical(x);}
+\DoxyCodeLine{00038\ \ \ \}}
+\DoxyCodeLine{00039\ \ \ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&p)\{}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}(\&p\ !=\ \textcolor{keyword}{this})\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ r\ =\ p.r;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ theta\ =\ p.theta;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ phi\ =\ p.phi;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00047\ \ \ \}}
+\DoxyCodeLine{00048\ \ \ }
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&\ operator=(\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&x)\{}
+\DoxyCodeLine{00050\ \ \ \ \ TOspherical(x);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ \ \ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{if}(\&p\ ==\ \textcolor{keyword}{this})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{return}\ (r==p.r)*(theta==p.theta)*(phi==p.phi);}
+\DoxyCodeLine{00057\ \ \ \}}
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00060\ \ \ T\ r;}
+\DoxyCodeLine{00061\ \ \ T\ theta;}
+\DoxyCodeLine{00062\ \ \ T\ phi;}
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ad0cd07ad99b02ebd9ab7865628864a52}{TOcartisian}}(T\ x[])\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a4fbcdd100e7280b60becb8ed36957b70}{TOcartisian}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ \ \ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3361c5e47b847c923eed38d858e6b22a}{cartisianTOspherical}}(T\ \textcolor{keyword}{const}\ x[]);}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ TOspherical(\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&x);}
+\DoxyCodeLine{00070\ \ \ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac1d6bdae89c2c573839d7d2b2f9a5d60}{StereographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ x[])\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ab54e0e23916914cfa56ce00165fd10b6}{StereographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a8d33245353c378233431c4507fdc3934}{StereographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a43cc24662ece4dc00213569c3bc03f7f}{OrthographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ x[])\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae2991aa2033a3eaff5fe5e759d506311}{OrthographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac6bd383d580f56249a1552042a39c432}{InverseOrthographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central,T\ \textcolor{keyword}{const}\ x[]);}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae63bac769d9c3c04201e541801fecc97}{InverseOrthographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x);}
+\DoxyCodeLine{00081\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a9cfa956c3c905f3db0f8c18b00dee579}{InverseOrthographicProjection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x);}
+\DoxyCodeLine{00082\ \ \ }
+\DoxyCodeLine{00083\ \ \ }
+\DoxyCodeLine{00085\ \ \ T\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3a5f110c5d4c4bb08e92178b05cbdae3}{angular\_separation}}(\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&p)\{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{double}\ s1\ =\ sin((theta\ -\/\ p.theta)/2);}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ s2\ =\ sin((phi\ -\/\ p.phi)/2);}
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{return}\ 2*asin(sqrt(\ s1*s1\ +\ cos(theta)*cos(p.theta)*s2*s2\ )\ );}
+\DoxyCodeLine{00090\ \ \ \}}
+\DoxyCodeLine{00091\ \ \ }
+\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a127f49c107a23ce38e471be581c7ecd8}{unitPhi}}();}
+\DoxyCodeLine{00095\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_abcbea75ecdcb3c5f0cda226b280f2ed4}{unitTheta}}();}
+\DoxyCodeLine{00096\ \ \ }
+\DoxyCodeLine{00098\ \ \ T\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae132408f75bf98a34c1d7c514a77882a}{OrthographicAngleTheta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central);}
+\DoxyCodeLine{00100\ \ \ T\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3772a09dcdb4dc94c04f13f8dbbde21e}{OrthographicAnglePhi}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint}}\ \&central);}
+\DoxyCodeLine{00101\ \ \ }
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//\ returns\ the\ unit\ theta\ vector}}
+\DoxyCodeLine{00103\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ theta\_hat()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ p;}
+\DoxyCodeLine{00105\ \ \ \ \ p[0]\ =\ -\/sin(theta)*cos(phi);}
+\DoxyCodeLine{00106\ \ \ \ \ p[1]\ =\ -\/sin(theta)*sin(phi);}
+\DoxyCodeLine{00107\ \ \ \ \ p[2]\ =\ cos(theta);}
+\DoxyCodeLine{00108\ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00110\ \ \ \}}
+\DoxyCodeLine{00111\ \ \ }
+\DoxyCodeLine{00112\ \ \ \textcolor{comment}{//\ returns\ the\ unit\ phi\ vector}}
+\DoxyCodeLine{00113\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ phi\_hat()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ p;}
+\DoxyCodeLine{00115\ \ \ \ \ p[0]\ =\ -\/sin(phi);}
+\DoxyCodeLine{00116\ \ \ \ \ p[1]\ =\ \ cos(phi);}
+\DoxyCodeLine{00117\ \ \ \ \ p[2]\ =\ 0;}
+\DoxyCodeLine{00118\ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00120\ \ \ \}}
+\DoxyCodeLine{00121\ \ \ }
+\DoxyCodeLine{00122\ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00174\ \textcolor{keyword}{class\ }Quaternion\{}
+\DoxyCodeLine{00175\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00176\ \ \ Quaternion()\{}
+\DoxyCodeLine{00177\ \ \ \ \ v[0]\ =\ v[1]\ =\ v[2]\ =\ v[3]\ =\ 0;}
+\DoxyCodeLine{00178\ \ \ \}}
+\DoxyCodeLine{00179\ \ \ Quaternion(T\ s,T\ x,T\ y,T\ z)\{}
+\DoxyCodeLine{00180\ \ \ \ \ v[0]\ =\ s;}
+\DoxyCodeLine{00181\ \ \ \ \ v[1]\ =\ x;}
+\DoxyCodeLine{00182\ \ \ \ \ v[2]\ =\ y;}
+\DoxyCodeLine{00183\ \ \ \ \ v[3]\ =\ z;}
+\DoxyCodeLine{00184\ \ \ \}}
+\DoxyCodeLine{00185\ \ \ Quaternion(\textcolor{keyword}{const}\ Quaternion\ \&q)\{}
+\DoxyCodeLine{00186\ \ \ \ \ v[0]\ =\ q.v[0];}
+\DoxyCodeLine{00187\ \ \ \ \ v[1]\ =\ q.v[1];}
+\DoxyCodeLine{00188\ \ \ \ \ v[2]\ =\ q.v[2];}
+\DoxyCodeLine{00189\ \ \ \ \ v[3]\ =\ q.v[3];}
+\DoxyCodeLine{00190\ \ \ \}}
+\DoxyCodeLine{00191\ \ \ Quaternion(\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ p)\{}
+\DoxyCodeLine{00192\ \ \ \ \ v[0]\ =\ 0;}
+\DoxyCodeLine{00193\ \ \ \ \ v[1]\ =\ p[0];}
+\DoxyCodeLine{00194\ \ \ \ \ v[2]\ =\ p[1];}
+\DoxyCodeLine{00195\ \ \ \ \ v[3]\ =\ p[2];}
+\DoxyCodeLine{00196\ \ \ \}}
+\DoxyCodeLine{00197\ \ \ Quaternion(SphericalPoint<T>\ sp)\{}
+\DoxyCodeLine{00198\ \ \ \ \ sp.TOcartisian(v+1);}
+\DoxyCodeLine{00199\ \ \ \ \ v[0]\ =\ 0;}
+\DoxyCodeLine{00200\ \ \ \}}
+\DoxyCodeLine{00201\ \ \ }
+\DoxyCodeLine{00202\ \ \ Quaternion\ \&operator=(\textcolor{keyword}{const}\ Quaternion\ \&q)\{}
+\DoxyCodeLine{00203\ \ \ \ \ v[0]\ =\ q.v[0];}
+\DoxyCodeLine{00204\ \ \ \ \ v[1]\ =\ q.v[1];}
+\DoxyCodeLine{00205\ \ \ \ \ v[2]\ =\ q.v[2];}
+\DoxyCodeLine{00206\ \ \ \ \ v[3]\ =\ q.v[3];}
+\DoxyCodeLine{00207\ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00209\ \ \ \}}
+\DoxyCodeLine{00210\ \ \ }
+\DoxyCodeLine{00211\ \ \ Quaternion\ operator*(\textcolor{keyword}{const}\ Quaternion\ \&q)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v[0]*q.v[0]\ -\/\ v[1]*q.v[1]\ -\/\ v[2]*q.v[2]\ -\/\ v[3]*q.v[3],}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v[0]*q.v[1]\ +\ v[1]*q.v[0]\ +\ v[2]*q.v[3]\ -\/\ v[3]*q.v[2],}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v[0]*q.v[2]\ -\/\ v[1]*q.v[3]\ +\ v[2]*q.v[0]\ +\ v[3]*q.v[1],}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v[0]*q.v[3]\ +\ v[1]*q.v[2]\ -\/\ v[2]*q.v[1]\ +\ v[3]*q.v[0]);}
+\DoxyCodeLine{00217\ \ \ \}}
+\DoxyCodeLine{00218\ \ \ }
+\DoxyCodeLine{00220\ \ \ Quaternion\ conj()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(v[0],-\/v[1],-\/v[2],-\/v[3]);}
+\DoxyCodeLine{00222\ \ \ \}}
+\DoxyCodeLine{00228\ \ \ Quaternion\ inverse()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>conj()/(v[0]*v[0]\ +\ v[1]*v[1]\ +\ v[2]*v[2]\ +\ v[3]*v[3]);}
+\DoxyCodeLine{00230\ \ \ \}}
+\DoxyCodeLine{00231\ \ \ }
+\DoxyCodeLine{00233\ \ \ \textcolor{keywordtype}{double}\ norm()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(v[0]*v[0]\ +\ v[1]*v[1]\ +\ v[2]*v[2]\ +\ v[3]*v[3]);}
+\DoxyCodeLine{00235\ \ \ \}}
+\DoxyCodeLine{00236\ \ \ }
+\DoxyCodeLine{00238\ \ \ Quaternion\ RotateX(T\ theta)\{}
+\DoxyCodeLine{00239\ \ \ \ \ Quaternion\ R\ =\ q\_x\_rotation(theta);}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{return}\ R*(*this)*R.conj();}
+\DoxyCodeLine{00241\ \ \ \}}
+\DoxyCodeLine{00243\ \ \ Quaternion\ RotateY(T\ theta)\{}
+\DoxyCodeLine{00244\ \ \ \ \ Quaternion\ R\ =\ q\_y\_rotation(theta);}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{return}\ R*(*this)*R.conj();}
+\DoxyCodeLine{00246\ \ \ \}}
+\DoxyCodeLine{00248\ \ \ Quaternion\ RotateZ(T\ theta)\{}
+\DoxyCodeLine{00249\ \ \ \ \ Quaternion\ R\ =\ q\_z\_rotation(theta);}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordflow}{return}\ R*(*this)*R.conj();}
+\DoxyCodeLine{00251\ \ \ \}}
+\DoxyCodeLine{00256\ \ \ Quaternion\ RotateYZ(T\ theta,T\ phi)\{}
+\DoxyCodeLine{00257\ \ \ \ \ Quaternion\ R\ =\ q\_z\_rotation(theta)*q\_z\_rotation(phi);}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{return}\ R*(*this)*R.conj();}
+\DoxyCodeLine{00259\ \ \ \}}
+\DoxyCodeLine{00260\ \ \ }
+\DoxyCodeLine{00263\ \ \ Quaternion\ Rotate(\textcolor{keyword}{const}\ Quaternion\ \&R)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordflow}{return}\ R*(*this)*R.conj();}
+\DoxyCodeLine{00265\ \ \ \}}
+\DoxyCodeLine{00266\ \ \ }
+\DoxyCodeLine{00269\ \ \ \textcolor{keywordtype}{void}\ RotInplace(\textcolor{keyword}{const}\ Quaternion\ \&R)\{}
+\DoxyCodeLine{00270\ \ \ \ \ *\textcolor{keyword}{this}\ =\ R*(*this)*R.conj();}
+\DoxyCodeLine{00271\ \ \ \}}
+\DoxyCodeLine{00272\ \ \ }
+\DoxyCodeLine{00273\ \ \ }
+\DoxyCodeLine{00275\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ Rotate(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&p}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Quaternion\ \&R)\{}
+\DoxyCodeLine{00277\ \ \ \ \ Quaternion\ q(p);}
+\DoxyCodeLine{00278\ \ \ \ \ q.RotInplace(R);}
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{return}\ q.to\_point\_3d();}
+\DoxyCodeLine{00280\ \ \ \}}
+\DoxyCodeLine{00281\ \ \ }
+\DoxyCodeLine{00283\ \ \ }
+\DoxyCodeLine{00284\ \ \ \textcolor{keyword}{static}\ SphericalPoint<T>\ Rotate(\textcolor{keyword}{const}\ SphericalPoint<T>\ \&p}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Quaternion\ \&R)\{}
+\DoxyCodeLine{00286\ \ \ \ \ Quaternion\ q(p);}
+\DoxyCodeLine{00287\ \ \ \ \ q.RotInplace(R);}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{return}\ q.to\_SpericalPoint();}
+\DoxyCodeLine{00289\ \ \ \}}
+\DoxyCodeLine{00290\ \ \ }
+\DoxyCodeLine{00291\ \ \ Quaternion\ operator+(\textcolor{keyword}{const}\ Quaternion\ \&q)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00292\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(v[0]\ +\ q.v[0]\ ,\ v[1]\ +\ q.v[1]\ ,\ v[2]\ +\ q.v[2]\ ,\ v[3]\ +\ q.v[3]\ );}
+\DoxyCodeLine{00293\ \ \ \ \ }
+\DoxyCodeLine{00294\ \ \ \}}
+\DoxyCodeLine{00295\ \ \ Quaternion\ operator-\/(\textcolor{keyword}{const}\ Quaternion\ \&q)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(v[0]\ -\/\ q.v[0]\ ,\ v[1]\ -\/\ q.v[1]\ ,\ v[2]\ -\/\ q.v[2]\ ,\ v[3]\ -\/\ q.v[3]\ );}
+\DoxyCodeLine{00297\ \ \ \}}
+\DoxyCodeLine{00298\ \ \ }
+\DoxyCodeLine{00300\ \ \ Quaternion\ operator/(\textcolor{keywordtype}{double}\ s)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(v[0]/s,v[1]/s,v[2]/s,v[3]/s);}
+\DoxyCodeLine{00302\ \ \ \}}
+\DoxyCodeLine{00304\ \ \ Quaternion\ operator*(\textcolor{keywordtype}{double}\ s)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(v[0]*s,v[1]*s,v[2]*s,v[3]*s);}
+\DoxyCodeLine{00306\ \ \ \}}
+\DoxyCodeLine{00307\ \ \ }
+\DoxyCodeLine{00309\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ cross(\textcolor{keyword}{const}\ Quaternion\ \&q)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordflow}{return}\ (*\textcolor{keyword}{this}*q).to\_point\_3d();}
+\DoxyCodeLine{00311\ \ \ \}}
+\DoxyCodeLine{00312\ \ \ }
+\DoxyCodeLine{00314\ \ \ T\ scalor(\textcolor{keyword}{const}\ Quaternion\ \&q)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordflow}{return}\ v[1]*q.v[1]\ +\ v[2]*q.v[2]\ +\ v[3]*q.v[3];}
+\DoxyCodeLine{00316\ \ \ \}}
+\DoxyCodeLine{00317\ \ \ }
+\DoxyCodeLine{00319\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ to\_point\_3d()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(v[1],v[2],v[3]);}
+\DoxyCodeLine{00321\ \ \ \}}
+\DoxyCodeLine{00322\ \ \ }
+\DoxyCodeLine{00324\ \ \ SphericalPoint<T>\ to\_SpericalPoint()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00325\ \ \ \ \ SphericalPoint<T>\ sp;}
+\DoxyCodeLine{00326\ \ \ \ \ sp.cartisianTOspherical(v+1);}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{keywordflow}{return}\ sp;}
+\DoxyCodeLine{00328\ \ \ \}}
+\DoxyCodeLine{00329\ \ \ }
+\DoxyCodeLine{00330\ \ \ }
+\DoxyCodeLine{00332\ \ \ T\ v[4];}
+\DoxyCodeLine{00334\ \ \ T\ \&\ operator[](\textcolor{keywordtype}{int}\ i)\{\textcolor{keywordflow}{return}\ v[i];\}}
+\DoxyCodeLine{00335\ \ \ }
+\DoxyCodeLine{00337\ \ \ \textcolor{keyword}{static}\ Quaternion\ q\_x\_rotation(T\ theta)\{}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(cos(theta/2),sin(theta/2),0,0);}
+\DoxyCodeLine{00339\ \ \ \}}
+\DoxyCodeLine{00341\ \ \ \textcolor{keyword}{static}\ Quaternion\ q\_y\_rotation(T\ theta)\{}
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(cos(theta/2),0,-\/sin(theta/2),0);}
+\DoxyCodeLine{00343\ \ \ \}}
+\DoxyCodeLine{00345\ \ \ \textcolor{keyword}{static}\ Quaternion\ q\_z\_rotation(T\ theta)\{}
+\DoxyCodeLine{00346\ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(cos(theta/2),0,0,sin(theta/2));}
+\DoxyCodeLine{00347\ \ \ \}}
+\DoxyCodeLine{00348\ \ \ }
+\DoxyCodeLine{00349\ \};}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00352\ \textcolor{keywordtype}{bool}\ intersect(\textcolor{keyword}{const}\ PosType\ a1[],\textcolor{keyword}{const}\ PosType\ a2[]}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ PosType\ b1[],\textcolor{keyword}{const}\ PosType\ b2[]);}
+\DoxyCodeLine{00355\ \textcolor{keywordtype}{int}\ intersect(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&curve);}
+\DoxyCodeLine{00356\ \textcolor{keywordtype}{int}\ intersections(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&curve,std::vector<Point\_2d>\ \&intersections,std::vector<std::pair<int,int>\ >\ \&segments);}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00365\ \textcolor{keywordtype}{int}\ orientation(\textcolor{keyword}{const}\ PosType\ p[],\textcolor{keyword}{const}\ PosType\ q[],\textcolor{keyword}{const}\ PosType\ r[]);}
+\DoxyCodeLine{00369\ \textcolor{keywordtype}{bool}\ onSegment(\textcolor{keyword}{const}\ PosType\ p[],\ \textcolor{keyword}{const}\ PosType\ q[],\ \textcolor{keyword}{const}\ PosType\ r[]);}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00372\ \textcolor{keywordtype}{double}\ AngleBetween2d(\textcolor{keywordtype}{double}\ v1[],\textcolor{keywordtype}{double}\ v2[]);}
+\DoxyCodeLine{00377\ \textcolor{comment}{//int\ incurve(PosType\ x[],std::vector<double\ *>\ \&curve);}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \}}
+\DoxyCodeLine{00380\ \}}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00382\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utilities}{Utilities}}\ \{}
+\DoxyCodeLine{00383\ \textcolor{keyword}{namespace\ }Geometry\{}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00386\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00387\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a4fbcdd100e7280b60becb8ed36957b70}{SphericalPoint<T>::TOcartisian}}(T\ x[])\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00388\ \ \ x[0]\ =\ r*cos(theta)*cos(phi);}
+\DoxyCodeLine{00389\ \ \ x[1]\ =\ r*cos(theta)*sin(phi);}
+\DoxyCodeLine{00390\ \ \ x[2]\ =\ r*sin(theta);}
+\DoxyCodeLine{00391\ \}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00394\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00395\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a4fbcdd100e7280b60becb8ed36957b70}{SphericalPoint<T>::TOcartisian}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00396\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(r*cos(theta)*cos(phi)}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,r*cos(theta)*sin(phi),r*sin(theta)\ );}
+\DoxyCodeLine{00398\ \}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00401\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00402\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3361c5e47b847c923eed38d858e6b22a}{SphericalPoint<T>::cartisianTOspherical}}(T\ \textcolor{keyword}{const}\ x[])\{}
+\DoxyCodeLine{00403\ \ \ r\ =\ sqrt(\ x[0]*x[0]\ +\ x[1]*x[1]\ +x[2]*x[2]);}
+\DoxyCodeLine{00404\ \ \ theta\ =\ asin(x[2]/r);}
+\DoxyCodeLine{00405\ \ \ phi\ =\ atan2(x[1],x[0]);}
+\DoxyCodeLine{00406\ \}}
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00409\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>::TOspherical}}(\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&x)\{}
+\DoxyCodeLine{00410\ \ \ r\ =\ sqrt(\ x[0]*x[0]\ +\ x[1]*x[1]\ +x[2]*x[2]);}
+\DoxyCodeLine{00411\ \ \ theta\ =\ asin(x[2]/r);}
+\DoxyCodeLine{00412\ \ \ phi\ =\ atan2(x[1],x[0]);}
+\DoxyCodeLine{00413\ \}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00421\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00422\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac1d6bdae89c2c573839d7d2b2f9a5d60}{SphericalPoint<T>::StereographicProjection}}(}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ x[]\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00425\ )\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00426\ \ \ \textcolor{keywordtype}{double}\ ct\ =\ cos(theta),st\ =\ sin(theta);}
+\DoxyCodeLine{00427\ \ \ \textcolor{keywordtype}{double}\ cosphi\ =\ cos(phi\ -\/\ central.phi);}
+\DoxyCodeLine{00428\ \ \ \textcolor{keywordtype}{double}\ so\ =\ sin(central.theta);}
+\DoxyCodeLine{00429\ \ \ \textcolor{keywordtype}{double}\ co\ =\ cos(central.theta);}
+\DoxyCodeLine{00430\ \ \ }
+\DoxyCodeLine{00431\ \ \ PosType\ k\ =\ 2/(\ 1\ +\ so*st\ +\ co*ct*cosphi\ );}
+\DoxyCodeLine{00432\ \ \ }
+\DoxyCodeLine{00433\ \ \ x[0]\ =\ k*(ct*sin(phi\ -\/\ central.phi));}
+\DoxyCodeLine{00434\ \ \ x[1]\ =\ k*(co*st\ -\/\ so*ct*cosphi);}
+\DoxyCodeLine{00435\ \}}
+\DoxyCodeLine{00436\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00437\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac1d6bdae89c2c573839d7d2b2f9a5d60}{SphericalPoint<T>::StereographicProjection}}(}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x\ \ }
+\DoxyCodeLine{00440\ )\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00441\ \ \ \textcolor{keywordtype}{double}\ ct\ =\ cos(theta),st\ =\ sin(theta);}
+\DoxyCodeLine{00442\ \ \ \textcolor{keywordtype}{double}\ cosphi\ =\ cos(phi\ -\/\ central.phi);}
+\DoxyCodeLine{00443\ \ \ \textcolor{keywordtype}{double}\ so\ =\ sin(central.theta);}
+\DoxyCodeLine{00444\ \ \ \textcolor{keywordtype}{double}\ co\ =\ cos(central.theta);}
+\DoxyCodeLine{00445\ \ \ }
+\DoxyCodeLine{00446\ \ \ PosType\ k\ =\ 2/(\ 1\ +\ so*st\ +\ co*ct*cosphi\ );}
+\DoxyCodeLine{00447\ \ \ }
+\DoxyCodeLine{00448\ \ \ x[0]\ =\ k*(ct*sin(phi\ -\/\ central.phi));}
+\DoxyCodeLine{00449\ \ \ x[1]\ =\ k*(co*st\ -\/\ so*ct*cosphi);}
+\DoxyCodeLine{00450\ \}}
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00453\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac1d6bdae89c2c573839d7d2b2f9a5d60}{SphericalPoint<T>::StereographicProjection}}(}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00455\ )\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00456\ \ \ \textcolor{keywordtype}{double}\ ct\ =\ cos(theta),st\ =\ sin(theta);}
+\DoxyCodeLine{00457\ \ \ \textcolor{keywordtype}{double}\ cosphi\ =\ cos(phi\ -\/\ central.phi);}
+\DoxyCodeLine{00458\ \ \ \textcolor{keywordtype}{double}\ so\ =\ sin(central.theta);}
+\DoxyCodeLine{00459\ \ \ \textcolor{keywordtype}{double}\ co\ =\ cos(central.theta);}
+\DoxyCodeLine{00460\ \ \ }
+\DoxyCodeLine{00461\ \ \ PosType\ k\ =\ 2/(\ 1\ +\ so*st\ +\ co*ct*cosphi\ );}
+\DoxyCodeLine{00462\ \ \ }
+\DoxyCodeLine{00463\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(k*(ct*sin(phi\ -\/\ central.phi)),k*(co*st\ -\/\ so*ct*cosphi));}
+\DoxyCodeLine{00464\ \}}
+\DoxyCodeLine{00465\ }
+\DoxyCodeLine{00466\ }
+\DoxyCodeLine{00473\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00474\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a43cc24662ece4dc00213569c3bc03f7f}{SphericalPoint<T>::OrthographicProjection}}(}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ x[]\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00477\ )\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00478\ \ \ \textcolor{keywordtype}{double}\ ct\ =\ cos(theta),st\ =\ sin(theta);}
+\DoxyCodeLine{00479\ \ \ \textcolor{keywordtype}{double}\ cosphi\ =\ cos(phi\ -\/\ central.phi);}
+\DoxyCodeLine{00480\ \ \ \textcolor{keywordtype}{double}\ so\ =\ sin(central.theta);}
+\DoxyCodeLine{00481\ \ \ \textcolor{keywordtype}{double}\ co\ =\ cos(central.theta);}
+\DoxyCodeLine{00482\ \ \ }
+\DoxyCodeLine{00483\ \ \ x[0]\ =\ ct*sin(phi\ -\/\ central.phi);}
+\DoxyCodeLine{00484\ \ \ x[1]\ =\ co*st\ -\/\ so*ct*cosphi;}
+\DoxyCodeLine{00485\ \ \ }
+\DoxyCodeLine{00486\ \ \ \textcolor{keywordflow}{if}(st*so\ +\ ct*co*cosphi\ <\ 0\ )\{\ \ \textcolor{comment}{//\ point\ is\ on\ the\ other\ hemosphere}}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ sqrt(\ x[0]*x[0]\ +\ x[1]*x[0]\ );}
+\DoxyCodeLine{00488\ \ \ \ \ x[0]\ /=s;}
+\DoxyCodeLine{00489\ \ \ \ \ x[1]\ /=s;}
+\DoxyCodeLine{00490\ \ \ \}}
+\DoxyCodeLine{00491\ \}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00493\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00494\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a43cc24662ece4dc00213569c3bc03f7f}{SphericalPoint<T>::OrthographicProjection}}(}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00496\ )\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00497\ \ \ \textcolor{keywordtype}{double}\ c\ =\ cos(theta);}
+\DoxyCodeLine{00498\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(\ c*sin(phi\ -\/\ central.phi),}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cos(central.theta)*sin(theta)\ -\/\ sin(central.theta)*c*cos(phi\ -\/\ central.phi)\ );}
+\DoxyCodeLine{00500\ \}}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00504\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00505\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac6bd383d580f56249a1552042a39c432}{SphericalPoint<T>::InverseOrthographicProjection}}(}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,T\ \textcolor{keyword}{const}\ x[]\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00508\ )\{}
+\DoxyCodeLine{00509\ \ \ PosType\ rho\ =\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]);}
+\DoxyCodeLine{00510\ \ \ PosType\ c\ =\ asin(rho);}
+\DoxyCodeLine{00511\ \ \ r=1.0;}
+\DoxyCodeLine{00512\ \ \ theta\ =\ asin(\ cos(c)*sin(central.theta)\ +\ x[1]*cos(central.theta)\ );}
+\DoxyCodeLine{00513\ \ \ phi\ =\ central.phi\ +\ atan2(x[0]\ ,\ cos(central.theta)*cos(c)}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ x[1]*sin(central.theta)\ );}
+\DoxyCodeLine{00515\ \}}
+\DoxyCodeLine{00516\ }
+\DoxyCodeLine{00517\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00518\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac6bd383d580f56249a1552042a39c432}{SphericalPoint<T>::InverseOrthographicProjection}}(}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00521\ )\{}
+\DoxyCodeLine{00522\ \ \ PosType\ rho\ =\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]);}
+\DoxyCodeLine{00523\ \ \ PosType\ c\ =\ asin(rho);}
+\DoxyCodeLine{00524\ \ \ r=1.0;}
+\DoxyCodeLine{00525\ \ \ \textcolor{keywordtype}{double}\ at=cos(c)*sin(central.theta)\ +\ x[1]*cos(central.theta);}
+\DoxyCodeLine{00526\ \ \ at\ =\ (at\ >\ 1)\ ?\ 1\ :\ at;}
+\DoxyCodeLine{00527\ \ \ at\ =\ (at\ <\ -\/1)\ ?\ -\/1\ :\ at;}
+\DoxyCodeLine{00528\ \ \ theta\ =\ asin(\ at\ );}
+\DoxyCodeLine{00529\ \ \ phi\ =\ central.phi\ +\ atan2(x[0]\ ,\ cos(central.theta)*cos(c)}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ x[1]*sin(central.theta)\ );}
+\DoxyCodeLine{00531\ \}}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00534\ T\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae132408f75bf98a34c1d7c514a77882a}{SphericalPoint<T>::OrthographicAngleTheta}}(}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00536\ )\{}
+\DoxyCodeLine{00537\ \ \ \textcolor{keywordflow}{return}\ atan2(\ sin(central.theta)\ *\ sin(phi\ -\/\ central.phi)}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ cos(phi\ -\/\ central.phi)\ );}
+\DoxyCodeLine{00539\ \}}
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00542\ T\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3772a09dcdb4dc94c04f13f8dbbde21e}{SphericalPoint<T>::OrthographicAnglePhi}}(}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&central\ \ \ }
+\DoxyCodeLine{00544\ )\{}
+\DoxyCodeLine{00545\ \ \ \textcolor{keywordflow}{return}\ atan2(\ cos(central.theta)\ *\ cos(theta)\ +\ sin(central.theta)\ *\ sin(central.theta)}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *cos(phi\ -\/\ central.phi)}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ -\/sin(phi\ -\/\ central.phi)\ *\ sin(phi\ -\/\ central.phi)\ );}
+\DoxyCodeLine{00548\ \}}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00551\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00552\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac6bd383d580f56249a1552042a39c432}{SphericalPoint<T>::InverseOrthographicProjection}}(}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00554\ )\{}
+\DoxyCodeLine{00555\ \ \ PosType\ rho\ =\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]);}
+\DoxyCodeLine{00556\ \ \ \textcolor{keywordflow}{if}(rho==0)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00557\ \ \ }
+\DoxyCodeLine{00558\ \ \ PosType\ c\ =\ asin(rho);}
+\DoxyCodeLine{00559\ \ \ T\ new\_theta\ =\ asin(\ cos(c)*sin(theta)\ +\ x[1]*sin(c)*cos(theta)/rho\ );}
+\DoxyCodeLine{00560\ \ \ T\ new\_phi\ =\ phi\ +\ atan2(x[0]*sin(c),rho*cos(theta)*cos(c)}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ x[1]*sin(theta)*sin(c)\ );}
+\DoxyCodeLine{00562\ \ \ }
+\DoxyCodeLine{00563\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}(1,new\_theta,new\_phi);}
+\DoxyCodeLine{00564\ \}}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00567\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a127f49c107a23ce38e471be581c7ecd8}{SphericalPoint<T>::unitPhi}}()\{}
+\DoxyCodeLine{00568\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(-\/sin(phi),cos(phi),0);}
+\DoxyCodeLine{00569\ \}}
+\DoxyCodeLine{00570\ }
+\DoxyCodeLine{00571\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00572\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_abcbea75ecdcb3c5f0cda226b280f2ed4}{SphericalPoint<T>::unitTheta}}()\{}
+\DoxyCodeLine{00573\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(-\/cos(phi)*sin(theta),-\/sin(theta)*sin(phi),cos(theta));}
+\DoxyCodeLine{00574\ \}}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00577\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00578\ T\ \mbox{\hyperlink{namespace_utilities_1_1_geometry_ae207afaa01c0d762bfd218f77f759229}{Seporation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&p1}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&p2)\{}
+\DoxyCodeLine{00580\ \ \ T\ x1[3],x2[3];}
+\DoxyCodeLine{00581\ \ \ }
+\DoxyCodeLine{00582\ \ \ p1.\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ad0cd07ad99b02ebd9ab7865628864a52}{TOcartisian}}(x1);}
+\DoxyCodeLine{00583\ \ \ p2.\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ad0cd07ad99b02ebd9ab7865628864a52}{TOcartisian}}(x2);}
+\DoxyCodeLine{00584\ \ \ \textcolor{keywordflow}{return}\ sqrt(\ (x1[0]-\/x2[0])*(x1[0]-\/x2[0])\ +\ (x1[1]-\/x2[1])*(x1[1]-\/x2[1])}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ (x1[2]-\/x2[2])*(x1[2]-\/x2[2])\ );}
+\DoxyCodeLine{00586\ \}}
+\DoxyCodeLine{00587\ }
+\DoxyCodeLine{00589\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00590\ T\ \mbox{\hyperlink{namespace_utilities_1_1_geometry_a29f939d6dbbfe3ed3c0cf455f80afcbe}{AngleSeporation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&p1}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{SphericalPoint<T>}}\ \&p2)\{}
+\DoxyCodeLine{00592\ \ \ \textcolor{keywordflow}{if}(p1\ ==\ p2)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00593\ \ \ \textcolor{keywordtype}{double}\ ans\ =\ sin(p1.theta)*sin(p2.theta)\ +\ cos(p1.theta)*cos(p2.theta)*cos(p1.phi-\/p2.phi);}
+\DoxyCodeLine{00594\ \ \ \textcolor{keywordflow}{if}(fabs(ans)\ >\ 1)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00595\ \ \ \textcolor{keywordflow}{return}\ acos(sin(p1.theta)*sin(p2.theta)\ +\ cos(p1.theta)*cos(p2.theta)*cos(p1.phi-\/p2.phi));}
+\DoxyCodeLine{00596\ \}}
+\DoxyCodeLine{00597\ }
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00600\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_utilities_1_1_geometry_1_1_c_y_c_l_i_c}{CYCLIC}}\{}
+\DoxyCodeLine{00601\ \ \ \mbox{\hyperlink{struct_utilities_1_1_geometry_1_1_c_y_c_l_i_c}{CYCLIC}}(\textcolor{keywordtype}{long}\ n):n(n)\{\}}
+\DoxyCodeLine{00602\ \ \ }
+\DoxyCodeLine{00603\ \ \ \textcolor{comment}{//\ returns\ the\ integer\ in\ bounds}}
+\DoxyCodeLine{00604\ \ \ \textcolor{keywordtype}{long}\ operator[](\textcolor{keywordtype}{long}\ i)\{}
+\DoxyCodeLine{00605\ \ \ \ \ \textcolor{keywordflow}{while}(i<0)\ i+=n;}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordflow}{return}\ i\%n;}
+\DoxyCodeLine{00607\ \ \ \}}
+\DoxyCodeLine{00608\ \ \ }
+\DoxyCodeLine{00609\ \ \ \textcolor{keywordtype}{long}\ n;}
+\DoxyCodeLine{00610\ \};}
+\DoxyCodeLine{00611\ }
+\DoxyCodeLine{00612\ \textcolor{comment}{/*\ \(\backslash\)brief\ finds\ the\ edge-\/wise\ concave\ hull\ of\ a\ complex\ curve}}
+\DoxyCodeLine{00613\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00614\ \textcolor{comment}{\ The\ returned\ curve\ will\ consist\ of\ segments\ of\ the\ edges\ of\ the\ original\ curve\ that\ form\ a\ closed}}
+\DoxyCodeLine{00615\ \textcolor{comment}{\ curve\ that\ does\ not\ cross\ itself\ and\ will\ enclose\ all\ the\ verticies.}}
+\DoxyCodeLine{00616\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00618\ std::vector<Point\_2d>\ DeInterset(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&points);}
+\DoxyCodeLine{00619\ \}}
+\DoxyCodeLine{00620\ \}}
+\DoxyCodeLine{00621\ }
+\DoxyCodeLine{00622\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00623\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities::Geometry::SphericalPoint<T>}}\ \textcolor{keyword}{const}\ \&p)\{}
+\DoxyCodeLine{00624\ \ \ \textcolor{keywordflow}{return}\ os\ <<\ \textcolor{stringliteral}{"{}r:\ "{}}\ <<\ p.r\ <<\ \textcolor{stringliteral}{"{}\ theta:\ "{}}\ <<\ p.theta\ <<\ \textcolor{stringliteral}{"{}\ phi:\ "{}}\ <<\ p.phi;}
+\DoxyCodeLine{00625\ \}}
+\DoxyCodeLine{00626\ }
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00628\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ defined(\_\_GLAMER\_\_geometry\_\_)\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

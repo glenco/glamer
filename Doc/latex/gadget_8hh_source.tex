@@ -1,0 +1,686 @@
+\doxysection{gadget.\+hh}
+\hypertarget{gadget_8hh_source}{}\label{gadget_8hh_source}\index{SLsimLib/include/gadget.hh@{SLsimLib/include/gadget.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GADGET\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GADGET\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <istream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{particle__types_8h}{particle\_types.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ int4bytes\ int}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00024\ \textcolor{keyword}{constexpr}\ std::size\_t\ size\_of(T\ \textcolor{keyword}{const}\&)\ \{}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(T);}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//class\ gadget:\ public\ gensim\ \{}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }GadgetFile\ \{}
+\DoxyCodeLine{00030\ \ \ \textcolor{comment}{/*\ this\ is\ a\ specialized\ version\ of\ gensim\ which\ deals\ with\ GADGET\ files\ */}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{bool}\ multipleFiles;}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{int}\ numfiles;}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{size\_t}\ ntot=0;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{double}\ time,redshift,omega,lambda,hubble;}
+\DoxyCodeLine{00037\ \ \ std::string\ filebasename;}
+\DoxyCodeLine{00038\ \ \ }
+\DoxyCodeLine{00039\ \ \ GadgetFile\ (\textcolor{keywordtype}{string}\ inpfn,std::vector<PType>\ \&data);}
+\DoxyCodeLine{00040\ \ \ \string~GadgetFile()\{\};}
+\DoxyCodeLine{00041\ \ \ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ checkMultiple\ ();}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{void}\ openFile\ ();}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ closeFile\ ();}
+\DoxyCodeLine{00045\ \ \ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ readBlock\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *blockname);}
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ find\_block(FILE\ *fd,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label);}
+\DoxyCodeLine{00049\ \ \ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{int}\ read\_gadget\_head(\textcolor{keywordtype}{int}\ *npart,\textcolor{keywordtype}{double}\ *massarr,\textcolor{keywordtype}{double}\ *time,\textcolor{keywordtype}{double}\ *redshift,\textcolor{keywordtype}{double}\ *omega,\ \textcolor{keywordtype}{double}\ *lambda,\ \textcolor{keywordtype}{double}\ *hubble,\ FILE\ *fd);}
+\DoxyCodeLine{00051\ \ \ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{bool}\ FileExists(\textcolor{keywordtype}{string}\ strFilename);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ std::vector<PType>\ \&p\_data;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{int}\ npart[6];}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{double}\ masstab[6];}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{struct\ }pvector\{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{float}\ x,y,z;}
+\DoxyCodeLine{00063\ \ \ \};}
+\DoxyCodeLine{00064\ \ \ }
+\DoxyCodeLine{00065\ \ \ ifstream::pos\_type\ size;}
+\DoxyCodeLine{00066\ \ \ int4bytes\ blksize,\ swap;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{comment}{//float\ *rho,\ *mass,\ *u,\ *den,\ *pot;}}
+\DoxyCodeLine{00069\ \ \ \textcolor{comment}{//int\ *ptype;}}
+\DoxyCodeLine{00070\ \ \ \textcolor{comment}{//pvector\ *pos,*b,*vel;}}
+\DoxyCodeLine{00071\ \ \ FILE\ *fd;}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ filecnt;\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{int}\ np\_file\_start,\ np\_file\_end;}
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{int}\ read\_gadget\_float(\textcolor{keywordtype}{float}\ *data,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,FILE\ *fd);}
+\DoxyCodeLine{00076\ \ \ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{int}\ read\_gadget\_float3(\textcolor{keywordtype}{float}\ *data,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,FILE\ *fd);}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{size\_t}\ my\_fread(\textcolor{keywordtype}{void}\ *ptr,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{size\_t}\ nmemb,\ FILE\ *\ stream);}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ swap\_Nbyte(\textcolor{keywordtype}{char}\ *data,\textcolor{keywordtype}{int}\ n,\textcolor{keywordtype}{int}\ m);}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00083\ GadgetFile<PType>::GadgetFile(\textcolor{keywordtype}{string}\ inpfn,std::vector<PType>\ \&data):}
+\DoxyCodeLine{00084\ multipleFiles(false),numfiles(0),filebasename(inpfn),p\_data(data),swap(0)}
+\DoxyCodeLine{00085\ ,filecnt(0),np\_file\_start(0),np\_file\_end(-\/1)}
+\DoxyCodeLine{00086\ \{}
+\DoxyCodeLine{00087\ \ \ checkMultiple();}
+\DoxyCodeLine{00088\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00091\ \textcolor{keywordtype}{void}\ GadgetFile<PType>::checkMultiple()\{}
+\DoxyCodeLine{00092\ \ \ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{char}\ *filename\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}\ [filebasename.size()+1];}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{00095\ \ \ filename[filebasename.size()]=0;}
+\DoxyCodeLine{00096\ \ \ memcpy(filename,filebasename.c\_str(),filebasename.size());}
+\DoxyCodeLine{00097\ \ \ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{bool}\ exists=FileExists(filename);}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordflow}{if}\ (exists)\ \{cout\ <<\ \textcolor{stringliteral}{"{}The\ file\ exists..."{}}\ <<\ endl;}
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{if}(!(fd\ =\ fopen(filename,\textcolor{stringliteral}{"{}r"{}})))}
+\DoxyCodeLine{00102\ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Cant\ open\ file\ <\%s>\ !\(\backslash\)n"{}},filename);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ exit(2);}
+\DoxyCodeLine{00105\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ header"{}}\ <<\ endl;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ READ\ HEADER\ TO\ GET\ GLOBAL\ PROPERTIES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ n\ =\ read\_gadget\_head(npart,masstab,\&time,\&redshift,\&omega,\&lambda,\&hubble,fd);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ ntot=0;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<6;i++)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}PartSpecies\ \%d,\ anz=\%d,\ masstab=\%f\(\backslash\)n"{}},i,npart[i],masstab[i]);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ ntot\ +=\ npart[i];}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Omage\ \%f\ Lambda\ \%f\ hubble\ \%f\(\backslash\)n"{}},omega,lambda,hubble);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \textcolor{comment}{//numfiles\ =\ 1;}}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ fclose(fd);}
+\DoxyCodeLine{00121\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ file\ does\ not\ exist\ or\ the\ simulation\ is\ splitted\ in\ multiple\ files..."{}}\ <<\ endl;}
+\DoxyCodeLine{00123\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Trying\ multiple\ files..."{}}\ <<\ endl;}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{int}\ nmaxf=10;}
+\DoxyCodeLine{00125\ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=nmaxf-\/1;\ i++)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ std::ostringstream\ filenum;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ odot=\textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ filenum\ <<\ i;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ filebasename\_=filebasename+odot+filenum.str();}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *filename\_\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}\ [filebasename.size()+1];}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ filename\_[filebasename\_.size()]=0;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ memcpy(filename\_,filebasename\_.c\_str(),filebasename\_.size());}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ exists=FileExists(filename\_);}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (exists)\ \{numfiles++;\}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (numfiles>0)\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ multipleFiles=\textcolor{keyword}{true};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}The\ simulation\ is\ splitted\ into\ "{}}\ <<\ numfiles\ <<\ \textcolor{stringliteral}{"{}\ files"{}}\ <<\ endl;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ ntot=0;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=0;\ j<=numfiles-\/1;\ j++)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ std::ostringstream\ filenum;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ odot=\textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ filenum\ <<\ j;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ filebasename\_=filebasename+odot+filenum.str();}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *filename\_\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}\ [filebasename.size()+1];}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ filename\_[filebasename\_.size()]=0;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ memcpy(filename\_,filebasename\_.c\_str(),filebasename\_.size());}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(fd\ =\ fopen(filename\_,\textcolor{stringliteral}{"{}r"{}})))}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Cant\ open\ file\ <\%s>\ !\(\backslash\)n"{}},filename\_);}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ exit(2);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}-\/>\ Reading\ header\#\ "{}}\ <<\ j\ <<\ endl;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ READ\ HEADER\ TO\ GET\ GLOBAL\ PROPERTIES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ n\ =\ read\_gadget\_head(npart,masstab,\&time,\&redshift,\&omega,\&lambda,\&hubble,fd);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<6;i++)}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}*\ PartSpecies\ \%d,\ anz=\%d,\ masstab=\%f\(\backslash\)n"{}},i,npart[i],masstab[i]);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ ntot\ +=\ npart[i];}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ fclose(fd);}
+\DoxyCodeLine{00172\ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \}}
+\DoxyCodeLine{00174\ \ \ cout\ <<\ \textcolor{stringliteral}{"{}TOTAL\ NUMBER\ OF\ PARTICLES:\ "{}}\ <<\ ntot\ <<\ endl;}
+\DoxyCodeLine{00175\ \ \ \textcolor{comment}{//now\ create\ a\ vector\ of\ particles}}
+\DoxyCodeLine{00176\ \ \ printf(\textcolor{stringliteral}{"{}Allocating\ memory\ for\ a\ total\ of\ \%zu\ particles...\(\backslash\)n"{}},ntot);}
+\DoxyCodeLine{00177\ \ }
+\DoxyCodeLine{00178\ \ \ p\_data.resize(ntot);}
+\DoxyCodeLine{00179\ \ \ }
+\DoxyCodeLine{00180\ \ \ \textcolor{comment}{//\ pv.reserve(ntot);}}
+\DoxyCodeLine{00181\ \ \ \textcolor{comment}{//\ for\ (int\ k=0;\ k<ntot;\ k++)\{}}
+\DoxyCodeLine{00182\ \ \ \textcolor{comment}{//\ \ \ particle*\ temp=\ new\ particle();}}
+\DoxyCodeLine{00183\ \ \ \textcolor{comment}{//\ \ \ pv.push\_back(temp);}}
+\DoxyCodeLine{00184\ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00185\ \ \ }
+\DoxyCodeLine{00186\ \ \ cout\ <<\ \textcolor{stringliteral}{"{}done"{}}\ <<\ endl;}
+\DoxyCodeLine{00187\ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{comment}{//*******************************************************************************}}
+\DoxyCodeLine{00190\ \textcolor{comment}{//*******************************************************************************}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//*******************************************************************************}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//*******************************************************************************}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//*******************************************************************************}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//*******************************************************************************}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ SKIP\ \ \{my\_fread(\&blksize,sizeof(int),1,fd);\ swap\_Nbyte((char*)\&blksize,1,4);\}}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00200\ \textcolor{keywordtype}{void}\ GadgetFile<PType>::openFile\ ()\ \{}
+\DoxyCodeLine{00201\ \ \ }
+\DoxyCodeLine{00202\ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{int}\ nstart;}
+\DoxyCodeLine{00204\ \ \ }
+\DoxyCodeLine{00205\ \ \ fd=0;}
+\DoxyCodeLine{00206\ \ \ }
+\DoxyCodeLine{00207\ \ \ \textcolor{keywordflow}{if}\ (numfiles==0)\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{char}\ *filename\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}\ [filebasename.size()+1];}
+\DoxyCodeLine{00210\ \ \ \ \ filename[filebasename.size()]=0;}
+\DoxyCodeLine{00211\ \ \ \ \ memcpy(filename,filebasename.c\_str(),filebasename.size());}
+\DoxyCodeLine{00212\ \ \ \ \ fd\ =\ fopen(filename,\textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00213\ \ \ \ \ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ RED\ HEADER\ TO\ GET\ GLOBAL\ PROPERTIES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00215\ \ \ \ \ n\ =\ read\_gadget\_head(npart,masstab,\&time,\&redshift,\&omega,\&lambda,\&hubble,fd);}
+\DoxyCodeLine{00216\ \ \ \ \ }
+\DoxyCodeLine{00217\ \ \ \ \ }
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{comment}{//\ now\ setting\ the\ particle\ type}}
+\DoxyCodeLine{00219\ \ \ \ \ nstart=0;}
+\DoxyCodeLine{00220\ \ \ \ \ np\_file\_start=nstart;}
+\DoxyCodeLine{00221\ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ips=0;\ ips<6;\ ips++)\{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (npart[ips]>0)\{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nstart;\ i<nstart+npart[ips];\ i++)\{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ p\_data[i].type\ =\ ips;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ nstart=nstart+npart[ips];}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ np\_file\_end=np\_file\_start+ntot-\/1;}
+\DoxyCodeLine{00231\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{comment}{//\ if\ there\ are\ multiple\ files,\ these\ have\ to\ be\ opened\ one-\/by-\/one.\ Particles\ must\ be\ handled\ carefully:\ must\ define}}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{comment}{//\ np\_file\_*\ for\ each\ file\ and\ must\ update\ the\ number\ of\ the\ opened\ file}}
+\DoxyCodeLine{00235\ \ \ \ \ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//\ step\ 1:\ construct\ the\ file\ name.\ This\ is\ determined\ by\ the\ basename\ +\ the\ file\ number\ (which\ is\ updated\ afterwords)}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{comment}{//\ NB:\ EVERY\ TIME\ THE\ FUNCTION\ IS\ CALLED\ A\ NEW\ FILE\ IS\ OPENED!}}
+\DoxyCodeLine{00238\ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ std::ostringstream\ filenum;}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{string}\ odot=\textcolor{stringliteral}{"{}."{}};}
+\DoxyCodeLine{00242\ \ \ \ \ filenum\ <<\ filecnt;}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{string}\ filebasename\_=filebasename+odot+filenum.str();}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{char}\ *filename\_\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{char}\ [filebasename.size()+1];}
+\DoxyCodeLine{00245\ \ \ \ \ filename\_[filebasename\_.size()]=0;}
+\DoxyCodeLine{00246\ \ \ \ \ memcpy(filename\_,filebasename\_.c\_str(),filebasename\_.size());}
+\DoxyCodeLine{00247\ \ \ \ \ }
+\DoxyCodeLine{00248\ \ \ \ \ fd\ =\ fopen(filename\_,\textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{00249\ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ RED\ HEADER\ TO\ GET\ GLOBAL\ PROPERTIES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00251\ \ \ \ \ n\ =\ read\_gadget\_head(npart,masstab,\&time,\&redshift,\&omega,\&lambda,\&hubble,fd);}
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordtype}{int}\ np\_in\_file;}
+\DoxyCodeLine{00253\ \ \ \ \ np\_in\_file=0;}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{comment}{//\ now\ setting\ the\ particle\ type}}
+\DoxyCodeLine{00255\ \ \ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ np\_file\_start=np\_file\_end+1;}
+\DoxyCodeLine{00257\ \ \ \ \ nstart=np\_file\_start;}
+\DoxyCodeLine{00258\ \ \ \ \ }
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ ips=0;\ ips<6;\ ips++)\{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (npart[ips]>0)\{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=nstart;\ i<nstart+npart[ips];\ i++)\{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//pv[i]-\/>setPtype(ips);}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ p\_data[i].type\ =\ ips;}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ nstart=nstart+npart[ips];}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ np\_in\_file=np\_in\_file+npart[ips];}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ \}}
+\DoxyCodeLine{00269\ \ \ \ \ np\_file\_end=np\_file\_start+np\_in\_file-\/1;}
+\DoxyCodeLine{00270\ \ \ \ \ filecnt++;}
+\DoxyCodeLine{00271\ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \textcolor{comment}{//cout\ <<\ "{}PARTICLES\ FROM\ "{}\ <<\ np\_file\_start\ <<\ "{}\ TO\ "{}\ <<\ np\_file\_end\ <<\ endl;}}
+\DoxyCodeLine{00273\ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00276\ \textcolor{keywordtype}{void}\ GadgetFile<PType>::closeFile\ ()\ \{}
+\DoxyCodeLine{00277\ \ \ fclose(fd);}
+\DoxyCodeLine{00278\ \}}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00281\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00282\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ High\ Level\ Routines\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00283\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00284\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00287\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Routine\ to\ read\ the\ header\ information\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00288\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ *npart:\ \ \ \ List\ of\ Particle\ numbers\ for\ spezies\ [0..5]\ -\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00289\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ *massarr:\ \ List\ of\ masses\ for\ spezies\ [0..5]\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00290\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ *time:\ \ \ \ \ Time\ of\ snapshot\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00291\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ *massarr:\ \ Redshift\ of\ snapshot\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00292\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ FILE\ *fd:\ \ \ \ \ \ File\ handle\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00293\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ returns\ number\ of\ read\ bytes\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00294\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00295\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00296\ \textcolor{keywordtype}{int}\ GadgetFile<PType>::read\_gadget\_head(\textcolor{keywordtype}{int}\ *npart,\textcolor{keywordtype}{double}\ *massarr,\textcolor{keywordtype}{double}\ *time,\textcolor{keywordtype}{double}\ *redshift,\ \textcolor{keywordtype}{double}\ *omega,\ \textcolor{keywordtype}{double}\ *lambda,\ \textcolor{keywordtype}{double}\ *hubble,\ FILE\ *fd)}
+\DoxyCodeLine{00297\ \{}
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{int}\ blocksize,dummysize;}
+\DoxyCodeLine{00299\ \ \ }
+\DoxyCodeLine{00300\ \ \ \textcolor{keywordtype}{int}\ dummyint;}
+\DoxyCodeLine{00301\ \ \ \textcolor{keywordtype}{int}\ dummyarr[6];}
+\DoxyCodeLine{00302\ \ \ \textcolor{keywordtype}{double}\ boxl;}
+\DoxyCodeLine{00303\ \ \ }
+\DoxyCodeLine{00304\ \ \ blocksize\ =\ find\_block(fd,\textcolor{stringliteral}{"{}HEAD"{}});}
+\DoxyCodeLine{00305\ \ \ }
+\DoxyCodeLine{00306\ \ \ }
+\DoxyCodeLine{00307\ \ \ \textcolor{keywordflow}{if}(blocksize\ <=\ 0)}
+\DoxyCodeLine{00308\ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Block\ <\%s>\ not\ fond\ !\(\backslash\)n"{}},\textcolor{stringliteral}{"{}HEAD"{}});}
+\DoxyCodeLine{00310\ \ \ \ \ exit(5);}
+\DoxyCodeLine{00311\ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00313\ \ \ \{}
+\DoxyCodeLine{00314\ \ \ \ \ dummysize=blocksize\ -\/\ 6\ *\ \textcolor{keyword}{sizeof}(int)\ -\/\ 8\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{00315\ \ \ \ \ std::cout\ <<\ blocksize\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ dummysize\ <<\ std::endl;}
+\DoxyCodeLine{00316\ \ \ \ \ SKIP;}
+\DoxyCodeLine{00317\ \ \ \ \ my\_fread(npart,6*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),\ 1,\ fd);\ \ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)npart,6,4);}
+\DoxyCodeLine{00318\ \ \ \ \ my\_fread(massarr,6*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)massarr,6,8);}
+\DoxyCodeLine{00319\ \ \ \ \ my\_fread(time,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)time,1,8);}
+\DoxyCodeLine{00320\ \ \ \ \ my\_fread(redshift,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)redshift,1,8);}
+\DoxyCodeLine{00321\ \ \ \ \ my\_fread(\&dummyint,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),\ 1,\ fd);\ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&dummyint,1,4);}
+\DoxyCodeLine{00322\ \ \ \ \ my\_fread(\&dummyint,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),\ 1,\ fd);\ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&dummyint,1,4);}
+\DoxyCodeLine{00323\ \ \ \ \ my\_fread(dummyarr,6*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),\ 1,\ fd);\ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)dummyarr,6,4);}
+\DoxyCodeLine{00324\ \ \ \ \ my\_fread(\&dummyint,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),\ 1,\ fd);\ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&dummyint,1,4);}
+\DoxyCodeLine{00325\ \ \ \ \ my\_fread(\&dummyint,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}),\ 1,\ fd);\ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&dummyint,1,4);}
+\DoxyCodeLine{00326\ \ \ \ \ my\_fread(\&boxl,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&boxl,1,8);}
+\DoxyCodeLine{00327\ \ \ \ \ \textcolor{comment}{//my\_fread(\&omega\_tmp,sizeof(double),\ 1,\ fd);\ \ \ swap\_Nbyte((char*)\&omega\_tmp,1,8);}}
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{comment}{//my\_fread(\&lambda\_tmp,sizeof(double),\ 1,\ fd);\ \ swap\_Nbyte((char*)\&lambda\_tmp,1,8);}}
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{comment}{//my\_fread(\&hubble\_tmp,sizeof(double),\ 1,\ fd);\ \ swap\_Nbyte((char*)\&hubble\_tmp,1,8);}}
+\DoxyCodeLine{00330\ \ \ \ \ my\_fread(omega,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)omega,1,8);}
+\DoxyCodeLine{00331\ \ \ \ \ my\_fread(lambda,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)lambda,1,8);}
+\DoxyCodeLine{00332\ \ \ \ \ my\_fread(hubble,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}),\ 1,\ fd);\ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)hubble,1,8);}
+\DoxyCodeLine{00333\ \ \ \ \ fseek(fd,dummysize,1);}
+\DoxyCodeLine{00334\ \ \ \ \ SKIP;}
+\DoxyCodeLine{00335\ \ \ \}}
+\DoxyCodeLine{00336\ \ \ \textcolor{keywordflow}{return}(blocksize);}
+\DoxyCodeLine{00337\ \}}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00340\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Routine\ to\ swap\ ENDIAN\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00341\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ char\ *data:\ \ \ \ Pointer\ to\ the\ data\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00342\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ n:\ \ \ \ \ \ \ \ \ Number\ of\ elements\ to\ swap\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00343\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ m:\ \ \ \ \ \ \ \ \ Size\ of\ single\ element\ to\ swap\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00344\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int,float\ =\ 4\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00345\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\ \ \ \ =\ 8\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00346\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00347\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00348\ \textcolor{keywordtype}{void}\ GadgetFile<PType>::swap\_Nbyte(\textcolor{keywordtype}{char}\ *data,\textcolor{keywordtype}{int}\ n,\textcolor{keywordtype}{int}\ m)}
+\DoxyCodeLine{00349\ \{}
+\DoxyCodeLine{00350\ \ \ \textcolor{keywordtype}{int}\ i,j;}
+\DoxyCodeLine{00351\ \ \ \textcolor{keywordtype}{char}\ old\_data[16];}
+\DoxyCodeLine{00352\ \ \ }
+\DoxyCodeLine{00353\ \ \ \textcolor{keywordflow}{if}(swap>0)}
+\DoxyCodeLine{00354\ \ \ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<n;j++)}
+\DoxyCodeLine{00356\ \ \ \ \ \{}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ memcpy(\&old\_data[0],\&data[j*m],m);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<m;i++)}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ data[j*m+i]=old\_data[m-\/i-\/1];}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00362\ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \}}
+\DoxyCodeLine{00364\ \}}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00367\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Routine\ find\ a\ block\ in\ a\ snapfile\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00368\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ FILE\ *fd:\ \ \ \ \ \ File\ handle\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00369\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ char\ *label:\ \ \ 4\ byte\ identifyer\ for\ block\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00370\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ returns\ length\ of\ block\ found,\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00371\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ the\ file\ fd\ points\ to\ starting\ point\ of\ block\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00372\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00373\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00374\ \textcolor{keywordtype}{int}\ GadgetFile<PType>::find\_block(FILE\ *fd,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label)}
+\DoxyCodeLine{00375\ \{}
+\DoxyCodeLine{00376\ \ \ int4bytes\ blocksize=0;}
+\DoxyCodeLine{00377\ \ \ \textcolor{keywordtype}{char}\ blocklabel[5]=\{\textcolor{stringliteral}{"{}\ \ \ \ "{}}\};}
+\DoxyCodeLine{00378\ \ \ }
+\DoxyCodeLine{00379\ \ \ rewind(fd);}
+\DoxyCodeLine{00380\ \ \ }
+\DoxyCodeLine{00381\ \ \ \textcolor{keywordflow}{while}(!feof(fd)\ \&\&\ blocksize\ ==\ 0)}
+\DoxyCodeLine{00382\ \ \ \{}
+\DoxyCodeLine{00383\ \ \ \ \ SKIP;}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordflow}{if}(blksize\ ==\ 134217728)}
+\DoxyCodeLine{00385\ \ \ \ \ \{}
+\DoxyCodeLine{00386\ \textcolor{preprocessor}{\#ifdef\ MY\_DEBUG}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Enable\ ENDIAN\ swapping\ !\(\backslash\)n"{}});}
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ swap=1-\/swap;}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&blksize,1,4);}
+\DoxyCodeLine{00391\ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordflow}{if}(blksize\ !=\ 8)}
+\DoxyCodeLine{00393\ \ \ \ \ \{}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}incorrect\ format\ (blksize=\%d)!\(\backslash\)n"{}},blksize);}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{00396\ \ \ \ \ \}}
+\DoxyCodeLine{00397\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00398\ \ \ \ \ \{}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ my\_fread(blocklabel,\ 4*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}),\ 1,\ fd);}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ my\_fread(\&blocksize,\ \textcolor{keyword}{sizeof}(int4bytes),\ 1,\ fd);}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)\&blocksize,1,4);}
+\DoxyCodeLine{00402\ \textcolor{preprocessor}{\#ifdef\ MY\_DEBUG}}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Found\ Block\ <\%s>\ with\ \%d\ bytes\(\backslash\)n"{}},blocklabel,blocksize);}
+\DoxyCodeLine{00404\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ SKIP;}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(strcmp(label,blocklabel)!=0)}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ fseek(fd,blocksize,1);}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ blocksize=0;}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00411\ \ \ \ \ \}}
+\DoxyCodeLine{00412\ \ \ \}}
+\DoxyCodeLine{00413\ \ \ \textcolor{keywordflow}{return}(blocksize-\/8);}
+\DoxyCodeLine{00414\ \}}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \textcolor{comment}{/*\ THE\ FOLLOWING\ METHODS\ WHERE\ TAKEN\ FROM\ THE\ readgadget.c\ FILE\ DISTRIBUTED\ BY}}
+\DoxyCodeLine{00417\ \textcolor{comment}{\ KLAUS\ DOLAG\ */}}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Basic\ routine\ to\ read\ data\ from\ a\ file\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00421\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00422\ \ \textcolor{keywordtype}{size\_t}\ GadgetFile<PType>::my\_fread(\textcolor{keywordtype}{void}\ *ptr,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{size\_t}\ nmemb,\ FILE\ *\ stream)}
+\DoxyCodeLine{00423\ \ \{}
+\DoxyCodeLine{00424\ \ \textcolor{keywordtype}{size\_t}\ nread;}
+\DoxyCodeLine{00425\ \ }
+\DoxyCodeLine{00426\ \ \textcolor{keywordflow}{if}((nread\ =\ fread(ptr,\ size,\ nmemb,\ stream))\ !=\ nmemb)}
+\DoxyCodeLine{00427\ \ \{}
+\DoxyCodeLine{00428\ \ printf(\textcolor{stringliteral}{"{}I/O\ error\ (fread)\ !\(\backslash\)n"{}});}
+\DoxyCodeLine{00429\ \ exit(3);}
+\DoxyCodeLine{00430\ \ \}}
+\DoxyCodeLine{00431\ \ \textcolor{keywordflow}{return}\ nread;}
+\DoxyCodeLine{00432\ \ \}}
+\DoxyCodeLine{00433\ }
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00435\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00436\ \textcolor{keywordtype}{bool}\ GadgetFile<PType>::FileExists(\textcolor{keywordtype}{string}\ strFilename)\ \{}
+\DoxyCodeLine{00437\ \ \ \textcolor{keyword}{struct\ }stat\ stFileInfo;}
+\DoxyCodeLine{00438\ \ \ \textcolor{keywordtype}{bool}\ blnReturn;}
+\DoxyCodeLine{00439\ \ \ \textcolor{keywordtype}{int}\ intStat;}
+\DoxyCodeLine{00440\ \ \ }
+\DoxyCodeLine{00441\ \ \ \textcolor{comment}{//\ Attempt\ to\ get\ the\ file\ attributes}}
+\DoxyCodeLine{00442\ \ \ intStat\ =\ stat(strFilename.c\_str(),\&stFileInfo);}
+\DoxyCodeLine{00443\ \ \ \textcolor{keywordflow}{if}(intStat\ ==\ 0)\ \{}
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{comment}{//\ We\ were\ able\ to\ get\ the\ file\ attributes}}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{comment}{//\ so\ the\ file\ obviously\ exists.}}
+\DoxyCodeLine{00446\ \ \ \ \ blnReturn\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00447\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00448\ \ \ \ \ \textcolor{comment}{//\ We\ were\ not\ able\ to\ get\ the\ file\ attributes.}}
+\DoxyCodeLine{00449\ \ \ \ \ \textcolor{comment}{//\ This\ may\ mean\ that\ we\ don't\ have\ permission\ to}}
+\DoxyCodeLine{00450\ \ \ \ \ \textcolor{comment}{//\ access\ the\ folder\ which\ contains\ this\ file.\ If\ you}}
+\DoxyCodeLine{00451\ \ \ \ \ \textcolor{comment}{//\ need\ to\ do\ that\ level\ of\ checking,\ lookup\ the}}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{comment}{//\ return\ values\ of\ stat\ which\ will\ give\ you}}
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{comment}{//\ more\ details\ on\ why\ stat\ failed.}}
+\DoxyCodeLine{00454\ \ \ \ \ blnReturn\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00455\ \ \ \}}
+\DoxyCodeLine{00456\ \ \ }
+\DoxyCodeLine{00457\ \ \ \textcolor{keywordflow}{return}(blnReturn);}
+\DoxyCodeLine{00458\ \}}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00460\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00461\ \textcolor{keywordtype}{void}\ GadgetFile<PType>::readBlock(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *blockname)\ \{}
+\DoxyCodeLine{00462\ \ \ }
+\DoxyCodeLine{00463\ \ \ \textcolor{keywordtype}{float}\ umass\ =\ 1.0;\ \textcolor{comment}{//\ ????}}
+\DoxyCodeLine{00464\ \ \ }
+\DoxyCodeLine{00465\ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{00466\ \ \ \textcolor{keywordtype}{int}\ np\_in\_file=np\_file\_end-\/np\_file\_start+1;}
+\DoxyCodeLine{00467\ \ \ cout\ <<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00468\ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}POS"{}})\ \{}
+\DoxyCodeLine{00469\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00470\ \ \ \ \ pvector\ *pos=\textcolor{keyword}{new}\ pvector[ntot];}
+\DoxyCodeLine{00471\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated."{}}\ <<\ endl;}
+\DoxyCodeLine{00472\ \ \ \ \ n\ =\ read\_gadget\_float3((\textcolor{keywordtype}{float}*)pos,\textcolor{stringliteral}{"{}POS\ "{}},fd);}
+\DoxyCodeLine{00473\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ are\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00474\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=np\_in\_file-\/1;\ i++)\ \{}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setPos(pos[i].x,pos[i].y,pos[i].z);}}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ p\_data[i+np\_file\_start][0]\ =\ pos[i].x;}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ p\_data[i+np\_file\_start][1]\ =\ pos[i].y;}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ p\_data[i+np\_file\_start][2]\ =\ pos[i].z;}
+\DoxyCodeLine{00479\ \ \ \ \ \}}
+\DoxyCodeLine{00480\ \ \ \ \ \textcolor{keyword}{delete}\ []\ pos;}
+\DoxyCodeLine{00481\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00482\ \ \ \}\ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}VEL"{}})\ \{}
+\DoxyCodeLine{00483\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00484\ \ \ \ \ pvector\ *vel=\textcolor{keyword}{new}\ pvector[ntot];}
+\DoxyCodeLine{00485\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated..."{}}\ <<\ endl;}
+\DoxyCodeLine{00486\ \ \ \ \ n\ =\ read\_gadget\_float3((\textcolor{keywordtype}{float}*)vel,\textcolor{stringliteral}{"{}VEL\ "{}},fd);}
+\DoxyCodeLine{00487\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ is\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=np\_in\_file-\/1;\ i++)\ \{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setVel(vel[i].x,vel[i].y,vel[i].z);}}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ p\_data[i+np\_file\_start].Vel[0]\ =\ vel[i].x;}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ p\_data[i+np\_file\_start].Vel[1]\ =\ vel[i].y;}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ p\_data[i+np\_file\_start].Vel[2]\ =\ vel[i].z;}
+\DoxyCodeLine{00493\ \ \ \ \ \}}
+\DoxyCodeLine{00494\ \ \ \ \ \textcolor{keyword}{delete}\ []\ vel;}
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00496\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}MASS"{}})\{}
+\DoxyCodeLine{00497\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{keywordtype}{int}\ nmass=0;}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=5;\ i++)\ \{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (masstab[i]==0.0)\ \{nmass=nmass+npart[i];\}\}}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordtype}{float}\ *mass=\textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[nmass];}
+\DoxyCodeLine{00502\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated..."{}}\ <<\ endl;}
+\DoxyCodeLine{00503\ \ \ \ \ n\ =\ read\_gadget\_float((\textcolor{keywordtype}{float}*)mass,\textcolor{stringliteral}{"{}MASS"{}},fd);}
+\DoxyCodeLine{00504\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ is\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00505\ \ \ \ \ \textcolor{keywordtype}{int}\ icounter=0;}
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=np\_in\_file-\/1;\ i++)\ \{}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ips=p\_data[i+np\_file\_start].type;}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (masstab[ips]\ >\ 0.0)\ \{}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setMass(masstab[ips]*umass);}}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ p\_data[i+np\_file\_start].Mass\ =\ masstab[ips]*umass;}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setMass(mass[icounter]*umass);}}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ p\_data[i+np\_file\_start].Mass\ =\ mass[icounter]*umass;}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ icounter++;}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00516\ \ \ \ \ \}}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keyword}{delete}\ []\ mass;}
+\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00519\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}RHO"{}})\{}
+\DoxyCodeLine{00520\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordtype}{float}\ *rho=\textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[npart[0]];}
+\DoxyCodeLine{00522\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated..."{}}\ <<\ endl;}
+\DoxyCodeLine{00523\ \ \ \ \ n\ =\ read\_gadget\_float((\textcolor{keywordtype}{float}*)rho,\textcolor{stringliteral}{"{}RHO\ "{}},fd);}
+\DoxyCodeLine{00524\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ is\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=npart[0]-\/1;\ i++)\ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setRho(rho[i]);}}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ p\_data[i+np\_file\_start].Rho\ =\ rho[i];}
+\DoxyCodeLine{00528\ \ \ \ \ \}}
+\DoxyCodeLine{00529\ \ \ \ \ \textcolor{keyword}{delete}\ []\ rho;}
+\DoxyCodeLine{00530\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00531\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}RHOD"{}})\{}
+\DoxyCodeLine{00532\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00533\ \ \ \ \ \textcolor{keywordtype}{float}\ *rho=\textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[npart[1]];}
+\DoxyCodeLine{00534\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated..."{}}\ <<\ endl;}
+\DoxyCodeLine{00535\ \ \ \ \ n\ =\ read\_gadget\_float((\textcolor{keywordtype}{float}*)rho,\textcolor{stringliteral}{"{}RHOD"{}},fd);}
+\DoxyCodeLine{00536\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ is\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{keywordtype}{int}\ icount=0;}
+\DoxyCodeLine{00538\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=npart[0];\ i<=npart[0]+npart[1]-\/1;\ i++)\ \{}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setRho(rho[icount]*umass);}}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ p\_data[i+np\_file\_start].Rho\ =\ rho[icount]*umass;}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ icount++;}
+\DoxyCodeLine{00542\ \ \ \ \ \}}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keyword}{delete}\ []\ rho;}
+\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00545\ \ \ \}\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}TEMP"{}})\{}
+\DoxyCodeLine{00546\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keywordtype}{float}\ *temp=\textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[npart[0]];}
+\DoxyCodeLine{00548\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated..."{}}\ <<\ endl;}
+\DoxyCodeLine{00549\ \ \ \ \ n\ =\ read\_gadget\_float((\textcolor{keywordtype}{float}*)temp,\textcolor{stringliteral}{"{}TEMP"{}},fd);}
+\DoxyCodeLine{00550\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ is\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keywordtype}{int}\ icount=0;}
+\DoxyCodeLine{00552\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=npart[0]-\/1;\ i++)\ \{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setTemp(temp[icount]);}}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ p\_data[i+np\_file\_start].Temp\ =\ temp[icount];}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ icount++;}
+\DoxyCodeLine{00556\ \ \ \ \ \}}
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keyword}{delete}\ []\ temp;}
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00559\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00560\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}***\ No\ "{}}\ <<\ blockname\ <<\ \textcolor{stringliteral}{"{}\ in\ file(s)\ "{}}\ <<\ filebasename\ <<\ \textcolor{stringliteral}{"{}\ ***"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00561\ \ \ \}}
+\DoxyCodeLine{00562\ \ \ }
+\DoxyCodeLine{00563\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00564\ \}}
+\DoxyCodeLine{00565\ }
+\DoxyCodeLine{00566\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00567\ \textcolor{keywordtype}{void}\ GadgetFile<ParticleType<float>\ >::readBlock(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *blockname)\ \{}
+\DoxyCodeLine{00568\ \ \ }
+\DoxyCodeLine{00569\ \ \ \textcolor{keywordtype}{float}\ umass\ =\ 1.0;\ \textcolor{comment}{//\ ????}}
+\DoxyCodeLine{00570\ \ \ }
+\DoxyCodeLine{00571\ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{00572\ \ \ \textcolor{keywordtype}{int}\ np\_in\_file=np\_file\_end-\/np\_file\_start+1;}
+\DoxyCodeLine{00573\ \ \ cout\ <<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00574\ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}POS"{}})\ \{}
+\DoxyCodeLine{00575\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00576\ \ \ \ \ pvector\ *pos=\textcolor{keyword}{new}\ pvector[ntot];}
+\DoxyCodeLine{00577\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated."{}}\ <<\ endl;}
+\DoxyCodeLine{00578\ \ \ \ \ n\ =\ read\_gadget\_float3((\textcolor{keywordtype}{float}*)pos,\textcolor{stringliteral}{"{}POS\ "{}},fd);}
+\DoxyCodeLine{00579\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ are\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00580\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=np\_in\_file-\/1;\ i++)\ \{}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setPos(pos[i].x,pos[i].y,pos[i].z);}}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ p\_data[i+np\_file\_start][0]\ =\ pos[i].x;}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ p\_data[i+np\_file\_start][1]\ =\ pos[i].y;}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ p\_data[i+np\_file\_start][2]\ =\ pos[i].z;}
+\DoxyCodeLine{00585\ \ \ \ \ \}}
+\DoxyCodeLine{00586\ \ \ \ \ \textcolor{keyword}{delete}\ []\ pos;}
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00588\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}(blockname)==\textcolor{stringliteral}{"{}MASS"{}})\{}
+\DoxyCodeLine{00589\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Reading\ block\ "{}}<<\ string(blockname)\ <<\ endl;}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keywordtype}{int}\ nmass=0;}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=5;\ i++)\ \{}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (masstab[i]==0.0)\ \{nmass=nmass+npart[i];\}\}}
+\DoxyCodeLine{00593\ \ \ \ \ \textcolor{keywordtype}{float}\ *mass=\textcolor{keyword}{new}\ \textcolor{keywordtype}{float}[nmass];}
+\DoxyCodeLine{00594\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...memory\ allocated..."{}}\ <<\ endl;}
+\DoxyCodeLine{00595\ \ \ \ \ n\ =\ read\_gadget\_float((\textcolor{keywordtype}{float}*)mass,\textcolor{stringliteral}{"{}MASS"{}},fd);}
+\DoxyCodeLine{00596\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}...data\ is\ in\ memory."{}}\ <<\ endl;}
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordtype}{int}\ icounter=0;}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<=np\_in\_file-\/1;\ i++)\ \{}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ips=p\_data[i+np\_file\_start].type;}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (masstab[ips]\ >\ 0.0)\ \{}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setMass(masstab[ips]*umass);}}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ p\_data[i+np\_file\_start].Mass\ =\ masstab[ips]*umass;}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pv[i+np\_file\_start]-\/>setMass(mass[icounter]*umass);}}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ p\_data[i+np\_file\_start].Mass\ =\ mass[icounter]*umass;}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ icounter++;}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00608\ \ \ \ \ \}}
+\DoxyCodeLine{00609\ \ \ \ \ \textcolor{keyword}{delete}\ []\ mass;}
+\DoxyCodeLine{00610\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00611\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00612\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}***\ You\ cannot\ load\ "{}}\ <<\ blockname\ <<\ \textcolor{stringliteral}{"{}\ from\ file(s)\ "{}}\ <<\ filebasename\ <<\ \textcolor{stringliteral}{"{}\ into\ a\ ParticleType\ type.\ ***"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00613\ \ \ \}}
+\DoxyCodeLine{00614\ \}}
+\DoxyCodeLine{00615\ }
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00617\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00618\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Routine\ to\ read\ a\ 1D\ float\ array\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00619\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ *data:\ \ \ \ \ Pointer\ where\ the\ data\ are\ stored\ to\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00620\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ char\ *label:\ \ \ Identifyer\ for\ the\ datafield\ to\ read\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00621\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ FILE\ *fd:\ \ \ \ \ \ File\ handle\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00622\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ returns\ length\ of\ dataarray\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00623\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00624\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00625\ \textcolor{keywordtype}{int}\ GadgetFile<PType>::read\_gadget\_float(\textcolor{keywordtype}{float}\ *data,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,FILE\ *fd)}
+\DoxyCodeLine{00626\ \{}
+\DoxyCodeLine{00627\ \ \ \textcolor{keywordtype}{int}\ blocksize;}
+\DoxyCodeLine{00628\ \ \ }
+\DoxyCodeLine{00629\ \ \ blocksize\ =\ find\_block(fd,label);}
+\DoxyCodeLine{00630\ \ \ \textcolor{keywordflow}{if}(blocksize\ <=\ 0)}
+\DoxyCodeLine{00631\ \ \ \{}
+\DoxyCodeLine{00632\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Block\ <\%s>\ not\ fond\ !\(\backslash\)n"{}},label);}
+\DoxyCodeLine{00633\ \ \ \ \ exit(5);}
+\DoxyCodeLine{00634\ \ \ \}}
+\DoxyCodeLine{00635\ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00636\ \ \ \{}
+\DoxyCodeLine{00637\ \textcolor{preprocessor}{\#ifdef\ MY\_DEBUG}}
+\DoxyCodeLine{00638\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Reading\ \%d\ bytes\ of\ data\ from\ <\%s>...\(\backslash\)n"{}},blocksize,label);}
+\DoxyCodeLine{00639\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00640\ \ \ \ \ SKIP;}
+\DoxyCodeLine{00641\ \ \ \ \ my\_fread(data,blocksize,\ 1,\ fd);}
+\DoxyCodeLine{00642\ \ \ \ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)data,blocksize/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}),4);}
+\DoxyCodeLine{00643\ \ \ \ \ SKIP;}
+\DoxyCodeLine{00644\ \ \ \}}
+\DoxyCodeLine{00645\ \ \ \textcolor{keywordflow}{return}(blocksize/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{00646\ \}}
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00648\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00649\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Routine\ to\ read\ a\ 3D\ float\ array\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00650\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ int\ *data:\ \ \ \ \ Pointer\ where\ the\ data\ are\ stored\ to\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00651\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ char\ *label:\ \ \ Identifyer\ for\ the\ datafield\ to\ read\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00652\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ FILE\ *fd:\ \ \ \ \ \ File\ handle\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00653\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/\ returns\ length\ of\ dataarray\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00654\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00655\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
+\DoxyCodeLine{00656\ \ \textcolor{keywordtype}{int}\ GadgetFile<PType>::read\_gadget\_float3(\textcolor{keywordtype}{float}\ *data,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,FILE\ *fd)}
+\DoxyCodeLine{00657\ \ \{}
+\DoxyCodeLine{00658\ \ \textcolor{keywordtype}{int}\ blocksize;}
+\DoxyCodeLine{00659\ \ }
+\DoxyCodeLine{00660\ \ blocksize\ =\ find\_block(fd,label);}
+\DoxyCodeLine{00661\ \ \textcolor{keywordflow}{if}(blocksize\ <=\ 0)}
+\DoxyCodeLine{00662\ \ \{}
+\DoxyCodeLine{00663\ \ printf(\textcolor{stringliteral}{"{}Block\ <\%s>\ not\ fond\ !\(\backslash\)n"{}},label);}
+\DoxyCodeLine{00664\ \ exit(5);}
+\DoxyCodeLine{00665\ \ \}}
+\DoxyCodeLine{00666\ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00667\ \ \{}
+\DoxyCodeLine{00668\ \textcolor{preprocessor}{\ \#ifdef\ MY\_DEBUG}}
+\DoxyCodeLine{00669\ \ printf(\textcolor{stringliteral}{"{}Reding\ \%d\ bytes\ of\ data\ from\ <\%s>...\(\backslash\)n"{}},blocksize,label);}
+\DoxyCodeLine{00670\ \textcolor{preprocessor}{\ \#endif}}
+\DoxyCodeLine{00671\ \ SKIP;}
+\DoxyCodeLine{00672\ \ my\_fread(data,blocksize,\ 1,\ fd);}
+\DoxyCodeLine{00673\ \ swap\_Nbyte((\textcolor{keywordtype}{char}*)data,blocksize/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}),4);}
+\DoxyCodeLine{00674\ \ SKIP;}
+\DoxyCodeLine{00675\ \ \}}
+\DoxyCodeLine{00676\ \ \textcolor{keywordflow}{return}(blocksize/\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float})/3);}
+\DoxyCodeLine{00677\ \ \}}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ }
+\DoxyCodeLine{00680\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

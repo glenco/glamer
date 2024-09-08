@@ -1,5 +1,5 @@
-\hypertarget{class_source_uniform}{}\doxysection{Source\+Uniform Class Reference}
-\label{class_source_uniform}\index{SourceUniform@{SourceUniform}}
+\doxysection{Source\+Uniform Class Reference}
+\hypertarget{class_source_uniform}{}\label{class_source_uniform}\index{SourceUniform@{SourceUniform}}
 
 
 A uniform surface brightness circular source.  
@@ -11,56 +11,121 @@ A uniform surface brightness circular source.
 
 
 
-Inheritance diagram for Source\+Uniform\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=162pt]{class_source_uniform__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for Source\+Uniform\+:
+% FIG 0
 
 
-Collaboration diagram for Source\+Uniform\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=164pt]{class_source_uniform__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsection*{Public Member Functions}
+Collaboration diagram for Source\+Uniform\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_source_uniform_a711c2e3971ead815a2d127c5d90fba64}{Source\+Uniform}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} position, Pos\+Type z, Pos\+Type radius\+\_\+in\+\_\+radians)
 \item 
-Pos\+Type \mbox{\hyperlink{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}{Surface\+Brightness}} (const Pos\+Type $\ast$y) const
+Pos\+Type \mbox{\hyperlink{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}{Surface\+Brightness}} (const Pos\+Type \texorpdfstring{$\ast$}{*}y) const
 \item 
-\mbox{\Hypertarget{class_source_uniform_ad40e9b554132905620493e699dff0582}\label{class_source_uniform_ad40e9b554132905620493e699dff0582}} 
-void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+void \mbox{\hyperlink{class_source_uniform_ad40e9b554132905620493e699dff0582}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
 \item 
-\mbox{\Hypertarget{class_source_uniform_a8cb938548223b4d14243695b15bcd472}\label{class_source_uniform_a8cb938548223b4d14243695b15bcd472}} 
-void {\bfseries print\+Source} ()
+void \mbox{\hyperlink{class_source_uniform_a8cb938548223b4d14243695b15bcd472}{print\+Source}} ()
 \item 
-\mbox{\Hypertarget{class_source_uniform_a583b8e361ab302b71abf1d50e245c40b}\label{class_source_uniform_a583b8e361ab302b71abf1d50e245c40b}} 
-Pos\+Type {\bfseries get\+Total\+Flux} () const
+Pos\+Type \mbox{\hyperlink{class_source_uniform_a583b8e361ab302b71abf1d50e245c40b}{get\+Total\+Flux}} () const
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Source} (Pos\+Type r, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} x, Pos\+Type z, Pos\+Type SBlimit, Pos\+Type zero\+\_\+point)
+\begin{DoxyCompactList}\small\item\em shell constructor \end{DoxyCompactList}\item 
+{\bfseries Source} (const \mbox{\hyperlink{class_source}{Source}} \&s)
+\item 
+\mbox{\hyperlink{class_source}{Source}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source}{Source}} \&s)
+\item 
+double {\bfseries SBlimit\+\_\+magarcsec} (double limit)
+\begin{DoxyCompactList}\small\item\em convert mag/arcsec\texorpdfstring{$^\wedge$}{\string^}2 to flux units \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+SBlimit} ()
+\begin{DoxyCompactList}\small\item\em Gets sb\+\_\+limit in erg/cm\texorpdfstring{$^\wedge$}{\string^}2/sec/rad\texorpdfstring{$^\wedge$}{\string^}2/\+Hz. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+SBlimit\+\_\+magarcsec} ()
+\begin{DoxyCompactList}\small\item\em Gets sb\+\_\+limit in mag/arcsec\texorpdfstring{$^\wedge$}{\string^}2. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries getZ} () const
+\begin{DoxyCompactList}\small\item\em Redshift of source. \end{DoxyCompactList}\item 
+void {\bfseries setZ} (Pos\+Type my\+\_\+z)
+\item 
+Pos\+Type {\bfseries get\+Radius} () const
+\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+void {\bfseries set\+Radius} (Pos\+Type my\+\_\+radius)
+\begin{DoxyCompactList}\small\item\em Reset the radius of the source in radians. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries get\+Theta} () const
+\begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
+void {\bfseries get\+Theta} (Pos\+Type \texorpdfstring{$\ast$}{*}x) const
+\begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
+void {\bfseries get\+Theta} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x) const
+\begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (Pos\+Type \texorpdfstring{$\ast$}{*}xx)
+\begin{DoxyCompactList}\small\item\em Reset the position of the source in radians. \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (Pos\+Type my\+\_\+x, Pos\+Type my\+\_\+y)
+\item 
+void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+void {\bfseries set\+SBlimit} (float limit)
+\begin{DoxyCompactList}\small\item\em Sets sb\+\_\+limit in erg/cm\texorpdfstring{$^\wedge$}{\string^}2/sec/rad\texorpdfstring{$^\wedge$}{\string^}2/\+Hz. \end{DoxyCompactList}\item 
+void {\bfseries set\+Mag\+Zero\+Point} (float zeropoint)
+\item 
+double {\bfseries get\+Mag\+Zero\+Point} ()
+\item 
+Pos\+Type \mbox{\hyperlink{class_source_a24792a230ec1b4155cb028c19a142046}{change\+Filter}} (std\+::string filter\+\_\+in, std\+::string filter\+\_\+out, std\+::string sed)
+\begin{DoxyCompactList}\small\item\em Calculates the difference in magnitude when changing the observing filter. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries integrate\+Filter} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil)
+\begin{DoxyCompactList}\small\item\em Calculates the integral of the filter curve given as an array of (x,y) values. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries integrate\+Filter\+SED} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil, std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+sed, std\+::vector$<$ Pos\+Type $>$ sed)
+\begin{DoxyCompactList}\small\item\em Calculates the integral of the sed multiplied by the filter curve. \end{DoxyCompactList}\item 
+double {\bfseries TEST\+\_\+surface\+\_\+brightness} (double res, int N)
+\begin{DoxyCompactList}\small\item\em test if flux in pixels matches total flux \end{DoxyCompactList}\item 
+long {\bfseries get\+ID} () const
+\item 
+void {\bfseries set\+ID} (long i)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+static Pos\+Type \texorpdfstring{$\ast$}{*} {\bfseries getx} (\mbox{\hyperlink{class_source}{Source}} \&source)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries flux\+\_\+to\+\_\+mag} (double flux) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+Pos\+Type {\bfseries source\+\_\+r}
+\begin{DoxyCompactList}\small\item\em charactoristic source size \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries source\+\_\+x}
+\begin{DoxyCompactList}\small\item\em center of source \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries zsource}
+\begin{DoxyCompactList}\small\item\em redshift of source \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries sb\+\_\+limit}
+\item 
+long {\bfseries id}
+\item 
+double {\bfseries mag\+\_\+zero\+\_\+point}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 A uniform surface brightness circular source. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_source_uniform_a711c2e3971ead815a2d127c5d90fba64}\label{class_source_uniform_a711c2e3971ead815a2d127c5d90fba64}} 
-\index{SourceUniform@{SourceUniform}!SourceUniform@{SourceUniform}}
+\Hypertarget{class_source_uniform_a711c2e3971ead815a2d127c5d90fba64}\index{SourceUniform@{SourceUniform}!SourceUniform@{SourceUniform}}
 \index{SourceUniform@{SourceUniform}!SourceUniform@{SourceUniform}}
 \doxysubsubsection{\texorpdfstring{SourceUniform()}{SourceUniform()}}
-{\footnotesize\ttfamily Source\+Uniform\+::\+Source\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{position,  }\item[{Pos\+Type}]{z,  }\item[{Pos\+Type}]{radius\+\_\+in\+\_\+radians }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_source_uniform_a711c2e3971ead815a2d127c5d90fba64} 
+Source\+Uniform\+::\+Source\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{position}{, }\item[{Pos\+Type}]{z}{, }\item[{Pos\+Type}]{radius\+\_\+in\+\_\+radians}{}\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
-{\em position} & postion on the sky in radians \\
+{\em position} & postion on the sky in radians  \\
 \hline
-{\em z} & redshift of source \\
+{\em z} & redshift of source  \\
 \hline
 {\em radius\+\_\+in\+\_\+radians} & radius of source in radians \\
 \hline
@@ -68,15 +133,45 @@ A uniform surface brightness circular source.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}\label{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}} 
-\index{SourceUniform@{SourceUniform}!SurfaceBrightness@{SurfaceBrightness}}
+\Hypertarget{class_source_uniform_ad40e9b554132905620493e699dff0582}\index{SourceUniform@{SourceUniform}!assignParams@{assignParams}}
+\index{assignParams@{assignParams}!SourceUniform@{SourceUniform}}
+\doxysubsubsection{\texorpdfstring{assignParams()}{assignParams()}}
+{\footnotesize\ttfamily \label{class_source_uniform_ad40e9b554132905620493e699dff0582} 
+void Source\+Uniform\+::assign\+Params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_params}{Input\+Params}} \&}]{params}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_source}{Source}}.
+
+\Hypertarget{class_source_uniform_a583b8e361ab302b71abf1d50e245c40b}\index{SourceUniform@{SourceUniform}!getTotalFlux@{getTotalFlux}}
+\index{getTotalFlux@{getTotalFlux}!SourceUniform@{SourceUniform}}
+\doxysubsubsection{\texorpdfstring{getTotalFlux()}{getTotalFlux()}}
+{\footnotesize\ttfamily \label{class_source_uniform_a583b8e361ab302b71abf1d50e245c40b} 
+Pos\+Type Source\+Uniform\+::get\+Total\+Flux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_source}{Source}}.
+
+\Hypertarget{class_source_uniform_a8cb938548223b4d14243695b15bcd472}\index{SourceUniform@{SourceUniform}!printSource@{printSource}}
+\index{printSource@{printSource}!SourceUniform@{SourceUniform}}
+\doxysubsubsection{\texorpdfstring{printSource()}{printSource()}}
+{\footnotesize\ttfamily \label{class_source_uniform_a8cb938548223b4d14243695b15bcd472} 
+void Source\+Uniform\+::print\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_source}{Source}}.
+
+\Hypertarget{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}\index{SourceUniform@{SourceUniform}!SurfaceBrightness@{SurfaceBrightness}}
 \index{SurfaceBrightness@{SurfaceBrightness}!SourceUniform@{SourceUniform}}
 \doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
-{\footnotesize\ttfamily Pos\+Type Source\+Uniform\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f} 
+Pos\+Type Source\+Uniform\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Surface brightness of source in grid coordinates not source centered coordinates.
 
-The units shuld be ergs / s / Hz / cm$^\wedge$2 
+The units shuld be ergs / s / Hz / cm\texorpdfstring{$^\wedge$}{\string^}2 
 
 Implements \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Source}}.
 
@@ -84,5 +179,5 @@ Implements \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Sour
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/source.\+h\item 
-S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/source.\+cpp\end{DoxyCompactItemize}
+SLsim\+Lib/include/source.\+h\item 
+SLsim\+Lib/\+Analytic\+NSIE/source.\+cpp\end{DoxyCompactItemize}

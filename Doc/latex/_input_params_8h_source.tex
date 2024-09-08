@@ -1,0 +1,220 @@
+\doxysection{Input\+Params.\+h}
+\hypertarget{_input_params_8h_source}{}\label{_input_params_8h_source}\index{SLsimLib/include/InputParams.h@{SLsimLib/include/InputParams.h}}
+\mbox{\hyperlink{_input_params_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ InputParams.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Oct\ 17,\ 2012}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ bmetcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifndef\ INPUTPARAMS\_H\_}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ INPUTPARAMS\_H\_}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\#if\ \_\_cplusplus\ >=\ 201103L}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\#endif}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{MassFuncType}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ PressSchechter,\ \ }
+\DoxyCodeLine{00038\ \ \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470af51a2d52d477a6124ef2f2c376717f12}{ShethTormen}},\ \ }
+\DoxyCodeLine{00039\ \ \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470a0421fde669f1f6a68f34f112af7c8809}{PowerLaw}}\ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ \ null\_lens,}
+\DoxyCodeLine{00046\ \ nfw\_lens,}
+\DoxyCodeLine{00047\ \ pnfw\_lens,}
+\DoxyCodeLine{00048\ \ pl\_lens,}
+\DoxyCodeLine{00049\ \ nsie\_lens,}
+\DoxyCodeLine{00050\ \ ana\_lens,}
+\DoxyCodeLine{00051\ \ uni\_lens,}
+\DoxyCodeLine{00052\ \ \ moka\_lens,}
+\DoxyCodeLine{00053\ \ dummy\_lens,}
+\DoxyCodeLine{00054\ \ hern\_lens,}
+\DoxyCodeLine{00055\ \ jaffe\_lens}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}{PixelMapType}}}
+\DoxyCodeLine{00060\ \{}
+\DoxyCodeLine{00061\ \ \ moka,}
+\DoxyCodeLine{00062\ \ \ pix\_map}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \ null\_gal,}
+\DoxyCodeLine{00068\ \ nsie\_gal,}
+\DoxyCodeLine{00069\ \ \ pl\_gal,\ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98faf0cfd030cd90fec7ff3b2f4878bc40e2}{hern\_gal}},\ \ }
+\DoxyCodeLine{00071\ \ \ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98fa2802bafb4b6ed4ea39d7c9670fdc675c}{jaffe\_gal}}\ \ }
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}{ClumpInternal}}\ \{nfw,powerlaw,pointmass\};}
+\DoxyCodeLine{00077\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}{IMFtype}}\ \{One,Mono,BrokenPowerLaw,Salpeter,SinglePowerLaw,Kroupa,Chabrier\};}
+\DoxyCodeLine{00079\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ \{NoBand,EUC\_VIS,EUC\_Y,EUC\_J,EUC\_H,SDSS\_U,SDSS\_G,SDSS\_R,SDSS\_I,SDSS\_Z}
+\DoxyCodeLine{00080\ \ \ ,KiDS\_U,KiDS\_G,KiDS\_R,KiDS\_I,DES\_R,DES\_G,DES\_I,DES\_Z}
+\DoxyCodeLine{00081\ \ \ ,J,H,Ks,IRAC1,IRAC2,F435W,F606W,F775W,F850LP,F814W,F110W,F160W\};}
+\DoxyCodeLine{00082\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ \textcolor{keyword}{const}\ \&p);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{enum\ class}\ HaloCatFormats\ \{MillenniumObs,MultiDarkHalos,ObservedData,null\_cat\};}
+\DoxyCodeLine{00086\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{EllipMethod}}\ \{Fourier,Pseudo,Schramm,Keeton\};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ std::string\ \mbox{\hyperlink{_input_params_8h_a6e21a39ae977976a9e55cfa01ceda1e5}{to\_string}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ \&band);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_params}{InputParams}}}
+\DoxyCodeLine{00099\ \{}
+\DoxyCodeLine{00100\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00101\ \ \mbox{\hyperlink{class_input_params_a96e724a0dd6be6682bbbf5498c1746e9}{InputParams}}();}
+\DoxyCodeLine{00102\ \ \mbox{\hyperlink{class_input_params_a96e724a0dd6be6682bbbf5498c1746e9}{InputParams}}(std::string\ paramfile);}
+\DoxyCodeLine{00103\ \ \mbox{\hyperlink{class_input_params}{\string~InputParams}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\textcolor{keywordtype}{bool}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00106\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,std::string\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{MassFuncType}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,HaloCatFormats\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00111\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}{ClumpInternal}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00113\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}{IMFtype}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{EllipMethod}}\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00115\ \ \ }
+\DoxyCodeLine{00116\ \ }
+\DoxyCodeLine{00117\ \ \textcolor{comment}{//\ get\ numbers}}
+\DoxyCodeLine{00118\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Number>}
+\DoxyCodeLine{00119\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\ Number\&\ value)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ \ }
+\DoxyCodeLine{00121\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00122\ \ T\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(std::string\ label,\ \textcolor{keyword}{const}\ T\&\ def\ =\ T())\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00123\ \ }
+\DoxyCodeLine{00124\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00125\ \ T\ \mbox{\hyperlink{class_input_params_aee63b091ac4a836112d6c215236d9ded}{require}}(std::string\ label)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00126\ \ }
+\DoxyCodeLine{00127\ \ \textcolor{keywordtype}{bool}\ exist(std::string\ label)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00128\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_ab12499bdfe87a47837ba9f2d73ffecd6}{print}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00129\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_accec2e5a02dc77ebbc9200c7f8a069f3}{print\_used}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00130\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_a1e78eec9e10c6bec1d68660e29c381fe}{print\_unused}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00132\ \ std::size\_t\ \mbox{\hyperlink{class_input_params_a009125f2fd0dd24f2477feb6fb1217be}{Nparams}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ params.size();\ \}}
+\DoxyCodeLine{00133\ \ \ }
+\DoxyCodeLine{00134\ \ \ \textcolor{comment}{//\ for\ printing\ to\ file\ or\ cout}}
+\DoxyCodeLine{00135\ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{class_input_params}{InputParams}}\ \textcolor{keyword}{const}\ \&params);}
+\DoxyCodeLine{00136\ \ \ }
+\DoxyCodeLine{00137\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_a5a9e313d156c953d24246ea153f29417}{PrintToFile}}(std::string\ \mbox{\hyperlink{class_input_params_ad8c9f2e704a99105af6768950613161b}{filename}},\ \textcolor{keywordtype}{bool}\ strip\_unused\ =\ \textcolor{keyword}{false})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00139\ \ std::string\ \mbox{\hyperlink{class_input_params_ad8c9f2e704a99105af6768950613161b}{filename}}()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ paramfile\_name;\}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}{put}}(std::string\ label,std::string\ value,std::string\ comment\ =\ std::string());}
+\DoxyCodeLine{00142\ \ }
+\DoxyCodeLine{00143\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Number>}
+\DoxyCodeLine{00144\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}{put}}(std::string\ label,Number\ value,std::string\ comment\ =\ std::string());}
+\DoxyCodeLine{00145\ \ }
+\DoxyCodeLine{00146\ \ \textcolor{comment}{//\ read\ parameters\ from\ a\ MOKA\ FITS\ header}}
+\DoxyCodeLine{00147\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_ae5679ef61b65b9ab211f87a775025ab1}{readMOKA}}();}
+\DoxyCodeLine{00148\ \ }
+\DoxyCodeLine{00150\ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_input_params}{InputParams}}\ \mbox{\hyperlink{class_input_params_ae4df821522f3ee935379efe3f8ce38a5}{sample}}();}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00153\ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_a1634bebf74a595b8a2469da315c6f91b}{add}}(std::string\ label,\ std::string\ value\ =\ std::string(),\ std::string\ comment\ =\ std::string());}
+\DoxyCodeLine{00154\ \ }
+\DoxyCodeLine{00155\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00156\ \ \textcolor{comment}{//\ thread-\/safe\ counter}}
+\DoxyCodeLine{00157\ \ \textcolor{keyword}{class\ }counter}
+\DoxyCodeLine{00158\ \ \{}
+\DoxyCodeLine{00159\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00160\ \ \ counter();}
+\DoxyCodeLine{00161\ \ \ counter(\textcolor{keyword}{const}\ counter\&\ other);}
+\DoxyCodeLine{00162\ \ \ }
+\DoxyCodeLine{00163\ \ \ counter\&\ operator=(\textcolor{keyword}{const}\ counter\&\ rhs);}
+\DoxyCodeLine{00164\ \ \ }
+\DoxyCodeLine{00165\ \ \ \textcolor{keywordtype}{void}\ use(\textcolor{keyword}{const}\ std::string\&\ label);}
+\DoxyCodeLine{00166\ \ \ \textcolor{keywordtype}{bool}\ is\_used(\textcolor{keyword}{const}\ std::string\&\ label)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00167\ \ \ }
+\DoxyCodeLine{00168\ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{void}\ swap(counter\&,\ counter\&);}
+\DoxyCodeLine{00169\ \ \ }
+\DoxyCodeLine{00170\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00171\ \ \ std::map<std::string,\ std::size\_t>\ c;}
+\DoxyCodeLine{00172\ \ \ }
+\DoxyCodeLine{00173\ \ \ \textcolor{keyword}{mutable}\ std::mutex\ mutex;}
+\DoxyCodeLine{00174\ \ \};}
+\DoxyCodeLine{00175\ \ }
+\DoxyCodeLine{00176\ \ \textcolor{keyword}{typedef}\ std::map<std::string,\ std::string>::iterator\ iterator;}
+\DoxyCodeLine{00177\ \ \textcolor{keyword}{typedef}\ std::map<std::string,\ std::string>::const\_iterator\ const\_iterator;}
+\DoxyCodeLine{00178\ \ }
+\DoxyCodeLine{00179\ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ is\_known(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{00180\ \ }
+\DoxyCodeLine{00181\ \ std::string\ paramfile\_name;}
+\DoxyCodeLine{00182\ \ }
+\DoxyCodeLine{00183\ \ std::map<std::string,\ std::string>\ params;}
+\DoxyCodeLine{00184\ \ std::map<std::string,\ std::string>\ comments;}
+\DoxyCodeLine{00185\ \ }
+\DoxyCodeLine{00186\ \ \textcolor{comment}{//\ The\ number\ of\ times\ a\ parameter\ was\ retrieved\ by\ get}}
+\DoxyCodeLine{00187\ \ \textcolor{keyword}{mutable}\ counter\ use\_counter;}
+\DoxyCodeLine{00188\ \};}
+\DoxyCodeLine{00189\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{class_input_params}{InputParams}}\ \textcolor{keyword}{const}\ \&params);}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00198\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Number>}
+\DoxyCodeLine{00199\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{InputParams::get}}(std::string\ label,\ Number\&\ value)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00200\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00201\ \ const\_iterator\ it\ =\ params.find(label);}
+\DoxyCodeLine{00202\ \ }
+\DoxyCodeLine{00203\ \ \textcolor{keywordflow}{if}(it\ ==\ params.end())}
+\DoxyCodeLine{00204\ \ \{}
+\DoxyCodeLine{00205\ \ \ value\ =\ Number();}
+\DoxyCodeLine{00206\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00207\ \ \}}
+\DoxyCodeLine{00208\ \ }
+\DoxyCodeLine{00209\ \ std::istringstream\ sstr(it-\/>second);}
+\DoxyCodeLine{00210\ \ }
+\DoxyCodeLine{00211\ \ sstr\ >>\ value;}
+\DoxyCodeLine{00212\ \ \textcolor{keywordflow}{if}(sstr.fail())}
+\DoxyCodeLine{00213\ \ \{}
+\DoxyCodeLine{00214\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Expected\ a\ numerical\ value\ for\ "{}}\ <<\ it-\/>first\ <<\ \textcolor{stringliteral}{"{}\ in\ parameter\ file\ "{}}\ <<\ paramfile\_name\ <<\ std::endl;}
+\DoxyCodeLine{00215\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00216\ \ \}}
+\DoxyCodeLine{00217\ \ }
+\DoxyCodeLine{00218\ \ use\_counter.use(it-\/>first);}
+\DoxyCodeLine{00219\ \ }
+\DoxyCodeLine{00220\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00226\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Number>}
+\DoxyCodeLine{00227\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}{InputParams::put}}(std::string\ label,\ Number\ value,\ std::string\ comment)}
+\DoxyCodeLine{00228\ \{}
+\DoxyCodeLine{00229\ \ \textcolor{comment}{//\ convert\ to\ string}}
+\DoxyCodeLine{00230\ \ std::ostringstream\ sstr;}
+\DoxyCodeLine{00231\ \ sstr\ <<\ value;}
+\DoxyCodeLine{00232\ \ params.insert(std::make\_pair(label,\ sstr.str()));}
+\DoxyCodeLine{00233\ \ }
+\DoxyCodeLine{00234\ \ \textcolor{keywordflow}{if}(comment.empty())}
+\DoxyCodeLine{00235\ \ \ comments.erase(label);}
+\DoxyCodeLine{00236\ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00237\ \ \ comments.insert(std::make\_pair(label,\ comment));}
+\DoxyCodeLine{00238\ \}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00243\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00244\ T\ \mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{InputParams::get}}(std::string\ label,\ \textcolor{keyword}{const}\ T\&\ def)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00245\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00246\ \ T\ value;}
+\DoxyCodeLine{00247\ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(label,\ value))}
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordflow}{return}\ def;}
+\DoxyCodeLine{00249\ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00250\ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00255\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00256\ T\ \mbox{\hyperlink{class_input_params_aee63b091ac4a836112d6c215236d9ded}{InputParams::require}}(std::string\ label)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00257\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00258\ \ \textcolor{comment}{//\ TODO:\ add\ getting\ of\ default\ value}}
+\DoxyCodeLine{00259\ \ T\ value;}
+\DoxyCodeLine{00260\ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_input_params_a5f816c8401a291a24f9208f00ff4812c}{get}}(label,\ value))}
+\DoxyCodeLine{00261\ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Parameter\ "{}}\ +\ label\ +\ \textcolor{stringliteral}{"{}\ is\ required\ in\ "{}}\ +\ paramfile\_name);}
+\DoxyCodeLine{00262\ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{00263\ \}}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ INPUTPARAMS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

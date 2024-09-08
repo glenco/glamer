@@ -1,0 +1,72 @@
+\doxysection{gaussian.\+h}
+\hypertarget{gaussian_8h_source}{}\label{gaussian_8h_source}\index{SLsimLib/include/gaussian.h@{SLsimLib/include/gaussian.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ guassian.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ NR}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Ben\ Metcalf\ on\ 17/04/2018.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ guassian\_hpp}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ guassian\_hpp}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\#include\ "{}slsimlib.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <valarray>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}fftw3.h"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }GaussianField\{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ GaussianField(\textcolor{keywordtype}{size\_t}\ Nx,\textcolor{keywordtype}{size\_t}\ Ny):}
+\DoxyCodeLine{00025\ \ \ Nx(Nx),Ny(Ny)}
+\DoxyCodeLine{00026\ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ kappak.resize(Nx*(Ny/2+1));}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<double>\ image(Nx*Ny);}
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ pbackward\ =\ fftw\_plan\_dft\_c2r\_2d(Nx,Ny}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{reinterpret\_cast<}fftw\_complex*\textcolor{keyword}{>}(kappak.data())}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,image.data(),\ FFTW\_ESTIMATE);}
+\DoxyCodeLine{00033\ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \string~GaussianField()\{}
+\DoxyCodeLine{00036\ \ \ \ \ fftw\_destroy\_plan(pbackward);}
+\DoxyCodeLine{00037\ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ GaussianField2D(\textcolor{keywordtype}{double}\ *image,std::function<\textcolor{keywordtype}{double}(\textcolor{keywordtype}{double},\textcolor{keywordtype}{double})>\ PofK,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ boxlrad,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00040\ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{void}\ GaussianField2D(std::vector<double>\ \&image,std::function<\textcolor{keywordtype}{double}(\textcolor{keywordtype}{double},\textcolor{keywordtype}{double})>\ PofK,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ boxlrad,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00043\ \ \ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ GaussianField2D(std::valarray<double>\ \&image,std::function<\textcolor{keywordtype}{double}(\textcolor{keywordtype}{double},\textcolor{keywordtype}{double})>\ PofK,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ boxlrad,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ std::vector<std::complex<double>\ >\ kappak;}
+\DoxyCodeLine{00050\ \ \ fftw\_plan\ pbackward;}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{size\_t}\ Nx;}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{size\_t}\ Ny;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ index\_to\_k\_2d(\textcolor{keywordtype}{size\_t}\ k\ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ \&kx\ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ \&ky\ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Nx\ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Ny\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ GaussianField2D(\textcolor{keywordtype}{double}\ *image,std::function<\textcolor{keywordtype}{double}(\textcolor{keywordtype}{double},\textcolor{keywordtype}{double})>\ PofK,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ boxlrad,\textcolor{keywordtype}{int}\ Nx,\textcolor{keywordtype}{int}\ Ny,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ guassian\_hpp\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

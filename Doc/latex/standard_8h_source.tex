@@ -1,0 +1,158 @@
+\doxysection{standard.\+h}
+\hypertarget{standard_8h_source}{}\label{standard_8h_source}\index{SLsimLib/include/standard.h@{SLsimLib/include/standard.h}}
+\mbox{\hyperlink{standard_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ \_STANDARD\_DECLARE\_}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ \_STANDARD\_DECLARE\_}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\#define\ NDEBUG\ \ //\ Un-\/commenting\ this\ line\ will\ remove\ all\ assert()\ statements\ in\ the\ executable.}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cfloat>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#ifdef\ \_OPENMP}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\#include\ <pthread.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <valarray>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <nr.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <nrD.h>}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\#include\ <utilities.h>}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <cosmo.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <halo.h>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifndef\ PI}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ PI\ \ M\_PI}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#ifndef\ Grav}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ Grav\ \ 4.7788e-\/20\ \ }\textcolor{comment}{//\ G/c\string^2\ in\ Mpc}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#ifndef\ arcsecTOradians}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ arcminTOradians\ \ 0.0002908882086657216\ \ }\textcolor{comment}{//\ convert\ arcesconds\ to\ radians}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#ifndef\ arcsecTOradians}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ arcsecTOradians\ \ 0.000004848136811\ \ }\textcolor{comment}{//\ convert\ arcesconds\ to\ radians}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#ifndef\ degreesTOradians}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ degreesTOradians\ \ 0.01745329251994\ \ }\textcolor{comment}{//\ convert\ degrees\ to\ radians}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#ifndef\ hplanck}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ hplanck\ \ 6.626068e-\/27\ \ }\textcolor{comment}{//\ in\ erg*sec}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#ifndef\ inv\_hplanck}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ inv\_hplanck\ 1.50919e26\ }\textcolor{comment}{//\ in\ 1/(erg*sec)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#ifndef\ kmpersecTOmpcperday}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ kmpersecTOmpcperday\ 2.80003e-\/15}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#ifndef\ error\_message}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ error\_message}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ ERROR\_MESSAGE()\ std::cout\ <<\ "{}ERROR:\ file:\ "{}\ <<\ \_\_FILE\_\_\ <<\ "{}\ line:\ "{}\ <<\ \_\_LINE\_\_\ <<\ std::endl;}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#ifndef\ line\_message}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ line\_message}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ PRINT\_LINE()\ std::cout\ <<\ "{}file:\ "{}\ <<\ \_\_FILE\_\_\ <<\ "{}\ line:\ "{}\ <<\ \_\_LINE\_\_\ <<\ std::endl;}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#ifndef\ boo\_declare}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ boo\_declare}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{NO,\ YES,\ MAYBE\}\ Boo;}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#ifndef\ lensquant\_declare}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ lensquant\_declare}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{LensingVariable}}\ \{}
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a2d2826ba881a98b69365e70359961d9d}{DELAYT}}\ \ \ }
+\DoxyCodeLine{00091\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a002101f8725e5c78d9f30d87f3fa4c87}{ALPHA}}\ \ \ }
+\DoxyCodeLine{00092\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a5c555a644af81fa1f8998d6b41715bca}{ALPHA1}}\ \ }
+\DoxyCodeLine{00093\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a4241fd768d3bb716ed576d02065878f2}{ALPHA2}}\ \ }
+\DoxyCodeLine{00094\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a55b8000cc76d015e79c6faf29593a5b6}{KAPPA}}\ \ \ }
+\DoxyCodeLine{00095\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a469bb22a9f1f560331b06cd6ef0da944}{GAMMA}}\ \ \ }
+\DoxyCodeLine{00096\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a441c1844d7fef95b423c90c8490b188b}{GAMMA1}}\ \ }
+\DoxyCodeLine{00097\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a256fc80c11d5a8c917e8b576b137d4a1}{GAMMA2}}\ \ }
+\DoxyCodeLine{00098\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a357ff5cb664a231edcc23973ca09cdda}{GAMMA3}}\ \ }
+\DoxyCodeLine{00099\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a915ba350a9aab6451e02bef54cd0f4fa}{INVMAG}}\ \ }
+\DoxyCodeLine{00100\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a7434b75669da1d8610a2f9a91957da81}{PHI}}\ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ ,\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7a42a29ddbba2a43362a7336bc210dad2c}{SurfBrightness}}\ \ }
+\DoxyCodeLine{00102\ \}\ ;}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#ifndef\ PosType\_declare}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ PosType\_declare}}
+\DoxyCodeLine{00107\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ PosType;}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#ifndef\ IndexType\_declare}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ IndexType\_declare}}
+\DoxyCodeLine{00112\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{size\_t}\ IndexType;}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#ifndef\ swap\_declare}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ swap\_declare}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ SWAP(a,b)\ temp=(a);(a)=(b);(b)=temp;}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#ifndef\ treeNBdim}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ treeNBdim\ 2\ \ }\textcolor{comment}{//\ dimension\ of\ boxes\ in\ tree}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{//\#ifdef\ DOUBLE\_PRECISION}}
+\DoxyCodeLine{00125\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ KappaType;}
+\DoxyCodeLine{00126\ \textcolor{comment}{//\#else}}
+\DoxyCodeLine{00127\ \textcolor{comment}{//typedef\ float\ KappaType;}}
+\DoxyCodeLine{00128\ \textcolor{comment}{//\#endif}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ unit\ test\ definitions}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ GlamerTest\ overrides\ these\ as\ necessary}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#ifndef\ GLAMER\_TEST}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ GLAMER\_TEST\_USES(t)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ GLAMER\_TEST\_FRIEND(t)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#ifndef\ MpcToSeconds}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ MpcToSeconds\ (3.085677e22\ /\ 2.99792458e8)}}
+\DoxyCodeLine{00139\ \textcolor{comment}{//\ Computed\ as\ MpcToMeter(m)\ /\ SpeedOfLight(m.s\string^\{-\/1\})}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#ifndef\ SecondToDays}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ SecondToDays\ (1.\ /\ 86400.)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#ifndef\ SecondToYears}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ SecondToYears\ (1.\ /\ 86400.\ /\ 365.25)}}
+\DoxyCodeLine{00148\ \textcolor{comment}{//\ Taking\ 365.25\ days\ per\ year.}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+
+\end{DoxyCode}

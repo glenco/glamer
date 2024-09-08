@@ -1,0 +1,670 @@
+\doxysection{source.\+h}
+\hypertarget{source_8h_source}{}\label{source_8h_source}\index{SLsimLib/include/source.h@{SLsimLib/include/source.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ source.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SOURCE\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SOURCE\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\#include\ "{}standard.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_params_8h}{InputParams.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}image\_processing.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{double}\ mag\_to\_jansky\_AB(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{double}\ jansky\_to\_mag\_AB(\textcolor{keywordtype}{double}\ flux);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{double}\ mag\_to\_flux\_AB(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{double}\ flux\_to\_mag\_AB(\textcolor{keywordtype}{double}\ flux);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00025\ T\ flux\_to\_mag(T\ flux,T\ zeropoint)\{}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordflow}{if}(flux\ <=0)\ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordflow}{return}\ -\/2.5\ *\ log10(flux)\ +\ zeropoint;}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00031\ T\ mag\_to\_flux(T\ m,T\ zeropoint)\{}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordflow}{if}(m\ ==\ 100)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordflow}{return}\ pow(10,-\/0.4*(m\ -\/\ zeropoint));}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//double\ mag\_to\_flux(double\ m,double\ zeropoint);}}
+\DoxyCodeLine{00037\ \textcolor{comment}{//double\ flux\_to\_mag(double\ flux,double\ zeropoint);}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source}{Source}}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \mbox{\hyperlink{class_source_aca1ca0b2c7b26cc4fa287ce6ed51cfd8}{Source}}(PosType\ r}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ ,PosType\ z}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ ,PosType\ SBlimit\ \ \textcolor{comment}{//\ surface\ brightness\ limit\ in\ mags\ per\ arcsecond}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ ,PosType\ zero\_point\ \textcolor{comment}{//\ the\ magnitude\ zero\ point}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ ):\mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}(r),\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}(x),\mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}(z),sb\_limit(SBlimit),mag\_zero\_point(zero\_point)}
+\DoxyCodeLine{00054\ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//setSBlimit\_magarcsec(SBlimit);}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{id}=-\/1;}
+\DoxyCodeLine{00057\ \ \ \};}
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_source}{\string~Source}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{class_source_aca1ca0b2c7b26cc4fa287ce6ed51cfd8}{Source}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source}{Source}}\ \&s):}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}(s.\mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}),}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}(s.\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}),}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}(s.\mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}),}
+\DoxyCodeLine{00065\ \ \ \ \ sb\_limit(s.sb\_limit),}
+\DoxyCodeLine{00066\ \ \ \ \ id(s.id),}
+\DoxyCodeLine{00067\ \ \ \ \ mag\_zero\_point(s.mag\_zero\_point)\{\ \}}
+\DoxyCodeLine{00068\ \ \ }
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{class_source}{Source}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source}{Source}}\ \&s)\{}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&s)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}\ =\ s.\mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}};}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}\ =\ s.\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}};}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}\ =\ s.\mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}};}
+\DoxyCodeLine{00074\ \ \ \ \ sb\_limit\ =\ s.sb\_limit;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{id}\ =\ s.id;}
+\DoxyCodeLine{00076\ \ \ \ \ mag\_zero\_point\ =\ s.mag\_zero\_point;}
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00079\ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \textcolor{comment}{//\ in\ lens.cpp}}
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{virtual}\ PosType\ \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{virtual}\ PosType\ getTotalFlux()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ printSource()\ =\ 0;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_source_ac448b92e5c6a3905a71a1c65ae18bc31}{SBlimit\_magarcsec}}(\textcolor{keywordtype}{double}\ limit)\ \{\textcolor{keywordflow}{return}\ mag\_to\_flux(limit,mag\_zero\_point)*pow(180*60*60/PI,2);\}}
+\DoxyCodeLine{00092\ \ }
+\DoxyCodeLine{00094\ \ PosType\ \mbox{\hyperlink{class_source_acd55331528174d417db0d9480f20e2ad}{getSBlimit}}()\{\textcolor{keywordflow}{return}\ sb\_limit;\}}
+\DoxyCodeLine{00096\ \ \ PosType\ \mbox{\hyperlink{class_source_a82bb3177c8fd486e75e1d909c2b814f2}{getSBlimit\_magarcsec}}()\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_ac448b92e5c6a3905a71a1c65ae18bc31}{SBlimit\_magarcsec}}(sb\_limit);\}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \textcolor{comment}{//\ accessor\ functions\ that\ will\ sometimes\ be\ over\ ridden\ in\ class\ derivatives}}
+\DoxyCodeLine{00100\ \ PosType\ \mbox{\hyperlink{class_source_a6deb99f07cb87642b83b20ff294791be}{getZ}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}};\}}
+\DoxyCodeLine{00101\ \ \textcolor{keywordtype}{void}\ setZ(PosType\ my\_z)\{\mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}\ =\ my\_z;\}}
+\DoxyCodeLine{00103\ \ \textcolor{keyword}{inline}\ PosType\ \mbox{\hyperlink{class_source_a3b7965ae771388ca9a9c6cc2d389f6df}{getRadius}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}};\}}
+\DoxyCodeLine{00105\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}{setRadius}}(PosType\ my\_radius)\{\mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}\ =\ my\_radius;\}}
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_source_ac7171e2f368094681e0c49c387905aa0}{getTheta}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}};\}}
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_a8d1c5ba7cb711317ddeae2893046ce4b}{getTheta}}(PosType\ *x)\textcolor{keyword}{\ const\ }\{x[0]\ =\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}.x[0];\ x[1]\ =\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}.x[0];\}}
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_a40fe53b39a6ef0b73564b0934055b850}{getTheta}}(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x)\textcolor{keyword}{\ const\ }\{x\ =\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}};\}}
+\DoxyCodeLine{00112\ \ \ }
+\DoxyCodeLine{00114\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_a1b8f8e62e6be79c15cc50fce2d2804d5}{setTheta}}(PosType\ *xx)\{\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ xx[0];\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ xx[1];\}}
+\DoxyCodeLine{00115\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_a1b8f8e62e6be79c15cc50fce2d2804d5}{setTheta}}(PosType\ my\_x,PosType\ my\_y)\{\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ my\_x;\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ my\_y;\}}
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_a1b8f8e62e6be79c15cc50fce2d2804d5}{setTheta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}\ =\ p;\}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00119\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_ab46f439fc0e9c1ecba446770816aee57}{setSBlimit}}(\textcolor{keywordtype}{float}\ limit)\ \{sb\_limit\ =\ limit;\}}
+\DoxyCodeLine{00120\ \ }
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{void}\ setMagZeroPoint(\textcolor{keywordtype}{float}\ zeropoint)\{mag\_zero\_point=zeropoint;\}}
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{double}\ getMagZeroPoint()\{\textcolor{keywordflow}{return}\ mag\_zero\_point;\}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ PosType\ \mbox{\hyperlink{class_source_a24792a230ec1b4155cb028c19a142046}{changeFilter}}(std::string\ filter\_in,\ std::string\ filter\_out,\ std::string\ sed);}
+\DoxyCodeLine{00125\ \ PosType\ \mbox{\hyperlink{class_source_a01f88323bd6901f46f7ae204f357d722}{integrateFilter}}(std::vector<PosType>\ wavel\_fil,\ std::vector<PosType>\ fil);}
+\DoxyCodeLine{00126\ \ PosType\ \mbox{\hyperlink{class_source_ac64731db1d6be651ad589c78c549610d}{integrateFilterSED}}(std::vector<PosType>\ wavel\_fil,\ std::vector<PosType>\ fil,\ std::vector<PosType>\ wavel\_sed,\ std::vector<PosType>\ sed);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \textcolor{keyword}{static}\ PosType\ *getx(\mbox{\hyperlink{class_source}{Source}}\ \&source)\{\textcolor{keywordflow}{return}\ source.\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}.x;\}}
+\DoxyCodeLine{00129\ \ \ }
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_source_aaa621da5aa92e42d530eb9230a97e7c7}{TEST\_surface\_brightness}}(\textcolor{keywordtype}{double}\ res,\textcolor{keywordtype}{int}\ N)\{}
+\DoxyCodeLine{00132\ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x\ =\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}};}
+\DoxyCodeLine{00134\ \ \ \ \ x[0]\ -\/=\ res*N/2.;}
+\DoxyCodeLine{00135\ \ \ \ \ x[1]\ -\/=\ res*N/2.;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{double}\ total\_flux\ =\ 0;}
+\DoxyCodeLine{00137\ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j=0\ ;\ j<N\ ;\ ++j)\{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ total\_flux\ +=\ \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{SurfaceBrightness}}(x.x);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ x[1]\ +=\ res;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ x[0]\ +=\ res;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ x[1]\ =\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ -\/\ res*N/2.;}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ total\_flux\ *=\ res*res;}
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/\ check\ flux\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00149\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ total\ flux\ in\ pixels\ :\ "{}}\ <<\ total\_flux\ <<\ std::endl;}
+\DoxyCodeLine{00150\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ getTotalFlux()\ :\ "{}}\ <<\ getTotalFlux()\ <<\ std::endl;}
+\DoxyCodeLine{00151\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ fractional\ difference\ :\ "{}}\ <<\ (total\_flux\ -\/\ getTotalFlux())\ /\ getTotalFlux()\ <<\ std::endl;}
+\DoxyCodeLine{00152\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ magnitude\ from\ flux\ in\ pixels\ :\ "{}}\ <<\ flux\_to\_mag(total\_flux)\ <<\ std::endl;}
+\DoxyCodeLine{00153\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\ mag\ from\ getTotalFlux()\ :\ "{}}\ <<\ \ flux\_to\_mag(getTotalFlux())\ <<\ std::endl;}
+\DoxyCodeLine{00154\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00155\ \ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{if}(abs(\ (total\_flux\ -\/\ getTotalFlux())\ /\ getTotalFlux()\ )\ >\ 0.1\ )\{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \textcolor{comment}{//assert(\ abs(\ (total\_flux\ -\/\ getTotalFlux())\ /\ getTotalFlux()\ )\ <\ 0.1\ );}}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordflow}{return}\ total\_flux;}
+\DoxyCodeLine{00161\ \ \ \}}
+\DoxyCodeLine{00162\ \ \ }
+\DoxyCodeLine{00163\ \ \ \textcolor{keywordtype}{long}\ getID()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ id;\}}
+\DoxyCodeLine{00164\ \ \ \textcolor{keywordtype}{void}\ setID(\textcolor{keywordtype}{long}\ i)\{\textcolor{keywordtype}{id}=i;\}}
+\DoxyCodeLine{00165\ \ \ }
+\DoxyCodeLine{00166\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00167\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params)\{\};}
+\DoxyCodeLine{00168\ \ }
+\DoxyCodeLine{00169\ \ \textcolor{comment}{//\ source\ parameters}}
+\DoxyCodeLine{00171\ \ PosType\ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}};}
+\DoxyCodeLine{00173\ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}};}
+\DoxyCodeLine{00174\ \ }
+\DoxyCodeLine{00176\ \ PosType\ \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}};}
+\DoxyCodeLine{00177\ \ PosType\ sb\_limit;}
+\DoxyCodeLine{00178\ \ \ }
+\DoxyCodeLine{00179\ \ \ \textcolor{keywordtype}{double}\ flux\_to\_mag(\textcolor{keywordtype}{double}\ flux)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordflow}{if}(flux\ <=0)\ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/2.5\ *\ log10(flux)\ +\ mag\_zero\_point;}
+\DoxyCodeLine{00182\ \ \ \}}
+\DoxyCodeLine{00183\ \ \ }
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ \ double\ mag\_to\_flux(double\ mag)\ const\ \{}}
+\DoxyCodeLine{00185\ \textcolor{comment}{//\ \ \ \ if(mag\ ==\ 100)\ return\ 0;}}
+\DoxyCodeLine{00186\ \textcolor{comment}{//\ \ \ \ return\ pow(10,-\/0.4*(mag\ -\/\ mag\_zero\_point));}}
+\DoxyCodeLine{00187\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00188\ \ \ }
+\DoxyCodeLine{00189\ \ \ \textcolor{keywordtype}{long}\ id;}
+\DoxyCodeLine{00190\ \ \ \textcolor{keywordtype}{double}\ mag\_zero\_point;}
+\DoxyCodeLine{00191\ \};}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{keyword}{class\ }SourceColored\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00194\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00195\ \ \ SourceColored(PosType\ magnitude,PosType\ r,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x,PosType\ z}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ SBlimit,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band)}
+\DoxyCodeLine{00197\ \ \ :\mbox{\hyperlink{class_source}{Source}}(r,x,z,SBlimit,zeropoints.at(band))}
+\DoxyCodeLine{00198\ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{if}(zeropoints.find(band)\ ==\ zeropoints.end())\{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}SourceColored\ band\ "{}}\ <<\ to\_string(band)\ <<\ \textcolor{stringliteral}{"{}\ zeropoint\ needs\ to\ be\ set."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ throw\ std::runtime\_error(\textcolor{stringliteral}{"{}unset\ zeropoint"{}});}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//zeropoints[Band::NoBand]\ =\ zero\_point;}}
+\DoxyCodeLine{00204\ \ \ \ \ current\_band\ =\ band;}
+\DoxyCodeLine{00205\ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ mag\_map[current\_band]=magnitude;}
+\DoxyCodeLine{00207\ \ \ \ \ mag\ =\ magnitude;}
+\DoxyCodeLine{00208\ \ \ \ \ flux\_total\ =\ mag\_to\_flux(mag,zeropoints.at(band));}
+\DoxyCodeLine{00209\ \ \ \ \ setID(-\/1);}
+\DoxyCodeLine{00210\ \ \ \}}
+\DoxyCodeLine{00211\ \ \ }
+\DoxyCodeLine{00212\ \ \ SourceColored(PosType\ magnitude,PosType\ r,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x,PosType\ z}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ SBlimit,\textcolor{keywordtype}{double}\ zero\_point,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band)}
+\DoxyCodeLine{00214\ \ \ :\mbox{\hyperlink{class_source}{Source}}(r,x,z,SBlimit,zero\_point)}
+\DoxyCodeLine{00215\ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ zeropoints[band]\ =\ zero\_point;}
+\DoxyCodeLine{00217\ \ \ \ \ current\_band\ =\ band;}
+\DoxyCodeLine{00218\ \ \ \ \ }
+\DoxyCodeLine{00219\ \ \ \ \ mag\_map[current\_band]=magnitude;}
+\DoxyCodeLine{00220\ \ \ \ \ mag\ =\ magnitude;}
+\DoxyCodeLine{00221\ \ \ \ \ flux\_total\ =\ mag\_to\_flux(mag,zero\_point);}
+\DoxyCodeLine{00222\ \ \ \ \ setID(-\/1);}
+\DoxyCodeLine{00223\ \ \ \}}
+\DoxyCodeLine{00224\ \ \ }
+\DoxyCodeLine{00225\ \ \ SourceColored(\textcolor{keyword}{const}\ SourceColored\ \&s):\mbox{\hyperlink{class_source}{Source}}(s)\{}
+\DoxyCodeLine{00226\ \ \ \ \ mag\ =\ s.mag;}
+\DoxyCodeLine{00227\ \ \ \ \ mag\_map\ =\ s.mag\_map;}
+\DoxyCodeLine{00228\ \ \ \ \ current\_band\ =\ s.current\_band;}
+\DoxyCodeLine{00229\ \ \ \ \ sed\_type\ =\ s.sed\_type;}
+\DoxyCodeLine{00230\ \ \ \ \ flux\_total\ =\ s.flux\_total;}
+\DoxyCodeLine{00231\ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ SourceColored\ \&\ operator=\ (\textcolor{keyword}{const}\ SourceColored\ \&s)\{}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&s)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00235\ \ \ \ \ }
+\DoxyCodeLine{00236\ \ \ \ \ Source::operator=(s);}
+\DoxyCodeLine{00237\ \ \ \ \ mag\ =\ s.mag;}
+\DoxyCodeLine{00238\ \ \ \ \ mag\_map\ =\ s.mag\_map;}
+\DoxyCodeLine{00239\ \ \ \ \ current\_band\ =\ s.current\_band;}
+\DoxyCodeLine{00240\ \ \ \ \ sed\_type\ =\ s.sed\_type;}
+\DoxyCodeLine{00241\ \ \ \ \ flux\_total\ =\ s.flux\_total;}
+\DoxyCodeLine{00242\ \ \ \ \ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00244\ \ \ \}}
+\DoxyCodeLine{00245\ \ \ }
+\DoxyCodeLine{00247\ \ \ SourceColored\ \&\ copy\_color(\textcolor{keyword}{const}\ SourceColored\ \&s)\{}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&s)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00249\ \ \ \ \ }
+\DoxyCodeLine{00250\ \ \ \ \ Source::operator=(s);}
+\DoxyCodeLine{00251\ \ \ \ \ mag\ =\ s.mag;}
+\DoxyCodeLine{00252\ \ \ \ \ mag\_map\ =\ s.mag\_map;}
+\DoxyCodeLine{00253\ \ \ \ \ current\_band\ =\ s.current\_band;}
+\DoxyCodeLine{00254\ \ \ \ \ sed\_type\ =\ s.sed\_type;}
+\DoxyCodeLine{00255\ \ \ \ \ flux\_total\ =\ s.flux\_total;}
+\DoxyCodeLine{00256\ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00258\ \ \ \}}
+\DoxyCodeLine{00259\ \ \ }
+\DoxyCodeLine{00260\ \ \ \textcolor{keyword}{virtual}\ \string~SourceColored()\{\};}
+\DoxyCodeLine{00261\ \ \ }
+\DoxyCodeLine{00262\ \ \ PosType\ getMag()\textcolor{keyword}{\ const\ }\{\ assert(current\_band\ !=\ Band::NoBand);\ \textcolor{keywordflow}{return}\ mag;\}}
+\DoxyCodeLine{00263\ \ \ PosType\ getMag(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ (mag\_map.size()\ >\ 0)\ ?\ mag\_map.at(band)\ :\ mag;\}}
+\DoxyCodeLine{00264\ \ \ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ getBand()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ current\_band;\}}
+\DoxyCodeLine{00265\ \ \ \textcolor{keywordtype}{float}\ getSEDtype()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ sed\_type;\}}
+\DoxyCodeLine{00266\ \ \ \textcolor{keywordtype}{double}\ getMagZeroPoint(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ zeropoints.at(band);\}}
+\DoxyCodeLine{00267\ \ \ }
+\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{void}\ setSEDtype(\textcolor{keywordtype}{float}\ sed)\ \{sed\_type\ =\ sed;\}}
+\DoxyCodeLine{00269\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ setMagZeroPoint(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zeropoint)\{zeropoints[band]=zeropoint;\}}
+\DoxyCodeLine{00270\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ setMagZeroPoints(std::map<Band,PosType>\ \&zero\_points)\{}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ zero\_points)\{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ zeropoints[p.first]\ =\ p.second;}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \}}
+\DoxyCodeLine{00275\ \ }
+\DoxyCodeLine{00276\ \ \ \textcolor{keywordtype}{void}\ setActiveBand(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00277\ \ \ }
+\DoxyCodeLine{00278\ \ \ \textcolor{keyword}{inline}\ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ flux\_total;\}}
+\DoxyCodeLine{00279\ \ \ \textcolor{keywordtype}{void}\ setMag(\textcolor{keywordtype}{float}\ magnitude,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zeropoint)\{}
+\DoxyCodeLine{00280\ \ \ \ \ mag\_map[band]=magnitude;}
+\DoxyCodeLine{00281\ \ \ \ \ zeropoints[band]=zeropoint;}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordflow}{if}(band==current\_band)\ flux\_total\ =\ mag\_to\_flux(mag,zeropoint);}
+\DoxyCodeLine{00283\ \ \ \}}
+\DoxyCodeLine{00284\ \ \ }
+\DoxyCodeLine{00286\ \ \ \textcolor{keywordtype}{void}\ setMag(\textcolor{keywordtype}{float}\ magnitude,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band)\{}
+\DoxyCodeLine{00287\ \ \ \ \ mag\_map[band]=magnitude;}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{if}(band==current\_band)\ flux\_total\ =\ mag\_to\_flux(mag,zeropoints.at(band));}
+\DoxyCodeLine{00289\ \ \ \}}
+\DoxyCodeLine{00290\ \ \ }
+\DoxyCodeLine{00291\ \ \ \textcolor{comment}{//\ rotate\ on\ the\ sky}}
+\DoxyCodeLine{00292\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ rotate(PosType\ theta)\ =\ 0;}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordtype}{void}\ shiftmag(\textcolor{keywordtype}{float}\ delta\_mag)\{}
+\DoxyCodeLine{00296\ \ \ \ \ mag\ +=\ delta\_mag;}
+\DoxyCodeLine{00297\ \ \ \ \ flux\_total\ =\ mag\_to\_flux(mag,zeropoints[current\_band]);}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&b\ :\ mag\_map)\{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ b.second\ +=\ delta\_mag;}
+\DoxyCodeLine{00300\ \ \ \ \ \}}
+\DoxyCodeLine{00301\ \ \ \}}
+\DoxyCodeLine{00302\ \ \ }
+\DoxyCodeLine{00303\ \ \ }
+\DoxyCodeLine{00304\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00305\ \ \ \textcolor{keyword}{static}\ std::map<Band,PosType>\ zeropoints;}
+\DoxyCodeLine{00306\ \ \ }
+\DoxyCodeLine{00307\ \ \ \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ current\_band;}
+\DoxyCodeLine{00308\ \ \ \textcolor{keywordtype}{float}\ sed\_type;}
+\DoxyCodeLine{00309\ \ \ \textcolor{keywordtype}{double}\ mag;}
+\DoxyCodeLine{00310\ \ \ \textcolor{keywordtype}{double}\ flux\_total;}
+\DoxyCodeLine{00311\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00312\ \ \ std::map<Band,PosType>\ mag\_map;}
+\DoxyCodeLine{00313\ \};}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00322\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_pixelled}{SourcePixelled}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00323\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00324\ \ \mbox{\hyperlink{class_source_pixelled_a505a2ef5ecdb80fba01afd35d8ab25d7}{SourcePixelled}}(PosType\ my\_z,\ PosType*\ center,\ \textcolor{keywordtype}{int}\ Npixels,\ PosType\ resolution,\ PosType*\ arr\_val,PosType\ zero\_point);}
+\DoxyCodeLine{00325\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00326\ \ \mbox{\hyperlink{class_source_pixelled_a505a2ef5ecdb80fba01afd35d8ab25d7}{SourcePixelled}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\&\ gal\_map,\ PosType\ z,\ PosType\ factor,\ PosType\ zero\_point);}
+\DoxyCodeLine{00327\ \ \textcolor{comment}{//SourcePixelled(InputParams\&\ params);}}
+\DoxyCodeLine{00328\ \ \ }
+\DoxyCodeLine{00329\ \ \mbox{\hyperlink{class_source_pixelled}{\string~SourcePixelled}}();}
+\DoxyCodeLine{00330\ \ PosType\ \mbox{\hyperlink{class_source_pixelled_a6641a512eb71f65d688294cc8e5e7534}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00331\ \ \textcolor{keywordtype}{void}\ printSource();}
+\DoxyCodeLine{00332\ \ \textcolor{keyword}{inline}\ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ flux;\}}
+\DoxyCodeLine{00333\ \ \textcolor{keyword}{inline}\ PosType\ getRadius()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}};\}}
+\DoxyCodeLine{00334\ \ \textcolor{keyword}{inline}\ PosType*\ getEll()\{\textcolor{keywordflow}{return}\ ell;\};}
+\DoxyCodeLine{00335\ \ \textcolor{keyword}{inline}\ PosType\ getQuad(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\{\textcolor{keywordflow}{return}\ quad[i][j];\};}
+\DoxyCodeLine{00336\ \ \textcolor{keyword}{inline}\ PosType\ getSize()\{\textcolor{keywordflow}{return}\ size;\};}
+\DoxyCodeLine{00337\ \ \textcolor{keyword}{inline}\ PosType*\ getCentroid()\{\textcolor{keywordflow}{return}\ centroid;\};}
+\DoxyCodeLine{00338\ \ \textcolor{keyword}{inline}\ PosType\ getMag()\{\textcolor{keywordflow}{return}\ flux\_to\_mag(flux);\};}
+\DoxyCodeLine{00339\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00340\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00341\ \ \textcolor{keywordtype}{void}\ calcEll();}
+\DoxyCodeLine{00342\ \ \textcolor{keywordtype}{void}\ calcSize();}
+\DoxyCodeLine{00343\ \ \textcolor{keywordtype}{void}\ calcCentroid();}
+\DoxyCodeLine{00344\ \ \textcolor{keywordtype}{void}\ calcTotalFlux();}
+\DoxyCodeLine{00345\ \ PosType\ resolution;}
+\DoxyCodeLine{00346\ \ PosType\ range;}
+\DoxyCodeLine{00347\ \ \textcolor{keywordtype}{long}\ Npixels;}
+\DoxyCodeLine{00348\ \ PosType\ flux;}
+\DoxyCodeLine{00349\ \ PosType\ quad[2][2];}
+\DoxyCodeLine{00350\ \ PosType\ ell[2];}
+\DoxyCodeLine{00351\ \ PosType\ size;}
+\DoxyCodeLine{00352\ \ PosType\ centroid[2];}
+\DoxyCodeLine{00353\ \ std::valarray<PosType>\ values;}
+\DoxyCodeLine{00354\ \};}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_multi_shapelets}{SourceMultiShapelets}};}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00365\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}:\ \textcolor{keyword}{public}\ SourceColored\{}
+\DoxyCodeLine{00366\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00367\ \ \ }
+\DoxyCodeLine{00368\ \ \ \textcolor{keyword}{friend}\ \mbox{\hyperlink{class_source_multi_shapelets}{SourceMultiShapelets}};}
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{comment}{//SourceShapelets();}}
+\DoxyCodeLine{00370\ \ \mbox{\hyperlink{class_source_shapelets_af2c3eaf0df5d09e260c9e0f2f250a6cb}{SourceShapelets}}(PosType\ my\_z,\ PosType\ my\_mag,\ PosType\ my\_scale,\ std::valarray<PosType>\ my\_coeff,\ PosType*\ my\_center,\ PosType\ my\_ang,PosType\ zero\_point,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00371\ \ \mbox{\hyperlink{class_source_shapelets_af2c3eaf0df5d09e260c9e0f2f250a6cb}{SourceShapelets}}(PosType\ my\_z,\ PosType\ my\_mag,\ std::string\ shap\_file,\ PosType\ *my\_center,\ PosType\ my\_ang,\ PosType\ zero\_point,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00372\ \ \ \mbox{\hyperlink{class_source_shapelets_af2c3eaf0df5d09e260c9e0f2f250a6cb}{SourceShapelets}}(std::string\ shap\_file,\ PosType\ my\_ang,\ PosType\ zero\_point,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00373\ \ \ }
+\DoxyCodeLine{00374\ \ \ \mbox{\hyperlink{class_source_shapelets}{\string~SourceShapelets}}()\{-\/-\/count;\}}
+\DoxyCodeLine{00375\ \ \ }
+\DoxyCodeLine{00376\ \ \ \mbox{\hyperlink{class_source_shapelets_af2c3eaf0df5d09e260c9e0f2f250a6cb}{SourceShapelets}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ \&s):SourceColored(s)\{}
+\DoxyCodeLine{00377\ \ \ \ \ coeff\ =\ s.coeff;}
+\DoxyCodeLine{00378\ \ \ \ \ n1\ =\ s.n1;}
+\DoxyCodeLine{00379\ \ \ \ \ n2\ =\ s.n2;}
+\DoxyCodeLine{00380\ \ \ \ \textcolor{comment}{//ang\ =\ s.ang;}}
+\DoxyCodeLine{00381\ \ \ \ \ cos\_sin[0]\ =\ s.cos\_sin[0];}
+\DoxyCodeLine{00382\ \ \ \ \ cos\_sin[1]\ =\ s.cos\_sin[1];}
+\DoxyCodeLine{00383\ \ \ \ \ coeff\_flux\ =\ s.coeff\_flux;}
+\DoxyCodeLine{00384\ \ \ \ \ ++count;}
+\DoxyCodeLine{00385\ \ \ \}}
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ \ \ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ \&\ operator=\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_shapelets}{SourceShapelets}}\ \&s)\{}
+\DoxyCodeLine{00388\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&s)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00389\ \ \ \ \ }
+\DoxyCodeLine{00390\ \ \ \ \ SourceColored::operator=(s);}
+\DoxyCodeLine{00391\ \ \ \ \ coeff\ =\ s.coeff;}
+\DoxyCodeLine{00392\ \ \ \ \ n1\ =\ s.n1;}
+\DoxyCodeLine{00393\ \ \ \ \ n2\ =\ s.n2;}
+\DoxyCodeLine{00394\ \ \ \ \ \textcolor{comment}{//ang\ =\ s.ang;}}
+\DoxyCodeLine{00395\ \ \ \ \ cos\_sin[0]\ =\ s.cos\_sin[0];}
+\DoxyCodeLine{00396\ \ \ \ \ cos\_sin[1]\ =\ s.cos\_sin[1];}
+\DoxyCodeLine{00397\ \ \ \ \ coeff\_flux\ =\ s.coeff\_flux;}
+\DoxyCodeLine{00398\ \ \ \ \ }
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00400\ \ \ \}}
+\DoxyCodeLine{00401\ \ \ }
+\DoxyCodeLine{00403\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_shapelets_ad771741455d9277d8ba17106f40a08f0}{rotate}}(PosType\ ang\ \ }
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00405\ \ \ \ \ cos\_sin[0]\ =\ cos(ang);}
+\DoxyCodeLine{00406\ \ \ \ \ cos\_sin[1]\ =\ sin(ang);}
+\DoxyCodeLine{00407\ \ \ \}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \ PosType\ \mbox{\hyperlink{class_source_shapelets_a8ef9f8240fe8de0d9d25cb041ca3191a}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00410\ \ \textcolor{keywordtype}{void}\ printSource();}
+\DoxyCodeLine{00412\ \ \textcolor{keyword}{inline}\ PosType\ \mbox{\hyperlink{class_source_shapelets_a0653bff61e007e3d322ee19eeb0fa51c}{getRadius}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}*10.;\}}
+\DoxyCodeLine{00413\ \ \ }
+\DoxyCodeLine{00414\ \ \ \textcolor{keywordtype}{void}\ pepper(\textcolor{keywordtype}{int}\ n,\textcolor{keywordtype}{double}\ s,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran)\{}
+\DoxyCodeLine{00415\ \ \ \ \ }
+\DoxyCodeLine{00416\ \ \ \ \ \textcolor{keywordtype}{double}\ f\ =\ \mbox{\hyperlink{class_source_shapelets_a8ef9f8240fe8de0d9d25cb041ca3191a}{SurfaceBrightness}}(\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}.x);}
+\DoxyCodeLine{00417\ \ \ \ \ }
+\DoxyCodeLine{00418\ \ \ \ \ \textcolor{keywordtype}{double}\ t=0.9,t2=0.3;}
+\DoxyCodeLine{00419\ \ \ \ \ }
+\DoxyCodeLine{00420\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i\ <\ n\ ;\ ++i)\{}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ r\ =\ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}*sqrt(ran());}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ theta\ =\ 2*PI*ran();}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ff\ =\ f*(\ t\ -\/\ t2\ *\ ran()\ );}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ }
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x(\ r*cos(theta)\ ,\ r*sin(theta)\ );}
+\DoxyCodeLine{00426\ \ \ }
+\DoxyCodeLine{00427\ \ \ \ \ \ \ grains.emplace\_back(ff,s,x);}
+\DoxyCodeLine{00428\ \ \ \ \ \}}
+\DoxyCodeLine{00429\ \ \ \}}
+\DoxyCodeLine{00430\ \ \ }
+\DoxyCodeLine{00431\ \ \ \textcolor{keywordtype}{double}\ sub\_structure\_sb(\textcolor{keywordtype}{double}\ *x)\{}
+\DoxyCodeLine{00432\ \ \ \ \ }
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0;}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&g\ :\ grains)\{}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ sum\ +=\ g(x);}
+\DoxyCodeLine{00436\ \ \ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \ \ }
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordflow}{return}\ sum;}
+\DoxyCodeLine{00439\ \ \ \}}
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00441\ \ \ \textcolor{keyword}{class\ }PepperCorn\{}
+\DoxyCodeLine{00442\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00443\ \ \ \ \ PepperCorn(\textcolor{keywordtype}{double}\ f,\textcolor{keywordtype}{double}\ sig,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x):}
+\DoxyCodeLine{00444\ \ \ \ \ x(x),sigma(sig),fo(f)\{\};}
+\DoxyCodeLine{00445\ \ \ \ \ }
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ *y)\{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fo\ *\ exp(-\/(\ (x[0]-\/y[0])*(x[0]-\/y[0])\ -\/\ (x[1]-\/y[1])*(x[1]-\/y[1])\ )\ /sigma/sigma);}
+\DoxyCodeLine{00448\ \ \ \ \ \}}
+\DoxyCodeLine{00449\ \ \ \ \ }
+\DoxyCodeLine{00450\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00451\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ x;}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordtype}{double}\ sigma;}
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordtype}{double}\ fo;}
+\DoxyCodeLine{00454\ \ \ \};}
+\DoxyCodeLine{00455\ \ \ }
+\DoxyCodeLine{00456\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00457\ \ \ }
+\DoxyCodeLine{00458\ \ }
+\DoxyCodeLine{00459\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00460\ \ \ \textcolor{keywordtype}{void}\ Hermite(std::vector<PosType>\ \&hg,\textcolor{keywordtype}{int}\ N,\ PosType\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ \ \textcolor{keywordtype}{void}\ NormalizeFlux();}
+\DoxyCodeLine{00463\ \ std::valarray<PosType>\ coeff;}
+\DoxyCodeLine{00464\ \ \textcolor{keywordtype}{int}\ n1,n2;}
+\DoxyCodeLine{00465\ \ }
+\DoxyCodeLine{00466\ \ \textcolor{comment}{//PosType\ ang;}}
+\DoxyCodeLine{00467\ \ \ PosType\ cos\_sin[2];\ \ \textcolor{comment}{//\ [0]\ is\ cos(ang),\ [1]\ is\ sin(ang)}}
+\DoxyCodeLine{00468\ \ \ PosType\ coeff\_flux;}
+\DoxyCodeLine{00469\ \ \ }
+\DoxyCodeLine{00470\ \ \ std::vector<SourceShapelets::PepperCorn>\ grains;}
+\DoxyCodeLine{00471\ \ \ }
+\DoxyCodeLine{00472\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ count;}
+\DoxyCodeLine{00473\ \};}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00476\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_uniform}{SourceUniform}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00477\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00478\ \ \ }
+\DoxyCodeLine{00479\ \ \ \mbox{\hyperlink{class_source_uniform_a711c2e3971ead815a2d127c5d90fba64}{SourceUniform}}(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ position\ \ \ }
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ z\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ radius\_in\_radians\ \ }
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00483\ \ \mbox{\hyperlink{class_source_uniform}{\string~SourceUniform}}();}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ PosType\ \mbox{\hyperlink{class_source_uniform_ad1250a31c727d067bb9faca1cf560b6f}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00486\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00487\ \ \textcolor{keywordtype}{void}\ printSource();}
+\DoxyCodeLine{00488\ \ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ PI*\mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}*\mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}};\}}
+\DoxyCodeLine{00489\ \};}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00493\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_point}{SourcePoint}}\ :\ \textcolor{keyword}{public}\ SourceColored\{}
+\DoxyCodeLine{00494\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00495\ \ \ \mbox{\hyperlink{class_source_point_a3919bf7aca6f547b059e4fe491218124}{SourcePoint}}(}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ position\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ z\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ magnitude\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ radius\_in\_radians\ \ }
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ SBlimit\ \ \ \ \ \ }
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band\ \ }
+\DoxyCodeLine{00502\ ):SourceColored(magnitude,radius\_in\_radians,position,z,SBlimit,band)}
+\DoxyCodeLine{00503\ \{}
+\DoxyCodeLine{00504\ \ \ \ \ sed\_type\ =\ 1;}
+\DoxyCodeLine{00505\ \ \ \};}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \ \ \mbox{\hyperlink{class_source_point}{\string~SourcePoint}}()\{\};}
+\DoxyCodeLine{00508\ \ \ }
+\DoxyCodeLine{00509\ \ \ \textcolor{keyword}{virtual}\ PosType\ \mbox{\hyperlink{class_source_point_a11f8f20734df59ae970239bd87e9c342}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\textcolor{keyword}{const\ }\{\textcolor{keywordflow}{return}\ 0.0;\};}
+\DoxyCodeLine{00510\ \ \ \textcolor{keywordtype}{void}\ printSource()\{\};}
+\DoxyCodeLine{00511\ \ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params)\{\};\ \textcolor{comment}{//\ do\ nothing}}
+\DoxyCodeLine{00512\ \ \ \textcolor{keywordtype}{void}\ rotate(PosType\ t)\{\};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ do\ nothing}}
+\DoxyCodeLine{00513\ \};}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \textcolor{comment}{/***\ \(\backslash\)brief\ A\ source\ with\ a\ Gaussian\ surface\ brightness\ profile}}
+\DoxyCodeLine{00516\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00517\ \textcolor{comment}{\ This\ is\ normalized\ so\ that\ it\ is\ equal\ to\ 1\ at\ the\ center}}
+\DoxyCodeLine{00518\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00519\ \textcolor{keyword}{class\ }SourceGaussian\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00520\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00521\ \ \textcolor{comment}{//SourceGaussian(InputParams\&\ params);}}
+\DoxyCodeLine{00522\ \ \ SourceGaussian(}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ position\ \ }
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ r\_size\ \ }
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ z}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ SBlimit}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ zero\_point}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ):\ \ \ \ }
+\DoxyCodeLine{00529\ \ \ \mbox{\hyperlink{class_source}{Source}}(0,position,z,SBlimit,zero\_point),source\_gauss\_r2(r\_size*r\_size)}
+\DoxyCodeLine{00530\ \ \ \{}
+\DoxyCodeLine{00531\ \ \ \ \ \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}\ =\ z;}
+\DoxyCodeLine{00532\ \ \ \ \ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}\ =\ 5*sqrt(source\_gauss\_r2);}
+\DoxyCodeLine{00533\ \ \ \ \ \textcolor{comment}{//setSBlimit\_magarcsec(100.);}}
+\DoxyCodeLine{00534\ \ \ \}}
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \ \string~SourceGaussian();}
+\DoxyCodeLine{00537\ \ }
+\DoxyCodeLine{00539\ \ PosType\ source\_gauss\_r2;}
+\DoxyCodeLine{00540\ \ }
+\DoxyCodeLine{00541\ \ PosType\ SurfaceBrightness(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00542\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00543\ \ \textcolor{keywordtype}{void}\ printSource();}
+\DoxyCodeLine{00544\ \ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ 2*PI*source\_gauss\_r2;\textcolor{comment}{/*std::cout\ <<\ "{}No\ total\ flux\ in\ SourceGaussian\ yet"{}\ <<\ std::endl;\ exit(1);*/}\}}
+\DoxyCodeLine{00545\ \};}
+\DoxyCodeLine{00546\ }
+\DoxyCodeLine{00548\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_b_l_r}{SourceBLR}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}\{}
+\DoxyCodeLine{00549\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00550\ \ \textcolor{comment}{//SourceBLR(InputParams\&\ params);}}
+\DoxyCodeLine{00551\ \ \mbox{\hyperlink{class_source_b_l_r}{\string~SourceBLR}}();}
+\DoxyCodeLine{00552\ \ }
+\DoxyCodeLine{00553\ \ \textcolor{keywordtype}{void}\ printSource();}
+\DoxyCodeLine{00554\ \ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{std::cout\ <<\ \textcolor{stringliteral}{"{}No\ total\ flux\ in\ SourceBLR\ yet"{}}\ <<\ std::endl;\ exit(1);\}}
+\DoxyCodeLine{00555\ \ }
+\DoxyCodeLine{00556\ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{inline}\ PosType\ getRadius()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_source_b_l_r_ad5841d79f09b0d1e4ee2493e229d8dd8}{source\_r\_out}};\}}
+\DoxyCodeLine{00557\ \ }
+\DoxyCodeLine{00559\ \ PosType\ \mbox{\hyperlink{class_source_b_l_r_acb238f6da46a44564cc4099ce7248b41}{source\_tau}};}
+\DoxyCodeLine{00561\ \ PosType\ \mbox{\hyperlink{class_source_b_l_r_a1bd039486577865ebe5114c32924699c}{source\_nu}};}
+\DoxyCodeLine{00562\ \ \textcolor{keywordtype}{float}\ source\_nuo;}
+\DoxyCodeLine{00564\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_source_b_l_r_afd32e8867f6ea957b191f64957e19d15}{source\_r\_in}};}
+\DoxyCodeLine{00566\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_source_b_l_r_ad5841d79f09b0d1e4ee2493e229d8dd8}{source\_r\_out}};}
+\DoxyCodeLine{00568\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_source_b_l_r_ab51562fa1f5abbea73489dae99b68a5d}{source\_inclination}};}
+\DoxyCodeLine{00569\ \ \textcolor{keywordtype}{float}\ source\_opening\_angle;}
+\DoxyCodeLine{00570\ \ \textcolor{keywordtype}{float}\ source\_gamma;}
+\DoxyCodeLine{00571\ \ \textcolor{keywordtype}{float}\ source\_BHmass;}
+\DoxyCodeLine{00573\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_source_b_l_r_ac018820b96553984c6d0f75c797a46af}{source\_fK}};}
+\DoxyCodeLine{00575\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_source_b_l_r_ad3f8e978c3e256686024c3eeffb777a6}{source\_monocrome}};}
+\DoxyCodeLine{00576\ \ \ }
+\DoxyCodeLine{00577\ \ \ \textcolor{keyword}{inline}\ PosType\ getDlDs()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ DlDs;\}}
+\DoxyCodeLine{00578\ }
+\DoxyCodeLine{00579\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00580\ \ \ PosType\ DlDs;}
+\DoxyCodeLine{00581\ }
+\DoxyCodeLine{00582\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00583\ \};}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00586\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_b_l_r_disk}{SourceBLRDisk}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_b_l_r}{SourceBLR}}\{}
+\DoxyCodeLine{00587\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00588\ \ PosType\ \mbox{\hyperlink{class_source_b_l_r_disk_a53b0c5b67aaa4250fb2f1365a5960ff3}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00589\ \ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{std::cout\ <<\ \textcolor{stringliteral}{"{}No\ total\ flux\ in\ SourceBLRDisk\ yet"{}}\ <<\ std::endl;\ exit(1);\}}
+\DoxyCodeLine{00590\ \ }
+\DoxyCodeLine{00591\ \ \textcolor{comment}{//SourceBLRDisk(InputParams\&);}}
+\DoxyCodeLine{00592\ \ \mbox{\hyperlink{class_source_b_l_r_disk}{\string~SourceBLRDisk}}();}
+\DoxyCodeLine{00593\ \};}
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00596\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_b_l_r_sph1}{SourceBLRSph1}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_b_l_r}{SourceBLR}}\{}
+\DoxyCodeLine{00597\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00598\ \ PosType\ \mbox{\hyperlink{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00599\ \ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{std::cout\ <<\ \textcolor{stringliteral}{"{}No\ total\ flux\ in\ SourceBLRSph1\ yet"{}}\ <<\ std::endl;\ exit(1);\}}
+\DoxyCodeLine{00600\ \ }
+\DoxyCodeLine{00601\ \ \textcolor{comment}{//SourceBLRSph1(InputParams\&);}}
+\DoxyCodeLine{00602\ \ \mbox{\hyperlink{class_source_b_l_r_sph1}{\string~SourceBLRSph1}}();}
+\DoxyCodeLine{00603\ \};}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00606\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_b_l_r_sph2}{SourceBLRSph2}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_b_l_r}{SourceBLR}}\{}
+\DoxyCodeLine{00607\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00608\ \ PosType\ \mbox{\hyperlink{class_source_b_l_r_sph2_a8070025f21088cb37fbd1c212bd1b752}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00609\ \ PosType\ getTotalFlux()\textcolor{keyword}{\ const\ }\{std::cout\ <<\ \textcolor{stringliteral}{"{}No\ total\ flux\ in\ SourceBLRSph2\ yet"{}}\ <<\ std::endl;\ exit(1);\}}
+\DoxyCodeLine{00610\ }
+\DoxyCodeLine{00611\ \ \textcolor{comment}{//SourceBLRSph2(InputParams\&);}}
+\DoxyCodeLine{00612\ \ \mbox{\hyperlink{class_source_b_l_r_sph2}{\string~SourceBLRSph2}}();}
+\DoxyCodeLine{00613\ \};}
+\DoxyCodeLine{00614\ }
+\DoxyCodeLine{00616\ \textcolor{comment}{//PosType\ (Source::*SurfaceBrightness)(PosType\ *y);}}
+\DoxyCodeLine{00617\ }
+\DoxyCodeLine{00618\ }
+\DoxyCodeLine{00625\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_quasar_l_f}{QuasarLF}}\{}
+\DoxyCodeLine{00626\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00627\ \ \ \ \ \textcolor{comment}{//QuasarLF(PosType\ red,\ PosType\ mag\_limit,\ InputParams\ \&params);}}
+\DoxyCodeLine{00628\ \ \ \ \ \mbox{\hyperlink{class_quasar_l_f}{\string~QuasarLF}}();}
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{comment}{//\ returns\ the\ integral\ of\ the\ luminosity\ function\ at\ redshift\ red}}
+\DoxyCodeLine{00630\ \ \ \ \ PosType\ getNorm()\ \{\textcolor{keywordflow}{return}\ pow(10,log\_phi)*norm;\};\ \textcolor{comment}{//\ in\ Mpc\string^(-\/3)}}
+\DoxyCodeLine{00631\ \ \ \ \ PosType\ \mbox{\hyperlink{class_quasar_l_f_a4c8f3c579234f4619a4b0a402470d296}{getRandomMag}}(\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rand);}
+\DoxyCodeLine{00632\ \ \ \ \ PosType\ \mbox{\hyperlink{class_quasar_l_f_a64174482f390f264ece0ef6ef5567cff}{getRandomFlux}}(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&rand);}
+\DoxyCodeLine{00633\ \ \ \ \ PosType\ \mbox{\hyperlink{class_quasar_l_f_a11317364997ef124290936d3e2ea5b1c}{getColor}}(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00634\ \ \ \ \ PosType\ \mbox{\hyperlink{class_quasar_l_f_a0214421005b6673bda512174bee60500}{getFluxRatio}}(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00635\ }
+\DoxyCodeLine{00636\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00637\ \ \ \ \ PosType\ kcorr;}
+\DoxyCodeLine{00638\ \ \ \ \ \textcolor{comment}{//PosType\ red;}}
+\DoxyCodeLine{00639\ \ \ \ \ \textcolor{comment}{//PosType\ mag\_limit;}}
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{comment}{//PosType\ mstar;}}
+\DoxyCodeLine{00641\ \ \ \ \ PosType\ log\_phi;}
+\DoxyCodeLine{00642\ \ \ \ \ \textcolor{comment}{//PosType\ alpha;}}
+\DoxyCodeLine{00643\ \ \ \ \ \textcolor{comment}{//PosType\ beta;}}
+\DoxyCodeLine{00644\ \ \ \ \ PosType\ norm;}
+\DoxyCodeLine{00645\ \ \ \ \ \textcolor{keywordtype}{int}\ arr\_nbin;}
+\DoxyCodeLine{00646\ \ \ \ \ PosType*\ mag\_arr;}
+\DoxyCodeLine{00647\ \ \ \ \ PosType*\ lf\_arr;}
+\DoxyCodeLine{00648\ \ \ \ \ PosType\ dl;}
+\DoxyCodeLine{00649\ \ \ \ \ PosType\ colors[4];}
+\DoxyCodeLine{00650\ \ \ \ \ PosType\ ave\_colors[4];}
+\DoxyCodeLine{00651\ \ \ \ \ PosType\ color\_dev[4];}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00653\ \ \ \ \ std::string\ kcorr\_file,\ colors\_file;}
+\DoxyCodeLine{00654\ }
+\DoxyCodeLine{00655\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00656\ \ \ \ \ }
+\DoxyCodeLine{00657\ \ \ \ \ \textcolor{comment}{//typedef\ PosType\ (QuasarLF::*pt2MemFunc)(PosType)\ const;}}
+\DoxyCodeLine{00658\ \ \ \ \ \textcolor{comment}{//PosType\ nintegrateQLF(pt2MemFunc\ func,\ PosType\ a,PosType\ b,PosType\ tols)\ const;}}
+\DoxyCodeLine{00659\ \ \ \ \ \textcolor{comment}{//PosType\ trapzQLFlocal(pt2MemFunc\ func,\ PosType\ a,\ PosType\ b,\ int\ n,\ PosType\ *s2)\ const;}}
+\DoxyCodeLine{00660\ \ \ \ \ \textcolor{comment}{//PosType\ lf\_kernel\ (PosType\ mag)\ const;}}
+\DoxyCodeLine{00661\ \ \ \ \ }
+\DoxyCodeLine{00662\ \ \ \ \ \textcolor{keyword}{struct\ }LF\_kernel}
+\DoxyCodeLine{00663\ \ \ \ \ \{}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ LF\_kernel(PosType\ alpha,PosType\ beta,PosType\ mstar)}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ :\ alpha(alpha),beta(beta),mstar(mstar)\{\};}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ PosType\ alpha;}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ PosType\ beta;}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ PosType\ mstar;}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ operator\ ()\ (\textcolor{keywordtype}{double}\ mag)\ \{\ }
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1.0/(\ pow(10,0.4*(alpha+1)*(mag-\/mstar))\ +\ pow(10,0.4*(beta+1)*(mag-\/mstar))\ );}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00674\ \ \ \ \ \};}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00676\ \};}
+\DoxyCodeLine{00677\ }
+\DoxyCodeLine{00679\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_source_functor}{SourceFunctor}}}
+\DoxyCodeLine{00680\ \{}
+\DoxyCodeLine{00681\ \ \mbox{\hyperlink{struct_source_functor}{SourceFunctor}}(\mbox{\hyperlink{class_source}{Source}}\&\ source)\ :\ source(source)\ \{\}}
+\DoxyCodeLine{00682\ \ }
+\DoxyCodeLine{00683\ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y)}
+\DoxyCodeLine{00684\ \ \{}
+\DoxyCodeLine{00685\ \ \ \textcolor{comment}{//\ TODO:\ make\ const\ double[2]\ as\ soon\ as\ possible}}
+\DoxyCodeLine{00686\ \ \ \textcolor{keywordtype}{double}\ z[2]\ =\ \{x,\ y\};}
+\DoxyCodeLine{00687\ \ \ \textcolor{keywordflow}{return}\ source.\mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{SurfaceBrightness}}(z);}
+\DoxyCodeLine{00688\ \ \}}
+\DoxyCodeLine{00689\ \ }
+\DoxyCodeLine{00690\ \ \mbox{\hyperlink{class_source}{Source}}\&\ source;}
+\DoxyCodeLine{00691\ \};}
+\DoxyCodeLine{00692\ }
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00699\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00700\ \mbox{\hyperlink{class_source_pixelled_a505a2ef5ecdb80fba01afd35d8ab25d7}{SourcePixelled::SourcePixelled}}(}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\&\ gal\_map\ \ }
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ PosType\ my\_z\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ PosType\ factor\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ PosType\ zero\_point}
+\DoxyCodeLine{00705\ )}
+\DoxyCodeLine{00706\ :\mbox{\hyperlink{class_source}{Source}}(0,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}(0,0),0,-\/1,zero\_point)\{}
+\DoxyCodeLine{00707\ \ \ \textcolor{keywordflow}{if}(gal\_map.getNx()\ !=\ gal\_map.getNy())\{}
+\DoxyCodeLine{00708\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}SourcePixelled::SourcePixelled()\ Doesn't\ work\ on\ nonsquare\ maps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00709\ \ \ \ \ throw\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00710\ \ \ \}}
+\DoxyCodeLine{00711\ \ \ }
+\DoxyCodeLine{00712\ \ \ \mbox{\hyperlink{class_source_a94d904125980e7e4e668755692f15f9c}{zsource}}\ =\ my\_z;}
+\DoxyCodeLine{00713\ \ \ resolution\ =\ gal\_map.getResolution();}
+\DoxyCodeLine{00714\ \ \ Npixels\ =\ gal\_map.getNx();}
+\DoxyCodeLine{00715\ \ \ range\ =\ resolution*(Npixels-\/1);}
+\DoxyCodeLine{00716\ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ gal\_map.getCenter()[0];}
+\DoxyCodeLine{00717\ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ gal\_map.getCenter()[1];}
+\DoxyCodeLine{00718\ \ \ \mbox{\hyperlink{class_source_a1b7065306ca3b7c878eb06a8189b4e03}{source\_r}}\ =\ \ range/sqrt(2.);}
+\DoxyCodeLine{00719\ \ \ values.resize(Npixels*Npixels);}
+\DoxyCodeLine{00720\ \ \ }
+\DoxyCodeLine{00721\ \ \ \textcolor{keywordtype}{double}\ convertion\ =\ 1.0/resolution/resolution*factor;}
+\DoxyCodeLine{00722\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Npixels*Npixels;\ i++)}
+\DoxyCodeLine{00723\ \ \ \ \ values[i]\ =\ gal\_map(i)*convertion;}
+\DoxyCodeLine{00724\ \ \ }
+\DoxyCodeLine{00725\ \ \ calcTotalFlux();}
+\DoxyCodeLine{00726\ \ \ calcCentroid();}
+\DoxyCodeLine{00727\ \ \ calcEll();}
+\DoxyCodeLine{00728\ \ \ calcSize();}
+\DoxyCodeLine{00729\ \}}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00731\ }
+\DoxyCodeLine{00732\ }
+\DoxyCodeLine{00733\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SOURCE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

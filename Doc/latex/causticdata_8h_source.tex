@@ -1,0 +1,93 @@
+\doxysection{causticdata.\+h}
+\hypertarget{causticdata_8h_source}{}\label{causticdata_8h_source}\index{SLsimLib/include/causticdata.h@{SLsimLib/include/causticdata.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ causticdata.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ SLsimLib}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ bmetcalf\ on\ 5/6/13.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_SLsimLib\_\_causticdata\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_SLsimLib\_\_causticdata\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}simpleTree.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}simpleTreeVec.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}grid\_maintenance.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00020\ \textcolor{comment}{struct\ CausticSummary\{}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ CausticSummary()\{\}}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ CausticSummary(const\ CausticSummary\ \&tmp)\{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ redshift\ =\ tmp.redshift;}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ crit\_center\ =\ tmp.crit\_center;}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ crit\_radius[0]\ =\ tmp.crit\_radius[0];}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ crit\_radius[1]\ =\ tmp.crit\_radius[1];}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ crit\_radius[2]\ =\ tmp.crit\_radius[2];}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ crit\_area\ =\ tmp.crit\_area;}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ crit\_type\ =\ tmp.crit\_type;}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ \ \ \ caustic\_center\ =\ tmp.caustic\_center;}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ \ \ caustic\_radius[0]\ =\ tmp.caustic\_radius[0];}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ \ \ caustic\_radius[1]\ =\ tmp.caustic\_radius[1];}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ \ \ caustic\_radius[2]\ =\ tmp.caustic\_radius[2];}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ caustic\_area\ =\ tmp.caustic\_area;}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ \};}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ \ CausticSummary\ \&operator=(const\ CausticSummary\ \&tmp)\{}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ if(\&tmp==this)\ return\ *this;}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ redshift\ =\ tmp.redshift;}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ crit\_center\ =\ tmp.crit\_center;}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ crit\_radius[0]\ =\ tmp.crit\_radius[0];}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ crit\_radius[1]\ =\ tmp.crit\_radius[1];}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ \ crit\_radius[2]\ =\ tmp.crit\_radius[2];}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ crit\_area\ =\ tmp.crit\_area;}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ \ crit\_type\ =\ tmp.crit\_type;}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ \ caustic\_center\ =\ tmp.caustic\_center;}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ caustic\_radius[0]\ =\ tmp.caustic\_radius[0];}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ caustic\_radius[1]\ =\ tmp.caustic\_radius[1];}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ caustic\_radius[2]\ =\ tmp.caustic\_radius[2];}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ caustic\_area\ =\ tmp.caustic\_area;}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ \ return\ *this;}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ \ \}}}
+\DoxyCodeLine{00059\ \ \ double\ redshift;}
+\DoxyCodeLine{00061\ \ \ Point\_2d\ crit\_center;}
+\DoxyCodeLine{00063\ \ \ double\ crit\_radius[3];}
+\DoxyCodeLine{00065\ \ \ double\ crit\_area;}
+\DoxyCodeLine{00067\ \ \ CritType\ crit\_type;}
+\DoxyCodeLine{00069\ \ \ Point\_2d\ caustic\_center;}
+\DoxyCodeLine{00071\ \ \ double\ caustic\_radius[3];}
+\DoxyCodeLine{00073\ \ \ double\ caustic\_area;}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00179\ //std::ostream\ \&operator<<(std::ostream\ \&os,\ CausticSummary\ const\ \&caust);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \#endif\ /*\ defined(\_\_SLsimLib\_\_causticdata\_\_)\ */}
+
+\end{DoxyCode}

@@ -1,175 +1,177 @@
-\hypertarget{_input_params_8h}{}\doxysection{S\+Lsim\+Lib/include/\+Input\+Params.h File Reference}
-\label{_input_params_8h}\index{SLsimLib/include/InputParams.h@{SLsimLib/include/InputParams.h}}
-{\ttfamily \#include \char`\"{}standard.\+h\char`\"{}}\newline
+\doxysection{SLsim\+Lib/include/\+Input\+Params.h File Reference}
+\hypertarget{_input_params_8h}{}\label{_input_params_8h}\index{SLsimLib/include/InputParams.h@{SLsimLib/include/InputParams.h}}
+{\ttfamily \#include "{}standard.\+h"{}}\newline
 {\ttfamily \#include $<$map$>$}\newline
 {\ttfamily \#include $<$mutex$>$}\newline
-Include dependency graph for Input\+Params.\+h\+:\nopagebreak
+Include dependency graph for Input\+Params.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{_input_params_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{_input_params_8h__dep__incl}
 \end{center}
 \end{figure}
-\doxysubsection*{Classes}
+\doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_input_params}{Input\+Params}}
 \begin{DoxyCompactList}\small\item\em Structure for reading and writing parameters to and from a parameter file as well as a container for passing the parameters to other classes and functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
+\doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{Mass\+Func\+Type}} \{ {\bfseries Press\+Schechter}, 
-\mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470af51a2d52d477a6124ef2f2c376717f12}{Mass\+Func\+Type\+::\+Sheth\+Tormen}}, 
-\mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470a0421fde669f1f6a68f34f112af7c8809}{Mass\+Func\+Type\+::\+Power\+Law}}
+enum class \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{Mass\+Func\+Type}} \{ {\bfseries Press\+Schechter}
+, \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470af51a2d52d477a6124ef2f2c376717f12}{Sheth\+Tormen}}
+, \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470a0421fde669f1f6a68f34f112af7c8809}{Power\+Law}}
  \}
 \begin{DoxyCompactList}\small\item\em Type of mass function. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}\label{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}} 
-enum \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} \{ \newline
-{\bfseries null\+\_\+lens}, 
-{\bfseries nfw\+\_\+lens}, 
-{\bfseries pnfw\+\_\+lens}, 
-{\bfseries pl\+\_\+lens}, 
-\newline
-{\bfseries nsie\+\_\+lens}, 
-{\bfseries ana\+\_\+lens}, 
-{\bfseries uni\+\_\+lens}, 
-{\bfseries moka\+\_\+lens}, 
-\newline
-{\bfseries dummy\+\_\+lens}, 
-{\bfseries hern\+\_\+lens}, 
-{\bfseries jaffe\+\_\+lens}
+\Hypertarget{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}\label{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97} 
+enum class \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{Lens\+Halo\+Type}} \{ \newline
+{\bfseries null\+\_\+lens}
+, {\bfseries nfw\+\_\+lens}
+, {\bfseries pnfw\+\_\+lens}
+, {\bfseries pl\+\_\+lens}
+, \newline
+{\bfseries nsie\+\_\+lens}
+, {\bfseries ana\+\_\+lens}
+, {\bfseries uni\+\_\+lens}
+, {\bfseries moka\+\_\+lens}
+, \newline
+{\bfseries dummy\+\_\+lens}
+, {\bfseries hern\+\_\+lens}
+, {\bfseries jaffe\+\_\+lens}
  \}
 \begin{DoxyCompactList}\small\item\em Type of halo profile. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}\label{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}} 
-enum \mbox{\hyperlink{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}{Pixel\+Map\+Type}} \{ {\bfseries moka}, 
-{\bfseries pix\+\_\+map}
+\Hypertarget{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}\label{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164} 
+enum class \mbox{\hyperlink{_input_params_8h_a2fb3f72f5f7c1fedb4f5200d29a06164}{Pixel\+Map\+Type}} \{ {\bfseries moka}
+, {\bfseries pix\+\_\+map}
  \}
 \begin{DoxyCompactList}\small\item\em format of mass map file \end{DoxyCompactList}\item 
-enum \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{Galaxy\+Lens\+Halo\+Type}} \{ \newline
-{\bfseries null\+\_\+gal}, 
-{\bfseries nsie\+\_\+gal}, 
-{\bfseries pl\+\_\+gal}, 
-\mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98faf0cfd030cd90fec7ff3b2f4878bc40e2}{Galaxy\+Lens\+Halo\+Type\+::hern\+\_\+gal}}, 
-\newline
-\mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98fa2802bafb4b6ed4ea39d7c9670fdc675c}{Galaxy\+Lens\+Halo\+Type\+::jaffe\+\_\+gal}}
+enum class \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{Galaxy\+Lens\+Halo\+Type}} \{ \newline
+{\bfseries null\+\_\+gal}
+, {\bfseries nsie\+\_\+gal}
+, {\bfseries pl\+\_\+gal}
+, \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98faf0cfd030cd90fec7ff3b2f4878bc40e2}{hern\+\_\+gal}}
+, \newline
+\mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98fa2802bafb4b6ed4ea39d7c9670fdc675c}{jaffe\+\_\+gal}}
  \}
 \item 
-\mbox{\Hypertarget{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}\label{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}} 
-enum \mbox{\hyperlink{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}{Clump\+Internal}} \{ {\bfseries nfw}, 
-{\bfseries powerlaw}, 
-{\bfseries pointmass}
+\Hypertarget{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}\label{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5} 
+enum class \mbox{\hyperlink{_input_params_8h_a735396b1102b1c0831beddcb56dc58a5}{Clump\+Internal}} \{ {\bfseries nfw}
+, {\bfseries powerlaw}
+, {\bfseries pointmass}
  \}
 \begin{DoxyCompactList}\small\item\em names of clump and sb models \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}\label{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}} 
-enum \mbox{\hyperlink{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}{I\+M\+Ftype}} \{ \newline
-{\bfseries One}, 
-{\bfseries Mono}, 
-{\bfseries Broken\+Power\+Law}, 
-{\bfseries Salpeter}, 
-\newline
-{\bfseries Single\+Power\+Law}, 
-{\bfseries Kroupa}, 
-{\bfseries Chabrier}
+\Hypertarget{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}\label{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0} 
+enum class \mbox{\hyperlink{_input_params_8h_a2beda4612819957263d3e0f7d4bfdad0}{IMFtype}} \{ \newline
+{\bfseries One}
+, {\bfseries Mono}
+, {\bfseries Broken\+Power\+Law}
+, {\bfseries Salpeter}
+, \newline
+{\bfseries Single\+Power\+Law}
+, {\bfseries Kroupa}
+, {\bfseries Chabrier}
  \}
 \begin{DoxyCompactList}\small\item\em Initial mass function type. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}\label{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}} 
-enum \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}} \{ \newline
-{\bfseries No\+Band}, 
-{\bfseries E\+U\+C\+\_\+\+V\+IS}, 
-{\bfseries E\+U\+C\+\_\+Y}, 
-{\bfseries E\+U\+C\+\_\+J}, 
-\newline
-{\bfseries E\+U\+C\+\_\+H}, 
-{\bfseries S\+D\+S\+S\+\_\+U}, 
-{\bfseries S\+D\+S\+S\+\_\+G}, 
-{\bfseries S\+D\+S\+S\+\_\+R}, 
-\newline
-{\bfseries S\+D\+S\+S\+\_\+I}, 
-{\bfseries S\+D\+S\+S\+\_\+Z}, 
-{\bfseries Ki\+D\+S\+\_\+U}, 
-{\bfseries Ki\+D\+S\+\_\+G}, 
-\newline
-{\bfseries Ki\+D\+S\+\_\+R}, 
-{\bfseries Ki\+D\+S\+\_\+I}, 
-{\bfseries D\+E\+S\+\_\+R}, 
-{\bfseries D\+E\+S\+\_\+G}, 
-\newline
-{\bfseries D\+E\+S\+\_\+I}, 
-{\bfseries D\+E\+S\+\_\+Z}, 
-{\bfseries J}, 
-{\bfseries H}, 
-\newline
-{\bfseries Ks}, 
-{\bfseries I\+R\+A\+C1}, 
-{\bfseries I\+R\+A\+C2}, 
-{\bfseries F435W}, 
-\newline
-{\bfseries F606W}, 
-{\bfseries F775W}, 
-{\bfseries F850\+LP}, 
-{\bfseries F814W}, 
-\newline
-{\bfseries F110W}, 
-{\bfseries F160W}
+\Hypertarget{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}\label{_input_params_8h_a6bf89b34f34485e455d0236d25b05198} 
+enum class \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}} \{ \newline
+{\bfseries No\+Band}
+, {\bfseries EUC\+\_\+\+VIS}
+, {\bfseries EUC\+\_\+Y}
+, {\bfseries EUC\+\_\+J}
+, \newline
+{\bfseries EUC\+\_\+H}
+, {\bfseries SDSS\+\_\+U}
+, {\bfseries SDSS\+\_\+G}
+, {\bfseries SDSS\+\_\+R}
+, \newline
+{\bfseries SDSS\+\_\+I}
+, {\bfseries SDSS\+\_\+Z}
+, {\bfseries Ki\+DS\+\_\+U}
+, {\bfseries Ki\+DS\+\_\+G}
+, \newline
+{\bfseries Ki\+DS\+\_\+R}
+, {\bfseries Ki\+DS\+\_\+I}
+, {\bfseries DES\+\_\+R}
+, {\bfseries DES\+\_\+G}
+, \newline
+{\bfseries DES\+\_\+I}
+, {\bfseries DES\+\_\+Z}
+, {\bfseries J}
+, {\bfseries H}
+, \newline
+{\bfseries Ks}
+, {\bfseries IRAC1}
+, {\bfseries IRAC2}
+, {\bfseries F435W}
+, \newline
+{\bfseries F606W}
+, {\bfseries F775W}
+, {\bfseries F850\+LP}
+, {\bfseries F814W}
+, \newline
+{\bfseries F110W}
+, {\bfseries F160W}
  \}
 \begin{DoxyCompactList}\small\item\em Photometric bands. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_input_params_8h_ac044da5e71809508882c7a3612c1c50a}\label{_input_params_8h_ac044da5e71809508882c7a3612c1c50a}} 
-enum {\bfseries Halo\+Cat\+Formats} \{ {\bfseries Millennium\+Obs}, 
-{\bfseries Multi\+Dark\+Halos}, 
-{\bfseries Observed\+Data}, 
-{\bfseries null\+\_\+cat}
+\Hypertarget{_input_params_8h_ac044da5e71809508882c7a3612c1c50a}\label{_input_params_8h_ac044da5e71809508882c7a3612c1c50a} 
+enum class {\bfseries Halo\+Cat\+Formats} \{ {\bfseries Millennium\+Obs}
+, {\bfseries Multi\+Dark\+Halos}
+, {\bfseries Observed\+Data}
+, {\bfseries null\+\_\+cat}
  \}
 \item 
-\mbox{\Hypertarget{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}\label{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}} 
-enum \mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{Ellip\+Method}} \{ {\bfseries Fourier}, 
-{\bfseries Pseudo}, 
-{\bfseries Schramm}, 
-{\bfseries Keeton}
+\Hypertarget{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}\label{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618} 
+enum class \mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{Ellip\+Method}} \{ {\bfseries Fourier}
+, {\bfseries Pseudo}
+, {\bfseries Schramm}
+, {\bfseries Keeton}
  \}
 \begin{DoxyCompactList}\small\item\em Methods to make a previously isotropic halo elliptical. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions}
+\doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{_input_params_8h_ac575e146210e4a54eac5e12f3255f9e6}\label{_input_params_8h_ac575e146210e4a54eac5e12f3255f9e6}} 
+\Hypertarget{_input_params_8h_a22d4636f68c6eebea4c7f63ba64c334d}\label{_input_params_8h_a22d4636f68c6eebea4c7f63ba64c334d} 
 std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}} const \&p)
 \item 
-\mbox{\Hypertarget{_input_params_8h_a6e21a39ae977976a9e55cfa01ceda1e5}\label{_input_params_8h_a6e21a39ae977976a9e55cfa01ceda1e5}} 
-std\+::string \mbox{\hyperlink{_input_params_8h_a6e21a39ae977976a9e55cfa01ceda1e5}{to\+\_\+string}} (const \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}} \&band)
+\Hypertarget{_input_params_8h_a6e21a39ae977976a9e55cfa01ceda1e5}\label{_input_params_8h_a6e21a39ae977976a9e55cfa01ceda1e5} 
+std\+::string {\bfseries to\+\_\+string} (const \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}} \&band)
 \begin{DoxyCompactList}\small\item\em convert a Band type to a string name. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{_input_params_8h_ab2161a3230bd886a70f9cc5717f4edf2}\label{_input_params_8h_ab2161a3230bd886a70f9cc5717f4edf2}} 
+\Hypertarget{_input_params_8h_a0f28eed3ef5efa9416a56b665307b2da}\label{_input_params_8h_a0f28eed3ef5efa9416a56b665307b2da} 
 std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{class_input_params}{Input\+Params}} const \&params)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
-\mbox{\Hypertarget{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}\label{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}} 
-\index{InputParams.h@{InputParams.h}!GalaxyLensHaloType@{GalaxyLensHaloType}}
+\Hypertarget{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}\index{InputParams.h@{InputParams.h}!GalaxyLensHaloType@{GalaxyLensHaloType}}
 \index{GalaxyLensHaloType@{GalaxyLensHaloType}!InputParams.h@{InputParams.h}}
 \doxysubsubsection{\texorpdfstring{GalaxyLensHaloType}{GalaxyLensHaloType}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{Galaxy\+Lens\+Halo\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+{\footnotesize\ttfamily \label{_input_params_8h_a84369a9df44a3e61609a068b4debd98f} 
+enum class \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{Galaxy\+Lens\+Halo\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{hern\_gal@{hern\_gal}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!hern\_gal@{hern\_gal}}}\mbox{\Hypertarget{_input_params_8h_a84369a9df44a3e61609a068b4debd98faf0cfd030cd90fec7ff3b2f4878bc40e2}\label{_input_params_8h_a84369a9df44a3e61609a068b4debd98faf0cfd030cd90fec7ff3b2f4878bc40e2}} 
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{hern\_gal@{hern\_gal}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!hern\_gal@{hern\_gal}}}\Hypertarget{_input_params_8h_a84369a9df44a3e61609a068b4debd98faf0cfd030cd90fec7ff3b2f4878bc40e2}\label{_input_params_8h_a84369a9df44a3e61609a068b4debd98f} 
 hern\+\_\+gal&power law profile \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{jaffe\_gal@{jaffe\_gal}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!jaffe\_gal@{jaffe\_gal}}}\mbox{\Hypertarget{_input_params_8h_a84369a9df44a3e61609a068b4debd98fa2802bafb4b6ed4ea39d7c9670fdc675c}\label{_input_params_8h_a84369a9df44a3e61609a068b4debd98fa2802bafb4b6ed4ea39d7c9670fdc675c}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{jaffe\_gal@{jaffe\_gal}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!jaffe\_gal@{jaffe\_gal}}}\Hypertarget{_input_params_8h_a84369a9df44a3e61609a068b4debd98fa2802bafb4b6ed4ea39d7c9670fdc675c}\label{_input_params_8h_a84369a9df44a3e61609a068b4debd98f} 
 jaffe\+\_\+gal&Hernquist profile. Jaffe profile \\
 \hline
 
 \end{DoxyEnumFields}
-\mbox{\Hypertarget{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}\label{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}} 
-\index{InputParams.h@{InputParams.h}!MassFuncType@{MassFuncType}}
+\Hypertarget{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}\index{InputParams.h@{InputParams.h}!MassFuncType@{MassFuncType}}
 \index{MassFuncType@{MassFuncType}!InputParams.h@{InputParams.h}}
 \doxysubsubsection{\texorpdfstring{MassFuncType}{MassFuncType}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{Mass\+Func\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+{\footnotesize\ttfamily \label{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470} 
+enum class \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{Mass\+Func\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
 
 
 
@@ -181,12 +183,12 @@ In the parameter file comments can be added with the comment character is \#. An
 
 A valid parameter must have a label that starts a new line followed by at least one space and then the value of the parameter followed by a comment (with \#) if desired.
 
-The get() methods are used to retrieve parameter values and test if they exist. \begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{ShethTormen@{ShethTormen}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!ShethTormen@{ShethTormen}}}\mbox{\Hypertarget{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470af51a2d52d477a6124ef2f2c376717f12}\label{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470af51a2d52d477a6124ef2f2c376717f12}} 
+The get() methods are used to retrieve parameter values and test if they exist. \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ShethTormen@{ShethTormen}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!ShethTormen@{ShethTormen}}}\Hypertarget{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470af51a2d52d477a6124ef2f2c376717f12}\label{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470} 
 Sheth\+Tormen&Press \& Schechter mass function. \\
 \hline
 
-\raisebox{\heightof{T}}[0pt][0pt]{\index{PowerLaw@{PowerLaw}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!PowerLaw@{PowerLaw}}}\mbox{\Hypertarget{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470a0421fde669f1f6a68f34f112af7c8809}\label{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470a0421fde669f1f6a68f34f112af7c8809}} 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PowerLaw@{PowerLaw}!InputParams.h@{InputParams.h}}\index{InputParams.h@{InputParams.h}!PowerLaw@{PowerLaw}}}\Hypertarget{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470a0421fde669f1f6a68f34f112af7c8809}\label{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470} 
 Power\+Law&Sheth \& Tormen mass function. Power law mass function \\
 \hline
 

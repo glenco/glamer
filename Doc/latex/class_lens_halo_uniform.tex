@@ -1,5 +1,5 @@
-\hypertarget{class_lens_halo_uniform}{}\doxysection{Lens\+Halo\+Uniform Class Reference}
-\label{class_lens_halo_uniform}\index{LensHaloUniform@{LensHaloUniform}}
+\doxysection{Lens\+Halo\+Uniform Class Reference}
+\hypertarget{class_lens_halo_uniform}{}\label{class_lens_halo_uniform}\index{LensHaloUniform@{LensHaloUniform}}
 
 
 A uniform surface density and shear lens.  
@@ -11,58 +11,322 @@ A uniform surface density and shear lens.
 
 
 
-Inheritance diagram for Lens\+Halo\+Uniform\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=172pt]{class_lens_halo_uniform__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for Lens\+Halo\+Uniform\+:
+% FIG 0
 
 
-Collaboration diagram for Lens\+Halo\+Uniform\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=173pt]{class_lens_halo_uniform__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsection*{Public Member Functions}
+Collaboration diagram for Lens\+Halo\+Uniform\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{Lens\+Halo\+Uniform}} (double zlens, double Sigma, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&Shear, C\+O\+S\+M\+O\+L\+O\+GY \&cosmo)
+\mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{Lens\+Halo\+Uniform}} (double zlens, double Sigma, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&Shear, \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cosmo)
 \begin{DoxyCompactList}\small\item\em Direct constructor without any stars. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}\label{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}} 
-float \mbox{\hyperlink{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}{get\+Sigma}} () const
-\begin{DoxyCompactList}\small\item\em surface density in Msun/\+Mpc$^\wedge$2 \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}\label{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}} 
-\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}{get\+Shear}} () const
-\begin{DoxyCompactList}\small\item\em shear in Msun/\+Mpc$^\wedge$2 \end{DoxyCompactList}\item 
+\Hypertarget{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}\label{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8} 
+float {\bfseries get\+Sigma} () const
+\begin{DoxyCompactList}\small\item\em surface density in Msun/\+Mpc\texorpdfstring{$^\wedge$}{\string^}2 \end{DoxyCompactList}\item 
+\Hypertarget{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}\label{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries get\+Shear} () const
+\begin{DoxyCompactList}\small\item\em shear in Msun/\+Mpc\texorpdfstring{$^\wedge$}{\string^}2 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}{reset\+Gamma}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&Shear)
 \begin{DoxyCompactList}\small\item\em reset the shear keeping the redshift of the plane fixed \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}{reset\+Kappa}} (double Sigma)
 \begin{DoxyCompactList}\small\item\em reset the convergence keeping the redshift of the plane fixed \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}{force\+\_\+halo}} (Pos\+Type $\ast$alpha, Kappa\+Type $\ast$kappa, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi, Pos\+Type const $\ast$xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+void \mbox{\hyperlink{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}{force\+\_\+halo}} (Pos\+Type \texorpdfstring{$\ast$}{*}alpha, Kappa\+Type \texorpdfstring{$\ast$}{*}kappa, Kappa\+Type \texorpdfstring{$\ast$}{*}gamma, Kappa\+Type \texorpdfstring{$\ast$}{*}phi, Pos\+Type const \texorpdfstring{$\ast$}{*}xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
 \item 
-\mbox{\Hypertarget{class_lens_halo_uniform_a674f1f9d1026f2a8ab1c180dd74d0d5e}\label{class_lens_halo_uniform_a674f1f9d1026f2a8ab1c180dd74d0d5e}} 
+\Hypertarget{class_lens_halo_uniform_a674f1f9d1026f2a8ab1c180dd74d0d5e}\label{class_lens_halo_uniform_a674f1f9d1026f2a8ab1c180dd74d0d5e} 
 {\bfseries Lens\+Halo\+Uniform} (const \mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}} \&h)
 \item 
-\mbox{\Hypertarget{class_lens_halo_uniform_af97bbc880f038e183da118550ef6c217}\label{class_lens_halo_uniform_af97bbc880f038e183da118550ef6c217}} 
+\Hypertarget{class_lens_halo_uniform_a16ef8e3da0a3454d787d8841381016be}\label{class_lens_halo_uniform_a16ef8e3da0a3454d787d8841381016be} 
 \mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_lens_halo_uniform}{Lens\+Halo\+Uniform}} \&h)
 \end{DoxyCompactItemize}
-\doxysubsection*{Protected Member Functions}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}\label{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}} 
-Pos\+Type \mbox{\hyperlink{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}{lens\+\_\+expand}} (Pos\+Type $\ast$mod, Pos\+Type const $\ast$x, Pos\+Type $\ast$alpha, Kappa\+Type $\ast$gamma, Kappa\+Type $\ast$phi)
+{\bfseries Lens\+Halo} ()
+\begin{DoxyCompactList}\small\item\em Shell constructor. \end{DoxyCompactList}\item 
+{\bfseries Lens\+Halo} (Pos\+Type z, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cosmo)
+\item 
+\mbox{\hyperlink{class_lens_halo_a0b96fdb10f3a10a2b65085fa5883ec1f}{Lens\+Halo}} (const \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&h)
+\item 
+{\bfseries Lens\+Halo} (\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&\&h)
+\item 
+\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \& \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{operator=}} (const \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&h)
+\item 
+\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \& \mbox{\hyperlink{class_lens_halo_a9be986a94c12228b2e5c173c1cf5d85c}{operator=}} (\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} \&\&h)
+\item 
+float \mbox{\hyperlink{class_lens_halo_a6aee0c9abc88ca6d3d8ed9e44a18e6e3}{get\+\_\+\+Rmax}} () const
+\begin{DoxyCompactList}\small\item\em this can be used to tag types of Lens\+Halos \end{DoxyCompactList}\item 
+float {\bfseries get\+Rsize} () const
+\begin{DoxyCompactList}\small\item\em get the Rsize which is the size of the halo in Mpc \end{DoxyCompactList}\item 
+float {\bfseries get\+\_\+mass} () const
+\begin{DoxyCompactList}\small\item\em get the mass solar units \end{DoxyCompactList}\item 
+float {\bfseries get\+\_\+rscale} () const
+\begin{DoxyCompactList}\small\item\em get the scale radius in Mpc \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+Zlens} () const
+\begin{DoxyCompactList}\small\item\em get the redshift \end{DoxyCompactList}\item 
+void {\bfseries getX} (Pos\+Type \texorpdfstring{$\ast$}{*}My\+Pos\+Halo) const
+\begin{DoxyCompactList}\small\item\em get the position of the Halo in physical Mpc on the lens plane \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries operator\mbox{[}$\,$\mbox{]}} (int i) const
+\begin{DoxyCompactList}\small\item\em returns position of the Halo in physical Mpc on the lens plane \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (Pos\+Type PosX, Pos\+Type PosY)
+\begin{DoxyCompactList}\small\item\em set the position of the Halo in radians \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (Pos\+Type \texorpdfstring{$\ast$}{*}Pos\+XY)
+\begin{DoxyCompactList}\small\item\em set the position of the Halo in radians \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\begin{DoxyCompactList}\small\item\em set the position of the Halo in radians \end{DoxyCompactList}\item 
+void {\bfseries get\+Theta} (Pos\+Type \texorpdfstring{$\ast$}{*}My\+Pos\+Halo) const
+\begin{DoxyCompactList}\small\item\em get the position of the Halo in radians \end{DoxyCompactList}\item 
+void {\bfseries set\+Dist} (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&co)
+\begin{DoxyCompactList}\small\item\em Set the angular size distance to the halo. This should be the distance to the lens plane. \end{DoxyCompactList}\item 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_a50bd89dc5d7d11932c757eb4e962b6ba}{get\+Dist}} () const
+\item 
+void \mbox{\hyperlink{class_lens_halo_a81938111b0d90611edcff8b2d4dd8432}{display\+Pos}} ()
+\item 
+virtual void \mbox{\hyperlink{class_lens_halo_a645d2cbd9e686ce0d061d83d28c88eb0}{init\+From\+File}} (float my\+\_\+mass, long \texorpdfstring{$\ast$}{*}seed, float vmax, float r\+\_\+halfmass)
+\begin{DoxyCompactList}\small\item\em initialize from a simulation file \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_lens_halo_a8b31bdf68c61572e7a32dc3da6b139c8}{init\+From\+Mass\+Func}} (float my\+\_\+mass, float my\+\_\+\+Rsize, float my\+\_\+rscale, Pos\+Type my\+\_\+slope, long \texorpdfstring{$\ast$}{*}seed)
+\begin{DoxyCompactList}\small\item\em initialize from a mass function \end{DoxyCompactList}\item 
+virtual void {\bfseries set\+\_\+\+Rsize\+Rmax} (float my\+\_\+\+Rsize)
+\begin{DoxyCompactList}\small\item\em set Rsize (in Mpc) and reset Rmax \end{DoxyCompactList}\item 
+void {\bfseries set\+\_\+mass} (float my\+\_\+mass)
+\begin{DoxyCompactList}\small\item\em set mass (in solar masses) \end{DoxyCompactList}\item 
+virtual void {\bfseries set\+\_\+rscale} (float my\+\_\+rscale)
+\begin{DoxyCompactList}\small\item\em set scale radius (in Mpc) \end{DoxyCompactList}\item 
+void {\bfseries set\+Zlens} (Pos\+Type my\+\_\+zlens, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cosmo)
+\begin{DoxyCompactList}\small\item\em set redshift \end{DoxyCompactList}\item 
+void {\bfseries set\+Rsize} (Pos\+Type R)
+\item 
+void {\bfseries set\+Zlens\+Dist} (Pos\+Type my\+\_\+zlens, const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cos)
+\item 
+void {\bfseries set\+Mass} (Pos\+Type m)
+\item 
+virtual void \mbox{\hyperlink{class_lens_halo_ababdb795dfb3955b14078a8fe777d608}{set\+\_\+slope}} (Pos\+Type my\+\_\+slope)
+\begin{DoxyCompactList}\small\item\em set slope \end{DoxyCompactList}\item 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_a2deb914a879890de10a76323cf056aae}{get\+\_\+slope}} ()
+\begin{DoxyCompactList}\small\item\em get slope \end{DoxyCompactList}\item 
+bool {\bfseries get\+\_\+flag\+\_\+elliptical} ()
+\begin{DoxyCompactList}\small\item\em flag=True if halo elliptical \end{DoxyCompactList}\item 
+void {\bfseries set\+\_\+flag\+\_\+elliptical} (bool ell)
+\item 
+bool {\bfseries get\+\_\+switch\+\_\+flag} ()
+\item 
+void {\bfseries set\+\_\+switch\+\_\+flag} (bool swt)
+\begin{DoxyCompactList}\small\item\em flag permits case distinction in force\+\_\+halo\+\_\+asym for elliptical NFWs only (get\+\_\+switch\+\_\+flag==true), in latter case the mass\+\_\+norm\+\_\+factor\texorpdfstring{$^\wedge$}{\string^}2 is used instead of mass\+\_\+norm\+\_\+factor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_lens_halo_ae93d20b6fdeaaab7d1f0a61a13e6d644}{set\+Cosmology}} (const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cosmo)
+\begin{DoxyCompactList}\small\item\em used for elliptical NFWs only, in that case get\+\_\+switch\+\_\+flag==true \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lens_halo_a9125a5a6f4685d157dfbeacd00433ab2}{compareZ}} (Pos\+Type z)
+\begin{DoxyCompactList}\small\item\em force tree calculation for stars \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{Ellip\+Method}} \mbox{\hyperlink{class_lens_halo_ae4e6a8b770a38df28c9bee8799385923}{get\+Ellip\+Method}} () const
+\begin{DoxyCompactList}\small\item\em stars \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ {\bfseries get\+\_\+mod} ()
+\begin{DoxyCompactList}\small\item\em get vector of Fourier modes, which are calculated in the constructors of the Lens\+Haloes when main\+\_\+ellip\+\_\+method is set to \textquotesingle{}Fourier\textquotesingle{} \end{DoxyCompactList}\item 
+virtual std\+::size\+\_\+t {\bfseries Nparams} () const
+\begin{DoxyCompactList}\small\item\em get the number of halo parameters \end{DoxyCompactList}\item 
+virtual Pos\+Type {\bfseries get\+Param} (std\+::size\+\_\+t p) const
+\begin{DoxyCompactList}\small\item\em get the value of a scaled halo parameter by index \end{DoxyCompactList}\item 
+virtual Pos\+Type {\bfseries set\+Param} (std\+::size\+\_\+t p, Pos\+Type value)
+\begin{DoxyCompactList}\small\item\em set the value of a scaled halo parameter by index \end{DoxyCompactList}\item 
+virtual void {\bfseries print\+CSV} (std\+::ostream \&, bool header=false) const
+\begin{DoxyCompactList}\small\item\em print the halo parameters in CSV format \end{DoxyCompactList}\item 
+Pos\+Type \mbox{\hyperlink{class_lens_halo_a7184a202e39fac7cf8f7d0436abdc982}{Mass\+By2\+DIntegation}} (Pos\+Type R)
+\begin{DoxyCompactList}\small\item\em Prints star parameters; if show\+\_\+stars is true, prints data for single stars. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries Mass\+By1\+DIntegation} (Pos\+Type R)
+\begin{DoxyCompactList}\small\item\em calculates the mass within radius R by integating alpha on a ring and using Gauss\textquotesingle{} law, used only for testing \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries test\+\_\+average\+\_\+gt} (Pos\+Type R)
+\begin{DoxyCompactList}\small\item\em calculates the average gamma\+\_\+t for \doxylink{class_lens_halo_a9b357894d8d644741be0cec08e45bb30}{Lens\+Halo\+::test()} \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries test\+\_\+average\+\_\+kappa} (Pos\+Type R)
+\item 
+void {\bfseries set\+\_\+norm\+\_\+factor} ()
+\item 
+void {\bfseries set\+\_\+rsize} (float my\+\_\+rsize)
+\begin{DoxyCompactList}\small\item\em set radius rsize beyond which interpolation values between alpha\+\_\+ellip and alpha\+\_\+iso are computed \end{DoxyCompactList}\item 
+float {\bfseries get\+\_\+rsize} ()
+\item 
+bool \mbox{\hyperlink{class_lens_halo_a9b357894d8d644741be0cec08e45bb30}{test}} ()
+\begin{DoxyCompactList}\small\item\em perform some basic consistancy checks for halo \end{DoxyCompactList}\item 
+size\+\_\+t {\bfseries get\+ID} () const
+\item 
+void {\bfseries set\+ID} (size\+\_\+t id)
+\item 
+Pos\+Type {\bfseries renormalization} (Pos\+Type r\+\_\+max)
+\item 
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ double $>$ \mbox{\hyperlink{class_lens_halo_a0652d15d437d73b38dc8b057ed2c025f}{map\+\_\+variables}} (\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, size\+\_\+t Nx, size\+\_\+t Ny, double res)
+\begin{DoxyCompactList}\small\item\em Map a \doxylink{class_pixel_map}{Pixel\+Map} of the surface, density, potential and potential gradient centred on (0,0) in \doxylink{class_lens_halo}{Lens\+Halo} coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}\label{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494} 
+Pos\+Type {\bfseries lens\+\_\+expand} (Pos\+Type \texorpdfstring{$\ast$}{*}mod, Pos\+Type const \texorpdfstring{$\ast$}{*}x, Pos\+Type \texorpdfstring{$\ast$}{*}alpha, Kappa\+Type \texorpdfstring{$\ast$}{*}gamma, Kappa\+Type \texorpdfstring{$\ast$}{*}phi)
 \begin{DoxyCompactList}\small\item\em first two are shear \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_lens_halo_uniform_ae352d5e7cf782e2afaaf0ddbb3003425}\label{class_lens_halo_uniform_ae352d5e7cf782e2afaaf0ddbb3003425}} 
+Pos\+Type {\bfseries alpha\+\_\+int} (Pos\+Type x) const
+\begin{DoxyCompactList}\small\item\em Calculates potential (phi\+\_\+int) from alpha\+\_\+h. If flag is\+\_\+alphah\+\_\+a\+\_\+table is True it takes and integrates directly the gfunction instead of alpha\+\_\+h. The gfunction is used for the Interpolation\+Table used in alpha\+\_\+h. Setting the flag to False speeds up the calculation of phi\+\_\+h. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries norm\+\_\+int} (Pos\+Type r\+\_\+max)
+\item 
+void \mbox{\hyperlink{class_lens_halo_a374d199861689b8186c04d29bf92d6a2}{force\+\_\+halo\+\_\+sym}} (Pos\+Type \texorpdfstring{$\ast$}{*}alpha, Kappa\+Type \texorpdfstring{$\ast$}{*}kappa, Kappa\+Type \texorpdfstring{$\ast$}{*}gamma, Kappa\+Type \texorpdfstring{$\ast$}{*}phi, Pos\+Type const \texorpdfstring{$\ast$}{*}xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+\begin{DoxyCompactList}\small\item\em returns the lensing quantities of a ray in center of mass coordinates for a symmetric halo \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_a78cc531d36104d72bec891424aba9fcb}{force\+\_\+halo\+\_\+asym}} (Pos\+Type \texorpdfstring{$\ast$}{*}alpha, Kappa\+Type \texorpdfstring{$\ast$}{*}kappa, Kappa\+Type \texorpdfstring{$\ast$}{*}gamma, Kappa\+Type \texorpdfstring{$\ast$}{*}phi, Pos\+Type const \texorpdfstring{$\ast$}{*}xcm, bool subtract\+\_\+point=false, Pos\+Type screening=1.\+0)
+\item 
+bool {\bfseries force\+\_\+point} (Pos\+Type \texorpdfstring{$\ast$}{*}alpha, Kappa\+Type \texorpdfstring{$\ast$}{*}kappa, Kappa\+Type \texorpdfstring{$\ast$}{*}gamma, Kappa\+Type \texorpdfstring{$\ast$}{*}phi, Pos\+Type const \texorpdfstring{$\ast$}{*}xcm, Pos\+Type rcm2, bool subtract\+\_\+point, Pos\+Type screening)
+\item 
+void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params, bool need\+Rsize)
+\begin{DoxyCompactList}\small\item\em read in parameters from a parameterfile in \doxylink{class_input_params}{Input\+Params} params \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lens_halo_a6a8cf22c76bab7821b1b0ee3b50ea75f}{error\+\_\+message1}} (std\+::string name, std\+::string filename)
+\begin{DoxyCompactList}\small\item\em read in star parameters. This is valid for all halos and not overloaded. \end{DoxyCompactList}\item 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_a9295b7b1d0a66b3742a81ead5bf2a863}{alpha\+\_\+h}} (Pos\+Type x) const
+\item 
+virtual Kappa\+Type {\bfseries kappa\+\_\+h} (Pos\+Type x) const
+\item 
+virtual Kappa\+Type {\bfseries gamma\+\_\+h} (Pos\+Type x) const
+\item 
+virtual Kappa\+Type {\bfseries phi\+\_\+h} (Pos\+Type x) const
+\item 
+virtual Kappa\+Type {\bfseries phi\+\_\+int} (Pos\+Type x) const
+\item 
+virtual Pos\+Type {\bfseries ffunction} (Pos\+Type x) const
+\item 
+virtual Pos\+Type {\bfseries gfunction} (Pos\+Type x) const
+\item 
+virtual Pos\+Type {\bfseries dgfunctiondx} (Pos\+Type x)
+\item 
+virtual Pos\+Type {\bfseries bfunction} (Pos\+Type x)
+\item 
+virtual Pos\+Type {\bfseries dhfunction} (Pos\+Type x) const
+\item 
+virtual Pos\+Type {\bfseries ddhfunction} (Pos\+Type x, bool numerical)
+\item 
+virtual Pos\+Type {\bfseries dddhfunction} (Pos\+Type x, bool numerical)
+\item 
+virtual Pos\+Type {\bfseries bnumfunction} (Pos\+Type x)
+\item 
+virtual Pos\+Type {\bfseries dbfunction} (Pos\+Type x)
+\item 
+virtual Pos\+Type {\bfseries ddbfunction} (Pos\+Type x)
+\item 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_afeafc7e19741a79fdf5b2d1e3b21f2ee}{dmoddb}} (int whichmod, Pos\+Type q, Pos\+Type b)
+\item 
+virtual Pos\+Type {\bfseries ddmoddb} (int whichmod, Pos\+Type q, Pos\+Type b)
+\item 
+virtual Pos\+Type {\bfseries dmoddq} (int whichmod, Pos\+Type q, Pos\+Type b)
+\item 
+virtual Pos\+Type {\bfseries ddmoddq} (int whichmod, Pos\+Type q, Pos\+Type b)
+\item 
+void \mbox{\hyperlink{class_lens_halo_a825833ac8df009db76b5e4b4b4e140f9}{faxial}} (Pos\+Type x, Pos\+Type theta, Pos\+Type f\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em If set to true the correct normalization is applied for asymmetric NFW profiles, the mass\+\_\+norm\+\_\+factor is different for the other halos. \end{DoxyCompactList}\item 
+void {\bfseries faxial0} (Pos\+Type theta, Pos\+Type f0\mbox{[}$\,$\mbox{]})
+\item 
+void {\bfseries faxial1} (Pos\+Type theta, Pos\+Type f1\mbox{[}$\,$\mbox{]})
+\item 
+void {\bfseries faxial2} (Pos\+Type theta, Pos\+Type f2\mbox{[}$\,$\mbox{]})
+\item 
+void {\bfseries gradial} (Pos\+Type r, Pos\+Type g\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Derivatives of the potential damping factor with respect to r ... TODO\+: come up with a better damping faction. \end{DoxyCompactList}\item 
+void {\bfseries gradial2} (Pos\+Type r, Pos\+Type mu, Pos\+Type sigma, Pos\+Type g\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{class_lens_halo_a70d44bd2ef4edee5fb918a61cf5d3fcf}{felliptical}} (Pos\+Type x, Pos\+Type q, Pos\+Type theta, Pos\+Type f\mbox{[}$\,$\mbox{]}, Pos\+Type g\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Calculate the derivatives of the G function = r\texorpdfstring{$\ast$}{*}sqrt(cos(theta)\texorpdfstring{$^\wedge$}{\string^}2 + q(r)\texorpdfstring{$^\wedge$}{\string^}2 sin(theta)) \end{DoxyCompactList}\item 
+virtual void {\bfseries gamma\+\_\+asym} (Pos\+Type x, Pos\+Type theta, Pos\+Type gamma\mbox{[}$\,$\mbox{]})
+\item 
+virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_ac3f16aeffae590925d115799698ebaf4}{kappa\+\_\+asym}} (Pos\+Type x, Pos\+Type theta)
+\item 
+virtual void \mbox{\hyperlink{class_lens_halo_a7e68cb08c90a52d21f6af474acfc20e2}{alphakappagamma\+\_\+asym}} (Pos\+Type x, Pos\+Type theta, Pos\+Type alpha\mbox{[}$\,$\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}kappa, Pos\+Type gamma\mbox{[}$\,$\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}phi)
+\begin{DoxyCompactList}\small\item\em Pseudo-\/elliptical profiles by Phi(\+G)-\/Ansatz. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_lens_halo_ab90367cd516c00c93e8608894732e965}{alphakappagamma1asym}} (Pos\+Type x, Pos\+Type theta, Pos\+Type alpha\mbox{[}2\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}kappa, Pos\+Type gamma\mbox{[}$\,$\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}phi)
+\begin{DoxyCompactList}\small\item\em Elliptical profiles by Fourier-\/\+Ansatz. \end{DoxyCompactList}\item 
+virtual void {\bfseries alphakappagamma2asym} (Pos\+Type x, Pos\+Type theta, Pos\+Type alpha\mbox{[}2\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}kappa, Pos\+Type gamma\mbox{[}$\,$\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}phi)
+\item 
+virtual void {\bfseries alphakappagamma3asym} (Pos\+Type x, Pos\+Type theta, Pos\+Type alpha\mbox{[}2\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}kappa, Pos\+Type gamma\mbox{[}$\,$\mbox{]}, Pos\+Type \texorpdfstring{$\ast$}{*}phi)
+\item 
+virtual Pos\+Type {\bfseries alpha\+\_\+ell} (Pos\+Type x, Pos\+Type theta)
+\item 
+double {\bfseries fourier\+\_\+coeff} (double n, double q, double beta)
+\begin{DoxyCompactList}\small\item\em Calculates fourier-\/coefficients for power law halo. \end{DoxyCompactList}\item 
+double {\bfseries IDAXDM} (double lambda, double a2, double b2, double x\mbox{[}$\,$\mbox{]}, double rmax, double mo)
+\item 
+double {\bfseries IDAYDM} (double lambda, double a2, double b2, double x\mbox{[}$\,$\mbox{]}, double rmax, double mo)
+\item 
+double {\bfseries SCHRAMMKN} (double n, double x\mbox{[}$\,$\mbox{]}, double rmax)
+\item 
+double {\bfseries SCHRAMMJN} (double n, double x\mbox{[}$\,$\mbox{]}, double rmax)
+\item 
+double {\bfseries SCHRAMMI} (double x\mbox{[}$\,$\mbox{]}, double rmax)
+\item 
+void {\bfseries calc\+Modes} (double q, double beta, double rottheta, Pos\+Type newmod\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Calculates the modes for fourier expansion of power law halo. All the modes are relative to the zero mode to conserve mass throughout the calculation of kappa etc. \end{DoxyCompactList}\item 
+void {\bfseries calc\+ModesB} (Pos\+Type x, double q, double beta, double rottheta, Pos\+Type newmod\mbox{[}$\,$\mbox{]})
+\item 
+void {\bfseries calc\+ModesC} (Pos\+Type beta\+\_\+r, double q, double rottheta, Pos\+Type newmod\mbox{[}$\,$\mbox{]})
+\item 
+virtual Pos\+Type {\bfseries Interpolate\+Modes} (int whichmod, Pos\+Type q, Pos\+Type b)
+\item 
+void \mbox{\hyperlink{class_lens_halo_affb1ead96e81d87f61d45e09a6f6fb3f}{anal\+Modes}} (int modnumber, Pos\+Type my\+\_\+beta, Pos\+Type q, Pos\+Type amod\mbox{[}3\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_lens_halo_uniform_ae352d5e7cf782e2afaaf0ddbb3003425}\label{class_lens_halo_uniform_ae352d5e7cf782e2afaaf0ddbb3003425} 
 Pos\+Type {\bfseries perturb\+\_\+modes} \mbox{[}3\mbox{]}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries Rsize} = 0
+\item 
+float {\bfseries mass}
+\item 
+Pos\+Type {\bfseries Dist}
+\item 
+Pos\+Type {\bfseries mnorm}
+\item 
+float {\bfseries Rmax}
+\item 
+Pos\+Type {\bfseries beta}
+\item 
+float {\bfseries Rmax\+\_\+to\+\_\+\+Rsize\+\_\+ratio} = 1.\+2
+\begin{DoxyCompactList}\small\item\em The factor by which Rmax is larger than Rsize. \end{DoxyCompactList}\item 
+float {\bfseries rscale}
+\begin{DoxyCompactList}\small\item\em scale length or core size. Different meaning in different cases. Not used in NSIE case. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{Ellip\+Method}} {\bfseries main\+\_\+ellip\+\_\+method}
+\item 
+Pos\+Type {\bfseries xmax}
+\item 
+Pos\+Type {\bfseries mass\+\_\+norm\+\_\+factor} =1
+\begin{DoxyCompactList}\small\item\em This is Rsize/rscale !! \end{DoxyCompactList}\item 
+float {\bfseries pa}
+\item 
+float {\bfseries fratio} =1.\+0
+\item 
+bool {\bfseries elliptical\+\_\+flag} = false
+\item 
+bool {\bfseries switch\+\_\+flag} = false
+\item 
+Pos\+Type {\bfseries mod} \mbox{[}Nmod\mbox{]}
+\item 
+Pos\+Type {\bfseries mod1} \mbox{[}Nmod\mbox{]}
+\item 
+Pos\+Type {\bfseries mod2} \mbox{[}Nmod\mbox{]}
+\item 
+Pos\+Type {\bfseries r\+\_\+eps}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries get\+\_\+\+Nmod} ()
+\begin{DoxyCompactList}\small\item\em get length of mod array, which is Nmod. Not to be confused with get\+Nmodes in the class \doxylink{class_lens_halo_fit}{Lens\+Halo\+Fit} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries tag} =0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_lens_halo}{Lens\+Halo}}}
+\begin{DoxyCompactItemize}
+\item 
+static const int {\bfseries Nmod} = 32
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -72,14 +336,14 @@ Note the units of the input shear and surface density are not Sigma\+\_\+crit\te
 
 If the magnitude g and position angle, theta, are specified then
 
-Shear\mbox{[}0\mbox{]} = g $\ast$ cos( 2$\ast$theta ) Shear\mbox{[}1\mbox{]} = g $\ast$ sin(  2$\ast$theta ) 
+Shear\mbox{[}0\mbox{]} = g \texorpdfstring{$\ast$}{*} cos( 2\texorpdfstring{$\ast$}{*}theta ) Shear\mbox{[}1\mbox{]} = g \texorpdfstring{$\ast$}{*} sin(  2\texorpdfstring{$\ast$}{*}theta ) 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}\label{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}} 
-\index{LensHaloUniform@{LensHaloUniform}!LensHaloUniform@{LensHaloUniform}}
+\Hypertarget{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}\index{LensHaloUniform@{LensHaloUniform}!LensHaloUniform@{LensHaloUniform}}
 \index{LensHaloUniform@{LensHaloUniform}!LensHaloUniform@{LensHaloUniform}}
 \doxysubsubsection{\texorpdfstring{LensHaloUniform()}{LensHaloUniform()}}
-{\footnotesize\ttfamily Lens\+Halo\+Uniform\+::\+Lens\+Halo\+Uniform (\begin{DoxyParamCaption}\item[{double}]{zlens,  }\item[{double}]{Sigma,  }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{Shear,  }\item[{C\+O\+S\+M\+O\+L\+O\+GY \&}]{cosmo }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6} 
+Lens\+Halo\+Uniform\+::\+Lens\+Halo\+Uniform (\begin{DoxyParamCaption}\item[{double}]{zlens}{, }\item[{double}]{Sigma}{, }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{Shear}{, }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{}\end{DoxyParamCaption})}
 
 
 
@@ -87,25 +351,25 @@ Direct constructor without any stars.
 
 
 \begin{DoxyParams}{Parameters}
-{\em zlens} & lens redshift \\
+{\em zlens} & lens redshift  \\
 \hline
-{\em Sigma} & surface density of lens in Msun/\+Mpc$^\wedge$2 \\
+{\em Sigma} & surface density of lens in Msun/\+Mpc\texorpdfstring{$^\wedge$}{\string^}2  \\
 \hline
-{\em Shear} & shear in M\+\_\+sun/\+Mpc$^\wedge$2 ie gamma $\ast$ Sigma\+\_\+crit \\
+{\em Shear} & shear in M\+\_\+sun/\+Mpc\texorpdfstring{$^\wedge$}{\string^}2 ie gamma \texorpdfstring{$\ast$}{*} Sigma\+\_\+crit \\
 \hline
 \end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}\label{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}} 
-\index{LensHaloUniform@{LensHaloUniform}!force\_halo@{force\_halo}}
+\Hypertarget{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}\index{LensHaloUniform@{LensHaloUniform}!force\_halo@{force\_halo}}
 \index{force\_halo@{force\_halo}!LensHaloUniform@{LensHaloUniform}}
 \doxysubsubsection{\texorpdfstring{force\_halo()}{force\_halo()}}
-{\footnotesize\ttfamily void Lens\+Halo\+Uniform\+::force\+\_\+halo (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{alpha,  }\item[{Kappa\+Type $\ast$}]{kappa,  }\item[{Kappa\+Type $\ast$}]{gamma,  }\item[{Kappa\+Type $\ast$}]{phi,  }\item[{Pos\+Type const $\ast$}]{xcm,  }\item[{bool}]{subtract\+\_\+point = {\ttfamily false},  }\item[{Pos\+Type}]{screening = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7} 
+void Lens\+Halo\+Uniform\+::force\+\_\+halo (\begin{DoxyParamCaption}\item[{Pos\+Type \texorpdfstring{$\ast$}{*}}]{alpha}{, }\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{kappa}{, }\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{gamma}{, }\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{phi}{, }\item[{Pos\+Type const \texorpdfstring{$\ast$}{*}}]{xcm}{, }\item[{bool}]{subtract\+\_\+point}{ = {\ttfamily false}, }\item[{Pos\+Type}]{screening}{ = {\ttfamily 1.0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em alpha} & mass/\+Mpc \\
+{\em alpha} & mass/\+Mpc  \\
 \hline
 {\em subtract\+\_\+point} & if true contribution from a point mass is subtracted \\
 \hline
@@ -114,11 +378,11 @@ Direct constructor without any stars.
 
 Reimplemented from \mbox{\hyperlink{class_lens_halo_a460de105e52520a328d5912455c02fdd}{Lens\+Halo}}.
 
-\mbox{\Hypertarget{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}\label{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}} 
-\index{LensHaloUniform@{LensHaloUniform}!resetGamma@{resetGamma}}
+\Hypertarget{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}\index{LensHaloUniform@{LensHaloUniform}!resetGamma@{resetGamma}}
 \index{resetGamma@{resetGamma}!LensHaloUniform@{LensHaloUniform}}
 \doxysubsubsection{\texorpdfstring{resetGamma()}{resetGamma()}}
-{\footnotesize\ttfamily void Lens\+Halo\+Uniform\+::reset\+Gamma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{Shear }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a} 
+void Lens\+Halo\+Uniform\+::reset\+Gamma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&}]{Shear}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -126,14 +390,14 @@ reset the shear keeping the redshift of the plane fixed
 
 
 \begin{DoxyParams}{Parameters}
-{\em Shear} & Shear in units of critical density Msun/\+Mpc$^\wedge$2, ie gamma $\ast$ Sigma\+\_\+crit \\
+{\em Shear} & Shear in units of critical density Msun/\+Mpc\texorpdfstring{$^\wedge$}{\string^}2, ie gamma \texorpdfstring{$\ast$}{*} Sigma\+\_\+crit \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}\label{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}} 
-\index{LensHaloUniform@{LensHaloUniform}!resetKappa@{resetKappa}}
+\Hypertarget{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}\index{LensHaloUniform@{LensHaloUniform}!resetKappa@{resetKappa}}
 \index{resetKappa@{resetKappa}!LensHaloUniform@{LensHaloUniform}}
 \doxysubsubsection{\texorpdfstring{resetKappa()}{resetKappa()}}
-{\footnotesize\ttfamily void Lens\+Halo\+Uniform\+::reset\+Kappa (\begin{DoxyParamCaption}\item[{double}]{Sigma }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4} 
+void Lens\+Halo\+Uniform\+::reset\+Kappa (\begin{DoxyParamCaption}\item[{double}]{Sigma}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -141,12 +405,12 @@ reset the convergence keeping the redshift of the plane fixed
 
 
 \begin{DoxyParams}{Parameters}
-{\em Sigma} & Surface density in Msun/\+Mpc$^\wedge$2, ie kappa $\ast$ Sigma\+\_\+crit \\
+{\em Sigma} & Surface density in Msun/\+Mpc\texorpdfstring{$^\wedge$}{\string^}2, ie kappa \texorpdfstring{$\ast$}{*} Sigma\+\_\+crit \\
 \hline
 \end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/uniform\+\_\+lens.\+h\item 
-S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/readfiles\+\_\+uni.\+cpp\end{DoxyCompactItemize}
+SLsim\+Lib/include/uniform\+\_\+lens.\+h\item 
+SLsim\+Lib/\+Analytic\+NSIE/readfiles\+\_\+uni.\+cpp\end{DoxyCompactItemize}

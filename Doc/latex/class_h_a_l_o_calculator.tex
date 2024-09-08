@@ -1,100 +1,110 @@
-\hypertarget{class_h_a_l_o_calculator}{}\doxysection{H\+A\+L\+O\+Calculator Class Reference}
-\label{class_h_a_l_o_calculator}\index{HALOCalculator@{HALOCalculator}}
+\doxysection{HALOCalculator Class Reference}
+\hypertarget{class_h_a_l_o_calculator}{}\label{class_h_a_l_o_calculator}\index{HALOCalculator@{HALOCalculator}}
 
 
-Class for calculating the properties of N\+FW dark matter halos at a specified redshift and mass.  
+Class for calculating the properties of NFW dark matter halos at a specified redshift and mass.  
 
 
 
 
 {\ttfamily \#include $<$halo.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+
+
+Collaboration diagram for HALOCalculator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=168pt]{class_h_a_l_o_calculator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae}{H\+A\+L\+O\+Calculator}} (C\+O\+S\+M\+O\+L\+O\+GY $\ast$co, double mass, double redshift)
-\begin{DoxyCompactList}\small\item\em Constructor initializing a N\+F\+W-\/halo. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a52248b200b94177c3a892d5acf716b06}\label{class_h_a_l_o_calculator_a52248b200b94177c3a892d5acf716b06}} 
+\mbox{\hyperlink{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae}{HALOCalculator}} (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \texorpdfstring{$\ast$}{*}co, double mass, double redshift)
+\begin{DoxyCompactList}\small\item\em Constructor initializing a NFW-\/halo. \end{DoxyCompactList}\item 
+\Hypertarget{class_h_a_l_o_calculator_a52248b200b94177c3a892d5acf716b06}\label{class_h_a_l_o_calculator_a52248b200b94177c3a892d5acf716b06} 
 double {\bfseries get\+Mass} ()
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a735f1bd6b562dd987411bee4e0928a75}\label{class_h_a_l_o_calculator_a735f1bd6b562dd987411bee4e0928a75}} 
+\Hypertarget{class_h_a_l_o_calculator_a735f1bd6b562dd987411bee4e0928a75}\label{class_h_a_l_o_calculator_a735f1bd6b562dd987411bee4e0928a75} 
 double {\bfseries getZ} ()
 \item 
 double \mbox{\hyperlink{class_h_a_l_o_calculator_aad26f6a7de36de93fdc76426864400ec}{get\+Rvir}} (int caseunit=0)
 \begin{DoxyCompactList}\small\item\em Virial radius of the halo in physical Mpc. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_af406c2440bb8083b45ac02b6a9c1c80d}\label{class_h_a_l_o_calculator_af406c2440bb8083b45ac02b6a9c1c80d}} 
-double \mbox{\hyperlink{class_h_a_l_o_calculator_af406c2440bb8083b45ac02b6a9c1c80d}{get\+R200}} ()
+\Hypertarget{class_h_a_l_o_calculator_af406c2440bb8083b45ac02b6a9c1c80d}\label{class_h_a_l_o_calculator_af406c2440bb8083b45ac02b6a9c1c80d} 
+double {\bfseries get\+R200} ()
 \begin{DoxyCompactList}\small\item\em Radius in physical Mpc at which the enclosed density reach 200 times the critical value at that redshift. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{class_h_a_l_o_calculator_a5ea33c1489d3ecaedf62b29b26e1a3d1}{get\+Concentration}} (int caseunit=0, double alpha0=-\/0.\+1)
 \begin{DoxyCompactList}\small\item\em The halo concentration according to Zhao et al. 2009 is returned, if the integer 1 is given the concentration according to Munoz-\/\+Cuartas et al. 2011 is returned if 2 the concentration according to Giocoli et al. 2012 is returned is returned. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a7460b456a7c22c2b04625f0554024655}\label{class_h_a_l_o_calculator_a7460b456a7c22c2b04625f0554024655}} 
-double \mbox{\hyperlink{class_h_a_l_o_calculator_a7460b456a7c22c2b04625f0554024655}{get\+Formation\+Time}} (double f=0.\+5)
-\begin{DoxyCompactList}\small\item\em The median time at which the main halo progenitor assembles 50\% of the halo mass, if 0$<$f$<$1 is given, is returned the redshift at which this fraction is assembled. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a635b935a7dd6fcf735c230c6dde4658c}\label{class_h_a_l_o_calculator_a635b935a7dd6fcf735c230c6dde4658c}} 
-double \mbox{\hyperlink{class_h_a_l_o_calculator_a635b935a7dd6fcf735c230c6dde4658c}{get\+Formation\+Redshift}} (double f=0.\+5)
-\begin{DoxyCompactList}\small\item\em The median redshift at which the main halo progenitor assembles 50\% of the halo mass, if 0$<$f$<$1 is given, is returned the redshift at which this fraction is assembled. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a329d639e50df9362d11cc71ff73b1a5e}\label{class_h_a_l_o_calculator_a329d639e50df9362d11cc71ff73b1a5e}} 
-void \mbox{\hyperlink{class_h_a_l_o_calculator_a329d639e50df9362d11cc71ff73b1a5e}{reset}} (double, double)
+\Hypertarget{class_h_a_l_o_calculator_a7460b456a7c22c2b04625f0554024655}\label{class_h_a_l_o_calculator_a7460b456a7c22c2b04625f0554024655} 
+double {\bfseries get\+Formation\+Time} (double f=0.\+5)
+\begin{DoxyCompactList}\small\item\em The median time at which the main halo progenitor assembles 50\% of the halo mass, if 0\texorpdfstring{$<$}{<}f\texorpdfstring{$<$}{<}1 is given, is returned the redshift at which this fraction is assembled. \end{DoxyCompactList}\item 
+\Hypertarget{class_h_a_l_o_calculator_a635b935a7dd6fcf735c230c6dde4658c}\label{class_h_a_l_o_calculator_a635b935a7dd6fcf735c230c6dde4658c} 
+double {\bfseries get\+Formation\+Redshift} (double f=0.\+5)
+\begin{DoxyCompactList}\small\item\em The median redshift at which the main halo progenitor assembles 50\% of the halo mass, if 0\texorpdfstring{$<$}{<}f\texorpdfstring{$<$}{<}1 is given, is returned the redshift at which this fraction is assembled. \end{DoxyCompactList}\item 
+\Hypertarget{class_h_a_l_o_calculator_a329d639e50df9362d11cc71ff73b1a5e}\label{class_h_a_l_o_calculator_a329d639e50df9362d11cc71ff73b1a5e} 
+void {\bfseries reset} (double, double)
 \begin{DoxyCompactList}\small\item\em Reset halo mass and redshift. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Static Public Member Functions}
+\doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static double \mbox{\hyperlink{class_h_a_l_o_calculator_a3852ec6628d11c11d36c7ef9ffcd01a5}{Moster\+Stellar\+Mass\+Fraction}} (double Mtotal)
 \begin{DoxyCompactList}\small\item\em returns the fraction of halo+galaxy in stars according to from Moster et al. 2010ApJ...710..903M \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Protected Attributes}
+\doxysubsubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_abfd7e9eb5d044fb4c417667645775227}\label{class_h_a_l_o_calculator_abfd7e9eb5d044fb4c417667645775227}} 
-C\+O\+S\+M\+O\+L\+O\+GY $\ast$ {\bfseries co}
+\Hypertarget{class_h_a_l_o_calculator_abfd7e9eb5d044fb4c417667645775227}\label{class_h_a_l_o_calculator_abfd7e9eb5d044fb4c417667645775227} 
+\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \texorpdfstring{$\ast$}{*} {\bfseries co}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a88369dbb69c2b4134730bd8d7a5a79da}\label{class_h_a_l_o_calculator_a88369dbb69c2b4134730bd8d7a5a79da}} 
+\Hypertarget{class_h_a_l_o_calculator_a88369dbb69c2b4134730bd8d7a5a79da}\label{class_h_a_l_o_calculator_a88369dbb69c2b4134730bd8d7a5a79da} 
 double {\bfseries m}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a81b327002c4862a0570d94449d4ab8db}\label{class_h_a_l_o_calculator_a81b327002c4862a0570d94449d4ab8db}} 
+\Hypertarget{class_h_a_l_o_calculator_a81b327002c4862a0570d94449d4ab8db}\label{class_h_a_l_o_calculator_a81b327002c4862a0570d94449d4ab8db} 
 double {\bfseries z}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_ad62bbdaca563950b359a694c4d205ebc}\label{class_h_a_l_o_calculator_ad62bbdaca563950b359a694c4d205ebc}} 
+\Hypertarget{class_h_a_l_o_calculator_ad62bbdaca563950b359a694c4d205ebc}\label{class_h_a_l_o_calculator_ad62bbdaca563950b359a694c4d205ebc} 
 double {\bfseries R200}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_af5ec1dee8a4f63f098682d65b687580e}\label{class_h_a_l_o_calculator_af5ec1dee8a4f63f098682d65b687580e}} 
+\Hypertarget{class_h_a_l_o_calculator_af5ec1dee8a4f63f098682d65b687580e}\label{class_h_a_l_o_calculator_af5ec1dee8a4f63f098682d65b687580e} 
 double {\bfseries Rvir}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_abc6f1fca169b01440cd78c76db0d2cea}\label{class_h_a_l_o_calculator_abc6f1fca169b01440cd78c76db0d2cea}} 
+\Hypertarget{class_h_a_l_o_calculator_abc6f1fca169b01440cd78c76db0d2cea}\label{class_h_a_l_o_calculator_abc6f1fca169b01440cd78c76db0d2cea} 
 double {\bfseries Omz}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a5dad424d30ca2fbcaa24a92d53bb3517}\label{class_h_a_l_o_calculator_a5dad424d30ca2fbcaa24a92d53bb3517}} 
+\Hypertarget{class_h_a_l_o_calculator_a5dad424d30ca2fbcaa24a92d53bb3517}\label{class_h_a_l_o_calculator_a5dad424d30ca2fbcaa24a92d53bb3517} 
 double {\bfseries Omo}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_ac052ef951f28e737094812f4d4564167}\label{class_h_a_l_o_calculator_ac052ef951f28e737094812f4d4564167}} 
+\Hypertarget{class_h_a_l_o_calculator_ac052ef951f28e737094812f4d4564167}\label{class_h_a_l_o_calculator_ac052ef951f28e737094812f4d4564167} 
 double {\bfseries Oml}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a0b1b051c2116ed9b9c70b3ad0c2f4d24}\label{class_h_a_l_o_calculator_a0b1b051c2116ed9b9c70b3ad0c2f4d24}} 
+\Hypertarget{class_h_a_l_o_calculator_a0b1b051c2116ed9b9c70b3ad0c2f4d24}\label{class_h_a_l_o_calculator_a0b1b051c2116ed9b9c70b3ad0c2f4d24} 
 double {\bfseries sigma2M}
 \item 
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a7f901ead721a1496b4c1c4260a664afc}\label{class_h_a_l_o_calculator_a7f901ead721a1496b4c1c4260a664afc}} 
+\Hypertarget{class_h_a_l_o_calculator_a7f901ead721a1496b4c1c4260a664afc}\label{class_h_a_l_o_calculator_a7f901ead721a1496b4c1c4260a664afc} 
 double {\bfseries deltac0}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Class for calculating the properties of N\+FW dark matter halos at a specified redshift and mass. 
+Class for calculating the properties of NFW dark matter halos at a specified redshift and mass. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae}\label{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae}} 
-\index{HALOCalculator@{HALOCalculator}!HALOCalculator@{HALOCalculator}}
+\Hypertarget{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae}\index{HALOCalculator@{HALOCalculator}!HALOCalculator@{HALOCalculator}}
 \index{HALOCalculator@{HALOCalculator}!HALOCalculator@{HALOCalculator}}
 \doxysubsubsection{\texorpdfstring{HALOCalculator()}{HALOCalculator()}}
-{\footnotesize\ttfamily H\+A\+L\+O\+Calculator\+::\+H\+A\+L\+O\+Calculator (\begin{DoxyParamCaption}\item[{C\+O\+S\+M\+O\+L\+O\+GY $\ast$}]{cos,  }\item[{double}]{mass,  }\item[{double}]{redshift }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae} 
+HALOCalculator\+::\+HALOCalculator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \texorpdfstring{$\ast$}{*}}]{cos}{, }\item[{double}]{mass}{, }\item[{double}]{redshift}{}\end{DoxyParamCaption})}
 
 
 
-Constructor initializing a N\+F\+W-\/halo. 
+Constructor initializing a NFW-\/halo. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em cos} & pointer to a C\+O\+S\+M\+O\+L\+O\+GY \\
+{\em cos} & pointer to a \doxylink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}  \\
 \hline
-{\em mass} & halo mass in M\+\_\+sun/h T\+O\+DO Carlo\+: Is this really M\+\_\+sun/h \\
+{\em mass} & halo mass in M\+\_\+sun/h TODO Carlo\+: Is this really M\+\_\+sun/h  \\
 \hline
 {\em redshift} & redshift \\
 \hline
@@ -102,11 +112,11 @@ Constructor initializing a N\+F\+W-\/halo.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a5ea33c1489d3ecaedf62b29b26e1a3d1}\label{class_h_a_l_o_calculator_a5ea33c1489d3ecaedf62b29b26e1a3d1}} 
-\index{HALOCalculator@{HALOCalculator}!getConcentration@{getConcentration}}
+\Hypertarget{class_h_a_l_o_calculator_a5ea33c1489d3ecaedf62b29b26e1a3d1}\index{HALOCalculator@{HALOCalculator}!getConcentration@{getConcentration}}
 \index{getConcentration@{getConcentration}!HALOCalculator@{HALOCalculator}}
 \doxysubsubsection{\texorpdfstring{getConcentration()}{getConcentration()}}
-{\footnotesize\ttfamily double H\+A\+L\+O\+Calculator\+::get\+Concentration (\begin{DoxyParamCaption}\item[{int}]{caseunit = {\ttfamily 0},  }\item[{double}]{alpha0 = {\ttfamily -\/0.1} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_h_a_l_o_calculator_a5ea33c1489d3ecaedf62b29b26e1a3d1} 
+double HALOCalculator\+::get\+Concentration (\begin{DoxyParamCaption}\item[{int}]{caseunit}{ = {\ttfamily 0}, }\item[{double}]{alpha0}{ = {\ttfamily -\/0.1}}\end{DoxyParamCaption})}
 
 
 
@@ -114,16 +124,16 @@ The halo concentration according to Zhao et al. 2009 is returned, if the integer
 
 
 \begin{DoxyParams}{Parameters}
-{\em caseunit} & set relation used -\/ (0) Zhao et al. 2009, (1) Munoz-\/\+Cuartas et al. 2011 (2) Giocoli et al. 2012 (3) power-\/law c-\/m relation \\
+{\em caseunit} & set relation used -\/ (0) Zhao et al. 2009, (1) Munoz-\/\+Cuartas et al. 2011 (2) Giocoli et al. 2012 (3) power-\/law c-\/m relation  \\
 \hline
 {\em alpha0} & power-\/law slope if caseunit == 3 \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_h_a_l_o_calculator_aad26f6a7de36de93fdc76426864400ec}\label{class_h_a_l_o_calculator_aad26f6a7de36de93fdc76426864400ec}} 
-\index{HALOCalculator@{HALOCalculator}!getRvir@{getRvir}}
+\Hypertarget{class_h_a_l_o_calculator_aad26f6a7de36de93fdc76426864400ec}\index{HALOCalculator@{HALOCalculator}!getRvir@{getRvir}}
 \index{getRvir@{getRvir}!HALOCalculator@{HALOCalculator}}
 \doxysubsubsection{\texorpdfstring{getRvir()}{getRvir()}}
-{\footnotesize\ttfamily double H\+A\+L\+O\+Calculator\+::get\+Rvir (\begin{DoxyParamCaption}\item[{int}]{caseunit = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_h_a_l_o_calculator_aad26f6a7de36de93fdc76426864400ec} 
+double HALOCalculator\+::get\+Rvir (\begin{DoxyParamCaption}\item[{int}]{caseunit}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
 
 
 
@@ -134,11 +144,11 @@ Virial radius of the halo in physical Mpc.
 {\em caseunit} & by default uses the Brayan and Norman fit, if equal to 1 uses the fit by Felix and Stoer \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_h_a_l_o_calculator_a3852ec6628d11c11d36c7ef9ffcd01a5}\label{class_h_a_l_o_calculator_a3852ec6628d11c11d36c7ef9ffcd01a5}} 
-\index{HALOCalculator@{HALOCalculator}!MosterStellarMassFraction@{MosterStellarMassFraction}}
+\Hypertarget{class_h_a_l_o_calculator_a3852ec6628d11c11d36c7ef9ffcd01a5}\index{HALOCalculator@{HALOCalculator}!MosterStellarMassFraction@{MosterStellarMassFraction}}
 \index{MosterStellarMassFraction@{MosterStellarMassFraction}!HALOCalculator@{HALOCalculator}}
 \doxysubsubsection{\texorpdfstring{MosterStellarMassFraction()}{MosterStellarMassFraction()}}
-{\footnotesize\ttfamily double H\+A\+L\+O\+Calculator\+::\+Moster\+Stellar\+Mass\+Fraction (\begin{DoxyParamCaption}\item[{double}]{Mtotal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_h_a_l_o_calculator_a3852ec6628d11c11d36c7ef9ffcd01a5} 
+double HALOCalculator\+::\+Moster\+Stellar\+Mass\+Fraction (\begin{DoxyParamCaption}\item[{double}]{Mtotal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

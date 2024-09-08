@@ -1,5 +1,5 @@
-\hypertarget{struct_grid}{}\doxysection{Grid Struct Reference}
-\label{struct_grid}\index{Grid@{Grid}}
+\doxysection{Grid Struct Reference}
+\hypertarget{struct_grid}{}\label{struct_grid}\index{Grid@{Grid}}
 
 
 Structure to contain both source and image trees.  
@@ -11,132 +11,127 @@ Structure to contain both source and image trees.
 
 
 
-Collaboration diagram for Grid\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=148pt]{struct_grid__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsection*{Public Member Functions}
+Collaboration diagram for Grid\+:
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}{Grid}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, unsigned long N1d, const double center\mbox{[}2\mbox{]}, double range)
 \begin{DoxyCompactList}\small\item\em Constructor for initializing square grid. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_grid_a892ed0bb5f45b92505d8d82cfe408c9e}{Grid}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, unsigned long Nx, const Pos\+Type center\mbox{[}2\mbox{]}, Pos\+Type rangeX, Pos\+Type rangeY)
 \begin{DoxyCompactList}\small\item\em Constructor for initializing rectangular grid. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a3661d0a7f998caaaf8627d7a67072116}\label{struct_grid_a3661d0a7f998caaaf8627d7a67072116}} 
-\mbox{\hyperlink{struct_grid_a3661d0a7f998caaaf8627d7a67072116}{$\sim$\+Grid}} ()
-\begin{DoxyCompactList}\small\item\em Destructor for a \mbox{\hyperlink{struct_grid}{Grid}}. Frees all memory. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}\label{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}} 
-\mbox{\hyperlink{struct_grid}{Grid}} \mbox{\hyperlink{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}{Re\+Initialize}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
+\Hypertarget{struct_grid_a3661d0a7f998caaaf8627d7a67072116}\label{struct_grid_a3661d0a7f998caaaf8627d7a67072116} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Grid} ()
+\begin{DoxyCompactList}\small\item\em Destructor for a \doxylink{struct_grid}{Grid}. Frees all memory. \end{DoxyCompactList}\item 
+\Hypertarget{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793}\label{struct_grid_aa0943bbb27be32f316a85d4a3bc1d793} 
+\mbox{\hyperlink{struct_grid}{Grid}} {\bfseries Re\+Initialize} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens)
 \begin{DoxyCompactList}\small\item\em Returns a new grid that has not been refined but has the same intial image grid, but calculated with a new lens. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}{zoom}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, double $\ast$center, double scale, \mbox{\hyperlink{struct_branch}{Branch}} $\ast$top=N\+U\+LL)
+void \mbox{\hyperlink{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}{zoom}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, double \texorpdfstring{$\ast$}{*}center, double scale, \mbox{\hyperlink{struct_branch}{Branch}} \texorpdfstring{$\ast$}{*}top=NULL)
 \begin{DoxyCompactList}\small\item\em Test if point is in a region of uniform magnification using the kappa and gamma calculated from the rayshooter. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{struct_grid_aae2b3f9fe8cc6a464852e3441f22d8a9}{Refresh\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
+double \mbox{\hyperlink{struct_grid_a0974cb2286d5bc2ff4220fe57ab59875}{Refresh\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source}} \texorpdfstring{$\ast$}{*}source)
 \begin{DoxyCompactList}\small\item\em Reshoot the rays with the same image postions. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{struct_grid_acd3c8aa66053c2a4ef071f877c0ff214}{Add\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source\+Hndl}} source)
+double \mbox{\hyperlink{struct_grid_a277e7811838b96b41b578c83879b7afa}{Add\+Surface\+Brightnesses}} (\mbox{\hyperlink{class_source}{Source}} \texorpdfstring{$\ast$}{*}source)
 \begin{DoxyCompactList}\small\item\em Recalculate surface brightness just like Grid\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. ~\newline
  \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}{mark\+\_\+closest\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source\+\_\+max, Pos\+Type luminosity, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center and then markes each surface brightness. Only one pixel per image gets flux. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}{find\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source, Pos\+Type z\+\_\+source, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&images, bool verbose=false)
+void \mbox{\hyperlink{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}{find\+\_\+point\+\_\+source\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, Pos\+Type r\+\_\+source, Pos\+Type z\+\_\+source, std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \&images, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em This function finds all the images for a circular source of radius r\+\_\+source, then finds the points within each image that are closest to the center of the source. Only one pixel per image gets flux. Points are not marked. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a25db542a5491a1b59f3c36278b830407}\label{struct_grid_a25db542a5491a1b59f3c36278b830407}} 
-double \mbox{\hyperlink{struct_grid_a25db542a5491a1b59f3c36278b830407}{Clear\+Surface\+Brightnesses}} ()
+\Hypertarget{struct_grid_a25db542a5491a1b59f3c36278b830407}\label{struct_grid_a25db542a5491a1b59f3c36278b830407} 
+double {\bfseries Clear\+Surface\+Brightnesses} ()
 \begin{DoxyCompactList}\small\item\em Reset the surface brightness and in\+\_\+image flag in every point on image and source planes to zero (false) \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_adc141a71ff2f072060af41ab458c98a1}\label{struct_grid_adc141a71ff2f072060af41ab458c98a1}} 
+\Hypertarget{struct_grid_adc141a71ff2f072060af41ab458c98a1}\label{struct_grid_adc141a71ff2f072060af41ab458c98a1} 
 double {\bfseries refine\+\_\+on\+\_\+surfacebrightness} (\mbox{\hyperlink{class_lens}{Lens}} \&lens, \mbox{\hyperlink{class_source}{Source}} \&source)
 \item 
 unsigned long \mbox{\hyperlink{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}{get\+Number\+Of\+Points}} () const
 \begin{DoxyCompactList}\small\item\em Returns number of points on image plane. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a27fc09f6be7248237f1edea5830bab43}\label{struct_grid_a27fc09f6be7248237f1edea5830bab43}} 
-Pos\+Type \mbox{\hyperlink{struct_grid_a27fc09f6be7248237f1edea5830bab43}{Einstein\+Area}} () const
+\Hypertarget{struct_grid_a27fc09f6be7248237f1edea5830bab43}\label{struct_grid_a27fc09f6be7248237f1edea5830bab43} 
+Pos\+Type {\bfseries Einstein\+Area} () const
 \begin{DoxyCompactList}\small\item\em area of region with negative magnification \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a338a0b60a7c609ab3b9883cc5facb28b}\label{struct_grid_a338a0b60a7c609ab3b9883cc5facb28b}} 
-int \mbox{\hyperlink{struct_grid_a338a0b60a7c609ab3b9883cc5facb28b}{get\+Init\+Ngrid}} ()
+\Hypertarget{struct_grid_a338a0b60a7c609ab3b9883cc5facb28b}\label{struct_grid_a338a0b60a7c609ab3b9883cc5facb28b} 
+int {\bfseries get\+Init\+Ngrid} ()
 \begin{DoxyCompactList}\small\item\em return initial number of grid points in each direction \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_aff8c6c31b94541725e8f6ebb68e28366}\label{struct_grid_aff8c6c31b94541725e8f6ebb68e28366}} 
-int \mbox{\hyperlink{struct_grid_aff8c6c31b94541725e8f6ebb68e28366}{get\+Ngrid\+\_\+block}} ()
+\Hypertarget{struct_grid_aff8c6c31b94541725e8f6ebb68e28366}\label{struct_grid_aff8c6c31b94541725e8f6ebb68e28366} 
+int {\bfseries get\+Ngrid\+\_\+block} ()
 \begin{DoxyCompactList}\small\item\em return number of cells in each dimension into which each cell is divided when a refinement is made \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_aafb414f884497255df53b5ba7ceb0f24}\label{struct_grid_aafb414f884497255df53b5ba7ceb0f24}} 
-double \mbox{\hyperlink{struct_grid_aafb414f884497255df53b5ba7ceb0f24}{get\+Init\+Range}} ()
+\Hypertarget{struct_grid_aafb414f884497255df53b5ba7ceb0f24}\label{struct_grid_aafb414f884497255df53b5ba7ceb0f24} 
+double {\bfseries get\+Init\+Range} ()
 \begin{DoxyCompactList}\small\item\em return initial range of gridded region \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_ac31fd4cdeff36cbf37c878699197b126}\label{struct_grid_ac31fd4cdeff36cbf37c878699197b126}} 
+\Hypertarget{struct_grid_ac31fd4cdeff36cbf37c878699197b126}\label{struct_grid_ac31fd4cdeff36cbf37c878699197b126} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries get\+Init\+Center} ()
 \item 
-\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_grid_aef2864fc3791c44eed90c2e980777884}{Refine\+Leaf}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_point}{Point}} $\ast$point)
+\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_grid_aef2864fc3791c44eed90c2e980777884}{Refine\+Leaf}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}point)
 \begin{DoxyCompactList}\small\item\em Fundamental function used to divide a leaf in the tree into nine subcells. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a8d7eed9868d59171a38dac0423cc25e7}\label{struct_grid_a8d7eed9868d59171a38dac0423cc25e7}} 
-\mbox{\hyperlink{struct_point}{Point}} $\ast$ \mbox{\hyperlink{struct_grid_a8d7eed9868d59171a38dac0423cc25e7}{Refine\+Leaves}} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} $\ast$ $>$ \&points)
-\begin{DoxyCompactList}\small\item\em Same as \mbox{\hyperlink{struct_grid_aef2864fc3791c44eed90c2e980777884}{Refine\+Leaf()}} but multiple points can be passed. The rays are shot all together so that more parallelization can be achieved in the rayshooting. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}\label{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}} 
-void \mbox{\hyperlink{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}{Clear\+All\+Marks}} ()
+\Hypertarget{struct_grid_a8d7eed9868d59171a38dac0423cc25e7}\label{struct_grid_a8d7eed9868d59171a38dac0423cc25e7} 
+\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} {\bfseries Refine\+Leaves} (\mbox{\hyperlink{class_lens}{Lens\+Hndl}} lens, std\+::vector$<$ \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} $>$ \&points)
+\begin{DoxyCompactList}\small\item\em Same as \doxylink{struct_grid_aef2864fc3791c44eed90c2e980777884}{Refine\+Leaf()} but multiple points can be passed. The rays are shot all together so that more parallelization can be achieved in the rayshooting. \end{DoxyCompactList}\item 
+\Hypertarget{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412}\label{struct_grid_a3942b5f9d22c55c2b1cc9619991f1412} 
+void {\bfseries Clear\+All\+Marks} ()
 \begin{DoxyCompactList}\small\item\em Rest all in\+\_\+image markers to False. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a8815d0d3b3bec110d580340ff40621bf}{write\+Fits}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{write\+Fits}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Outputs a fits image of a lensing variable of choice. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a1c929444392293507dda639537748556}{write\+Fits}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_a20dc795bf0466c365e06eae77ba7073f}{write\+Fits}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Outputs a fits image of a lensing variable of choice. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a1e168760dc1117fa003f1da1ff3a1632}{write\+Fits}} (double strech, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_a454205ce6790192d7e90d04ca9bdc20b}{write\+Fits}} (double strech, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em make a fits image of whole grid region \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a7309148a7ea8c64097a9758b9de02e01}{write\+Pixel\+Fits}} (size\+\_\+t Nx, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_aef25408943531718b008996d5eddb9cb}{write\+Pixel\+Fits}} (size\+\_\+t Nx, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Make a fits map that is automatically centered on the grid and has approximately the same range as the grid. Nx can be used to change the resolution. Nx = grid.\+get\+Init\+Ngrid() will give the initial grid resolution. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a6b7d66b6c8bbbf4e0c4cc4cb014fc4e6}{write\+Fits\+Vector}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_af6db6d5bdc63482cae8b00b7bdd8f9f7}{write\+Fits\+Vector}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Outputs a fits file for making plots of vector fields. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_a4d91a7428c0994afbdd4b4a69877dc19}{write\+Pixel\+Map}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
-\begin{DoxyCompactList}\small\item\em Outputs a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the lensing quantities of a fixed grid. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_af6aea541cdaa9a981cde49b045022035}{write\+Pixel\+Map}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
-\begin{DoxyCompactList}\small\item\em Outputs a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the lensing quantities of a fixed grid. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_a709e743b55dee970df1d199029c6f723}{write\+Pixel\+Map}} (\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \mbox{\hyperlink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{write\+Pixel\+Map}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Npixels, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
+\begin{DoxyCompactList}\small\item\em Outputs a \doxylink{class_pixel_map}{Pixel\+Map} of the lensing quantities of a fixed grid. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \mbox{\hyperlink{struct_grid_abff4c6aba9bdaf76da4cae273aa79fd5}{write\+Pixel\+Map}} (const double center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, double resolution, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
+\begin{DoxyCompactList}\small\item\em Outputs a \doxylink{class_pixel_map}{Pixel\+Map} of the lensing quantities of a fixed grid. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \mbox{\hyperlink{struct_grid_a9eb6203dc60ec0db35c8420a3fe99f46}{write\+Pixel\+Map}} (\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
 \begin{DoxyCompactList}\small\item\em With the initial boundaries and resolution, ie no refinement. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a797067dc0d3104916e78b36f6d4d0dd6}\label{struct_grid_a797067dc0d3104916e78b36f6d4d0dd6}} 
-void \mbox{\hyperlink{struct_grid_a797067dc0d3104916e78b36f6d4d0dd6}{Map\+Surface\+Brightness}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map)
+\Hypertarget{struct_grid_a4b5fc463ba0a735c5549dc4db2592b41}\label{struct_grid_a4b5fc463ba0a735c5549dc4db2592b41} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries Map\+Surface\+Brightness} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&map)
 \begin{DoxyCompactList}\small\item\em make image of surface brightness \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_ad98811bdf4d3b3baded53966291654e0}\label{struct_grid_ad98811bdf4d3b3baded53966291654e0}} 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_ad98811bdf4d3b3baded53966291654e0}{Map\+Surface\+Brightness}} (double resolution)
+\Hypertarget{struct_grid_acb84a869cb1312884c991e3814f87f0d}\label{struct_grid_acb84a869cb1312884c991e3814f87f0d} 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ {\bfseries Map\+Surface\+Brightness} (double resolution)
 \begin{DoxyCompactList}\small\item\em make a map of the whole gridded area with given resolution \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \mbox{\hyperlink{struct_grid_a6ca7e1b7dd57ce1b051b84e4c542477d}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \mbox{\hyperlink{struct_grid_af8a42e04085607e44ba84a08dc57573b}{write\+Pixel\+Map\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
 \begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a063530b0b7c7e5ffe1b85432fcad1498}{write\+Pixel\+Map\+Uniform}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&map, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_a5074797acda5147b164176fa38e568ef}{write\+Pixel\+Map\+Uniform}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&map, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar)
 \item 
-void \mbox{\hyperlink{struct_grid_aa8dd246a0f9e9c1f606d425989e742ac}{write\+Fits\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_a39b2d1ed7a7fc6c6798049885a2e0f8c}{write\+Fits\+Uniform}} (const Pos\+Type center\mbox{[}$\,$\mbox{]}, size\+\_\+t Nx, size\+\_\+t Ny, \mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em Output a fits map of the without distribution the pixels. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}{find\+\_\+images}} (Pos\+Type $\ast$y\+\_\+source, Pos\+Type r\+\_\+source, int \&Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long \&Nimagepoints)
+void \mbox{\hyperlink{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}{find\+\_\+images}} (Pos\+Type \texorpdfstring{$\ast$}{*}y\+\_\+source, Pos\+Type r\+\_\+source, int \&Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, unsigned long \&Nimagepoints)
 \begin{DoxyCompactList}\small\item\em Finds images for a given source position and size. It seporates images of different pairities. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{struct_grid_a08fbb68b8796b638083812ca5f46d030}{map\+\_\+images}} (\mbox{\hyperlink{class_lens}{Lens}} $\ast$lens, \mbox{\hyperlink{class_source}{Source}} $\ast$source, int $\ast$Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, Pos\+Type xmax, Pos\+Type xmin, Pos\+Type initial\+\_\+size, Exit\+Criterion criterion, bool Find\+Center, bool divide\+\_\+images)
+void \mbox{\hyperlink{struct_grid_a08fbb68b8796b638083812ca5f46d030}{map\+\_\+images}} (\mbox{\hyperlink{class_lens}{Lens}} \texorpdfstring{$\ast$}{*}lens, \mbox{\hyperlink{class_source}{Source}} \texorpdfstring{$\ast$}{*}source, int \texorpdfstring{$\ast$}{*}Nimages, std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&imageinfo, Pos\+Type xmax, Pos\+Type xmin, Pos\+Type initial\+\_\+size, Exit\+Criterion criterion, bool Find\+Center, bool divide\+\_\+images)
 \begin{DoxyCompactList}\small\item\em Find images and refine them based on their surface brightness distribution. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_a292378167185b8eb18245060b21a13c6}\label{struct_grid_a292378167185b8eb18245060b21a13c6}} 
+\Hypertarget{struct_grid_a292378167185b8eb18245060b21a13c6}\label{struct_grid_a292378167185b8eb18245060b21a13c6} 
 {\bfseries Grid} (\mbox{\hyperlink{struct_grid}{Grid}} \&\&grid)
 \item 
-\mbox{\Hypertarget{struct_grid_a4507e0ed7ada07245f8252d462a4a5fb}\label{struct_grid_a4507e0ed7ada07245f8252d462a4a5fb}} 
+\Hypertarget{struct_grid_a4507e0ed7ada07245f8252d462a4a5fb}\label{struct_grid_a4507e0ed7ada07245f8252d462a4a5fb} 
 \mbox{\hyperlink{struct_grid}{Grid}} {\bfseries operator=} (\mbox{\hyperlink{struct_grid}{Grid}} \&grid)=delete
 \item 
-\mbox{\Hypertarget{struct_grid_a8f0bd8ddfe96ce77d598ef8cdf10ab69}\label{struct_grid_a8f0bd8ddfe96ce77d598ef8cdf10ab69}} 
+\Hypertarget{struct_grid_a8f0bd8ddfe96ce77d598ef8cdf10ab69}\label{struct_grid_a8f0bd8ddfe96ce77d598ef8cdf10ab69} 
 {\bfseries Grid} (\mbox{\hyperlink{struct_grid}{Grid}} \&grid)=delete
 \item 
-\mbox{\Hypertarget{struct_grid_a225f3c122c472daa49a8686005325c86}\label{struct_grid_a225f3c122c472daa49a8686005325c86}} 
+\Hypertarget{struct_grid_aca74e50a99d1976487f430f581c84084}\label{struct_grid_aca74e50a99d1976487f430f581c84084} 
 \mbox{\hyperlink{struct_grid}{Grid}} \& {\bfseries operator=} (\mbox{\hyperlink{struct_grid}{Grid}} \&\&grid)
 \item 
-\mbox{\Hypertarget{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}\label{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}} 
-Pos\+Type \mbox{\hyperlink{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}{magnification}} (double sblimit=-\/1.\+0e12) const
+\Hypertarget{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445}\label{struct_grid_ac2f0f81e2db4dda9a34678e6bc1c6445} 
+Pos\+Type {\bfseries magnification} (double sblimit=-\/1.\+0e12) const
 \begin{DoxyCompactList}\small\item\em flux weighted local magnification that does not take multiple imaging into effect \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_aa331fd4aedeb883a3c39088d5479ce88}\label{struct_grid_aa331fd4aedeb883a3c39088d5479ce88}} 
+\Hypertarget{struct_grid_aa331fd4aedeb883a3c39088d5479ce88}\label{struct_grid_aa331fd4aedeb883a3c39088d5479ce88} 
 Pos\+Type {\bfseries Unlensed\+Flux} (double sblimit=-\/1.\+0e12) const
 \item 
-\mbox{\Hypertarget{struct_grid_a116a7c25be81428653ae2cf8ae63876c}\label{struct_grid_a116a7c25be81428653ae2cf8ae63876c}} 
+\Hypertarget{struct_grid_a116a7c25be81428653ae2cf8ae63876c}\label{struct_grid_a116a7c25be81428653ae2cf8ae63876c} 
 Pos\+Type {\bfseries Lensed\+Flux} (double sblimit=-\/1.\+0e12) const
 \item 
-\mbox{\Hypertarget{struct_grid_aedfddf45465203922ce4ac592da07bb0}\label{struct_grid_aedfddf45465203922ce4ac592da07bb0}} 
-\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{struct_grid_aedfddf45465203922ce4ac592da07bb0}{centroid}} () const
+\Hypertarget{struct_grid_aedfddf45465203922ce4ac592da07bb0}\label{struct_grid_aedfddf45465203922ce4ac592da07bb0} 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries centroid} () const
 \begin{DoxyCompactList}\small\item\em centroid of flux \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_grid_ae68f5779296176fee76a92c9f6076a73}\label{struct_grid_ae68f5779296176fee76a92c9f6076a73}} 
-\mbox{\hyperlink{struct_tree_struct}{Tree\+Hndl}} \mbox{\hyperlink{struct_grid_ae68f5779296176fee76a92c9f6076a73}{i\+\_\+tree}}
+\Hypertarget{struct_grid_ae68f5779296176fee76a92c9f6076a73}\label{struct_grid_ae68f5779296176fee76a92c9f6076a73} 
+\mbox{\hyperlink{struct_tree_struct}{Tree\+Hndl}} {\bfseries i\+\_\+tree}
 \begin{DoxyCompactList}\small\item\em tree on image plane \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{struct_grid_abeda62e6b854e898781e85abd5a8e751}\label{struct_grid_abeda62e6b854e898781e85abd5a8e751}} 
-\mbox{\hyperlink{struct_tree_struct}{Tree\+Hndl}} \mbox{\hyperlink{struct_grid_abeda62e6b854e898781e85abd5a8e751}{s\+\_\+tree}}
+\Hypertarget{struct_grid_abeda62e6b854e898781e85abd5a8e751}\label{struct_grid_abeda62e6b854e898781e85abd5a8e751} 
+\mbox{\hyperlink{struct_tree_struct}{Tree\+Hndl}} {\bfseries s\+\_\+tree}
 \begin{DoxyCompactList}\small\item\em tree on source plane \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -144,32 +139,32 @@ Pos\+Type {\bfseries Lensed\+Flux} (double sblimit=-\/1.\+0e12) const
 Structure to contain both source and image trees. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}\label{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}} 
-\index{Grid@{Grid}!Grid@{Grid}}
+\Hypertarget{struct_grid_a830c6822b5e6a6b022d11923dfebcefc}\index{Grid@{Grid}!Grid@{Grid}}
 \index{Grid@{Grid}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{Grid()}{Grid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{unsigned long}]{N1d,  }\item[{const double}]{center\mbox{[}2\mbox{]},  }\item[{double}]{range }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a830c6822b5e6a6b022d11923dfebcefc} 
+Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens}{, }\item[{unsigned long}]{N1d}{, }\item[{const double}]{center}{\mbox{[}2\mbox{]}, }\item[{double}]{range}{}\end{DoxyParamCaption})}
 
 
 
 Constructor for initializing square grid. 
 
-Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{struct_grid}{Grid}}. 
+Note\+: Deflection solver must be specified before creating a \doxylink{struct_grid}{Grid}. 
 \begin{DoxyParams}{Parameters}
-{\em lens} & lens model for initializing grid \\
+{\em lens} & lens model for initializing grid  \\
 \hline
-{\em N1d} & Initial number of grid points in each dimension. \\
+{\em N1d} & Initial number of grid points in each dimension.  \\
 \hline
-{\em center} & Center of grid (usually in radian units) \\
+{\em center} & Center of grid (usually in radian units)  \\
 \hline
 {\em range} & Full width of grid in whatever units will be used. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a892ed0bb5f45b92505d8d82cfe408c9e}\label{struct_grid_a892ed0bb5f45b92505d8d82cfe408c9e}} 
-\index{Grid@{Grid}!Grid@{Grid}}
+\Hypertarget{struct_grid_a892ed0bb5f45b92505d8d82cfe408c9e}\index{Grid@{Grid}!Grid@{Grid}}
 \index{Grid@{Grid}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{Grid()}{Grid()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{unsigned long}]{Nx,  }\item[{const Pos\+Type}]{center\mbox{[}2\mbox{]},  }\item[{Pos\+Type}]{rangeX,  }\item[{Pos\+Type}]{rangeY }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a892ed0bb5f45b92505d8d82cfe408c9e} 
+Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens}{, }\item[{unsigned long}]{Nx}{, }\item[{const Pos\+Type}]{center}{\mbox{[}2\mbox{]}, }\item[{Pos\+Type}]{rangeX}{, }\item[{Pos\+Type}]{rangeY}{}\end{DoxyParamCaption})}
 
 
 
@@ -177,15 +172,15 @@ Constructor for initializing rectangular grid.
 
 Cells of grid will always be square with initial resolution range\+X/(Nx-\/1). The Y range may not be exactly rangeY, but will be the nearest value that is a whole number of cells.
 
-Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{struct_grid}{Grid}}. 
+Note\+: Deflection solver must be specified before creating a \doxylink{struct_grid}{Grid}. 
 \begin{DoxyParams}{Parameters}
-{\em lens} & lens model for initializing grid \\
+{\em lens} & lens model for initializing grid  \\
 \hline
-{\em Nx} & Initial number of grid points in X dimension. \\
+{\em Nx} & Initial number of grid points in X dimension.  \\
 \hline
-{\em center} & Center of grid. \\
+{\em center} & Center of grid.  \\
 \hline
-{\em rangeX} & Full width of grid in x direction in whatever units will be used. \\
+{\em rangeX} & Full width of grid in x direction in whatever units will be used.  \\
 \hline
 {\em rangeY} & Full width of grid in y direction in whatever units will be used. \\
 \hline
@@ -193,22 +188,22 @@ Note\+: Deflection solver must be specified before creating a \mbox{\hyperlink{s
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{struct_grid_acd3c8aa66053c2a4ef071f877c0ff214}\label{struct_grid_acd3c8aa66053c2a4ef071f877c0ff214}} 
-\index{Grid@{Grid}!AddSurfaceBrightnesses@{AddSurfaceBrightnesses}}
+\Hypertarget{struct_grid_a277e7811838b96b41b578c83879b7afa}\index{Grid@{Grid}!AddSurfaceBrightnesses@{AddSurfaceBrightnesses}}
 \index{AddSurfaceBrightnesses@{AddSurfaceBrightnesses}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{AddSurfaceBrightnesses()}{AddSurfaceBrightnesses()}}
-{\footnotesize\ttfamily Pos\+Type Grid\+::\+Add\+Surface\+Brightnesses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source\+Hndl}}}]{source }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a277e7811838b96b41b578c83879b7afa} 
+Pos\+Type Grid\+::\+Add\+Surface\+Brightnesses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source}} \texorpdfstring{$\ast$}{*}}]{source}{}\end{DoxyParamCaption})}
 
 
 
 Recalculate surface brightness just like Grid\+::\+Refresh\+Surface\+Brightness but the new source is added to any sources that were already there. ~\newline
  
 
-returns the total flux from new source \mbox{\Hypertarget{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}\label{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}} 
-\index{Grid@{Grid}!find\_images@{find\_images}}
+returns the total flux from new source \Hypertarget{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e}\index{Grid@{Grid}!find\_images@{find\_images}}
 \index{find\_images@{find\_images}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}}
-{\footnotesize\ttfamily void Grid\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{int \&}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{unsigned long \&}]{Nimagepoints }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_abc4f4aff30be66ff79365f4ea810cc5e} 
+void Grid\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{Pos\+Type \texorpdfstring{$\ast$}{*}}]{y\+\_\+source}{, }\item[{Pos\+Type}]{r\+\_\+source}{, }\item[{int \&}]{Nimages}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo}{, }\item[{unsigned long \&}]{Nimagepoints}{}\end{DoxyParamCaption})}
 
 
 
@@ -220,11 +215,11 @@ image points are put into imageinfo\mbox{[}\mbox{]}.imagekist imageinfo\mbox{[}\
 
 side-\/effects \+: Will make in\+\_\+image = true for all image points if splitparities == 0
 
-$<${\ttfamily } $>$ \mbox{\Hypertarget{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}\label{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}} 
-\index{Grid@{Grid}!find\_point\_source\_images@{find\_point\_source\_images}}
+\texorpdfstring{$<$}{<}{\ttfamily } \texorpdfstring{$>$}{>} \Hypertarget{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63}\index{Grid@{Grid}!find\_point\_source\_images@{find\_point\_source\_images}}
 \index{find\_point\_source\_images@{find\_point\_source\_images}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{find\_point\_source\_images()}{find\_point\_source\_images()}}
-{\footnotesize\ttfamily void Grid\+::find\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source,  }\item[{Pos\+Type}]{z\+\_\+source,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{R\+AY}} $>$ \&}]{images,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a5116dfe57f5584c4d0559970b6fe2c63} 
+void Grid\+::find\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source}{, }\item[{Pos\+Type}]{r\+\_\+source}{, }\item[{Pos\+Type}]{z\+\_\+source}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \&}]{images}{, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})}
 
 
 
@@ -232,44 +227,46 @@ This function finds all the images for a circular source of radius r\+\_\+source
 
 
 \begin{DoxyParams}{Parameters}
-{\em y\+\_\+source} & angular position of source, \\
+{\em y\+\_\+source} & angular position of source,  \\
 \hline
-{\em r\+\_\+source} & points outside this radius on the source plane will not be considered as in the image \\
+{\em r\+\_\+source} & points outside this radius on the source plane will not be considered as in the image  \\
 \hline
-{\em z\+\_\+source} & redhsift of source \\
+{\em z\+\_\+source} & redhsift of source  \\
 \hline
 {\em images} & returned image rays \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}\label{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}} 
-\index{Grid@{Grid}!getNumberOfPoints@{getNumberOfPoints}}
+\Hypertarget{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1}\index{Grid@{Grid}!getNumberOfPoints@{getNumberOfPoints}}
 \index{getNumberOfPoints@{getNumberOfPoints}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{getNumberOfPoints()}{getNumberOfPoints()}}
-{\footnotesize\ttfamily unsigned long Grid\+::get\+Number\+Of\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \label{struct_grid_a4b84bc9acf6cbeff3a6da1f3dca202e1} 
+unsigned long Grid\+::get\+Number\+Of\+Points (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
 
 
 Returns number of points on image plane. 
 
-Finding \mbox{\Hypertarget{struct_grid_a08fbb68b8796b638083812ca5f46d030}\label{struct_grid_a08fbb68b8796b638083812ca5f46d030}} 
-\index{Grid@{Grid}!map\_images@{map\_images}}
+Finding \Hypertarget{struct_grid_a08fbb68b8796b638083812ca5f46d030}\index{Grid@{Grid}!map\_images@{map\_images}}
 \index{map\_images@{map\_images}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{map\_images()}{map\_images()}}
-{\footnotesize\ttfamily void Grid\+::map\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens}} $\ast$}]{lens,  }\item[{\mbox{\hyperlink{class_source}{Source}} $\ast$}]{source,  }\item[{int $\ast$}]{Nimages,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo,  }\item[{Pos\+Type}]{xmax,  }\item[{Pos\+Type}]{xmin,  }\item[{Pos\+Type}]{initial\+\_\+size,  }\item[{Exit\+Criterion}]{criterion,  }\item[{bool}]{Find\+Center,  }\item[{bool}]{divide\+\_\+images }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a08fbb68b8796b638083812ca5f46d030} 
+void Grid\+::map\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens}} \texorpdfstring{$\ast$}{*}}]{lens}{, }\item[{\mbox{\hyperlink{class_source}{Source}} \texorpdfstring{$\ast$}{*}}]{source}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{Nimages}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_image_info}{Image\+Info}} $>$ \&}]{imageinfo}{, }\item[{Pos\+Type}]{xmax}{, }\item[{Pos\+Type}]{xmin}{, }\item[{Pos\+Type}]{initial\+\_\+size}{, }\item[{Exit\+Criterion}]{criterion}{, }\item[{bool}]{Find\+Center}{, }\item[{bool}]{divide\+\_\+images}{}\end{DoxyParamCaption})}
 
 
 
 Find images and refine them based on their surface brightness distribution. 
 
-Finding Uses \mbox{\hyperlink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()}} to initially find and refine images and then uses a surface brightness based criterion to refine the most important parts of the lens.
+Finding 
+
+Uses \doxylink{namespace_image_finding_a84da40a884b9a6fd16038de225b51dc7}{Image\+Finding\+::find\+\_\+images\+\_\+kist()} to initially find and refine images and then uses a surface brightness based criterion to refine the most important parts of the lens.
 
 map\+\_\+images is intended for mapping images of sources more complicated than simple circles.
 
-No \mbox{\hyperlink{struct_grid}{Grid}} refinement is done. \mbox{\Hypertarget{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}\label{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}} 
-\index{Grid@{Grid}!mark\_closest\_point\_source\_images@{mark\_closest\_point\_source\_images}}
+No \doxylink{struct_grid}{Grid} refinement is done. \Hypertarget{struct_grid_a99ea033ac2888518f350e5dcc2fdc357}\index{Grid@{Grid}!mark\_closest\_point\_source\_images@{mark\_closest\_point\_source\_images}}
 \index{mark\_closest\_point\_source\_images@{mark\_closest\_point\_source\_images}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{mark\_closest\_point\_source\_images()}{mark\_closest\_point\_source\_images()}}
-{\footnotesize\ttfamily double Grid\+::mark\+\_\+closest\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source,  }\item[{Pos\+Type}]{r\+\_\+source\+\_\+max,  }\item[{Pos\+Type}]{luminosity,  }\item[{bool}]{verbose = {\ttfamily false} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a99ea033ac2888518f350e5dcc2fdc357} 
+double Grid\+::mark\+\_\+closest\+\_\+point\+\_\+source\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y\+\_\+source}{, }\item[{Pos\+Type}]{r\+\_\+source\+\_\+max}{, }\item[{Pos\+Type}]{luminosity}{, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})}
 
 
 
@@ -277,72 +274,75 @@ This function finds all the images for a circular source of radius r\+\_\+source
 
 
 \begin{DoxyParams}{Parameters}
-{\em y\+\_\+source} & angular position of source, \\
+{\em y\+\_\+source} & angular position of source,  \\
 \hline
 {\em r\+\_\+source\+\_\+max} & points outside this radius on the source plane will not be considered as in the image \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_aef2864fc3791c44eed90c2e980777884}\label{struct_grid_aef2864fc3791c44eed90c2e980777884}} 
-\index{Grid@{Grid}!RefineLeaf@{RefineLeaf}}
+\Hypertarget{struct_grid_aef2864fc3791c44eed90c2e980777884}\index{Grid@{Grid}!RefineLeaf@{RefineLeaf}}
 \index{RefineLeaf@{RefineLeaf}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{RefineLeaf()}{RefineLeaf()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} $\ast$ Grid\+::\+Refine\+Leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{point }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_aef2864fc3791c44eed90c2e980777884} 
+\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*} Grid\+::\+Refine\+Leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens}{, }\item[{\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}}]{point}{}\end{DoxyParamCaption})}
 
 
 
 Fundamental function used to divide a leaf in the tree into nine subcells. 
 
-\mbox{\hyperlink{class_source}{Source}} and image points are created, linked, shot and added to the trees. The leaf pointers of the points including the input are assigned.
+\doxylink{class_source}{Source} and image points are created, linked, shot and added to the trees. The leaf pointers of the points including the input are assigned.
 
-If some of the of the points are outside the original grid they will not be added in which case T\+H\+E\+RE W\+I\+LL BE L\+E\+SS T\+H\+EN Ngrid$\ast$\+Ngrid-\/1 points added. The true number will be result-\/$>$head or, if no points are added, result = N\+U\+LL.
+If some of the of the points are outside the original grid they will not be added in which case THERE WILL BE LESS THEN Ngrid\texorpdfstring{$\ast$}{*}\+Ngrid-\/1 points added. The true number will be result-\/\texorpdfstring{$>$}{>}head or, if no points are added, result = NULL.
 
 Returns a pointer to the list of image points that have been added. This array can then be used for calculating the surface brightness or marking them as in the image.
 
-i\+\_\+tree current is left in one of the new subcells. \mbox{\Hypertarget{struct_grid_aae2b3f9fe8cc6a464852e3441f22d8a9}\label{struct_grid_aae2b3f9fe8cc6a464852e3441f22d8a9}} 
-\index{Grid@{Grid}!RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}}
+i\+\_\+tree current is left in one of the new subcells. \Hypertarget{struct_grid_a0974cb2286d5bc2ff4220fe57ab59875}\index{Grid@{Grid}!RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}}
 \index{RefreshSurfaceBrightnesses@{RefreshSurfaceBrightnesses}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{RefreshSurfaceBrightnesses()}{RefreshSurfaceBrightnesses()}}
-{\footnotesize\ttfamily Pos\+Type Grid\+::\+Refresh\+Surface\+Brightnesses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source\+Hndl}}}]{source }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a0974cb2286d5bc2ff4220fe57ab59875} 
+Pos\+Type Grid\+::\+Refresh\+Surface\+Brightnesses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_source}{Source}} \texorpdfstring{$\ast$}{*}}]{source}{}\end{DoxyParamCaption})}
 
 
 
 Reshoot the rays with the same image postions. 
 
-Finding The source positions and source tree are updated to the current lens model. The advantage over Grid\+::\+Re\+Initialize\+Grid() is that the image plane refinements are preserved.
+Finding 
+
+The source positions and source tree are updated to the current lens model. The advantage over Grid\+::\+Re\+Initialize\+Grid() is that the image plane refinements are preserved.
 
 void Grid\+::\+Re\+Shoot(\+Lens\+Hndl lens)\{
 
 Pos\+Type range,center\mbox{[}2\mbox{]};
 
-range = i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]}; center\mbox{[}0\mbox{]} = (i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} + i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]})/2; center\mbox{[}1\mbox{]} = (i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}1\mbox{]} + i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}1\mbox{]})/2;
+range = i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p1\mbox{[}0\mbox{]}; center\mbox{[}0\mbox{]} = (i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p2\mbox{[}0\mbox{]} + i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p1\mbox{[}0\mbox{]})/2; center\mbox{[}1\mbox{]} = (i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p2\mbox{[}1\mbox{]} + i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p1\mbox{[}1\mbox{]})/2;
 
-\mbox{\hyperlink{struct_grid}{Grid}} newgrid(lens,\+Ngrid\+\_\+init,center,range\+X,range\+Y); \begin{DoxyVerb}         Grid(LensHndl lens ,unsigned long Nx ,const PosType center[2] ,PosType rangeX ,PosType rangeY);
+\doxylink{struct_grid}{Grid} newgrid(lens,\+Ngrid\+\_\+init,center,range\+X,range\+Y); \begin{DoxyVerb}         Grid(LensHndl lens ,unsigned long Nx ,const PosType center[2] ,PosType rangeX ,PosType rangeY);
 \end{DoxyVerb}
- \mbox{\hyperlink{struct_point}{Point}} $\ast$i\+\_\+points,$\ast$s\+\_\+points;
+ \doxylink{struct_point}{Point} \texorpdfstring{$\ast$}{*}i\+\_\+points,\texorpdfstring{$\ast$}{*}s\+\_\+points;
 
 unsigned long i;
 
-clear source tree delete s\+\_\+tree; s\+\_\+points = New\+Point\+Array(i\+\_\+tree-\/$>$pointlist.\+size()); s\+\_\+points = point\+\_\+factory(i\+\_\+tree-\/$>$pointlist.\+size());
+clear source tree delete s\+\_\+tree; s\+\_\+points = New\+Point\+Array(i\+\_\+tree-\/\texorpdfstring{$>$}{>}pointlist.\+size()); s\+\_\+points = point\+\_\+factory(i\+\_\+tree-\/\texorpdfstring{$>$}{>}pointlist.\+size());
 
-build new initial grid Point\+List\+::iterator i\+\_\+tree\+\_\+pointlist\+\_\+it; i\+\_\+tree\+\_\+pointlist\+\_\+it.\+current = i\+\_\+tree-\/$>$pointlist.\+Top(); size\+\_\+t k; for(i=0,k=0;i$<$i\+\_\+tree-\/$>$pointlist.\+size();++i)\{ i\+\_\+points = $\ast$i\+\_\+tree\+\_\+pointlist\+\_\+it; if(i\+\_\+points-\/$>$head $>$ 0)\{
+build new initial grid Point\+List\+::iterator i\+\_\+tree\+\_\+pointlist\+\_\+it; i\+\_\+tree\+\_\+pointlist\+\_\+it.\+current = i\+\_\+tree-\/\texorpdfstring{$>$}{>}pointlist.\+Top(); size\+\_\+t k; for(i=0,k=0;i\texorpdfstring{$<$}{<}i\+\_\+tree-\/\texorpdfstring{$>$}{>}pointlist.\+size();++i)\{ i\+\_\+points = \texorpdfstring{$\ast$}{*}i\+\_\+tree\+\_\+pointlist\+\_\+it; if(i\+\_\+points-\/\texorpdfstring{$>$}{>}head \texorpdfstring{$>$}{>} 0)\{
 
-link source and image points for(size\+\_\+t j=0;j$<$i\+\_\+points-\/$>$head;++j,++k)\{ i\+\_\+points\mbox{[}j\mbox{]}.image = \&s\+\_\+points\mbox{[}k\mbox{]}; s\+\_\+points\mbox{[}k\mbox{]}.image = \&i\+\_\+points\mbox{[}j\mbox{]}; s\+\_\+points\mbox{[}k\mbox{]}.id = i\+\_\+points\mbox{[}j\mbox{]}.id; s\+\_\+points\mbox{[}k\mbox{]}.gridsize = i\+\_\+points\mbox{[}j\mbox{]}.gridsize; \};
+link source and image points for(size\+\_\+t j=0;j\texorpdfstring{$<$}{<}i\+\_\+points-\/\texorpdfstring{$>$}{>}head;++j,++k)\{ i\+\_\+points\mbox{[}j\mbox{]}.image = \&s\+\_\+points\mbox{[}k\mbox{]}; s\+\_\+points\mbox{[}k\mbox{]}.image = \&i\+\_\+points\mbox{[}j\mbox{]}; s\+\_\+points\mbox{[}k\mbox{]}.id = i\+\_\+points\mbox{[}j\mbox{]}.id; s\+\_\+points\mbox{[}k\mbox{]}.gridsize = i\+\_\+points\mbox{[}j\mbox{]}.gridsize; \};
 
-\{ reshoot the rays std\+::lock\+\_\+guard$<$std\+::mutex$>$ hold(grid\+\_\+mutex); lens-\/$>$rayshooter\+Internal(i\+\_\+points-\/$>$head,i\+\_\+points); \} \}
+\{ reshoot the rays std\+::lock\+\_\+guard$<$std\+::mutex$>$ hold(grid\+\_\+mutex); lens-\/\texorpdfstring{$>$}{>}rayshooter\+Internal(i\+\_\+points-\/\texorpdfstring{$>$}{>}head,i\+\_\+points); \} \}
 
 --i\+\_\+tree\+\_\+pointlist\+\_\+it; \}
 
-s\+\_\+tree = new \mbox{\hyperlink{struct_tree_struct}{Tree\+Struct}}(s\+\_\+points,s\+\_\+points-\/$>$head,1,(i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ i\+\_\+tree-\/$>$get\+Top()-\/$>$boundary\+\_\+p1\mbox{[}0\mbox{]})/10 ); return; \}
+s\+\_\+tree = new \doxylink{struct_tree_struct}{Tree\+Struct}(s\+\_\+points,s\+\_\+points-\/\texorpdfstring{$>$}{>}head,1,(i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p2\mbox{[}0\mbox{]} -\/ i\+\_\+tree-\/\texorpdfstring{$>$}{>}get\+Top()-\/\texorpdfstring{$>$}{>}boundary\+\_\+p1\mbox{[}0\mbox{]})/10 ); return; \}
 
 Recalculate surface brightness at every point without changing the positions of the grid or any lens properties.
 
 Whatever is in the image is replaced with the one input source. Recalculate the surface brightness at all points on the grid. This is useful when changing the source model while preserving changes in the grid. Both i\+\_\+tree and s\+\_\+tree are both changed although only s\+\_\+tree shows up here.
 
-returns total flux \mbox{\Hypertarget{struct_grid_a8815d0d3b3bec110d580340ff40621bf}\label{struct_grid_a8815d0d3b3bec110d580340ff40621bf}} 
-\index{Grid@{Grid}!writeFits@{writeFits}}
+returns total flux \Hypertarget{struct_grid_a564ca633d349b420b157b6fe71a042b5}\index{Grid@{Grid}!writeFits@{writeFits}}
 \index{writeFits@{writeFits}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writeFits()}{writeFits()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily void Grid\+::write\+Fits (\begin{DoxyParamCaption}\item[{const double}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Npixels,  }\item[{double}]{resolution,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a564ca633d349b420b157b6fe71a042b5} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Fits (\begin{DoxyParamCaption}\item[{const double}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Npixels}{, }\item[{double}]{resolution}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
 
 
 
@@ -350,22 +350,23 @@ Outputs a fits image of a lensing variable of choice.
 
 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Npixels} & number of pixels in image in on dimension \\
+{\em Npixels} & number of pixels in image in on dimension  \\
 \hline
-{\em resolution} & resolution of image in radians \\
+{\em resolution} & resolution of image in radians  \\
 \hline
-{\em lensvar} & which quantity is to be displayed \\
+{\em lensvar} & which quantity is to be displayed  \\
 \hline
-{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+{\em filename} & file name for image -- .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a1c929444392293507dda639537748556}\label{struct_grid_a1c929444392293507dda639537748556}} 
-\index{Grid@{Grid}!writeFits@{writeFits}}
+\Hypertarget{struct_grid_a20dc795bf0466c365e06eae77ba7073f}\index{Grid@{Grid}!writeFits@{writeFits}}
 \index{writeFits@{writeFits}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writeFits()}{writeFits()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily void Grid\+::write\+Fits (\begin{DoxyParamCaption}\item[{const double}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{double}]{resolution,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a20dc795bf0466c365e06eae77ba7073f} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Fits (\begin{DoxyParamCaption}\item[{const double}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Nx}{, }\item[{size\+\_\+t}]{Ny}{, }\item[{double}]{resolution}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
 
 
 
@@ -373,24 +374,25 @@ Outputs a fits image of a lensing variable of choice.
 
 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Nx} & number of pixels in image in x dimension \\
+{\em Nx} & number of pixels in image in x dimension  \\
 \hline
-{\em Ny} & number of pixels in image in y dimension \\
+{\em Ny} & number of pixels in image in y dimension  \\
 \hline
-{\em resolution} & resolution of image in radians \\
+{\em resolution} & resolution of image in radians  \\
 \hline
-{\em lensvar} & which quantity is to be displayed \\
+{\em lensvar} & which quantity is to be displayed  \\
 \hline
-{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+{\em filename} & file name for image -- .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a1e168760dc1117fa003f1da1ff3a1632}\label{struct_grid_a1e168760dc1117fa003f1da1ff3a1632}} 
-\index{Grid@{Grid}!writeFits@{writeFits}}
+\Hypertarget{struct_grid_a454205ce6790192d7e90d04ca9bdc20b}\index{Grid@{Grid}!writeFits@{writeFits}}
 \index{writeFits@{writeFits}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writeFits()}{writeFits()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily void Grid\+::write\+Fits (\begin{DoxyParamCaption}\item[{double}]{strech,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a454205ce6790192d7e90d04ca9bdc20b} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Fits (\begin{DoxyParamCaption}\item[{double}]{strech}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
 
 
 
@@ -398,41 +400,43 @@ make a fits image of whole grid region
 
 
 \begin{DoxyParams}{Parameters}
-{\em strech} & resolution relative to the initial resolution \\
+{\em strech} & resolution relative to the initial resolution  \\
 \hline
-{\em lensvar} & which quantity is to be displayed \\
+{\em lensvar} & which quantity is to be displayed  \\
 \hline
-{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+{\em filename} & file name for image -- .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_aa8dd246a0f9e9c1f606d425989e742ac}\label{struct_grid_aa8dd246a0f9e9c1f606d425989e742ac}} 
-\index{Grid@{Grid}!writeFitsUniform@{writeFitsUniform}}
+\Hypertarget{struct_grid_a39b2d1ed7a7fc6c6798049885a2e0f8c}\index{Grid@{Grid}!writeFitsUniform@{writeFitsUniform}}
 \index{writeFitsUniform@{writeFitsUniform}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writeFitsUniform()}{writeFitsUniform()}}
-{\footnotesize\ttfamily void Grid\+::write\+Fits\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a39b2d1ed7a7fc6c6798049885a2e0f8c} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Fits\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Nx}{, }\item[{size\+\_\+t}]{Ny}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
 
 
 
 Output a fits map of the without distribution the pixels. 
 
-This will be faster than \mbox{\hyperlink{struct_grid_a4d91a7428c0994afbdd4b4a69877dc19}{Grid\+::write\+Pixel\+Map()}} and \mbox{\hyperlink{struct_grid_a8815d0d3b3bec110d580340ff40621bf}{Grid\+::write\+Fits()}}. But it puts each grid pixel in one pixelmap pixel and if there are two grid pixels in one pixelmap pixel it uses one at random. This is meant for uniform maps to make equal sized Pixel\+Maps. 
+This will be faster than \doxylink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{Grid\+::write\+Pixel\+Map()} and \doxylink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{Grid\+::write\+Fits()}. But it puts each grid pixel in one pixelmap pixel and if there are two grid pixels in one pixelmap pixel it uses one at random. This is meant for uniform maps to make equal sized Pixel\+Maps. 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Nx} & number of pixels in image in on dimension \\
+{\em Nx} & number of pixels in image in on dimension  \\
 \hline
-{\em Ny} & number of pixels in image in on dimension \\
+{\em Ny} & number of pixels in image in on dimension  \\
 \hline
-{\em lensvar} & which quantity is to be displayed \\
+{\em lensvar} & which quantity is to be displayed  \\
 \hline
-{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+{\em filename} & file name for image -- .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a6b7d66b6c8bbbf4e0c4cc4cb014fc4e6}\label{struct_grid_a6b7d66b6c8bbbf4e0c4cc4cb014fc4e6}} 
-\index{Grid@{Grid}!writeFitsVector@{writeFitsVector}}
+\Hypertarget{struct_grid_af6db6d5bdc63482cae8b00b7bdd8f9f7}\index{Grid@{Grid}!writeFitsVector@{writeFitsVector}}
 \index{writeFitsVector@{writeFitsVector}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writeFitsVector()}{writeFitsVector()}}
-{\footnotesize\ttfamily void Grid\+::write\+Fits\+Vector (\begin{DoxyParamCaption}\item[{const double}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Npixels,  }\item[{double}]{resolution,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_af6db6d5bdc63482cae8b00b7bdd8f9f7} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Fits\+Vector (\begin{DoxyParamCaption}\item[{const double}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Npixels}{, }\item[{double}]{resolution}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
 
 
 
@@ -440,22 +444,23 @@ Outputs a fits file for making plots of vector fields.
 
 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Npixels} & number of pixels in image in on dimension \\
+{\em Npixels} & number of pixels in image in on dimension  \\
 \hline
-{\em resolution} & resolution of image in radians \\
+{\em resolution} & resolution of image in radians  \\
 \hline
-{\em lensvar} & which quantity is to be displayed \\
+{\em lensvar} & which quantity is to be displayed  \\
 \hline
-{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+{\em filename} & file name for image -- .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a7309148a7ea8c64097a9758b9de02e01}\label{struct_grid_a7309148a7ea8c64097a9758b9de02e01}} 
-\index{Grid@{Grid}!writePixelFits@{writePixelFits}}
+\Hypertarget{struct_grid_aef25408943531718b008996d5eddb9cb}\index{Grid@{Grid}!writePixelFits@{writePixelFits}}
 \index{writePixelFits@{writePixelFits}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writePixelFits()}{writePixelFits()}}
-{\footnotesize\ttfamily void Grid\+::write\+Pixel\+Fits (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Nx,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar,  }\item[{std\+::string}]{filename }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_aef25408943531718b008996d5eddb9cb} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Pixel\+Fits (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{Nx}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{, }\item[{std\+::string}]{filename}{}\end{DoxyParamCaption})}
 
 
 
@@ -463,109 +468,114 @@ Make a fits map that is automatically centered on the grid and has approximately
 
 
 \begin{DoxyParams}{Parameters}
-{\em Nx} & number of pixels in image in x dimension \\
+{\em Nx} & number of pixels in image in x dimension  \\
 \hline
-{\em lensvar} & which quantity is to be displayed \\
+{\em lensvar} & which quantity is to be displayed  \\
 \hline
-{\em filename} & file name for image -\/-\/ .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
+{\em filename} & file name for image -- .kappa.\+fits, .gamma1.\+fits, etc will be appended \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a4d91a7428c0994afbdd4b4a69877dc19}\label{struct_grid_a4d91a7428c0994afbdd4b4a69877dc19}} 
-\index{Grid@{Grid}!writePixelMap@{writePixelMap}}
+\Hypertarget{struct_grid_a337d6e50ad7e7f02120df13cd4807094}\index{Grid@{Grid}!writePixelMap@{writePixelMap}}
 \index{writePixelMap@{writePixelMap}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writePixelMap()}{writePixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Npixels,  }\item[{double}]{resolution,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a337d6e50ad7e7f02120df13cd4807094} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ Grid\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Npixels}{, }\item[{double}]{resolution}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{}\end{DoxyParamCaption})}
 
 
 
-Outputs a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the lensing quantities of a fixed grid. 
+Outputs a \doxylink{class_pixel_map}{Pixel\+Map} of the lensing quantities of a fixed grid. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Npixels} & number of pixels in image in on dimension \\
+{\em Npixels} & number of pixels in image in on dimension  \\
 \hline
-{\em resolution} & resolution of image in radians \\
+{\em resolution} & resolution of image in radians  \\
 \hline
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_af6aea541cdaa9a981cde49b045022035}\label{struct_grid_af6aea541cdaa9a981cde49b045022035}} 
-\index{Grid@{Grid}!writePixelMap@{writePixelMap}}
+\Hypertarget{struct_grid_abff4c6aba9bdaf76da4cae273aa79fd5}\index{Grid@{Grid}!writePixelMap@{writePixelMap}}
 \index{writePixelMap@{writePixelMap}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writePixelMap()}{writePixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{double}]{resolution,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_abff4c6aba9bdaf76da4cae273aa79fd5} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ Grid\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{const double}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Nx}{, }\item[{size\+\_\+t}]{Ny}{, }\item[{double}]{resolution}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{}\end{DoxyParamCaption})}
 
 
 
-Outputs a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the lensing quantities of a fixed grid. 
+Outputs a \doxylink{class_pixel_map}{Pixel\+Map} of the lensing quantities of a fixed grid. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Nx} & number of pixels in image in on dimension \\
+{\em Nx} & number of pixels in image in on dimension  \\
 \hline
-{\em Ny} & number of pixels in image in on dimension \\
+{\em Ny} & number of pixels in image in on dimension  \\
 \hline
-{\em resolution} & resolution of image in radians \\
+{\em resolution} & resolution of image in radians  \\
 \hline
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a709e743b55dee970df1d199029c6f723}\label{struct_grid_a709e743b55dee970df1d199029c6f723}} 
-\index{Grid@{Grid}!writePixelMap@{writePixelMap}}
+\Hypertarget{struct_grid_a9eb6203dc60ec0db35c8420a3fe99f46}\index{Grid@{Grid}!writePixelMap@{writePixelMap}}
 \index{writePixelMap@{writePixelMap}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writePixelMap()}{writePixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a9eb6203dc60ec0db35c8420a3fe99f46} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ Grid\+::write\+Pixel\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{}\end{DoxyParamCaption})}
 
 
 
 With the initial boundaries and resolution, ie no refinement. 
 
-Outputs a \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} of the lensing quantities of a fixed grid. 
+Outputs a \doxylink{class_pixel_map}{Pixel\+Map} of the lensing quantities of a fixed grid. 
 \begin{DoxyParams}{Parameters}
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a6ca7e1b7dd57ce1b051b84e4c542477d}\label{struct_grid_a6ca7e1b7dd57ce1b051b84e4c542477d}} 
-\index{Grid@{Grid}!writePixelMapUniform@{writePixelMapUniform}}
+\Hypertarget{struct_grid_af8a42e04085607e44ba84a08dc57573b}\index{Grid@{Grid}!writePixelMapUniform@{writePixelMapUniform}}
 \index{writePixelMapUniform@{writePixelMapUniform}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} Grid\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center\mbox{[}$\,$\mbox{]},  }\item[{size\+\_\+t}]{Nx,  }\item[{size\+\_\+t}]{Ny,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_af8a42e04085607e44ba84a08dc57573b} 
+template$<$typename T $>$ \\
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ Grid\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{const Pos\+Type}]{center}{\mbox{[}$\,$\mbox{]}, }\item[{size\+\_\+t}]{Nx}{, }\item[{size\+\_\+t}]{Ny}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{}\end{DoxyParamCaption})}
 
 
 
 Make a Pixel map of the without distribution the pixels. 
 
-This will be faster than \mbox{\hyperlink{struct_grid_a4d91a7428c0994afbdd4b4a69877dc19}{Grid\+::write\+Pixel\+Map()}} and \mbox{\hyperlink{struct_grid_a8815d0d3b3bec110d580340ff40621bf}{Grid\+::write\+Fits()}}. But it puts each grid pixel in one pixelmap pixel and if there are two grid pixels in one pixelmap pixel it uses one at random. This is meant for uniform maps to make equal sized Pixel\+Maps. 
+This will be faster than \doxylink{struct_grid_a337d6e50ad7e7f02120df13cd4807094}{Grid\+::write\+Pixel\+Map()} and \doxylink{struct_grid_a564ca633d349b420b157b6fe71a042b5}{Grid\+::write\+Fits()}. But it puts each grid pixel in one pixelmap pixel and if there are two grid pixels in one pixelmap pixel it uses one at random. This is meant for uniform maps to make equal sized Pixel\+Maps. 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of image \\
+{\em center} & center of image  \\
 \hline
-{\em Nx} & number of pixels in image in on dimension \\
+{\em Nx} & number of pixels in image in on dimension  \\
 \hline
-{\em Ny} & number of pixels in image in on dimension \\
+{\em Ny} & number of pixels in image in on dimension  \\
 \hline
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a063530b0b7c7e5ffe1b85432fcad1498}\label{struct_grid_a063530b0b7c7e5ffe1b85432fcad1498}} 
-\index{Grid@{Grid}!writePixelMapUniform@{writePixelMapUniform}}
+\Hypertarget{struct_grid_a5074797acda5147b164176fa38e568ef}\index{Grid@{Grid}!writePixelMapUniform@{writePixelMapUniform}}
 \index{writePixelMapUniform@{writePixelMapUniform}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{writePixelMapUniform()}{writePixelMapUniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Grid\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}} \&}]{map,  }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a5074797acda5147b164176fa38e568ef} 
+template$<$typename T $>$ \\
+void Grid\+::write\+Pixel\+Map\+Uniform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&}]{map}{, }\item[{\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}}}]{lensvar}{}\end{DoxyParamCaption})}
 
 
 \begin{DoxyParams}{Parameters}
 {\em lensvar} & which quantity is to be displayed \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}\label{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}} 
-\index{Grid@{Grid}!zoom@{zoom}}
+\Hypertarget{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8}\index{Grid@{Grid}!zoom@{zoom}}
 \index{zoom@{zoom}!Grid@{Grid}}
 \doxysubsubsection{\texorpdfstring{zoom()}{zoom()}}
-{\footnotesize\ttfamily void Grid\+::zoom (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens,  }\item[{double $\ast$}]{center,  }\item[{double}]{scale,  }\item[{\mbox{\hyperlink{struct_branch}{Branch}} $\ast$}]{top = {\ttfamily NULL} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{struct_grid_a0dd646880c0c5f33af5869aab6b7c0f8} 
+void Grid\+::zoom (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_lens}{Lens\+Hndl}}}]{lens}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{center}{, }\item[{double}]{scale}{, }\item[{\mbox{\hyperlink{struct_branch}{Branch}} \texorpdfstring{$\ast$}{*}}]{top}{ = {\ttfamily NULL}}\end{DoxyParamCaption})}
 
 
 
@@ -573,24 +583,24 @@ Test if point is in a region of uniform magnification using the kappa and gamma 
 
 An estimate of the magnification matrix is returned if it returns true. Otherwise the magnification matrix is unspecified.
 
-Magnification matrix elements are considered equal if their difference is smaller than maglimit which is set in the \mbox{\hyperlink{struct_grid}{Grid}} constructor.
+Magnification matrix elements are considered equal if their difference is smaller than maglimit which is set in the \doxylink{struct_grid}{Grid} constructor.
 
 quickly refines the grid down to a specific scale at a given point
 
 top is an optional argument that allows for the zooming to start part way down the tree. Default is to start at the root. If the point is not within top or the root nothing is done. The point will not necessarily be in the center of the smallest branch. 
 \begin{DoxyParams}{Parameters}
-{\em center} & center of point where grid is refined \\
+{\em center} & center of point where grid is refined  \\
 \hline
-{\em scale} & the smallest grid size to which the grid is refined \\
+{\em scale} & the smallest grid size to which the grid is refined  \\
 \hline
-{\em top} & where on the tree to start, if N\+U\+LL it will start at the root \\
+{\em top} & where on the tree to start, if NULL it will start at the root \\
 \hline
 \end{DoxyParams}
 
 
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/grid\+\_\+maintenance.\+h\item 
-S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/grid\+\_\+maintenance.\+cpp\item 
-S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/image\+\_\+finder.\+cpp\item 
-S\+Lsim\+Lib/\+Tree\+Code\+\_\+link/map\+\_\+images.\+cpp\end{DoxyCompactItemize}
+SLsim\+Lib/include/grid\+\_\+maintenance.\+h\item 
+SLsim\+Lib/\+Tree\+Code\+\_\+link/grid\+\_\+maintenance.\+cpp\item 
+SLsim\+Lib/\+Tree\+Code\+\_\+link/image\+\_\+finder.\+cpp\item 
+SLsim\+Lib/\+Tree\+Code\+\_\+link/map\+\_\+images.\+cpp\end{DoxyCompactItemize}

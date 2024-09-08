@@ -1,0 +1,119 @@
+\doxysection{sersic\+\_\+source.\+h}
+\hypertarget{sersic__source_8h_source}{}\label{sersic__source_8h_source}\index{SLsimLib/include/sersic\_source.h@{SLsimLib/include/sersic\_source.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ sersic\_source.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Mar\ 6,\ 2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ R.B.\ Metcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ SERSIC\_SOURCE\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SERSIC\_SOURCE\_H\_}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}source.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_sersic}{SourceSersic}}\ :\ \textcolor{keyword}{public}\ SourceColored}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{class_source_sersic_a8c44a9185a4c1c953d7f654b0e88a0e4}{SourceSersic}}();}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{class_source_sersic_a8c44a9185a4c1c953d7f654b0e88a0e4}{SourceSersic}}(}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ my\_mag\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_Reff\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_PA\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_index\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_q\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_z\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ );}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{class_source_sersic_a8c44a9185a4c1c953d7f654b0e88a0e4}{SourceSersic}}(}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ my\_mag\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_Reff\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_PA\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_index\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_q\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_z\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_zeropoint\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ );}
+\DoxyCodeLine{00044\ \ \mbox{\hyperlink{class_source_sersic}{\string~SourceSersic}}();}
+\DoxyCodeLine{00045\ \ \ }
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{class_source_sersic_a8c44a9185a4c1c953d7f654b0e88a0e4}{SourceSersic}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_sersic}{SourceSersic}}\ \&p);}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{class_source_sersic}{SourceSersic}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_sersic}{SourceSersic}}\ \&p);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_sersic_a334c2b78558cbd67eece4fa2602d674c}{ReSet}}(PosType\ mag,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,PosType\ Reff,PosType\ PA,PosType\ my\_index,PosType\ my\_q,PosType\ my\_z,\textcolor{keyword}{const}\ PosType\ *theta=0);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ \ \textcolor{keyword}{inline}\ PosType\ \mbox{\hyperlink{class_source_sersic_a1a761995817f37c7e8ab8b4c72e129f3}{FractionRadius}}\ (PosType\ f)\ \{\textcolor{keywordflow}{return}\ Reff*pow(-\/log\ (f)/bn,index);\}}
+\DoxyCodeLine{00054\ \ }
+\DoxyCodeLine{00055\ \ \textcolor{keyword}{inline}\ PosType\ getSersicIndex()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ index;\ \}}
+\DoxyCodeLine{00056\ \ \textcolor{keyword}{inline}\ PosType\ getAxesRatio()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ q;\ \}}
+\DoxyCodeLine{00058\ \ \textcolor{keyword}{inline}\ PosType\ \mbox{\hyperlink{class_source_sersic_a604f13d7cbd7be6fecb25243c007ef21}{getReff}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Reff/arcsecTOradians;\ \}}
+\DoxyCodeLine{00059\ \ \textcolor{comment}{//inline\ PosType\ getMag()\ const\ \{\ return\ mag;\ \}}}
+\DoxyCodeLine{00060\ \ \textcolor{keyword}{inline}\ PosType\ getPA()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ PA;\ \}}
+\DoxyCodeLine{00061\ \ }
+\DoxyCodeLine{00062\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setSersicIndex(PosType\ x)}
+\DoxyCodeLine{00063\ \ \{}
+\DoxyCodeLine{00064\ \ \ index\ =\ x;}
+\DoxyCodeLine{00065\ \ \ bn\ =\ 1.9992*index\ -\/\ 0.3271;\ \textcolor{comment}{//\ approximation\ valid\ for\ 0.5\ <\ n\ <\ 8}}
+\DoxyCodeLine{00066\ \ \ I\_n\ =\ 1./index*pow(bn,2*index)/tgamma(2*index);}
+\DoxyCodeLine{00067\ \ \ updateRadius();}
+\DoxyCodeLine{00068\ \ \}}
+\DoxyCodeLine{00069\ \ }
+\DoxyCodeLine{00070\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setAxesRatio(PosType\ x)}
+\DoxyCodeLine{00071\ \ \{}
+\DoxyCodeLine{00072\ \ \ q\ =\ x;}
+\DoxyCodeLine{00073\ \ \ I\_q\ =\ 1./q;}
+\DoxyCodeLine{00074\ \ \}}
+\DoxyCodeLine{00075\ \ }
+\DoxyCodeLine{00076\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setReff(PosType\ x\ \textcolor{comment}{//\ in\ arcseconds}}
+\DoxyCodeLine{00077\ \ \ )}
+\DoxyCodeLine{00078\ \ \{}
+\DoxyCodeLine{00079\ \ \ Reff\ =\ x*arcsecTOradians;}
+\DoxyCodeLine{00080\ \ \ I\_r\ =\ 1./2./PI/Reff/Reff;}
+\DoxyCodeLine{00081\ \ \ updateRadius();}
+\DoxyCodeLine{00082\ \ \}}
+\DoxyCodeLine{00083\ \ }
+\DoxyCodeLine{00084\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ setPA(PosType\ x)}
+\DoxyCodeLine{00085\ \ \{}
+\DoxyCodeLine{00086\ \ \ PA\ =\ x;}
+\DoxyCodeLine{00087\ \ \ \ \ cosPA\ =\ cos(x);}
+\DoxyCodeLine{00088\ \ \ \ \ sinPA\ =\ sin(x);}
+\DoxyCodeLine{00089\ \ \}}
+\DoxyCodeLine{00090\ \ \ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{void}\ rotate(PosType\ theta)\{}
+\DoxyCodeLine{00092\ \ \ \ \ PA\ =\ PA\ +\ theta;}
+\DoxyCodeLine{00093\ \ \ \ \ cosPA\ =\ cos(PA);}
+\DoxyCodeLine{00094\ \ \ \ \ sinPA\ =\ sin(PA);}
+\DoxyCodeLine{00095\ \ \ \}}
+\DoxyCodeLine{00096\ \ }
+\DoxyCodeLine{00097\ \ \textcolor{comment}{//inline\ PosType\ getTotalFlux()\ const\ \{\ return\ flux\_total;\ \}}}
+\DoxyCodeLine{00098\ \ }
+\DoxyCodeLine{00099\ \ PosType\ \mbox{\hyperlink{class_source_sersic_a89d55adba5fe10d42eb437904744bbee}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ \ \textcolor{keywordtype}{void}\ printSource();}
+\DoxyCodeLine{00101\ \ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00103\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ updateRadius()}
+\DoxyCodeLine{00104\ \ \{}
+\DoxyCodeLine{00105\ \ \ \textcolor{comment}{//\ radius\ in\ Source}}
+\DoxyCodeLine{00106\ \ \ \textcolor{comment}{//\ approximation\ of\ the\ radius\ that\ encloses\ 99\%\ of\ the\ flux}}
+\DoxyCodeLine{00107\ \ \ \mbox{\hyperlink{class_source_a6fb1e333b0ef295a0024785fa0d9d6d4}{setRadius}}((3.73\ -\/\ 0.926*index\ +\ 1.164*index*index)*Reff);}
+\DoxyCodeLine{00108\ \ \}}
+\DoxyCodeLine{00109\ \ }
+\DoxyCodeLine{00110\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ PosType\ Reff;\ \ \textcolor{comment}{//\ in\ radians}}
+\DoxyCodeLine{00113\ \ \textcolor{comment}{//PosType\ mag;}}
+\DoxyCodeLine{00114\ \ PosType\ PA;}
+\DoxyCodeLine{00115\ \ PosType\ index;}
+\DoxyCodeLine{00116\ \ PosType\ bn;}
+\DoxyCodeLine{00117\ \ PosType\ q;}
+\DoxyCodeLine{00118\ \ \textcolor{comment}{//PosType\ flux;}}
+\DoxyCodeLine{00119\ \ PosType\ I\_r,\ I\_n,\ I\_q;}
+\DoxyCodeLine{00120\ \ \ PosType\ cosPA,sinPA;}
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GALAXIES\_SERSIC\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

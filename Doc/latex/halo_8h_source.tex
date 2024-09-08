@@ -1,0 +1,55 @@
+\doxysection{halo.\+h}
+\hypertarget{halo_8h_source}{}\label{halo_8h_source}\index{CosmoLib/include/halo.h@{CosmoLib/include/halo.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ halo.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 2,\ 2012}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ cgiocoli}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ This\ class\ implement\ the\ properties\ of\ an\ NFW-\/halo}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ HALO\_H\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ HALO\_H\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <cosmo.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <utilities.h>}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//TODO:\ Change\ to\ physical\ length\ units\ !!!!}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_h_a_l_o_calculator}{HALOCalculator}}\{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{class_h_a_l_o_calculator_aaeade8ec9ba9fcdf3e3b60d8149173ae}{HALOCalculator}}\ (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *co,\ \textcolor{keywordtype}{double}\ mass,\ \textcolor{keywordtype}{double}\ redshift);}
+\DoxyCodeLine{00024\ \ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ getMass()\{\textcolor{keywordflow}{return}\ m;\}}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{double}\ getZ()\{\textcolor{keywordflow}{return}\ z;\}}
+\DoxyCodeLine{00027\ \ \ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_h_a_l_o_calculator_aad26f6a7de36de93fdc76426864400ec}{getRvir}}(\textcolor{keywordtype}{int}\ caseunit=0);}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_h_a_l_o_calculator_af406c2440bb8083b45ac02b6a9c1c80d}{getR200}}();}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_h_a_l_o_calculator_a5ea33c1489d3ecaedf62b29b26e1a3d1}{getConcentration}}(\textcolor{keywordtype}{int}\ caseunit=0,\textcolor{keywordtype}{double}\ alpha0=-\/0.1);}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_h_a_l_o_calculator_a7460b456a7c22c2b04625f0554024655}{getFormationTime}}(\textcolor{keywordtype}{double}\ f=0.5);}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_h_a_l_o_calculator_a635b935a7dd6fcf735c230c6dde4658c}{getFormationRedshift}}(\textcolor{keywordtype}{double}\ f=0.5);}
+\DoxyCodeLine{00033\ \ \ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_h_a_l_o_calculator_a3852ec6628d11c11d36c7ef9ffcd01a5}{MosterStellarMassFraction}}(\textcolor{keywordtype}{double}\ Mtotal);}
+\DoxyCodeLine{00035\ \ \ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_h_a_l_o_calculator_a329d639e50df9362d11cc71ff73b1a5e}{reset}}(\textcolor{keywordtype}{double},\textcolor{keywordtype}{double});}
+\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_h_a_l_o_calculator}{\string~HALOCalculator}}\ ();}
+\DoxyCodeLine{00038\ \ \ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *co;\ \ \ \textcolor{comment}{//\ cosmological\ model}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ m;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ halo\ mass}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ z;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ redshift}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ R200;\ \ \ \ \ \textcolor{comment}{//\ radius\ enclosing\ 200\ times\ the\ critical\ density}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ Rvir;\ \ \ \ \ \textcolor{comment}{//\ radius\ enclosing\ the\ virial\ overdensity}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}\ Omz,Omo,Oml;\ \ \textcolor{comment}{//\ matter\ density\ parameter\ at\ redshift\ z\ and\ at\ z=0}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ sigma2M;\ \ \ \textcolor{comment}{//\ the\ mass\ variance\ S(m)}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}\ deltac0;\ \ \textcolor{comment}{//\ spherical\ collapse\ overdensity}}
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ Set\_Parameters();}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_h_a_l_o_calculator}{HALOCalculator}}\ *\mbox{\hyperlink{class_h_a_l_o_calculator}{inCosmoHaloHndl}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ HALO\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

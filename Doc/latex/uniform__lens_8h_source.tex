@@ -1,0 +1,132 @@
+\doxysection{uniform\+\_\+lens.\+h}
+\hypertarget{uniform__lens_8h_source}{}\label{uniform__lens_8h_source}\index{SLsimLib/include/uniform\_lens.h@{SLsimLib/include/uniform\_lens.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ uniform\_lens.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jan\ 21,\ 2013}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ D.\ Leier}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ UNIFORM\_LENS\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ UNIFORM\_LENS\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}base\_analens.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}\{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{LensHaloUniform}}(\textcolor{keywordtype}{double}\ zlens\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Sigma\ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&Shear\ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{class_lens_halo_uniform}{\string~LensHaloUniform}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}{getSigma}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ perturb\_modes[0];\};}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}{getShear}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ p(perturb\_modes[1],perturb\_modes[2]);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ p;}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_uniform_ad6dce181768c824d1a45781b5c65148a}{resetGamma}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&Shear\ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00047\ \ \ \ \ perturb\_modes[1]\ =\ Shear[0];}
+\DoxyCodeLine{00048\ \ \ \ \ perturb\_modes[2]\ =\ Shear[1];}
+\DoxyCodeLine{00049\ \ \ \}}
+\DoxyCodeLine{00050\ \ \ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_uniform_a00817bbb63ce17d02f8fa83e2ee6cac4}{resetKappa}}(\textcolor{keywordtype}{double}\ Sigma\ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00054\ \ \ \ \ perturb\_modes[0]\ =\ Sigma;;}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_uniform_affe103992cc263e43cb571fb6577acc7}{force\_halo}}(PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,PosType\ \textcolor{keyword}{const}\ *xcm,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1.0);}
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{LensHaloUniform}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}\ \&h):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(h)\{}
+\DoxyCodeLine{00060\ \ \ \ \ perturb\_modes[0]\ =\ h.perturb\_modes[0];}
+\DoxyCodeLine{00061\ \ \ \ \ perturb\_modes[1]\ =\ h.perturb\_modes[1];}
+\DoxyCodeLine{00062\ \ \ \ \ perturb\_modes[2]\ =\ h.perturb\_modes[2];}
+\DoxyCodeLine{00063\ \ \ \}}
+\DoxyCodeLine{00064\ \ \ }
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}\ \&h)\{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&h)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(h);}
+\DoxyCodeLine{00068\ \ \ \ \ perturb\_modes[0]\ =\ h.perturb\_modes[0];}
+\DoxyCodeLine{00069\ \ \ \ \ perturb\_modes[1]\ =\ h.perturb\_modes[1];}
+\DoxyCodeLine{00070\ \ \ \ \ perturb\_modes[2]\ =\ h.perturb\_modes[2];}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00072\ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ PosType\ perturb\_modes[3];\ \ }
+\DoxyCodeLine{00077\ \ \ PosType\ \mbox{\hyperlink{class_lens_halo_uniform_a19518dca1d1640fd36dd0f6d8ac3a494}{lens\_expand}}(PosType\ *mod,PosType\ \textcolor{keyword}{const}\ *x,PosType\ *alpha,KappaType\ *gamma,KappaType\ *phi);}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{class\ }LensHaloKappaDisk:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}\{}
+\DoxyCodeLine{00081\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ LensHaloKappaDisk(\textcolor{keywordtype}{double}\ zlens\ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Sigma\_in\ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Rmax\ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ang\_center\ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00089\ \ \ :\mbox{\hyperlink{class_lens_halo}{LensHalo}}(zlens,cosmo),Sigma(Sigma\_in)}
+\DoxyCodeLine{00090\ \ \ \{}
+\DoxyCodeLine{00091\ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}(Rmax\ <=\ 0)\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}LensHaloKappaDisk:\ Rmax\ cannot\ be\ <=\ 0"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Rmax<=0"{}});}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ LensHalo::setMass(PI*Rmax*Rmax*Sigma);}
+\DoxyCodeLine{00097\ \ \ \ \ LensHalo::Rmax\ =\ Rmax;}
+\DoxyCodeLine{00098\ \ \ \ \ LensHalo::setRsize(Rmax);}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_ab67216d6042f33cd8d8482e6fceb8b39}{LensHalo::set\_rsize}}(Rmax);}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_a4ad6ef27f481ed707031b3c5f9f5e435}{LensHalo::setTheta}}(ang\_center);}
+\DoxyCodeLine{00101\ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \string~LensHaloKappaDisk()\{\};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{float}\ getSigma()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Sigma;\};}
+\DoxyCodeLine{00107\ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ LensHaloKappaDisk(\textcolor{keyword}{const}\ LensHaloKappaDisk\ \&h):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(h)\{}
+\DoxyCodeLine{00109\ \ \ \ \ Sigma\ =\ h.Sigma;}
+\DoxyCodeLine{00110\ \ \ \}}
+\DoxyCodeLine{00111\ \ \ }
+\DoxyCodeLine{00112\ \ \ LensHaloKappaDisk\ \&\ operator=(\textcolor{keyword}{const}\ LensHaloKappaDisk\ \&h)\{}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&h)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(h);}
+\DoxyCodeLine{00115\ \ \ \ \ Sigma\ =\ h.Sigma;}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00117\ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordtype}{void}\ force\_halo(PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,PosType\ \textcolor{keyword}{const}\ *xcm,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1.0)\{}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ tmp;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ PosType\ tmp\_mass;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ PosType\ r=sqrt(xcm[0]*xcm[0]\ +\ xcm[1]*xcm[1]);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(r\ <\ Rmax)\{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ alpha[0]\ -\/=\ Sigma*xcm[0];}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ alpha[1]\ -\/=\ Sigma*xcm[1];}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ *kappa\ +=\ Sigma;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ tmp\_mass\ =\ mass/PI/r/r;\ \textcolor{comment}{//Sigma\ *\ Rmax*Rmax/r/r;\ }}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ alpha[0]\ -\/=\ tmp\_mass*xcm[0];}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ alpha[1]\ -\/=\ tmp\_mass*xcm[1];}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ tmp\ =\ 2*tmp\_mass/r/r;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ gamma[0]\ -\/=\ 0.5*(xcm[0]*xcm[0]\ -\/\ xcm[1]*xcm[1])*tmp;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ gamma[1]\ -\/=\ xcm[0]*xcm[1]*tmp;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00141\ \ \ \}}
+\DoxyCodeLine{00142\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00143\ \ \ \textcolor{keywordtype}{double}\ Sigma;\ \textcolor{comment}{//\ surface\ density}}
+\DoxyCodeLine{00144\ \};}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ UNIFORM\_LENS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

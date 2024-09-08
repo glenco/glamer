@@ -1,0 +1,210 @@
+\doxysection{base\+\_\+analens.\+h}
+\hypertarget{base__analens_8h_source}{}\label{base__analens_8h_source}\index{SLsimLib/include/base\_analens.h@{SLsimLib/include/base\_analens.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ base\_analens.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Jan\ 22,\ 2013}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ mpetkova}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ BASE\_ANALENS\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ BASE\_ANALENS\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}quadTree.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}source.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_input_params_8h}{InputParams.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}lens\_halos.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \(\backslash\)brief\ An\ "{}analytic"{}\ model\ to\ represent\ a\ lens\ on\ a\ single\ plane.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ The\ lens\ consists\ of\ a\ "{}host"{}\ lens\ which\ is\ a\ non-\/singular\ isothermal\ ellipsoid\ (NSIE)\ plus\ axial\ distortion}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ modes,\ substructures\ and\ stars.}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *<pre>}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ Input\ Parameters:}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ *\ \ ****\ Distortion\ parameters}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ *\ main\_NDistortionModes\ \ \ \ \ \ \ Number\ of\ distortion\ modes\ to\ be\ used.\ \ If\ zero\ the\ other\ distortion\ parameters\ are\ not\ needed.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ main\_perturb\_beta}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ *\ main\_kappa\_peturb}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ *\ gamma\_peturb}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ *\ monopole\_peturb}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ quadrapole\_peturb}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ hexopole\_peturb}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ octopole\_peturb}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ \ ****\ Substructure\ parameters}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ main\_sub\_Ndensity\ \ \ \ \ \ Number\ density\ of\ substructures.\ \ They\ are\ distributed\ uniformly.\ \ If\ zero\ the\ other\ substructure\ parameters\ are\ not\ needed.}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ main\_sub\_beta\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Logarithmic\ slope\ of\ the\ internal\ clump\ profile.\ \ Used\ if\ main\_sub\_type\ ==\ powerlaw}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ *\ main\_sub\_alpha\ \ \ \ \ \ \ \ \ \ \ \ \ \ Logarithmic\ slope\ of\ the\ mass\ function.}}
+\DoxyCodeLine{00039\ \textcolor{comment}{\ *\ main\_sub\_Rsize\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Maximum\ radius\ of\ most\ massive\ substructure\ (see\ Metcalf\ \&\ Amara\ 2012)}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ *\ main\_sub\_mass\_max\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Maximum\ mass}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ *\ main\_sub\_mass\_min\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Minimum\ mass}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ *\ main\_sub\_type\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Mass\ profile\ of\ clumps\ -\/\ 0\ or\ nfw,1\ or\ powerlaw,\ 2\ or\ pointmass}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ *\ \ ****\ Stars\ parameters}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ *\ main\_stars\_N\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Total\ number\ of\ stars\ that\ will\ be\ used\ in\ the\ simulation.\ \ If\ zero\ the\ other\ star\ parameters\ are\ not\ needed.}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ *\ main\_stars\_fraction\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fraction\ of\ surface\ denity\ in\ stars.}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ *\ main\_stars\_mass\ \ \ \ \ \ \ \ \ \ \ \ \ Mass\ of\ stars.}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ The\ stars\ are\ not\ initially\ present.\ \ They\ must\ be\ implanted\ later.}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ *</pre>}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ *\ TODO:\ BEN\ finish\ this\ documentation.}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00054\ \textcolor{keyword}{class\ }LensHaloBaseNSIE\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}\{}
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \textcolor{comment}{//LensHaloBaseNSIE(InputParams\&\ params,const\ COSMOLOGY\ \&cosmo);}}
+\DoxyCodeLine{00057\ \ \ LensHaloBaseNSIE();}
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ abstractfunction()\ =\ 0;\ \textcolor{comment}{//\ pure\ virtual}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{virtual}\ \string~LensHaloBaseNSIE();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00064\ \ \ PosType\ getSigma\_crit()\{\textcolor{keywordflow}{return}\ Sigma\_crit;\}}
+\DoxyCodeLine{00066\ \ \ PosType\ get\_to()\{\textcolor{keywordflow}{return}\ to;\}}
+\DoxyCodeLine{00068\ \ \ PosType\ get\_Dl()\{\textcolor{keywordflow}{return}\ Dl;\}}
+\DoxyCodeLine{00070\ \ \ PosType\ get\_MpcToAsec()\{\textcolor{keywordflow}{return}\ MpcToAsec;\}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \textcolor{comment}{//\ private\ derived\ quantities}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \textcolor{keyword}{virtual}\ PosType\ get\_sigma()\{\textcolor{keywordflow}{return}\ sigma;\};}
+\DoxyCodeLine{00077\ \ \textcolor{comment}{//PosType\ getRsize()\{return\ Rsize;\};}}
+\DoxyCodeLine{00079\ \ \textcolor{keyword}{virtual}\ PosType\ get\_fratio()\{\textcolor{keywordflow}{return}\ fratio;\};}
+\DoxyCodeLine{00081\ \ \textcolor{keyword}{virtual}\ PosType\ get\_pa()\{\textcolor{keywordflow}{return}\ pa;\};}
+\DoxyCodeLine{00083\ \ \textcolor{keyword}{virtual}\ PosType\ get\_rcore()\{\textcolor{keywordflow}{return}\ rcore;\};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//bool\ AreSubStructImplanted()\{return\ substruct\_implanted;\}}}
+\DoxyCodeLine{00087\ \ \ \textcolor{comment}{//PosType\ sub\_sigmaScale;}}
+\DoxyCodeLine{00088\ \ \ \textcolor{comment}{//PosType\ sub\_Ndensity;}}
+\DoxyCodeLine{00090\ \ \ \textcolor{comment}{//int\ sub\_N;}}
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//PosType\ **sub\_x;}}
+\DoxyCodeLine{00093\ \ \ \textcolor{comment}{//PosType\ sub\_beta;}}
+\DoxyCodeLine{00095\ \ \ \textcolor{comment}{//PosType\ sub\_alpha;}}
+\DoxyCodeLine{00097\ \ \ \textcolor{comment}{//PosType\ sub\_Rsize;}}
+\DoxyCodeLine{00098\ \ \ \textcolor{comment}{//PosType\ sub\_Mmax;}}
+\DoxyCodeLine{00099\ \ \ \textcolor{comment}{//PosType\ sub\_Mmin;}}
+\DoxyCodeLine{00100\ \ \ \textcolor{comment}{//PosType\ sub\_theta\_force;}}
+\DoxyCodeLine{00101\ \ \ \textcolor{comment}{//LensHalo\ *subs;}}
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//TreeQuadHalos\ *sub\_tree;}}
+\DoxyCodeLine{00103\ \ \ \textcolor{comment}{//IndexType\ *sub\_substructures;}}
+\DoxyCodeLine{00104\ \ \ \textcolor{comment}{//ClumpInternal\ main\_sub\_type;}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{comment}{//void\ setZlens(PosType\ zlens);}}
+\DoxyCodeLine{00107\ \ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo);}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ PrintLens(\textcolor{keywordtype}{bool}\ show\_substruct,\textcolor{keywordtype}{bool}\ show\_stars);}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{void}\ error\_message1(std::string\ name,std::string\ filename);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ force\_halo(PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi,PosType\ \textcolor{keyword}{const}\ *xcm,\textcolor{keywordtype}{bool}\ subtract\_point=\textcolor{keyword}{false},PosType\ screening\ =\ 1);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{comment}{//\ in\ randoimize\_lens.c}}
+\DoxyCodeLine{00114\ \ \ \textcolor{comment}{//PosType\ averageSubMass();}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{comment}{//\ in\ readlens\_ana.c}}
+\DoxyCodeLine{00117\ \ \ \textcolor{comment}{//void\ reNormSubstructure(PosType\ kappa\_sub);}}
+\DoxyCodeLine{00118\ \ \ \textcolor{comment}{//void\ toggleStars(bool\ implanted);}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ PosType\ getHost\_Dl()\{\textcolor{keywordflow}{return}\ Dl;\}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{comment}{//PosType\ getEinstein\_ro()\{return\ Einstein\_ro;\}}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ PosType\ getPerturb\_beta()\{\textcolor{keywordflow}{return}\ perturb\_beta;\}}
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//IMFtype\ getIMF\_type()\{return\ main\_stars\_imf\_type;\}}}
+\DoxyCodeLine{00126\ \ \ \mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{EllipMethod}}\ getEllipMethod()\{\textcolor{keywordflow}{return}\ main\_ellip\_method;\}}
+\DoxyCodeLine{00127\ \ \ }
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{int}\ getPerturb\_Nmodes()\{\textcolor{keywordflow}{return}\ perturb\_Nmodes;\}\ \ \ \ }
+\DoxyCodeLine{00129\ \ \ PosType\ *perturb\_modes;\ \ }
+\DoxyCodeLine{00130\ \ }
+\DoxyCodeLine{00131\ \ std::size\_t\ Nparams()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00132\ \ PosType\ getParam(std::size\_t\ p)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00133\ \ PosType\ setParam(std::size\_t\ p,\ PosType\ value);}
+\DoxyCodeLine{00134\ \ }
+\DoxyCodeLine{00135\ \ \textcolor{keywordtype}{void}\ printCSV(std::ostream\&\ out,\ \textcolor{keywordtype}{bool}\ header\ =\ \textcolor{keyword}{false})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00136\ \ \ }
+\DoxyCodeLine{00138\ \ \ KappaType\ phiNSIE(PosType\ \textcolor{keyword}{const}\ *xt,PosType\ f,PosType\ bc,PosType\ theta);}
+\DoxyCodeLine{00140\ \ \ \textcolor{keywordtype}{float}\ get\_zsourceref()\ \{\ \textcolor{keywordflow}{return}\ zsource\_reference\ ;\ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ LensHaloBaseNSIE\ \&h)\{\};}
+\DoxyCodeLine{00147\ \ \ LensHaloBaseNSIE(\textcolor{keyword}{const}\ LensHaloBaseNSIE\ \&h)\{\};}
+\DoxyCodeLine{00148\ \ \ }
+\DoxyCodeLine{00150\ \ \ PosType\ Sigma\_crit;}
+\DoxyCodeLine{00152\ \ \ PosType\ to;}
+\DoxyCodeLine{00154\ \ \ PosType\ Dl;}
+\DoxyCodeLine{00156\ \ \ PosType\ Einstein\_ro;}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00159\ \ \textcolor{keywordtype}{float}\ sigma;}
+\DoxyCodeLine{00161\ \ \textcolor{keywordtype}{float}\ Rsize;}
+\DoxyCodeLine{00163\ \ \textcolor{keywordtype}{float}\ fratio;}
+\DoxyCodeLine{00165\ \ \textcolor{keywordtype}{float}\ pa;}
+\DoxyCodeLine{00167\ \ \textcolor{keywordtype}{float}\ rcore;}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{//\ perturbations\ to\ host.\ \ These\ are\ protected\ so\ that\ in\ some\ derived\ classes\ they\ can\ or\ cann't\ be\ changed.}}
+\DoxyCodeLine{00171\ \ \ \textcolor{keywordtype}{int}\ perturb\_Nmodes;\ \ \ \ }
+\DoxyCodeLine{00172\ \ \ PosType\ perturb\_beta;}
+\DoxyCodeLine{00173\ \ \ PosType\ *perturb\_rms;}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \textcolor{keywordtype}{bool}\ substruct\_implanted;}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \textcolor{comment}{//\ private\ derived\ quantities}}
+\DoxyCodeLine{00179\ \ \ \ PosType\ MpcToAsec;}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00182\ \ \ \textcolor{keywordtype}{float}\ zsource\_reference;}
+\DoxyCodeLine{00183\ \ \ PosType\ Ds,\ Dls;}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utilities}{Utilities}}\{}
+\DoxyCodeLine{00188\ \ PosType\ \mbox{\hyperlink{namespace_utilities_a0855636bdb71f103a4412555b9711e98}{RandomFromTable}}(PosType\ *table,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Ntable,\textcolor{keywordtype}{long}\ *seed);}
+\DoxyCodeLine{00189\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5}{rotation}}(\textcolor{keywordtype}{float}\ *xout,\textcolor{keywordtype}{float}\ *xin,PosType\ theta);}
+\DoxyCodeLine{00190\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a31db9f78433a6de800437aedfd1b2eb5}{rotation}}(PosType\ *xout,PosType\ \textcolor{keyword}{const}\ *xin,PosType\ theta);}
+\DoxyCodeLine{00191\ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{nsie_8cpp_a798d24a5d693fec300d7270f53a84bb8}{alphaNSIE}}(PosType\ *alpha,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xt,PosType\ f,PosType\ bc,PosType\ theta);}
+\DoxyCodeLine{00194\ KappaType\ \mbox{\hyperlink{nsie_8cpp_a1243e024fe6c672e1d1edd520a19c30a}{kappaNSIE}}(PosType\ \textcolor{keyword}{const}\ *xt,PosType\ f,PosType\ bc,PosType\ theta);}
+\DoxyCodeLine{00195\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{nsie_8cpp_a9666231132a821cf8ce6351a1fab8014}{gammaNSIE}}(KappaType\ *gam,\textcolor{keywordtype}{double}\ \textcolor{keyword}{const}\ *xt,PosType\ f,PosType\ bc,PosType\ theta);}
+\DoxyCodeLine{00196\ KappaType\ invmagNSIE(PosType\ *x,PosType\ f,PosType\ bc,PosType\ theta,\textcolor{keywordtype}{float}\ *gam,\textcolor{keywordtype}{float}\ kap);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ PosType\ \mbox{\hyperlink{nsie_8cpp_a13041999963a2b670474d93f2eb8b18f}{rmaxNSIE}}(PosType\ sigma,PosType\ mass,PosType\ f,PosType\ rc\ );}
+\DoxyCodeLine{00199\ PosType\ \mbox{\hyperlink{nsie_8cpp_a84aa15948a8af02d1bbcd5fc44de746c}{ellipticRadiusNSIE}}(PosType\ \textcolor{keyword}{const}\ *x,PosType\ f,PosType\ pa);}
+\DoxyCodeLine{00200\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{nsie_8cpp_a2711241a6516012a871186a72906f392}{quadMomNSIE}}(\textcolor{keywordtype}{float}\ mass,\textcolor{keywordtype}{float}\ Rsize,\textcolor{keywordtype}{float}\ f,\textcolor{keywordtype}{float}\ rc,\textcolor{keywordtype}{float}\ theta,PosType\ *quad);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{comment}{//\ \ in\ powerlow.c}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{keywordtype}{void}\ alphaPowLaw(PosType\ *alpha,PosType\ *x,PosType\ R,PosType\ mass,PosType\ beta,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00206\ KappaType\ kappaPowLaw(PosType\ *x,PosType\ R,PosType\ mass,PosType\ beta,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00207\ \textcolor{keywordtype}{void}\ gammaPowLaw(KappaType\ *gamma,PosType\ *x,PosType\ R,PosType\ mass,PosType\ beta,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00208\ KappaType\ phiPowLaw(PosType\ *x,PosType\ R,PosType\ mass,PosType\ beta,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{comment}{//\ in\ nfw\_lens.c}}
+\DoxyCodeLine{00213\ \textcolor{keywordtype}{void}\ alphaNFW(PosType\ *alpha,PosType\ *x,PosType\ Rtrunc,PosType\ mass,PosType\ r\_scale}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00215\ KappaType\ kappaNFW(PosType\ *x,PosType\ Rtrunc,PosType\ mass,PosType\ r\_scale}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00217\ \textcolor{keywordtype}{void}\ gammaNFW(KappaType\ *gamma,PosType\ *x,PosType\ Rtrunc,PosType\ mass,PosType\ r\_scale}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ *center,PosType\ Sigma\_crit);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \textcolor{comment}{//\ in\ lens\_expand.c}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \textcolor{keywordtype}{double}\ lens\_expand(\textcolor{keywordtype}{double}\ beta,\textcolor{keywordtype}{double}\ *mod,\textcolor{keywordtype}{int}\ Nmodes,PosType\ \textcolor{keyword}{const}\ *x,PosType\ *alpha,KappaType\ *gamma,KappaType\ *phi);}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ in\ FullRange/implant\_stars.c}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{comment}{//void\ implant\_stars(Point\ *images,unsigned\ long\ Nimages,long\ *seed);}}
+\DoxyCodeLine{00227\ \textcolor{comment}{//void\ substract\_stars\_disks(LensHaloBaseNSIE\ *lens,PosType\ *ray,PosType\ *alpha}}
+\DoxyCodeLine{00228\ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ *kappa,PosType\ *gamma);}}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ BASE\_ANALENS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

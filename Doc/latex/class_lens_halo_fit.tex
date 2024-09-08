@@ -1,76 +1,73 @@
-\hypertarget{class_lens_halo_fit}{}\doxysection{Lens\+Halo\+Fit Class Reference}
-\label{class_lens_halo_fit}\index{LensHaloFit@{LensHaloFit}}
+\doxysection{Lens\+Halo\+Fit Class Reference}
+\hypertarget{class_lens_halo_fit}{}\label{class_lens_halo_fit}\index{LensHaloFit@{LensHaloFit}}
 
 
-\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} class primarily used for fitting point source lenses.  
+\doxylink{class_lens_halo}{Lens\+Halo} class primarily used for fitting point source lenses.  
 
 
 
 
 {\ttfamily \#include $<$analytic\+\_\+lens.\+h$>$}
 
-
-
-Inherits Lens\+Halo\+Base\+N\+S\+IE.
-
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_lens_halo_fit_a6df2b011c84a94a8e9f3cd9c6916b6f5}\label{class_lens_halo_fit_a6df2b011c84a94a8e9f3cd9c6916b6f5}} 
-\mbox{\hyperlink{class_lens_halo_fit_a6df2b011c84a94a8e9f3cd9c6916b6f5}{Lens\+Halo\+Fit}} (const C\+O\+S\+M\+O\+L\+O\+GY \&cosmo, int My\+Nmodes, Pos\+Type beta, Pos\+Type zlensref, Pos\+Type zsourceref)
-\begin{DoxyCompactList}\small\item\em Creates a Ana\+Lens which initially has no mass, Use \mbox{\hyperlink{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}{Find\+Lens\+Simple()}} to give it mass. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_a3f141385f241685e9dd078017152eeeb}\label{class_lens_halo_fit_a3f141385f241685e9dd078017152eeeb}} 
+\Hypertarget{class_lens_halo_fit_a6df2b011c84a94a8e9f3cd9c6916b6f5}\label{class_lens_halo_fit_a6df2b011c84a94a8e9f3cd9c6916b6f5} 
+{\bfseries Lens\+Halo\+Fit} (const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&cosmo, int My\+Nmodes, Pos\+Type beta, Pos\+Type zlensref, Pos\+Type zsourceref)
+\begin{DoxyCompactList}\small\item\em Creates a Ana\+Lens which initially has no mass, Use \doxylink{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}{Find\+Lens\+Simple()} to give it mass. \end{DoxyCompactList}\item 
+\Hypertarget{class_lens_halo_fit_a3f141385f241685e9dd078017152eeeb}\label{class_lens_halo_fit_a3f141385f241685e9dd078017152eeeb} 
 void {\bfseries Print\+Lens} (bool show\+\_\+substruct, bool show\+\_\+stars)
 \item 
-void \mbox{\hyperlink{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}{Find\+Lens\+Simple}} (int Nimages, \mbox{\hyperlink{struct_point}{Point}} $\ast$image\+\_\+positions, double $\ast$y, double $\ast$$\ast$dx\+\_\+sub)
+void \mbox{\hyperlink{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}{Find\+Lens\+Simple}} (int Nimages, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}image\+\_\+positions, double \texorpdfstring{$\ast$}{*}y, double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}dx\+\_\+sub)
 \begin{DoxyCompactList}\small\item\em Wrapper that allows simple lens to be found with a single lens with a single source and translates result into data structures used in the other code. \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_lens_halo_fit_a74f35006a11f4bdd4c9b19be3f47a3d1}{Safe\+Find\+Lens\+Simple}} (int Nimages, \mbox{\hyperlink{struct_point}{Point}} $\ast$image\+\_\+positions, double $\ast$y, double $\ast$$\ast$dx\+\_\+sub, int Safety\+Num, Pos\+Type Pixel\+Size\+Rad, std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$$>$ \&Precision\+Back\+Traced\+Pos, std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$$>$ \&alpha\+Tab, bool verbose)
+bool \mbox{\hyperlink{class_lens_halo_fit_a0b66aa8ea93ef67fb345d69cf5df4814}{Safe\+Find\+Lens\+Simple}} (int Nimages, \mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}image\+\_\+positions, double \texorpdfstring{$\ast$}{*}y, double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}dx\+\_\+sub, int Safety\+Num, Pos\+Type Pixel\+Size\+Rad, std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$ $>$ \&Precision\+Back\+Traced\+Pos, std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$ $>$ \&alpha\+Tab, bool verbose)
 \begin{DoxyCompactList}\small\item\em Same as Find\+Lens\+Simple but with some tests in it. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_lens_halo_fit_a43111e41c2ceccf5d04ea78a3288fcce}{Find\+Lens\+Simple}} (\mbox{\hyperlink{struct_image_info}{Image\+Info}} $\ast$imageinfo, int Nimages, double $\ast$y, double $\ast$$\ast$dx\+\_\+sub)
+void \mbox{\hyperlink{class_lens_halo_fit_a43111e41c2ceccf5d04ea78a3288fcce}{Find\+Lens\+Simple}} (\mbox{\hyperlink{struct_image_info}{Image\+Info}} \texorpdfstring{$\ast$}{*}imageinfo, int Nimages, double \texorpdfstring{$\ast$}{*}y, double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}dx\+\_\+sub)
 \begin{DoxyCompactList}\small\item\em Wrapper that allows simple lens to be found with a single lens with a single source and translates result into data structures used in the other code. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_a2df9c6fbf2c4c2ed0dde3c8e239afe47}\label{class_lens_halo_fit_a2df9c6fbf2c4c2ed0dde3c8e239afe47}} 
-virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_fit_a2df9c6fbf2c4c2ed0dde3c8e239afe47}{get\+\_\+sigma}} ()
+\Hypertarget{class_lens_halo_fit_a2df9c6fbf2c4c2ed0dde3c8e239afe47}\label{class_lens_halo_fit_a2df9c6fbf2c4c2ed0dde3c8e239afe47} 
+virtual Pos\+Type {\bfseries get\+\_\+sigma} ()
 \begin{DoxyCompactList}\small\item\em get the velocity dispersion \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_aa19a7c5b7ac56152383f15365d1f94cc}\label{class_lens_halo_fit_aa19a7c5b7ac56152383f15365d1f94cc}} 
-virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_fit_aa19a7c5b7ac56152383f15365d1f94cc}{get\+\_\+fratio}} ()
+\Hypertarget{class_lens_halo_fit_aa19a7c5b7ac56152383f15365d1f94cc}\label{class_lens_halo_fit_aa19a7c5b7ac56152383f15365d1f94cc} 
+virtual Pos\+Type {\bfseries get\+\_\+fratio} ()
 \begin{DoxyCompactList}\small\item\em get the axis ratio \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_add61054de1800154f43a78703015d594}\label{class_lens_halo_fit_add61054de1800154f43a78703015d594}} 
-virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_fit_add61054de1800154f43a78703015d594}{get\+\_\+pa}} ()
+\Hypertarget{class_lens_halo_fit_add61054de1800154f43a78703015d594}\label{class_lens_halo_fit_add61054de1800154f43a78703015d594} 
+virtual Pos\+Type {\bfseries get\+\_\+pa} ()
 \begin{DoxyCompactList}\small\item\em get the position angle \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_a503d51536c2571d90b5f6a5aa5562c55}\label{class_lens_halo_fit_a503d51536c2571d90b5f6a5aa5562c55}} 
-virtual Pos\+Type \mbox{\hyperlink{class_lens_halo_fit_a503d51536c2571d90b5f6a5aa5562c55}{get\+\_\+rcore}} ()
+\Hypertarget{class_lens_halo_fit_a503d51536c2571d90b5f6a5aa5562c55}\label{class_lens_halo_fit_a503d51536c2571d90b5f6a5aa5562c55} 
+virtual Pos\+Type {\bfseries get\+\_\+rcore} ()
 \begin{DoxyCompactList}\small\item\em get the core radius \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_a23c1fb4fcfde9e4ddfff881cdb997541}\label{class_lens_halo_fit_a23c1fb4fcfde9e4ddfff881cdb997541}} 
-void \mbox{\hyperlink{class_lens_halo_fit_a23c1fb4fcfde9e4ddfff881cdb997541}{set\+Nmodes}} (int my\+\_\+\+Nmodes)
-\begin{DoxyCompactList}\small\item\em set the number of perturbation modes -- Does the same as Lens\+Halo\+Base\+N\+S\+I\+E\+::get\+Perturb\+\_\+\+Nmodes(). \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_a3372f9c502297371fbdeebd94615032b}\label{class_lens_halo_fit_a3372f9c502297371fbdeebd94615032b}} 
-int \mbox{\hyperlink{class_lens_halo_fit_a3372f9c502297371fbdeebd94615032b}{get\+Nmodes}} ()
+\Hypertarget{class_lens_halo_fit_a23c1fb4fcfde9e4ddfff881cdb997541}\label{class_lens_halo_fit_a23c1fb4fcfde9e4ddfff881cdb997541} 
+void {\bfseries set\+Nmodes} (int my\+\_\+\+Nmodes)
+\begin{DoxyCompactList}\small\item\em set the number of perturbation modes -- Does the same as Lens\+Halo\+Base\+NSIE\+::get\+Perturb\+\_\+\+Nmodes(). \end{DoxyCompactList}\item 
+\Hypertarget{class_lens_halo_fit_a3372f9c502297371fbdeebd94615032b}\label{class_lens_halo_fit_a3372f9c502297371fbdeebd94615032b} 
+int {\bfseries get\+Nmodes} ()
 \begin{DoxyCompactList}\small\item\em get the number of perturbation modes \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_lens_halo_fit_a466db6848469f8bd2a90021b11de8797}{set\+\_\+perturbmodes}} (Pos\+Type $\ast$List\+Modes, const int Nmodes)
+void \mbox{\hyperlink{class_lens_halo_fit_a466db6848469f8bd2a90021b11de8797}{set\+\_\+perturbmodes}} (Pos\+Type \texorpdfstring{$\ast$}{*}List\+Modes, const int Nmodes)
 \begin{DoxyCompactList}\small\item\em set the perturbation modes \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_lens_halo_fit_a3b3d4455abe5fd0bb0086435151d320e}{get\+\_\+perturbmodes}} (Pos\+Type $\ast$List\+Modes, const int Nmodes)
+void \mbox{\hyperlink{class_lens_halo_fit_a3b3d4455abe5fd0bb0086435151d320e}{get\+\_\+perturbmodes}} (Pos\+Type \texorpdfstring{$\ast$}{*}List\+Modes, const int Nmodes)
 \begin{DoxyCompactList}\small\item\em get the perturbation modes \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_lens_halo_fit_aa479dba8572edffade4eadc7797b722e}{get\+\_\+perturbmodes}} (std\+::vector$<$ Pos\+Type $>$ \&List\+Modes)
-\begin{DoxyCompactList}\small\item\em Gets the perturbation modes in the \mbox{\hyperlink{class_lens_halo_fit}{Lens\+Halo\+Fit}}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_abaa458b538cde3d07e0f0a4f9816e590}\label{class_lens_halo_fit_abaa458b538cde3d07e0f0a4f9816e590}} 
-double $\ast$ \mbox{\hyperlink{class_lens_halo_fit_abaa458b538cde3d07e0f0a4f9816e590}{getq}} ()
+\Hypertarget{class_lens_halo_fit_aa479dba8572edffade4eadc7797b722e}\label{class_lens_halo_fit_aa479dba8572edffade4eadc7797b722e} 
+void {\bfseries get\+\_\+perturbmodes} (std\+::vector$<$ Pos\+Type $>$ \&List\+Modes)
+\begin{DoxyCompactList}\small\item\em Gets the perturbation modes in the \doxylink{class_lens_halo_fit}{Lens\+Halo\+Fit}. \end{DoxyCompactList}\item 
+\Hypertarget{class_lens_halo_fit_a864c48ad391e2b187dc29d3b101c3374}\label{class_lens_halo_fit_a864c48ad391e2b187dc29d3b101c3374} 
+double \texorpdfstring{$\ast$}{*} {\bfseries getq} ()
 \begin{DoxyCompactList}\small\item\em get the ouput of Elliptisize\+Lens \+: \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_lens_halo_fit_a3eed6d5c233d4fcc1e83e96b39e6036f}\label{class_lens_halo_fit_a3eed6d5c233d4fcc1e83e96b39e6036f}} 
-void \mbox{\hyperlink{class_lens_halo_fit_a3eed6d5c233d4fcc1e83e96b39e6036f}{set\+\_\+sigma}} (Pos\+Type my\+\_\+sigma)
+\Hypertarget{class_lens_halo_fit_a3eed6d5c233d4fcc1e83e96b39e6036f}\label{class_lens_halo_fit_a3eed6d5c233d4fcc1e83e96b39e6036f} 
+void {\bfseries set\+\_\+sigma} (Pos\+Type my\+\_\+sigma)
 \begin{DoxyCompactList}\small\item\em set the velocity dispersion \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\mbox{\hyperlink{class_lens_halo}{Lens\+Halo}} class primarily used for fitting point source lenses. 
+\doxylink{class_lens_halo}{Lens\+Halo} class primarily used for fitting point source lenses. 
 
 The model is a power law with axial modes made to be as elliptical as possible. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_lens_halo_fit_a43111e41c2ceccf5d04ea78a3288fcce}\label{class_lens_halo_fit_a43111e41c2ceccf5d04ea78a3288fcce}} 
-\index{LensHaloFit@{LensHaloFit}!FindLensSimple@{FindLensSimple}}
+\Hypertarget{class_lens_halo_fit_a43111e41c2ceccf5d04ea78a3288fcce}\index{LensHaloFit@{LensHaloFit}!FindLensSimple@{FindLensSimple}}
 \index{FindLensSimple@{FindLensSimple}!LensHaloFit@{LensHaloFit}}
 \doxysubsubsection{\texorpdfstring{FindLensSimple()}{FindLensSimple()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Lens\+Halo\+Fit\+::\+Find\+Lens\+Simple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_image_info}{Image\+Info}} $\ast$}]{imageinfo,  }\item[{int}]{Nimages,  }\item[{double $\ast$}]{y,  }\item[{double $\ast$$\ast$}]{dx\+\_\+sub }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_lens_halo_fit_a43111e41c2ceccf5d04ea78a3288fcce} 
+void Lens\+Halo\+Fit\+::\+Find\+Lens\+Simple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_image_info}{Image\+Info}} \texorpdfstring{$\ast$}{*}}]{imageinfo}{, }\item[{int}]{Nimages}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{dx\+\_\+sub}{}\end{DoxyParamCaption})}
 
 
 
@@ -78,20 +75,20 @@ Wrapper that allows simple lens to be found with a single lens with a single sou
 
 The lens is centered on \mbox{[}0,0\mbox{]} source position in lens is updated along with all the modes. 
 \begin{DoxyParams}{Parameters}
-{\em imageinfo} & Positions of images relative to center of lens. Only imageinfo\mbox{[}\mbox{]}.centoid\mbox{[}\mbox{]} is used. Centroids must be in radians. \\
+{\em imageinfo} & Positions of images relative to center of lens. Only imageinfo\mbox{[}\mbox{]}.centoid\mbox{[}\mbox{]} is used. Centroids must be in radians.  \\
 \hline
-{\em Nimages} & input number of images \\
+{\em Nimages} & input number of images  \\
 \hline
-{\em y} & output source position \\
+{\em y} & output source position  \\
 \hline
 {\em dx\+\_\+sub} & dx\+\_\+sub\mbox{[}Nimages\mbox{]}\mbox{[}2\mbox{]} pre-\/calculated deflections caused by substructures or external masses at each image (in radians) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}\label{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}} 
-\index{LensHaloFit@{LensHaloFit}!FindLensSimple@{FindLensSimple}}
+\Hypertarget{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785}\index{LensHaloFit@{LensHaloFit}!FindLensSimple@{FindLensSimple}}
 \index{FindLensSimple@{FindLensSimple}!LensHaloFit@{LensHaloFit}}
 \doxysubsubsection{\texorpdfstring{FindLensSimple()}{FindLensSimple()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Lens\+Halo\+Fit\+::\+Find\+Lens\+Simple (\begin{DoxyParamCaption}\item[{int}]{Nimages,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{image\+\_\+positions,  }\item[{double $\ast$}]{y,  }\item[{double $\ast$$\ast$}]{dx\+\_\+sub }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_lens_halo_fit_a0814f81dba0772bf41a730e86d59a785} 
+void Lens\+Halo\+Fit\+::\+Find\+Lens\+Simple (\begin{DoxyParamCaption}\item[{int}]{Nimages}{, }\item[{\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}}]{image\+\_\+positions}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{dx\+\_\+sub}{}\end{DoxyParamCaption})}
 
 
 
@@ -99,81 +96,71 @@ Wrapper that allows simple lens to be found with a single lens with a single sou
 
 The lens is centered on \mbox{[}0,0\mbox{]} source position in lens is updated along with all the modes. 
 \begin{DoxyParams}{Parameters}
-{\em Nimages} & Number of images to be fit \\
+{\em Nimages} & Number of images to be fit  \\
 \hline
-{\em image\+\_\+positions} & Array of points with point\mbox{[}i\mbox{]}.x set to the image positions \\
+{\em image\+\_\+positions} & Array of points with point\mbox{[}i\mbox{]}.x set to the image positions  \\
 \hline
-{\em y} & output source position \\
+{\em y} & output source position  \\
 \hline
 {\em dx\+\_\+sub} & dx\+\_\+sub\mbox{[}Nimages\mbox{]}\mbox{[}2\mbox{]} pre-\/calculated deflections caused by substructures or external masses at each image \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_lens_halo_fit_a3b3d4455abe5fd0bb0086435151d320e}\label{class_lens_halo_fit_a3b3d4455abe5fd0bb0086435151d320e}} 
-\index{LensHaloFit@{LensHaloFit}!get\_perturbmodes@{get\_perturbmodes}}
+\Hypertarget{class_lens_halo_fit_a3b3d4455abe5fd0bb0086435151d320e}\index{LensHaloFit@{LensHaloFit}!get\_perturbmodes@{get\_perturbmodes}}
 \index{get\_perturbmodes@{get\_perturbmodes}!LensHaloFit@{LensHaloFit}}
-\doxysubsubsection{\texorpdfstring{get\_perturbmodes()}{get\_perturbmodes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Lens\+Halo\+Fit\+::get\+\_\+perturbmodes (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{List\+Modes,  }\item[{const int}]{Nmodes }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{get\_perturbmodes()}{get\_perturbmodes()}}
+{\footnotesize\ttfamily \label{class_lens_halo_fit_a3b3d4455abe5fd0bb0086435151d320e} 
+void Lens\+Halo\+Fit\+::get\+\_\+perturbmodes (\begin{DoxyParamCaption}\item[{Pos\+Type \texorpdfstring{$\ast$}{*}}]{List\+Modes}{, }\item[{const int}]{Nmodes}{}\end{DoxyParamCaption})}
 
 
 
 get the perturbation modes 
 
-Gets the perturbation modes in the \mbox{\hyperlink{class_lens_halo_fit}{Lens\+Halo\+Fit}}.\mbox{\Hypertarget{class_lens_halo_fit_aa479dba8572edffade4eadc7797b722e}\label{class_lens_halo_fit_aa479dba8572edffade4eadc7797b722e}} 
-\index{LensHaloFit@{LensHaloFit}!get\_perturbmodes@{get\_perturbmodes}}
-\index{get\_perturbmodes@{get\_perturbmodes}!LensHaloFit@{LensHaloFit}}
-\doxysubsubsection{\texorpdfstring{get\_perturbmodes()}{get\_perturbmodes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void Lens\+Halo\+Fit\+::get\+\_\+perturbmodes (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Pos\+Type $>$ \&}]{List\+Modes }\end{DoxyParamCaption})}
-
-
-
-Gets the perturbation modes in the \mbox{\hyperlink{class_lens_halo_fit}{Lens\+Halo\+Fit}}. 
-
-\mbox{\Hypertarget{class_lens_halo_fit_a74f35006a11f4bdd4c9b19be3f47a3d1}\label{class_lens_halo_fit_a74f35006a11f4bdd4c9b19be3f47a3d1}} 
-\index{LensHaloFit@{LensHaloFit}!SafeFindLensSimple@{SafeFindLensSimple}}
+Gets the perturbation modes in the \doxylink{class_lens_halo_fit}{Lens\+Halo\+Fit}. \Hypertarget{class_lens_halo_fit_a0b66aa8ea93ef67fb345d69cf5df4814}\index{LensHaloFit@{LensHaloFit}!SafeFindLensSimple@{SafeFindLensSimple}}
 \index{SafeFindLensSimple@{SafeFindLensSimple}!LensHaloFit@{LensHaloFit}}
 \doxysubsubsection{\texorpdfstring{SafeFindLensSimple()}{SafeFindLensSimple()}}
-{\footnotesize\ttfamily bool Lens\+Halo\+Fit\+::\+Safe\+Find\+Lens\+Simple (\begin{DoxyParamCaption}\item[{int}]{Nimages,  }\item[{\mbox{\hyperlink{struct_point}{Point}} $\ast$}]{image\+\_\+positions,  }\item[{double $\ast$}]{y,  }\item[{double $\ast$$\ast$}]{dx\+\_\+sub,  }\item[{int}]{Safety\+Num,  }\item[{Pos\+Type}]{Pixel\+Size\+Rad,  }\item[{std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$$>$ \&}]{Precision\+Back\+Traced\+Pos,  }\item[{std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$$>$ \&}]{alpha\+Tab,  }\item[{bool}]{verbose }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_lens_halo_fit_a0b66aa8ea93ef67fb345d69cf5df4814} 
+bool Lens\+Halo\+Fit\+::\+Safe\+Find\+Lens\+Simple (\begin{DoxyParamCaption}\item[{int}]{Nimages}{, }\item[{\mbox{\hyperlink{struct_point}{Point}} \texorpdfstring{$\ast$}{*}}]{image\+\_\+positions}{, }\item[{double \texorpdfstring{$\ast$}{*}}]{y}{, }\item[{double \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{dx\+\_\+sub}{, }\item[{int}]{Safety\+Num}{, }\item[{Pos\+Type}]{Pixel\+Size\+Rad}{, }\item[{std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$ $>$ \&}]{Precision\+Back\+Traced\+Pos}{, }\item[{std\+::vector$<$ std\+::vector$<$ Pos\+Type $>$ $>$ \&}]{alpha\+Tab}{, }\item[{bool}]{verbose}{}\end{DoxyParamCaption})}
 
 
 
 Same as Find\+Lens\+Simple but with some tests in it. 
 
- 
+   
 \begin{DoxyParams}{Parameters}
-{\em Nimages} & Number of images to be fit \\
+{\em Nimages} & Number of images to be fit  \\
 \hline
-{\em image\+\_\+positions} & Array of points with point\mbox{[}i\mbox{]}.x set to the image positions \\
+{\em image\+\_\+positions} & Array of points with point\mbox{[}i\mbox{]}.x set to the image positions  \\
 \hline
-{\em y} & output source position \\
+{\em y} & output source position  \\
 \hline
-{\em dx\+\_\+sub} & dx\+\_\+sub\mbox{[}Nimages\mbox{]}\mbox{[}2\mbox{]} pre-\/calculated deflections caused by substructures or external masses at each image \\
+{\em dx\+\_\+sub} & dx\+\_\+sub\mbox{[}Nimages\mbox{]}\mbox{[}2\mbox{]} pre-\/calculated deflections caused by substructures or external masses at each image  \\
 \hline
-{\em Safety\+Num} & integer of the number of time you want to check the modes \\
+{\em Safety\+Num} & integer of the number of time you want to check the modes  \\
 \hline
-{\em Pixel\+Size\+Rad} & Pixel size in radians used for the maps \\
+{\em Pixel\+Size\+Rad} & Pixel size in radians used for the maps  \\
 \hline
-{\em Precision\+Back\+Traced\+Pos} & Table that will receive the back-\/traced images uncertainty (in units of Pixel\+Size\+Rad). \\
+{\em Precision\+Back\+Traced\+Pos} & Table that will receive the back-\/traced images uncertainty (in units of Pixel\+Size\+Rad).  \\
 \hline
-{\em alpha\+Tab} & Table that will receive the deviation angle in radians \\
+{\em alpha\+Tab} & Table that will receive the deviation angle in radians  \\
 \hline
 {\em verbose} & verbose mode switch \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_lens_halo_fit_a466db6848469f8bd2a90021b11de8797}\label{class_lens_halo_fit_a466db6848469f8bd2a90021b11de8797}} 
-\index{LensHaloFit@{LensHaloFit}!set\_perturbmodes@{set\_perturbmodes}}
+\Hypertarget{class_lens_halo_fit_a466db6848469f8bd2a90021b11de8797}\index{LensHaloFit@{LensHaloFit}!set\_perturbmodes@{set\_perturbmodes}}
 \index{set\_perturbmodes@{set\_perturbmodes}!LensHaloFit@{LensHaloFit}}
 \doxysubsubsection{\texorpdfstring{set\_perturbmodes()}{set\_perturbmodes()}}
-{\footnotesize\ttfamily void Lens\+Halo\+Fit\+::set\+\_\+perturbmodes (\begin{DoxyParamCaption}\item[{Pos\+Type $\ast$}]{List\+Modes,  }\item[{const int}]{Nmodes }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_lens_halo_fit_a466db6848469f8bd2a90021b11de8797} 
+void Lens\+Halo\+Fit\+::set\+\_\+perturbmodes (\begin{DoxyParamCaption}\item[{Pos\+Type \texorpdfstring{$\ast$}{*}}]{List\+Modes}{, }\item[{const int}]{Nmodes}{}\end{DoxyParamCaption})}
 
 
 
 set the perturbation modes 
 
-Sets the perturbation modes in the \mbox{\hyperlink{class_lens_halo_fit}{Lens\+Halo\+Fit}}.
+Sets the perturbation modes in the \doxylink{class_lens_halo_fit}{Lens\+Halo\+Fit}. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/analytic\+\_\+lens.\+h\item 
-S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/base\+\_\+analens.\+cpp\item 
-S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/readfiles\+\_\+ana.\+cpp\item 
-S\+Lsim\+Lib/\+Fitlens/fitlens.\+cpp\end{DoxyCompactItemize}
+SLsim\+Lib/include/analytic\+\_\+lens.\+h\item 
+SLsim\+Lib/\+Analytic\+NSIE/base\+\_\+analens.\+cpp\item 
+SLsim\+Lib/\+Analytic\+NSIE/readfiles\+\_\+ana.\+cpp\item 
+SLsim\+Lib/\+Fitlens/fitlens.\+cpp\end{DoxyCompactItemize}

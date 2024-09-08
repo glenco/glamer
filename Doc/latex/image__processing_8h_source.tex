@@ -1,0 +1,898 @@
+\doxysection{image\+\_\+processing.\+h}
+\hypertarget{image__processing_8h_source}{}\label{image__processing_8h_source}\index{SLsimLib/include/image\_processing.h@{SLsimLib/include/image\_processing.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ image\_processing.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Feb\ 28,\ 2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ R.B.\ Metcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ IMAGE\_PROCESSING\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ IMAGE\_PROCESSING\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}image\_info.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}pixelmap.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}fftw3.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\#include\ "{}Tree.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\#include\ "{}image\_processing.h"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source}{Source}};}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}fftw3.h"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ forward\ declaration}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//struct\ Grid;}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//struct\ GridMap;}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//class\ Source;}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{enum\ class}\ Telescope\ \{Euclid\_VIS,Euclid\_Y,Euclid\_J,Euclid\_H,KiDS\_u,KiDS\_g,KiDS\_r,KiDS\_i,HST\_ACS\_I,CFHT\_u,CFHT\_g,CFHT\_r,CFHT\_i,CFHT\_z\};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{enum\ class}\ UnitType\ \{counts\_x\_sec,\ flux\}\ ;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }Obs\{}
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ }
+\DoxyCodeLine{00040\ \ \ Obs(\textcolor{keywordtype}{size\_t}\ Npix\_xx,\textcolor{keywordtype}{size\_t}\ Npix\_yy\ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ pix\_size\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ oversample\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ seeing\ =\ 0\ \textcolor{comment}{//\ seeing\ in\ arcsec}}
+\DoxyCodeLine{00044\ \ \ );}
+\DoxyCodeLine{00045\ \ \ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keyword}{virtual}\ \string~Obs()\{\};}
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{size\_t}\ getNxInput()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Npix\_x\_input;\}}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{size\_t}\ getNyInput()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Npix\_y\_input;\}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{size\_t}\ getNxOutput()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Npix\_x\_output;\}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{size\_t}\ getNyOutput()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Npix\_y\_output;\}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ std::valarray<double>\ getPSF()\{\textcolor{keywordflow}{return}\ map\_psf;\}}
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//void\ setPSF(std::string\ psf\_file);}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ setPSF(std::string\ psf\_file,\textcolor{keywordtype}{double}\ resolution=0);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ setPSF(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&psf\_map);}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ setSeeing(\textcolor{keywordtype}{double}\ s\ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{seeing=s;\}}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ rotatePSF(\textcolor{keywordtype}{double}\ theta\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ scale\_x=1\ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ scale\_y=1\ \ }
+\DoxyCodeLine{00066\ \ \ );}
+\DoxyCodeLine{00067\ \ \ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ coaddPSF(\textcolor{keywordtype}{double}\ f\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ theta1\ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ theta2\ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ scale\_x\ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ scale\_y\ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00075\ \ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{void}\ ApplyPSF(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out);}
+\DoxyCodeLine{00078\ \ \ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{float}\ getPixelSize()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ pix\_size;\}}
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{void}\ setNoiseCorrelation(std::string\ nc\_file);}
+\DoxyCodeLine{00081\ \ \ }
+\DoxyCodeLine{00082\ \ \ \textcolor{comment}{//\ virtual\ methods}}
+\DoxyCodeLine{00083\ \textcolor{comment}{//\ \ template\ <typename\ T>}}
+\DoxyCodeLine{00084\ \textcolor{comment}{//\ \ virtual\ void\ AddNoise(PixelMap<T>\ \&pmap}}
+\DoxyCodeLine{00085\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PixelMap<T>\ \&error\_map}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Utilities::RandomNumbers\_NR\ \&ran,bool\ cosmics)\ =\ 0;}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ \ template\ <typename\ T>}}
+\DoxyCodeLine{00088\ \textcolor{comment}{//\ \ virtual\ void\ Convert(PixelMap<T>\ \&map\_in}}
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PixelMap<T>\ \&map\_out}}
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PixelMap<T>\ \&error\_map}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,bool\ psf}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,bool\ noise}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Utilities::RandomNumbers\_NR\ \&ran,bool\ cosmics)\ =\ 0;}}
+\DoxyCodeLine{00094\ \ \ }
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ getBackgroundNoise()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ mag\_to\_counts(\textcolor{keywordtype}{double}\ m)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00099\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ counts\_to\_mag(\textcolor{keywordtype}{double}\ flux)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00100\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ zeropoint()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00101\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setZeropoint(\textcolor{keywordtype}{double}\ zpoint)\ =\ 0;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{double}\ pix\_size;\ \textcolor{comment}{//\ pixel\ size\ (in\ rad)}}
+\DoxyCodeLine{00107\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ CorrelateNoise(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap);}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{float}\ seeing;\ \ \textcolor{comment}{//\ full-\/width\ at\ half\ maximum\ of\ the\ gaussian\ smoothing}}
+\DoxyCodeLine{00110\ \ \ }
+\DoxyCodeLine{00111\ \ \ \textcolor{comment}{//\ the\ number\ of\ pixels\ in\ the\ real\ image}}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{size\_t}\ Npix\_x\_output,Npix\_y\_output;}
+\DoxyCodeLine{00113\ \ \ \textcolor{comment}{//\ the\ number\ of\ pixels\ in\ the\ oversamples\ image}}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{size\_t}\ Npix\_x\_input,Npix\_y\_input;}
+\DoxyCodeLine{00115\ \ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{float}\ psf\_oversample;\ \textcolor{comment}{//\ psf\ oversampling\ factor}}
+\DoxyCodeLine{00117\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{void}\ downsample(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out)\ \textcolor{keyword}{const};\ \ \textcolor{comment}{//\ downsize\ from\ Npix\_input\ to\ Npix\_output}}
+\DoxyCodeLine{00119\ \ \ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{double}\ input\_psf\_pixel\_size;}
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{size\_t}\ side\_ncorr;\ \textcolor{comment}{//\ pixels\ on\ a\ side\ of\ input\ noise\ correlation\ function}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{void}\ fftpsf();\ \ \textcolor{comment}{//\ FFT\ the\ psf\ for\ later\ use}}
+\DoxyCodeLine{00125\ \ \ std::valarray<double>\ map\_psf;\ \ \textcolor{comment}{//\ array\ of\ the\ point\ spread\ function}}
+\DoxyCodeLine{00126\ \ \ std::valarray<double>\ map\_psfo;\ \ \textcolor{comment}{//\ initial\ array\ of\ the\ point\ spread\ function}}
+\DoxyCodeLine{00127\ \ \ }
+\DoxyCodeLine{00128\ \ \ std::vector<std::complex<double>\ >\ fft\_psf;}
+\DoxyCodeLine{00129\ \ \ std::vector<std::complex<double>\ >\ fft\_padded;}
+\DoxyCodeLine{00130\ \ \ std::vector<double>\ image\_padded;}
+\DoxyCodeLine{00131\ \ \ std::vector<double>\ sqrt\_noise\_power;\ \ \textcolor{comment}{//\ stores\ sqrt\ root\ of\ power\ noise\ spectrum}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \textcolor{comment}{//\ size\ of\ borders\ for\ psf\ convolution}}
+\DoxyCodeLine{00134\ \ \ \textcolor{keywordtype}{size\_t}\ nborder\_x\ =\ 0;}
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordtype}{size\_t}\ nborder\_y\ =\ 0;}
+\DoxyCodeLine{00136\ \ \ }
+\DoxyCodeLine{00137\ \ \ \textcolor{comment}{//\ size\ of\ padded\ images}}
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{size\_t}\ n\_x\ =\ 0;}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{size\_t}\ n\_y\ =\ 0;}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ fftw\_plan\ image\_to\_fft;}
+\DoxyCodeLine{00142\ \ \ fftw\_plan\ fft\_to\_image;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \textcolor{comment}{//PixelMap\ noise\_correlation;}}
+\DoxyCodeLine{00145\ \ \ std::vector<std::complex<double>\ >\ noise\_fft\_image;}
+\DoxyCodeLine{00146\ \ \ std::vector<double>\ noise\_in\_zeropad;}
+\DoxyCodeLine{00147\ \ \ fftw\_plan\ p\_noise\_r2c;}
+\DoxyCodeLine{00148\ \ \ std::vector<double>\ noise\_image\_out;}
+\DoxyCodeLine{00149\ \ \ fftw\_plan\ p\_noise\_c2r;}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00165\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_obs_v_i_s}{ObsVIS}}\ :\ \textcolor{keyword}{public}\ Obs\{}
+\DoxyCodeLine{00166\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00167\ \ \ }
+\DoxyCodeLine{00168\ \ \ \textcolor{comment}{//\ standard\ from\ magnitude\ to\ e-\/\ per\ sec}}
+\DoxyCodeLine{00169\ \ \ \textcolor{keywordtype}{double}\ zero\_point\ =\ 24.4;}
+\DoxyCodeLine{00170\ \ \ \textcolor{comment}{//double\ sigma\_back\_per\_qsrttime\ =\ 0.00267\ *\ sqrt(5.085000000000E+03);}}
+\DoxyCodeLine{00171\ \ \ }
+\DoxyCodeLine{00172\ \ \ \textcolor{comment}{//double\ gain\ =\ 11160;\ //\ e-\//ADU\ (Analog\ Digital\ Units)}}
+\DoxyCodeLine{00173\ \ \ \textcolor{comment}{//double\ exp\_num\ =\ 4;}}
+\DoxyCodeLine{00174\ \ \ \textcolor{comment}{//double\ exp\_time\ =\ 2260.;\ \ //\ seconds}}
+\DoxyCodeLine{00175\ \ \ \textcolor{comment}{//double\ l\ =\ 7103.43;}}
+\DoxyCodeLine{00176\ \ \ \textcolor{comment}{//double\ dl\ =\ 3318.28;}}
+\DoxyCodeLine{00177\ \ \ \textcolor{comment}{//double\ seeing\ =\ 0.18;}}
+\DoxyCodeLine{00178\ \ \ }
+\DoxyCodeLine{00179\ \ \ \textcolor{comment}{//\ derived\ parameters;}}
+\DoxyCodeLine{00180\ \ \ \textcolor{keywordtype}{double}\ sigma\_background2;\ \ \textcolor{comment}{//\ background\ variance\ x\ time}}
+\DoxyCodeLine{00181\ \ \ \textcolor{comment}{//double\ sb\_to\_e;\ \ //\ approximate\ convertion\ between\ ergs\ /\ cm\string^2\ /\ s\ and\ e-\/}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \textcolor{comment}{//\ adds\ random\ cosmic\ rays\ to\ the\ noise\ map}}
+\DoxyCodeLine{00184\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00185\ \ \ \textcolor{keywordtype}{void}\ cosmics(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ inv\_sigma2\ \textcolor{comment}{//\ for\ one\ dither}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ nc\ \textcolor{comment}{//\ number\ of\ cosmics\ to\ be\ added}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran)\ \textcolor{keyword}{const}\ ;}
+\DoxyCodeLine{00189\ \ \ }
+\DoxyCodeLine{00190\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00191\ \ \ }
+\DoxyCodeLine{00193\ \ \ \mbox{\hyperlink{class_obs_v_i_s_a1b1bb4c8159cdecfb3df9c23685d32b4}{ObsVIS}}(\textcolor{keywordtype}{size\_t}\ Npix\_x\ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npix\_y\ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ oversample\ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ resolution\ =\ 0.1*arcsecTOradians\ \ }
+\DoxyCodeLine{00197\ \ \ );}
+\DoxyCodeLine{00198\ \ \ }
+\DoxyCodeLine{00200\ \ \ \mbox{\hyperlink{class_obs_v_i_s_a1b1bb4c8159cdecfb3df9c23685d32b4}{ObsVIS}}(\textcolor{keywordtype}{size\_t}\ Npix\_x\ \ \ \ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npix\_y\ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<double>\ \&exposure\_times\ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ oversample\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00205\ \ \ }
+\DoxyCodeLine{00206\ \ \ \mbox{\hyperlink{class_obs_v_i_s_a1b1bb4c8159cdecfb3df9c23685d32b4}{ObsVIS}}(\textcolor{keywordtype}{size\_t}\ Npix\_x\ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npix\_y\ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<double>\ \&exposure\_times\ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ oversample\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ resolution\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ background\_sigma\ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ calibration\_exposure\_time\ \ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00214\ \ \ \mbox{\hyperlink{class_obs_v_i_s}{\string~ObsVIS}}()\{\};}
+\DoxyCodeLine{00215\ \ \ }
+\DoxyCodeLine{00217\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00218\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_obs_v_i_s_add9123950530626b93991a22e2303eef}{AddPoisson}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00221\ \ \ }
+\DoxyCodeLine{00223\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00224\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_obs_v_i_s_ac79e987f52839efe536d0c97b75fc92d}{AddNoise}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ cosmic=\textcolor{keyword}{true});}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00230\ \ \ \textcolor{keywordtype}{void}\ Convert(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map\ \ \textcolor{comment}{//\ this\ is\ sigma}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ psf}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ noise}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ cosmic=\textcolor{keyword}{false});}
+\DoxyCodeLine{00237\ \ \ }
+\DoxyCodeLine{00238\ \ }
+\DoxyCodeLine{00239\ \ \ \textcolor{keywordtype}{double}\ mag\_to\_counts(\textcolor{keywordtype}{double}\ m)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{if}(m\ ==\ 100)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{return}\ pow(10,-\/0.4*(m\ +\ zero\_point));}
+\DoxyCodeLine{00242\ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \textcolor{keywordtype}{double}\ counts\_to\_mag(\textcolor{keywordtype}{double}\ flux)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordflow}{if}(flux\ <=0)\ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/2.5\ *\ log10(flux)\ -\/\ zero\_point;}
+\DoxyCodeLine{00246\ \ \ \}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordtype}{double}\ zeropoint()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ zero\_point;\}}
+\DoxyCodeLine{00249\ \ \ \textcolor{keywordtype}{void}\ setZeropoint(\textcolor{keywordtype}{double}\ zpoint)\{zero\_point=zpoint;\}}
+\DoxyCodeLine{00250\ \ }
+\DoxyCodeLine{00252\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_obs_v_i_s_af0b0e08351ab37c295adf6b1d361e93b}{getBackgroundNoise}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordtype}{double}\ dt\ =\ Utilities::vec\_sum(t\_exp);\textcolor{comment}{//\ 3\ *\ t1\ +\ t2;}}
+\DoxyCodeLine{00254\ \ \ \ \ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(\ sigma\_background2\ /\ dt\ );}
+\DoxyCodeLine{00256\ \ \ \}}
+\DoxyCodeLine{00257\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00258\ \ \ \textcolor{comment}{//double\ t1;}}
+\DoxyCodeLine{00259\ \ \ \textcolor{comment}{//double\ t2;}}
+\DoxyCodeLine{00260\ \ \ std::vector<double>\ t\_exp;\ \ \textcolor{comment}{//\ exposure\ times}}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \};}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00273\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_observation}{Observation}}\ :\ \textcolor{keyword}{public}\ Obs}
+\DoxyCodeLine{00274\ \{}
+\DoxyCodeLine{00275\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00276\ \ \mbox{\hyperlink{class_observation_af8238641e874a89a1e579dd6ae40491b}{Observation}}(Telescope\ tel\_name,\textcolor{keywordtype}{double}\ exposure\_time,\textcolor{keywordtype}{int}\ exposure\_num}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npix\_x,\textcolor{keywordtype}{size\_t}\ Npix\_y,\ \textcolor{keywordtype}{float}\ oversample);}
+\DoxyCodeLine{00278\ \ \mbox{\hyperlink{class_observation_af8238641e874a89a1e579dd6ae40491b}{Observation}}(\textcolor{keywordtype}{float}\ diameter,\ \textcolor{keywordtype}{float}\ transmission,\ \textcolor{keywordtype}{float}\ exp\_time,\ \textcolor{keywordtype}{int}\ exp\_num,\ \textcolor{keywordtype}{float}\ back\_mag,\ \textcolor{keywordtype}{float}\ read\_out\_noise}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ Npix\_x,\textcolor{keywordtype}{size\_t}\ Npix\_y,\textcolor{keywordtype}{double}\ pix\_size,\textcolor{keywordtype}{float}\ seeing\ =\ 0.);}
+\DoxyCodeLine{00280\ \ \mbox{\hyperlink{class_observation_af8238641e874a89a1e579dd6ae40491b}{Observation}}(\textcolor{keywordtype}{float}\ diameter,\ \textcolor{keywordtype}{float}\ transmission,\ \textcolor{keywordtype}{float}\ exp\_time,\ \textcolor{keywordtype}{int}\ exp\_num,\ \textcolor{keywordtype}{float}\ back\_mag,\ \textcolor{keywordtype}{float}\ read\_out\_noise\ ,std::string\ psf\_file,\textcolor{keywordtype}{size\_t}\ Npix\_x,\textcolor{keywordtype}{size\_t}\ Npix\_y,\textcolor{keywordtype}{double}\ pix\_size,\ \textcolor{keywordtype}{float}\ oversample\ =\ 1.);}
+\DoxyCodeLine{00281\ \ \ }
+\DoxyCodeLine{00282\ \ \ \mbox{\hyperlink{class_observation_af8238641e874a89a1e579dd6ae40491b}{Observation}}(\textcolor{keywordtype}{float}\ zeropoint\_mag,\ \textcolor{keywordtype}{float}\ exp\_time,\ \textcolor{keywordtype}{int}\ exp\_num,\ \textcolor{keywordtype}{float}\ back\_mag,\ \textcolor{keywordtype}{float}\ read\_out\_noise,\ \textcolor{keywordtype}{size\_t}\ Npix\_x,\textcolor{keywordtype}{size\_t}\ Npix\_y,\textcolor{keywordtype}{double}\ pix\_size,\textcolor{keywordtype}{float}\ seeing=0);}
+\DoxyCodeLine{00283\ \ \ \mbox{\hyperlink{class_observation_af8238641e874a89a1e579dd6ae40491b}{Observation}}(\textcolor{keywordtype}{float}\ zeropoint\_mag,\ \textcolor{keywordtype}{float}\ exp\_time,\ \textcolor{keywordtype}{int}\ exp\_num,\ \textcolor{keywordtype}{float}\ back\_mag,\ \textcolor{keywordtype}{float}\ read\_out\_noise\ ,std::string\ psf\_file,\textcolor{keywordtype}{size\_t}\ Npix\_x,\textcolor{keywordtype}{size\_t}\ Npix\_y,\textcolor{keywordtype}{double}\ pix\_size,\ \textcolor{keywordtype}{float}\ oversample\ =\ 1.);}
+\DoxyCodeLine{00284\ \ \ }
+\DoxyCodeLine{00285\ \ \ \mbox{\hyperlink{class_observation}{\string~Observation}}()\{\};}
+\DoxyCodeLine{00286\ \ \ }
+\DoxyCodeLine{00287\ \ \ \textcolor{keywordtype}{float}\ getExpTime()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ exp\_time;\}}
+\DoxyCodeLine{00288\ \ \textcolor{keywordtype}{int}\ getExpNum()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ exp\_num;\}}
+\DoxyCodeLine{00289\ \ \textcolor{keywordtype}{float}\ getBackMag()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ back\_mag;\}}
+\DoxyCodeLine{00291\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_observation_a142c63994e94603016c90e5dc4aba6fc}{getRon}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ read\_out\_noise;\}}
+\DoxyCodeLine{00293\ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_observation_af67cdb34b8ae50c22243ad3f7cfe3926}{getSeeing}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ seeing;\}}
+\DoxyCodeLine{00294\ \ \textcolor{keywordtype}{float}\ getZeropoint()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ mag\_zeropoint;\}}
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordtype}{void}\ setZeropoint(\textcolor{keywordtype}{double}\ zpoint)\{mag\_zeropoint=zpoint;\}}
+\DoxyCodeLine{00297\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_observation_a1866e210a777eb8cadc9d33237f6df2f}{getBackgroundNoise}}(\textcolor{keywordtype}{float}\ resolution,\ UnitType\ unit\ =\ UnitType::counts\_x\_sec)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00298\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_observation_a1866e210a777eb8cadc9d33237f6df2f}{getBackgroundNoise}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ 0;\};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00301\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_observation_ab14b47afd127413449760aebc39245d6}{AddNoise}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00302\ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran,\textcolor{keywordtype}{bool}\ dummy);}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00305\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_observation_aa3d49144d1e21e4900d12f5f5abf4535}{Convert}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ psf}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ noise}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ cosmic=\textcolor{keyword}{false}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00313\ \ }
+\DoxyCodeLine{00315\ \ \ \textcolor{comment}{//double\ flux\_convertion\_factor()\{\ return\ pow(10,-\/0.4*mag\_zeropoint);\ \}}}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_observation_a670be0f361abb519391ff0c30c907c1d}{setExpTime}}(\textcolor{keywordtype}{float}\ time)\{exp\_time\ =\ time;\}}
+\DoxyCodeLine{00318\ \ \ \textcolor{keywordtype}{void}\ setPixelSize(\textcolor{keywordtype}{float}\ pixel\_size)\{pix\_size=pixel\_size;\}}
+\DoxyCodeLine{00319\ \ }
+\DoxyCodeLine{00320\ \ \ \textcolor{keywordtype}{double}\ mag\_to\_counts(\textcolor{keywordtype}{double}\ m)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordflow}{if}(m\ ==\ 100)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordflow}{return}\ pow(10,-\/0.4*(m\ -\/\ mag\_zeropoint));}
+\DoxyCodeLine{00323\ \ \ \}}
+\DoxyCodeLine{00324\ \ \ \textcolor{keywordtype}{double}\ counts\_to\_mag(\textcolor{keywordtype}{double}\ flux)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{if}(flux\ <=0)\ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/2.5\ *\ log10(flux)\ +\ mag\_zeropoint;}
+\DoxyCodeLine{00327\ \ \ \}}
+\DoxyCodeLine{00328\ \ \ \textcolor{keywordtype}{double}\ zeropoint()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00329\ \ \ \ \ \ \textcolor{keywordflow}{return}\ mag\_zeropoint;}
+\DoxyCodeLine{00330\ \ \ \ \}}
+\DoxyCodeLine{00331\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00332\ \ \ }
+\DoxyCodeLine{00333\ \ \textcolor{comment}{//float\ diameter;\ \ //\ diameter\ of\ telescope\ (in\ cm)}}
+\DoxyCodeLine{00334\ \ \textcolor{comment}{//float\ transmission;\ \ //\ total\ transmission\ of\ the\ instrument}}
+\DoxyCodeLine{00335\ \ \textcolor{keywordtype}{float}\ mag\_zeropoint;\ \ \textcolor{comment}{//\ magnitude\ of\ a\ source\ that\ produces\ one\ count/sec\ in\ the\ image}}
+\DoxyCodeLine{00336\ \ \textcolor{keywordtype}{float}\ exp\_time;\ \ \textcolor{comment}{//\ total\ exposure\ time\ (in\ sec)}}
+\DoxyCodeLine{00337\ \ \textcolor{keywordtype}{int}\ exp\_num;\ \ \textcolor{comment}{//\ number\ of\ exposures}}
+\DoxyCodeLine{00338\ \ \textcolor{keywordtype}{float}\ back\_mag;\ \ \textcolor{comment}{//\ sky\ (or\ background)\ magnitude\ in\ mag/arcsec\string^2}}
+\DoxyCodeLine{00339\ \ \textcolor{keywordtype}{float}\ read\_out\_noise;\ \ \textcolor{comment}{//\ read-\/out\ noise\ in\ electrons/pixel}}
+\DoxyCodeLine{00340\ \ \ \textcolor{keywordtype}{float}\ gain;}
+\DoxyCodeLine{00341\ \ \ }
+\DoxyCodeLine{00342\ \ \textcolor{keywordtype}{bool}\ telescope;\ \textcolor{comment}{//\ was\ the\ observation\ created\ from\ a\ default\ telescope?}}
+\DoxyCodeLine{00343\ \ \ \textcolor{keywordtype}{float}\ e\_per\_s\_to\_ergs\_s\_cm2;\ \ \textcolor{comment}{//\ e-\/\ /\ s\ \ \ for\ zero\ magnitudes}}
+\DoxyCodeLine{00344\ \ \ \textcolor{keywordtype}{float}\ background\_flux;\ \ \textcolor{comment}{//\ e-\/\ /\ s\ /\ arcsec}}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00346\ \ \ \textcolor{keywordtype}{void}\ set\_up();}
+\DoxyCodeLine{00347\ \ \ }
+\DoxyCodeLine{00348\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00349\ \ \ \textcolor{keywordtype}{void}\ ToCounts(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap);}
+\DoxyCodeLine{00350\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00351\ \ \ \textcolor{keywordtype}{void}\ ToSurfaceBrightness(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap);}
+\DoxyCodeLine{00352\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00353\ \ \ \textcolor{keywordtype}{void}\ ToADU(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap);}
+\DoxyCodeLine{00354\ \};}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \textcolor{keywordtype}{void}\ pixelize(\textcolor{keywordtype}{double}\ *map,\textcolor{keywordtype}{long}\ Npixels,\textcolor{keywordtype}{double}\ range,\textcolor{keywordtype}{double}\ *center}
+\DoxyCodeLine{00357\ \ \ ,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *imageinfo,\textcolor{keywordtype}{int}\ Nimages,\textcolor{keywordtype}{bool}\ constant\_sb,\textcolor{keywordtype}{bool}\ cleanmap}
+\DoxyCodeLine{00358\ \ \ ,\textcolor{keywordtype}{bool}\ write\_for\_skymaker\ =\ \textcolor{keyword}{false},\ std::string\ filename=\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00359\ \textcolor{keywordtype}{void}\ \_SplitFluxIntoPixels(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ ptree,\mbox{\hyperlink{struct_branch}{Branch}}\ *leaf,\textcolor{keywordtype}{double}\ *leaf\_sb);}
+\DoxyCodeLine{00360\ \textcolor{comment}{//void\ smoothmap(double\ *map\_out,double\ *map\_in,long\ Npixels,double\ range,double\ sigma);}}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utilities}{Utilities}}\{}
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{comment}{//void\ LoadFitsImages(std::string\ dir,const\ std::string\&\ filespec,std::vector<PixelMap>\ \&\ images,int\ maxN,double\ resolution\ =\ -\/1,bool\ verbose\ =\ false);}}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{comment}{//void\ LoadFitsImages(std::string\ dir,std::vector<std::string>\ filespecs,std::vector<std::string>\ file\_non\_specs\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<PixelMap>\ \&\ images,std::vector<std::string>\ \&\ names,int\ maxN,double\ resolution\ =\ -\/1,bool\ verbose\ =\ false);}}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_abc7be26dfecdca30048dd4d3842077a2}{ReadFileNames}}(std::string\ dir,\textcolor{keyword}{const}\ std::string\ filespec}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::string>\ \&\ filenames}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::string\ file\_non\_spec\ =\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00369\ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00373\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_multi_grid_smoother}{MultiGridSmoother}}\{}
+\DoxyCodeLine{00374\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00375\ \ \ \mbox{\hyperlink{class_multi_grid_smoother_ad45d83237961c0395a13d4626f4406d1}{MultiGridSmoother}}(\textcolor{keywordtype}{double}\ center[],std::size\_t\ Nx,std::size\_t\ Ny,\textcolor{keywordtype}{double}\ resolution);}
+\DoxyCodeLine{00376\ \ \ \mbox{\hyperlink{class_multi_grid_smoother_ad45d83237961c0395a13d4626f4406d1}{MultiGridSmoother}}(\textcolor{keywordtype}{double}\ center[],std::size\_t\ Nx,\textcolor{keywordtype}{double}\ resolution);}
+\DoxyCodeLine{00377\ \ \ \mbox{\hyperlink{class_multi_grid_smoother}{\string~MultiGridSmoother}}(\textcolor{keywordtype}{void})\{}
+\DoxyCodeLine{00378\ \ \ \ \ maps.clear();}
+\DoxyCodeLine{00379\ \ \ \}}
+\DoxyCodeLine{00380\ \ \ }
+\DoxyCodeLine{00382\ \ \ PosType\ \mbox{\hyperlink{class_multi_grid_smoother_a9e39dd049930a7757ff295999ef54336}{getHighestRes}}()\{\textcolor{keywordflow}{return}\ maps[0].getResolution();\}}
+\DoxyCodeLine{00384\ \ \ PosType\ \mbox{\hyperlink{class_multi_grid_smoother_a0229eae4f99cd372609612bee54ef24e}{getLowestRes}}()\{\textcolor{keywordflow}{return}\ maps.back().getResolution();\}}
+\DoxyCodeLine{00385\ \ \ }
+\DoxyCodeLine{00387\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_multi_grid_smoother_a717e96f65e41a5e43b781bc8fa11968f}{add\_particles}}(std::vector<PosType>\ x,std::vector<PosType>\ y);}
+\DoxyCodeLine{00389\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_multi_grid_smoother_ad072d0598b4a884d3574818ea2e6057a}{output\_map}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<double>}}\ \&map,\textcolor{keywordtype}{int}\ Nsmooth);}
+\DoxyCodeLine{00390\ \ \ \textcolor{keywordtype}{void}\ smooth(\textcolor{keywordtype}{int}\ Nsmooth,\mbox{\hyperlink{class_pixel_map}{PixelMap<double>}}\ \&map);}
+\DoxyCodeLine{00391\ \ \ }
+\DoxyCodeLine{00392\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00393\ \ \ \textcolor{keywordtype}{void}\ \_smooth\_(\textcolor{keywordtype}{int}\ k,\textcolor{keywordtype}{size\_t}\ i,\textcolor{keywordtype}{size\_t}\ j,\textcolor{keywordtype}{int}\ Nsmooth,\mbox{\hyperlink{class_pixel_map}{PixelMap<double>}}\ \&map);}
+\DoxyCodeLine{00394\ \ \ std::vector<PixelMap<double>\ >\ maps;}
+\DoxyCodeLine{00395\ \ \ std::vector<Utilities::Interpolator<PixelMap<double>\ >>\ interpolators;}
+\DoxyCodeLine{00396\ \};}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00400\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_obs_v_i_s_add9123950530626b93991a22e2303eef}{ObsVIS::AddPoisson}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00403\ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \textcolor{keywordtype}{double}\ dt\ =\ \ Utilities::vec\_sum(t\_exp);}
+\DoxyCodeLine{00405\ \ \ \textcolor{keywordflow}{if}(ran()\ <\ 0.2)\{}
+\DoxyCodeLine{00406\ \ \ \ \ \textcolor{comment}{//\ select\ a\ frame}}
+\DoxyCodeLine{00407\ \ \ \ \ \textcolor{keywordtype}{int}\ missing\_frame\ =\ (int)(ran()*t\_exp.size());}
+\DoxyCodeLine{00408\ \ \ \ \ }
+\DoxyCodeLine{00409\ \ \ \ \ dt\ -\/=\ t\_exp[missing\_frame];}
+\DoxyCodeLine{00410\ \ \ \}}
+\DoxyCodeLine{00411\ \ \ }
+\DoxyCodeLine{00412\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ pmap.data()\ )\{}
+\DoxyCodeLine{00413\ \ \ \ \ \textcolor{keywordflow}{if}(p>0)\ p\ =\ ran.poisson(p*dt)/dt;}
+\DoxyCodeLine{00414\ \ \ \}}
+\DoxyCodeLine{00415\ \}}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00418\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_obs_v_i_s_ac79e987f52839efe536d0c97b75fc92d}{ObsVIS::AddNoise}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran,\textcolor{keywordtype}{bool}\ cosmic}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00422\ \ \ \textcolor{keywordflow}{if}(pmap.getNx()\ !=\ pmap.getNy())\{}
+\DoxyCodeLine{00423\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Observation::AddNoise()\ Doesn't\ work\ on\ nonsquare\ maps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00425\ \ \ \}}
+\DoxyCodeLine{00426\ \ \ }
+\DoxyCodeLine{00427\ \ \ \textcolor{keywordtype}{double}\ dt\ =\ Utilities::vec\_sum(t\_exp);}
+\DoxyCodeLine{00428\ \ \ \textcolor{keywordtype}{int}\ missing\_frame\ =\ -\/1;}
+\DoxyCodeLine{00429\ \ \ \textcolor{comment}{//int\ drop=0;}}
+\DoxyCodeLine{00430\ \ \ \textcolor{keywordflow}{if}(ran()\ <\ 0.2)\{}
+\DoxyCodeLine{00431\ \ \ \ \ \textcolor{comment}{//\ select\ a\ frame}}
+\DoxyCodeLine{00432\ \ \ \ \ missing\_frame\ =\ (int)(ran()*t\_exp.size());}
+\DoxyCodeLine{00433\ \ \ \ \ dt\ -\/=\ t\_exp[missing\_frame];}
+\DoxyCodeLine{00434\ \ \ \ \ \textcolor{comment}{//drop=1;}}
+\DoxyCodeLine{00435\ \ \ \}}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \textcolor{keywordtype}{double}\ inv\_sigma2\ =\ (dt)/sigma\_background2;}
+\DoxyCodeLine{00438\ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ pmap.size();}
+\DoxyCodeLine{00439\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ N\ ;\ i++)\{}
+\DoxyCodeLine{00440\ \ \ \ \ error\_map[i]\ =\ inv\_sigma2;}
+\DoxyCodeLine{00441\ \ \ \}}
+\DoxyCodeLine{00442\ \ \ }
+\DoxyCodeLine{00443\ \ \ \textcolor{comment}{//double\ p\ =\ (t\_exp.size()-\/drop)*t1/dt;}}
+\DoxyCodeLine{00444\ \ \ \textcolor{keywordflow}{if}(cosmic)\{}
+\DoxyCodeLine{00445\ \ \ \ \ }
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ (int)(ran()*dt);}
+\DoxyCodeLine{00447\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0\ ;\ j<100\ ;\ ++j)\{}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \textcolor{comment}{//\ chooses\ an\ exposure\ at\ random\ weighted\ by\ exposure\ time}}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ tt=t\_exp[0];}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(t>tt)\{}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ tt\ +=\ t\_exp[i];}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00455\ \ \ \ \ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ !=\ missing\_frame)\ cosmics(error\_map,t\_exp[i]/sigma\_background2,1,ran);}
+\DoxyCodeLine{00457\ \ \ \ \ \}}
+\DoxyCodeLine{00458\ \ \ \ \ }
+\DoxyCodeLine{00459\ \textcolor{comment}{//\ \ \ \ if(ran()\ <\ p\ )\{}}
+\DoxyCodeLine{00460\ \textcolor{comment}{//\ \ \ \ \ \ cosmics(error\_map,t1/sigma2,ran.poisson(100),ran);}}
+\DoxyCodeLine{00461\ \textcolor{comment}{//\ \ \ \ \}else\{}}
+\DoxyCodeLine{00462\ \textcolor{comment}{//\ \ \ \ \ \ cosmics(error\_map,t2/sigma2,ran.poisson(100*(dt-\/t1)/dt),ran);}}
+\DoxyCodeLine{00463\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00464\ \ \ \}}
+\DoxyCodeLine{00465\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ N\ ;\ i++)\{}
+\DoxyCodeLine{00466\ \ \ \ \ pmap[i]\ =\ ran.poisson(MAX<float>(pmap[i]\ *\ dt,0))/dt;}
+\DoxyCodeLine{00467\ \ \ \ \ pmap[i]\ +=\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}()\ /\ sqrt(error\_map[i]);}
+\DoxyCodeLine{00468\ \ \ \ \ }
+\DoxyCodeLine{00469\ \ \ \ \ error\_map[i]\ =\ sqrt(\ 1.0\ /\ error\_map[i]\ +\ MAX<float>(pmap[i]\ /\ dt,0)\ )\ ;}
+\DoxyCodeLine{00470\ \ \ \}}
+\DoxyCodeLine{00471\ }
+\DoxyCodeLine{00472\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00473\ \}}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00475\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00476\ \textcolor{keywordtype}{void}\ \ ObsVIS::cosmics(}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map\ \ \textcolor{comment}{//\ inverse\ error}}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ inv\_sigma2\ \textcolor{comment}{//\ for\ one\ dither}}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ nc\ \textcolor{comment}{//\ number\ of\ cosmics\ to\ be\ added}}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00482\ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ error\_map.size();}
+\DoxyCodeLine{00483\ \ \ \textcolor{keywordtype}{size\_t}\ Nx\ =\ error\_map.getNx();}
+\DoxyCodeLine{00484\ \ \ \textcolor{keywordtype}{size\_t}\ Ny\ =\ error\_map.getNy();}
+\DoxyCodeLine{00485\ \ \ }
+\DoxyCodeLine{00486\ \ \ \textcolor{keywordtype}{int}\ length\ =\ 2;}
+\DoxyCodeLine{00487\ \ \ \textcolor{keywordtype}{size\_t}\ ic=0;}
+\DoxyCodeLine{00488\ \ \ }
+\DoxyCodeLine{00489\ \ \ \textcolor{keywordflow}{while}\ (ic\ <\ nc)\ \{}
+\DoxyCodeLine{00490\ \ \ }
+\DoxyCodeLine{00491\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ no\ =\ (size\_t)(N*ran());}
+\DoxyCodeLine{00492\ \ \ \ \ \textcolor{keywordtype}{double}\ theta\ =\ 2*PI*ran();}
+\DoxyCodeLine{00493\ \ \ \ \ \textcolor{keywordtype}{double}\ c=cos(theta),s=sin(theta);}
+\DoxyCodeLine{00494\ \ \ }
+\DoxyCodeLine{00495\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ io\ =\ no\ \%\ Nx;}
+\DoxyCodeLine{00496\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ jo\ =\ no\ /\ Nx;}
+\DoxyCodeLine{00497\ \ }
+\DoxyCodeLine{00498\ \ \ \ \ \textcolor{keywordtype}{double}\ L\ =\ MAX<double>(length/tan(PI*ran()/2),1);}
+\DoxyCodeLine{00499\ \ \ \ \ \textcolor{comment}{//error\_map.DrawLine(io,\ io\ +\ L\ *\ c,\ jo,\ jo\ +\ L\ *\ s,\ -\/inv\_sigma2,\ true);\ //\ ???}}
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{comment}{//error\_map.DrawLine(io\ +\ 0.5*s,\ io\ +\ L\ *\ c\ +\ 0.5*s,\ jo\ -\/\ 0.5*c,\ jo\ +\ L\ *\ s\ -\/\ 0.5*c,\ -\/inv\_sigma2,\ true);}}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordtype}{double}\ t\ =\ tan(theta);}
+\DoxyCodeLine{00503\ \ \ \ \ \textcolor{keywordtype}{long}\ x,y;}
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordflow}{if}(abs(t)\ <\ 1)\{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ x1\ =\ (long)(io\ +\ L\ *\ c\ );}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sgn\ =\ sign(c);}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ x1\ =\ MAX<long>(0,x1);}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ x1\ =\ MIN<long>(Nx-\/1,x1);}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(x\ =\ io\ ;\ x\ !=\ \ x1\ ;\ x\ =\ x\ +\ sgn)\{}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ y\ =\ MAX<long>((\textcolor{keywordtype}{long})(t*(x-\/io)\ +\ jo),0);}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ y=\ MIN<long>(y,Ny-\/2);}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ error\_map(x,y)\ +=\ -\/inv\_sigma2;}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ error\_map(x,y+1)\ +=\ -\/inv\_sigma2;}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00515\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ y1\ =\ (long)(jo\ +\ L\ *\ s\ );}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sgn\ =\ sign(s);}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ y1\ =\ MAX<long>(0,y1);}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ y1\ =\ MIN<long>(Ny-\/1,y1);}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(y\ =\ jo\ ;\ y\ !=\ \ y1\ ;\ y\ =\ y\ +\ sgn)\{}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ x\ =\ MAX<long>((\textcolor{keywordtype}{long})((y-\/jo)/t\ +\ io),0);}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ x\ =\ MIN<long>(x,Nx-\/2);}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ error\_map(x,y)\ +=\ -\/inv\_sigma2;}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ error\_map(x+1,y)\ +=\ -\/inv\_sigma2;}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00526\ \ \ \ \ \}}
+\DoxyCodeLine{00527\ \ \ \ \ ++ic;}
+\DoxyCodeLine{00528\ \ \ \}}
+\DoxyCodeLine{00529\ \}}
+\DoxyCodeLine{00530\ }
+\DoxyCodeLine{00531\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00532\ \textcolor{keywordtype}{void}\ ObsVIS::Convert(}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ psf}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ noise}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ cosmic}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00541\ \ \ assert(map\_in.getNx()\ ==\ Npix\_x\_input);}
+\DoxyCodeLine{00542\ \ \ assert(map\_in.getNy()\ ==\ Npix\_y\_input);}
+\DoxyCodeLine{00543\ \ \ }
+\DoxyCodeLine{00544\ \ \ \textcolor{keywordflow}{if}\ (fabs(map\_in.getResolution()*psf\_oversample\ -\/\ pix\_size)\ >\ pix\_size*1.0e-\/5)}
+\DoxyCodeLine{00545\ \ \ \{}
+\DoxyCodeLine{00546\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ resolution\ of\ the\ input\ map\ is\ different\ from\ the\ one\ of\ the\ simulated\ instrument\ in\ Observation::Convert!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00547\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}The\ resolution\ of\ the\ input\ map\ is\ different\ from\ the\ one\ of\ the\ simulated\ instrument!"{}});}
+\DoxyCodeLine{00548\ \ \ \}}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00550\ \ \ map\_out.Clean();}
+\DoxyCodeLine{00551\ \ \ }
+\DoxyCodeLine{00552\ \ \ \textcolor{keywordflow}{if}\ (psf\ ==\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{00553\ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map\_scratch(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}(0,0).x}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ Npix\_x\_input}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ Npix\_y\_input,\ pix\_size);}
+\DoxyCodeLine{00556\ \ \ \ \ ApplyPSF<T>(map\_in,map\_scratch);}
+\DoxyCodeLine{00557\ \ \ \ \ downsample<T>(map\_scratch,map\_out);}
+\DoxyCodeLine{00558\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00559\ \ \ \ \ downsample<T>(map\_in,map\_out);}
+\DoxyCodeLine{00560\ \ \ \}}
+\DoxyCodeLine{00561\ \ }
+\DoxyCodeLine{00562\ \ \ \textcolor{keywordflow}{if}\ (noise\ ==\ \textcolor{keyword}{true})\ \mbox{\hyperlink{class_obs_v_i_s_ac79e987f52839efe536d0c97b75fc92d}{AddNoise<T>}}(map\_out,error\_map,ran,cosmic);}
+\DoxyCodeLine{00563\ \ \ }
+\DoxyCodeLine{00564\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00565\ \}}
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00569\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00570\ \textcolor{keywordtype}{void}\ Obs::setPSF(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&psf\_map}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00572\ \ }
+\DoxyCodeLine{00573\ \ \ input\_psf\_pixel\_size\ =\ psf\_map.getResolution();}
+\DoxyCodeLine{00574\ \ \ }
+\DoxyCodeLine{00575\ \ \ \textcolor{keywordflow}{if}(\ (input\_psf\_pixel\_size\ -\/\ pix\_size/psf\_oversample)/input\_psf\_pixel\_size\ >\ 1.0e-\/3)\{}
+\DoxyCodeLine{00576\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Obs::setPSF()\ -\/\ psf\ is\ not\ resolved."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00578\ \ \ \}}
+\DoxyCodeLine{00579\ \ \ }
+\DoxyCodeLine{00580\ \ \ map\_psf.resize(psf\_map.size());}
+\DoxyCodeLine{00581\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<psf\_map.size()\ ;\ ++i)\{}
+\DoxyCodeLine{00582\ \ \ \ \ map\_psf[i]\ =\ psf\_map[i];}
+\DoxyCodeLine{00583\ \ \ \}}
+\DoxyCodeLine{00584\ \ \ }
+\DoxyCodeLine{00585\ \ \ std::vector<size\_t>\ size\ =\ \{psf\_map.getNx(),psf\_map.getNy()\};}
+\DoxyCodeLine{00586\ \ \ }
+\DoxyCodeLine{00587\ \ \ \textcolor{keywordtype}{long}\ max\_x,max\_y;}
+\DoxyCodeLine{00588\ \ \ \{}
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{keywordtype}{long}\ i=0,imax=0;}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keywordtype}{double}\ amax\ =\ map\_psf[0];}
+\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&a\ :\ map\_psf)\{}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(a\ >\ amax)\{imax=i;amax=a;\}}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ ++i;}
+\DoxyCodeLine{00594\ \ \ \ \ \}}
+\DoxyCodeLine{00595\ \ \ \ \ max\_y\ =\ imax\ \%\ size[0];}
+\DoxyCodeLine{00596\ \ \ \ \ max\_x\ =\ imax\ /\ size[0];}
+\DoxyCodeLine{00597\ \ \ \}}
+\DoxyCodeLine{00598\ \ \ \textcolor{keywordtype}{long}\ Lx;}
+\DoxyCodeLine{00599\ \ \ \textcolor{keywordtype}{long}\ Ly\ =\ Lx\ =\ 2*MIN<double>(\ MIN<double>(max\_y,size[1]-\/max\_y)}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,MIN<double>(max\_x,size[0]-\/max\_x));}
+\DoxyCodeLine{00601\ \ \ }
+\DoxyCodeLine{00602\ \ \ std::valarray<double>\ tmp(Lx*Ly);}
+\DoxyCodeLine{00603\ \ \ \textcolor{keywordtype}{long}\ ii=0;}
+\DoxyCodeLine{00604\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ i=max\_x\ -\/\ Lx/2\ ;\ i<max\_x\ +\ Lx/2\ ;++i)\{}
+\DoxyCodeLine{00605\ \ \ \ \ assert(i<size[0]);}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordtype}{long}\ jj=0;}
+\DoxyCodeLine{00607\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j=max\_y\ -\/\ Ly/2\ ;\ j<max\_y\ +\ Ly/2\ ;++j)\{}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ assert(j<size[1]);}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ tmp[ii\ +\ Lx*jj]\ =\ map\_psf[j\ +\ size[1]\ *\ i];}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ ++jj;}
+\DoxyCodeLine{00611\ \ \ \ \ \}}
+\DoxyCodeLine{00612\ \ \ \ \ ++ii;}
+\DoxyCodeLine{00613\ \ \ \}}
+\DoxyCodeLine{00614\ \ \ }
+\DoxyCodeLine{00615\ \ \ std::swap(tmp,map\_psf);}
+\DoxyCodeLine{00616\ \ \ map\_psfo=map\_psf;}
+\DoxyCodeLine{00617\ \ \ }
+\DoxyCodeLine{00618\ \ \ fftpsf();}
+\DoxyCodeLine{00619\ \}}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00621\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00622\ \textcolor{keywordtype}{void}\ Obs::downsample(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00623\ \ \ }
+\DoxyCodeLine{00624\ \ \ assert(map\_in.getNx()\ ==\ Npix\_x\_input);}
+\DoxyCodeLine{00625\ \ \ assert(map\_in.getNy()\ ==\ Npix\_y\_input);}
+\DoxyCodeLine{00626\ \ \ assert(map\_out.getNx()\ ==\ Npix\_x\_output);}
+\DoxyCodeLine{00627\ \ \ assert(map\_out.getNy()\ ==\ Npix\_y\_output);}
+\DoxyCodeLine{00628\ \ }
+\DoxyCodeLine{00629\ \ \ \textcolor{keywordflow}{if}(psf\_oversample\ ==\ 1)\{}
+\DoxyCodeLine{00630\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n=map\_in.size();}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;\ i<n\ ;\ ++i\ )\ map\_out[i]\ =\ map\_in[i];\ \textcolor{comment}{//\ keep\ bounding\ box\ information}}
+\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00633\ \ \ \}}
+\DoxyCodeLine{00634\ \ }
+\DoxyCodeLine{00635\ \ \ map\_out.Clean();}
+\DoxyCodeLine{00636\ \textcolor{comment}{//\ \ Point\_2d\ x;}}
+\DoxyCodeLine{00637\ \textcolor{comment}{//\ \ long\ n\ =\ map\_in.size();}}
+\DoxyCodeLine{00638\ \textcolor{comment}{//\ \ for(long\ i=0\ ;\ i<n\ ;\ ++i)\{}}
+\DoxyCodeLine{00639\ \textcolor{comment}{//\ \ \ \ map\_in.find\_position(x.x,\ i);}}
+\DoxyCodeLine{00640\ \textcolor{comment}{//\ \ \ \ long\ k\ =\ map\_out.find\_index(x.x);}}
+\DoxyCodeLine{00641\ \textcolor{comment}{//\ \ \ \ if(k\ >\ -\/1)\ map\_out[k]\ +=\ map\_in[i];}}
+\DoxyCodeLine{00642\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00643\ \ \ }
+\DoxyCodeLine{00644\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<Npix\_x\_input\ ;\ ++i)\{}
+\DoxyCodeLine{00645\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ii\ =\ MIN<long>(i\ /\ psf\_oversample\ +\ 0.5,\ Npix\_x\_output\ -\/\ 1\ )\ ;}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j=0\ ;\ j<Npix\_y\_input\ ;\ ++j)\{}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ jj\ =\ MIN<long>(j\ /\ psf\_oversample\ +\ 0.5,\ Npix\_y\_output\ -\/\ 1\ )\ ;}
+\DoxyCodeLine{00648\ }
+\DoxyCodeLine{00649\ \ \ \ \ \ \ map\_out(ii,jj)\ +=\ map\_in(i,j);}
+\DoxyCodeLine{00650\ \ \ \ \ \}}
+\DoxyCodeLine{00651\ \ \ \}}
+\DoxyCodeLine{00652\ }
+\DoxyCodeLine{00653\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00654\ \}}
+\DoxyCodeLine{00655\ }
+\DoxyCodeLine{00659\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00660\ \textcolor{keywordtype}{void}\ Obs::ApplyPSF(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out)}
+\DoxyCodeLine{00661\ \{}
+\DoxyCodeLine{00662\ \ \ \textcolor{keywordflow}{if}(map\_in.getNx()\ !=\ map\_in.getNy())\{}
+\DoxyCodeLine{00663\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Obs::ApplyPSF()\ Doesn't\ work\ on\ nonsquare\ maps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00664\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00665\ \ \ \}}
+\DoxyCodeLine{00666\ \ \ \textcolor{keywordflow}{if}(map\_in.getNx()\ !=\ Npix\_y\_input)\{}
+\DoxyCodeLine{00667\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Obs::ApplyPSF()\ Input\ map\ it\ the\ wrong\ size."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00668\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00669\ \ \ \}}
+\DoxyCodeLine{00670\ \ \ \textcolor{keywordflow}{if}(map\_in.getNx()\ !=\ map\_out.getNx())\{}
+\DoxyCodeLine{00671\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Obs::ApplyPSF()\ Input\ map\ output\ are\ not\ the\ same\ size."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00672\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00673\ \ \ \}}
+\DoxyCodeLine{00674\ }
+\DoxyCodeLine{00675\ \ \ }
+\DoxyCodeLine{00676\ \ \ \textcolor{keywordflow}{if}\ (map\_psf.size()\ ==\ 0)\{}
+\DoxyCodeLine{00677\ \ \ \ \ }
+\DoxyCodeLine{00678\ \ \ \ \ map\_out\ =\ map\_in;}
+\DoxyCodeLine{00679\ \ \ \ \ }
+\DoxyCodeLine{00680\ \ \ \ \ \textcolor{keywordflow}{if}\ (seeing\ >\ 0.)\{}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \textcolor{comment}{//PixelMap\ outmap(pmap);}}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ map\_out.\mbox{\hyperlink{class_pixel_map_ae821ad97f54160cc8c9216559f674002}{smooth}}(seeing/2.355);}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00684\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00686\ \ \ \ \ \}}
+\DoxyCodeLine{00687\ \ \ \ \ }
+\DoxyCodeLine{00688\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00689\ \ \ \ \ map\_out.ChangeUnits(map\_in.getUnits());}
+\DoxyCodeLine{00690\ \ \ \ \ }
+\DoxyCodeLine{00691\ \ \ \ \ \textcolor{comment}{//\ paste\ image\ into\ image\ with\ padding}}
+\DoxyCodeLine{00692\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{double}\ \&a\ :image\_padded)\ a=0;}
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<Npix\_x\_input\ ;\ ++i)\{}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0\ ;\ j<Npix\_y\_input\ ;\ ++j)\{}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ image\_padded[\ (i+nborder\_x)*n\_x\ +\ j\ +\ nborder\_y]\ =\ map\_in(i,j);}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00697\ \ \ \ \ \}}
+\DoxyCodeLine{00698\ \ }
+\DoxyCodeLine{00699\ \ \ \ \ fftw\_execute(image\_to\_fft);}
+\DoxyCodeLine{00700\ \ \ \ \ }
+\DoxyCodeLine{00701\ \ \ \ \ \textcolor{comment}{//\ multiply\ by\ DFT\ of\ PSF}}
+\DoxyCodeLine{00702\ \ \ \ \ assert(fft\_psf.size()\ ==\ fft\_padded.size());}
+\DoxyCodeLine{00703\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i=0;}
+\DoxyCodeLine{00704\ \ \ \ \ \textcolor{keywordflow}{for}(std::complex<double>\ \&a\ :\ fft\_padded)\ a\ *=\ fft\_psf[i++];}
+\DoxyCodeLine{00705\ \ \ \ \ }
+\DoxyCodeLine{00706\ \ \ \ \ \textcolor{comment}{//\ inverse\ DFT}}
+\DoxyCodeLine{00707\ \ \ \ \ fftw\_execute(fft\_to\_image);}
+\DoxyCodeLine{00708\ \ \ \ \ }
+\DoxyCodeLine{00709\ \ \ \ \ \textcolor{comment}{//\ copy\ region\ within\ padding}}
+\DoxyCodeLine{00710\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ n\_x*n\_y;}
+\DoxyCodeLine{00711\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ Npix\_x\_input\ ;\ ++i)\{}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=0\ ;\ j<\ Npix\_y\_input\ ;\ ++j)\{}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ map\_out(i,j)\ =\ image\_padded[\ (i+nborder\_x)*n\_x\ +\ j\ +\ nborder\_y]/N;}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00715\ \ \ \ \ \}}
+\DoxyCodeLine{00716\ }
+\DoxyCodeLine{00717\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \}}
+\DoxyCodeLine{00720\ \}}
+\DoxyCodeLine{00721\ }
+\DoxyCodeLine{00725\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00726\ \textcolor{keywordtype}{void}\ Obs::CorrelateNoise(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap)}
+\DoxyCodeLine{00727\ \{}
+\DoxyCodeLine{00728\ \ \ }
+\DoxyCodeLine{00729\ \ \ \textcolor{keywordflow}{if}(sqrt\_noise\_power.size()==0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00730\ \ \ }
+\DoxyCodeLine{00731\ \ \ \textcolor{keywordflow}{if}(pmap.getNx()\ !=\ pmap.getNy())\{}
+\DoxyCodeLine{00732\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Observation::CorrelateNoise()\ Doesn't\ work\ on\ nonsquare\ maps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00733\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00734\ \ \ \}}
+\DoxyCodeLine{00735\ \ \ \textcolor{keywordflow}{if}(pmap.getNx()\ !=\ Npix\_x\_output)\{}
+\DoxyCodeLine{00736\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Observation::CorrelateNoise()\ Map\ must\ have\ the\ same\ dimensions\ as\ the\ observation."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00737\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00738\ \ \ \}}
+\DoxyCodeLine{00739\ \ \ }
+\DoxyCodeLine{00740\ \ \ \ \ \textcolor{comment}{//\ creates\ plane\ for\ fft\ of\ map,\ sets\ properly\ input\ and\ output\ data,\ then\ performs\ fft}}
+\DoxyCodeLine{00741\ \ \ \ \ assert(Npix\_x\_output\ ==\ Npix\_y\_output);}
+\DoxyCodeLine{00742\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ Npix\ =\ Npix\_x\_output;}
+\DoxyCodeLine{00743\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ncorr\_big\_zeropad\_Npixels\ =\ Npix\ +\ side\_ncorr;}
+\DoxyCodeLine{00744\ \ \ \ \ \textcolor{keywordtype}{long}\ Npix\_zeropad\ =\ Npix\ +\ side\_ncorr;}
+\DoxyCodeLine{00745\ \ \ }
+\DoxyCodeLine{00746\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ fftsize\ =\ sqrt\_noise\_power.size();}
+\DoxyCodeLine{00747\ \ \ \ \ }
+\DoxyCodeLine{00748\ \ \ \ \ \textcolor{comment}{//\ rows\ and\ columns\ between\ first\_p\ and\ last\_p\ are\ copied\ in\ the\ zero-\/padded\ version}}
+\DoxyCodeLine{00749\ \ \ \ \ \textcolor{keywordtype}{long}\ first\_p\ =\ side\_ncorr/2;}
+\DoxyCodeLine{00750\ \ \ \ \ \textcolor{keywordtype}{long}\ last\_p\ =\ first\_p\ +\ (Npix-\/1);}
+\DoxyCodeLine{00751\ \ \ \ \ }
+\DoxyCodeLine{00752\ \ \ \ \ \textcolor{comment}{//\ add\ zero-\/padding}}
+\DoxyCodeLine{00753\ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ Npix\_zeropad*Npix\_zeropad;\ i++)}
+\DoxyCodeLine{00754\ \ \ \ \ \{}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ ix\ =\ i/Npix\_zeropad;}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ iy\ =\ i\%Npix\_zeropad;}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ix\ >=\ first\_p\ \&\&\ ix\ <=\ last\_p\ \&\&\ iy\ >=\ first\_p\ \&\&\ iy\ <=\ last\_p)}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ noise\_in\_zeropad[i]\ =\ pmap[(ix-\/side\_ncorr/2)*Npix+(iy-\/side\_ncorr/2)];}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ noise\_in\_zeropad[i]\ =\ 0.;}
+\DoxyCodeLine{00761\ \ \ \ \ \}}
+\DoxyCodeLine{00762\ \ \ \ \ }
+\DoxyCodeLine{00763\ \ \ \ \ \ fftw\_execute(p\_noise\_r2c);}
+\DoxyCodeLine{00764\ \ \ }
+\DoxyCodeLine{00765\ \ \ \ \ \textcolor{comment}{//\ performs\ convolution\ in\ Fourier\ space\ ,\ and\ transforms\ back\ to\ real\ space}}
+\DoxyCodeLine{00766\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ fftsize\ ;\ i++)}
+\DoxyCodeLine{00767\ \ \ \ \ \{}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ i/(Npix\_zeropad/2+1);}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ i\%(Npix\_zeropad/2+1);}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ix>Npix\_zeropad/2)}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ noise\_fft\_image[i]\ *=\ sqrt\_noise\_power[(ncorr\_big\_zeropad\_Npixels-\/(Npix\_zeropad-\/ix))*(ncorr\_big\_zeropad\_Npixels/2+1)+iy];}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ noise\_fft\_image[i]\ *=\ sqrt\_noise\_power[ix*(ncorr\_big\_zeropad\_Npixels/2+1)+iy];}
+\DoxyCodeLine{00774\ \ \ \ \ \}}
+\DoxyCodeLine{00775\ \ \ }
+\DoxyCodeLine{00776\ \ \ \textcolor{comment}{//\ creats\ plane\ for\ perform\ backward\ fft\ after\ convolution,\ sets\ output\ data}}
+\DoxyCodeLine{00777\ \ \ \textcolor{comment}{//double*\ image\_out\ =\ new\ double[Npix\_zeropad*Npix\_zeropad];}}
+\DoxyCodeLine{00778\ \ \ }
+\DoxyCodeLine{00779\ \ \ \ \ fftw\_execute(p\_noise\_c2r);}
+\DoxyCodeLine{00780\ \ \ \ \ }
+\DoxyCodeLine{00781\ \ \ \ \ \textcolor{comment}{//\ translates\ array\ of\ data\ in\ (normalised)\ counts\ map}}
+\DoxyCodeLine{00782\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ Npix\_zeropad*Npix\_zeropad;\ i++)}
+\DoxyCodeLine{00783\ \ \ \ \ \{}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ ix\ =\ i/Npix\_zeropad;}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ iy\ =\ i\%Npix\_zeropad;}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ix\ >=\ first\_p\ \&\&\ ix\ <=\ last\_p\ \&\&\ iy\ >=\ first\_p\ \&\&\ iy\ <=\ last\_p)}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ii\ =\ (ix-\/side\_ncorr/2)*Npix\ +\ (iy-\/side\_ncorr/2);}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ pmap[ii]\ =\ noise\_image\_out[i]/(Npix\_zeropad*Npix\_zeropad);}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00791\ \ \ \ \ \}}
+\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00793\ \}}
+\DoxyCodeLine{00794\ }
+\DoxyCodeLine{00795\ }
+\DoxyCodeLine{00803\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00804\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_observation_aa3d49144d1e21e4900d12f5f5abf4535}{Observation::Convert}}(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_in}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&map\_out}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ psf}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ noise}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00810\ ,\textcolor{keywordtype}{bool}\ cosmic)}
+\DoxyCodeLine{00811\ \{}
+\DoxyCodeLine{00812\ \ \ }
+\DoxyCodeLine{00813\ \ \ assert(map\_in.getNx()\ ==\ Npix\_x\_input);}
+\DoxyCodeLine{00814\ \ \ assert(map\_in.getNy()\ ==\ Npix\_y\_input);}
+\DoxyCodeLine{00815\ }
+\DoxyCodeLine{00816\ \ \ \textcolor{keywordflow}{if}(cosmic)\ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}cosmics\ not\ implemented"{}});}
+\DoxyCodeLine{00817\ \ \ \textcolor{keywordflow}{if}\ (fabs(map\_in.getResolution()*psf\_oversample\ -\/\ pix\_size)\ >\ pix\_size*1.0e-\/5)}
+\DoxyCodeLine{00818\ \ \ \{}
+\DoxyCodeLine{00819\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ resolution\ of\ the\ input\ map\ is\ different\ from\ the\ one\ of\ the\ simulated\ instrument\ in\ Observation::Convert!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00820\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}The\ resolution\ of\ the\ input\ map\ is\ different\ from\ the\ one\ of\ the\ simulated\ instrument!"{}});}
+\DoxyCodeLine{00821\ \ \ \}}
+\DoxyCodeLine{00822\ \ \ }
+\DoxyCodeLine{00823\ \ \ map\_out.Clean();}
+\DoxyCodeLine{00824\ \ \ \textcolor{keywordflow}{if}\ (psf\ ==\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{00825\ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ map\_scratch(\mbox{\hyperlink{struct_point__2d}{Point\_2d}}(0,0).x}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ Npix\_x\_input}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ Npix\_y\_input,\ pix\_size);}
+\DoxyCodeLine{00828\ \ \ \ \ ApplyPSF<T>(map\_in,map\_scratch);}
+\DoxyCodeLine{00829\ \ \ \ \ downsample<T>(map\_scratch,map\_out);}
+\DoxyCodeLine{00830\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00831\ \ \ \ \ downsample<T>(map\_in,map\_out);}
+\DoxyCodeLine{00832\ \ \ \}}
+\DoxyCodeLine{00833\ \ \ ToCounts(map\_out);}
+\DoxyCodeLine{00834\ \ }
+\DoxyCodeLine{00835\ \ \ \textcolor{keywordflow}{if}\ (noise\ ==\ \textcolor{keyword}{true})\ \mbox{\hyperlink{class_observation_ab14b47afd127413449760aebc39245d6}{AddNoise<T>}}(map\_out,error\_map,ran,\textcolor{keyword}{true});}
+\DoxyCodeLine{00836\ \ \ \textcolor{comment}{//ToSurfaceBrightness(map\_out);}}
+\DoxyCodeLine{00837\ \ \ }
+\DoxyCodeLine{00838\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00839\ \}}
+\DoxyCodeLine{00840\ }
+\DoxyCodeLine{00841\ }
+\DoxyCodeLine{00843\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00844\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_observation_ab14b47afd127413449760aebc39245d6}{Observation::AddNoise}}(}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&error\_map}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran,\textcolor{keywordtype}{bool}\ dummy)}
+\DoxyCodeLine{00848\ \{}
+\DoxyCodeLine{00849\ \ \ \textcolor{keywordflow}{if}(pmap.getNx()\ !=\ pmap.getNy())\{}
+\DoxyCodeLine{00850\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Observation::AddNoise()\ Doesn't\ work\ on\ nonsquare\ maps"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00851\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}nonsquare"{}});}
+\DoxyCodeLine{00852\ \ \ \}}
+\DoxyCodeLine{00853\ \ \ \textcolor{keywordflow}{if}(pmap.getUnits()\ !=\ PixelMapUnits::count\_per\_sec)\{}
+\DoxyCodeLine{00854\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Units\ need\ to\ be\ in\ counts\ per\ second\ in\ Observation::AddNoise."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}wrong\ units."{}});}
+\DoxyCodeLine{00856\ \ \ \}}
+\DoxyCodeLine{00857\ \ \ }
+\DoxyCodeLine{00858\ \ \ \textcolor{keywordtype}{double}\ res\_in\_arcsec\ =\ pmap.getResolution()\ /\ arcsecTOradians;}
+\DoxyCodeLine{00859\ \ \ \textcolor{keywordtype}{double}\ back\_mean\ =\ background\_flux\ *\ res\_in\_arcsec*res\_in\_arcsec\ *\ exp\_time\ ;}
+\DoxyCodeLine{00860\ }
+\DoxyCodeLine{00861\ \ \ \textcolor{keywordtype}{double}\ var\_readout\ =\ exp\_num*read\_out\_noise*read\_out\_noise;}
+\DoxyCodeLine{00862\ \ \ \textcolor{keywordtype}{double}\ norm\_map;}
+\DoxyCodeLine{00863\ \ \ }
+\DoxyCodeLine{00864\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ noise\_map(pmap);}
+\DoxyCodeLine{00865\ \ \ \textcolor{comment}{//double\ sum=0,sum2=0;}}
+\DoxyCodeLine{00866\ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ pmap.size();}
+\DoxyCodeLine{00867\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i\ =\ 0;\ i\ <\ N\ ;\ i++)}
+\DoxyCodeLine{00868\ \ \ \{}
+\DoxyCodeLine{00869\ \ \ \ \ norm\_map\ =\ pmap[i]*exp\_time;\ \ \textcolor{comment}{//\ in\ counts}}
+\DoxyCodeLine{00870\ \ \ \ \ \textcolor{keywordflow}{if}\ (norm\_map+back\_mean\ >\ 500.)}
+\DoxyCodeLine{00871\ \ \ \ \ \{}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ sdv\ =\ sqrt(var\_readout\ +\ norm\_map\ +\ back\_mean);}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ noise\_map[i]\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}()*sdv/exp\_time;\ \ \textcolor{comment}{//\ back\ to\ counts\ per\ sec}}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ error\_map[i]\ =\ sdv*sdv/exp\_time/exp\_time;}
+\DoxyCodeLine{00875\ \ \ \ \ \}}
+\DoxyCodeLine{00876\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00877\ \ \ \ \ \{}
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \textcolor{comment}{//\ photons\ from\ mean}}
+\DoxyCodeLine{00879\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ ran.poisson(norm\_map\ +\ back\_mean);}
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ noise\ =\ ran.\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r_a74a33e0a7a47e5b1c33f97d4fe0dca18}{gauss}}()*sqrt(var\_readout);}
+\DoxyCodeLine{00881\ \ \ \ \ \ \ }
+\DoxyCodeLine{00882\ \ \ \ \ \ \ noise\_map[i]\ =\ (k\ +\ noise\ -\/\ back\_mean\ -\/\ norm\_map)/exp\_time;}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ error\_map[i]\ =\ (back\_mean\ +\ norm\_map\ +\ var\_readout)/exp\_time;}
+\DoxyCodeLine{00884\ \ \ \ \ \}}
+\DoxyCodeLine{00885\ \ \ \}}
+\DoxyCodeLine{00886\ }
+\DoxyCodeLine{00887\ \ \ CorrelateNoise(noise\_map);}
+\DoxyCodeLine{00888\ \ \ pmap\ +=\ noise\_map;}
+\DoxyCodeLine{00889\ \ \ }
+\DoxyCodeLine{00890\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00891\ \}}
+\DoxyCodeLine{00892\ }
+\DoxyCodeLine{00894\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00895\ \textcolor{keywordtype}{void}\ Observation::ToCounts(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap)}
+\DoxyCodeLine{00896\ \{}
+\DoxyCodeLine{00897\ \ \ }
+\DoxyCodeLine{00898\ \ \ \textcolor{comment}{//zero\_point\_flux\ =\ pow(10,-\/0.4*mag\_zeropoint);\ \ //\ erg/s/Hz/cm**2}}
+\DoxyCodeLine{00899\ \ \ \textcolor{comment}{//background\_flux\ =\ pow(10,-\/0.4*(back\_mag-\/mag\_zeropoint\ ));}}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ \ \ \textcolor{keywordtype}{double}\ Q;}
+\DoxyCodeLine{00902\ \ \ PixelMapUnits\ units\ =\ pmap.getUnits();}
+\DoxyCodeLine{00903\ \ \ \textcolor{keywordflow}{if}(units\ ==\ PixelMapUnits::count\_per\_sec)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00904\ }
+\DoxyCodeLine{00905\ \ \ \textcolor{keywordflow}{if}(units\ ==\ PixelMapUnits::surfb)\{}
+\DoxyCodeLine{00906\ \ \ \ \ Q\ =\ e\_per\_s\_to\_ergs\_s\_cm2;}
+\DoxyCodeLine{00907\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pmap.getUnits()\ ==\ PixelMapUnits::ADU)\{}
+\DoxyCodeLine{00908\ \ \ \ \ Q\ =\ 1.0/gain;}
+\DoxyCodeLine{00909\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00910\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Map\ needs\ to\ be\ in\ photon\ flux\ units."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00911\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}wrong\ units"{}});}
+\DoxyCodeLine{00912\ \ \ \}}
+\DoxyCodeLine{00913\ \ \ }
+\DoxyCodeLine{00914\ \ \ pmap.\mbox{\hyperlink{class_pixel_map_ad26f4ce83e8402b83f516b007c20fd2f}{Renormalize}}(Q);}
+\DoxyCodeLine{00915\ \ \ pmap.ChangeUnits(PixelMapUnits::count\_per\_sec);}
+\DoxyCodeLine{00916\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00917\ \}}
+\DoxyCodeLine{00918\ }
+\DoxyCodeLine{00920\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00921\ \textcolor{keywordtype}{void}\ Observation::ToSurfaceBrightness(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap)}
+\DoxyCodeLine{00922\ \{}
+\DoxyCodeLine{00923\ }
+\DoxyCodeLine{00924\ \ \ \textcolor{keywordtype}{double}\ Q;}
+\DoxyCodeLine{00925\ \ \ \textcolor{keywordflow}{if}(pmap.getUnits()\ ==\ PixelMapUnits::count\_per\_sec)\{}
+\DoxyCodeLine{00926\ \ \ \ \ Q\ =\ 1.0/e\_per\_s\_to\_ergs\_s\_cm2\ ;}
+\DoxyCodeLine{00927\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pmap.getUnits()\ ==\ PixelMapUnits::ADU)\{}
+\DoxyCodeLine{00928\ \ \ \ \ Q\ =\ 1.0/gain/e\_per\_s\_to\_ergs\_s\_cm2;}
+\DoxyCodeLine{00929\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00930\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Map\ needs\ to\ be\ in\ photon\ flux\ units."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00931\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}wrong\ units"{}});}
+\DoxyCodeLine{00932\ \ \ \}}
+\DoxyCodeLine{00933\ \ \ }
+\DoxyCodeLine{00934\ \ \ pmap.\mbox{\hyperlink{class_pixel_map_ad26f4ce83e8402b83f516b007c20fd2f}{Renormalize}}(Q);}
+\DoxyCodeLine{00935\ \ \ pmap.ChangeUnits(PixelMapUnits::surfb);}
+\DoxyCodeLine{00936\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00937\ \}}
+\DoxyCodeLine{00938\ }
+\DoxyCodeLine{00940\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00941\ \textcolor{keywordtype}{void}\ Observation::ToADU(\mbox{\hyperlink{class_pixel_map}{PixelMap<T>}}\ \&pmap)}
+\DoxyCodeLine{00942\ \{}
+\DoxyCodeLine{00943\ \ \ }
+\DoxyCodeLine{00944\ \ \ ToCounts(pmap);}
+\DoxyCodeLine{00945\ \ \ pmap\ *=\ gain;}
+\DoxyCodeLine{00946\ \ \ pmap.ChangeUnits(PixelMapUnits::ADU);}
+\DoxyCodeLine{00947\ \ \ }
+\DoxyCodeLine{00948\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00949\ \}}
+\DoxyCodeLine{00950\ }
+\DoxyCodeLine{00951\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

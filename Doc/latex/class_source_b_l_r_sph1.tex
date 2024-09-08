@@ -1,8 +1,8 @@
-\hypertarget{class_source_b_l_r_sph1}{}\doxysection{Source\+B\+L\+R\+Sph1 Class Reference}
-\label{class_source_b_l_r_sph1}\index{SourceBLRSph1@{SourceBLRSph1}}
+\doxysection{Source\+BLRSph1 Class Reference}
+\hypertarget{class_source_b_l_r_sph1}{}\label{class_source_b_l_r_sph1}\index{SourceBLRSph1@{SourceBLRSph1}}
 
 
-A source representing a B\+LR with a spherical symmetry and circular orbits.  
+A source representing a BLR with a spherical symmetry and circular orbits.  
 
 
 
@@ -11,46 +11,157 @@ A source representing a B\+LR with a spherical symmetry and circular orbits.
 
 
 
-Inheritance diagram for Source\+B\+L\+R\+Sph1\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=169pt]{class_source_b_l_r_sph1__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for Source\+BLRSph1\+:
+% FIG 0
 
 
-Collaboration diagram for Source\+B\+L\+R\+Sph1\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=169pt]{class_source_b_l_r_sph1__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsection*{Public Member Functions}
+Collaboration diagram for Source\+BLRSph1\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-Pos\+Type \mbox{\hyperlink{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}{Surface\+Brightness}} (const Pos\+Type $\ast$y) const
+Pos\+Type \mbox{\hyperlink{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}{Surface\+Brightness}} (const Pos\+Type \texorpdfstring{$\ast$}{*}y) const
 \item 
-\mbox{\Hypertarget{class_source_b_l_r_sph1_a883f84dade182e5311d92c2f6b388870}\label{class_source_b_l_r_sph1_a883f84dade182e5311d92c2f6b388870}} 
-Pos\+Type {\bfseries get\+Total\+Flux} () const
+Pos\+Type \mbox{\hyperlink{class_source_b_l_r_sph1_a883f84dade182e5311d92c2f6b388870}{get\+Total\+Flux}} () const
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_source_b_l_r}{Source\+BLR}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_source_b_l_r_abb72eeb19e27615e4387d32036f1f901}{print\+Source}} ()
+\item 
+virtual Pos\+Type {\bfseries get\+Radius} () const
+\item 
+Pos\+Type {\bfseries get\+Dl\+Ds} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Source} (Pos\+Type r, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} x, Pos\+Type z, Pos\+Type SBlimit, Pos\+Type zero\+\_\+point)
+\begin{DoxyCompactList}\small\item\em shell constructor \end{DoxyCompactList}\item 
+{\bfseries Source} (const \mbox{\hyperlink{class_source}{Source}} \&s)
+\item 
+\mbox{\hyperlink{class_source}{Source}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_source}{Source}} \&s)
+\item 
+double {\bfseries SBlimit\+\_\+magarcsec} (double limit)
+\begin{DoxyCompactList}\small\item\em convert mag/arcsec\texorpdfstring{$^\wedge$}{\string^}2 to flux units \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+SBlimit} ()
+\begin{DoxyCompactList}\small\item\em Gets sb\+\_\+limit in erg/cm\texorpdfstring{$^\wedge$}{\string^}2/sec/rad\texorpdfstring{$^\wedge$}{\string^}2/\+Hz. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries get\+SBlimit\+\_\+magarcsec} ()
+\begin{DoxyCompactList}\small\item\em Gets sb\+\_\+limit in mag/arcsec\texorpdfstring{$^\wedge$}{\string^}2. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries getZ} () const
+\begin{DoxyCompactList}\small\item\em Redshift of source. \end{DoxyCompactList}\item 
+void {\bfseries setZ} (Pos\+Type my\+\_\+z)
+\item 
+Pos\+Type {\bfseries get\+Radius} () const
+\begin{DoxyCompactList}\small\item\em Radius of source in radians. \end{DoxyCompactList}\item 
+void {\bfseries set\+Radius} (Pos\+Type my\+\_\+radius)
+\begin{DoxyCompactList}\small\item\em Reset the radius of the source in radians. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries get\+Theta} () const
+\begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
+void {\bfseries get\+Theta} (Pos\+Type \texorpdfstring{$\ast$}{*}x) const
+\begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
+void {\bfseries get\+Theta} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x) const
+\begin{DoxyCompactList}\small\item\em position of source in radians \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (Pos\+Type \texorpdfstring{$\ast$}{*}xx)
+\begin{DoxyCompactList}\small\item\em Reset the position of the source in radians. \end{DoxyCompactList}\item 
+void {\bfseries set\+Theta} (Pos\+Type my\+\_\+x, Pos\+Type my\+\_\+y)
+\item 
+void {\bfseries set\+Theta} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&p)
+\item 
+void {\bfseries set\+SBlimit} (float limit)
+\begin{DoxyCompactList}\small\item\em Sets sb\+\_\+limit in erg/cm\texorpdfstring{$^\wedge$}{\string^}2/sec/rad\texorpdfstring{$^\wedge$}{\string^}2/\+Hz. \end{DoxyCompactList}\item 
+void {\bfseries set\+Mag\+Zero\+Point} (float zeropoint)
+\item 
+double {\bfseries get\+Mag\+Zero\+Point} ()
+\item 
+Pos\+Type \mbox{\hyperlink{class_source_a24792a230ec1b4155cb028c19a142046}{change\+Filter}} (std\+::string filter\+\_\+in, std\+::string filter\+\_\+out, std\+::string sed)
+\begin{DoxyCompactList}\small\item\em Calculates the difference in magnitude when changing the observing filter. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries integrate\+Filter} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil)
+\begin{DoxyCompactList}\small\item\em Calculates the integral of the filter curve given as an array of (x,y) values. \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries integrate\+Filter\+SED} (std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+fil, std\+::vector$<$ Pos\+Type $>$ fil, std\+::vector$<$ Pos\+Type $>$ wavel\+\_\+sed, std\+::vector$<$ Pos\+Type $>$ sed)
+\begin{DoxyCompactList}\small\item\em Calculates the integral of the sed multiplied by the filter curve. \end{DoxyCompactList}\item 
+double {\bfseries TEST\+\_\+surface\+\_\+brightness} (double res, int N)
+\begin{DoxyCompactList}\small\item\em test if flux in pixels matches total flux \end{DoxyCompactList}\item 
+long {\bfseries get\+ID} () const
+\item 
+void {\bfseries set\+ID} (long i)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+static Pos\+Type \texorpdfstring{$\ast$}{*} {\bfseries getx} (\mbox{\hyperlink{class_source}{Source}} \&source)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_source_b_l_r}{Source\+BLR}}}
+\begin{DoxyCompactItemize}
+\item 
+Pos\+Type {\bfseries source\+\_\+tau}
+\begin{DoxyCompactList}\small\item\em lag time \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries source\+\_\+nu}
+\begin{DoxyCompactList}\small\item\em frequency \end{DoxyCompactList}\item 
+float {\bfseries source\+\_\+nuo}
+\item 
+float {\bfseries source\+\_\+r\+\_\+in}
+\begin{DoxyCompactList}\small\item\em inner radius of BLR \end{DoxyCompactList}\item 
+float {\bfseries source\+\_\+r\+\_\+out}
+\begin{DoxyCompactList}\small\item\em outer radius of BLR \end{DoxyCompactList}\item 
+float {\bfseries source\+\_\+inclination}
+\begin{DoxyCompactList}\small\item\em inclination of BLR in radians, face on is \end{DoxyCompactList}\item 
+float {\bfseries source\+\_\+opening\+\_\+angle}
+\item 
+float {\bfseries source\+\_\+gamma}
+\item 
+float {\bfseries source\+\_\+\+BHmass}
+\item 
+float {\bfseries source\+\_\+fK}
+\begin{DoxyCompactList}\small\item\em fraction of Keplerian velocity in random motions \end{DoxyCompactList}\item 
+bool {\bfseries source\+\_\+monocrome}
+\begin{DoxyCompactList}\small\item\em set to true to integrate over frequency \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries flux\+\_\+to\+\_\+mag} (double flux) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_source}{Source}}}
+\begin{DoxyCompactItemize}
+\item 
+Pos\+Type {\bfseries source\+\_\+r}
+\begin{DoxyCompactList}\small\item\em charactoristic source size \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries source\+\_\+x}
+\begin{DoxyCompactList}\small\item\em center of source \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries zsource}
+\begin{DoxyCompactList}\small\item\em redshift of source \end{DoxyCompactList}\item 
+Pos\+Type {\bfseries sb\+\_\+limit}
+\item 
+long {\bfseries id}
+\item 
+double {\bfseries mag\+\_\+zero\+\_\+point}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-A source representing a B\+LR with a spherical symmetry and circular orbits. 
+A source representing a BLR with a spherical symmetry and circular orbits. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}\label{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}} 
-\index{SourceBLRSph1@{SourceBLRSph1}!SurfaceBrightness@{SurfaceBrightness}}
+\Hypertarget{class_source_b_l_r_sph1_a883f84dade182e5311d92c2f6b388870}\index{SourceBLRSph1@{SourceBLRSph1}!getTotalFlux@{getTotalFlux}}
+\index{getTotalFlux@{getTotalFlux}!SourceBLRSph1@{SourceBLRSph1}}
+\doxysubsubsection{\texorpdfstring{getTotalFlux()}{getTotalFlux()}}
+{\footnotesize\ttfamily \label{class_source_b_l_r_sph1_a883f84dade182e5311d92c2f6b388870} 
+Pos\+Type Source\+BLRSph1\+::get\+Total\+Flux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_source_b_l_r}{Source\+BLR}}.
+
+\Hypertarget{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403}\index{SourceBLRSph1@{SourceBLRSph1}!SurfaceBrightness@{SurfaceBrightness}}
 \index{SurfaceBrightness@{SurfaceBrightness}!SourceBLRSph1@{SourceBLRSph1}}
 \doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
-{\footnotesize\ttfamily Pos\+Type Source\+B\+L\+R\+Sph1\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{class_source_b_l_r_sph1_ae498af8096a5bb667d37070e306c0403} 
+Pos\+Type Source\+BLRSph1\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 Surface brightness of source in grid coordinates not source centered coordinates.
 
-The units shuld be ergs / s / Hz / cm$^\wedge$2 
+The units shuld be ergs / s / Hz / cm\texorpdfstring{$^\wedge$}{\string^}2 
 
 Implements \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Source}}.
 
@@ -58,5 +169,5 @@ Implements \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Sour
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/source.\+h\item 
-S\+Lsim\+Lib/\+Analytic\+N\+S\+I\+E/source.\+cpp\end{DoxyCompactItemize}
+SLsim\+Lib/include/source.\+h\item 
+SLsim\+Lib/\+Analytic\+NSIE/source.\+cpp\end{DoxyCompactItemize}

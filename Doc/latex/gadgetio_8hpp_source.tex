@@ -1,0 +1,60 @@
+\doxysection{gadgetio.\+hpp}
+\hypertarget{gadgetio_8hpp_source}{}\label{gadgetio_8hpp_source}\index{SLsimLib/include/gadgetio.hpp@{SLsimLib/include/gadgetio.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ gadgetio.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ \ Created\ by\ bmetcalf\ on\ 07.11.18.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ gadgetio\_hpp}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ gadgetio\_hpp}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{struct\ }gadget\_header}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{int}\ npart[6];}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{double}\ mass[6];}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{double}\ time;}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{double}\ redshift;}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{int}\ flag\_sfr;}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{int}\ flag\_feedback;}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{int}\ npartTotal[6];}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{int}\ flag\_cooling;}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{int}\ num\_files;}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{double}\ BoxSize;}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{double}\ Omega0;}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ OmegaLambda;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{double}\ HubbleParam;}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{char}\ fill[256\ -\/\ 6\ *\ 4\ -\/\ 6\ *\ 8\ -\/\ 2\ *\ 8\ -\/\ 2\ *\ 4\ -\/\ 6\ *\ 4\ -\/\ 2\ *\ 4\ -\/\ 4\ *\ 8];\ \ \textcolor{comment}{/*\ fills\ to\ 256\ Bytes\ */}}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{struct\ }gadget\_particle\_data}
+\DoxyCodeLine{00031\ \{}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{float}\ Pos[3];}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{float}\ Vel[3];}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{float}\ Mass;}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{int}\ Type;}
+\DoxyCodeLine{00036\ \ \ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{float}\ Rho,\ U,\ Temp,\ Ne;}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ load\_snapshot\_gadget2(\textcolor{keywordtype}{char}\ *fname\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ nfiles\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<gadget\_particle\_data>\ \&p\ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<int>\ IDs\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,gadget\_header\ \&header1\ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ \&NumPart\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ \&Ngas\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ load\_snapshot\_gadget2(\textcolor{keywordtype}{char}\ *fname}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ nfiles}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<ParticleData<float>\ >\ \&xp}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<int>\ \&ntypes}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ gadgetio\_hpp\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

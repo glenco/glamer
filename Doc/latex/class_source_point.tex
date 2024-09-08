@@ -1,5 +1,5 @@
-\hypertarget{class_source_point}{}\doxysection{Source\+Point Class Reference}
-\label{class_source_point}\index{SourcePoint@{SourcePoint}}
+\doxysection{Source\+Point Class Reference}
+\hypertarget{class_source_point}{}\label{class_source_point}\index{SourcePoint@{SourcePoint}}
 
 
 A uniform surface brightness circular source.  
@@ -9,24 +9,18 @@ A uniform surface brightness circular source.
 
 {\ttfamily \#include $<$source.\+h$>$}
 
-
-
-Inherits Source\+Colored.
-
-\doxysubsection*{Public Member Functions}
+\doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_source_point_a8f1cacd51ae207c159805b5df11f4391}{Source\+Point}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} position, Pos\+Type z, Pos\+Type magnitude, Pos\+Type radius\+\_\+in\+\_\+radians, double S\+Blimit, Pos\+Type zero\+\_\+point)
+\mbox{\hyperlink{class_source_point_a3919bf7aca6f547b059e4fe491218124}{Source\+Point}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} position, Pos\+Type z, Pos\+Type magnitude, Pos\+Type radius\+\_\+in\+\_\+radians, double SBlimit, \mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}} band)
 \item 
-virtual Pos\+Type \mbox{\hyperlink{class_source_point_a11f8f20734df59ae970239bd87e9c342}{Surface\+Brightness}} (const Pos\+Type $\ast$y) const
+virtual Pos\+Type \mbox{\hyperlink{class_source_point_a11f8f20734df59ae970239bd87e9c342}{Surface\+Brightness}} (const Pos\+Type \texorpdfstring{$\ast$}{*}y) const
 \item 
-\mbox{\Hypertarget{class_source_point_a8b3d69d3077412b4887cdf5296f1b106}\label{class_source_point_a8b3d69d3077412b4887cdf5296f1b106}} 
-void {\bfseries print\+Source} ()
+void \mbox{\hyperlink{class_source_point_a8b3d69d3077412b4887cdf5296f1b106}{print\+Source}} ()
 \item 
-\mbox{\Hypertarget{class_source_point_a5cc76fadf7e7fb0ac74b2bd70b4d1672}\label{class_source_point_a5cc76fadf7e7fb0ac74b2bd70b4d1672}} 
-void {\bfseries assign\+Params} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
+void \mbox{\hyperlink{class_source_point_a5cc76fadf7e7fb0ac74b2bd70b4d1672}{assign\+Params}} (\mbox{\hyperlink{class_input_params}{Input\+Params}} \&params)
 \item 
-\mbox{\Hypertarget{class_source_point_ade6c28ba1e298755966692140d290bcf}\label{class_source_point_ade6c28ba1e298755966692140d290bcf}} 
+\Hypertarget{class_source_point_ade6c28ba1e298755966692140d290bcf}\label{class_source_point_ade6c28ba1e298755966692140d290bcf} 
 void {\bfseries rotate} (Pos\+Type t)
 \end{DoxyCompactItemize}
 
@@ -35,39 +29,59 @@ void {\bfseries rotate} (Pos\+Type t)
 A uniform surface brightness circular source. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_source_point_a8f1cacd51ae207c159805b5df11f4391}\label{class_source_point_a8f1cacd51ae207c159805b5df11f4391}} 
-\index{SourcePoint@{SourcePoint}!SourcePoint@{SourcePoint}}
+\Hypertarget{class_source_point_a3919bf7aca6f547b059e4fe491218124}\index{SourcePoint@{SourcePoint}!SourcePoint@{SourcePoint}}
 \index{SourcePoint@{SourcePoint}!SourcePoint@{SourcePoint}}
 \doxysubsubsection{\texorpdfstring{SourcePoint()}{SourcePoint()}}
-{\footnotesize\ttfamily Source\+Point\+::\+Source\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{position,  }\item[{Pos\+Type}]{z,  }\item[{Pos\+Type}]{magnitude,  }\item[{Pos\+Type}]{radius\+\_\+in\+\_\+radians,  }\item[{double}]{S\+Blimit,  }\item[{Pos\+Type}]{zero\+\_\+point }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{class_source_point_a3919bf7aca6f547b059e4fe491218124} 
+Source\+Point\+::\+Source\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{position}{, }\item[{Pos\+Type}]{z}{, }\item[{Pos\+Type}]{magnitude}{, }\item[{Pos\+Type}]{radius\+\_\+in\+\_\+radians}{, }\item[{double}]{SBlimit}{, }\item[{\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}}]{band}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 \begin{DoxyParams}{Parameters}
-{\em position} & postion on the sky in radians \\
+{\em position} & postion on the sky in radians  \\
 \hline
-{\em z} & redshift of source \\
+{\em z} & redshift of source  \\
 \hline
-{\em magnitude} & unlensed brightness \\
+{\em magnitude} & unlensed brightness  \\
 \hline
-{\em radius\+\_\+in\+\_\+radians} & radius of source in radians \\
+{\em radius\+\_\+in\+\_\+radians} & radius of source in radians  \\
 \hline
-{\em S\+Blimit} & minimum surface brightness limit \\
+{\em SBlimit} & minimum surface brightness limit  \\
 \hline
-{\em zero\+\_\+point} & radius of source in radians \\
+{\em band} & radius of source in radians \\
 \hline
 \end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_source_point_a11f8f20734df59ae970239bd87e9c342}\label{class_source_point_a11f8f20734df59ae970239bd87e9c342}} 
-\index{SourcePoint@{SourcePoint}!SurfaceBrightness@{SurfaceBrightness}}
+\Hypertarget{class_source_point_a5cc76fadf7e7fb0ac74b2bd70b4d1672}\index{SourcePoint@{SourcePoint}!assignParams@{assignParams}}
+\index{assignParams@{assignParams}!SourcePoint@{SourcePoint}}
+\doxysubsubsection{\texorpdfstring{assignParams()}{assignParams()}}
+{\footnotesize\ttfamily \label{class_source_point_a5cc76fadf7e7fb0ac74b2bd70b4d1672} 
+void Source\+Point\+::assign\+Params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_params}{Input\+Params}} \&}]{params}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_source}{Source}}.
+
+\Hypertarget{class_source_point_a8b3d69d3077412b4887cdf5296f1b106}\index{SourcePoint@{SourcePoint}!printSource@{printSource}}
+\index{printSource@{printSource}!SourcePoint@{SourcePoint}}
+\doxysubsubsection{\texorpdfstring{printSource()}{printSource()}}
+{\footnotesize\ttfamily \label{class_source_point_a8b3d69d3077412b4887cdf5296f1b106} 
+void Source\+Point\+::print\+Source (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_source}{Source}}.
+
+\Hypertarget{class_source_point_a11f8f20734df59ae970239bd87e9c342}\index{SourcePoint@{SourcePoint}!SurfaceBrightness@{SurfaceBrightness}}
 \index{SurfaceBrightness@{SurfaceBrightness}!SourcePoint@{SourcePoint}}
 \doxysubsubsection{\texorpdfstring{SurfaceBrightness()}{SurfaceBrightness()}}
-{\footnotesize\ttfamily virtual Pos\+Type Source\+Point\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type $\ast$}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{class_source_point_a11f8f20734df59ae970239bd87e9c342} 
+virtual Pos\+Type Source\+Point\+::\+Surface\+Brightness (\begin{DoxyParamCaption}\item[{const Pos\+Type \texorpdfstring{$\ast$}{*}}]{y}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
 
 Surface brightness of source in grid coordinates not source centered coordinates.
 
-The units shuld be ergs / s / Hz / cm$^\wedge$2 
+The units shuld be ergs / s / Hz / cm\texorpdfstring{$^\wedge$}{\string^}2 
 
 Implements \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Source}}.
 
@@ -75,4 +89,4 @@ Implements \mbox{\hyperlink{class_source_a3cd419a342712d907529e9725fb90462}{Sour
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/source.\+h\end{DoxyCompactItemize}
+SLsim\+Lib/include/source.\+h\end{DoxyCompactItemize}

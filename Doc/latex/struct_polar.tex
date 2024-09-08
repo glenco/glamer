@@ -1,5 +1,5 @@
-\hypertarget{struct_polar}{}\doxysection{Polar$<$ T $>$ Struct Template Reference}
-\label{struct_polar}\index{Polar$<$ T $>$@{Polar$<$ T $>$}}
+\doxysection{Polar\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_polar}{}\label{struct_polar}\index{Polar$<$ T $>$@{Polar$<$ T $>$}}
 
 
 this data class represents a postion inspherical coordinates and a polarization relative to the sphircal coordinate system  
@@ -11,40 +11,89 @@ this data class represents a postion inspherical coordinates and a polarization 
 
 
 
-Inheritance diagram for Polar$<$ T $>$\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=189pt]{struct_polar__inherit__graph}
-\end{center}
-\end{figure}
+Inheritance diagram for Polar\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+% FIG 0
 
 
-Collaboration diagram for Polar$<$ T $>$\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=262pt]{struct_polar__coll__graph}
-\end{center}
-\end{figure}
-\doxysubsection*{Public Attributes}
+Collaboration diagram for Polar\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}\+:
+% FIG 1
+\doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{struct_polar_a3cd631ffdfbdb22f85756db7f785e1ba}\label{struct_polar_a3cd631ffdfbdb22f85756db7f785e1ba}} 
+\Hypertarget{struct_polar_a3cd631ffdfbdb22f85756db7f785e1ba}\label{struct_polar_a3cd631ffdfbdb22f85756db7f785e1ba} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries shear}
 \item 
-\mbox{\Hypertarget{struct_polar_a7bc2ebbac5d66bcaf1f2a5fe61f7ee00}\label{struct_polar_a7bc2ebbac5d66bcaf1f2a5fe61f7ee00}} 
+\Hypertarget{struct_polar_a7bc2ebbac5d66bcaf1f2a5fe61f7ee00}\label{struct_polar_a7bc2ebbac5d66bcaf1f2a5fe61f7ee00} 
 T {\bfseries kappa}
 \end{DoxyCompactItemize}
-\doxysubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities\+::\+Geometry\+::\+Spherical\+Point$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+T {\bfseries r}
+\item 
+T {\bfseries theta}
+\item 
+T {\bfseries phi}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities\+::\+Geometry\+::\+Spherical\+Point$<$ T $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Spherical\+Point} (T r, T theta, T phi)
+\item 
+{\bfseries Spherical\+Point} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ \&x)
+\item 
+\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&p)
+\item 
+\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \& {\bfseries operator=} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ \&x)
+\item 
+bool {\bfseries operator==} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&p) const
+\item 
+void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ad0cd07ad99b02ebd9ab7865628864a52}{TOcartisian}} (T x\mbox{[}$\,$\mbox{]}) const
+\begin{DoxyCompactList}\small\item\em output Cartesian coordinates of the point \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries TOcartisian} () const
+\begin{DoxyCompactList}\small\item\em output cartisian coordinates of the point \end{DoxyCompactList}\item 
+void {\bfseries cartisian\+TOspherical} (T const x\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em set the spherical coordinates of the point from the cartisian coordinates \end{DoxyCompactList}\item 
+void {\bfseries TOspherical} (\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ \&x)
+\item 
+void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac1d6bdae89c2c573839d7d2b2f9a5d60}{Stereographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central, T x\mbox{[}$\,$\mbox{]}) const
+\begin{DoxyCompactList}\small\item\em Calculates the stereographic projection of the point onto a plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ab54e0e23916914cfa56ce00165fd10b6}{Stereographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x) const
+\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a8d33245353c378233431c4507fdc3934}{Stereographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central) const
+\item 
+void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a43cc24662ece4dc00213569c3bc03f7f}{Orthographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central, T x\mbox{[}$\,$\mbox{]}) const
+\begin{DoxyCompactList}\small\item\em Calculates the orthographic projection of the point onto a plane. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae2991aa2033a3eaff5fe5e759d506311}{Orthographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central) const
+\item 
+void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ac6bd383d580f56249a1552042a39c432}{Inverse\+Orthographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central, T const x\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Convert from an orthographic projection of the plane onto the unit sphere. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae63bac769d9c3c04201e541801fecc97}{Inverse\+Orthographic\+Projection}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x)
+\item 
+\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}}$<$ T $>$ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a9cfa956c3c905f3db0f8c18b00dee579}{Inverse\+Orthographic\+Projection}} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x)
+\item 
+T {\bfseries angular\+\_\+separation} (\mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&p)
+\begin{DoxyCompactList}\small\item\em angle between points. This uses the haversine formula that is more stable for small angles than the more commin formula \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries unit\+Phi} ()
+\begin{DoxyCompactList}\small\item\em unit vector in phi direction \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries unit\+Theta} ()
+\begin{DoxyCompactList}\small\item\em unit vector in theta direction \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_ae132408f75bf98a34c1d7c514a77882a}{Orthographic\+Angle\+Theta}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central)
+\begin{DoxyCompactList}\small\item\em the angle between the orthographic x-\/axis and the constant theta curve \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point_a3772a09dcdb4dc94c04f13f8dbbde21e}{Orthographic\+Angle\+Phi}} (const \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Spherical\+Point}} \&central)
+\begin{DoxyCompactList}\small\item\em the angle between the orthographic x-\/axis and the constant Phi curve \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries theta\+\_\+hat} () const
+\item 
+\mbox{\hyperlink{struct_point__3d}{Point\+\_\+3d}}$<$ T $>$ {\bfseries phi\+\_\+hat} () const
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename T$>$\newline
 struct Polar$<$ T $>$}
-
 this data class represents a postion inspherical coordinates and a polarization relative to the sphircal coordinate system 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-S\+Lsim\+Lib/include/shear.\+h\end{DoxyCompactItemize}
+SLsim\+Lib/include/shear.\+h\end{DoxyCompactItemize}

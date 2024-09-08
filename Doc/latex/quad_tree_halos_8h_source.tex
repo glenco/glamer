@@ -1,0 +1,995 @@
+\doxysection{quad\+Tree\+Halos.\+h}
+\hypertarget{quad_tree_halos_8h_source}{}\label{quad_tree_halos_8h_source}\index{SLsimLib/include/quadTreeHalos.h@{SLsimLib/include/quadTreeHalos.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ quadTreeHalos.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Robert\ Benton\ Metcalf\ on\ 30/10/2020.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ quadTreeHalos\_h}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ quadTreeHalos\_h}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}utilities\_slsim.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Tree.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}qTreeNB.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }TreeQuadHalos\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ TreeQuadHalos(}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ **my\_halos}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ ,IndexType\ Npoints}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_inv\_area\ =\ 0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ bucket\ =\ 5}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ theta\_force\ =\ 0.5}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ my\_periodic\_buffer\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_inv\_screening\_scale\ =\ 0}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ maximum\_range\ \ =\ -\/1}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00047\ \ \ \string~TreeQuadHalos();}
+\DoxyCodeLine{00048\ \ \ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}};}
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ force2D(PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *phi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ \ \ }
+\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//void\ force2D\_recur(const\ PosType\ *ray,PosType\ *alpha,KappaType\ *kappa}}
+\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *gamma,KappaType\ *phi);}}
+\DoxyCodeLine{00055\ \ \ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ neighbors(PosType\ ray[],PosType\ rmax,std::list<IndexType>\ \&neighbors)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ neighbors(PosType\ ray[],PosType\ rmax,std::vector<LensHaloType\ *>\ \&neighbors)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ printParticlesInBranch(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ number);}
+\DoxyCodeLine{00061\ \ \ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ printBranchs(\textcolor{keywordtype}{int}\ level\ =\ -\/1);}
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00065\ \ \ }
+\DoxyCodeLine{00066\ \ \ std::vector<PosType>\ workspace;}
+\DoxyCodeLine{00067\ \ \ PosType\ **xp;}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{bool}\ MultiMass;}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{bool}\ MultiRadius;}
+\DoxyCodeLine{00070\ \ \ }
+\DoxyCodeLine{00071\ \ \ IndexType\ Nparticles;}
+\DoxyCodeLine{00072\ \ \ PosType\ inv\_area;}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{int}\ Nbucket;}
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00075\ \ \ PosType\ force\_theta;}
+\DoxyCodeLine{00076\ \ \ PosType\ max\_range;}
+\DoxyCodeLine{00077\ \ \ }
+\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ tree;}
+\DoxyCodeLine{00079\ \ \ std::vector<IndexType>\ index;}
+\DoxyCodeLine{00080\ \ \ }
+\DoxyCodeLine{00081\ \ \ \textcolor{comment}{//bool\ haloON;}}
+\DoxyCodeLine{00082\ \ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ **halos;}
+\DoxyCodeLine{00083\ \ \ }
+\DoxyCodeLine{00084\ \ \ PosType\ realray[2];}
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{int}\ incell,incell2;}
+\DoxyCodeLine{00086\ \ \ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{bool}\ periodic\_buffer;}
+\DoxyCodeLine{00089\ \ \ PosType\ inv\_screening\_scale2;}
+\DoxyCodeLine{00090\ \ \ PosType\ original\_xl;\ \ \textcolor{comment}{//\ x-\/axis\ size\ of\ simulation\ used\ for\ peridic\ buffering.\ \ Requrement\ that\ it\ top\ branch\ be\ square\ my\ make\ it\ differ\ from\ the\ size\ of\ top\ branch.}}
+\DoxyCodeLine{00091\ \ \ PosType\ original\_yl;\ \ \textcolor{comment}{//\ x-\/axis\ size\ of\ simulation\ used\ for\ peridic\ buffering.}}
+\DoxyCodeLine{00092\ \ \ }
+\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ BuildQTreeNB(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles);}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ \_BuildQTreeNB(IndexType\ nparticles,IndexType\ *particles);}
+\DoxyCodeLine{00095\ \ \ }
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{short}\ WhichQuad(PosType\ *x,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ \&branch);}
+\DoxyCodeLine{00097\ \ \ }
+\DoxyCodeLine{00098\ \ \ \textcolor{comment}{//inline\ bool\ atLeaf();}}
+\DoxyCodeLine{00099\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inbox(\textcolor{keyword}{const}\ PosType\ *ray,\textcolor{keyword}{const}\ PosType\ *p1,\textcolor{keyword}{const}\ PosType\ *p2)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{return}\ (ray[0]>=p1[0])*(ray[0]<=p2[0])*(ray[1]>=p1[1])*(ray[1]<=p2[1]);}
+\DoxyCodeLine{00101\ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \textcolor{comment}{//int\ cutbox(PosType\ *ray,PosType\ *p1,PosType\ *p2,float\ rmax);}}
+\DoxyCodeLine{00103\ \ \ }
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{void}\ CalcMoments();}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{void}\ rotate\_coordinates(PosType\ **coord);}
+\DoxyCodeLine{00106\ \ \ }
+\DoxyCodeLine{00107\ \ \ \textcolor{comment}{//QTreeNBHndl\ rotate\_simulation(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles}}
+\DoxyCodeLine{00108\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ **coord,PosType\ theta,float\ *rsph,float\ *mass}}
+\DoxyCodeLine{00109\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,bool\ MultiRadius,bool\ MultiMass);}}
+\DoxyCodeLine{00110\ \ \ \textcolor{comment}{//QTreeNBHndl\ rotate\_project(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles}}
+\DoxyCodeLine{00111\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ **coord,PosType\ theta,float\ *rsph,float\ *mass}}
+\DoxyCodeLine{00112\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,bool\ MultiRadius,bool\ MultiMass);}}
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ cuttoffscale(\mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ tree,PosType\ *theta);}
+\DoxyCodeLine{00114\ \ \ }
+\DoxyCodeLine{00115\ \ \ \textcolor{comment}{//void\ walkTree\_recur(QBranchNB\ *branch,PosType\ const\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi);}}
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ walkTree\_iter(\mbox{\hyperlink{class_q_biterator}{QBiterator<PosType\ *>}}\ \&treeit,\ PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *gamma,KappaType\ *phi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00118\ \ \ }
+\DoxyCodeLine{00119\ \ \ PosType\ phiintconst;}
+\DoxyCodeLine{00120\ \ \ }
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00128\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00129\ TreeQuadHalos<LensHaloType>::TreeQuadHalos(}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ **my\_halos\ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,IndexType\ Npoints\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_inv\_area\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ bucket\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_theta\_force\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ periodic\_buffer\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_inv\_screening\_scale\ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ maximum\_range\ \ }
+\DoxyCodeLine{00138\ ):}
+\DoxyCodeLine{00139\ MultiMass(true),MultiRadius(true)\textcolor{comment}{//,masses(NULL),sizes(NULL)}}
+\DoxyCodeLine{00140\ ,Nparticles(Npoints),inv\_area(my\_inv\_area),Nbucket(bucket)}
+\DoxyCodeLine{00141\ ,force\_theta(my\_theta\_force)}
+\DoxyCodeLine{00142\ ,max\_range(maximum\_range),halos(my\_halos),periodic\_buffer(periodic\_buffer)}
+\DoxyCodeLine{00143\ ,inv\_screening\_scale2(my\_inv\_screening\_scale*my\_inv\_screening\_scale)}
+\DoxyCodeLine{00144\ \{}
+\DoxyCodeLine{00145\ \ \ index.resize(Npoints);}
+\DoxyCodeLine{00146\ \ \ IndexType\ ii;}
+\DoxyCodeLine{00147\ \ \ }
+\DoxyCodeLine{00148\ \ \ \textcolor{keywordflow}{for}(ii=0;ii<Npoints;++ii)\ index[ii]\ =\ ii;}
+\DoxyCodeLine{00149\ \ \ }
+\DoxyCodeLine{00150\ \ \ \textcolor{comment}{//\ copy\ halo\ positions\ into\ xp\ array\ to\ make\ compatable\ with\ QTreeNB}}
+\DoxyCodeLine{00151\ \ \ xp\ =\ Utilities::PosTypeMatrix(Npoints,2);}
+\DoxyCodeLine{00152\ \ \ \textcolor{keywordflow}{for}(ii=0;ii<Npoints;++ii)\ halos[ii]-\/>getX(xp[ii]);}
+\DoxyCodeLine{00153\ \ \ }
+\DoxyCodeLine{00154\ \ \ \textcolor{keywordflow}{if}(Npoints\ >\ 0)\{}
+\DoxyCodeLine{00155\ \ \ \ \ tree\ =\ BuildQTreeNB(xp,Npoints,index.data());}
+\DoxyCodeLine{00156\ \ \ \ \ CalcMoments();}
+\DoxyCodeLine{00157\ \ \ \}}
+\DoxyCodeLine{00158\ \ \ }
+\DoxyCodeLine{00159\ \ \ phiintconst\ =\ (120*log(2.)\ -\/\ 631.)/840\ +\ 19./70;}
+\DoxyCodeLine{00160\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00161\ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00164\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00165\ TreeQuadHalos<LensHaloType>::\string~TreeQuadHalos()}
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \textcolor{keywordflow}{if}(Nparticles\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00168\ \ \ \textcolor{keyword}{delete}\ tree;}
+\DoxyCodeLine{00169\ \ \ Utilities::free\_PosTypeMatrix(xp,Nparticles,2);}
+\DoxyCodeLine{00170\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00171\ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00174\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ TreeQuadHalos<LensHaloType>::BuildQTreeNB(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles)\{}
+\DoxyCodeLine{00175\ \ \ IndexType\ i;}
+\DoxyCodeLine{00176\ \ \ \textcolor{keywordtype}{short}\ j;}
+\DoxyCodeLine{00177\ \ \ PosType\ p1[2],p2[2];}
+\DoxyCodeLine{00178\ \ \ }
+\DoxyCodeLine{00179\ \ \ \textcolor{keywordflow}{for}(j=0;j<2;++j)\{}
+\DoxyCodeLine{00180\ \ \ \ \ p1[j]=xp[0][j];}
+\DoxyCodeLine{00181\ \ \ \ \ p2[j]=xp[0][j];}
+\DoxyCodeLine{00182\ \ \ \}}
+\DoxyCodeLine{00183\ \ \ }
+\DoxyCodeLine{00184\ \ \ \textcolor{comment}{//\ Find\ borders\ that\ enclose\ all\ particles}}
+\DoxyCodeLine{00185\ \ \ \textcolor{keywordflow}{for}(i=0;i<Nparticles;++i)\{}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<2;++j)\{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xp[i][j]\ <\ p1[j]\ )\ p1[j]=xp[i][j];}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xp[i][j]\ >\ p2[j]\ )\ p2[j]=xp[i][j];}
+\DoxyCodeLine{00189\ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \}}
+\DoxyCodeLine{00191\ \ \ }
+\DoxyCodeLine{00192\ \ \ \textcolor{keywordflow}{if}(Nparticles\ ==\ 1)\{}
+\DoxyCodeLine{00193\ \ \ \ \ p1[0]=-\/0.25;}
+\DoxyCodeLine{00194\ \ \ \ \ p1[1]=-\/0.25;}
+\DoxyCodeLine{00195\ \ \ \ \ p2[0]=0.25;}
+\DoxyCodeLine{00196\ \ \ \ \ p2[1]=0.25;}
+\DoxyCodeLine{00197\ \ \ \}}
+\DoxyCodeLine{00198\ \ \ }
+\DoxyCodeLine{00199\ \ \ \textcolor{comment}{//\ store\ true\ dimensions\ of\ simulation}}
+\DoxyCodeLine{00200\ \ \ PosType\ lengths[2]\ =\ \{p2[0]-\/p1[0],p2[1]-\/p1[1]\};}
+\DoxyCodeLine{00201\ \ \ original\_xl\ =\ lengths[0];}
+\DoxyCodeLine{00202\ \ \ original\_yl\ =\ lengths[1];}
+\DoxyCodeLine{00203\ \ \ }
+\DoxyCodeLine{00204\ \ \ \textcolor{keywordflow}{if}(lengths[0]\ ==\ 0\ ||\ lengths[1]\ ==\ 0)\{}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}particles\ in\ same\ place."{}});}
+\DoxyCodeLine{00206\ \ \ \}}
+\DoxyCodeLine{00207\ \ \ }
+\DoxyCodeLine{00208\ \ \ \textcolor{comment}{//\ If\ region\ is\ not\ square,\ make\ it\ square.}}
+\DoxyCodeLine{00209\ \ \ j\ =\ lengths[0]\ >\ lengths[1]\ ?\ 1\ :\ 0;}
+\DoxyCodeLine{00210\ \ \ p2[j]\ =\ p1[j]\ +\ lengths[!j];}
+\DoxyCodeLine{00211\ \ \ }
+\DoxyCodeLine{00212\ \ \ \textcolor{comment}{/*\ Initialize\ tree\ root\ */}}
+\DoxyCodeLine{00213\ \ \ tree\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}(xp,particles,Nparticles,p1,p2);}
+\DoxyCodeLine{00214\ \ \ }
+\DoxyCodeLine{00215\ \ \ \textcolor{comment}{/*\ build\ the\ tree\ */}}
+\DoxyCodeLine{00216\ \ \ workspace.resize(Nparticles);}
+\DoxyCodeLine{00217\ \ \ \_BuildQTreeNB(Nparticles,particles);}
+\DoxyCodeLine{00218\ \ \ workspace.clear();}
+\DoxyCodeLine{00219\ \ \ workspace.shrink\_to\_fit();}
+\DoxyCodeLine{00220\ \ \ }
+\DoxyCodeLine{00221\ \ \ \textcolor{comment}{/*\ visit\ every\ branch\ to\ find\ center\ of\ mass\ and\ cutoff\ scale\ */}}
+\DoxyCodeLine{00222\ \ \ tree-\/>moveTop();}
+\DoxyCodeLine{00223\ \ \ }
+\DoxyCodeLine{00224\ \ \ \textcolor{keywordflow}{return}\ tree;}
+\DoxyCodeLine{00225\ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00228\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00229\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{short}\ TreeQuadHalos<LensHaloType>::WhichQuad(PosType\ *x,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ \&branch)\{}
+\DoxyCodeLine{00230\ \ \ \textcolor{keywordflow}{return}\ (x[0]\ <\ branch.\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0])\ +\ 2*(x[1]\ <\ branch.\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]);}
+\DoxyCodeLine{00231\ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00234\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00235\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::\_BuildQTreeNB(IndexType\ nparticles,IndexType\ *particles)\{}
+\DoxyCodeLine{00236\ \ \ }
+\DoxyCodeLine{00237\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *cbranch\ =\ tree-\/>current;\ \textcolor{comment}{/*\ pointer\ to\ current\ branch\ */}}
+\DoxyCodeLine{00238\ \ \ IndexType\ i,j,cut,cut2;}
+\DoxyCodeLine{00239\ \ \ }
+\DoxyCodeLine{00240\ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0]\ =\ (cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]\ +\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0])/2;}
+\DoxyCodeLine{00241\ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]\ =\ (cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]\ +\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1])/2;}
+\DoxyCodeLine{00242\ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[2]=0;}
+\DoxyCodeLine{00243\ \ \ cbranch-\/>mass\ =\ 0.0;}
+\DoxyCodeLine{00244\ \ \ }
+\DoxyCodeLine{00245\ \ \ \textcolor{keywordtype}{double}\ theta\_range\ =\ 2*force\_theta;}
+\DoxyCodeLine{00246\ \ \ \textcolor{keywordflow}{if}(max\_range\ >\ 0)\{}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{double}\ boxsize\ =\ 1.732*(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]);}
+\DoxyCodeLine{00248\ \ \ \ \ theta\_range\ =\ boxsize\ /\ MAX(sqrt(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0]*cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0]}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]*cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]\ )}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ max\_range,\ boxsize\ );}
+\DoxyCodeLine{00251\ \ \ \}}
+\DoxyCodeLine{00252\ \ \ }
+\DoxyCodeLine{00253\ \ \ \textcolor{comment}{//\ leaf\ case}}
+\DoxyCodeLine{00254\ \ \ \textcolor{keywordflow}{if}(cbranch-\/>nparticles\ <=\ Nbucket}
+\DoxyCodeLine{00255\ \ \ \ \ \ ||\ force\_theta\ >\ theta\_range}
+\DoxyCodeLine{00256\ \ \ \ \ \ )\{}
+\DoxyCodeLine{00257\ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}\ =\ cbranch-\/>nparticles;}
+\DoxyCodeLine{00259\ \ \ \ \ cbranch-\/>big\_particles.reset(\ \textcolor{keyword}{new}\ IndexType[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}]\ );}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{for}(i=0,j=0;i<cbranch-\/>nparticles;++i)\{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ cbranch-\/>big\_particles[i]\ =\ particles[i];}
+\DoxyCodeLine{00262\ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ }
+\DoxyCodeLine{00264\ \textcolor{comment}{//\ \ \ \ PosType\ r;}}
+\DoxyCodeLine{00265\ \textcolor{comment}{//\ \ \ \ cbranch-\/>Nbig\_particles\ =\ 0;}}
+\DoxyCodeLine{00266\ \textcolor{comment}{//\ \ \ \ for(i=0;i<cbranch-\/>nparticles;++i)\{}}
+\DoxyCodeLine{00267\ \textcolor{comment}{//\ \ \ \ \ \ jt\ =\ particles[i]*MultiRadius;}}
+\DoxyCodeLine{00268\ \textcolor{comment}{//\ \ \ \ \ \ r\ =\ halos[jt]-\/>get\_Rmax();}}
+\DoxyCodeLine{00269\ \textcolor{comment}{//\ \ \ \ \ \ //r\ =\ haloON\ ?\ halos[particles[i]*MultiRadius].Rmax\ \ :\ sizes[particles[i]*MultiRadius];}}
+\DoxyCodeLine{00270\ \textcolor{comment}{//\ \ \ \ \ \ if(r\ <\ (cbranch-\/>boundary\_p2[0]-\/cbranch-\/>boundary\_p1[0]))\ ++(cbranch-\/>Nbig\_particles);}}
+\DoxyCodeLine{00271\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00272\ \textcolor{comment}{//\ \ \ \ if(cbranch-\/>Nbig\_particles)\{}}
+\DoxyCodeLine{00273\ \textcolor{comment}{//\ \ \ \ \ \ //cbranch-\/>big\_particles\ =\ new\ IndexType[cbranch-\/>Nbig\_particles];}}
+\DoxyCodeLine{00274\ \textcolor{comment}{//\ \ \ \ \ \ cbranch-\/>big\_particles.reset(\ new\ IndexType[cbranch-\/>Nbig\_particles]\ );}}
+\DoxyCodeLine{00275\ \textcolor{comment}{//\ \ \ \ \ \ for(i=0,j=0;i<cbranch-\/>nparticles;++i)\{}}
+\DoxyCodeLine{00276\ \textcolor{comment}{//\ \ \ \ \ \ \ \ jt\ =\ particles[i]*MultiRadius;}}
+\DoxyCodeLine{00277\ \textcolor{comment}{//\ \ \ \ \ \ \ \ r\ =\ halos[jt]-\/>get\_Rmax();}}
+\DoxyCodeLine{00278\ \textcolor{comment}{//\ \ \ \ \ \ \ \ if(r\ <\ (cbranch-\/>boundary\_p2[0]-\/cbranch-\/>boundary\_p1[0]))\ cbranch-\/>big\_particles[j++]\ =\ particles[i];}}
+\DoxyCodeLine{00279\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00280\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00281\ \textcolor{comment}{//\ \ \ \ else\{}}
+\DoxyCodeLine{00282\ \textcolor{comment}{//\ \ \ \ \ \ cbranch-\/>big\_particles.reset(nullptr);}}
+\DoxyCodeLine{00283\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00284\ \textcolor{comment}{//}}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00286\ \ \ \}}
+\DoxyCodeLine{00287\ \ \ }
+\DoxyCodeLine{00288\ \ \ \textcolor{comment}{//\ find\ particles\ too\ big\ to\ be\ in\ children}}
+\DoxyCodeLine{00289\ \ \ }
+\DoxyCodeLine{00290\ \ \ \textcolor{comment}{//PosType\ *x\ =\ new\ PosType[cbranch-\/>nparticles];}}
+\DoxyCodeLine{00291\ \ \ PosType\ *x\ =\ workspace.data();}
+\DoxyCodeLine{00292\ \ \ }
+\DoxyCodeLine{00293\ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}=0;}
+\DoxyCodeLine{00294\ \ \ }
+\DoxyCodeLine{00295\ \ \ \textcolor{keywordflow}{if}(MultiRadius)\{}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{comment}{//\ store\ the\ particles\ that\ are\ too\ large\ to\ be\ in\ a\ child\ at\ the\ end\ of\ the\ list\ of\ particles\ in\ cbranch}}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<cbranch-\/>nparticles;++i)\{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ x[i]\ =\ halos[particles[i]]-\/>get\_Rmax();}
+\DoxyCodeLine{00299\ \ \ \ \ \}}
+\DoxyCodeLine{00300\ \ \ \ \ PosType\ half\_box\ =\ (cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0])/2;}
+\DoxyCodeLine{00301\ \ \ \ \ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{comment}{//\ sort\ particles\ in\ size}}
+\DoxyCodeLine{00303\ \ \ \ \ Utilities::quickPartition(half\_box,\&cut,particles,x,cbranch-\/>nparticles);}
+\DoxyCodeLine{00304\ \ \ \ \ }
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordflow}{if}(cut\ <\ cbranch-\/>nparticles)\{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(tree-\/>atTop())\{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}\ =\ cut2\ =\ cbranch-\/>nparticles-\/cut;}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ Utilities::quickPartition(2*half\_box,\&cut2,\&particles[cut],\&x[cut],cbranch-\/>nparticles-\/cut);}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}\ =\ cut2;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ }
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \textcolor{comment}{//cbranch-\/>big\_particles\ =\ new\ IndexType[cbranch-\/>Nbig\_particles];}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ cbranch-\/>big\_particles.reset(\ \textcolor{keyword}{new}\ IndexType[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}]\ );}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=cut;i<(cut+cut2);++i)\ cbranch-\/>big\_particles[i-\/cut]\ =\ particles[i];}
+\DoxyCodeLine{00316\ \ \ \ \ \}}
+\DoxyCodeLine{00317\ \ \ \ \ }
+\DoxyCodeLine{00318\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00319\ \ \ \ \ x[0]\ =\ halos[0]-\/>get\_Rmax();}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordflow}{if}(x[0]\ >\ (cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0])/2}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \&\&\ x[0]\ <\ (cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]))\{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}\ =\ cbranch-\/>nparticles;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ cbranch-\/>big\_particles.reset(\ \textcolor{keyword}{new}\ IndexType[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}]\ );}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}};++i)\ cbranch-\/>big\_particles[i]\ =\ particles[i];}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ }
+\DoxyCodeLine{00326\ \ \ \ \ \}}
+\DoxyCodeLine{00327\ \ \ \}}
+\DoxyCodeLine{00328\ \ \ }
+\DoxyCodeLine{00329\ \ \ assert(\ cbranch-\/>nparticles\ >=\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af570b2c9d94ec7bdfbe2dd7fa226a735}{Nbig\_particles}}\ );}
+\DoxyCodeLine{00330\ \ \ IndexType\ NpInChildren\ =\ cbranch-\/>nparticles;\textcolor{comment}{//\ -\/\ cbranch-\/>Nbig\_particles;}}
+\DoxyCodeLine{00331\ \ \ assert(NpInChildren\ >=\ 0);}
+\DoxyCodeLine{00332\ \ \ }
+\DoxyCodeLine{00333\ \ \ \textcolor{keywordflow}{if}(NpInChildren\ ==\ 0)\{}
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{comment}{//delete[]\ x;}}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00336\ \ \ \}}
+\DoxyCodeLine{00337\ \ \ }
+\DoxyCodeLine{00338\ \ \ IndexType\ cutx,cuty;}
+\DoxyCodeLine{00339\ \ \ PosType\ xcut,ycut;}
+\DoxyCodeLine{00340\ \ \ }
+\DoxyCodeLine{00341\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child0\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}(cbranch);}
+\DoxyCodeLine{00342\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child1\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}(cbranch);}
+\DoxyCodeLine{00343\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child2\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}(cbranch);}
+\DoxyCodeLine{00344\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *child3\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}(cbranch);}
+\DoxyCodeLine{00345\ \ \ }
+\DoxyCodeLine{00346\ \ \ tree-\/>attachChildrenToCurrent(child0,child1,child2,child3);}
+\DoxyCodeLine{00347\ \ \ }
+\DoxyCodeLine{00348\ \ \ \textcolor{comment}{//\ initialize\ boundaries\ of\ children}}
+\DoxyCodeLine{00349\ \ \ }
+\DoxyCodeLine{00350\ \ \ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0];}
+\DoxyCodeLine{00351\ \ \ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1];}
+\DoxyCodeLine{00352\ \ \ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0];}
+\DoxyCodeLine{00353\ \ \ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1];}
+\DoxyCodeLine{00354\ \ \ child0-\/>boxsize2\ =\ (child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0])*(child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]);}
+\DoxyCodeLine{00355\ \ \ }
+\DoxyCodeLine{00356\ \ \ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0];}
+\DoxyCodeLine{00357\ \ \ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1];}
+\DoxyCodeLine{00358\ \ \ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0];}
+\DoxyCodeLine{00359\ \ \ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1];}
+\DoxyCodeLine{00360\ \ \ child1-\/>boxsize2\ =\ (child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0])*(child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]);}
+\DoxyCodeLine{00361\ \ \ }
+\DoxyCodeLine{00362\ \ \ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0];}
+\DoxyCodeLine{00363\ \ \ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1];}
+\DoxyCodeLine{00364\ \ \ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0];}
+\DoxyCodeLine{00365\ \ \ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1];}
+\DoxyCodeLine{00366\ \ \ child2-\/>boxsize2\ =\ (child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0])*(child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]);}
+\DoxyCodeLine{00367\ \ \ }
+\DoxyCodeLine{00368\ \ \ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0];}
+\DoxyCodeLine{00369\ \ \ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1];}
+\DoxyCodeLine{00370\ \ \ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0];}
+\DoxyCodeLine{00371\ \ \ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1];}
+\DoxyCodeLine{00372\ \ \ child3-\/>boxsize2\ =\ (child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0])*(child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ -\/\ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]);}
+\DoxyCodeLine{00373\ \ \ }
+\DoxyCodeLine{00374\ \ \ }
+\DoxyCodeLine{00375\ \ \ \textcolor{comment}{//\ ****\ makes\ sure\ force\ does\ not\ require\ nbucket\ at\ leaf}}
+\DoxyCodeLine{00376\ \ \ xcut\ =\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0];}
+\DoxyCodeLine{00377\ \ \ ycut\ =\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1];}
+\DoxyCodeLine{00378\ \ \ }
+\DoxyCodeLine{00379\ \ \ \textcolor{comment}{//\ divide\ along\ y\ direction}}
+\DoxyCodeLine{00380\ \ \ \textcolor{keywordflow}{for}(i=0;i<NpInChildren;++i)\ x[i]\ =\ tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[particles[i]][1];}
+\DoxyCodeLine{00381\ \ \ Utilities::quickPartition(ycut,\&cuty,particles,x,NpInChildren);}
+\DoxyCodeLine{00382\ \ \ }
+\DoxyCodeLine{00383\ \ \ \textcolor{keywordflow}{if}(cuty\ >\ 0)\{}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{comment}{//\ divide\ first\ group\ in\ the\ x\ direction}}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<cuty;++i)\ x[i]\ =\ tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[particles[i]][0];}
+\DoxyCodeLine{00386\ \ \ \ \ Utilities::quickPartition(xcut,\&cutx,particles,x,cuty);}
+\DoxyCodeLine{00387\ \ \ \ \ }
+\DoxyCodeLine{00388\ \ \ \ \ child3-\/>nparticles=cutx;}
+\DoxyCodeLine{00389\ \ \ \ \ assert(child3-\/>nparticles\ >=\ 0);}
+\DoxyCodeLine{00390\ \ \ \ \ \textcolor{keywordflow}{if}(child3-\/>nparticles\ >\ 0)}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ particles;}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordflow}{else}\ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00393\ \ \ \ \ }
+\DoxyCodeLine{00394\ \ \ \ \ child2-\/>nparticles\ =\ cuty\ -\/\ cutx;}
+\DoxyCodeLine{00395\ \ \ \ \ assert(child2-\/>nparticles\ >=\ 0);}
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keywordflow}{if}(child2-\/>nparticles\ >\ 0)}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ \&particles[cutx];}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordflow}{else}\ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00399\ \ \ \ \ }
+\DoxyCodeLine{00400\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00401\ \ \ \ \ child3-\/>nparticles\ =\ 0;}
+\DoxyCodeLine{00402\ \ \ \ \ child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00403\ \ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \ \ child2-\/>nparticles\ =\ 0;}
+\DoxyCodeLine{00405\ \ \ \ \ child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00406\ \ \ \}}
+\DoxyCodeLine{00407\ \ \ }
+\DoxyCodeLine{00408\ \ \ \textcolor{keywordflow}{if}(cuty\ <\ NpInChildren)\{}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{comment}{//\ divide\ second\ group\ in\ the\ x\ direction}}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordflow}{for}(i=cuty;i<NpInChildren;++i)\ x[i-\/cuty]\ =\ tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[particles[i]][0];}
+\DoxyCodeLine{00411\ \ \ \ \ Utilities::quickPartition(xcut,\&cutx,\&particles[cuty],x,NpInChildren-\/cuty);}
+\DoxyCodeLine{00412\ \ \ \ \ }
+\DoxyCodeLine{00413\ \ \ \ \ child1-\/>nparticles=cutx;}
+\DoxyCodeLine{00414\ \ \ \ \ assert(child1-\/>nparticles\ >=\ 0);}
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keywordflow}{if}(child1-\/>nparticles\ >\ 0)}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ \&particles[cuty];}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordflow}{else}\ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00418\ \ \ \ \ }
+\DoxyCodeLine{00419\ \ \ \ \ child0-\/>nparticles=NpInChildren\ -\/\ cuty\ -\/\ cutx;}
+\DoxyCodeLine{00420\ \ \ \ \ assert(child0-\/>nparticles\ >=\ 0);}
+\DoxyCodeLine{00421\ \ \ \ \ \textcolor{keywordflow}{if}(child0-\/>nparticles\ >\ 0)}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ \&particles[cuty\ +\ cutx];}
+\DoxyCodeLine{00423\ \ \ \ \ \textcolor{keywordflow}{else}\ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00424\ \ \ \ \ }
+\DoxyCodeLine{00425\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00426\ \ \ \ \ child1-\/>nparticles\ =\ 0;}
+\DoxyCodeLine{00427\ \ \ \ \ child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00428\ \ \ \ \ }
+\DoxyCodeLine{00429\ \ \ \ \ child0-\/>nparticles\ =\ 0;}
+\DoxyCodeLine{00430\ \ \ \ \ child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}\ =\ NULL;}
+\DoxyCodeLine{00431\ \ \ \}}
+\DoxyCodeLine{00432\ \ \ }
+\DoxyCodeLine{00433\ \ \ \textcolor{comment}{//delete[]\ x;}}
+\DoxyCodeLine{00434\ \ \ }
+\DoxyCodeLine{00435\ \ \ tree-\/>moveToChild(0);}
+\DoxyCodeLine{00436\ \ \ \_BuildQTreeNB(child0-\/>nparticles,child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00437\ \ \ tree-\/>moveUp();}
+\DoxyCodeLine{00438\ \ \ }
+\DoxyCodeLine{00439\ \ \ tree-\/>moveToChild(1);}
+\DoxyCodeLine{00440\ \ \ \_BuildQTreeNB(child1-\/>nparticles,child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00441\ \ \ tree-\/>moveUp();}
+\DoxyCodeLine{00442\ \ \ }
+\DoxyCodeLine{00443\ \ \ tree-\/>moveToChild(2);}
+\DoxyCodeLine{00444\ \ \ \_BuildQTreeNB(child2-\/>nparticles,child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00445\ \ \ tree-\/>moveUp();}
+\DoxyCodeLine{00446\ \ \ }
+\DoxyCodeLine{00447\ \ \ tree-\/>moveToChild(3);}
+\DoxyCodeLine{00448\ \ \ \_BuildQTreeNB(child3-\/>nparticles,child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00449\ \ \ tree-\/>moveUp();}
+\DoxyCodeLine{00450\ \ \ }
+\DoxyCodeLine{00451\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00452\ \}}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \textcolor{comment}{//\ calculates\ moments\ of\ the\ mass\ and\ the\ cutoff\ scale\ for\ each\ box}}
+\DoxyCodeLine{00455\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00456\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::CalcMoments()\{}
+\DoxyCodeLine{00457\ \ \ }
+\DoxyCodeLine{00458\ \ \ \textcolor{comment}{//***\ make\ compatable}}
+\DoxyCodeLine{00459\ \ \ IndexType\ i;}
+\DoxyCodeLine{00460\ \ \ PosType\ rcom,xcm[2],xcut;}
+\DoxyCodeLine{00461\ \ \ \mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *cbranch;}
+\DoxyCodeLine{00462\ \ \ PosType\ tmp;}
+\DoxyCodeLine{00463\ \ \ }
+\DoxyCodeLine{00464\ \ \ tree-\/>moveTop();}
+\DoxyCodeLine{00465\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00466\ \ \ \ \ cbranch=tree-\/>current;\ \textcolor{comment}{/*\ pointer\ to\ current\ branch\ */}}
+\DoxyCodeLine{00467\ \ \ \ \ }
+\DoxyCodeLine{00468\ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ad786fedfa32eeabc465a4e68df8d3f20}{rmax}}\ =\ sqrt(\ pow(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0],2)}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ pow(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1],2)\ );}
+\DoxyCodeLine{00470\ \ \ \ \ }
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{comment}{//\ calculate\ mass}}
+\DoxyCodeLine{00472\ \ \ \ \ \textcolor{keywordflow}{for}(i=0,cbranch-\/>mass=0;i<cbranch-\/>nparticles;++i)}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ cbranch-\/>mass\ +=\ \ halos[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]]-\/>get\_mass();}
+\DoxyCodeLine{00474\ \ \ \ \ \ \textcolor{comment}{//cbranch-\/>mass\ +=\ \ haloON\ ?\ halos[cbranch-\/>particles[i]*MultiMass].mass\ :\ masses[cbranch-\/>particles[i]*MultiMass];}}
+\DoxyCodeLine{00475\ \ \ \ \ }
+\DoxyCodeLine{00476\ \ \ \ \ \textcolor{comment}{//\ calculate\ center\ of\ mass}}
+\DoxyCodeLine{00477\ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]=0;}
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<cbranch-\/>nparticles;++i)\{}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ tmp\ =\ halos[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]]-\/>get\_mass();}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \textcolor{comment}{//tmp\ =\ haloON\ ?\ halos[cbranch-\/>particles[i]*MultiMass].mass\ :\ masses[cbranch-\/>particles[i]*MultiMass];}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0]\ +=\ tmp*tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]][0]/cbranch-\/>mass;}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1]\ +=\ tmp*tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]][1]/cbranch-\/>mass;}
+\DoxyCodeLine{00483\ \ \ \ \ \}}
+\DoxyCodeLine{00485\ \ \ \ \ \textcolor{comment}{//\ calculate\ quadropole\ moment\ of\ branch\ assuming\ point\ masses}}
+\DoxyCodeLine{00487\ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[0]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[1]=cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[2]=0;}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<cbranch-\/>nparticles;++i)\{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ xcm[0]=tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]][0]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[0];}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ xcm[1]=tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]][1]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[1];}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ xcut\ =\ pow(xcm[0],2)\ +\ pow(xcm[1],2);}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ }
+\DoxyCodeLine{00493\ \ \ \ \ \ \ tmp\ =\ halos[cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]]-\/>get\_mass();}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00495\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[0]\ +=\ (xcut-\/2*xcm[0]*xcm[0])*tmp;}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[1]\ +=\ (xcut-\/2*xcm[1]*xcm[1])*tmp;}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_ab7e5b2d4f10dbe58834d2b360357503f}{quad}}[2]\ +=\ -\/2*xcm[0]*xcm[1]*tmp;}
+\DoxyCodeLine{00498\ \ \ \ \ \}}
+\DoxyCodeLine{00499\ \ \ \ \ }
+\DoxyCodeLine{00500\ \ \ \ \ \textcolor{comment}{//\ largest\ distance\ from\ center\ of\ mass\ of\ cell}}
+\DoxyCodeLine{00501\ \ \ \ \ \textcolor{keywordflow}{for}(i=0,rcom=0.0;i<2;++i)\ rcom\ +=\ (\ pow(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[i]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[i],2)\ >\ pow(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[i]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[i],2)\ )\ ?}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ pow(cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a9ef069b80404d9aff955ad7e60b6cea2}{center}}[i]-\/cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[i],2)\ :\ pow(cbranch-\/>center[i]-\/cbranch-\/>boundary\_p2[i],2);}
+\DoxyCodeLine{00503\ \ \ \ \ }
+\DoxyCodeLine{00504\ \ \ \ \ rcom=sqrt(rcom);}
+\DoxyCodeLine{00505\ \ \ \ \ }
+\DoxyCodeLine{00506\ \ \ \ \ \textcolor{keywordflow}{if}(force\_theta\ >\ 0.0)\{}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a87dac993100fab4073900e46ce93868a}{r2crit\_angle}}\ =\ 1.15470*rcom/(force\_theta);}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a87dac993100fab4073900e46ce93868a}{r2crit\_angle}}\ *=\ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a87dac993100fab4073900e46ce93868a}{r2crit\_angle}};}
+\DoxyCodeLine{00509\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \ cbranch-\/>\mbox{\hyperlink{struct_q_branch_n_b_a87dac993100fab4073900e46ce93868a}{r2crit\_angle}}=1.0e100;}
+\DoxyCodeLine{00510\ \ \ \ \ }
+\DoxyCodeLine{00511\ \ \ \}\textcolor{keywordflow}{while}(tree-\/>WalkStep(\textcolor{keyword}{true}));}
+\DoxyCodeLine{00512\ \ \ }
+\DoxyCodeLine{00513\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00514\ \}}
+\DoxyCodeLine{00515\ }
+\DoxyCodeLine{00517\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00518\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::rotate\_coordinates(PosType\ **coord)\{}
+\DoxyCodeLine{00519\ \ \ IndexType\ i;}
+\DoxyCodeLine{00520\ \ \ \textcolor{keywordtype}{short}\ j;}
+\DoxyCodeLine{00521\ \ \ PosType\ tmp[3];}
+\DoxyCodeLine{00522\ \ \ }
+\DoxyCodeLine{00523\ \ \ \textcolor{comment}{/*\ rotate\ particle\ positions\ */}}
+\DoxyCodeLine{00524\ \ \ \textcolor{keywordflow}{for}(i=0;i<tree-\/>top-\/>nparticles;++i)\{}
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\ tmp[j]=0.0;}
+\DoxyCodeLine{00526\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\{}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ tmp[0]+=coord[0][j]*xp[i][j];}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ tmp[1]+=coord[1][j]*xp[i][j];}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ tmp[2]+=coord[2][j]*xp[i][j];}
+\DoxyCodeLine{00530\ \ \ \ \ \}}
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;j<3;++j)\ xp[i][j]=tmp[j];}
+\DoxyCodeLine{00532\ \ \ \}}
+\DoxyCodeLine{00533\ \ \ }
+\DoxyCodeLine{00534\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00535\ \}}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00556\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00557\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::force2D(\textcolor{keyword}{const}\ PosType\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00558\ \ \ }
+\DoxyCodeLine{00559\ \ \ alpha[0]=alpha[1]=gamma[0]=gamma[1]=gamma[2]=0.0;}
+\DoxyCodeLine{00560\ \ \ *kappa=*phi=0.0;}
+\DoxyCodeLine{00561\ \ \ }
+\DoxyCodeLine{00562\ \ \ \textcolor{keywordflow}{if}(Nparticles\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00563\ \ \ }
+\DoxyCodeLine{00564\ \ \ assert(tree);}
+\DoxyCodeLine{00565\ \ \ \textcolor{comment}{//QTreeNB<PosType\ *>::iterator\ it(tree);}}
+\DoxyCodeLine{00566\ \ \ \mbox{\hyperlink{class_q_biterator}{QBiterator<PosType\ *>}}\ it(tree);}
+\DoxyCodeLine{00567\ \ \ }
+\DoxyCodeLine{00568\ \ \ }
+\DoxyCodeLine{00569\ \ \ \textcolor{keywordflow}{if}(periodic\_buffer)\{}
+\DoxyCodeLine{00570\ \ \ \ \ PosType\ tmp\_ray[2];}
+\DoxyCodeLine{00571\ \ \ \ \ }
+\DoxyCodeLine{00572\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ -\/1;i<2;++i)\{}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ -\/1;j<2;++j)\{}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ tmp\_ray[0]\ =\ ray[0]\ +\ i*original\_xl;}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ tmp\_ray[1]\ =\ ray[1]\ +\ j*original\_yl;}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ walkTree\_iter(it,tmp\_ray,alpha,kappa,gamma,phi);}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00578\ \ \ \ \ \}}
+\DoxyCodeLine{00579\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00580\ \ \ \ \ walkTree\_iter(it,ray,alpha,kappa,gamma,phi);}
+\DoxyCodeLine{00581\ \ \ \}}
+\DoxyCodeLine{00582\ \ \ }
+\DoxyCodeLine{00583\ \ \ \textcolor{comment}{//\ Subtract\ off\ uniform\ mass\ sheet\ to\ compensate\ for\ the\ extra\ mass}}
+\DoxyCodeLine{00584\ \ \ \textcolor{comment}{//\ \ added\ to\ the\ universe\ in\ the\ halos.}}
+\DoxyCodeLine{00585\ \ \ \textcolor{comment}{//alpha[0]\ -\/=\ ray[0]*sigma\_background*(inv\_screening\_scale2\ ==\ 0);}}
+\DoxyCodeLine{00586\ \ \ \textcolor{comment}{//alpha[1]\ -\/=\ ray[1]*sigma\_background*(inv\_screening\_scale2\ ==\ 0);}}
+\DoxyCodeLine{00587\ \ \ }
+\DoxyCodeLine{00588\ \ \ \textcolor{comment}{//*kappa\ -\/=\ sigma\_background;}}
+\DoxyCodeLine{00589\ \ \ }
+\DoxyCodeLine{00590\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00591\ \}}
+\DoxyCodeLine{00592\ }
+\DoxyCodeLine{00595\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00596\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::neighbors(PosType\ ray[],PosType\ rmax,std::list<IndexType>\ \&neighbors)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00597\ \ \ \textcolor{comment}{//QTreeNB::iterator\ it(tree);}}
+\DoxyCodeLine{00598\ \ \ \mbox{\hyperlink{class_q_biterator}{QBiterator<PosType\ *>}}\ it(tree);}
+\DoxyCodeLine{00599\ \ \ }
+\DoxyCodeLine{00600\ \ \ neighbors.clear();}
+\DoxyCodeLine{00601\ \ \ }
+\DoxyCodeLine{00602\ \ \ PosType\ r2\ =\ rmax*rmax;}
+\DoxyCodeLine{00603\ \ \ \textcolor{keywordtype}{bool}\ decend=\textcolor{keyword}{true};}
+\DoxyCodeLine{00604\ \ \ it.movetop();}
+\DoxyCodeLine{00605\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordtype}{int}\ cut\ =\ Utilities::cutbox(ray,(*it)-\/>boundary\_p1,(*it)-\/>boundary\_p2,rmax);}
+\DoxyCodeLine{00607\ \ \ \ \ decend\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00608\ \ \ \ \ }
+\DoxyCodeLine{00609\ \ \ \ \ \textcolor{keywordflow}{if}(cut\ ==\ 0)\{\ \ \ \ \ \ \textcolor{comment}{//\ box\ outside\ circle}}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ decend\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00611\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(cut\ ==\ 1)\{\ \ \textcolor{comment}{//\ whole\ box\ inside\ circle}}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<(*it)-\/>nparticles;++i)\ neighbors.push\_back((*it)-\/>particles[i]);}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ decend\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00614\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}((*it)-\/>child0\ ==\ NULL)\{\ \ \textcolor{comment}{//\ at\ leaf}}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<(*it)-\/>nparticles;++i)\{}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ (tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[(*it)-\/>particles[i]][0]\ -\/\ ray[0])*(tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[(*it)-\/>particles[i]][0]\ -\/\ ray[0])}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ +\ (tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[(*it)-\/>particles[i]][1]\ -\/\ ray[1])*(tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[(*it)-\/>particles[i]][1]\ -\/\ ray[1])\ <\ r2)\ neighbors.push\_back((*it)-\/>particles[i]);}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ decend\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00620\ \ \ \ \ \}}
+\DoxyCodeLine{00621\ \ \ \}\textcolor{keywordflow}{while}(it.TreeWalkStep(decend));}
+\DoxyCodeLine{00622\ \ \ }
+\DoxyCodeLine{00623\ \}}
+\DoxyCodeLine{00626\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00627\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::neighbors(PosType\ ray[],PosType\ rmax,std::vector<LensHaloType\ *>\ \&neighbors)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00628\ \ \ neighbors.clear();}
+\DoxyCodeLine{00629\ \ \ }
+\DoxyCodeLine{00630\ \ \ \textcolor{keywordflow}{if}(halos\ ==\ NULL)\{}
+\DoxyCodeLine{00631\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}TreeQuadHalos<LensHaloType>::neighbors\ -\/\ The\ are\ no\ halos\ in\ this\ tree\ use\ other\ version\ of\ this\ function"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}no\ halos"{}});}
+\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00634\ \ \ \}}
+\DoxyCodeLine{00635\ \ \ }
+\DoxyCodeLine{00636\ \ \ std::list<IndexType>\ neighbor\_indexes;}
+\DoxyCodeLine{00637\ \ \ TreeQuadHalos<LensHaloType>::neighbors(ray,rmax,neighbor\_indexes);}
+\DoxyCodeLine{00638\ \ \ }
+\DoxyCodeLine{00639\ \ \ neighbors.resize(neighbor\_indexes.size());}
+\DoxyCodeLine{00640\ \ \ std::list<IndexType>::iterator\ it\ =\ neighbor\_indexes.begin();}
+\DoxyCodeLine{00641\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0;i<neighbors.size();++i,++it)\{}
+\DoxyCodeLine{00642\ \ \ \ \ neighbors[i]\ =\ halos[*it];}
+\DoxyCodeLine{00643\ \ \ \}}
+\DoxyCodeLine{00644\ \ \ }
+\DoxyCodeLine{00645\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00646\ \}}
+\DoxyCodeLine{00647\ }
+\DoxyCodeLine{00648\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{00649\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::walkTree\_iter(}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_q_biterator}{QBiterator<PosType\ *>}}\ \&treeit,}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ *ray}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ *alpha}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *kappa}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *gamma}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *phi}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00657\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00658\ \ \ }
+\DoxyCodeLine{00659\ \ \ \textcolor{keywordtype}{bool}\ allowDescent;}
+\DoxyCodeLine{00660\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ count=0;\textcolor{comment}{//,tmp\_index;}}
+\DoxyCodeLine{00661\ \ \ }
+\DoxyCodeLine{00662\ \ \ treeit.movetop();}
+\DoxyCodeLine{00663\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{00664\ \ \ \ \ ++count;}
+\DoxyCodeLine{00665\ \ \ \ \ allowDescent=\textcolor{keyword}{true};}
+\DoxyCodeLine{00666\ \ \ \ \ }
+\DoxyCodeLine{00667\ \ \ \ \ \textcolor{comment}{//\ add\ big\ paritcles,\ these\ are\ all\ the\ particles\ in\ tha\ case\ of\ a\ leaf}}
+\DoxyCodeLine{00668\ \ \ \ \ }
+\DoxyCodeLine{00669\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ =\ 0\ ;\ i\ <\ (*treeit)-\/>Nbig\_particles\ ;\ ++i)\{}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ }
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ tmp\_index\ =\ (*treeit)-\/>big\_particles[i];}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ }
+\DoxyCodeLine{00673\ \ \ \ \ \ \ PosType\ xcm[2];}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ xcm[0]\ =\ tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[tmp\_index][0]\ -\/\ ray[0];}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ xcm[1]\ =\ tree-\/>\mbox{\hyperlink{struct_q_tree_n_b_a5388e2412ed4d27d057161992b953c23}{xxp}}[tmp\_index][1]\ -\/\ ray[1];}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ }
+\DoxyCodeLine{00677\ \ \ \ \ \ \ PosType\ rcm2\ =\ xcm[0]*xcm[0]\ +\ xcm[1]*xcm[1];}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ }
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ screening\ =\ exp(-\/rcm2*inv\_screening\_scale2);}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ halos[tmp\_index]-\/>force\_halo(alpha,kappa,gamma,phi,xcm,\textcolor{keyword}{false},screening);}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ }
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \textcolor{comment}{//\ background\ part}}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass\ =\ halos[tmp\_index]-\/>get\_mass();}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ prefac\ =\ mass\ *\ inv\_area\ ;}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ }
+\DoxyCodeLine{00686\ \ \ \ \ \ \ alpha[0]\ +=\ prefac*xcm[0];}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ alpha[1]\ +=\ prefac*xcm[1];}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ }
+\DoxyCodeLine{00689\ \ \ \ \ \ \ *phi\ +=\ -\/\ inv\_area*rcm2\ *\ mass*0.5;}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ *kappa\ -\/=\ \ mass\ *\ inv\_area;}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ }
+\DoxyCodeLine{00692\ \ \ \ \ \}}
+\DoxyCodeLine{00693\ \ \ \ \ }
+\DoxyCodeLine{00694\ \ \ \ \ \textcolor{keywordflow}{if}(\ !(treeit.atLeaf())\ )\{}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ PosType\ xcm\_cell[2];}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ }
+\DoxyCodeLine{00697\ \ \ \ \ \ \ xcm\_cell[0]=(*treeit)-\/>center[0]-\/ray[0];}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ xcm\_cell[1]=(*treeit)-\/>center[1]-\/ray[1];}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ }
+\DoxyCodeLine{00700\ \ \ \ \ \ \ PosType\ rcm2cell\ =\ xcm\_cell[0]*xcm\_cell[0]\ +\ xcm\_cell[1]*xcm\_cell[1];}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ }
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rcm2cell\ >\ (*treeit)-\/>r2crit\_angle\ )\{\ \textcolor{comment}{//\ use\ whole\ cell}}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ allowDescent=\textcolor{keyword}{false};}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ screening\ =\ exp(-\/rcm2cell*inv\_screening\_scale2);}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ (*treeit)-\/>mass*(inv\_area\ -\/\ screening/rcm2cell/PI);}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ alpha[0]\ +=\ tmp*xcm\_cell[0];}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ alpha[1]\ +=\ tmp*xcm\_cell[1];}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \textcolor{comment}{//\ \ taken\ out\ to\ speed\ up}}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ tmp=-\/2.0*(*treeit)-\/>mass/PI/rcm2cell/rcm2cell*screening;}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ gamma[0]\ +=\ 0.5*(xcm\_cell[0]*xcm\_cell[0]-\/xcm\_cell[1]*xcm\_cell[1])*tmp;}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ gamma[1]\ +=\ xcm\_cell[0]*xcm\_cell[1]*tmp;}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \ \ *phi\ +=\ 0.5*(*treeit)-\/>mass*log(\ rcm2cell\ )/PI*screening;}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \ \ *phi\ -\/=\ 0.5*(\ (*treeit)-\/>quad[0]*xcm\_cell[0]*xcm\_cell[0]\ +\ (*treeit)-\/>quad[1]*xcm\_cell[1]*xcm\_cell[1]\ +\ 2*(*treeit)-\/>quad[2]*xcm\_cell[0]*xcm\_cell[1]\ )/(PI*rcm2cell*rcm2cell)*screening;}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quadrapole\ contribution}}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ the\ kappa\ and\ gamma\ are\ not\ calculated\ to\ this\ order}}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ alpha[0]\ -\/=\ ((*treeit)-\/>quad[0]*xcm\_cell[0]\ +\ (*treeit)-\/>quad[2]*xcm\_cell[1])}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ /(rcm2cell*rcm2cell)/PI*screening;}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ alpha[1]\ -\/=\ ((*treeit)-\/>quad[1]*xcm\_cell[1]\ +\ (*treeit)-\/>quad[2]*xcm\_cell[0])}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ /(rcm2cell*rcm2cell)/PI*screening;}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ tmp\ =\ 4*((*treeit)-\/>quad[0]*xcm\_cell[0]*xcm\_cell[0]\ +\ (*treeit)-\/>quad[1]*xcm\_cell[1]*xcm\_cell[1]}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ 2*(*treeit)-\/>quad[2]*xcm\_cell[0]*xcm\_cell[1])/(rcm2cell*rcm2cell*rcm2cell)/PI*screening;}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ alpha[0]\ +=\ tmp*xcm\_cell[0];}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ alpha[1]\ +=\ tmp*xcm\_cell[1];}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ *kappa\ -\/=\ (*treeit)-\/>mass*inv\_area;}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ *phi\ -\/=\ (*treeit)-\/>mass*inv\_area*rcm2cell;}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00738\ \ \ \ \ \}}
+\DoxyCodeLine{00739\ \ \ \ \ assert(count\ <=\ treeit.getNbranches());}
+\DoxyCodeLine{00740\ \ \ \}\textcolor{keywordflow}{while}(treeit.TreeWalkStep(allowDescent));}
+\DoxyCodeLine{00741\ \ \ }
+\DoxyCodeLine{00742\ \ \ \textcolor{comment}{//\ \ \ \ if((*treeit)-\/>nparticles\ >\ 0)}}
+\DoxyCodeLine{00743\ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00744\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00745\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00746\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00747\ \ \ \textcolor{comment}{//\ \ \ \ \ \ //\ Find\ the\ particles\ that\ intersect\ with\ ray\ and\ add\ them\ individually.}}
+\DoxyCodeLine{00748\ \ \ \textcolor{comment}{//\ \ \ \ \ \ //if(rcm2cell\ <\ 5.83*((*treeit)-\/>boxsize2))}}
+\DoxyCodeLine{00749\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00750\ \ \ \textcolor{comment}{//\ \ \ \ \ \ //boxsize2\ =\ ((*treeit)-\/>boundary\_p2[0]-\/(*treeit)-\/>boundary\_p1[0])*((*treeit)-\/>boundary\_p2[0]-\/(*treeit)-\/>boundary\_p1[0]);}}
+\DoxyCodeLine{00751\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00752\ \ \ \textcolor{comment}{//\ \ \ \ \ \ if(\ rcm2cell\ <\ \ ((*treeit)-\/>rcrit\_angle)*((*treeit)-\/>rcrit\_angle)\ )}}
+\DoxyCodeLine{00754\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{00755\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00756\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ includes\ rcrit\_particle\ constraint}}
+\DoxyCodeLine{00757\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ allowDescent=true;}}
+\DoxyCodeLine{00758\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00759\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00760\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ //\ Treat\ all\ particles\ in\ a\ leaf\ as\ a\ point\ particle}}
+\DoxyCodeLine{00761\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ if(treeit.atLeaf())\{}}
+\DoxyCodeLine{00762\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00763\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(i\ =\ 0\ ;\ i\ <\ (*treeit)-\/>nparticles\ ;\ ++i)}}
+\DoxyCodeLine{00764\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00765\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00766\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ xcm\_cell[0]\ =\ tree-\/>xxp[(*treeit)-\/>particles[i]][0]\ -\/\ ray[0];}}
+\DoxyCodeLine{00767\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ xcm\_cell[1]\ =\ tree-\/>xxp[(*treeit)-\/>particles[i]][1]\ -\/\ ray[1];}}
+\DoxyCodeLine{00768\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00769\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00770\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ rcm2\ =\ xcm\_cell[0]*xcm\_cell[0]\ +\ xcm\_cell[1]*xcm\_cell[1];}}
+\DoxyCodeLine{00771\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ double\ screening\ =\ exp(-\/rcm2*inv\_screening\_scale2);}}
+\DoxyCodeLine{00772\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ if(rcm2\ <\ 1e-\/20)\ rcm2\ =\ 1e-\/20;}}
+\DoxyCodeLine{00773\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00774\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ size\_t\ tmp\_index\ =\ MultiMass*(*treeit)-\/>particles[i];}}
+\DoxyCodeLine{00775\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00776\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ double\ mass\ =\ halos[tmp\_index]-\/>get\_mass();}}
+\DoxyCodeLine{00777\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ prefac\ =\ mass\ *\ (inv\_area\ -\/\ screening/rcm2/PI)\ ;}}
+\DoxyCodeLine{00778\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ //prefac\ /=\ rcm2*PI/screening;}}
+\DoxyCodeLine{00779\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ //tmp\ =\ -\/1.0*prefac;}}
+\DoxyCodeLine{00780\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00781\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ alpha[0]\ +=\ prefac*xcm\_cell[0];}}
+\DoxyCodeLine{00782\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ alpha[1]\ +=\ prefac*xcm\_cell[1];}}
+\DoxyCodeLine{00783\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00784\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ -\/2.0*mass*screening/PI/rcm2/rcm2;}}
+\DoxyCodeLine{00785\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00786\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ gamma[0]\ +=\ 0.5*(xcm\_cell[0]*xcm\_cell[0]-\/xcm\_cell[1]*xcm\_cell[1])*tmp;}}
+\DoxyCodeLine{00787\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ gamma[1]\ +=\ xcm\_cell[0]*xcm\_cell[1]*tmp;}}
+\DoxyCodeLine{00788\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00789\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ *phi\ +=\ (screening*log(rcm2)/PI\ -\/\ inv\_area*rcm2)\ *mass*0.5;}}
+\DoxyCodeLine{00790\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ *kappa\ -\/=\ \ mass\ *\ inv\_area;}}
+\DoxyCodeLine{00791\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00792\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}\ //\ end\ of\ for}}
+\DoxyCodeLine{00793\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}\ //\ end\ of\ if(tree-\/>atLeaf())}}
+\DoxyCodeLine{00794\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00795\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00796\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00797\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \}else}}
+\DoxyCodeLine{00798\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00799\ \ \ \textcolor{comment}{//\ \ \}while(treeit.TreeWalkStep(allowDescent));}}
+\DoxyCodeLine{00800\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00801\ \ \ }
+\DoxyCodeLine{00802\ \ \ \textcolor{comment}{//\ Subtract\ off\ uniform\ mass\ sheet\ to\ compensate\ for\ the\ extra\ mass}}
+\DoxyCodeLine{00803\ \ \ \textcolor{comment}{//\ \ added\ to\ the\ universe\ in\ the\ halos.}}
+\DoxyCodeLine{00804\ \ \ \textcolor{comment}{//alpha[0]\ -\/=\ ray[0]*sigma\_background*(inv\_screening\_scale2\ ==\ 0.0);}}
+\DoxyCodeLine{00805\ \ \ \textcolor{comment}{//alpha[1]\ -\/=\ ray[1]*sigma\_background*(inv\_screening\_scale2\ ==\ 0.0);}}
+\DoxyCodeLine{00806\ \ \ \textcolor{comment}{//\{\ \ \ \ \ \ //\ \ taken\ out\ to\ speed\ up}}
+\DoxyCodeLine{00807\ \ \ \textcolor{comment}{//\ \ *kappa\ -\/=\ sigma\_background;}}
+\DoxyCodeLine{00808\ \ \ \textcolor{comment}{//\ *phi\ -\/=\ sigma\_background\ *\ sigma\_background\ ;}}
+\DoxyCodeLine{00809\ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00810\ \ \ }
+\DoxyCodeLine{00811\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00812\ \}}
+\DoxyCodeLine{00813\ }
+\DoxyCodeLine{00838\ \textcolor{comment}{//template\ <typename\ LensHaloType>}}
+\DoxyCodeLine{00839\ \textcolor{comment}{//void\ TreeQuadHalos<LensHaloType>::force2D\_recur(const\ PosType\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi)\{}}
+\DoxyCodeLine{00840\ \textcolor{comment}{//}}
+\DoxyCodeLine{00841\ \textcolor{comment}{//}}
+\DoxyCodeLine{00842\ \textcolor{comment}{//\ \ alpha[0]=alpha[1]=gamma[0]=gamma[1]=gamma[2]=0.0;}}
+\DoxyCodeLine{00843\ \textcolor{comment}{//\ \ *kappa=*phi=0.0;}}
+\DoxyCodeLine{00844\ \textcolor{comment}{//}}
+\DoxyCodeLine{00845\ \textcolor{comment}{//\ \ if(Nparticles\ ==\ 0)\ return;}}
+\DoxyCodeLine{00846\ \textcolor{comment}{//\ \ assert(tree);}}
+\DoxyCodeLine{00847\ \textcolor{comment}{//}}
+\DoxyCodeLine{00848\ \textcolor{comment}{//\ \ //walkTree\_recur(tree-\/>top,ray,\&alpha[0],kappa,\&gamma[0],phi);}}
+\DoxyCodeLine{00849\ \textcolor{comment}{//}}
+\DoxyCodeLine{00850\ \textcolor{comment}{//\ \ if(periodic\_buffer)\{}}
+\DoxyCodeLine{00851\ \textcolor{comment}{//\ \ \ \ PosType\ tmp\_ray[2],tmp\_c[2];}}
+\DoxyCodeLine{00852\ \textcolor{comment}{//}}
+\DoxyCodeLine{00853\ \textcolor{comment}{//\ \ \ \ //\ for\ points\ outside\ of\ primary\ zone\ shift\ to\ primary\ zone}}
+\DoxyCodeLine{00854\ \textcolor{comment}{//\ \ \ \ //if(inbox(ray,tree-\/>top-\/>boundary\_p1,tree-\/>top-\/>boundary\_p2))\{}}
+\DoxyCodeLine{00855\ \textcolor{comment}{//\ \ \ \ tmp\_c[0]\ =\ ray[0];}}
+\DoxyCodeLine{00856\ \textcolor{comment}{//\ \ \ \ tmp\_c[1]\ =\ ray[1];}}
+\DoxyCodeLine{00857\ \textcolor{comment}{//\ \ \ \ /*\}else\{}}
+\DoxyCodeLine{00858\ \textcolor{comment}{//\ \ \ \ \ int\ di[2];}}
+\DoxyCodeLine{00859\ \textcolor{comment}{//\ \ \ \ \ PosType\ center[2]\ =\ \{\ (tree-\/>top-\/>boundary\_p1[0]\ +\ tree-\/>top-\/>boundary\_p2[0])/2\ ,}}
+\DoxyCodeLine{00860\ \textcolor{comment}{//\ \ \ \ \ (tree-\/>top-\/>boundary\_p1[1]\ +\ tree-\/>top-\/>boundary\_p2[1])/2\ \};}}
+\DoxyCodeLine{00861\ \textcolor{comment}{//}}
+\DoxyCodeLine{00862\ \textcolor{comment}{//\ \ \ \ \ di[0]\ =\ (int)(\ 2*(ray[0]\ -\/\ center[0])/lx\ );}}
+\DoxyCodeLine{00863\ \textcolor{comment}{//\ \ \ \ \ di[1]\ =\ (int)(\ 2*(ray[1]\ -\/\ center[1])/ly\ );}}
+\DoxyCodeLine{00864\ \textcolor{comment}{//}}
+\DoxyCodeLine{00865\ \textcolor{comment}{//\ \ \ \ \ di[0]\ =\ (di[0]\ >\ 0)\ ?\ (di[0]\ +\ 1)/2\ :\ (di[0]\ -\/\ 1)/2;}}
+\DoxyCodeLine{00866\ \textcolor{comment}{//\ \ \ \ \ di[1]\ =\ (di[1]\ >\ 0)\ ?\ (di[1]\ +\ 1)/2\ :\ (di[1]\ -\/\ 1)/2;}}
+\DoxyCodeLine{00867\ \textcolor{comment}{//}}
+\DoxyCodeLine{00868\ \textcolor{comment}{//\ \ \ \ \ tmp\_c[0]\ =\ ray[0]\ -\/\ lx\ *\ di[0];}}
+\DoxyCodeLine{00869\ \textcolor{comment}{//\ \ \ \ \ tmp\_c[1]\ =\ ray[1]\ -\/\ ly\ *\ di[1];}}
+\DoxyCodeLine{00870\ \textcolor{comment}{//}}
+\DoxyCodeLine{00871\ \textcolor{comment}{//\ \ \ \ \ assert(inbox(tmp\_c,tree-\/>top-\/>boundary\_p1,tree-\/>top-\/>boundary\_p2));}}
+\DoxyCodeLine{00872\ \textcolor{comment}{//\ \ \ \ \ \}*/}}
+\DoxyCodeLine{00873\ \textcolor{comment}{//}}
+\DoxyCodeLine{00874\ \textcolor{comment}{//\ \ \ \ for(int\ i\ =\ -\/1;i<2;++i)\{}}
+\DoxyCodeLine{00875\ \textcolor{comment}{//\ \ \ \ \ \ for(int\ j\ =\ -\/1;j<2;++j)\{}}
+\DoxyCodeLine{00876\ \textcolor{comment}{//\ \ \ \ \ \ \ \ tmp\_ray[0]\ =\ tmp\_c[0]\ +\ i*original\_xl;}}
+\DoxyCodeLine{00877\ \textcolor{comment}{//\ \ \ \ \ \ \ \ tmp\_ray[1]\ =\ tmp\_c[1]\ +\ j*original\_yl;}}
+\DoxyCodeLine{00878\ \textcolor{comment}{//\ \ \ \ \ \ \ \ walkTree\_recur(tree-\/>top,tmp\_ray,alpha,kappa,gamma,phi);}}
+\DoxyCodeLine{00879\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00880\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00881\ \textcolor{comment}{//\ \ \}else\{}}
+\DoxyCodeLine{00882\ \textcolor{comment}{//\ \ \ \ walkTree\_recur(tree-\/>top,ray,alpha,kappa,gamma,phi);}}
+\DoxyCodeLine{00883\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00884\ \textcolor{comment}{//}}
+\DoxyCodeLine{00885\ \textcolor{comment}{//\ \ //\ Subtract\ off\ uniform\ mass\ sheet\ to\ compensate\ for\ the\ extra\ mass}}
+\DoxyCodeLine{00886\ \textcolor{comment}{//\ \ //\ \ added\ to\ the\ universe\ in\ the\ halos.}}
+\DoxyCodeLine{00887\ \textcolor{comment}{//\ \ //alpha[0]\ -\/=\ ray[0]*sigma\_background*(inv\_screening\_scale2\ ==\ 0);}}
+\DoxyCodeLine{00888\ \textcolor{comment}{//\ \ //alpha[1]\ -\/=\ ray[1]*sigma\_background*(inv\_screening\_scale2\ ==\ 0);}}
+\DoxyCodeLine{00889\ \textcolor{comment}{//}}
+\DoxyCodeLine{00890\ \textcolor{comment}{//\ \ //*kappa\ -\/=\ sigma\_background;}}
+\DoxyCodeLine{00891\ \textcolor{comment}{//}}
+\DoxyCodeLine{00892\ \textcolor{comment}{//\ \ return;}}
+\DoxyCodeLine{00893\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00894\ }
+\DoxyCodeLine{00895\ \textcolor{comment}{//template\ <typename\ LensHaloType>}}
+\DoxyCodeLine{00896\ \textcolor{comment}{//void\ TreeQuadHalos<LensHaloType>::walkTree\_recur(QBranchNB\ *branch,PosType\ const\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,\ KappaType\ *phi)\{}}
+\DoxyCodeLine{00897\ \textcolor{comment}{//}}
+\DoxyCodeLine{00898\ \textcolor{comment}{//\ \ PosType\ xcm[2],rcm2cell,rcm2,tmp,boxsize2;}}
+\DoxyCodeLine{00899\ \textcolor{comment}{//\ \ IndexType\ i;}}
+\DoxyCodeLine{00900\ \textcolor{comment}{//\ \ std::size\_t\ tmp\_index;}}
+\DoxyCodeLine{00901\ \textcolor{comment}{//\ \ PosType\ prefac;}}
+\DoxyCodeLine{00902\ \textcolor{comment}{//\ \ /*bool\ notscreen\ =\ true;}}
+\DoxyCodeLine{00903\ \textcolor{comment}{//}}
+\DoxyCodeLine{00904\ \textcolor{comment}{//\ \ \ if(inv\_screening\_scale2\ !=\ 0)\ notscreen\ =\ BoxIntersectCircle(ray,3*sqrt(1.0/inv\_screening\_scale2),\ branch-\/>boundary\_p1,\ branch-\/>boundary\_p2);}}
+\DoxyCodeLine{00905\ \textcolor{comment}{//\ \ \ */}}
+\DoxyCodeLine{00906\ \textcolor{comment}{//\ \ if(branch-\/>nparticles\ >\ 0)}}
+\DoxyCodeLine{00907\ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{00908\ \textcolor{comment}{//\ \ \ \ xcm[0]=branch-\/>center[0]-\/ray[0];}}
+\DoxyCodeLine{00909\ \textcolor{comment}{//\ \ \ \ xcm[1]=branch-\/>center[1]-\/ray[1];}}
+\DoxyCodeLine{00910\ \textcolor{comment}{//}}
+\DoxyCodeLine{00911\ \textcolor{comment}{//\ \ \ \ rcm2cell\ =\ xcm[0]*xcm[0]\ +\ xcm[1]*xcm[1];}}
+\DoxyCodeLine{00912\ \textcolor{comment}{//}}
+\DoxyCodeLine{00913\ \textcolor{comment}{//\ \ \ \ boxsize2\ =\ (branch-\/>boundary\_p2[0]-\/branch-\/>boundary\_p1[0])*(branch-\/>boundary\_p2[0]-\/branch-\/>boundary\_p1[0]);}}
+\DoxyCodeLine{00914\ \textcolor{comment}{//}}
+\DoxyCodeLine{00915\ \textcolor{comment}{//\ \ \ \ if(\ rcm2cell\ <\ (branch-\/>rcrit\_angle)*(branch-\/>rcrit\_angle)\ ||\ rcm2cell\ <\ 5.83*boxsize2)}}
+\DoxyCodeLine{00916\ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00917\ \textcolor{comment}{//}}
+\DoxyCodeLine{00918\ \textcolor{comment}{//\ \ \ \ \ \ //\ Treat\ all\ particles\ in\ a\ leaf\ as\ a\ point\ particle}}
+\DoxyCodeLine{00919\ \textcolor{comment}{//\ \ \ \ \ \ if(tree-\/>atLeaf(branch))}}
+\DoxyCodeLine{00920\ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{00921\ \textcolor{comment}{//\ \ \ \ \ \ \ \ Point\_2d\ initgamma(gamma[0],gamma[1]);}}
+\DoxyCodeLine{00922\ \textcolor{comment}{//\ \ \ \ \ \ \ \ for(i\ =\ 0\ ;\ i\ <\ branch-\/>nparticles\ ;\ ++i)\{}}
+\DoxyCodeLine{00923\ \textcolor{comment}{//}}
+\DoxyCodeLine{00924\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ xcm[0]\ =\ tree-\/>xxp[branch-\/>particles[i]][0]\ -\/\ ray[0];}}
+\DoxyCodeLine{00925\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ xcm[1]\ =\ tree-\/>xxp[branch-\/>particles[i]][1]\ -\/\ ray[1];}}
+\DoxyCodeLine{00926\ \textcolor{comment}{//}}
+\DoxyCodeLine{00927\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ rcm2\ =\ xcm[0]*xcm[0]\ +\ xcm[1]*xcm[1];}}
+\DoxyCodeLine{00928\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ double\ screening\ =\ exp(-\/rcm2*inv\_screening\_scale2);}}
+\DoxyCodeLine{00929\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ if(rcm2\ <\ 1e-\/20)\ rcm2\ =\ 1e-\/20;}}
+\DoxyCodeLine{00930\ \textcolor{comment}{//}}
+\DoxyCodeLine{00931\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ tmp\_index\ =\ MultiMass*branch-\/>particles[i];}}
+\DoxyCodeLine{00932\ \textcolor{comment}{//}}
+\DoxyCodeLine{00933\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ double\ mass\ =\ halos[tmp\_index]-\/>get\_mass();}}
+\DoxyCodeLine{00934\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ prefac\ =\ mass\ *\ (inv\_area\ -\/\ screening/rcm2/PI);}}
+\DoxyCodeLine{00935\ \textcolor{comment}{//}}
+\DoxyCodeLine{00936\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ alpha[0]\ +=\ prefac*xcm[0];}}
+\DoxyCodeLine{00937\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ alpha[1]\ +=\ prefac*xcm[1];}}
+\DoxyCodeLine{00938\ \textcolor{comment}{//}}
+\DoxyCodeLine{00939\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[0]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00940\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[1]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00941\ \textcolor{comment}{//}}
+\DoxyCodeLine{00942\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ tmp\ =\ -\/2.0\ *\ mass\ *\ screening/rcm2/rcm2/PI;}}
+\DoxyCodeLine{00943\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ gamma[0]\ +=\ 0.5*(xcm[0]*xcm[0]-\/xcm[1]*xcm[1])*tmp;}}
+\DoxyCodeLine{00944\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ gamma[1]\ +=\ xcm[0]*xcm[1]*tmp;}}
+\DoxyCodeLine{00945\ \textcolor{comment}{//}}
+\DoxyCodeLine{00946\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[0]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00947\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[1]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00948\ \textcolor{comment}{//}}
+\DoxyCodeLine{00949\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ *phi\ +=\ (log(rcm2)/PI\ -\/\ inv\_area*rcm2)*0.5*mass;}}
+\DoxyCodeLine{00950\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ *kappa\ -\/=\ mass*inv\_area;}}
+\DoxyCodeLine{00951\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00952\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00953\ \textcolor{comment}{//}}
+\DoxyCodeLine{00954\ \textcolor{comment}{//\ \ \ \ \ \ //\ Find\ the\ particles\ that\ intersect\ with\ ray\ and\ add\ them\ individually.}}
+\DoxyCodeLine{00955\ \textcolor{comment}{//\ \ \ \ \ \ if(rcm2cell\ <\ 5.83*boxsize2)}}
+\DoxyCodeLine{00956\ \textcolor{comment}{//\ \ \ \ \ \ \{}}
+\DoxyCodeLine{00957\ \textcolor{comment}{//}}
+\DoxyCodeLine{00958\ \textcolor{comment}{//\ \ \ \ \ \ \ \ for(i\ =\ 0\ ;\ i\ <\ branch-\/>Nbig\_particles\ ;\ ++i)}}
+\DoxyCodeLine{00959\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00960\ \textcolor{comment}{//}}
+\DoxyCodeLine{00961\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ tmp\_index\ =\ branch-\/>big\_particles[i];}}
+\DoxyCodeLine{00962\ \textcolor{comment}{//}}
+\DoxyCodeLine{00963\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ xcm[0]\ =\ tree-\/>xxp[tmp\_index][0]\ -\/\ ray[0];}}
+\DoxyCodeLine{00964\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ xcm[1]\ =\ tree-\/>xxp[tmp\_index][1]\ -\/\ ray[1];}}
+\DoxyCodeLine{00965\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ rcm2\ =\ xcm[0]*xcm[0]\ +\ xcm[1]*xcm[1];}}
+\DoxyCodeLine{00966\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[0]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00967\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[1]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00968\ \textcolor{comment}{//}}
+\DoxyCodeLine{00969\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ /////////////////////////////////////////}}
+\DoxyCodeLine{00970\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ double\ screening\ =\ exp(-\/rcm2*inv\_screening\_scale2);}}
+\DoxyCodeLine{00971\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ halos[tmp\_index]-\/>force\_halo(alpha,kappa,gamma,phi,xcm,true,screening);}}
+\DoxyCodeLine{00972\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[0]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00973\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ //assert(abs(gamma[1]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{00974\ \textcolor{comment}{//}}
+\DoxyCodeLine{00975\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00976\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{00977\ \textcolor{comment}{//}}
+\DoxyCodeLine{00978\ \textcolor{comment}{//\ \ \ \ \ \ if(branch-\/>child0\ !=\ NULL)}}
+\DoxyCodeLine{00979\ \textcolor{comment}{//\ \ \ \ \ \ \ \ walkTree\_recur(branch-\/>child0,\&ray[0],\&alpha[0],kappa,\&gamma[0],\&phi[0]);}}
+\DoxyCodeLine{00980\ \textcolor{comment}{//\ \ \ \ \ \ if(branch-\/>child1\ !=\ NULL)}}
+\DoxyCodeLine{00981\ \textcolor{comment}{//\ \ \ \ \ \ \ \ walkTree\_recur(branch-\/>child1,\&ray[0],\&alpha[0],kappa,\&gamma[0],\&phi[0]);}}
+\DoxyCodeLine{00982\ \textcolor{comment}{//\ \ \ \ \ \ if(branch-\/>child2\ !=\ NULL)}}
+\DoxyCodeLine{00983\ \textcolor{comment}{//\ \ \ \ \ \ \ \ walkTree\_recur(branch-\/>child2,\&ray[0],\&alpha[0],kappa,\&gamma[0],\&phi[0]);}}
+\DoxyCodeLine{00984\ \textcolor{comment}{//\ \ \ \ \ \ if(branch-\/>child3\ !=\ NULL)}}
+\DoxyCodeLine{00985\ \textcolor{comment}{//\ \ \ \ \ \ \ \ walkTree\_recur(branch-\/>child3,\&ray[0],\&alpha[0],kappa,\&gamma[0],\&phi[0]);}}
+\DoxyCodeLine{00986\ \textcolor{comment}{//}}
+\DoxyCodeLine{00987\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00988\ \textcolor{comment}{//\ \ \ \ else}}
+\DoxyCodeLine{00989\ \textcolor{comment}{//\ \ \ \ \{\ //\ use\ whole\ cell}}
+\DoxyCodeLine{00990\ \textcolor{comment}{//}}
+\DoxyCodeLine{00991\ \textcolor{comment}{//\ \ \ \ \ \ double\ screening\ =\ exp(-\/rcm2cell*inv\_screening\_scale2);}}
+\DoxyCodeLine{00992\ \textcolor{comment}{//\ \ \ \ \ \ //double\ tmp\ =\ -\/1.0*branch-\/>mass/rcm2cell/PI*screening;}}
+\DoxyCodeLine{00993\ \textcolor{comment}{//\ \ \ \ \ \ double\ tmp\ =\ branch-\/>mass*(inv\_area\ -\/\ screening/rcm2cell/PI);}}
+\DoxyCodeLine{00994\ \textcolor{comment}{//}}
+\DoxyCodeLine{00995\ \textcolor{comment}{//\ \ \ \ \ \ alpha[0]\ +=\ tmp*xcm[0];}}
+\DoxyCodeLine{00996\ \textcolor{comment}{//\ \ \ \ \ \ alpha[1]\ +=\ tmp*xcm[1];}}
+\DoxyCodeLine{00997\ \textcolor{comment}{//}}
+\DoxyCodeLine{00998\ \textcolor{comment}{//\ \ \ \ \ \ \{\ \ \ \ \ \ //\ \ taken\ out\ to\ speed\ up}}
+\DoxyCodeLine{00999\ \textcolor{comment}{//\ \ \ \ \ \ \ \ assert(abs(gamma[0]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{01000\ \textcolor{comment}{//\ \ \ \ \ \ \ \ assert(abs(gamma[1]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{01001\ \textcolor{comment}{//}}
+\DoxyCodeLine{01002\ \textcolor{comment}{//\ \ \ \ \ \ \ \ tmp=-\/2.0*branch-\/>mass/PI/rcm2cell/rcm2cell*screening;}}
+\DoxyCodeLine{01003\ \textcolor{comment}{//\ \ \ \ \ \ \ \ gamma[0]\ +=\ 0.5*(xcm[0]*xcm[0]-\/xcm[1]*xcm[1])*tmp;}}
+\DoxyCodeLine{01004\ \textcolor{comment}{//\ \ \ \ \ \ \ \ gamma[1]\ +=\ xcm[0]*xcm[1]*tmp;}}
+\DoxyCodeLine{01005\ \textcolor{comment}{//}}
+\DoxyCodeLine{01006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ assert(abs(gamma[0]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{01007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ assert(abs(gamma[1]/2.74889e+15)\ <\ 10);}}
+\DoxyCodeLine{01008\ \textcolor{comment}{//}}
+\DoxyCodeLine{01009\ \textcolor{comment}{//\ \ \ \ \ \ \ \ *phi\ +=\ 0.5*tree-\/>current-\/>mass*log(\ rcm2cell\ )/PI*screening;}}
+\DoxyCodeLine{01010\ \textcolor{comment}{//\ \ \ \ \ \ \ \ *phi\ -\/=\ 0.5*(\ tree-\/>current-\/>quad[0]*xcm[0]*xcm[0]\ +\ tree-\/>current-\/>quad[1]*xcm[1]*xcm[1]\ +\ 2*tree-\/>current-\/>quad[2]*xcm[0]*xcm[1]\ )/(PI*rcm2cell*rcm2cell)*screening;}}
+\DoxyCodeLine{01011\ \textcolor{comment}{//\ \ \ \ \ \ \}}}
+\DoxyCodeLine{01012\ \textcolor{comment}{//}}
+\DoxyCodeLine{01013\ \textcolor{comment}{//\ \ \ \ \ \ //\ quadrapole\ contribution}}
+\DoxyCodeLine{01014\ \textcolor{comment}{//\ \ \ \ \ \ //\ \ \ the\ kappa\ and\ gamma\ are\ not\ calculated\ to\ this\ order}}
+\DoxyCodeLine{01015\ \textcolor{comment}{//\ \ \ \ \ \ alpha[0]\ -\/=\ (branch-\/>quad[0]*xcm[0]\ +\ branch-\/>quad[2]*xcm[1])}}
+\DoxyCodeLine{01016\ \textcolor{comment}{//\ \ \ \ \ \ /(rcm2cell*rcm2cell)/PI*screening;}}
+\DoxyCodeLine{01017\ \textcolor{comment}{//\ \ \ \ \ \ alpha[1]\ -\/=\ (branch-\/>quad[1]*xcm[1]\ +\ branch-\/>quad[2]*xcm[0])}}
+\DoxyCodeLine{01018\ \textcolor{comment}{//\ \ \ \ \ \ /(rcm2cell*rcm2cell)/PI*screening;}}
+\DoxyCodeLine{01019\ \textcolor{comment}{//}}
+\DoxyCodeLine{01020\ \textcolor{comment}{//\ \ \ \ \ \ tmp\ =\ 4*(branch-\/>quad[0]*xcm[0]*xcm[0]\ +\ branch-\/>quad[1]*xcm[1]*xcm[1]}}
+\DoxyCodeLine{01021\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ 2*branch-\/>quad[2]*xcm[0]*xcm[1])/(rcm2cell*rcm2cell*rcm2cell)/PI*screening;}}
+\DoxyCodeLine{01022\ \textcolor{comment}{//}}
+\DoxyCodeLine{01023\ \textcolor{comment}{//\ \ \ \ \ \ alpha[0]\ +=\ tmp*xcm[0];}}
+\DoxyCodeLine{01024\ \textcolor{comment}{//\ \ \ \ \ \ alpha[1]\ +=\ tmp*xcm[1];}}
+\DoxyCodeLine{01025\ \textcolor{comment}{//}}
+\DoxyCodeLine{01026\ \textcolor{comment}{//\ \ \ \ \ \ *kappa\ -\/=\ branch-\/>mass\ *\ inv\_area;}}
+\DoxyCodeLine{01027\ \textcolor{comment}{//\ \ \ \ \ \ *phi\ -\/=\ 0.5\ *\ rcm2cell\ *\ inv\_area\ *\ branch-\/>mass;}}
+\DoxyCodeLine{01028\ \textcolor{comment}{//\ \ \ \ \ \ return;}}
+\DoxyCodeLine{01029\ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{01030\ \textcolor{comment}{//}}
+\DoxyCodeLine{01031\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{01032\ \textcolor{comment}{//\ \ return;}}
+\DoxyCodeLine{01033\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{01034\ }
+\DoxyCodeLine{01038\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{01039\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::printParticlesInBranch(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ number)\{}
+\DoxyCodeLine{01040\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ i;}
+\DoxyCodeLine{01041\ \ \ }
+\DoxyCodeLine{01042\ \ \ tree-\/>moveTop();}
+\DoxyCodeLine{01043\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{01044\ \ \ \ \ \textcolor{keywordflow}{if}(tree-\/>current-\/>number\ ==\ number)\{}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ std::cout\ <<\ tree-\/>current-\/>nparticles\ <<\ std::endl;}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<tree-\/>current-\/>nparticles;++i)\{}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ std::cout\ <<\ xp[tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]][0]\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ xp[tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}}[i]][1]\ <<\ std::endl;}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01050\ \ \ \ \ \}}
+\DoxyCodeLine{01051\ \ \ \}\textcolor{keywordflow}{while}(tree-\/>WalkStep(\textcolor{keyword}{true}));}
+\DoxyCodeLine{01052\ \ \ }
+\DoxyCodeLine{01053\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01054\ \}}
+\DoxyCodeLine{01060\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
+\DoxyCodeLine{01061\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::printBranchs(\textcolor{keywordtype}{int}\ level)\{}
+\DoxyCodeLine{01062\ \ \ }
+\DoxyCodeLine{01063\ \ \ \textcolor{keywordtype}{bool}\ decend\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01064\ \ \ tree-\/>moveTop();}
+\DoxyCodeLine{01065\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{01066\ \ \ \ \ std::cout\ <<\ tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[0]\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_adcbddad75b79c453e3e2475520b238e8}{boundary\_p1}}[1]\ <<\ \textcolor{stringliteral}{"{}\ \ \ "{}}}
+\DoxyCodeLine{01067\ \ \ \ \ <<\ tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[0]\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_afdf64e1e531aece5d7fa712b0fac0b53}{boundary\_p2}}[1]\ <<\ std::endl;}
+\DoxyCodeLine{01068\ \ \ \ \ \textcolor{keywordflow}{if}(tree-\/>current-\/>\mbox{\hyperlink{struct_q_branch_n_b_abe0512cd38817fb1bb5c2ee764049ffe}{level}}\ ==\ level)\ decend\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01069\ \ \ \ \ \textcolor{keywordflow}{else}\ decend\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01070\ \ \ \}\textcolor{keywordflow}{while}(tree-\/>WalkStep(decend));}
+\DoxyCodeLine{01071\ \ \ }
+\DoxyCodeLine{01072\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01073\ \}}
+\DoxyCodeLine{01074\ }
+\DoxyCodeLine{01075\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ quadTreeHalos\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

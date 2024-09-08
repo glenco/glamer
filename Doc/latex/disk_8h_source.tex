@@ -1,0 +1,175 @@
+\doxysection{disk.\+h}
+\hypertarget{disk_8h_source}{}\label{disk_8h_source}\index{SLsimLib/include/disk.h@{SLsimLib/include/disk.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}particle\_halo.h"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ GLAMER\_disk\_halo\_h}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ GLAMER\_disk\_halo\_h}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ }Utilities::Geometry::Quaternion;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T=\textcolor{keywordtype}{float}>}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_disk}{LensHaloDisk}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles}}<ParticleType<T>\ >\ \{}
+\DoxyCodeLine{00017\ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{class_lens_halo_disk_a67f57cb9d8ae287d948efeee3be962bb}{LensHaloDisk}}(}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ disk\_scale\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Rperp\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ mass\_res\ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ my\_PA\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ my\_inclination\ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ redshift}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth\ =\ 64\ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00031\ \ \ }
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{class_lens_halo_disk_a67f57cb9d8ae287d948efeee3be962bb}{LensHaloDisk}}(\mbox{\hyperlink{class_lens_halo_disk}{LensHaloDisk}}\ \&\&h):}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >(std::move(h)),}
+\DoxyCodeLine{00034\ \ \ particles(\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles}}<ParticleType<T>\ >::trash\_collector)}
+\DoxyCodeLine{00035\ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ qrot\_invers\ =\ h.qrot\_invers;\ \ \textcolor{comment}{//\ rotation\ that\ brings\ the\ disk\ back\ to\ face\ on}}
+\DoxyCodeLine{00037\ \ \ \ \ Rscale\ =\ h.Rscale;}
+\DoxyCodeLine{00038\ \ \ \ \ Rhight\ =\ h.Rhight;}
+\DoxyCodeLine{00039\ \ \ \ \ zpa\ =\ h.zpa;}
+\DoxyCodeLine{00040\ \ \ \ \ inclination\ =\ h.inclination;}
+\DoxyCodeLine{00041\ \ \ \}}
+\DoxyCodeLine{00042\ \ \ }
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{class_lens_halo_disk}{LensHaloDisk}}\ \&\ operator=(\mbox{\hyperlink{class_lens_halo_disk}{LensHaloDisk}}\ \&\&h)\{}
+\DoxyCodeLine{00044\ \ \ \ \ assert(\&h\ !=\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::operator=(std::move(h));}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ particles\ =\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::trash\_collector;}
+\DoxyCodeLine{00049\ \ \ \ \ qrot\_invers\ =\ h.qrot\_invers;\ \ \textcolor{comment}{//\ rotation\ that\ brings\ the\ disk\ back\ to\ face\ on}}
+\DoxyCodeLine{00050\ \ \ \ \ Rscale\ =\ h.Rscale;}
+\DoxyCodeLine{00051\ \ \ \ \ Rhight\ =\ h.Rhight;}
+\DoxyCodeLine{00052\ \ \ \ \ zpa\ =\ h.zpa;}
+\DoxyCodeLine{00053\ \ \ \ \ inclination\ =\ h.inclination;}
+\DoxyCodeLine{00054\ \ \ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00056\ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_halo_disk_a7395242b513238bd5a5546791604786e}{reorient}}(\textcolor{keywordtype}{float}\ my\_inclination,\textcolor{keywordtype}{float}\ my\_PA)\{}
+\DoxyCodeLine{00061\ \ \ \ \ inclination\ =\ my\_inclination;}
+\DoxyCodeLine{00062\ \ \ \ \ zpa\ =\ my\_PA;}
+\DoxyCodeLine{00063\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ Quaternion<>\ R\ =\ Quaternion<>::q\_z\_rotation(zpa)*Quaternion<>::q\_x\_rotation(inclination)*qrot\_invers;}
+\DoxyCodeLine{00065\ \ \ \ \ rotate\_all(R);}
+\DoxyCodeLine{00066\ \ \ \ \ qrot\_invers\ =\ Quaternion<>::q\_x\_rotation(-\/inclination)*Quaternion<>::q\_z\_rotation(-\/zpa);}
+\DoxyCodeLine{00067\ \ \ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ reconstruct\ LensHaloParticles\ base\ class}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::qtree;}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::qtree\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<ParticleType<T>}}\ >(particles.data(),particles.size(),-\/1,-\/1,0,20);}
+\DoxyCodeLine{00071\ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_lens_halo_disk_acc77a9dec1025e4c9671b726c8125a88}{getInclination}}()\{\textcolor{keywordflow}{return}\ inclination;\}}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_lens_halo_disk_a83cbc1ac0a53458f122b77d939d62b72}{getPA}}()\{\textcolor{keywordflow}{return}\ zpa;\}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00078\ \ \ }
+\DoxyCodeLine{00079\ \ \ std::vector<ParticleType<T>\ >\ \&particles;}
+\DoxyCodeLine{00080\ \ \ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ rotate\_all(Quaternion<T>\ \&R)\{}
+\DoxyCodeLine{00082\ \ \ \ \ Quaternion<T>\ q(1,0,0,0);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ particles)\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ q[0]\ =\ 0;\ q[1]\ =\ p[0];\ q[2]\ =\ p[1];\ q[3]\ =\ p[2];}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ q.RotInplace(R);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ p[0]\ =\ q[1];\ p[1]\ =\ q[2];\ p[2]\ =\ q[3];}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \}}
+\DoxyCodeLine{00089\ \ \ }
+\DoxyCodeLine{00090\ \ \ Utilities::Geometry::Quaternion<T>\ qrot\_invers;\ \ \textcolor{comment}{//\ rotation\ that\ brings\ the\ disk\ back\ to\ face\ on}}
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{double}\ Rscale;}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{double}\ Rhight;}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{double}\ zpa;}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{double}\ inclination;}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00098\ \mbox{\hyperlink{class_lens_halo_disk_a67f57cb9d8ae287d948efeee3be962bb}{LensHaloDisk<T>::LensHaloDisk}}(}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mass}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ disk\_scale}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Rperp}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ mass\_res}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ my\_PA}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ my\_inclination}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{float}\ redshift}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nsmooth}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ ):}
+\DoxyCodeLine{00110\ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles}}<ParticleType<T>\ >(redshift,cosmo),}
+\DoxyCodeLine{00111\ particles(\mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles}}<ParticleType<T>\ >::trash\_collector),}
+\DoxyCodeLine{00112\ qrot\_invers(1,0,0,0),Rscale(disk\_scale),Rhight(Rperp),zpa(my\_PA),}
+\DoxyCodeLine{00113\ inclination(my\_inclination)}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \ \ }
+\DoxyCodeLine{00117\ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ (size\_t)(mass/mass\_res\ +\ 1);}
+\DoxyCodeLine{00118\ \ \ particles.resize(N);}
+\DoxyCodeLine{00119\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::pp\ =\ particles.data();}
+\DoxyCodeLine{00120\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::Npoints\ =\ particles.size();}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{double}\ r,theta=0;}
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{double}\ dt\ =\ PI\ +\ \ PI*ran()/10.;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}dt\ =\ "{}\ <<\ dt/PI\ <<\ std::endl;}}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordtype}{double}\ deltaF\ =\ 1.0/(N-\/1);}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{double}\ x\ =\ 0;}
+\DoxyCodeLine{00129\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ particles)\{}
+\DoxyCodeLine{00130\ \ \ \ \ r\ =\ Rscale\ *\ x;}
+\DoxyCodeLine{00131\ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ quadratic\ recursive\ approximation}}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{comment}{//x\ =\ x\ +\ 0.5*(\ sqrt(x\ +\ 4*(1-\/x)*exp(x)*deltaF\ )\ -\/\ x)}}
+\DoxyCodeLine{00135\ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{if}(x==0)\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ x\ =\ sqrt(deltaF);}
+\DoxyCodeLine{00138\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ x\ =\ x\ +\ deltaF*exp(x)/x;}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ assert(!isnan(x));}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//r\ =\ -\/Rscale\ *\ log(1\ -\/\ (float)(i)\ /\ N\ );}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//theta\ =\ 2*PI*ran();}}
+\DoxyCodeLine{00145\ \ \ \ \ theta\ +=\ dt;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ p.x[0]\ =\ r*cos(theta);}
+\DoxyCodeLine{00148\ \ \ \ \ p.x[1]\ =\ r*sin(theta);}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordflow}{if}(Rhight\ >\ 0)\{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ p.x[2]\ =\ -\/Rhight\ *\ log(\ 1\ -\/\ ran()\ );}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ p.x[2]\ *=\ 2*(int)(2*ran())\ -\/\ 1;\ \ \textcolor{comment}{//\ random\ sign}}
+\DoxyCodeLine{00152\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ p.x[2]\ =\ 0;}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ p.Mass\ =\ mass\_res;}
+\DoxyCodeLine{00156\ \ \ \ \ ++i;}
+\DoxyCodeLine{00157\ \ \ \}}
+\DoxyCodeLine{00158\ \ \ }
+\DoxyCodeLine{00159\ \ }
+\DoxyCodeLine{00160\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::calculate\_smoothing(Nsmooth,particles.data(),particles.size());}
+\DoxyCodeLine{00161\ \ \ }
+\DoxyCodeLine{00162\ \ \ \textcolor{comment}{//\ rotate\ particles\ to\ required\ inclination\ and\ position\ angle}}
+\DoxyCodeLine{00163\ \ \ Quaternion<T>\ R\ =\ Quaternion<T>::q\_z\_rotation(zpa)\ *\ Quaternion<T>::q\_y\_rotation(inclination);}
+\DoxyCodeLine{00164\ \ \ rotate\_all(R);}
+\DoxyCodeLine{00165\ \ \ qrot\_invers\ =\ R.conj();}
+\DoxyCodeLine{00166\ \ \ }
+\DoxyCodeLine{00167\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::mcenter\ *=\ 0.0;}
+\DoxyCodeLine{00168\ \ \ LensHalo::setMass(mass);}
+\DoxyCodeLine{00169\ \ \ }
+\DoxyCodeLine{00170\ \ \ \textcolor{comment}{//LensHaloParticles<ParticleType<T>\ >::min\_size;}}
+\DoxyCodeLine{00171\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >::multimass=\textcolor{keyword}{false};}
+\DoxyCodeLine{00172\ \ \ }
+\DoxyCodeLine{00173\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ no\_rotation;}
+\DoxyCodeLine{00174\ \ \ \mbox{\hyperlink{class_lens_halo_particles}{LensHaloParticles<ParticleType<T>}}\ >\mbox{\hyperlink{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6}{::set\_up}}(redshift,cosmo,no\_rotation,-\/1,\textcolor{keyword}{false},\textcolor{keyword}{false});}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ LensHalo::Rmax\ =\ -\/8\ *\ Rscale\ *\ log(1\ -\/\ (\textcolor{keywordtype}{float})(N-\/1)\ /\ N\ );}
+\DoxyCodeLine{00177\ \ \ LensHalo::setRsize(\ LensHalo::Rmax\ );}
+\DoxyCodeLine{00178\ \ \ }
+\DoxyCodeLine{00179\ \};}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

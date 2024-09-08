@@ -1,0 +1,48 @@
+\doxysection{nsie.\+h}
+\hypertarget{nsie_8h_source}{}\label{nsie_8h_source}\index{SLsimLib/include/nsie.h@{SLsimLib/include/nsie.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ nsie.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Dec\ 8,\ 2009}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ R.B.\ Metcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ simple\_analens\_declare}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ simple\_analens\_declare}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsimple__analytic__lens}{simple\_analytic\_lens}}\{}
+\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{char}\ outputfile[40];}
+\DoxyCodeLine{00013\ \ \ \textcolor{keywordtype}{double}\ zlens;}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{double}\ zsource;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{comment}{//\ host\ elliptical}}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{double}\ *xHost;\ \ \ \ \textcolor{comment}{//\ not\ used\ yet}}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{double}\ core;}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{double}\ axis\_ratio;}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{double}\ theta;\ \ \ \ \textcolor{comment}{//\ position\ angle}}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{double}\ sigma;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//\ perturbations\ to\ host}}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{long}\ Nmodes;\ \ \ \ \textcolor{comment}{//\ this\ includes\ two\ for\ external\ shear}}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{double}\ *modes;\ \ \textcolor{comment}{//first\ two\ are\ shear}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \textcolor{comment}{//\ substructures}}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{long}\ NSubstruct;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{double}\ **xSubstruct;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{double}\ *RcutSubstruct;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{double}\ *massSubstruct;}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{double}\ betaSubstruct;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{comment}{//\ private\ derived\ quantities}}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{double}\ ro;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{double}\ MpcToAsec;\ \ \ \ \textcolor{comment}{//\ conversion\ factor\ between\ Mpc\ on\ the\ lens\ plane\ and\ arcseconds}}
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{double}\ Sigma\_crit;\ \ \ \textcolor{comment}{//\ critical\ surface\ density}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \}\ \mbox{\hyperlink{structsimple__analytic__lens}{SimpAnaLens}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+
+\end{DoxyCode}

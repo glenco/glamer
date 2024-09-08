@@ -1,0 +1,105 @@
+\doxysection{veronoi.\+h}
+\hypertarget{veronoi_8h_source}{}\label{veronoi_8h_source}\index{SLsimLib/include/veronoi.h@{SLsimLib/include/veronoi.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ \ veronoi.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ \ GLAMER}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ \ Created\ by\ Ben\ Metcalf\ on\ 27/02/15.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ GLAMER\_veronoi\_h}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ GLAMER\_veronoi\_h}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}point.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }Point\_Nd\{}
+\DoxyCodeLine{00015\ \ \ }
+\DoxyCodeLine{00016\ \ \ Point\_Nd(\textcolor{keywordtype}{int}\ Nin)\{}
+\DoxyCodeLine{00017\ \ \ \ \ dim\ =\ Nin;}
+\DoxyCodeLine{00018\ \ \ \ \ x.resize(Nin);}
+\DoxyCodeLine{00019\ \ \ \}}
+\DoxyCodeLine{00020\ \ \ \string~Point\_Nd()\{x.clear();\};}
+\DoxyCodeLine{00021\ \ \ }
+\DoxyCodeLine{00022\ \ \ Point\_Nd(\textcolor{keyword}{const}\ Point\_Nd\ \&p)\{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]=p.x[i];}
+\DoxyCodeLine{00024\ \ \ \}}
+\DoxyCodeLine{00025\ \ \ Point\_Nd\ \&\ operator=(\textcolor{keyword}{const}\ Point\_Nd\ \&p)\{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]=p.x[i];}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00029\ \ \ \}}
+\DoxyCodeLine{00030\ \ \ Point\_Nd\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\ \&p)\{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]=p.x[i];}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00033\ \ \ \}}
+\DoxyCodeLine{00034\ \ \ }
+\DoxyCodeLine{00035\ \ \ Point\_Nd\ \&\ operator+=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\ \&p)\{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]+=p.x[i];}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00038\ \ \ \}}
+\DoxyCodeLine{00039\ \ \ Point\_Nd\ \ operator+(\textcolor{keyword}{const}\ Point\_Nd\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00040\ \ \ \ \ Point\_Nd\ tmp(p.dim);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ tmp.x[i]\ =\ x[i]\ +\ p.x[i];}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00043\ \ \ \}}
+\DoxyCodeLine{00044\ \ \ Point\_Nd\ \ operator-\/(\textcolor{keyword}{const}\ Point\_Nd\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00045\ \ \ \ \ Point\_Nd\ tmp(p.dim);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ tmp.x[i]\ =\ x[i]\ -\/\ p.x[i];}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00048\ \ \ \}}
+\DoxyCodeLine{00049\ \ \ Point\_Nd\ \&\ operator+=(\textcolor{keyword}{const}\ Point\_Nd\ \&p)\{}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]+=p.x[i];}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ \ \ Point\_Nd\ \&\ operator/=(PosType\ value)\{}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]/=value;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00056\ \ \ \}}
+\DoxyCodeLine{00057\ \ \ Point\_Nd\ \&\ operator/(PosType\ value)\{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]/=value;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00060\ \ \ \}}
+\DoxyCodeLine{00061\ \ \ Point\_Nd\ \&\ operator*=(PosType\ value)\{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ x[i]*=value;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00064\ \ \ \}}
+\DoxyCodeLine{00066\ \ \ PosType\ operator*(\textcolor{keyword}{const}\ Point\_Nd\ \&p)\{}
+\DoxyCodeLine{00067\ \ \ \ \ PosType\ sum\ =0;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<dim;++i)\ sum\ +=\ x[i]*p.x[i];}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0;}
+\DoxyCodeLine{00070\ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \textcolor{comment}{//PosType\ operator\string^(const\ Point\_Nd\ \&p)\{}}
+\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ \ return\ x[0]*p.x[1]\ -\/\ x[1]*p.x[0];}}
+\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00075\ \ \ }
+\DoxyCodeLine{00077\ \ \ PosType\ length()\{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt((*\textcolor{keyword}{this})*(*\textcolor{keyword}{this}));}
+\DoxyCodeLine{00079\ \ \ \}}
+\DoxyCodeLine{00080\ \ \ }
+\DoxyCodeLine{00081\ \ \ PosType\ \&\ operator[](\textcolor{keywordtype}{size\_t}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00083\ \ \ std::vector<PosType>\ x;}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{int}\ dim;}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{class\ }Simplex\_Nd\{}
+\DoxyCodeLine{00089\ \ \ Simplex\_Nd(\textcolor{keywordtype}{int}\ D,Point\_Nd\ *points)\{}
+\DoxyCodeLine{00090\ \ \ \ \ vecs.resize(D+1);}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<D+1;++i)\ vecs[i]\ =\ \&points[i];}
+\DoxyCodeLine{00092\ \ \ \}}
+\DoxyCodeLine{00093\ \ \ }
+\DoxyCodeLine{00094\ \ \ Point\_Nd\ \&\ RandomPointWithin();}
+\DoxyCodeLine{00095\ \ \ \textcolor{keywordtype}{double}\ Volume()\{\textcolor{keywordflow}{return}\ volume;\}}
+\DoxyCodeLine{00096\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00097\ \ \ std::vector<Point\_Nd\ *>\ vecs;}
+\DoxyCodeLine{00098\ \ \ PosType\ volume;}
+\DoxyCodeLine{00099\ \ \ \textcolor{keywordtype}{void}\ CalcVolume();}
+\DoxyCodeLine{00100\ \};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

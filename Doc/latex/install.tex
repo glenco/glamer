@@ -1,5 +1,11 @@
-Installing {\itshape G\+L\+A\+M\+ER} is a mostly straightforward process, thanks to the {\itshape C\+Make} build system which handles configuration options, dependency resolution, and integration into projects.\hypertarget{install_autotoc_md0}{}\doxysection{The build system}\label{install_autotoc_md0}
-The {\itshape G\+L\+A\+M\+ER} libraries are built using the \href{http://www.cmake.org}{\texttt{ C\+Make}} build system. {\itshape C\+Make} is a meta build system which generates the files required by your build environment of choice, such as
+\chapter{Installing GLAMER}
+\hypertarget{install}{}\label{install}\index{Installing GLAMER@{Installing GLAMER}}
+\label{install_md__s_lsim_lib_2_i_n_s_t_a_l_l}%
+\Hypertarget{install_md__s_lsim_lib_2_i_n_s_t_a_l_l}%
+
+
+Installing {\itshape GLAMER} is a mostly straightforward process, thanks to the {\itshape CMake} build system which handles configuration options, dependency resolution, and integration into projects.\hypertarget{install_autotoc_md0}{}\doxysection{\texorpdfstring{The build system}{The build system}}\label{install_autotoc_md0}
+The {\itshape GLAMER} libraries are built using the \href{http://www.cmake.org}{\texttt{ CMake}} build system. {\itshape CMake} is a meta build system which generates the files required by your build environment of choice, such as
 
 
 \begin{DoxyItemize}
@@ -7,94 +13,102 @@ The {\itshape G\+L\+A\+M\+ER} libraries are built using the \href{http://www.cma
 \item Xcode
 \item Eclipse
 \item ...
-\end{DoxyItemize}\hypertarget{install_autotoc_md1}{}\doxysubsection{Getting C\+Make}\label{install_autotoc_md1}
-The installation of {\itshape C\+Make} on all major platforms is straightforward. There are binary installation packages available on the {\itshape C\+Make} website.
+\end{DoxyItemize}\hypertarget{install_autotoc_md1}{}\doxysubsection{\texorpdfstring{Getting CMake}{Getting CMake}}\label{install_autotoc_md1}
+The installation of {\itshape CMake} on all major platforms is straightforward. There are binary installation packages available on the {\itshape CMake} website.
 
-For Linux, {\itshape C\+Make} can be found in most package managers natively.
+For Linux, {\itshape CMake} can be found in most package managers natively.
 
-For Mac OS X, {\itshape C\+Make} is available from both \href{http://www.brew.sh}{\texttt{ Homebrew}}, \href{https://www.macports.org}{\texttt{ Mac\+Ports}} or \href{https://docs.conda.io/projects/conda/en/latest/}{\texttt{ conda}}.\hypertarget{install_autotoc_md2}{}\doxysubsection{Using C\+Make}\label{install_autotoc_md2}
-{\itshape C\+Make} is a command-\/line tool that takes input files (called {\ttfamily C\+Make\+Lists.\+txt}) and processes them into files for your build system of choice (via a generator), optionally taking into account project-\/specific options. The normal workflow is the following\+:
+For Mac OS X, {\itshape CMake} is available from both \href{http://www.brew.sh}{\texttt{ Homebrew}}, \href{https://www.macports.org}{\texttt{ Mac\+Ports}} or \href{https://docs.conda.io/projects/conda/en/latest/}{\texttt{ conda}}.\hypertarget{install_autotoc_md2}{}\doxysubsection{\texorpdfstring{Using CMake}{Using CMake}}\label{install_autotoc_md2}
+{\itshape CMake} is a command-\/line tool that takes input files (called {\ttfamily CMake\+Lists.\+txt}) and processes them into files for your build system of choice (via a generator), optionally taking into account project-\/specific options. The normal workflow is the following\+:
 
 
 \begin{DoxyEnumerate}
-\item Get source code containing {\ttfamily C\+Make\+Lists.\+txt} files for cmake to process.
-\item Create a new subdirectory which will contain the generated files. This is, in the language of cmake, an \char`\"{}out-\/of-\/source\char`\"{} build and the preferred mode of operation, since it does not contaminate the source directory (and cmake generates quite a number of files). The subdirectory is usually called \char`\"{}build\char`\"{}.
-\item Call cmake with appropriate arguments to generate files for your build system (or I\+DE).
+\item Get source code containing {\ttfamily CMake\+Lists.\+txt} files for cmake to process.
+\item Create a new subdirectory which will contain the generated files. This is, in the language of cmake, an "{}out-\/of-\/source"{} build and the preferred mode of operation, since it does not contaminate the source directory (and cmake generates quite a number of files). The subdirectory is usually called "{}build"{}.
+\item Call cmake with appropriate arguments to generate files for your build system (or IDE).
 \item Build using your usual method of choice.
-\end{DoxyEnumerate}\hypertarget{install_autotoc_md3}{}\doxysection{Dependancies}\label{install_autotoc_md3}
-Before starting to configure and build {\itshape G\+L\+A\+M\+ER}, it is advisable to resolve all necessary dependencies, since the cmake configuration will automatically detect settings based on the libraries it can find.
+\end{DoxyEnumerate}\hypertarget{install_autotoc_md3}{}\doxysection{\texorpdfstring{Dependancies}{Dependancies}}\label{install_autotoc_md3}
+Before starting to configure and build {\itshape GLAMER}, it is advisable to resolve all necessary dependencies, since the cmake configuration will automatically detect settings based on the libraries it can find.
 
 All the dependancies should be available through the package managment system \href{https://docs.conda.io/projects/conda/en/latest/}{\texttt{ conda}}. It is recommended that you use this to install and update the dependencies.
 
-The {\itshape G\+L\+A\+M\+ER} library requires some libraries by default and others are optional.
+The {\itshape GLAMER} library requires some libraries by default and others are optional.
 
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
-\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library }&\multicolumn{2}{c|}{\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Required by }}&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }\\\cline{1-4}
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\multicolumn{2}{c|}{\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Required by   }}&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
 \endfirsthead
 \hline
 \endfoot
 \hline
-\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library }&\multicolumn{2}{c|}{\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Required by }}&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }\\\cline{1-4}
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Library   }&\multicolumn{2}{c|}{\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Required by   }}&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
 \endhead
-\href{https://heasarc.gsfc.nasa.gov/fitsio/fitsio.html}{\texttt{ C\+F\+I\+T\+S\+IO}} &{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS} &required &Library for reading and writing files in the F\+I\+TS format.  \\\cline{1-4}
-\href{http://www.fftw.org}{\texttt{ F\+F\+TW}} &{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+F\+F\+TW} &required &Library for Fast Fourier Transform algorithms.  \\\cline{1-4}
-\href{http://www.gnu.org/software/gsl/}{\texttt{ G\+SL}} &{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+G\+SL} &optional &Library for scientific computation  \\\cline{1-4}
-\href{https://support.hdfgroup.org/HDF5/doc/cpplus_RM/}{\texttt{ H\+D\+F5 C++}} &{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+H\+D\+F5} &optional &I/O in hdf5 format  \\\cline{1-4}
-\href{https://healpix.jpl.nasa.gov/html/Healpix_cxx/}{\texttt{ Heal\+Pix}} &E\+N\+A\+B\+L\+E\+\_\+\+H\+E\+A\+L\+P\+IX &optional &C++ Healpix interface  \\\cline{1-4}
+\href{https://heasarc.gsfc.nasa.gov/fitsio/fitsio.html}{\texttt{ CFITSIO}}   &{\ttfamily ENABLE\+\_\+\+FITS}   &required   &Library for reading and writing files in the FITS format.    \\\cline{1-4}
+\href{http://www.fftw.org}{\texttt{ FFTW}}   &{\ttfamily ENABLE\+\_\+\+FFTW}   &required   &Library for Fast Fourier Transform algorithms.    \\\cline{1-4}
+\href{http://www.gnu.org/software/gsl/}{\texttt{ GSL}}   &{\ttfamily ENABLE\+\_\+\+GSL}   &optional   &Library for scientific computation    \\\cline{1-4}
+\href{https://support.hdfgroup.org/HDF5/doc/cpplus_RM/}{\texttt{ HDF5 C++}}   &{\ttfamily ENABLE\+\_\+\+HDF5}   &optional   &I/O in hdf5 format    \\\cline{1-4}
+\href{https://healpix.jpl.nasa.gov/html/Healpix_cxx/}{\texttt{ Heal\+Pix}}   &ENABLE\+\_\+\+HEALPIX   &optional   &C++ Healpix interface   \\\cline{1-4}
 \end{longtabu}
-\hypertarget{install_autotoc_md4}{}\doxysection{Building the library}\label{install_autotoc_md4}
-After extracting the library, you will be find a directory structure that contains folders for the individual {\itshape G\+L\+A\+M\+ER} sub-\/libraries, together with an additional {\ttfamily examples} folder containing a sample project, and a {\ttfamily cmake} folder containing necessary files for {\itshape C\+Make}.
+\hypertarget{install_autotoc_md4}{}\doxysection{\texorpdfstring{Building the library}{Building the library}}\label{install_autotoc_md4}
+After extracting the library, you will be find a directory structure that contains folders for the individual {\itshape GLAMER} sub-\/libraries, together with an additional {\ttfamily examples} folder containing a sample project, and a {\ttfamily cmake} folder containing necessary files for {\itshape CMake}.
 
-In order to build {\itshape G\+L\+A\+M\+ER} using cmake, the following steps are necessary\+:
+In order to build {\itshape GLAMER} using cmake, the following steps are necessary\+:
 
 
 \begin{DoxyEnumerate}
-\item Create a {\ttfamily build} directory for building the {\itshape G\+L\+A\+M\+ER} libraries. \begin{DoxyVerb}$ mkdir build
+\item Create a {\ttfamily build} directory for building the {\itshape GLAMER} libraries. \begin{DoxyVerb}$ mkdir build
 $ cd build
 \end{DoxyVerb}
 
-\item Run {\ttfamily cmake} with arguments. You will probably want to set the generator and maybe some of the {\itshape G\+L\+A\+M\+ER}-\/specific options. Here we generate Unix Makefiles and enable {\itshape F\+I\+TS} and {\itshape F\+F\+TW} functions. \begin{DoxyVerb}$ cmake .. -G "Unix Makefiles" [-DENABLE_GSL=ON]
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
+\item Run {\ttfamily cmake} with arguments. You will probably want to set the generator and maybe some of the {\itshape GLAMER}-\/specific options. Here we generate Unix Makefiles and enable {\itshape FITS} and {\itshape FFTW} functions. \begin{DoxyVerb}$ cmake .. -G "Unix Makefiles" [-DENABLE_GSL=ON]
 \end{DoxyVerb}
 
+\end{DoxyEnumerate}
+
+
+\begin{DoxyEnumerate}
 \item At this point, you are presented with a Makefile or project inside the {\ttfamily build} directory which you can use to build the library. \begin{DoxyVerb}$ make
 \end{DoxyVerb}
 
 \end{DoxyEnumerate}
 
-The last step of course depends on the type of generator you choose (using the {\ttfamily -\/G} flag). For I\+D\+Es like Xcode or Eclipse, you have to open the project that {\itshape C\+Make} generated and build the library from within the I\+DE.\hypertarget{install_autotoc_md5}{}\doxysubsection{Rebuilding}\label{install_autotoc_md5}
-A very useful feature of cmake is that it caches all the configuration options you set in previous runs. Thus it is not necessary to specify options you want to keep unchanged on subsequent runs. Continuing the above example, you could turn off {\itshape F\+F\+TW} support using \begin{DoxyVerb}$ cmake .. -DENABLE_FFTW=OFF
+The last step of course depends on the type of generator you choose (using the {\ttfamily -\/G} flag). For IDEs like Xcode or Eclipse, you have to open the project that {\itshape CMake} generated and build the library from within the IDE.\hypertarget{install_autotoc_md5}{}\doxysubsection{\texorpdfstring{Rebuilding}{Rebuilding}}\label{install_autotoc_md5}
+A very useful feature of cmake is that it caches all the configuration options you set in previous runs. Thus it is not necessary to specify options you want to keep unchanged on subsequent runs. Continuing the above example, you could turn off {\itshape FFTW} support using \begin{DoxyVerb}$ cmake .. -DENABLE_FFTW=OFF
 \end{DoxyVerb}
 
 
-while keeping the generator and {\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS} options untouched.
+while keeping the generator and {\ttfamily ENABLE\+\_\+\+FITS} options untouched.
 
-It is necessary to regenerate the build files when sources are added or removed. Luckily, your build system should automatically check whether {\ttfamily cmake} needs to be rerun for you before building.\hypertarget{install_autotoc_md6}{}\doxysection{Build options}\label{install_autotoc_md6}
+It is necessary to regenerate the build files when sources are added or removed. Luckily, your build system should automatically check whether {\ttfamily cmake} needs to be rerun for you before building.\hypertarget{install_autotoc_md6}{}\doxysection{\texorpdfstring{Build options}{Build options}}\label{install_autotoc_md6}
 Options can be set from the command-\/line using \begin{DoxyVerb}cmake .. -G <generator> -D<option>=<value>
 \end{DoxyVerb}
 
 
 For a list of available generators, use {\ttfamily cmake -\/h}.
 
-The following options can be passed to {\ttfamily cmake} for building {\itshape G\+L\+A\+M\+ER}\+:
+The following options can be passed to {\ttfamily cmake} for building {\itshape GLAMER}\+:
 
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
 \hline
-\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Values }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }\\\cline{1-4}
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Values   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
 \endfirsthead
 \hline
 \endfoot
 \hline
-\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Values }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description  }\\\cline{1-4}
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Values   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
 \endhead
-{\ttfamily U\+S\+E\+\_\+\+C\+X\+X11} &{\ttfamily ON}, {\ttfamily O\+FF} &{\ttfamily ON} &Use the C++11 standard if supported by the compiler.  \\\cline{1-4}
-{\ttfamily N\+\_\+\+T\+H\+R\+E\+A\+DS} &1, 2, ... &1 &Set to the maximum number of threads to be used.  \\\cline{1-4}
-{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+F\+I\+TS} &{\ttfamily ON}, {\ttfamily O\+FF} &{\ttfamily ON} &Enable functions that need F\+I\+TS support.  \\\cline{1-4}
-{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+F\+F\+TW} &{\ttfamily ON}, {\ttfamily O\+FF} &{\ttfamily ON} &Enable functions that need F\+F\+TW support.  \\\cline{1-4}
-{\ttfamily E\+N\+A\+B\+L\+E\+\_\+\+G\+SL} &{\ttfamily ON}, {\ttfamily O\+FF} &{\ttfamily O\+FF} &Enable functions that need G\+SL support.  \\\cline{1-4}
-{\ttfamily \+\_\+\+O\+P\+E\+N\+MP} &{\ttfamily ON}, {\ttfamily O\+FF} &{\ttfamily O\+FF} &Enables open\+MP multi-\/threading.  \\\cline{1-4}
+{\ttfamily USE\+\_\+\+CXX11}   &{\ttfamily ON}, {\ttfamily OFF}   &{\ttfamily ON}   &Use the C++11 standard if supported by the compiler.    \\\cline{1-4}
+{\ttfamily N\+\_\+\+THREADS}   &1, 2, ...   &1   &Set to the maximum number of threads to be used.    \\\cline{1-4}
+{\ttfamily ENABLE\+\_\+\+FITS}   &{\ttfamily ON}, {\ttfamily OFF}   &{\ttfamily ON}   &Enable functions that need FITS support.    \\\cline{1-4}
+{\ttfamily ENABLE\+\_\+\+FFTW}   &{\ttfamily ON}, {\ttfamily OFF}   &{\ttfamily ON}   &Enable functions that need FFTW support.    \\\cline{1-4}
+{\ttfamily ENABLE\+\_\+\+GSL}   &{\ttfamily ON}, {\ttfamily OFF}   &{\ttfamily OFF}   &Enable functions that need GSL support.    \\\cline{1-4}
+{\ttfamily \+\_\+\+OPENMP}   &{\ttfamily ON}, {\ttfamily OFF}   &{\ttfamily OFF}   &Enables open\+MP multi-\/threading.   \\\cline{1-4}
 \end{longtabu}
 
 
@@ -102,20 +116,20 @@ More detailed descriptions of the individual options can be found below.
 
 The list of currently cached option values can be shown using \begin{DoxyVerb}$ cmake .. -L
 \end{DoxyVerb}
-\hypertarget{install_autotoc_md7}{}\doxysubsection{Option $<$tt$>$\+E\+N\+A\+B\+L\+E\+\_\+\+G\+S\+L$<$/tt$>$}\label{install_autotoc_md7}
-This enables some halo model calculations in Cosmo\+Lib.\hypertarget{install_autotoc_md8}{}\doxysubsection{Option $<$tt$>$\+\_\+\+O\+P\+E\+N\+M\+P$<$/tt$>$}\label{install_autotoc_md8}
-This is used in only one place and should be considered obsolete.\hypertarget{install_autotoc_md9}{}\doxysection{Using G\+L\+A\+M\+ER}\label{install_autotoc_md9}
-Once the {\itshape G\+L\+A\+M\+ER} libraries are built inside your build tree, they can be linked with your executables as usual. However, you might want to try and manage your project with {\itshape C\+Make} instead.
+\hypertarget{install_autotoc_md7}{}\doxysubsection{\texorpdfstring{Option {\ttfamily ENABLE\+\_\+\+GSL}}{Option {\ttfamily ENABLE\+\_\+\+GSL}}}\label{install_autotoc_md7}
+This enables some halo model calculations in Cosmo\+Lib.\hypertarget{install_autotoc_md8}{}\doxysubsection{\texorpdfstring{Option {\ttfamily \+\_\+\+OPENMP}}{Option {\ttfamily \+\_\+\+OPENMP}}}\label{install_autotoc_md8}
+This is used in only one place and should be considered obsolete.\hypertarget{install_autotoc_md9}{}\doxysection{\texorpdfstring{Using GLAMER}{Using GLAMER}}\label{install_autotoc_md9}
+Once the {\itshape GLAMER} libraries are built inside your build tree, they can be linked with your executables as usual. However, you might want to try and manage your project with {\itshape CMake} instead.
 
-Having built the {\itshape G\+L\+A\+M\+ER} libraries with C\+Make makes it easy to integrate them into projects. Most of the process is automated by {\itshape C\+Make}. It is important to have built {\itshape G\+L\+A\+M\+ER} before setting up a project, since {\itshape C\+Make} then remembers where to find the libraries.\hypertarget{install_autotoc_md10}{}\doxysubsection{Creating new projects}\label{install_autotoc_md10}
-The easiest way to start a project is to copy the sample project from the {\ttfamily examples/project} folder or clone one of the example projects from the \mbox{[}Glenco Github page\mbox{]}(\char`\"{}https\+://github.\+com/glenco\char`\"{}), specifically \mbox{[}Example1\mbox{]}(\char`\"{}https\+://github.\+com/glenco/\+Example1\char`\"{}), \mbox{[}Example\+Image\mbox{]}(\char`\"{}https\+://github.\+com/glenco/\+Example\+Image\char`\"{}) and \mbox{[}Particle\+Example\mbox{]}(\char`\"{}https\+://github.\+com/glenco/\+Particle\+Example\char`\"{}). The new project should be in its own directory outside of the {\itshape G\+L\+A\+M\+ER} directory tree.
+Having built the {\itshape GLAMER} libraries with CMake makes it easy to integrate them into projects. Most of the process is automated by {\itshape CMake}. It is important to have built {\itshape GLAMER} before setting up a project, since {\itshape CMake} then remembers where to find the libraries.\hypertarget{install_autotoc_md10}{}\doxysubsection{\texorpdfstring{Creating new projects}{Creating new projects}}\label{install_autotoc_md10}
+The easiest way to start a project is to copy the sample project from the {\ttfamily examples/project} folder or clone one of the example projects from the \mbox{[}Glenco Github page\mbox{]}("{}https\+://github.\+com/glenco"{}), specifically \mbox{[}Example1\mbox{]}("{}https\+://github.\+com/glenco/\+Example1"{}), \mbox{[}Example\+Image\mbox{]}("{}https\+://github.\+com/glenco/\+Example\+Image"{}) and \mbox{[}Particle\+Example\mbox{]}("{}https\+://github.\+com/glenco/\+Particle\+Example"{}). The new project should be in its own directory outside of the {\itshape GLAMER} directory tree.
 
-In the enclosed {\ttfamily C\+Make\+Lists.\+txt} file, all instances of the \char`\"{}sample\char`\"{} name have to be replaced with the actual name of the project. Sources and headers can be added to the appropriate lists.\hypertarget{install_autotoc_md11}{}\doxysubsection{Existing cmake projects}\label{install_autotoc_md11}
-For projects already using {\itshape C\+Make}, integrating {\itshape G\+L\+A\+M\+ER} is as simple as calling \begin{DoxyVerb}find_package(GLAMER NO_MODULE REQUIRED)
+In the enclosed {\ttfamily CMake\+Lists.\+txt} file, all instances of the "{}sample"{} name have to be replaced with the actual name of the project. Sources and headers can be added to the appropriate lists.\hypertarget{install_autotoc_md11}{}\doxysubsection{\texorpdfstring{Existing cmake projects}{Existing cmake projects}}\label{install_autotoc_md11}
+For projects already using {\itshape CMake}, integrating {\itshape GLAMER} is as simple as calling \begin{DoxyVerb}find_package(GLAMER NO_MODULE REQUIRED)
 \end{DoxyVerb}
 
 
-before creating any targets. This will load the {\itshape G\+L\+A\+M\+ER} configuration, import the library targets and set variables containing the include directories and libraries necessary for {\itshape G\+L\+A\+M\+ER}, including all dependencies. These can then be set using the usual \begin{DoxyVerb}include_directories(${GLAMER_INCLUDE_DIRS})
+before creating any targets. This will load the {\itshape GLAMER} configuration, import the library targets and set variables containing the include directories and libraries necessary for {\itshape GLAMER}, including all dependencies. These can then be set using the usual \begin{DoxyVerb}include_directories(${GLAMER_INCLUDE_DIRS})
 \end{DoxyVerb}
 
 
@@ -123,8 +137,8 @@ and \begin{DoxyVerb}target_link_libraries(<target> ${GLAMER_LIBRARIES})
 \end{DoxyVerb}
 
 
-functions.\hypertarget{install_autotoc_md12}{}\doxysubsection{Building projects}\label{install_autotoc_md12}
-Projects are built using {\itshape C\+Make} in the same way the libraries are built. After creating a build tree, cmake will configure and generate a project which can subsequently be used with the build tool of choice. \begin{DoxyVerb}$ cd myproject
+functions.\hypertarget{install_autotoc_md12}{}\doxysubsection{\texorpdfstring{Building projects}{Building projects}}\label{install_autotoc_md12}
+Projects are built using {\itshape CMake} in the same way the libraries are built. After creating a build tree, cmake will configure and generate a project which can subsequently be used with the build tool of choice. \begin{DoxyVerb}$ cd myproject
 $ ls
 CMakeLists.txt  main.cpp
 $ mkdir build
@@ -140,4 +154,4 @@ $ make
 \end{DoxyVerb}
  If you are not using Xcode.
 
-{\bfseries{Note\+:}} Building the project will not build the G\+L\+A\+M\+ER libraries automatically! 
+{\bfseries{Note\+:}} Building the project will not build the GLAMER libraries automatically! 

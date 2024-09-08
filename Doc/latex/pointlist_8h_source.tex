@@ -1,0 +1,70 @@
+\doxysection{pointlist.\+h}
+\hypertarget{pointlist_8h_source}{}\label{pointlist_8h_source}\index{SLsimLib/include/pointlist.h@{SLsimLib/include/pointlist.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ point.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ Nov\ 15,\ 2010}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ bmetcalf}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *\ \ \ \ \ \ Defines\ Point\ and\ Branch\ type.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ \ \ \ \ \ The\ Branch\ type\ needs\ to\ be\ defined\ here\ so\ that\ point.leaf\ can\ be\ defined.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ pointtypes\_declare}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ pointtypes\_declare}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{standard_8h}{standard.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <point.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//struct\ Point;}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//struct\ Branch;}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*typedef\ struct\ Point\{}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ struct\ Point\ *next;\ \ \ \ //\ pointer\ to\ next\ point\ in\ linked\ list}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ struct\ Point\ *prev;}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ struct\ Point\ *image;\ \ //\ pointer\ to\ point\ on\ image\ or\ source\ plane}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ unsigned\ long\ id;}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ double\ *x;\ \ \ \ \ \ \ \ \ //\ the\ position\ of\ the\ point}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ unsigned\ long\ head;\ \ \ \ \ \ \ \ \ //\ marks\ beginning\ of\ allocated\ array\ of\ points\ for\ easy\ deallocation}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ Boo\ in\_image;\ //\ marks\ if\ point\ is\ in\ image}}
+\DoxyCodeLine{00031\ \textcolor{comment}{}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ \ //\ redundant\ information\ in\ image\ and\ source\ points}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ \ KappaType\ kappa;\ \ \ \ \ \ \ \ //\ surface\ density}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ \ KappaType\ gamma[3];\ \ \ \ //\ shear,\ third\ component\ is\ the\ rotation\ quantity\ that\ is\ only\ non-\/zero\ for\ multi-\/plane\ lensing}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ KappaType\ dt;\ \ \ \ \ \ \ \ \ \ //\ time\ delay}}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ float\ invmag;\ \ \ \ \ //\ inverse\ of\ magnification}}
+\DoxyCodeLine{00037\ \textcolor{comment}{\ \ double\ gridsize;\ \ \ //\ the\ size\ of\ the\ most\ refined\ grid\ the\ point\ is\ in}}
+\DoxyCodeLine{00038\ \textcolor{comment}{\ \ float\ surface\_brightness;\ \ //\ the\ surface\ brightness\ at\ this\ points}}
+\DoxyCodeLine{00039\ \textcolor{comment}{}}
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ struct\ Branch;}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ Branch\ *leaf;}}
+\DoxyCodeLine{00042\ \textcolor{comment}{}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\}\ Point;}}
+\DoxyCodeLine{00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00045\ \textcolor{comment}{struct\ branchstruct\{}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ struct\ Point\ *points;\ \ \ \ \ \ \ \ //\ pointer\ to\ first\ points\ in\ Branch}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ unsigned\ long\ npoints;}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ double\ center[2];}}
+\DoxyCodeLine{00049\ \textcolor{comment}{\ \ int\ level;}}
+\DoxyCodeLine{00050\ \textcolor{comment}{\ \ unsigned\ long\ number;}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ double\ boundary\_p1[2];}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ double\ boundary\_p2[2];}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ struct\ branchstruct\ *child1;}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ struct\ branchstruct\ *child2;}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ struct\ branchstruct\ *brother;}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ struct\ branchstruct\ *prev;}}
+\DoxyCodeLine{00058\ \ \ bool\ refined;}
+\DoxyCodeLine{00059\ \}\ ;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ typedef\ struct\ branchstruct\ Branch;}
+\DoxyCodeLine{00062\ */}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
