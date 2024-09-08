@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['utilities_1658',['Utilities',['../group___utill.html',1,'']]]
+  ['manipulation_0',['Lens Manipulation',['../group___change_lens.html',1,'']]],
+  ['mid_20level_20routines_1',['Mid Level Routines',['../group___mid_level.html',1,'']]]
 ];

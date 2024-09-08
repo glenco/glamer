@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{iftex}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\color{white}
+\pagecolor{black}
+\ifPDFTeX
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\fi
+\pagestyle{empty}
+\begin{document}
+$ \frac{1}{\overline{\rho}_{comoving}}\frac{dN}{d\ln M} $
+\pagebreak
+
+$ \frac{dN}{dlogM} $
+\pagebreak
+
+$ S(m)=\sigma^2(m) $
+\pagebreak
+
+$ \sigma(m) $
+\pagebreak
+
+$ \delta_c/D_+ $
+\pagebreak
+
+$ S(R)=\sigma^2(R) $
+\pagebreak
+
+$ y=y(x) $
+\pagebreak
+
+$ \frac{r_{einstein}}{units(x)} $
+\pagebreak
+
+$ \frac{\sigma^2}{\Sigma_{crit}G\, units(xt) } $
+\pagebreak
+
+$ R^2 = x^2 + f^2 y^2 $
+\pagebreak
+
+$ \Sigma \propto 1/(1 + r/r_s )^\beta $
+\pagebreak
+
+$ \Sigma \propto r^{-\beta} $
+\pagebreak
+
+$ \rho \propto \left( \frac{r}{r_s} \right)^{-1} \left( 1 + \frac{r}{r_s} \right)^{-3} $
+\pagebreak
+
+$ \rho \propto \left( \frac{r}{r_s} \right)^{-2} \left( 1 + \frac{r}{r_s} \right)^{-2} $
+\pagebreak
+
+\end{document}

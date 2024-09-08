@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installing_20glamer_1660',['Installing GLAMER',['../install.html',1,'']]]
+  ['glamer_0',['GLAMER',['../install.html',1,'Installing GLAMER'],['../copying.html',1,'Obtaining GLAMER']]]
 ];

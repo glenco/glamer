@@ -1,0 +1,14 @@
+digraph "SourceOverzierPlus"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [id="Node000001",label="SourceOverzierPlus",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Adds some extra features to the SourceOverzier source like spiral arms, and randomizations."];
+  Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="SourceOverzier",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_source_overzier.html",tooltip="Structure for holding parameters for one or more galaxy images according to the Overzier model."];
+  Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Source",height=0.2,width=0.4,color="red", fillcolor="#FFF0F0", style="filled",URL="$class_source.html",tooltip="Base class for all sources."];
+  Node5 -> Node2 [id="edge3_Node000002_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=" spheroid",fontcolor="grey" ];
+  Node5 [id="Node000005",label="SourceSersic",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$class_source_sersic.html",tooltip="Class for sources described by a Sersic profile."];
+}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['elliptic_817',['Elliptic',['../class_elliptic.html',1,'']]]
+  ['elliptic_0',['Elliptic',['../class_elliptic.html',1,'']]]
 ];
