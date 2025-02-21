@@ -1,0 +1,109 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake -- configure debug",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DENABLE_CERF=ON",
+                "-DENABLE_EIGEN=ON",
+                "-DENABLE_GSL=ON",
+                ".."
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Configures the project in debug mode."
+        },
+        {
+            "label": "cmake -- configure release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DENABLE_CERF=ON",
+                "-DENABLE_EIGEN=ON",
+                "-DENABLE_GSL=ON",
+                ".."
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Configures the project in release mode."
+        },
+        {
+            "label": "cmake -- build",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "-j20",
+            ],
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds the project."
+        },
+        {
+            "label": "cmake -- configure debug and build",
+            "dependsOn": [
+                "cmake -- configure",
+                "build debug"
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Runs configure debug and build tasks sequentially!"
+        },
+        {
+            "label": "cmake -- configure release and build",
+            "dependsOn": [
+                "cmake -- configure release",
+                "cmake -- build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Runs configure and build tasks sequentially!"
+        },
+        {
+            "label": "cmake -- configure debug and build",
+            "dependsOn": [
+                "cmake -- configure debug",
+                "cmake -- build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Runs configure and build tasks sequentially!"
+        }
+    ]
+}
