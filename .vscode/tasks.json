@@ -10,7 +10,8 @@
                 "-DENABLE_CERF=ON",
                 "-DENABLE_EIGEN=ON",
                 "-DENABLE_GSL=ON",
-                ".."
+                "..",
+                "-GNinja"
             ],
             "group": {
                 "kind": "build",
@@ -33,7 +34,8 @@
                 "-DENABLE_CERF=ON",
                 "-DENABLE_EIGEN=ON",
                 "-DENABLE_GSL=ON",
-                ".."
+                 "..",
+                "-GNinja"
             ],
             "group": {
                 "kind": "build",
@@ -48,9 +50,25 @@
             "detail": "Configures the project in release mode."
         },
         {
-            "label": "cmake -- build",
+            "label": "make -- build",
             "type": "shell",
             "command": "make",
+            "args": [
+                "-j20",
+            ],
+            "group": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds the project."
+        },
+        {
+            "label": "ninja -- build",
+            "type": "shell",
+            "command": "ninja",
             "args": [
                 "-j20",
             ],
@@ -79,7 +97,7 @@
             "label": "cmake -- configure release and build",
             "dependsOn": [
                 "cmake -- configure release",
-                "cmake -- build"
+                "ninja -- build"
             ],
             "group": {
                 "kind": "build",
@@ -94,7 +112,7 @@
             "label": "cmake -- configure debug and build",
             "dependsOn": [
                 "cmake -- configure debug",
-                "cmake -- build"
+                "ninja -- build"
             ],
             "group": {
                 "kind": "build",
