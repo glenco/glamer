@@ -114,7 +114,7 @@ std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \mbox{\h
 \item 
 \Hypertarget{namespace_utilities_ac6c2b9ec5013e30e7b10d2ba8279e91e}\label{namespace_utilities_ac6c2b9ec5013e30e7b10d2ba8279e91e} 
 std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ {\bfseries Tightest\+Hull} (const std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&v)
-\begin{DoxyCompactList}\small\item\em Finds a concave envolope for an arbitrary closed curve. This is done by gridding and then finding points that are withing a sertain distance of a segment of the curve. The outer bounding curve is found and then the cuve is shrunck to the closest point on a segment. This should be fool proof, but is relatively slow and might clip some points. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds a concave envelope for an arbitrary closed curve. This is done by gridding and then finding points that are withing a sertain distance of a segment of the curve. The outer bounding curve is found and then the cuve is shrunck to the closest point on a segment. This should be fool proof, but is relatively slow and might clip some points. \end{DoxyCompactList}\item 
 \Hypertarget{namespace_utilities_abdf99510eca3c45fe58e3dbb9ca49903}\label{namespace_utilities_abdf99510eca3c45fe58e3dbb9ca49903} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries Random\+In\+Triangle} (const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x1, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x2, const \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} \&x3, \mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&ran)
 \begin{DoxyCompactList}\small\item\em returns random point within a trinagle \end{DoxyCompactList}\item 
@@ -168,7 +168,7 @@ double {\bfseries interior\+\_\+mass} (const std\+::vector$<$ \mbox{\hyperlink{s
 \item 
 \Hypertarget{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}\label{namespace_utilities_afc7611a51add4102b0f2109c5d652a20} 
 {\footnotesize template$<$typename Ptype $>$ }\\bool {\bfseries in\+Curve} (const Ptype \&x, const std\+::vector$<$ Ptype $>$ \&H)
-\item 
+\begin{DoxyCompactList}\small\item\em returns true if x is within the polygon H \end{DoxyCompactList}\item 
 \Hypertarget{namespace_utilities_af814c998581b6e9f30a929c7508a1eff}\label{namespace_utilities_af814c998581b6e9f30a929c7508a1eff} 
 {\footnotesize template$<$typename Ptype $>$ }\\bool {\bfseries inhull} (Pos\+Type x\mbox{[}$\,$\mbox{]}, const std\+::vector$<$ Ptype $>$ \&H)
 \item 
@@ -716,8 +716,6 @@ unsigned long Utilities\+::order\+\_\+curve4 (\begin{DoxyParamCaption}\item[{\mb
 returns 1 if it is in the curve and 0 if it is out. Borders count as in. 
 
 Orders points on a closed curve.
-
-returns 1 if it is in the curve and 0 if it is out. Borders count as in. returns 1 if it is in the curve and 0 if it is out. Borders count as in.
 
 The algorithm first finds the "{}center"{} of the curve. It then does a rough ordering according to the angle around this center. It then walks the curve jumping to a neighbor cell each step choosing a neighbor along one of the x or y-\/axis before taking a diagonal step. If it comes to the point where there is no more neighbors (as may occur after going through a self-\/intersection and then returning to it) the algorithm backtracks until it finds a point in the ordered list that is also a neighbor to a point in the not yet ordered list and attaches this to the end of the ordered list and continuous to walk. This algorithm works well at finding a closed loop. It can cut off points from the curve that are either in loops or if four cells intersect and are all on the curve as can happen when there is a lot of structure in the curve that is not resolved at the gridsize used. The points that are cut off are at the end of the array in no guaranteed order.
 

@@ -243,7 +243,7 @@ template&lt;typename T &gt; </td></tr>
 <tr class="separator:a7f2aed1fb05038e399bf1287d64b56ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6c2b9ec5013e30e7b10d2ba8279e91e" id="r_ac6c2b9ec5013e30e7b10d2ba8279e91e"><td class="memItemLeft" align="right" valign="top"><a id="ac6c2b9ec5013e30e7b10d2ba8279e91e" name="ac6c2b9ec5013e30e7b10d2ba8279e91e"></a>
 std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>TightestHull</b> (const std::vector&lt; <a class="el" href="struct_point__2d.html">Point_2d</a> &gt; &amp;v)</td></tr>
-<tr class="memdesc:ac6c2b9ec5013e30e7b10d2ba8279e91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a concave envolope for an arbitrary closed curve. This is done by gridding and then finding points that are withing a sertain distance of a segment of the curve. The outer bounding curve is found and then the cuve is shrunck to the closest point on a segment. This should be fool proof, but is relatively slow and might clip some points. <br /></td></tr>
+<tr class="memdesc:ac6c2b9ec5013e30e7b10d2ba8279e91e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a concave envelope for an arbitrary closed curve. This is done by gridding and then finding points that are withing a sertain distance of a segment of the curve. The outer bounding curve is found and then the cuve is shrunck to the closest point on a segment. This should be fool proof, but is relatively slow and might clip some points. <br /></td></tr>
 <tr class="separator:ac6c2b9ec5013e30e7b10d2ba8279e91e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdf99510eca3c45fe58e3dbb9ca49903" id="r_abdf99510eca3c45fe58e3dbb9ca49903"><td class="memItemLeft" align="right" valign="top"><a id="abdf99510eca3c45fe58e3dbb9ca49903" name="abdf99510eca3c45fe58e3dbb9ca49903"></a>
 <a class="el" href="struct_point__2d.html">Point_2d</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RandomInTriangle</b> (const <a class="el" href="struct_point__2d.html">Point_2d</a> &amp;x1, const <a class="el" href="struct_point__2d.html">Point_2d</a> &amp;x2, const <a class="el" href="struct_point__2d.html">Point_2d</a> &amp;x3, <a class="el" href="class_utilities_1_1_random_numbers___n_r.html">Utilities::RandomNumbers_NR</a> &amp;ran)</td></tr>
@@ -317,6 +317,7 @@ template&lt;typename Ptype &gt; </td></tr>
 <tr class="memitem:afc7611a51add4102b0f2109c5d652a20" id="r_afc7611a51add4102b0f2109c5d652a20"><td class="memTemplParams" colspan="2"><a id="afc7611a51add4102b0f2109c5d652a20" name="afc7611a51add4102b0f2109c5d652a20"></a>
 template&lt;typename Ptype &gt; </td></tr>
 <tr class="memitem:afc7611a51add4102b0f2109c5d652a20"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>inCurve</b> (const Ptype &amp;x, const std::vector&lt; Ptype &gt; &amp;H)</td></tr>
+<tr class="memdesc:afc7611a51add4102b0f2109c5d652a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns true if x is within the polygon H <br /></td></tr>
 <tr class="separator:afc7611a51add4102b0f2109c5d652a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af814c998581b6e9f30a929c7508a1eff" id="r_af814c998581b6e9f30a929c7508a1eff"><td class="memTemplParams" colspan="2"><a id="af814c998581b6e9f30a929c7508a1eff" name="af814c998581b6e9f30a929c7508a1eff"></a>
 template&lt;typename Ptype &gt; </td></tr>
@@ -1019,7 +1020,7 @@ template&lt;typename T &gt; </div>
 
 <p>Find a curve that is made up of segments from v and w that surrounds them and does not self intersect. </p>
 <p>v and w can be non-self intersecting If they do not intersect and one is not inside the other an empty vector is returned.</p>
-<p>Unlike <code><a class="el" href="#a6b3b3327085b03c3dcbb1afadd59fcd4" title="Find a curve that is made up of segments from v and w that surrounds them and does not self intersect...">Utilities::envelope()</a></code>, this algorithm is pretty foolproof. It uses the same concept as <code><a class="el" href="#ac6c2b9ec5013e30e7b10d2ba8279e91e" title="Finds a concave envolope for an arbitrary closed curve. This is done by gridding and then finding poi...">Utilities::TightestHull()</a></code>. There may be small segements that are not in either curve, but they should increase the area be a small fraction. </p>
+<p>Unlike <code><a class="el" href="#a6b3b3327085b03c3dcbb1afadd59fcd4" title="Find a curve that is made up of segments from v and w that surrounds them and does not self intersect...">Utilities::envelope()</a></code>, this algorithm is pretty foolproof. It uses the same concept as <code><a class="el" href="#ac6c2b9ec5013e30e7b10d2ba8279e91e" title="Finds a concave envelope for an arbitrary closed curve. This is done by gridding and then finding poi...">Utilities::TightestHull()</a></code>. There may be small segements that are not in either curve, but they should increase the area be a small fraction. </p>
 
 </div>
 </div>
@@ -1359,7 +1360,6 @@ template&lt;typename FunctorType , typename T  = double&gt; </div>
 
 <p>returns 1 if it is in the curve and 0 if it is out. Borders count as in. </p>
 <p>Orders points on a closed curve.</p>
-<p>returns 1 if it is in the curve and 0 if it is out. Borders count as in. returns 1 if it is in the curve and 0 if it is out. Borders count as in.</p>
 <p>The algorithm first finds the "center" of the curve. It then does a rough ordering according to the angle around this center. It then walks the curve jumping to a neighbor cell each step choosing a neighbor along one of the x or y-axis before taking a diagonal step. If it comes to the point where there is no more neighbors (as may occur after going through a self-intersection and then returning to it) the algorithm backtracks until it finds a point in the ordered list that is also a neighbor to a point in the not yet ordered list and attaches this to the end of the ordered list and continuous to walk. This algorithm works well at finding a closed loop. It can cut off points from the curve that are either in loops or if four cells intersect and are all on the curve as can happen when there is a lot of structure in the curve that is not resolved at the gridsize used. The points that are cut off are at the end of the array in no guaranteed order.</p>
 <p>Returns the number of point that have been ordered - total number minus the cuttout points.</p>
 <p>This algorithm could be improve by inserting the remaining points, if any, into the existing curve and recursively calling itself. </p>
@@ -2437,7 +2437,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Sep 8 2024 19:31:04 for GLAMERDOC++ by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+Generated on Mon Mar 10 2025 14:49:55 for GLAMERDOC++ by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
 </small></address>
 </div><!-- doc-content -->
 </body>

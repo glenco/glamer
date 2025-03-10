@@ -691,442 +691,446 @@
 \DoxyCodeLine{00723\ \ \ \ \ }
 \DoxyCodeLine{00724\ \ \ \ \ fits\_get\_colnum(fptr,\ CASEINSEN,(\textcolor{keywordtype}{char}*)(colname.c\_str())}
 \DoxyCodeLine{00725\ \ \ \ \ ,\ \&col,\ \&status);}
-\DoxyCodeLine{00726\ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}Column\ does\ not\ exist."{}});}
-\DoxyCodeLine{00727\ \ \ \ \ }
-\DoxyCodeLine{00728\ \ \ \ \ \textcolor{keywordflow}{return}\ col;}
-\DoxyCodeLine{00729\ \ \ \}}
-\DoxyCodeLine{00730\ }
-\DoxyCodeLine{00731\ \ \ std::vector<std::string>\ get\_colnames()\{\textcolor{keywordflow}{return}\ col\_names;\}}
-\DoxyCodeLine{00732\ \ \ }
-\DoxyCodeLine{00733\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,std::vector<float>\ \&vecf)\{}
-\DoxyCodeLine{00734\ \ \ \ }
-\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keywordtype}{int}\ col,\ status=0,anyval=0;}
-\DoxyCodeLine{00736\ \ \ \ \ col\ =\ column\_index(colname);}
-\DoxyCodeLine{00737\ }
-\DoxyCodeLine{00738\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ Nrow\ )\ vecf.resize(Nrow);}
-\DoxyCodeLine{00739\ \ \ \ \ }
-\DoxyCodeLine{00740\ \ \ \ \ fits\_read\_col\_flt(fptr,\ col,\ 1,\ 1,Nrow,0,}
-\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00742\ }
-\DoxyCodeLine{00743\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00744\ \ \ \}}
-\DoxyCodeLine{00745\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<float>\ \&vecf,\textcolor{keywordtype}{float}\ nulval\ =\ -\/100)\{}
-\DoxyCodeLine{00746\ \ \ \ }
-\DoxyCodeLine{00747\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00748\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
-\DoxyCodeLine{00749\ \ \ \ \ }
-\DoxyCodeLine{00750\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
-\DoxyCodeLine{00751\ \ \ \ \ fits\_read\_col(fptr,TFLOAT,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
-\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00753\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00754\ }
-\DoxyCodeLine{00755\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00756\ \ \ \}}
-\DoxyCodeLine{00757\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<float>\ \&vecf,\textcolor{keywordtype}{float}\ nulval\ =\ -\/100)\{}
-\DoxyCodeLine{00758\ \ \ \ }
-\DoxyCodeLine{00759\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00760\ \ \ \ \ }
-\DoxyCodeLine{00761\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
-\DoxyCodeLine{00762\ \ \ \ \ }
-\DoxyCodeLine{00763\ \ \ \ \ fits\_read\_col(fptr,TFLOAT,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
-\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\ \&anyval,\ \&status);}
-\DoxyCodeLine{00765\ }
-\DoxyCodeLine{00766\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00767\ }
-\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00769\ \ \ \}}
-\DoxyCodeLine{00770\ \ \ }
-\DoxyCodeLine{00771\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<double>\ \&vecf,\textcolor{keywordtype}{double}\ nulval\ =\ -\/100)\{}
-\DoxyCodeLine{00772\ \ \ \ }
-\DoxyCodeLine{00773\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00774\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
-\DoxyCodeLine{00775\ \ \ \ \ }
-\DoxyCodeLine{00776\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
-\DoxyCodeLine{00777\ \ \ \ \ fits\_read\_col(fptr,TDOUBLE,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
-\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00779\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00780\ }
-\DoxyCodeLine{00781\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00782\ \ \ \}}
-\DoxyCodeLine{00783\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<double>\ \&vecf,\textcolor{keywordtype}{double}\ nulval\ =\ -\/100)\{}
-\DoxyCodeLine{00784\ \ \ \ }
-\DoxyCodeLine{00785\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00786\ \ \ \ \ }
-\DoxyCodeLine{00787\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
-\DoxyCodeLine{00788\ \ \ \ \ fits\_read\_col(fptr,TDOUBLE,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
-\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00790\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00791\ }
-\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00793\ \ \ \}}
-\DoxyCodeLine{00794\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<long>\ \&vecf,\textcolor{keywordtype}{int}\ nulval\ =\ -\/100)\{}
-\DoxyCodeLine{00795\ \ \ \ }
-\DoxyCodeLine{00796\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00797\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
-\DoxyCodeLine{00798\ \ \ \ \ }
-\DoxyCodeLine{00799\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
-\DoxyCodeLine{00800\ \ \ \ \ fits\_read\_col(fptr,TLONG,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
-\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00802\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00803\ }
-\DoxyCodeLine{00804\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00805\ \ \ \}}
-\DoxyCodeLine{00806\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<long>\ \&vecf,\textcolor{keywordtype}{int}\ nulval\ =\ -\/100)\{}
-\DoxyCodeLine{00807\ \ \ \ }
-\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00809\ \ \ \ \ }
-\DoxyCodeLine{00810\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
-\DoxyCodeLine{00811\ \ \ \ \ fits\_read\_col(fptr,TLONG,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
-\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00813\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00814\ }
-\DoxyCodeLine{00815\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00816\ \ \ \}}
-\DoxyCodeLine{00817\ }
+\DoxyCodeLine{00726\ \ \ \ \ \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ check\_status(status,\textcolor{stringliteral}{"{}Column\ does\ not\ exist."{}});}
+\DoxyCodeLine{00728\ \ \ \ \ \}\textcolor{keywordflow}{catch}(...)\{}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Missing\ column\ :\ "{}}\ <<\ colname\ <<\ std::endl;}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}missing\ column"{}});}
+\DoxyCodeLine{00731\ \ \ \ \ \}}
+\DoxyCodeLine{00732\ \ \ \ \ \textcolor{keywordflow}{return}\ col;}
+\DoxyCodeLine{00733\ \ \ \}}
+\DoxyCodeLine{00734\ }
+\DoxyCodeLine{00735\ \ \ std::vector<std::string>\ get\_colnames()\{\textcolor{keywordflow}{return}\ col\_names;\}}
+\DoxyCodeLine{00736\ \ \ }
+\DoxyCodeLine{00737\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,std::vector<float>\ \&vecf)\{}
+\DoxyCodeLine{00738\ \ \ \ }
+\DoxyCodeLine{00739\ \ \ \ \ \textcolor{keywordtype}{int}\ col,\ status=0,anyval=0;}
+\DoxyCodeLine{00740\ \ \ \ \ col\ =\ column\_index(colname);}
+\DoxyCodeLine{00741\ }
+\DoxyCodeLine{00742\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ Nrow\ )\ vecf.resize(Nrow);}
+\DoxyCodeLine{00743\ \ \ \ \ }
+\DoxyCodeLine{00744\ \ \ \ \ fits\_read\_col\_flt(fptr,\ col,\ 1,\ 1,Nrow,0,}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00746\ }
+\DoxyCodeLine{00747\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00748\ \ \ \}}
+\DoxyCodeLine{00749\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<float>\ \&vecf,\textcolor{keywordtype}{float}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00750\ \ \ \ }
+\DoxyCodeLine{00751\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00752\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
+\DoxyCodeLine{00753\ \ \ \ \ }
+\DoxyCodeLine{00754\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00755\ \ \ \ \ fits\_read\_col(fptr,TFLOAT,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00757\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00758\ }
+\DoxyCodeLine{00759\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00760\ \ \ \}}
+\DoxyCodeLine{00761\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<float>\ \&vecf,\textcolor{keywordtype}{float}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00762\ \ \ \ }
+\DoxyCodeLine{00763\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00764\ \ \ \ \ }
+\DoxyCodeLine{00765\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00766\ \ \ \ \ }
+\DoxyCodeLine{00767\ \ \ \ \ fits\_read\_col(fptr,TFLOAT,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\ \&anyval,\ \&status);}
+\DoxyCodeLine{00769\ }
+\DoxyCodeLine{00770\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00771\ }
+\DoxyCodeLine{00772\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00773\ \ \ \}}
+\DoxyCodeLine{00774\ \ \ }
+\DoxyCodeLine{00775\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<double>\ \&vecf,\textcolor{keywordtype}{double}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00776\ \ \ \ }
+\DoxyCodeLine{00777\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00778\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
+\DoxyCodeLine{00779\ \ \ \ \ }
+\DoxyCodeLine{00780\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00781\ \ \ \ \ fits\_read\_col(fptr,TDOUBLE,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00783\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00784\ }
+\DoxyCodeLine{00785\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00786\ \ \ \}}
+\DoxyCodeLine{00787\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<double>\ \&vecf,\textcolor{keywordtype}{double}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00788\ \ \ \ }
+\DoxyCodeLine{00789\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00790\ \ \ \ \ }
+\DoxyCodeLine{00791\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00792\ \ \ \ \ fits\_read\_col(fptr,TDOUBLE,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00794\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00795\ }
+\DoxyCodeLine{00796\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00797\ \ \ \}}
+\DoxyCodeLine{00798\ \ \ \textcolor{keywordtype}{int}\ read\_column(std::string\ \&colname,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<long>\ \&vecf,\textcolor{keywordtype}{int}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00799\ \ \ \ }
+\DoxyCodeLine{00800\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00801\ \ \ \ \ \textcolor{keywordtype}{int}\ colnum\ =\ column\_index(colname);}
+\DoxyCodeLine{00802\ \ \ \ \ }
+\DoxyCodeLine{00803\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00804\ \ \ \ \ fits\_read\_col(fptr,TLONG,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00806\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00807\ }
+\DoxyCodeLine{00808\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00809\ \ \ \}}
+\DoxyCodeLine{00810\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ colnum,\textcolor{keywordtype}{long}\ firstsrow,\textcolor{keywordtype}{long}\ nelements,std::vector<long>\ \&vecf,\textcolor{keywordtype}{int}\ nulval\ =\ -\/100)\{}
+\DoxyCodeLine{00811\ \ \ \ }
+\DoxyCodeLine{00812\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00813\ \ \ \ \ }
+\DoxyCodeLine{00814\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ nelements\ )\ vecf.resize(nelements);}
+\DoxyCodeLine{00815\ \ \ \ \ fits\_read\_col(fptr,TLONG,colnum,\ firstsrow,\ 1,nelements,\&nulval,}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00817\ \ \ \ \ check\_status(status);}
 \DoxyCodeLine{00818\ }
-\DoxyCodeLine{00820\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ab9dc8bd8a32c117bac138628ad9ab0df}{gettype}}(\textcolor{keywordtype}{int}\ colnum)\{}
-\DoxyCodeLine{00821\ \ \ \ \ \textcolor{keywordtype}{int}\ typecode,status=0;}
-\DoxyCodeLine{00822\ \ \ \ \ \textcolor{keywordtype}{long}\ repeat,width;}
-\DoxyCodeLine{00823\ \ \ \ \ fits\_get\_coltype(fptr,colnum,\&typecode,}
-\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&repeat,\&width,\&status);}
-\DoxyCodeLine{00825\ \ \ \ \ check\_status(status);}
-\DoxyCodeLine{00826\ \ \ \ \ }
-\DoxyCodeLine{00827\ \ \ \ \ \textcolor{keywordflow}{return}\ typecode;}
-\DoxyCodeLine{00828\ \ \ \}}
-\DoxyCodeLine{00829\ \ \ }
-\DoxyCodeLine{00830\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ column\_index,std::vector<float>\ \&vecf)\{}
-\DoxyCodeLine{00831\ \ \ \ }
-\DoxyCodeLine{00832\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
-\DoxyCodeLine{00833\ }
-\DoxyCodeLine{00834\ \ \ \ \ \textcolor{keywordflow}{if}(column\_index\ <\ 1)\{}
-\DoxyCodeLine{00835\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}CPFITS:\ column\ number\ must\ be\ >\ 0"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00836\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Error\ in\ CPFITS"{}});}
-\DoxyCodeLine{00837\ \ \ \ \ \}}
-\DoxyCodeLine{00838\ \ \ \ \ \textcolor{keywordflow}{if}(column\_index\ >\ Ncol)\{}
-\DoxyCodeLine{00839\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}CPFITS:\ there\ are\ only\ "{}}\ <<\ Ncol\ <<\ \textcolor{stringliteral}{"{}\ columns."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00819\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00820\ \ \ \}}
+\DoxyCodeLine{00821\ }
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00824\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s_ab9dc8bd8a32c117bac138628ad9ab0df}{gettype}}(\textcolor{keywordtype}{int}\ colnum)\{}
+\DoxyCodeLine{00825\ \ \ \ \ \textcolor{keywordtype}{int}\ typecode,status=0;}
+\DoxyCodeLine{00826\ \ \ \ \ \textcolor{keywordtype}{long}\ repeat,width;}
+\DoxyCodeLine{00827\ \ \ \ \ fits\_get\_coltype(fptr,colnum,\&typecode,}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&repeat,\&width,\&status);}
+\DoxyCodeLine{00829\ \ \ \ \ check\_status(status);}
+\DoxyCodeLine{00830\ \ \ \ \ }
+\DoxyCodeLine{00831\ \ \ \ \ \textcolor{keywordflow}{return}\ typecode;}
+\DoxyCodeLine{00832\ \ \ \}}
+\DoxyCodeLine{00833\ \ \ }
+\DoxyCodeLine{00834\ \ \ \textcolor{keywordtype}{int}\ read\_column(\textcolor{keywordtype}{int}\ col\_index,std::vector<float>\ \&vecf)\{}
+\DoxyCodeLine{00835\ \ \ \ }
+\DoxyCodeLine{00836\ \ \ \ \ \textcolor{keywordtype}{int}\ status=0,anyval=0;}
+\DoxyCodeLine{00837\ }
+\DoxyCodeLine{00838\ \ \ \ \ \textcolor{keywordflow}{if}(col\_index\ <\ 1)\{}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}CPFITS:\ column\ number\ must\ be\ >\ 0"{}}\ <<\ std::endl;}
 \DoxyCodeLine{00840\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Error\ in\ CPFITS"{}});}
 \DoxyCodeLine{00841\ \ \ \ \ \}}
-\DoxyCodeLine{00842\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ Nrow\ )\ vecf.resize(Nrow);}
-\DoxyCodeLine{00843\ \ \ \ \ }
-\DoxyCodeLine{00844\ \ \ \ \ fits\_read\_col\_flt(fptr,\ column\_index,\ 1,\ 1,Nrow,0,}
-\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00846\ }
-\DoxyCodeLine{00847\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
-\DoxyCodeLine{00848\ \ \ \}}
-\DoxyCodeLine{00849\ }
-\DoxyCodeLine{00850\ \ \ }
-\DoxyCodeLine{00851\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00852\ \ \ \textcolor{keywordtype}{void}\ read(std::vector<T>\ data,\textcolor{keywordtype}{int}\ ncol)\{}
-\DoxyCodeLine{00853\ \ \ \ \ }
-\DoxyCodeLine{00854\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0,anyval=0;}
-\DoxyCodeLine{00855\ \ \ \ \ \textcolor{keywordtype}{long}\ i,\ n,\ nread,\ ntodo,\ nrest;}
-\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keywordtype}{long}\ buffer\_size\ =\ 20000;}
-\DoxyCodeLine{00857\ \ \ \ \ std::vector<float>\ fitscol(buffer\_size);}
-\DoxyCodeLine{00858\ \ \ \ \ }
-\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ col\ =\ 1\ ;\ col\ !=\ ncol\ ;\ ++col)\{}
-\DoxyCodeLine{00860\ \ \ \ \ \ \ nread\ =\ 0;}
-\DoxyCodeLine{00861\ \ \ \ \ \ \ nrest\ =\ n;}
-\DoxyCodeLine{00862\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (nrest)\ \{}
-\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ntodo\ =\ MIN(nrest,buffer\_size);}}
-\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ ntodo\ =\ (nrest\ <\ buffer\_size)\ ?\ nrest\ :\ buffer\_size;}
-\DoxyCodeLine{00865\ \ \ \ \ \ \ \ fits\_read\_col\_flt(fptr,\ col,\ nread\ +\ 1,\ 1,\ ntodo,\ 0,}
-\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fitscol.data(),\&anyval,\ \&status);}
-\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ ntodo;\ i++)\ data[i\ +\ nread][col-\/1]\ =\ fitscol[i];}
-\DoxyCodeLine{00868\ \ \ \ \ \ \ \ nread\ +=\ ntodo;}
-\DoxyCodeLine{00869\ \ \ \ \ \ \ \ nrest\ -\/=\ ntodo;}
-\DoxyCodeLine{00870\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00871\ \ \ \ \ \}}
-\DoxyCodeLine{00872\ \ \ \}}
-\DoxyCodeLine{00873\ \};}
-\DoxyCodeLine{00874\ }
-\DoxyCodeLine{00875\ \textcolor{comment}{/***\ \(\backslash\)brief\ Data\ frame\ for\ reading\ fits\ tables\ and\ minipulating\ the\ results.}}
-\DoxyCodeLine{00876\ \textcolor{comment}{\ }}
-\DoxyCodeLine{00877\ \textcolor{comment}{\ Missing\ entries\ are\ replaced\ with\ -\/100}}
-\DoxyCodeLine{00878\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{00879\ }
-\DoxyCodeLine{00880\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00881\ \ \ \textcolor{keyword}{class\ }DataFrameFits\{}
-\DoxyCodeLine{00882\ \ }
-\DoxyCodeLine{00883\ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00884\ \ \ \ \ std::map<std::string,int>\ datamap;}
-\DoxyCodeLine{00885\ \ \ \ \ std::vector<std::string>\ all\_column\_names;}
-\DoxyCodeLine{00886\ \ \ \ \ std::vector<std::string>\ used\_column\_names;}
-\DoxyCodeLine{00887\ \ \ \ \ std::string\ filename;}
-\DoxyCodeLine{00888\ \ \ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ cpfits;}
-\DoxyCodeLine{00889\ \ \ \ \ std::vector<std::vector<T>\ >\ data;}
-\DoxyCodeLine{00890\ \ \ \ \ \textcolor{keywordtype}{long}\ n0;}
-\DoxyCodeLine{00891\ \ \ \ \ std::vector<int>\ column\_index;}
-\DoxyCodeLine{00892\ \ \ }
-\DoxyCodeLine{00893\ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00895\ \ \ \ \ DataFrameFits(}
-\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ datafile\ \ \ }
-\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::string>\ \&columns\ \ }
-\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ hdu\ =\ 2}
-\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false}}
-\DoxyCodeLine{00900\ \ \ \ \ ):filename(datafile),cpfits(filename,hdu,verbose),n0(1)\{}
-\DoxyCodeLine{00901\ \ \ \ }
-\DoxyCodeLine{00902\ \ \ \ \ \ \ all\_column\_names\ =\ cpfits.get\_colnames();}
-\DoxyCodeLine{00903\ \ \ \ \ \ \ }
-\DoxyCodeLine{00904\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(columns.size()\ ==\ 0)\{}
-\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ used\_column\_names\ =\ all\_column\_names;}
-\DoxyCodeLine{00906\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ used\_column\_names\ =\ columns;}
-\DoxyCodeLine{00908\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00909\ \ \ \ \ \ \ }
-\DoxyCodeLine{00910\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Reading\ "{}}\ <<\ used\_column\_names.size()\ <<\ \textcolor{stringliteral}{"{}\ columns."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00911\ \ \ \ \ \ \ }
-\DoxyCodeLine{00912\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::string\ a\ :\ used\_column\_names)\{}
-\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ column\_index.push\_back(cpfits.column\_index(a));}
-\DoxyCodeLine{00914\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00842\ \ \ \ \ \textcolor{keywordflow}{if}(col\_index\ >\ Ncol)\{}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}CPFITS:\ there\ are\ only\ "{}}\ <<\ Ncol\ <<\ \textcolor{stringliteral}{"{}\ columns."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Error\ in\ CPFITS"{}});}
+\DoxyCodeLine{00845\ \ \ \ \ \}}
+\DoxyCodeLine{00846\ \ \ \ \ \textcolor{keywordflow}{if}(vecf.size()\ <\ Nrow\ )\ vecf.resize(Nrow);}
+\DoxyCodeLine{00847\ \ \ \ \ }
+\DoxyCodeLine{00848\ \ \ \ \ fits\_read\_col\_flt(fptr,\ col\_index,\ 1,\ 1,Nrow,0,}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vecf.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00850\ }
+\DoxyCodeLine{00851\ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{00852\ \ \ \}}
+\DoxyCodeLine{00853\ }
+\DoxyCodeLine{00854\ \ \ }
+\DoxyCodeLine{00855\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00856\ \ \ \textcolor{keywordtype}{void}\ read(std::vector<T>\ data,\textcolor{keywordtype}{int}\ ncol)\{}
+\DoxyCodeLine{00857\ \ \ \ \ }
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0,anyval=0;}
+\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordtype}{long}\ i,\ n,\ nread,\ ntodo,\ nrest;}
+\DoxyCodeLine{00860\ \ \ \ \ \textcolor{keywordtype}{long}\ buffer\_size\ =\ 20000;}
+\DoxyCodeLine{00861\ \ \ \ \ std::vector<float>\ fitscol(buffer\_size);}
+\DoxyCodeLine{00862\ \ \ \ \ }
+\DoxyCodeLine{00863\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ col\ =\ 1\ ;\ col\ !=\ ncol\ ;\ ++col)\{}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ nread\ =\ 0;}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ nrest\ =\ n;}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (nrest)\ \{}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ntodo\ =\ MIN(nrest,buffer\_size);}}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ ntodo\ =\ (nrest\ <\ buffer\_size)\ ?\ nrest\ :\ buffer\_size;}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ fits\_read\_col\_flt(fptr,\ col,\ nread\ +\ 1,\ 1,\ ntodo,\ 0,}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fitscol.data(),\&anyval,\ \&status);}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ ntodo;\ i++)\ data[i\ +\ nread][col-\/1]\ =\ fitscol[i];}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ nread\ +=\ ntodo;}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ nrest\ -\/=\ ntodo;}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00875\ \ \ \ \ \}}
+\DoxyCodeLine{00876\ \ \ \}}
+\DoxyCodeLine{00877\ \};}
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ \textcolor{comment}{/***\ \(\backslash\)brief\ Data\ frame\ for\ reading\ fits\ tables\ and\ minipulating\ the\ results.}}
+\DoxyCodeLine{00880\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00881\ \textcolor{comment}{\ Missing\ entries\ are\ replaced\ with\ -\/100}}
+\DoxyCodeLine{00882\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00883\ }
+\DoxyCodeLine{00884\ \ \ \textcolor{keyword}{template}<\ \textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00885\ \ \ \textcolor{keyword}{class\ }DataFrameFits\{}
+\DoxyCodeLine{00886\ \ }
+\DoxyCodeLine{00887\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00888\ \ \ \ \ std::map<std::string,int>\ datamap;}
+\DoxyCodeLine{00889\ \ \ \ \ std::vector<std::string>\ all\_column\_names;}
+\DoxyCodeLine{00890\ \ \ \ \ std::vector<std::string>\ used\_column\_names;}
+\DoxyCodeLine{00891\ \ \ \ \ std::string\ filename;}
+\DoxyCodeLine{00892\ \ \ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ cpfits;}
+\DoxyCodeLine{00893\ \ \ \ \ std::vector<std::vector<T>\ >\ data;}
+\DoxyCodeLine{00894\ \ \ \ \ \textcolor{keywordtype}{long}\ n0;}
+\DoxyCodeLine{00895\ \ \ \ \ std::vector<int>\ column\_index;}
+\DoxyCodeLine{00896\ \ \ }
+\DoxyCodeLine{00897\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00899\ \ \ \ \ DataFrameFits(}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ datafile\ \ \ }
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::string>\ \&columns\ \ }
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ hdu\ =\ 2}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{00904\ \ \ \ \ ):filename(datafile),cpfits(filename,hdu,verbose),n0(1)\{}
+\DoxyCodeLine{00905\ \ \ \ }
+\DoxyCodeLine{00906\ \ \ \ \ \ \ all\_column\_names\ =\ cpfits.get\_colnames();}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ }
+\DoxyCodeLine{00908\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(columns.size()\ ==\ 0)\{}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ used\_column\_names\ =\ all\_column\_names;}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ used\_column\_names\ =\ columns;}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ }
+\DoxyCodeLine{00914\ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Reading\ "{}}\ <<\ used\_column\_names.size()\ <<\ \textcolor{stringliteral}{"{}\ columns."{}}\ <<\ std::endl;}
 \DoxyCodeLine{00915\ \ \ \ \ \ \ }
-\DoxyCodeLine{00916\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<used\_column\_names.size()\ ;\ ++i)\{}
-\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ datamap[used\_column\_names[i]]\ =\ i;}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::string\ a\ :\ used\_column\_names)\{}
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ column\_index.push\_back(cpfits.column\_index(a));}
 \DoxyCodeLine{00918\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00919\ \ }
-\DoxyCodeLine{00920\ \ \ \ \ \ \ data.resize(column\_index.size());}
-\DoxyCodeLine{00921\ \ \ \ \ \};}
-\DoxyCodeLine{00922\ \ \ \ }
-\DoxyCodeLine{00924\ \ \ \ \ std::vector<std::string>\ get\_all\_columnnames()\{\textcolor{keywordflow}{return}\ all\_column\_names;\}}
-\DoxyCodeLine{00925\ \ \ \ \ std::vector<std::string>\ get\_used\_columnnames()\{\textcolor{keywordflow}{return}\ all\_column\_names;\}}
-\DoxyCodeLine{00926\ \ \ \ \ }
-\DoxyCodeLine{00927\ \ \ \ \ \textcolor{comment}{//\ clear\ data}}
-\DoxyCodeLine{00928\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\{}
-\DoxyCodeLine{00929\ \ \ \ \ \ \ n0=1;}
-\DoxyCodeLine{00930\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol=data.size();}
-\DoxyCodeLine{00931\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ data[i].clear();}
-\DoxyCodeLine{00933\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00934\ \ \ \ \ \}}
-\DoxyCodeLine{00935\ \ }
-\DoxyCodeLine{00942\ \ \ \ \ \textcolor{keywordtype}{int}\ read(}
-\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::function<\textcolor{keywordtype}{bool}(T\ \&)>\ >\ \&accept}
-\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add=\textcolor{keyword}{false}}
-\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ maxsize\ =\ -\/1}
-\DoxyCodeLine{00946\ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
-\DoxyCodeLine{00947\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 10000;}
-\DoxyCodeLine{00948\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
-\DoxyCodeLine{00949\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
-\DoxyCodeLine{00950\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ requirements\ =\ accept.size();}
-\DoxyCodeLine{00951\ }
-\DoxyCodeLine{00952\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(add)\{}
-\DoxyCodeLine{00953\ \ \ \ \ \ \ \ \ n0=1;}
-\DoxyCodeLine{00954\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00955\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{00956\ \ \ \ \ \ \ \ \ \ \ data[i].clear();}
-\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00958\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00959\ \ \ }
-\DoxyCodeLine{00960\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize\ >\ 0)\ nrow\ =\ MIN(maxsize\ +\ n0,nrow);}
-\DoxyCodeLine{00961\ \ \ \ \ \ \ }
-\DoxyCodeLine{00962\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(requirements\ >\ ncol)\{}
-\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ requirments"{}});}
-\DoxyCodeLine{00964\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00965\ \ \ }
-\DoxyCodeLine{00966\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ tdata(ncol);}
-\DoxyCodeLine{00967\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n0\ <\ nrow)\{}
-\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ chunksize\ =\ MIN(nrow-\/n0+1,chunksize);}
-\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data[0].capacity()\ -\/\ data[0].size()\ <\ chunksize\ )\{}
-\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ data[i].reserve(chunksize\ +\ data[i].capacity());}
-\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00975\ \ \ \ \ \ \ }
-\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
-\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,tdata[i]);}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ }
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<used\_column\_names.size()\ ;\ ++i)\{}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ datamap[used\_column\_names[i]]\ =\ i;}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00923\ \ }
+\DoxyCodeLine{00924\ \ \ \ \ \ \ data.resize(column\_index.size());}
+\DoxyCodeLine{00925\ \ \ \ \ \};}
+\DoxyCodeLine{00926\ \ \ \ }
+\DoxyCodeLine{00928\ \ \ \ \ std::vector<std::string>\ get\_all\_columnnames()\{\textcolor{keywordflow}{return}\ all\_column\_names;\}}
+\DoxyCodeLine{00929\ \ \ \ \ std::vector<std::string>\ get\_used\_columnnames()\{\textcolor{keywordflow}{return}\ all\_column\_names;\}}
+\DoxyCodeLine{00930\ \ \ \ \ }
+\DoxyCodeLine{00931\ \ \ \ \ \textcolor{comment}{//\ clear\ data}}
+\DoxyCodeLine{00932\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()\{}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ n0=1;}
+\DoxyCodeLine{00934\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol=data.size();}
+\DoxyCodeLine{00935\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00936\ \ \ \ \ \ \ \ \ data[i].clear();}
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00938\ \ \ \ \ \}}
+\DoxyCodeLine{00939\ \ }
+\DoxyCodeLine{00946\ \ \ \ \ \textcolor{keywordtype}{int}\ read(}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::function<\textcolor{keywordtype}{bool}(T\ \&)>\ >\ \&accept}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add=\textcolor{keyword}{false}}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ maxsize\ =\ -\/1}
+\DoxyCodeLine{00950\ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 10000;}
+\DoxyCodeLine{00952\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ requirements\ =\ accept.size();}
+\DoxyCodeLine{00955\ }
+\DoxyCodeLine{00956\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(add)\{}
+\DoxyCodeLine{00957\ \ \ \ \ \ \ \ \ n0=1;}
+\DoxyCodeLine{00958\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00959\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00960\ \ \ \ \ \ \ \ \ \ \ data[i].clear();}
+\DoxyCodeLine{00961\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00962\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00963\ \ \ }
+\DoxyCodeLine{00964\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize\ >\ 0)\ nrow\ =\ MIN(maxsize\ +\ n0,nrow);}
+\DoxyCodeLine{00965\ \ \ \ \ \ \ }
+\DoxyCodeLine{00966\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(requirements\ >\ ncol)\{}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ requirments"{}});}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00969\ \ \ }
+\DoxyCodeLine{00970\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ tdata(ncol);}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n0\ <\ nrow)\{}
+\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ chunksize\ =\ MIN(nrow-\/n0+1,chunksize);}
+\DoxyCodeLine{00973\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00974\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data[0].capacity()\ -\/\ data[0].size()\ <\ chunksize\ )\{}
+\DoxyCodeLine{00975\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00976\ \ \ \ \ \ \ \ \ \ \ \ \ data[i].reserve(chunksize\ +\ data[i].capacity());}
+\DoxyCodeLine{00977\ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00978\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00979\ \ \ \ \ \ \ \ \ n0\ +=\ chunksize;}
-\DoxyCodeLine{00980\ \ \ \ \ \ \ }
-\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j\ =\ 0\ ;\ j\ <\ chunksize\ ;\ ++j)\{}
-\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ accpt\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<requirements;\ ++i)\{}
-\DoxyCodeLine{00984\ \ \ \ \ \ \ \ \ \ \ \ \ accpt\ *=\ accept[i](tdata[i][j]);}
-\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(accpt)\{}
-\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[i].push\_back(\ tdata[i][j]\ )\ ;}
-\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00992\ \ \ }
-\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00994\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00995\ \ \ \ \ \ \ }
-\DoxyCodeLine{00996\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
-\DoxyCodeLine{00997\ \ \ \ \ \};}
-\DoxyCodeLine{00998\ \ \ \ \ }
-\DoxyCodeLine{00999\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ read(}
-\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{bool}(T,T)>\ \&binary\_accept}
-\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::pair<int,int>\ index\_binary\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::function<\textcolor{keywordtype}{bool}(T\ \&)>\ >\ \&unary\_accept}
-\DoxyCodeLine{01003\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<int>\ index\_unary}
-\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add=\textcolor{keyword}{false}}
-\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ maxsize\ =\ -\/1}
-\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
-\DoxyCodeLine{01007\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 10000;}
-\DoxyCodeLine{01008\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
-\DoxyCodeLine{01009\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
-\DoxyCodeLine{01010\ \ \ \ \ \ \ }
-\DoxyCodeLine{01011\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unary\_accept.size()\ !=\ index\_unary.size()\ )\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}index\_unary\ wrong\ sized\ "{}});}
-\DoxyCodeLine{01012\ \ }
-\DoxyCodeLine{01013\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(add)\{}
-\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ n0=1;}
-\DoxyCodeLine{01015\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01017\ \ \ \ \ \ \ \ \ \ \ data[i].clear();}
-\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01019\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01020\ \ \ }
-\DoxyCodeLine{01021\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize\ >\ 0)\ nrow\ =\ MIN(maxsize\ +\ n0,nrow);}
-\DoxyCodeLine{01022\ \ \ \ \ \ \ }
-\DoxyCodeLine{01023\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\_unary.size()\ >\ ncol)\{}
-\DoxyCodeLine{01024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ requirments"{}});}
-\DoxyCodeLine{01025\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01026\ \ \ }
-\DoxyCodeLine{01027\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ tdata(ncol);}
-\DoxyCodeLine{01028\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n0\ <\ nrow)\{}
-\DoxyCodeLine{01029\ \ \ \ \ \ \ \ \ chunksize\ =\ MIN(nrow-\/n0+1,chunksize);}
-\DoxyCodeLine{01030\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data[0].capacity()\ -\/\ data[0].size()\ <\ chunksize\ )\{}
-\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ \ \ \ \ data[i].reserve(chunksize\ +\ data[i].capacity());}
-\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01036\ \ \ \ \ \ \ }
-\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,tdata[i]);}
+\DoxyCodeLine{00979\ \ \ \ \ \ \ }
+\DoxyCodeLine{00980\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,tdata[i]);}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ n0\ +=\ chunksize;}
+\DoxyCodeLine{00984\ \ \ \ \ \ \ }
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j\ =\ 0\ ;\ j\ <\ chunksize\ ;\ ++j)\{}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ accpt\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<requirements;\ ++i)\{}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ accpt\ *=\ accept[i](tdata[i][j]);}
+\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(accpt)\{}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[i].push\_back(\ tdata[i][j]\ )\ ;}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00996\ \ \ }
+\DoxyCodeLine{00997\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00998\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00999\ \ \ \ \ \ \ }
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{01001\ \ \ \ \ \};}
+\DoxyCodeLine{01002\ \ \ \ \ }
+\DoxyCodeLine{01003\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ read(}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::function<\textcolor{keywordtype}{bool}(T,T)>\ \&binary\_accept}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::pair<int,int>\ index\_binary\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::function<\textcolor{keywordtype}{bool}(T\ \&)>\ >\ \&unary\_accept}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<int>\ index\_unary}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add=\textcolor{keyword}{false}}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ maxsize\ =\ -\/1}
+\DoxyCodeLine{01010\ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{01011\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 10000;}
+\DoxyCodeLine{01012\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ }
+\DoxyCodeLine{01015\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(unary\_accept.size()\ !=\ index\_unary.size()\ )\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}index\_unary\ wrong\ sized\ "{}});}
+\DoxyCodeLine{01016\ \ }
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(add)\{}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \ \ n0=1;}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \ \ \ \ data[i].clear();}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01023\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01024\ \ \ }
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize\ >\ 0)\ nrow\ =\ MIN(maxsize\ +\ n0,nrow);}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ }
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\_unary.size()\ >\ ncol)\{}
+\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Too\ many\ requirments"{}});}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01030\ \ \ }
+\DoxyCodeLine{01031\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ tdata(ncol);}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n0\ <\ nrow)\{}
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ chunksize\ =\ MIN(nrow-\/n0+1,chunksize);}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data[0].capacity()\ -\/\ data[0].size()\ <\ chunksize\ )\{}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \ \ \ \ data[i].reserve(chunksize\ +\ data[i].capacity());}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ n0\ +=\ chunksize;}
-\DoxyCodeLine{01041\ \ \ \ \ \ \ }
-\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j\ =\ 0\ ;\ j\ <\ chunksize\ ;\ ++j)\{}
-\DoxyCodeLine{01043\ \ \ \ \ }
-\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ accpt\ =\ binary\_accept(tdata[index\_binary.first][j],tdata[index\_binary.second][j]\ );}
-\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ k=0;}
-\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ :\ index\_unary)\{}
-\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ \ \ \ accpt\ *=\ unary\_accept[k++](\ tdata[i][j]\ );}
-\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ accpt\ )\{}
-\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[i].push\_back(\ tdata[i][j]\ )\ ;}
-\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01056\ \ \ }
-\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01058\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01059\ \ \ \ \ \ \ }
-\DoxyCodeLine{01060\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.size();}
-\DoxyCodeLine{01061\ \ \ \ \ \}}
-\DoxyCodeLine{01062\ }
-\DoxyCodeLine{01064\ \ \ \ \ \textcolor{keywordtype}{int}\ read(\textcolor{keywordtype}{long}\ maxsize=-\/1)\{}
-\DoxyCodeLine{01065\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
-\DoxyCodeLine{01066\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
-\DoxyCodeLine{01067\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize==-\/1)\ maxsize\ =\ nrow;}
-\DoxyCodeLine{01068\ \ \ \ \ \ \ }
-\DoxyCodeLine{01069\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ nrow-\/n0+1;}
-\DoxyCodeLine{01070\ \ \ \ \ \ \ \textcolor{comment}{//chunksize\ =\ MIN(maxsize,chunksize);}}
-\DoxyCodeLine{01071\ \ \ \ \ \ \ chunksize\ =\ (maxsize\ <\ chunksize)\ ?\ maxsize\ :\ chunksize;}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ }
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,tdata[i]);}
+\DoxyCodeLine{01043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ n0\ +=\ chunksize;}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ }
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ j\ =\ 0\ ;\ j\ <\ chunksize\ ;\ ++j)\{}
+\DoxyCodeLine{01047\ \ \ \ \ }
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ accpt\ =\ binary\_accept(tdata[index\_binary.first][j],tdata[index\_binary.second][j]\ );}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ k=0;}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ :\ index\_unary)\{}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \ \ accpt\ *=\ unary\_accept[k++](\ tdata[i][j]\ );}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ accpt\ )\{}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data[i].push\_back(\ tdata[i][j]\ )\ ;}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01060\ \ \ }
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01062\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01063\ \ \ \ \ \ \ }
+\DoxyCodeLine{01064\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data.size();}
+\DoxyCodeLine{01065\ \ \ \ \ \}}
+\DoxyCodeLine{01066\ }
+\DoxyCodeLine{01068\ \ \ \ \ \textcolor{keywordtype}{int}\ read(\textcolor{keywordtype}{long}\ maxsize=-\/1)\{}
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(maxsize==-\/1)\ maxsize\ =\ nrow;}
 \DoxyCodeLine{01072\ \ \ \ \ \ \ }
-\DoxyCodeLine{01073\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,data[i]);}
-\DoxyCodeLine{01075\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01076\ \ \ \ \ \ \ n0\ +=\ chunksize;}
-\DoxyCodeLine{01077\ \ \ \ \ \ \ }
-\DoxyCodeLine{01078\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
-\DoxyCodeLine{01079\ \ \ \ \ \}}
-\DoxyCodeLine{01080\ }
-\DoxyCodeLine{01082\ \ \ \ \ std::vector<std::vector<T>\ >\ ranges(\textcolor{keywordtype}{bool}\ verbose)\{}
-\DoxyCodeLine{01083\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ ranges;}
-\DoxyCodeLine{01084\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
-\DoxyCodeLine{01085\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
-\DoxyCodeLine{01086\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 100000;}
-\DoxyCodeLine{01087\ \ \ \ \ \ \ }
-\DoxyCodeLine{01088\ \ \ \ \ \ \ ranges.resize(ncol);}
-\DoxyCodeLine{01089\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&v\ :\ ranges)\ v.resize(2);}
-\DoxyCodeLine{01090\ \ \ \ \ }
-\DoxyCodeLine{01091\ \ \ \ \ \ \ std::vector<T>\ tdata;}
-\DoxyCodeLine{01092\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],1,1,tdata);}
-\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ tdata)\{}
-\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \ ranges[i][0]\ =\ a;}
-\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ ranges[i][1]\ =\ a;}
-\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01098\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01099\ }
-\DoxyCodeLine{01100\ \ \ \ \ \ \ }
-\DoxyCodeLine{01101\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ n=2;}
-\DoxyCodeLine{01102\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n\ <\ nrow)\{}
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ nrow-\/n0+1;}
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \textcolor{comment}{//chunksize\ =\ MIN(maxsize,chunksize);}}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ chunksize\ =\ (maxsize\ <\ chunksize)\ ?\ maxsize\ :\ chunksize;}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ }
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n0,chunksize,data[i]);}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ n0\ +=\ chunksize;}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ }
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{01083\ \ \ \ \ \}}
+\DoxyCodeLine{01084\ }
+\DoxyCodeLine{01086\ \ \ \ \ std::vector<std::vector<T>\ >\ ranges(\textcolor{keywordtype}{bool}\ verbose)\{}
+\DoxyCodeLine{01087\ \ \ \ \ \ \ std::vector<std::vector<T>\ >\ ranges;}
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ column\_index.size();}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nrow\ =\ cpfits.rows();}
+\DoxyCodeLine{01090\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ chunksize\ =\ 100000;}
+\DoxyCodeLine{01091\ \ \ \ \ \ \ }
+\DoxyCodeLine{01092\ \ \ \ \ \ \ ranges.resize(ncol);}
+\DoxyCodeLine{01093\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&v\ :\ ranges)\ v.resize(2);}
+\DoxyCodeLine{01094\ \ \ \ \ }
+\DoxyCodeLine{01095\ \ \ \ \ \ \ std::vector<T>\ tdata;}
+\DoxyCodeLine{01096\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],1,1,tdata);}
+\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ tdata)\{}
+\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ \ \ ranges[i][0]\ =\ a;}
+\DoxyCodeLine{01100\ \ \ \ \ \ \ \ \ \ \ ranges[i][1]\ =\ a;}
+\DoxyCodeLine{01101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01102\ \ \ \ \ \ \ \}}
 \DoxyCodeLine{01103\ }
-\DoxyCodeLine{01104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//chunksize\ =\ MIN(nrow-\/n+1,chunksize);}}
-\DoxyCodeLine{01105\ \ \ \ \ \ \ \ \ chunksize\ =\ (nrow-\/n+1\ <\ chunksize)\ ?\ nrow-\/n+1\ :\ chunksize;}
-\DoxyCodeLine{01106\ }
-\DoxyCodeLine{01107\ \ \ \ \ \ \ }
-\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n,chunksize,tdata);}
-\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ tdata)\{}
-\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \ \ \ \ ranges[i][0]\ =\ MIN(a,ranges[i][0]);}
-\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ \ \ \ \ ranges[i][1]\ =\ MAX(a,ranges[i][1]);}
-\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ n\ +=\ chunksize;}
-\DoxyCodeLine{01116\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01117\ \ \ \ \ \ \ }
-\DoxyCodeLine{01118\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\{}
-\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
-\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ ranges[i][0]\ <<\ \textcolor{stringliteral}{"{}\ <=\ "{}}\ <<\ used\_column\_names[i]\ <<\ \textcolor{stringliteral}{"{}\ <=\ "{}}\ <<\ ranges[i][1]\ <<\ std::endl;}
-\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01122\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01123\ \ \ \ \ \ \ }
-\DoxyCodeLine{01124\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ranges;}
-\DoxyCodeLine{01125\ \ \ \ \ \}}
-\DoxyCodeLine{01126\ \ \ \ \ }
-\DoxyCodeLine{01128\ \ \ \ \ std::vector<T>\&\ operator[](\textcolor{keyword}{const}\ std::string\ \&label)\{}
-\DoxyCodeLine{01129\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(datamap.find(label)\ ==\ datamap.end())\{}
-\DoxyCodeLine{01130\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}No\ label\ -\/\ "{}}\ <<\ label\ <<\ \textcolor{stringliteral}{"{}\ -\/\ in\ "{}}\ <<\ filename\ <<std::endl;}
-\DoxyCodeLine{01131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}no\ label"{}});}
-\DoxyCodeLine{01132\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01133\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data[datamap[label]];}
-\DoxyCodeLine{01134\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ c\ :\ all\_column\_names\ )\ std::cout\ <<\ c\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{01135\ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{01136\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(label\ +\ \textcolor{stringliteral}{"{}\ was\ not\ one\ of\ the\ columns\ of\ the\ galaxy\ data\ file\ :"{}}\ +\ filename);}
-\DoxyCodeLine{01137\ \ \ \ \ \};}
-\DoxyCodeLine{01138\ \ \ \ \ }
-\DoxyCodeLine{01140\ \ \ \ \ std::vector<T>\&\ operator[](\textcolor{keywordtype}{int}\ i)\{}
-\DoxyCodeLine{01141\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data[i];}
-\DoxyCodeLine{01142\ \ \ \ \ \};}
-\DoxyCodeLine{01143\ \ \ \ \ }
-\DoxyCodeLine{01144\ \ \ \ \ \textcolor{comment}{//\ sort\ by\ one\ of\ the\ columns\ in\ ascending\ order}}
-\DoxyCodeLine{01145\ \ \ \ \ \textcolor{keywordtype}{void}\ sortby(std::string\ name)\{}
-\DoxyCodeLine{01146\ \ \ \ \ \ \ std::vector<size\_t>\ index(data[0].size());}
-\DoxyCodeLine{01147\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ index.size();}
-\DoxyCodeLine{01148\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\ index[i]\ =\ i;}
-\DoxyCodeLine{01149\ \ \ \ \ \ \ }
-\DoxyCodeLine{01150\ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utilities_a9b44ff17b26b627e429e9984d4908577}{Utilities::sort\_indexes}}(data[datamap[name]],index);}
-\DoxyCodeLine{01151\ \ \ \ \ \ \ std::vector<T>\ tmp\_v(N);}
-\DoxyCodeLine{01152\ \ \ \ \ \ \ }
-\DoxyCodeLine{01153\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j=0\ ;\ j<data.size()\ ;\ ++j)\{}
-\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\{}
-\DoxyCodeLine{01155\ \ \ \ \ \ \ \ \ \ \ tmp\_v[i]\ =\ data[j][index[i]];}
-\DoxyCodeLine{01156\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01157\ \ \ \ \ \ \ \ \ swap(data[j],tmp\_v);}
-\DoxyCodeLine{01158\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01159\ \ \ \ \ \}}
-\DoxyCodeLine{01160\ \ \ \ \ }
-\DoxyCodeLine{01162\ \ \ \ \ \textcolor{keywordtype}{void}\ addColumn(std::string\ name)\{}
-\DoxyCodeLine{01163\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nc\ =\ \ number\_of\_columns();}
-\DoxyCodeLine{01164\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nr\ =\ number\_of\_rows();}
-\DoxyCodeLine{01165\ \ \ \ \ \ \ data.emplace\_back(nr);}
-\DoxyCodeLine{01166\ \ \ \ \ \ \ all\_column\_names.push\_back(name);}
-\DoxyCodeLine{01167\ \ \ \ \ \ \ used\_column\_names.push\_back(name);}
-\DoxyCodeLine{01168\ \ \ \ \ \ \ datamap[name]\ =\ nc;}
-\DoxyCodeLine{01169\ \ \ \ \ \ \ \textcolor{comment}{//column\_index.push\_back(nc);}}
-\DoxyCodeLine{01170\ \ \ \ \ \}}
-\DoxyCodeLine{01171\ \ \ \ \ }
-\DoxyCodeLine{01172\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_rows()\{\textcolor{keywordflow}{return}\ data[0].size();\}}
-\DoxyCodeLine{01173\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_columns()\{\textcolor{keywordflow}{return}\ data.size();\}}
-\DoxyCodeLine{01174\ }
-\DoxyCodeLine{01175\ \};}
-\DoxyCodeLine{01176\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ cpfits\_h\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01104\ \ \ \ \ \ \ }
+\DoxyCodeLine{01105\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ n=2;}
+\DoxyCodeLine{01106\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(n\ <\ nrow)\{}
+\DoxyCodeLine{01107\ }
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//chunksize\ =\ MIN(nrow-\/n+1,chunksize);}}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ chunksize\ =\ (nrow-\/n+1\ <\ chunksize)\ ?\ nrow-\/n+1\ :\ chunksize;}
+\DoxyCodeLine{01110\ }
+\DoxyCodeLine{01111\ \ \ \ \ \ \ }
+\DoxyCodeLine{01112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01113\ \ \ \ \ \ \ \ \ \ \ cpfits.read\_column(column\_index[i],n,chunksize,tdata);}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(T\ a\ :\ tdata)\{}
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \ \ \ \ \ \ ranges[i][0]\ =\ MIN(a,ranges[i][0]);}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ \ \ \ \ \ \ ranges[i][1]\ =\ MAX(a,ranges[i][1]);}
+\DoxyCodeLine{01117\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \ \ n\ +=\ chunksize;}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ }
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\{}
+\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ ncol\ ;\ ++i)\{}
+\DoxyCodeLine{01124\ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ ranges[i][0]\ <<\ \textcolor{stringliteral}{"{}\ <=\ "{}}\ <<\ used\_column\_names[i]\ <<\ \textcolor{stringliteral}{"{}\ <=\ "{}}\ <<\ ranges[i][1]\ <<\ std::endl;}
+\DoxyCodeLine{01125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01126\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01127\ \ \ \ \ \ \ }
+\DoxyCodeLine{01128\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ranges;}
+\DoxyCodeLine{01129\ \ \ \ \ \}}
+\DoxyCodeLine{01130\ \ \ \ \ }
+\DoxyCodeLine{01132\ \ \ \ \ std::vector<T>\&\ operator[](\textcolor{keyword}{const}\ std::string\ \&label)\{}
+\DoxyCodeLine{01133\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(datamap.find(label)\ ==\ datamap.end())\{}
+\DoxyCodeLine{01134\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}No\ label\ -\/\ "{}}\ <<\ label\ <<\ \textcolor{stringliteral}{"{}\ -\/\ in\ "{}}\ <<\ filename\ <<std::endl;}
+\DoxyCodeLine{01135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}no\ label"{}});}
+\DoxyCodeLine{01136\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01137\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data[datamap[label]];}
+\DoxyCodeLine{01138\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ c\ :\ all\_column\_names\ )\ std::cout\ <<\ c\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{01139\ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{01140\ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(label\ +\ \textcolor{stringliteral}{"{}\ was\ not\ one\ of\ the\ columns\ of\ the\ galaxy\ data\ file\ :"{}}\ +\ filename);}
+\DoxyCodeLine{01141\ \ \ \ \ \};}
+\DoxyCodeLine{01142\ \ \ \ \ }
+\DoxyCodeLine{01144\ \ \ \ \ std::vector<T>\&\ operator[](\textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{01145\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data[i];}
+\DoxyCodeLine{01146\ \ \ \ \ \};}
+\DoxyCodeLine{01147\ \ \ \ \ }
+\DoxyCodeLine{01148\ \ \ \ \ \textcolor{comment}{//\ sort\ by\ one\ of\ the\ columns\ in\ ascending\ order}}
+\DoxyCodeLine{01149\ \ \ \ \ \textcolor{keywordtype}{void}\ sortby(std::string\ name)\{}
+\DoxyCodeLine{01150\ \ \ \ \ \ \ std::vector<size\_t>\ index(data[0].size());}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ N\ =\ index.size();}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\ index[i]\ =\ i;}
+\DoxyCodeLine{01153\ \ \ \ \ \ \ }
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \mbox{\hyperlink{namespace_utilities_a9b44ff17b26b627e429e9984d4908577}{Utilities::sort\_indexes}}(data[datamap[name]],index);}
+\DoxyCodeLine{01155\ \ \ \ \ \ \ std::vector<T>\ tmp\_v(N);}
+\DoxyCodeLine{01156\ \ \ \ \ \ \ }
+\DoxyCodeLine{01157\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ j=0\ ;\ j<data.size()\ ;\ ++j)\{}
+\DoxyCodeLine{01158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<N\ ;\ ++i)\{}
+\DoxyCodeLine{01159\ \ \ \ \ \ \ \ \ \ \ tmp\_v[i]\ =\ data[j][index[i]];}
+\DoxyCodeLine{01160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01161\ \ \ \ \ \ \ \ \ swap(data[j],tmp\_v);}
+\DoxyCodeLine{01162\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01163\ \ \ \ \ \}}
+\DoxyCodeLine{01164\ \ \ \ \ }
+\DoxyCodeLine{01166\ \ \ \ \ \textcolor{keywordtype}{void}\ addColumn(std::string\ name)\{}
+\DoxyCodeLine{01167\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nc\ =\ \ number\_of\_columns();}
+\DoxyCodeLine{01168\ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ nr\ =\ number\_of\_rows();}
+\DoxyCodeLine{01169\ \ \ \ \ \ \ data.emplace\_back(nr);}
+\DoxyCodeLine{01170\ \ \ \ \ \ \ all\_column\_names.push\_back(name);}
+\DoxyCodeLine{01171\ \ \ \ \ \ \ used\_column\_names.push\_back(name);}
+\DoxyCodeLine{01172\ \ \ \ \ \ \ datamap[name]\ =\ nc;}
+\DoxyCodeLine{01173\ \ \ \ \ \ \ \textcolor{comment}{//column\_index.push\_back(nc);}}
+\DoxyCodeLine{01174\ \ \ \ \ \}}
+\DoxyCodeLine{01175\ \ \ \ \ }
+\DoxyCodeLine{01176\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_rows()\{\textcolor{keywordflow}{return}\ data[0].size();\}}
+\DoxyCodeLine{01177\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_columns()\{\textcolor{keywordflow}{return}\ data.size();\}}
+\DoxyCodeLine{01178\ }
+\DoxyCodeLine{01179\ \};}
+\DoxyCodeLine{01180\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ cpfits\_h\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

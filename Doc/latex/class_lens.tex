@@ -93,13 +93,13 @@ void \mbox{\hyperlink{class_lens_a5e683b56effd97638db0dceb4cd04c3c}{mass\+\_\+on
 \item 
 \mbox{\hyperlink{struct_r_a_y}{RAY}} \mbox{\hyperlink{class_lens_a29120751ca87eb68c2c2afc3a6ca9ae4}{find\+\_\+image\+\_\+min}} (\mbox{\hyperlink{struct_point}{Point}} \&p, double zs, Pos\+Type ytol2, Pos\+Type \&dy2, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&boundary)
 \begin{DoxyCompactList}\small\item\em This is the same, but the image is forced to stay within boundary. \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \mbox{\hyperlink{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}{find\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, double z\+\_\+source, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center, double range, double stop\+\_\+res)
-\begin{DoxyCompactList}\small\item\em finds images by telescoping triangle method \end{DoxyCompactList}\item 
-std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \mbox{\hyperlink{class_lens_adb05102639f1d175bad05f64e4e3bf56}{find\+\_\+images}} (\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&init\+\_\+grid, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, double z\+\_\+source, double stop\+\_\+res)
-\begin{DoxyCompactList}\small\item\em finds images by telescoping triangle method \end{DoxyCompactList}\item 
 \Hypertarget{class_lens_ac408b0446806251de0022c4600acfdb7}\label{class_lens_ac408b0446806251de0022c4600acfdb7} 
 void {\bfseries find\+\_\+images\+\_\+min\+\_\+parallel} (std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \&rays, double ytol2, std\+::vector$<$ bool $>$ \&success)
-\item 
+\begin{DoxyCompactList}\small\item\em This is a version that minimizes many rays in parallel. Useful for weak lensing. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \mbox{\hyperlink{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}{find\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, double z\+\_\+source, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} center, double range, double stop\+\_\+res)
+\begin{DoxyCompactList}\small\item\em finds images by telescoping triangle method. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \mbox{\hyperlink{class_lens_adb05102639f1d175bad05f64e4e3bf56}{find\+\_\+images}} (\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&init\+\_\+grid, \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y\+\_\+source, double z\+\_\+source, double stop\+\_\+res)
+\begin{DoxyCompactList}\small\item\em finds images by telescoping triangle method. \end{DoxyCompactList}\item 
 short \mbox{\hyperlink{class_lens_a71b1279d35b08c49d537708a46c1d3a6}{Reset\+Source\+Plane}} (Pos\+Type z, bool nearest=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em reset the redshift of the source plane \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}{Find\+Source\+Plane}} (Pos\+Type zs, long \&jmax, double \&Dls, double \&Ds)
@@ -217,9 +217,7 @@ A class to represents a lens with multiple planes.
 {\footnotesize\ttfamily \label{class_lens_a6ea1caf11ec4eff16655de132a701165} 
 \mbox{\hyperlink{struct_r_a_y}{RAY}} Lens\+::find\+\_\+image\+\_\+min (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_r_a_y}{RAY}} \&}]{in\+\_\+ray}{, }\item[{Pos\+Type}]{ytol2}{}\end{DoxyParamCaption})}
 
-this version uses the redshift stored in the ray,
-
-Tthe ray is replaced with the best guess so the source position is replaced. 
+this version uses the redshift stored in the ray, 
 \begin{DoxyParams}{Parameters}
 {\em in\+\_\+ray} & p.\+y\mbox{[}\mbox{]} should be set to source position  \\
 \hline
@@ -238,13 +236,13 @@ Find the image position of a source without grid refinement.
 
 This uses Powell\textquotesingle{}s algorithm to minimise the distance between the source point of an image and the desired source point. No grid is necessary. This should be fast, but will miss multiple images. This is useful for finding the position of weakly lensed images or the rough region where a grid should be put down for a strong lens.
 
-Find the image position of a source without grid refinement.
+Find the ONE image position of a source without grid refinement.
 
-This finds an image position given a source postion. No grid is necessary.
+This finds an image position given a source postion by minimizing the difference between source positions.
 
 If use\+\_\+image\+\_\+guess=true the input image position will be used as a first guess and the output image will be guarenteed to have the same pairity.
 
-This is useful for finding the position of weakly lensed images or for refining the image positions that are found on a finite grid. 
+This is useful for finding the position of weakly lensed images or for refining the image positions that are found on a finite grid (i.\+e. Lens\+::find\+\_\+image()). 
 \begin{DoxyParams}{Parameters}
 {\em p} & p.\+image-\/\texorpdfstring{$>$}{>}x should be set to source position  \\
 \hline
@@ -288,9 +286,11 @@ std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ Lens\+::find\+\_\+imag
 
 
 
-finds images by telescoping triangle method 
+finds images by telescoping triangle method. 
 
 find rays using telescoping triangle method starting with a \doxylink{struct_grid_map}{Grid\+Map} init\+\_\+grid
+
+This version starts with an input \doxylink{struct_grid_map}{Grid\+Map} and then zooms in. If stop\+\_\+res is set to the resolution of init\+\_\+grid, no refinement will be done unless the images are not separated by more than a two pixel. This eliminates most sperious low magnification images.
 
 Meant for refining the image positions to higher resolution than the initial grid \Hypertarget{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}\index{Lens@{Lens}!find\_images@{find\_images}}
 \index{find\_images@{find\_images}!Lens@{Lens}}
@@ -300,9 +300,16 @@ std\+::vector$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ Lens\+::find\+\_\+imag
 
 
 
-finds images by telescoping triangle method 
+finds images by telescoping triangle method. 
 
-find rays using telescoping triangle method \Hypertarget{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}\index{Lens@{Lens}!FindSourcePlane@{FindSourcePlane}}
+find rays using telescoping triangle method
+
+Each image is zoomed into until a resolution of stop\+\_\+res is reached and no images are separated by more than a two pixel. This eliminates most sperious low magnification images. 
+\begin{DoxyParams}{Parameters}
+{\em range} & initial range within which images are searched for (radians) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}\index{Lens@{Lens}!FindSourcePlane@{FindSourcePlane}}
 \index{FindSourcePlane@{FindSourcePlane}!Lens@{Lens}}
 \doxysubsubsection{\texorpdfstring{FindSourcePlane()}{FindSourcePlane()}}
 {\footnotesize\ttfamily \label{class_lens_a7ddbfe99548eb3e63d1d45af2f005972} 

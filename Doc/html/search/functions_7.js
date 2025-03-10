@@ -69,7 +69,7 @@ var searchData=
   ['getny_5fsr_66',['getNy_sr',['../class_lens_halo_multi_map.html#a01e4daccf7432a38b3a6ec2003717ab5',1,'LensHaloMultiMap']]],
   ['getpa_67',['getPA',['../class_lens_halo_disk.html#a83cbc1ac0a53458f122b77d939d62b72',1,'LensHaloDisk::getPA()'],['../class_source_overzier.html#a0b3ab19d4e0555037d2dc33adf7c7fd5',1,'SourceOverzier::getPA()'],['../class_source_overzier_plus.html#a652c992ffee40090801c81f41b2c6761',1,'SourceOverzierPlus::getPA()']]],
   ['getparam_68',['getParam',['../class_lens_halo.html#a7c6257df5c75a20d7f306cc9f4980a52',1,'LensHalo']]],
-  ['getpixelmapflux_69',['getPixelMapFlux',['../struct_grid_map.html#a4f0b9875d7688f60457203cbf8fa4b7e',1,'GridMap::getPixelMapFlux(int res) const'],['../struct_grid_map.html#a5a9a36077a69c6d1d2f0de0161ab65dd',1,'GridMap::getPixelMapFlux(PixelMap&lt; T &gt; &amp;map) const']]],
+  ['getpixelmapflux_69',['getPixelMapFlux',['../struct_grid_map.html#a02e65a76db29fd6c074ec237fc547f0d',1,'GridMap::getPixelMapFlux() const'],['../struct_grid_map.html#a5a9a36077a69c6d1d2f0de0161ab65dd',1,'GridMap::getPixelMapFlux(PixelMap&lt; T &gt; &amp;map) const']]],
   ['getq_70',['getq',['../class_lens_halo_fit.html#a864c48ad391e2b187dc29d3b101c3374',1,'LensHaloFit']]],
   ['getr200_71',['getR200',['../class_h_a_l_o_calculator.html#af406c2440bb8083b45ac02b6a9c1c80d',1,'HALOCalculator']]],
   ['getra_72',['getRA',['../class_pixel_map.html#a174494b0a50ed33e862901171aebb3c8',1,'PixelMap']]],

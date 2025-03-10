@@ -36,6 +36,9 @@ double \mbox{\hyperlink{struct_grid_map_a0b2753d3584fbe60a632fb157f04bf46}{Add\+
 \Hypertarget{struct_grid_map_a687171a57a8d3c92d2c134f77d92cf9d}\label{struct_grid_map_a687171a57a8d3c92d2c134f77d92cf9d} 
 \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} {\bfseries source\+\_\+point} (size\+\_\+t index)
 \begin{DoxyCompactList}\small\item\em get the image point for a index number \end{DoxyCompactList}\item 
+\Hypertarget{struct_grid_map_a4e6fb0bad8b39a148a8de6b482c7f779}\label{struct_grid_map_a4e6fb0bad8b39a148a8de6b482c7f779} 
+\mbox{\hyperlink{struct_r_a_y}{RAY}} {\bfseries ray} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em get the image point for a index number \end{DoxyCompactList}\item 
 \Hypertarget{struct_grid_map_af55353b1d0ba3890de6f1c5456840bd8}\label{struct_grid_map_af55353b1d0ba3890de6f1c5456840bd8} 
 void {\bfseries Clear\+Surface\+Brightnesses} ()
 \item 
@@ -69,7 +72,7 @@ double {\bfseries get\+Resolution} () const
 \begin{DoxyCompactList}\small\item\em Make a Pixel map of the without distribution the pixels. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_map_a8d1ab68815b7ff0ebe35d8d993c8222e}{write\+Fits\+Uniform}} (\mbox{\hyperlink{standard_8h_a73d5f5042d9b38366d0b3781d199f9e7}{Lensing\+Variable}} lensvar, std\+::string filename)
 \begin{DoxyCompactList}\small\item\em this will make a fits map of the grid as is. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \mbox{\hyperlink{struct_grid_map_a4f0b9875d7688f60457203cbf8fa4b7e}{get\+Pixel\+Map\+Flux}} (int res) const
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \mbox{\hyperlink{struct_grid_map_a02e65a76db29fd6c074ec237fc547f0d}{get\+Pixel\+Map\+Flux}} () const
 \begin{DoxyCompactList}\small\item\em returns a \doxylink{class_pixel_map}{Pixel\+Map} with the flux in pixels at a resolution of res times the original resolution \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{struct_grid_map_a5a9a36077a69c6d1d2f0de0161ab65dd}{get\+Pixel\+Map\+Flux}} (\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&map) const
 \begin{DoxyCompactList}\small\item\em Flux in pixels map. \end{DoxyCompactList}\item 
@@ -93,11 +96,19 @@ Pos\+Type {\bfseries Einstein\+Area} () const
 \Hypertarget{struct_grid_map_a744230399bc700090c26123e4522fbb1}\label{struct_grid_map_a744230399bc700090c26123e4522fbb1} 
 \mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \& {\bfseries operator=} (\mbox{\hyperlink{struct_grid_map}{Grid\+Map}} \&\&grid)
 \item 
-\Hypertarget{struct_grid_map_a12dc2253337b4b9199b6f87e5cfb91b8}\label{struct_grid_map_a12dc2253337b4b9199b6f87e5cfb91b8} 
-std\+::list$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ {\bfseries find\+\_\+images} (std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ys, std\+::vector$<$ int $>$ \&multiplicity) const
+\Hypertarget{struct_grid_map_a399748b639e0e3f97bf9946cf4e47f5a}\label{struct_grid_map_a399748b639e0e3f97bf9946cf4e47f5a} 
+bool {\bfseries touch} (const Rectangle \&tr1, const Rectangle \&tr2) const
 \item 
+\Hypertarget{struct_grid_map_ad54e6de7e61100c4579df2a500e61760}\label{struct_grid_map_ad54e6de7e61100c4579df2a500e61760} 
+std\+::vector$<$ Rectangle $>$ {\bfseries merge\+\_\+boxes} (std\+::list$<$ Triangle $>$ \&triangles) const
+\item 
+\Hypertarget{struct_grid_map_abc8d045e43d6d22f606bd48a5c78069f}\label{struct_grid_map_abc8d045e43d6d22f606bd48a5c78069f} 
+std\+::vector$<$ Rectangle $>$ {\bfseries merge\+\_\+boxes} (std\+::vector$<$ Triangle $>$ \&triangles) const
+\item 
+std\+::list$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ \mbox{\hyperlink{struct_grid_map_a12dc2253337b4b9199b6f87e5cfb91b8}{find\+\_\+images}} (std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&ys, std\+::vector$<$ int $>$ \&multiplicity) const
+\begin{DoxyCompactList}\small\item\em Returns a list of RAYs from a set of source positions. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_map_a19fa0dd481c7351ede52fdb9dda6680c}{find\+\_\+images}} (\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} y, std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&image\+\_\+points, std\+::vector$<$ Triangle $>$ \&triangles) const
-\item 
+\begin{DoxyCompactList}\small\item\em Find all images by triangle method. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{struct_grid_map_ab9fb480a29ae385b11bf2439a889e566}{find\+\_\+boundaries\+\_\+of\+\_\+caustics}} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ $>$ \&boundaries, std\+::vector$<$ bool $>$ \&hits\+\_\+edge)
 \begin{DoxyCompactList}\small\item\em finds the boundary of the region on the source plane where there are more than one image \end{DoxyCompactList}\item 
 Pos\+Type \mbox{\hyperlink{struct_grid_map_aa215b04101b745c282b570ebec20481e}{magnification\+Flux}} (\mbox{\hyperlink{class_source}{Source}} \&source) const
@@ -117,7 +128,13 @@ void \mbox{\hyperlink{struct_grid_map_ae60c0740776b53b1b22457a7add0efc3}{find\+\
 \Hypertarget{struct_grid_map_a6917f1558360995caae2fa683b4c7c20}\label{struct_grid_map_a6917f1558360995caae2fa683b4c7c20} 
 void {\bfseries find\+\_\+magnification\+\_\+contour} (std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ $>$ \&curves, std\+::vector$<$ bool $>$ \&hits\+\_\+boundary, double invmag)
 \begin{DoxyCompactList}\small\item\em Find image-\/plane contours of magnification. ~\newline
- This is usually only used within \doxylink{namespace_image_finding}{Image\+Finding}\+:\+: functions where it will also find the contours on the source plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+ This is usually only used within \doxylink{namespace_image_finding}{Image\+Finding}\+:\+: functions where it will also find the contours on the source plane. \end{DoxyCompactList}\item 
+\Hypertarget{struct_grid_map_a34b34acb516578ce2282d7a63202d89f}\label{struct_grid_map_a34b34acb516578ce2282d7a63202d89f} 
+int {\bfseries get\+Nx} ()
+\item 
+\Hypertarget{struct_grid_map_a7d8eb40753a5b96a7f895bbd2d8968b5}\label{struct_grid_map_a7d8eb40753a5b96a7f895bbd2d8968b5} 
+int {\bfseries get\+Ny} ()
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -220,7 +237,7 @@ double Grid\+Map\+::\+Add\+Point\+Source (\begin{DoxyParamCaption}\item[{const \
 
 add flux to the rays that are nearest to the source on the source plane for each image 
 
-This uses Grid\+Map\+::find\+\_\+images to find the images. It then finds the point that is closest to the source position. The flux is added to one point per image. The total flux added is returned. No further refinement of the grid is done so it is limited by the resolution of the \doxylink{struct_grid_map}{Grid\+Map}. Some spurious low magnification images can be found. \Hypertarget{struct_grid_map_a0b2753d3584fbe60a632fb157f04bf46}\index{GridMap@{GridMap}!AddSurfaceBrightnesses@{AddSurfaceBrightnesses}}
+This uses \doxylink{struct_grid_map_a12dc2253337b4b9199b6f87e5cfb91b8}{Grid\+Map\+::find\+\_\+images} to find the images. It then finds the point that is closest to the source position. The flux is added to one point per image. The total flux added is returned. No further refinement of the grid is done so it is limited by the resolution of the \doxylink{struct_grid_map}{Grid\+Map}. Some spurious low magnification images can be found. \Hypertarget{struct_grid_map_a0b2753d3584fbe60a632fb157f04bf46}\index{GridMap@{GridMap}!AddSurfaceBrightnesses@{AddSurfaceBrightnesses}}
 \index{AddSurfaceBrightnesses@{AddSurfaceBrightnesses}!GridMap@{GridMap}}
 \doxysubsubsection{\texorpdfstring{AddSurfaceBrightnesses()}{AddSurfaceBrightnesses()}}
 {\footnotesize\ttfamily \label{struct_grid_map_a0b2753d3584fbe60a632fb157f04bf46} 
@@ -266,23 +283,43 @@ Find critical curves. This is usually not used outside of \doxylink{namespace_im
 
 This will find all the resolved tangential and radial critical curves. If a radial critical curve is not found within a tangential one, curves around the maxima are used to estimate a radial or pseudo caustic. These are labeled Crit\+Type\+::pseudo. The out put is ordered so that the radia/pseudo curves within a tangent curve imediately follow it. \Hypertarget{struct_grid_map_a19fa0dd481c7351ede52fdb9dda6680c}\index{GridMap@{GridMap}!find\_images@{find\_images}}
 \index{find\_images@{find\_images}!GridMap@{GridMap}}
-\doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}}
+\doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{struct_grid_map_a19fa0dd481c7351ede52fdb9dda6680c} 
 void Grid\+Map\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{y}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{image\+\_\+points}{, }\item[{std\+::vector$<$ Triangle $>$ \&}]{triangles}{}\end{DoxyParamCaption}) const}
 
-find all images by triangle method 
+
+
+Find all images by triangle method. 
+
+No new rays are shot so the accuracy is limited to the resolution of the \doxylink{struct_grid_map}{Grid\+Map}.
+
+See also \doxylink{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}{Lens\+::find\+\_\+images()} 
 \begin{DoxyParams}{Parameters}
 {\em image\+\_\+points} & positions of the images limited by resolution of the gridmap  \\
 \hline
 {\em triangles} & index\textquotesingle{}s of the points that form the triangles that the images are in \\
 \hline
 \end{DoxyParams}
-\Hypertarget{struct_grid_map_a4f0b9875d7688f60457203cbf8fa4b7e}\index{GridMap@{GridMap}!getPixelMapFlux@{getPixelMapFlux}}
+\Hypertarget{struct_grid_map_a12dc2253337b4b9199b6f87e5cfb91b8}\index{GridMap@{GridMap}!find\_images@{find\_images}}
+\index{find\_images@{find\_images}!GridMap@{GridMap}}
+\doxysubsubsection{\texorpdfstring{find\_images()}{find\_images()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_grid_map_a12dc2253337b4b9199b6f87e5cfb91b8} 
+std\+::list$<$ \mbox{\hyperlink{struct_r_a_y}{RAY}} $>$ Grid\+Map\+::find\+\_\+images (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}} $>$ \&}]{ys}{, }\item[{std\+::vector$<$ int $>$ \&}]{multiplicity}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns a list of RAYs from a set of source positions. 
+
+The image positions are found in parallel by the triangle method. The order of the output rays will be the same as the sources with multiple images consecutive. The number of images for each source position is given by the {\ttfamily multiplicity} array.
+
+No new rays are shot. The image positions and magnification matrix are interpolated from the nearest image points already in the \doxylink{struct_grid_map}{Grid\+Map}.
+
+See also \doxylink{class_lens_ac4a8cd1c9c69e16aa7f01a8b0eaff596}{Lens\+::find\+\_\+images()} \Hypertarget{struct_grid_map_a02e65a76db29fd6c074ec237fc547f0d}\index{GridMap@{GridMap}!getPixelMapFlux@{getPixelMapFlux}}
 \index{getPixelMapFlux@{getPixelMapFlux}!GridMap@{GridMap}}
 \doxysubsubsection{\texorpdfstring{getPixelMapFlux()}{getPixelMapFlux()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{struct_grid_map_a4f0b9875d7688f60457203cbf8fa4b7e} 
+{\footnotesize\ttfamily \label{struct_grid_map_a02e65a76db29fd6c074ec237fc547f0d} 
 template$<$typename T $>$ \\
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ Grid\+Map\+::get\+Pixel\+Map\+Flux (\begin{DoxyParamCaption}\item[{int}]{res}{}\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ Grid\+Map\+::get\+Pixel\+Map\+Flux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
 
 
 
@@ -299,7 +336,7 @@ void Grid\+Map\+::get\+Pixel\+Map\+Flux (\begin{DoxyParamCaption}\item[{\mbox{\h
 
 Flux in pixels map. 
 
-update a \doxylink{class_pixel_map}{Pixel\+Map} with the flux in pixels at a resolution of res times the original resolution. The map must have precisely the right size and center to match or an exception will be thrown. Constructing the map with \doxylink{class_pixel_map}{Pixel\+Map} get\+Pixel\+Map\+Flux(int res) will insure that it does. \Hypertarget{struct_grid_map_aa215b04101b745c282b570ebec20481e}\index{GridMap@{GridMap}!magnificationFlux@{magnificationFlux}}
+update a \doxylink{class_pixel_map}{Pixel\+Map} with the flux in pixels. The map must have precisely the right size and center to match or an exception will be thrown. Constructing the map with \doxylink{class_pixel_map}{Pixel\+Map} get\+Pixel\+Map\+Flux(i) will insure that it does. \Hypertarget{struct_grid_map_aa215b04101b745c282b570ebec20481e}\index{GridMap@{GridMap}!magnificationFlux@{magnificationFlux}}
 \index{magnificationFlux@{magnificationFlux}!GridMap@{GridMap}}
 \doxysubsubsection{\texorpdfstring{magnificationFlux()}{magnificationFlux()}}
 {\footnotesize\ttfamily \label{struct_grid_map_aa215b04101b745c282b570ebec20481e} 

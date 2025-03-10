@@ -28,7 +28,7 @@ Image structure that can be manipulated and exported to/from fits files.
 \begin{DoxyCompactList}\small\item\em make square \doxylink{class_pixel_map}{Pixel\+Map} \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_pixel_map_a420dcaae788313e3dc529073bcc35dcd}{Pixel\+Map}} (const double \texorpdfstring{$\ast$}{*}center, std\+::size\+\_\+t Nx, std\+::size\+\_\+t Ny, double resolution, Pixel\+Map\+Units u=Pixel\+Map\+Units\+::ndef)
 \begin{DoxyCompactList}\small\item\em make rectangular \doxylink{class_pixel_map}{Pixel\+Map} with square pixels \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_pixel_map_ac7820da839276b6a4d4a514794ffdebd}{Pixel\+Map}} (std\+::string fitsfilename, double resolution=-\/1, Pixel\+Map\+Units u=Pixel\+Map\+Units\+::ndef)
+\mbox{\hyperlink{class_pixel_map_a7f21ac991f2662f683358b2b534e63b0}{Pixel\+Map}} (std\+::string fitsfilename, double my\+\_\+res=-\/1, Pixel\+Map\+Units u=Pixel\+Map\+Units\+::ndef, std\+::string extension="{}"{})
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_pixel_map}{Pixel\+Map} reading in a fits file Infos about resolution, Npixels and center are read from the header. \end{DoxyCompactList}\item 
 \Hypertarget{class_pixel_map_a5f22caeccd7aba5139275d90e5e835d0}\label{class_pixel_map_a5f22caeccd7aba5139275d90e5e835d0} 
 {\footnotesize template$<$typename OtherT $>$ }\\{\bfseries Pixel\+Map} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ OtherT $>$ \&)
@@ -169,8 +169,8 @@ void {\bfseries print\+ASCII} () const
 \Hypertarget{class_pixel_map_a913f707f9106f7a64d441cc6d0ad6786}\label{class_pixel_map_a913f707f9106f7a64d441cc6d0ad6786} 
 void {\bfseries print\+ASCIIto\+File} (std\+::string filename) const
 \begin{DoxyCompactList}\small\item\em Print an ASCII table of all the pixel values. \end{DoxyCompactList}\item 
-\Hypertarget{class_pixel_map_a710ed995171bd6778ac634c559e7a781}\label{class_pixel_map_a710ed995171bd6778ac634c559e7a781} 
-void {\bfseries print\+FITS} (std\+::string filename, bool Xflip=false, bool verbose=false)
+\Hypertarget{class_pixel_map_af2bf825f047bb394a80ff4f812e5fed8}\label{class_pixel_map_af2bf825f047bb394a80ff4f812e5fed8} 
+void {\bfseries print\+FITS} (std\+::string filename, bool Xflip=false, bool ctype=false, bool verbose=false)
 \begin{DoxyCompactList}\small\item\em Output the pixel map as a fits file. \end{DoxyCompactList}\item 
 \Hypertarget{class_pixel_map_ac7c6a96dc79200f352bb68bfdfedb8a5}\label{class_pixel_map_ac7c6a96dc79200f352bb68bfdfedb8a5} 
 void {\bfseries print\+FITS} (std\+::string filename, std\+::vector$<$ std\+::tuple$<$ std\+::string, double, std\+::string $>$ $>$ \&extra\+\_\+header\+\_\+info, bool verbose)
@@ -361,9 +361,6 @@ void {\bfseries addheader} (std\+::string label, double value, std\+::string com
 \item 
 \Hypertarget{class_pixel_map_a177b39b1a123b398f081becea8bf08db}\label{class_pixel_map_a177b39b1a123b398f081becea8bf08db} 
 void {\bfseries addheader} (std\+::string label, std\+::string value, std\+::string comment)
-\item 
-\Hypertarget{class_pixel_map_a877d1d0f5bea57eb786153d5631813ba}\label{class_pixel_map_a877d1d0f5bea57eb786153d5631813ba} 
-{\bfseries Pixel\+Map} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ double $>$ \&other)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -471,12 +468,12 @@ make rectangular \doxylink{class_pixel_map}{Pixel\+Map} with square pixels
 {\em resolution} & Number of pixels in y dimension of map. One dimensional range of map in whatever units the point positions are in \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_pixel_map_ac7820da839276b6a4d4a514794ffdebd}\index{PixelMap$<$ T $>$@{PixelMap$<$ T $>$}!PixelMap@{PixelMap}}
+\Hypertarget{class_pixel_map_a7f21ac991f2662f683358b2b534e63b0}\index{PixelMap$<$ T $>$@{PixelMap$<$ T $>$}!PixelMap@{PixelMap}}
 \index{PixelMap@{PixelMap}!PixelMap$<$ T $>$@{PixelMap$<$ T $>$}}
 \doxysubsubsection{\texorpdfstring{PixelMap()}{PixelMap()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
-{\footnotesize\ttfamily \label{class_pixel_map_ac7820da839276b6a4d4a514794ffdebd} 
+{\footnotesize\ttfamily \label{class_pixel_map_a7f21ac991f2662f683358b2b534e63b0} 
 template$<$typename T $>$ \\
-\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$\mbox{\hyperlink{class_pixel_map}{\+::\+Pixel\+Map}} (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfilename}{, }\item[{double}]{my\+\_\+res}{ = {\ttfamily -\/1}, }\item[{Pixel\+Map\+Units}]{u}{ = {\ttfamily PixelMapUnits\+:\+:ndef}}\end{DoxyParamCaption})}
+\mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$\mbox{\hyperlink{class_pixel_map}{\+::\+Pixel\+Map}} (\begin{DoxyParamCaption}\item[{std\+::string}]{fitsfilename}{, }\item[{double}]{my\+\_\+res}{ = {\ttfamily -\/1}, }\item[{Pixel\+Map\+Units}]{u}{ = {\ttfamily PixelMapUnits\+:\+:ndef}, }\item[{std\+::string}]{extension}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
 
 
 
@@ -486,7 +483,9 @@ Constructs a \doxylink{class_pixel_map}{Pixel\+Map} reading in a fits file Infos
 \begin{DoxyParams}{Parameters}
 {\em fitsfilename} & file name of fits file to be read  \\
 \hline
-{\em my\+\_\+res} & resolution (rad) of fits image if not given in fits file, use default or -\/1 otherwise \\
+{\em my\+\_\+res} & resolution (rad) of fits image if not given in fits file, use default or -\/1 otherwise  \\
+\hline
+{\em extension} & fits extension 1,2,,... \\
 \hline
 \end{DoxyParams}
 

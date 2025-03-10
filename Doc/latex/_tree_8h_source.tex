@@ -819,81 +819,45 @@
 \DoxyCodeLine{00875\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_utilities_ac42846299720c47decf597f70d448464}{windings}}(PosType\ *x,Kist<Point>\ *\ kist,PosType\ *area,\textcolor{keywordtype}{short}\ image\ =\ 0);}
 \DoxyCodeLine{00876\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_utilities_a70de03dea8a3f77f15fd209a783a8065}{windings2}}(PosType\ *x,\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Npoints,PosType\ *area,\textcolor{keywordtype}{short}\ image);}
 \DoxyCodeLine{00878\ }
-\DoxyCodeLine{00879\ \textcolor{comment}{//int\ incurve(PosType\ x[],std::vector<Point\ *>\ \&curve);}}
-\DoxyCodeLine{00881\ \textcolor{comment}{//int\ incurve(PosType\ x[],std::vector<Point\_2d>\ \&curve);}}
-\DoxyCodeLine{00883\ \textcolor{comment}{//int\ incurve(PosType\ x[],std::vector<RAY>\ \&curve);}}
-\DoxyCodeLine{00884\ }
-\DoxyCodeLine{00885\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_af2fb3cc522fc36c51e33bccac70089c7}{order\_curve4}}(\mbox{\hyperlink{struct_point}{Point}}\ *curve,\textcolor{keywordtype}{long}\ Npoints);}
-\DoxyCodeLine{00886\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_af2fb3cc522fc36c51e33bccac70089c7}{order\_curve4}}(Kist<Point>\ *\ curve);}
-\DoxyCodeLine{00887\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_ad8293f72cb05db408c84e3d101a56e41}{order\_curve5}}(Kist<Point>\ *\ curve);}
-\DoxyCodeLine{00888\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a742ad22484d4cfaaefd6317d73a74934}{ordered\_convexhull}}(Kist<Point>\ *\ curve);}
-\DoxyCodeLine{00889\ \textcolor{keywordtype}{void}\ ordered\_shrink\_wrap(Kist<Point>\ *\ curve);}
-\DoxyCodeLine{00890\ \textcolor{keywordtype}{void}\ ordered\_concavehull(Kist<Point>\ *\ curve);}
-\DoxyCodeLine{00891\ PosType\ \mbox{\hyperlink{namespace_utilities_a865c4f1f38a91d8b3d4e07fdfea16bd0}{ConvexHullArea}}(Kist<Point>\ *\ curve);}
-\DoxyCodeLine{00892\ }
-\DoxyCodeLine{00893\ }
-\DoxyCodeLine{00894\ \}}
-\DoxyCodeLine{00895\ \textcolor{comment}{//\ in\ curve\_routines.c}}
-\DoxyCodeLine{00896\ \textcolor{comment}{//void\ nesting\_curve(OldImageInfo\ *curves,int\ Ncurves);}}
-\DoxyCodeLine{00897\ \textcolor{comment}{//void\ split\_order\_curve(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
-\DoxyCodeLine{00898\ \textcolor{comment}{//void\ split\_order\_curve2(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
-\DoxyCodeLine{00899\ \textcolor{comment}{//void\ split\_order\_curve3(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
-\DoxyCodeLine{00900\ \textcolor{comment}{//void\ split\_order\_curve4(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
-\DoxyCodeLine{00901\ }
-\DoxyCodeLine{00902\ \textcolor{keywordtype}{bool}\ order\_ExteriorBoundary(\mbox{\hyperlink{struct_point}{Point}}\ *curve,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *NewNpoints,PosType\ *area);}
-\DoxyCodeLine{00903\ PosType\ findAreaOfCurve(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *curve,\textcolor{keywordtype}{int}\ NimageMax);}
-\DoxyCodeLine{00904\ \textcolor{keywordtype}{void}\ walkcurve(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *j,\textcolor{keywordtype}{long}\ *end);}
-\DoxyCodeLine{00905\ \textcolor{keywordtype}{void}\ walkcurveRight(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *j,\textcolor{keywordtype}{long}\ *end);}
-\DoxyCodeLine{00906\ \textcolor{keywordtype}{short}\ backtrack(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *j,\textcolor{keywordtype}{long}\ jold,\textcolor{keywordtype}{long}\ *end);}
-\DoxyCodeLine{00907\ \textcolor{keywordtype}{void}\ split\_images(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *images,\textcolor{keywordtype}{int}\ Maximages,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{bool}\ sortallpoints);}
-\DoxyCodeLine{00908\ \textcolor{keywordtype}{void}\ split\_images2(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *images,\textcolor{keywordtype}{int}\ Maximages,\textcolor{keywordtype}{int}\ *Nimages);}
-\DoxyCodeLine{00909\ \textcolor{keywordtype}{void}\ split\_images3(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *images,\textcolor{keywordtype}{int}\ Maximages,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{bool}\ sortallpoints);}
-\DoxyCodeLine{00910\ \textcolor{comment}{//void\ splitter(OldImageInfo\ *images,int\ Maximages,int\ *Nimages);}}
-\DoxyCodeLine{00911\ \textcolor{keywordtype}{void}\ splitlist(\mbox{\hyperlink{struct_point_list}{ListHndl}}\ imagelist,\mbox{\hyperlink{struct_old_image_info}{OldImageInfo}}\ *images,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{int}\ Maximages);}
-\DoxyCodeLine{00912\ }
-\DoxyCodeLine{00913\ }
-\DoxyCodeLine{00914\ \textcolor{comment}{/*\ externally\ provided\ functions\ */}}
-\DoxyCodeLine{00915\ \textcolor{comment}{/*********************************/}}
-\DoxyCodeLine{00916\ }
-\DoxyCodeLine{00917\ \textcolor{comment}{//void\ rayshooterInternal(unsigned\ long\ Npoints,Point\ *i\_points);}}
-\DoxyCodeLine{00918\ \textcolor{keywordtype}{void}\ in\_source(PosType\ *y\_source,\mbox{\hyperlink{struct_point_list}{ListHndl}}\ sourcelist);}
-\DoxyCodeLine{00919\ \textcolor{keywordtype}{bool}\ tree\_count\_test(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ tree);}
-\DoxyCodeLine{00920\ \textcolor{keywordtype}{bool}\ testLeafs(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ tree);}
-\DoxyCodeLine{00921\ }
-\DoxyCodeLine{00922\ \textcolor{keywordtype}{void}\ NeighborsOfNeighbors(\mbox{\hyperlink{struct_point_list}{ListHndl}}\ neighbors,\mbox{\hyperlink{struct_point_list}{ListHndl}}\ wholelist);}
-\DoxyCodeLine{00923\ }
-\DoxyCodeLine{00924\ }
-\DoxyCodeLine{00925\ \textcolor{comment}{//template\ <typename\ Ptype>}}
-\DoxyCodeLine{00926\ \textcolor{comment}{//int\ incurve(PosType\ x[],std::vector<Ptype>\ \&curve)\{}}
-\DoxyCodeLine{00927\ \textcolor{comment}{//}}
-\DoxyCodeLine{00928\ \textcolor{comment}{//\ \ if(curve.size()\ <\ 3)\ return\ 0;}}
-\DoxyCodeLine{00929\ \textcolor{comment}{//}}
-\DoxyCodeLine{00930\ \textcolor{comment}{//\ \ int\ number\ =\ 0;}}
-\DoxyCodeLine{00931\ \textcolor{comment}{//\ \ size\_t\ i;}}
-\DoxyCodeLine{00932\ \textcolor{comment}{//\ \ }}
-\DoxyCodeLine{00933\ \textcolor{comment}{//\ \ //\ The\ reason\ this\ does\ not\ return\ the\ winding\ number\ is\ because\ horizontal}}
-\DoxyCodeLine{00934\ \textcolor{comment}{//\ \ //\ \ sections\ of\ the\ curve\ can\ be\ overcounted\ if\ they\ are\ colinear\ with\ x}}
-\DoxyCodeLine{00935\ \textcolor{comment}{//\ \ }}
-\DoxyCodeLine{00936\ \textcolor{comment}{//\ \ Ptype\ point;}}
-\DoxyCodeLine{00937\ \textcolor{comment}{//\ \ for(i=0;i<curve.size()-\/1;++i)\{}}
-\DoxyCodeLine{00938\ \textcolor{comment}{//\ \ \ \ }}
-\DoxyCodeLine{00939\ \textcolor{comment}{//\ \ \ \ if(\ (x[1]\ >=\ curve[i][1])*(x[1]\ <=\ curve[i+1][1])\ )\{}}
-\DoxyCodeLine{00940\ \textcolor{comment}{//\ \ \ \ \ \ if(Utilities::Geometry::orientation(curve[i].x,\ x,\ curve[i+1].x)\ <=\ 1)\ ++number;}}
-\DoxyCodeLine{00941\ \textcolor{comment}{//\ \ \ \ \}else\ if(\ (x[1]\ <=\ curve[i][1])*(x[1]\ >\ curve[i+1][1])\ )\{}}
-\DoxyCodeLine{00942\ \textcolor{comment}{//\ \ \ \ \ \ if(Utilities::Geometry::orientation(curve[i].x,\ x,\ curve[i+1].x)\ ==\ 2)\ -\/-\/number;}}
-\DoxyCodeLine{00943\ \textcolor{comment}{//\ \ \ \ \}}}
-\DoxyCodeLine{00944\ \textcolor{comment}{//\ \ \ \ }}
-\DoxyCodeLine{00945\ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{00946\ \textcolor{comment}{//\ \ }}
-\DoxyCodeLine{00947\ \textcolor{comment}{//\ \ if(\ (x[1]\ >=\ curve[i][1])*(x[1]\ <=\ curve[0][1])\ )\{}}
-\DoxyCodeLine{00948\ \textcolor{comment}{//\ \ \ \ if(Utilities::Geometry::orientation(curve[i].x,\ x,\ curve[0].x)\ <=\ 1)\ ++number;}}
-\DoxyCodeLine{00949\ \textcolor{comment}{//\ \ \}else\ if(\ (x[1]\ <=\ curve[i][1])*(x[1]\ >\ curve[0][1])\ )\{}}
-\DoxyCodeLine{00950\ \textcolor{comment}{//\ \ \ \ if(Utilities::Geometry::orientation(curve[i].x,\ x,\ curve[0].x)\ ==\ 2)\ -\/-\/number;}}
-\DoxyCodeLine{00951\ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{00952\ \textcolor{comment}{//\ \ }}
-\DoxyCodeLine{00953\ \textcolor{comment}{//\ \ return\ number\ ==\ 0\ ?\ 0\ :\ 1;}}
-\DoxyCodeLine{00954\ \textcolor{comment}{//\}}}
-\DoxyCodeLine{00955\ }
-\DoxyCodeLine{00956\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00879\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_af2fb3cc522fc36c51e33bccac70089c7}{order\_curve4}}(\mbox{\hyperlink{struct_point}{Point}}\ *curve,\textcolor{keywordtype}{long}\ Npoints);}
+\DoxyCodeLine{00880\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_af2fb3cc522fc36c51e33bccac70089c7}{order\_curve4}}(Kist<Point>\ *\ curve);}
+\DoxyCodeLine{00881\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{namespace_utilities_ad8293f72cb05db408c84e3d101a56e41}{order\_curve5}}(Kist<Point>\ *\ curve);}
+\DoxyCodeLine{00882\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a742ad22484d4cfaaefd6317d73a74934}{ordered\_convexhull}}(Kist<Point>\ *\ curve);}
+\DoxyCodeLine{00883\ \textcolor{keywordtype}{void}\ ordered\_shrink\_wrap(Kist<Point>\ *\ curve);}
+\DoxyCodeLine{00884\ \textcolor{keywordtype}{void}\ ordered\_concavehull(Kist<Point>\ *\ curve);}
+\DoxyCodeLine{00885\ PosType\ \mbox{\hyperlink{namespace_utilities_a865c4f1f38a91d8b3d4e07fdfea16bd0}{ConvexHullArea}}(Kist<Point>\ *\ curve);}
+\DoxyCodeLine{00886\ }
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00888\ \}}
+\DoxyCodeLine{00889\ \textcolor{comment}{//\ in\ curve\_routines.c}}
+\DoxyCodeLine{00890\ \textcolor{comment}{//void\ nesting\_curve(OldImageInfo\ *curves,int\ Ncurves);}}
+\DoxyCodeLine{00891\ \textcolor{comment}{//void\ split\_order\_curve(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
+\DoxyCodeLine{00892\ \textcolor{comment}{//void\ split\_order\_curve2(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
+\DoxyCodeLine{00893\ \textcolor{comment}{//void\ split\_order\_curve3(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
+\DoxyCodeLine{00894\ \textcolor{comment}{//void\ split\_order\_curve4(OldImageInfo\ *curves,int\ Maxcurves,int\ *Ncurves);}}
+\DoxyCodeLine{00895\ }
+\DoxyCodeLine{00896\ \textcolor{keywordtype}{bool}\ order\_ExteriorBoundary(\mbox{\hyperlink{struct_point}{Point}}\ *curve,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *NewNpoints,PosType\ *area);}
+\DoxyCodeLine{00897\ PosType\ findAreaOfCurve(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *curve,\textcolor{keywordtype}{int}\ NimageMax);}
+\DoxyCodeLine{00898\ \textcolor{keywordtype}{void}\ walkcurve(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *j,\textcolor{keywordtype}{long}\ *end);}
+\DoxyCodeLine{00899\ \textcolor{keywordtype}{void}\ walkcurveRight(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *j,\textcolor{keywordtype}{long}\ *end);}
+\DoxyCodeLine{00900\ \textcolor{keywordtype}{short}\ backtrack(\mbox{\hyperlink{struct_point}{Point}}\ *points,\textcolor{keywordtype}{long}\ Npoints,\textcolor{keywordtype}{long}\ *j,\textcolor{keywordtype}{long}\ jold,\textcolor{keywordtype}{long}\ *end);}
+\DoxyCodeLine{00901\ \textcolor{keywordtype}{void}\ split\_images(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *images,\textcolor{keywordtype}{int}\ Maximages,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{bool}\ sortallpoints);}
+\DoxyCodeLine{00902\ \textcolor{keywordtype}{void}\ split\_images2(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *images,\textcolor{keywordtype}{int}\ Maximages,\textcolor{keywordtype}{int}\ *Nimages);}
+\DoxyCodeLine{00903\ \textcolor{keywordtype}{void}\ split\_images3(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ i\_tree,\mbox{\hyperlink{struct_image_info}{ImageInfo}}\ *images,\textcolor{keywordtype}{int}\ Maximages,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{bool}\ sortallpoints);}
+\DoxyCodeLine{00904\ \textcolor{comment}{//void\ splitter(OldImageInfo\ *images,int\ Maximages,int\ *Nimages);}}
+\DoxyCodeLine{00905\ \textcolor{keywordtype}{void}\ splitlist(\mbox{\hyperlink{struct_point_list}{ListHndl}}\ imagelist,\mbox{\hyperlink{struct_old_image_info}{OldImageInfo}}\ *images,\textcolor{keywordtype}{int}\ *Nimages,\textcolor{keywordtype}{int}\ Maximages);}
+\DoxyCodeLine{00906\ }
+\DoxyCodeLine{00907\ }
+\DoxyCodeLine{00908\ \textcolor{comment}{/*\ externally\ provided\ functions\ */}}
+\DoxyCodeLine{00909\ \textcolor{comment}{/*********************************/}}
+\DoxyCodeLine{00910\ }
+\DoxyCodeLine{00911\ \textcolor{comment}{//void\ rayshooterInternal(unsigned\ long\ Npoints,Point\ *i\_points);}}
+\DoxyCodeLine{00912\ \textcolor{keywordtype}{void}\ in\_source(PosType\ *y\_source,\mbox{\hyperlink{struct_point_list}{ListHndl}}\ sourcelist);}
+\DoxyCodeLine{00913\ \textcolor{keywordtype}{bool}\ tree\_count\_test(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ tree);}
+\DoxyCodeLine{00914\ \textcolor{keywordtype}{bool}\ testLeafs(\mbox{\hyperlink{struct_tree_struct}{TreeHndl}}\ tree);}
+\DoxyCodeLine{00915\ }
+\DoxyCodeLine{00916\ \textcolor{keywordtype}{void}\ NeighborsOfNeighbors(\mbox{\hyperlink{struct_point_list}{ListHndl}}\ neighbors,\mbox{\hyperlink{struct_point_list}{ListHndl}}\ wholelist);}
+\DoxyCodeLine{00917\ }
+\DoxyCodeLine{00918\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
