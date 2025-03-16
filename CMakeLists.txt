@@ -25,6 +25,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 project(GLAMER)
 
+# Apply -g to all build types
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
 set(GLAMER_VERSION_MAJOR 0)
 set(GLAMER_VERSION_MINOR 3)
 
