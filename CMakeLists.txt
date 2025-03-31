@@ -21,13 +21,17 @@ set(CMAKE_CXX_EXTENSIONS ON)
 #set(CMAKE_CXX_COMPILER "/usr/bin/clang")
 
 #set(CMAKE_CXX_COMPILER "/usr/local/Cellar/gcc/13.2.0/bin/c++-13")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+	message(STATUS "Debug build")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g") 
+endif()
+if(CMAKE_BUILD_TYPE MATCHES Release)
+	message(STATUS "Release build")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -DNDEBUG")
+endif()
 
 project(GLAMER)
-
-# Apply -g to all build types
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 set(GLAMER_VERSION_MAJOR 0)
 set(GLAMER_VERSION_MINOR 3)
