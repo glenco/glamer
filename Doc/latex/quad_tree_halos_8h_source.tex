@@ -17,6 +17,8 @@
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Tree.h"{}}}
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}qTreeNB.h"{}}}
 \DoxyCodeLine{00015\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
 \DoxyCodeLine{00034\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
 \DoxyCodeLine{00035\ \textcolor{keyword}{class\ }TreeQuadHalos\ \{}
 \DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
@@ -32,7 +34,7 @@
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{00047\ \ \ \string~TreeQuadHalos();}
 \DoxyCodeLine{00048\ \ \ }
-\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_plane_tree}{LensPlaneTree}};}
+\DoxyCodeLine{00049\ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }LensPlaneTree;}
 \DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{void}\ force2D(PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *phi)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00052\ \ \ }
@@ -60,7 +62,7 @@
 \DoxyCodeLine{00075\ \ \ PosType\ force\_theta;}
 \DoxyCodeLine{00076\ \ \ PosType\ max\_range;}
 \DoxyCodeLine{00077\ \ \ }
-\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ tree;}
+\DoxyCodeLine{00078\ \ \ QTreeNB<PosType\ *>\ *\ tree;}
 \DoxyCodeLine{00079\ \ \ std::vector<IndexType>\ index;}
 \DoxyCodeLine{00080\ \ \ }
 \DoxyCodeLine{00081\ \ \ \textcolor{comment}{//bool\ haloON;}}
@@ -74,10 +76,10 @@
 \DoxyCodeLine{00090\ \ \ PosType\ original\_xl;\ \ \textcolor{comment}{//\ x-\/axis\ size\ of\ simulation\ used\ for\ peridic\ buffering.\ \ Requrement\ that\ it\ top\ branch\ be\ square\ my\ make\ it\ differ\ from\ the\ size\ of\ top\ branch.}}
 \DoxyCodeLine{00091\ \ \ PosType\ original\_yl;\ \ \textcolor{comment}{//\ x-\/axis\ size\ of\ simulation\ used\ for\ peridic\ buffering.}}
 \DoxyCodeLine{00092\ \ \ }
-\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ BuildQTreeNB(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles);}
+\DoxyCodeLine{00093\ \ \ QTreeNB<PosType\ *>\ *\ BuildQTreeNB(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles);}
 \DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ \_BuildQTreeNB(IndexType\ nparticles,IndexType\ *particles);}
 \DoxyCodeLine{00095\ \ \ }
-\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{short}\ WhichQuad(PosType\ *x,\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ \&branch);}
+\DoxyCodeLine{00096\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{short}\ WhichQuad(PosType\ *x,QBranchNB\ \&branch);}
 \DoxyCodeLine{00097\ \ \ }
 \DoxyCodeLine{00098\ \ \ \textcolor{comment}{//inline\ bool\ atLeaf();}}
 \DoxyCodeLine{00099\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inbox(\textcolor{keyword}{const}\ PosType\ *ray,\textcolor{keyword}{const}\ PosType\ *p1,\textcolor{keyword}{const}\ PosType\ *p2)\{}
@@ -94,10 +96,10 @@
 \DoxyCodeLine{00110\ \ \ \textcolor{comment}{//QTreeNBHndl\ rotate\_project(PosType\ **xp,IndexType\ Nparticles,IndexType\ *particles}}
 \DoxyCodeLine{00111\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ **coord,PosType\ theta,float\ *rsph,float\ *mass}}
 \DoxyCodeLine{00112\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,bool\ MultiRadius,bool\ MultiMass);}}
-\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ cuttoffscale(\mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PosType\ *>}}\ *\ tree,PosType\ *theta);}
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ cuttoffscale(QTreeNB<PosType\ *>\ *\ tree,PosType\ *theta);}
 \DoxyCodeLine{00114\ \ \ }
 \DoxyCodeLine{00115\ \ \ \textcolor{comment}{//void\ walkTree\_recur(QBranchNB\ *branch,PosType\ const\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi);}}
-\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ walkTree\_iter(\mbox{\hyperlink{class_q_biterator}{QBiterator<PosType\ *>}}\ \&treeit,\ PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa}
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ walkTree\_iter(QBiterator<PosType\ *>\ \&treeit,\ PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa}
 \DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *gamma,KappaType\ *phi)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00118\ \ \ }
 \DoxyCodeLine{00119\ \ \ PosType\ phiintconst;}
@@ -105,6 +107,7 @@
 \DoxyCodeLine{00121\ \};}
 \DoxyCodeLine{00122\ }
 \DoxyCodeLine{00123\ }
+\DoxyCodeLine{00127\ }
 \DoxyCodeLine{00128\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
 \DoxyCodeLine{00129\ TreeQuadHalos<LensHaloType>::TreeQuadHalos(}
 \DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ **my\_halos\ \ \ \ \ }
@@ -761,6 +764,7 @@
 \DoxyCodeLine{00811\ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00812\ \}}
 \DoxyCodeLine{00813\ }
+\DoxyCodeLine{00837\ }
 \DoxyCodeLine{00838\ \textcolor{comment}{//template\ <typename\ LensHaloType>}}
 \DoxyCodeLine{00839\ \textcolor{comment}{//void\ TreeQuadHalos<LensHaloType>::force2D\_recur(const\ PosType\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi)\{}}
 \DoxyCodeLine{00840\ \textcolor{comment}{//}}
@@ -975,6 +979,7 @@
 \DoxyCodeLine{01052\ \ \ }
 \DoxyCodeLine{01053\ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{01054\ \}}
+\DoxyCodeLine{01059\ }
 \DoxyCodeLine{01060\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ LensHaloType>}
 \DoxyCodeLine{01061\ \textcolor{keywordtype}{void}\ TreeQuadHalos<LensHaloType>::printBranchs(\textcolor{keywordtype}{int}\ level)\{}
 \DoxyCodeLine{01062\ \ \ }

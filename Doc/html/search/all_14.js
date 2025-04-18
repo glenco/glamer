@@ -34,5 +34,5 @@ var searchData=
   ['tt_20enable_5fgsl_20tt_31',['Option &lt;tt&gt;ENABLE_GSL&lt;/tt&gt;',['../install.html#autotoc_md7',1,'']]],
   ['turnfieldoff_32',['TurnFieldOff',['../class_lens.html#a40ef8e31f5a9d3ada238db9c8a8babe9',1,'Lens']]],
   ['twodinterpolator_33',['TwoDInterpolator',['../namespace_utilities.html#a2d063fcd59fdf742b8cbf0c57ef29104',1,'Utilities']]],
-  ['type_34',['type',['../class_utilities_1_1_mixed_vector.html#a6db7d66153583c0feb52cba1fb4c2e14',1,'Utilities::MixedVector::type()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a2f2a7cff6516ad3d52e434fbb088a06b',1,'Utilities::MixedVector&lt; BaseT * &gt;::type()']]]
+  ['type_34',['type',['../class_utilities_1_1_mixed_vector.html#a6db7d66153583c0feb52cba1fb4c2e14',1,'Utilities::MixedVector::type()'],['../class_utilities_1_1_mixed_vector_3_01_base_t_01_5_01_4.html#a2f2a7cff6516ad3d52e434fbb088a06b',1,'Utilities::MixedVector&lt; BaseT * &gt;::type(std::size_t i)'],['../class_utilities_1_1_mixed_vector.html#a6db7d66153583c0feb52cba1fb4c2e14',1,'Utilities::MixedVector&lt; BaseT * &gt;::type(std::size_t i)']]]
 ];

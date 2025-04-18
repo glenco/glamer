@@ -22,8 +22,8 @@
 \DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_utilities}{Utilities}}\{}
 \DoxyCodeLine{00019\ }
 \DoxyCodeLine{00020\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\textcolor{keyword}{typename}\ P>}
-\DoxyCodeLine{00021\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ subtract(T\&\ p1,P\&\ p2)\{}
-\DoxyCodeLine{00022\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(p1[0]\ -\/\ p2[0],\ p1[1]\ -\/\ p2[1]);}
+\DoxyCodeLine{00021\ Point\_2d\ subtract(T\&\ p1,P\&\ p2)\{}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordflow}{return}\ Point\_2d(p1[0]\ -\/\ p2[0],\ p1[1]\ -\/\ p2[1]);}
 \DoxyCodeLine{00023\ \}}
 \DoxyCodeLine{00024\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ P>}
 \DoxyCodeLine{00025\ \textcolor{keywordtype}{double}\ crossD(P\ \&O,P\ \&A,P\ \&B)\{}
@@ -453,999 +453,997 @@
 \DoxyCodeLine{00471\ \ \ \ \ \}}
 \DoxyCodeLine{00472\ \ \ \ \ \textcolor{keywordflow}{if}(outer\_only)\ \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00473\ \ \ \}}
-\DoxyCodeLine{00474\ }
-\DoxyCodeLine{00475\ \ \ }
-\DoxyCodeLine{00476\ \ \ \textcolor{keywordtype}{long}\ offset\ =\ 0;}
-\DoxyCodeLine{00477\ \ \ \textcolor{keywordflow}{if}(!add\_to\_vector)\{}
-\DoxyCodeLine{00478\ \ \ \ \ points.resize(contours.size());}
-\DoxyCodeLine{00479\ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00480\ \ \ \ \ offset\ =\ points.size();}
-\DoxyCodeLine{00481\ \ \ \ \ points.resize(points.size()\ +\ contours.size());}
-\DoxyCodeLine{00482\ \ \ \}}
-\DoxyCodeLine{00483\ \ \ }
-\DoxyCodeLine{00484\ \ \ \textcolor{comment}{//\ copy\ lists\ of\ points\ into\ vectors}}
-\DoxyCodeLine{00485\ \ \ \textcolor{keywordtype}{int}\ i=0;}
-\DoxyCodeLine{00486\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&c:\ contours)\{}
-\DoxyCodeLine{00487\ \ \ \ \ points[offset+i].resize(c.size());}
-\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j=0;}
-\DoxyCodeLine{00489\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p:\ c)\{}
-\DoxyCodeLine{00490\ \ \ \ \ \ \ points[offset+i][j]\ =\ p;}
-\DoxyCodeLine{00491\ \ \ \ \ \ \ ++j;}
-\DoxyCodeLine{00492\ \ \ \ \ \}}
-\DoxyCodeLine{00493\ \ \ \ \ ++i;}
-\DoxyCodeLine{00494\ \ \ \}}
-\DoxyCodeLine{00495\ \}}
-\DoxyCodeLine{00496\ }
-\DoxyCodeLine{00498\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_aed791a1510ae7571dde0bd77ff4d1891}{find\_islands}}(std::vector<bool>\ \&bitmap\ \ \textcolor{comment}{//\ =\ true\ inside}}
-\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ nx\ \ \textcolor{comment}{//\ number\ of\ pixels\ in\ x\ direction}}
-\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::vector<long>\ >\ \&indexes}
-\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<bool>\ \&hits\_edge}
-\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add\_to\_vector=\textcolor{keyword}{false}}
-\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00504\ }
-\DoxyCodeLine{00506\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}{interior\_mass}}(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&alpha}
-\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&x);}
-\DoxyCodeLine{00508\ }
-\DoxyCodeLine{00510\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}{interior\_mass}}(\textcolor{keyword}{const}\ std::vector<RAY>\ \&rays);}
-\DoxyCodeLine{00511\ }
-\DoxyCodeLine{00513\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00514\ std::vector<T>\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(\textcolor{keyword}{const}\ std::vector<T>\ \&PP)}
-\DoxyCodeLine{00515\ \{}
-\DoxyCodeLine{00516\ \ }
-\DoxyCodeLine{00517\ \ \ \textcolor{keywordflow}{if}(PP.size()\ <=\ 3)\{}
-\DoxyCodeLine{00518\ \ \ \ \ \textcolor{keywordflow}{return}\ PP;}
-\DoxyCodeLine{00519\ \ \ \}}
-\DoxyCodeLine{00520\ }
-\DoxyCodeLine{00521\ \ \ std::vector<T>\ P=PP;}
-\DoxyCodeLine{00522\ }
-\DoxyCodeLine{00523\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ P.size();}
-\DoxyCodeLine{00524\ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ 0;}
-\DoxyCodeLine{00525\ \ \ std::vector<T>\ hull(2*n);}
-\DoxyCodeLine{00526\ \ \ }
-\DoxyCodeLine{00527\ \ \ \textcolor{comment}{//\ Sort\ points\ lexicographically}}
-\DoxyCodeLine{00528\ \ \ std::sort(P.begin(),\ P.end(),}
-\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ [](T\ p1,T\ p2)\{}
-\DoxyCodeLine{00530\ \ \ \ \ if(p1[0]==p2[0])\ return\ p1[1]\ <\ p2[1];}
-\DoxyCodeLine{00531\ \ \ \ \ return\ p1[0]\ <\ p2[0];\});}
+\DoxyCodeLine{00474\ \ \ }
+\DoxyCodeLine{00475\ \ \ \textcolor{keywordtype}{long}\ offset\ =\ 0;}
+\DoxyCodeLine{00476\ \ \ \textcolor{keywordflow}{if}(!add\_to\_vector)\{}
+\DoxyCodeLine{00477\ \ \ \ \ points.resize(contours.size());}
+\DoxyCodeLine{00478\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00479\ \ \ \ \ offset\ =\ points.size();}
+\DoxyCodeLine{00480\ \ \ \ \ points.resize(points.size()\ +\ contours.size());}
+\DoxyCodeLine{00481\ \ \ \}}
+\DoxyCodeLine{00482\ \ \ }
+\DoxyCodeLine{00483\ \ \ \textcolor{comment}{//\ copy\ lists\ of\ points\ into\ vectors}}
+\DoxyCodeLine{00484\ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{00485\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&c:\ contours)\{}
+\DoxyCodeLine{00486\ \ \ \ \ points[offset+i].resize(c.size());}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j=0;}
+\DoxyCodeLine{00488\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p:\ c)\{}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ points[offset+i][j]\ =\ p;}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ ++j;}
+\DoxyCodeLine{00491\ \ \ \ \ \}}
+\DoxyCodeLine{00492\ \ \ \ \ ++i;}
+\DoxyCodeLine{00493\ \ \ \}}
+\DoxyCodeLine{00494\ \}}
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00497\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_aed791a1510ae7571dde0bd77ff4d1891}{find\_islands}}(std::vector<bool>\ \&bitmap\ \ \textcolor{comment}{//\ =\ true\ inside}}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{long}\ nx\ \ \textcolor{comment}{//\ number\ of\ pixels\ in\ x\ direction}}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<std::vector<long>\ >\ \&indexes}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<bool>\ \&hits\_edge}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ add\_to\_vector=\textcolor{keyword}{false}}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00503\ }
+\DoxyCodeLine{00505\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}{interior\_mass}}(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&alpha}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&x);}
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00509\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_utilities_a69d1b7298e1abe02b0d631ce556621b8}{interior\_mass}}(\textcolor{keyword}{const}\ std::vector<RAY>\ \&rays);}
+\DoxyCodeLine{00510\ }
+\DoxyCodeLine{00512\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00513\ std::vector<T>\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(\textcolor{keyword}{const}\ std::vector<T>\ \&PP)}
+\DoxyCodeLine{00514\ \{}
+\DoxyCodeLine{00515\ \ }
+\DoxyCodeLine{00516\ \ \ \textcolor{keywordflow}{if}(PP.size()\ <=\ 3)\{}
+\DoxyCodeLine{00517\ \ \ \ \ \textcolor{keywordflow}{return}\ PP;}
+\DoxyCodeLine{00518\ \ \ \}}
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ \ \ std::vector<T>\ P=PP;}
+\DoxyCodeLine{00521\ }
+\DoxyCodeLine{00522\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ P.size();}
+\DoxyCodeLine{00523\ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ 0;}
+\DoxyCodeLine{00524\ \ \ std::vector<T>\ hull(2*n);}
+\DoxyCodeLine{00525\ \ \ }
+\DoxyCodeLine{00526\ \ \ \textcolor{comment}{//\ Sort\ points\ lexicographically}}
+\DoxyCodeLine{00527\ \ \ std::sort(P.begin(),\ P.end(),}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ [](T\ p1,T\ p2)\{}
+\DoxyCodeLine{00529\ \ \ \ \ if(p1[0]==p2[0])\ return\ p1[1]\ <\ p2[1];}
+\DoxyCodeLine{00530\ \ \ \ \ return\ p1[0]\ <\ p2[0];\});}
+\DoxyCodeLine{00531\ \ \ }
 \DoxyCodeLine{00532\ \ \ }
-\DoxyCodeLine{00533\ \ \ }
-\DoxyCodeLine{00534\ \ \ \textcolor{comment}{//\ Build\ lower\ hull}}
-\DoxyCodeLine{00535\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
-\DoxyCodeLine{00536\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ 2\ \&\&\ crossD(hull[k-\/2],\ hull[k-\/1],\ P[i])\ <=\ 0)\{}
-\DoxyCodeLine{00537\ \ \ \ \ \ \ k-\/-\/;}
-\DoxyCodeLine{00538\ \ \ \ \ \}}
-\DoxyCodeLine{00539\ \ \ \ \ hull[k++]\ =\ P[i];}
-\DoxyCodeLine{00540\ \ \ \}}
-\DoxyCodeLine{00541\ \ \ }
-\DoxyCodeLine{00542\ \ \ \textcolor{comment}{//\ Build\ upper\ hull}}
-\DoxyCodeLine{00543\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ i\ =\ n-\/2,\ t\ =\ k+1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
-\DoxyCodeLine{00544\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ t\ \&\&\ crossD(hull[k-\/2],\ hull[k-\/1],\ P[i])\ <=\ 0)\{}
-\DoxyCodeLine{00545\ \ \ \ \ \ \ k-\/-\/;}
-\DoxyCodeLine{00546\ \ \ \ \ \ \ assert(k\ >\ 1);}
-\DoxyCodeLine{00547\ \ \ \ \ \}}
-\DoxyCodeLine{00548\ \ \ \ \ hull[k++]\ =\ P[i];}
-\DoxyCodeLine{00549\ \ \ \}}
+\DoxyCodeLine{00533\ \ \ \textcolor{comment}{//\ Build\ lower\ hull}}
+\DoxyCodeLine{00534\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00535\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ 2\ \&\&\ crossD(hull[k-\/2],\ hull[k-\/1],\ P[i])\ <=\ 0)\{}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ k-\/-\/;}
+\DoxyCodeLine{00537\ \ \ \ \ \}}
+\DoxyCodeLine{00538\ \ \ \ \ hull[k++]\ =\ P[i];}
+\DoxyCodeLine{00539\ \ \ \}}
+\DoxyCodeLine{00540\ \ \ }
+\DoxyCodeLine{00541\ \ \ \textcolor{comment}{//\ Build\ upper\ hull}}
+\DoxyCodeLine{00542\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ i\ =\ n-\/2,\ t\ =\ k+1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{00543\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ t\ \&\&\ crossD(hull[k-\/2],\ hull[k-\/1],\ P[i])\ <=\ 0)\{}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ k-\/-\/;}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ assert(k\ >\ 1);}
+\DoxyCodeLine{00546\ \ \ \ \ \}}
+\DoxyCodeLine{00547\ \ \ \ \ hull[k++]\ =\ P[i];}
+\DoxyCodeLine{00548\ \ \ \}}
+\DoxyCodeLine{00549\ \ \ }
 \DoxyCodeLine{00550\ \ \ }
-\DoxyCodeLine{00551\ \ \ }
-\DoxyCodeLine{00552\ \ \ hull.resize(k);}
-\DoxyCodeLine{00553\ \ \ hull.pop\_back();}
-\DoxyCodeLine{00554\ \ \ }
-\DoxyCodeLine{00555\ \ \ \textcolor{keywordflow}{return}\ hull;}
-\DoxyCodeLine{00556\ \}}
-\DoxyCodeLine{00557\ }
-\DoxyCodeLine{00560\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00561\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(\textcolor{keyword}{const}\ std::vector<T>\ \&P,std::vector<size\_t>\ \&hull)}
-\DoxyCodeLine{00562\ \{}
-\DoxyCodeLine{00563\ \ \ }
-\DoxyCodeLine{00564\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ P.size();}
-\DoxyCodeLine{00565\ \ \ }
-\DoxyCodeLine{00566\ \ \ \textcolor{keywordflow}{if}(n\ <=\ 3)\{}
-\DoxyCodeLine{00567\ \ \ \ \ hull.resize(n);}
-\DoxyCodeLine{00568\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
-\DoxyCodeLine{00569\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&d\ :\ hull)\ d\ =\ i++;}
-\DoxyCodeLine{00570\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00571\ \ \ \}}
-\DoxyCodeLine{00572\ \ \ }
-\DoxyCodeLine{00573\ \ \ \textcolor{comment}{//std::vector<T>\ hull(n\ +\ 1);}}
-\DoxyCodeLine{00574\ \ \ hull.resize(n\ +\ 1);}
-\DoxyCodeLine{00575\ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ 0;}
-\DoxyCodeLine{00576\ \ \ }
-\DoxyCodeLine{00577\ \ \ \textcolor{comment}{//\ Sort\ points\ lexicographically}}
-\DoxyCodeLine{00578\ \ \ std::vector<size\_t>\ sort\_index(P.size());}
-\DoxyCodeLine{00579\ \ \ \{}
-\DoxyCodeLine{00580\ \ \ \ \ \textcolor{keywordtype}{int}\ i=0;}
-\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&a\ :\ \ sort\_index)\ a\ =\ i++;}
-\DoxyCodeLine{00582\ \ \ \}}
-\DoxyCodeLine{00583\ \ \ std::sort(sort\_index.begin(),\ sort\_index.end(),}
-\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ [\&P](\textcolor{keywordtype}{size\_t}\ i1,\textcolor{keywordtype}{size\_t}\ i2)\{}
-\DoxyCodeLine{00585\ \ \ \ \ if(P[i1][0]==P[i2][0])\ return\ P[i1][1]\ <\ P[i2][1];}
-\DoxyCodeLine{00586\ \ \ \ \ return\ P[i1][0]\ <\ P[i2][0];\});}
+\DoxyCodeLine{00551\ \ \ hull.resize(k);}
+\DoxyCodeLine{00552\ \ \ hull.pop\_back();}
+\DoxyCodeLine{00553\ \ \ }
+\DoxyCodeLine{00554\ \ \ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{00555\ \}}
+\DoxyCodeLine{00556\ }
+\DoxyCodeLine{00559\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00560\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(\textcolor{keyword}{const}\ std::vector<T>\ \&P,std::vector<size\_t>\ \&hull)}
+\DoxyCodeLine{00561\ \{}
+\DoxyCodeLine{00562\ \ \ }
+\DoxyCodeLine{00563\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ P.size();}
+\DoxyCodeLine{00564\ \ \ }
+\DoxyCodeLine{00565\ \ \ \textcolor{keywordflow}{if}(n\ <=\ 3)\{}
+\DoxyCodeLine{00566\ \ \ \ \ hull.resize(n);}
+\DoxyCodeLine{00567\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{00568\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&d\ :\ hull)\ d\ =\ i++;}
+\DoxyCodeLine{00569\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00570\ \ \ \}}
+\DoxyCodeLine{00571\ \ \ }
+\DoxyCodeLine{00572\ \ \ \textcolor{comment}{//std::vector<T>\ hull(n\ +\ 1);}}
+\DoxyCodeLine{00573\ \ \ hull.resize(n\ +\ 1);}
+\DoxyCodeLine{00574\ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ 0;}
+\DoxyCodeLine{00575\ \ \ }
+\DoxyCodeLine{00576\ \ \ \textcolor{comment}{//\ Sort\ points\ lexicographically}}
+\DoxyCodeLine{00577\ \ \ std::vector<size\_t>\ sort\_index(P.size());}
+\DoxyCodeLine{00578\ \ \ \{}
+\DoxyCodeLine{00579\ \ \ \ \ \textcolor{keywordtype}{int}\ i=0;}
+\DoxyCodeLine{00580\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&a\ :\ \ sort\_index)\ a\ =\ i++;}
+\DoxyCodeLine{00581\ \ \ \}}
+\DoxyCodeLine{00582\ \ \ std::sort(sort\_index.begin(),\ sort\_index.end(),}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ [\&P](\textcolor{keywordtype}{size\_t}\ i1,\textcolor{keywordtype}{size\_t}\ i2)\{}
+\DoxyCodeLine{00584\ \ \ \ \ if(P[i1][0]==P[i2][0])\ return\ P[i1][1]\ <\ P[i2][1];}
+\DoxyCodeLine{00585\ \ \ \ \ return\ P[i1][0]\ <\ P[i2][0];\});}
+\DoxyCodeLine{00586\ \ \ }
 \DoxyCodeLine{00587\ \ \ }
-\DoxyCodeLine{00588\ \ \ }
-\DoxyCodeLine{00589\ \ \ \textcolor{comment}{//\ Build\ lower\ hull}}
-\DoxyCodeLine{00590\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
-\DoxyCodeLine{00591\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ 2\ \&\&\ crossD(P[hull[k-\/2]],\ P[hull[k-\/1]],\ P[sort\_index[i]])\ <=\ 0)\{}
-\DoxyCodeLine{00592\ \ \ \ \ \ \ k-\/-\/;}
-\DoxyCodeLine{00593\ \ \ \ \ \}}
-\DoxyCodeLine{00594\ \ \ \ \ hull[k++]\ =\ sort\_index[i];}
-\DoxyCodeLine{00595\ \ \ \}}
-\DoxyCodeLine{00596\ \ \ }
-\DoxyCodeLine{00597\ \ \ \textcolor{comment}{//\ Build\ upper\ hull}}
-\DoxyCodeLine{00598\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ i\ =\ n-\/2,\ t\ =\ k+1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
-\DoxyCodeLine{00599\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ t\ \&\&\ crossD(P[hull[k-\/2]],\ P[hull[k-\/1]],P[sort\_index[i]])\ <=\ 0)\{}
-\DoxyCodeLine{00600\ \ \ \ \ \ \ k-\/-\/;}
-\DoxyCodeLine{00601\ \ \ \ \ \ \ assert(k\ >\ 1);}
-\DoxyCodeLine{00602\ \ \ \ \ \}}
-\DoxyCodeLine{00603\ \ \ \ \ hull[k++]\ =\ sort\_index[i];}
-\DoxyCodeLine{00604\ \ \ \}}
-\DoxyCodeLine{00605\ \ \ \ \ }
-\DoxyCodeLine{00606\ \ \ hull.resize(k);}
-\DoxyCodeLine{00607\ \ \ hull.pop\_back();}
-\DoxyCodeLine{00608\ \ \ }
-\DoxyCodeLine{00609\ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00610\ \}}
+\DoxyCodeLine{00588\ \ \ \textcolor{comment}{//\ Build\ lower\ hull}}
+\DoxyCodeLine{00589\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ 2\ \&\&\ crossD(P[hull[k-\/2]],\ P[hull[k-\/1]],\ P[sort\_index[i]])\ <=\ 0)\{}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ k-\/-\/;}
+\DoxyCodeLine{00592\ \ \ \ \ \}}
+\DoxyCodeLine{00593\ \ \ \ \ hull[k++]\ =\ sort\_index[i];}
+\DoxyCodeLine{00594\ \ \ \}}
+\DoxyCodeLine{00595\ \ \ }
+\DoxyCodeLine{00596\ \ \ \textcolor{comment}{//\ Build\ upper\ hull}}
+\DoxyCodeLine{00597\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ i\ =\ n-\/2,\ t\ =\ k+1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keywordflow}{while}\ (k\ >=\ t\ \&\&\ crossD(P[hull[k-\/2]],\ P[hull[k-\/1]],P[sort\_index[i]])\ <=\ 0)\{}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ k-\/-\/;}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ assert(k\ >\ 1);}
+\DoxyCodeLine{00601\ \ \ \ \ \}}
+\DoxyCodeLine{00602\ \ \ \ \ hull[k++]\ =\ sort\_index[i];}
+\DoxyCodeLine{00603\ \ \ \}}
+\DoxyCodeLine{00604\ \ \ \ \ }
+\DoxyCodeLine{00605\ \ \ hull.resize(k);}
+\DoxyCodeLine{00606\ \ \ hull.pop\_back();}
+\DoxyCodeLine{00607\ \ \ }
+\DoxyCodeLine{00608\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00609\ \}}
+\DoxyCodeLine{00610\ }
 \DoxyCodeLine{00611\ }
-\DoxyCodeLine{00612\ }
-\DoxyCodeLine{00613\ \textcolor{keyword}{struct\ }Edge\{}
-\DoxyCodeLine{00614\ \ \ Edge(\textcolor{keywordtype}{size\_t}\ i,\textcolor{keywordtype}{double}\ l):length(l),index(i)\{\};}
-\DoxyCodeLine{00615\ \ \ \textcolor{keywordtype}{double}\ length\ =\ 0;}
-\DoxyCodeLine{00616\ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00617\ \};}
-\DoxyCodeLine{00633\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00634\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a6d17c2495bead70b18b91c376c28c051}{concave}}(std::vector<T>\ \&init\_points}
-\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<T>\ \&hull\_out,\textcolor{keywordtype}{double}\ scale)}
-\DoxyCodeLine{00636\ \{}
-\DoxyCodeLine{00637\ \ \ }
-\DoxyCodeLine{00638\ \ \ \textcolor{comment}{//typedef\ typename\ InputIt::value\_type\ point;}}
-\DoxyCodeLine{00639\ \ \ }
-\DoxyCodeLine{00640\ \ \ \textcolor{keywordtype}{bool}\ TEST\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00641\ \ \ }
-\DoxyCodeLine{00642\ \ \ \textcolor{comment}{//\ find\ the\ convex\ hull}}
-\DoxyCodeLine{00643\ \ \ std::vector<T>\ hull\ =\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(init\_points);}
-\DoxyCodeLine{00644\ \ \ }
-\DoxyCodeLine{00645\ \ \ \textcolor{keywordflow}{if}(init\_points.size()\ ==\ hull.size())\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00646\ \ \ }
-\DoxyCodeLine{00647\ \ \ std::list<Edge>\ edges;}
-\DoxyCodeLine{00648\ \ \ std::list<T>\ leftovers;}
-\DoxyCodeLine{00649\ \ \ hull.push\_back(hull[0]);}
-\DoxyCodeLine{00650\ \ \ }
-\DoxyCodeLine{00651\ \ \ \textcolor{keywordtype}{double}\ tmp;}
-\DoxyCodeLine{00652\ \ \ }
-\DoxyCodeLine{00653\ \ \ \textcolor{comment}{//\ find\ pairs\ of\ hull\ points\ that\ are\ further\ appart\ than\ scale}}
-\DoxyCodeLine{00654\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<hull.size()-\/1;++i)\{}
-\DoxyCodeLine{00655\ \ \ \ \ tmp\ =\ (subtract(hull[i],hull[i+1])).length();}
-\DoxyCodeLine{00656\ \ \ \ \ \textcolor{keywordflow}{if}(tmp\ >\ scale)\ edges.emplace\_back(i,tmp);\textcolor{comment}{//\ .push\_back(std::pair<size\_t,double>(i,tmp));}}
-\DoxyCodeLine{00657\ \ \ \}}
-\DoxyCodeLine{00658\ \ \ }
-\DoxyCodeLine{00659\ \ \ \textcolor{keywordflow}{if}(edges.size()\ ==\ 0)\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00660\ \ \ }
-\DoxyCodeLine{00661\ \ \ \textcolor{keywordflow}{if}(TEST)\{}
-\DoxyCodeLine{00662\ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
-\DoxyCodeLine{00663\ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(cent,256,\ 1.0/256);}
-\DoxyCodeLine{00664\ \ \ \ \ }
-\DoxyCodeLine{00665\ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_afbddad3feb07c24ec2e00e1fe305e963}{drawgrid}}(10,0.5);}
-\DoxyCodeLine{00666\ \ \ \ \ }
-\DoxyCodeLine{00667\ \ \ \ \ map.drawPoints(init\_points,0.01,1.0);}
-\DoxyCodeLine{00668\ \ \ \ \ map.drawCurve(hull,2);}
-\DoxyCodeLine{00669\ \ \ \ \ }
-\DoxyCodeLine{00670\ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_af2bf825f047bb394a80ff4f812e5fed8}{printFITS}}(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
-\DoxyCodeLine{00671\ \ \ \}}
-\DoxyCodeLine{00672\ \ \ }
-\DoxyCodeLine{00673\ \ \ \textcolor{comment}{//\ sort\ edges\ by\ length}}
-\DoxyCodeLine{00674\ \ \ edges.sort([](\textcolor{keyword}{const}\ Edge\ \&p1,\textcolor{keyword}{const}\ Edge\ \&p2)\{\textcolor{keywordflow}{return}\ p1.length\ >\ p2.length;\});}
-\DoxyCodeLine{00675\ \ \ assert(edges.front().length\ >=\ edges.back().length);}
+\DoxyCodeLine{00612\ \textcolor{keyword}{struct\ }Edge\{}
+\DoxyCodeLine{00613\ \ \ Edge(\textcolor{keywordtype}{size\_t}\ i,\textcolor{keywordtype}{double}\ l):length(l),index(i)\{\};}
+\DoxyCodeLine{00614\ \ \ \textcolor{keywordtype}{double}\ length\ =\ 0;}
+\DoxyCodeLine{00615\ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00616\ \};}
+\DoxyCodeLine{00632\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00633\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_utilities_a6d17c2495bead70b18b91c376c28c051}{concave}}(std::vector<T>\ \&init\_points}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<T>\ \&hull\_out,\textcolor{keywordtype}{double}\ scale)}
+\DoxyCodeLine{00635\ \{}
+\DoxyCodeLine{00636\ \ \ }
+\DoxyCodeLine{00637\ \ \ \textcolor{comment}{//typedef\ typename\ InputIt::value\_type\ point;}}
+\DoxyCodeLine{00638\ \ \ }
+\DoxyCodeLine{00639\ \ \ \textcolor{keywordtype}{bool}\ TEST\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00640\ \ \ }
+\DoxyCodeLine{00641\ \ \ \textcolor{comment}{//\ find\ the\ convex\ hull}}
+\DoxyCodeLine{00642\ \ \ std::vector<T>\ hull\ =\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(init\_points);}
+\DoxyCodeLine{00643\ \ \ }
+\DoxyCodeLine{00644\ \ \ \textcolor{keywordflow}{if}(init\_points.size()\ ==\ hull.size())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00645\ \ \ }
+\DoxyCodeLine{00646\ \ \ std::list<Edge>\ edges;}
+\DoxyCodeLine{00647\ \ \ std::list<T>\ leftovers;}
+\DoxyCodeLine{00648\ \ \ hull.push\_back(hull[0]);}
+\DoxyCodeLine{00649\ \ \ }
+\DoxyCodeLine{00650\ \ \ \textcolor{keywordtype}{double}\ tmp;}
+\DoxyCodeLine{00651\ \ \ }
+\DoxyCodeLine{00652\ \ \ \textcolor{comment}{//\ find\ pairs\ of\ hull\ points\ that\ are\ further\ appart\ than\ scale}}
+\DoxyCodeLine{00653\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<hull.size()-\/1;++i)\{}
+\DoxyCodeLine{00654\ \ \ \ \ tmp\ =\ (subtract(hull[i],hull[i+1])).length();}
+\DoxyCodeLine{00655\ \ \ \ \ \textcolor{keywordflow}{if}(tmp\ >\ scale)\ edges.emplace\_back(i,tmp);\textcolor{comment}{//\ .push\_back(std::pair<size\_t,double>(i,tmp));}}
+\DoxyCodeLine{00656\ \ \ \}}
+\DoxyCodeLine{00657\ \ \ }
+\DoxyCodeLine{00658\ \ \ \textcolor{keywordflow}{if}(edges.size()\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00659\ \ \ }
+\DoxyCodeLine{00660\ \ \ \textcolor{keywordflow}{if}(TEST)\{}
+\DoxyCodeLine{00661\ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
+\DoxyCodeLine{00662\ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(cent,256,\ 1.0/256);}
+\DoxyCodeLine{00663\ \ \ \ \ }
+\DoxyCodeLine{00664\ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_afbddad3feb07c24ec2e00e1fe305e963}{drawgrid}}(10,0.5);}
+\DoxyCodeLine{00665\ \ \ \ \ }
+\DoxyCodeLine{00666\ \ \ \ \ map.drawPoints(init\_points,0.01,1.0);}
+\DoxyCodeLine{00667\ \ \ \ \ map.drawCurve(hull,2);}
+\DoxyCodeLine{00668\ \ \ \ \ }
+\DoxyCodeLine{00669\ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_af2bf825f047bb394a80ff4f812e5fed8}{printFITS}}(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
+\DoxyCodeLine{00670\ \ \ \}}
+\DoxyCodeLine{00671\ \ \ }
+\DoxyCodeLine{00672\ \ \ \textcolor{comment}{//\ sort\ edges\ by\ length}}
+\DoxyCodeLine{00673\ \ \ edges.sort([](\textcolor{keyword}{const}\ Edge\ \&p1,\textcolor{keyword}{const}\ Edge\ \&p2)\{\textcolor{keywordflow}{return}\ p1.length\ >\ p2.length;\});}
+\DoxyCodeLine{00674\ \ \ assert(edges.front().length\ >=\ edges.back().length);}
+\DoxyCodeLine{00675\ \ \ }
 \DoxyCodeLine{00676\ \ \ }
-\DoxyCodeLine{00677\ \ \ }
-\DoxyCodeLine{00678\ \ \ \{\ \ \ \textcolor{comment}{//\ make\ a\ list\ of\ points\ that\ are\ not\ already\ in\ the\ convex\ hull}}
-\DoxyCodeLine{00679\ \ \ \ \ }
-\DoxyCodeLine{00680\ \ \ \ \ hull.pop\_back();}
-\DoxyCodeLine{00681\ \ \ \ \ std::vector<size\_t>\ index(hull.size());}
-\DoxyCodeLine{00682\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
-\DoxyCodeLine{00683\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&ind:\ index)\ ind\ =\ i++;}
-\DoxyCodeLine{00684\ \ \ \ \ std::sort(index.begin(),index.end(),}
-\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&hull](\textcolor{keywordtype}{size\_t}\ p1,\textcolor{keywordtype}{size\_t}\ p2)\{}
-\DoxyCodeLine{00686\ \ \ \ \ \ \ if(hull[p1][0]\ ==\ hull[p2][0])\ return\ hull[p1][1]\ <\ hull[p2][1];}
-\DoxyCodeLine{00687\ \ \ \ \ \ \ return\ hull[p1][0]\ <\ hull[p2][0];\});}
-\DoxyCodeLine{00688\ \ \ \ \ }
-\DoxyCodeLine{00689\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j\ =\ 0;}
-\DoxyCodeLine{00690\ \ \ \ \ }
-\DoxyCodeLine{00691\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ pit\ =\ init\_points.begin();\ pit\ !=\ init\_points.end()\ ;\ ++pit)\{}
-\DoxyCodeLine{00692\ \ \ \ \ \ \ }
-\DoxyCodeLine{00693\ \ \ \ \ \ \ \textcolor{keywordflow}{if}((hull[index[j]][0]\ ==\ (*pit)[0])*(hull[index[j]][1]\ ==\ (*pit)[1]))\{}
-\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ ++j;}
-\DoxyCodeLine{00695\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ leftovers.push\_back(*pit);}
-\DoxyCodeLine{00697\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00698\ \ \ \ \ \ \ }
-\DoxyCodeLine{00699\ \ \ \ \ \}}
-\DoxyCodeLine{00700\ \ \ \ \ assert(hull.size()\ +\ leftovers.size()\ ==\ init\_points.size());}
-\DoxyCodeLine{00701\ \ \ \ \ hull.push\_back(hull[0]);}
-\DoxyCodeLine{00702\ \ \ \}}
-\DoxyCodeLine{00703\ \ \ }
-\DoxyCodeLine{00704\ \ \ \textcolor{keyword}{typename}\ std::list<T>::iterator\ p,nextpoint;}
-\DoxyCodeLine{00705\ \ \ \textcolor{comment}{//auto\ p\ =\ leftovers.begin();}}
-\DoxyCodeLine{00706\ \ \ }
-\DoxyCodeLine{00707\ \ \ \textcolor{keywordtype}{double}\ minarea,area,co1;\textcolor{comment}{//,co2;}}
-\DoxyCodeLine{00708\ \ \ \textcolor{keywordtype}{size\_t}\ i;}
-\DoxyCodeLine{00709\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ vo,v1,v2;}
-\DoxyCodeLine{00710\ \ \ }
-\DoxyCodeLine{00711\ \ \ \textcolor{comment}{//int\ count\ =\ 0;}}
-\DoxyCodeLine{00712\ \ \ \textcolor{keywordflow}{while}(edges.front().length\ >\ scale\ )\{}
-\DoxyCodeLine{00713\ \ \ \ \ }
-\DoxyCodeLine{00714\ \ \ \ \ \textcolor{keywordflow}{if}(leftovers.size()\ ==\ 0)\ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00715\ \ \ \ \ }
-\DoxyCodeLine{00716\ \ \ \ \ \textcolor{comment}{//\ find\ the\ point\ which\ if\ added\ to\ this\ edge\ would\ change\ the\ area\ least}}
-\DoxyCodeLine{00717\ \ \ \ \ minarea\ =\ HUGE\_VAL;}
-\DoxyCodeLine{00718\ \ \ \ \ i\ =\ edges.front().index;}
-\DoxyCodeLine{00719\ \ \ \ \ }
-\DoxyCodeLine{00720\ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ leftovers.begin()\ ;\ p\ !=\ leftovers.end()\ ;\ ++p)\{}
-\DoxyCodeLine{00721\ \ \ \ \ \ \ }
-\DoxyCodeLine{00722\ \ \ \ \ \ \ v1\ =\ subtract(*p,hull[i]);}
-\DoxyCodeLine{00723\ \ \ \ \ \ \ }
-\DoxyCodeLine{00724\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ edges.front().length\ >\ v1.\mbox{\hyperlink{struct_point__2d_a9e9f0a27be9dadb9184a49dd42d66921}{length}}())\{}
-\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ vo\ =\ subtract(hull[i+1],\ hull[i]);}
-\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{comment}{//v2\ =\ subtract(*p,hull[i+1]);}}
-\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ area\ =\ vo\string^v1;}
-\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ co1\ =\ v1*vo;}
-\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \textcolor{comment}{//co2\ =\ v2*vo;}}
-\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ co1\ >\ 0\ \&\&\ (area\ >\ 0)*(area\ <\ minarea)\ )\{}
-\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if(co1\ >\ 0\ \&\&\ area\ >\ 0\ \&\&\ index\_length.front().second\ >\ v1.length())\{}}
-\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ minarea\ =\ area;}
-\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ nextpoint\ =\ p;}
-\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00737\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00738\ \ \ \ \ \}}
-\DoxyCodeLine{00739\ \ \ \ \ }
-\DoxyCodeLine{00740\ \ \ \ \ \textcolor{keywordflow}{if}(minarea\ ==\ HUGE\_VAL)\{}
-\DoxyCodeLine{00741\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ there\ is\ no\ acceptable\ point\ for\ this\ edge\ continue\ with\ the\ second\ longest\ edge}}
-\DoxyCodeLine{00742\ \ \ \ \ \ \ edges.pop\_front();}
-\DoxyCodeLine{00743\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00744\ \ \ \ \ \}}
-\DoxyCodeLine{00745\ \ \ \ \ }
-\DoxyCodeLine{00746\ \ \ \ \ \textcolor{comment}{//\ insert\ new\ point\ into\ hull}}
-\DoxyCodeLine{00747\ \ \ \ \ T\ tmp\ =\ *nextpoint;}
-\DoxyCodeLine{00748\ \ \ \ \ leftovers.erase(nextpoint);}
-\DoxyCodeLine{00749\ \ \ \ \ hull.insert(hull.begin()\ +\ i\ +\ 1,tmp);}
-\DoxyCodeLine{00750\ \ \ \ \ }
-\DoxyCodeLine{00751\ \ \ \ \ \textcolor{comment}{//\ update\ index\_length\ list}}
-\DoxyCodeLine{00752\ \ \ \ \ Edge\ new1\ =\ edges.front();}
-\DoxyCodeLine{00753\ \ \ \ \ edges.pop\_front();}
-\DoxyCodeLine{00754\ \ \ \ \ new1.length\ =\ (subtract(hull[i],hull[i+1])).length();}
-\DoxyCodeLine{00755\ \ \ \ \ Edge\ new2(i+1,(subtract(hull[i+1],hull[i+2])).length());}
-\DoxyCodeLine{00756\ \ \ \ \ }
-\DoxyCodeLine{00757\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ edges)\ \textcolor{keywordflow}{if}(p.index\ >\ i)\ ++(p.index);}
-\DoxyCodeLine{00758\ \ \ \ \ }
-\DoxyCodeLine{00759\ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ edges.begin();}
-\DoxyCodeLine{00760\ \ \ \ \ \textcolor{keywordflow}{if}(new1.length\ >\ scale)\{}
-\DoxyCodeLine{00761\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin()\ ;\ p\ !=\ edges.end()\ ;\ ++p)\{}
-\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new1.length)\{}
-\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new1);}
-\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00766\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00767\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new1);}
-\DoxyCodeLine{00768\ \ \ \ \ \}}
-\DoxyCodeLine{00769\ \ \ \ \ \textcolor{keywordflow}{if}(new2.length\ >\ scale)\{}
-\DoxyCodeLine{00770\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin();\ p\ !=\ edges.end()\ ;\ ++p)\{}
-\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new2.length)\{}
-\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new2);}
-\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00775\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00776\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new2);}
-\DoxyCodeLine{00777\ \ \ \ \ \}}
+\DoxyCodeLine{00677\ \ \ \{\ \ \ \textcolor{comment}{//\ make\ a\ list\ of\ points\ that\ are\ not\ already\ in\ the\ convex\ hull}}
+\DoxyCodeLine{00678\ \ \ \ \ }
+\DoxyCodeLine{00679\ \ \ \ \ hull.pop\_back();}
+\DoxyCodeLine{00680\ \ \ \ \ std::vector<size\_t>\ index(hull.size());}
+\DoxyCodeLine{00681\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{00682\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&ind:\ index)\ ind\ =\ i++;}
+\DoxyCodeLine{00683\ \ \ \ \ std::sort(index.begin(),index.end(),}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&hull](\textcolor{keywordtype}{size\_t}\ p1,\textcolor{keywordtype}{size\_t}\ p2)\{}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ if(hull[p1][0]\ ==\ hull[p2][0])\ return\ hull[p1][1]\ <\ hull[p2][1];}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ return\ hull[p1][0]\ <\ hull[p2][0];\});}
+\DoxyCodeLine{00687\ \ \ \ \ }
+\DoxyCodeLine{00688\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j\ =\ 0;}
+\DoxyCodeLine{00689\ \ \ \ \ }
+\DoxyCodeLine{00690\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ pit\ =\ init\_points.begin();\ pit\ !=\ init\_points.end()\ ;\ ++pit)\{}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ }
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \textcolor{keywordflow}{if}((hull[index[j]][0]\ ==\ (*pit)[0])*(hull[index[j]][1]\ ==\ (*pit)[1]))\{}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ ++j;}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ leftovers.push\_back(*pit);}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ }
+\DoxyCodeLine{00698\ \ \ \ \ \}}
+\DoxyCodeLine{00699\ \ \ \ \ assert(hull.size()\ +\ leftovers.size()\ ==\ init\_points.size());}
+\DoxyCodeLine{00700\ \ \ \ \ hull.push\_back(hull[0]);}
+\DoxyCodeLine{00701\ \ \ \}}
+\DoxyCodeLine{00702\ \ \ }
+\DoxyCodeLine{00703\ \ \ \textcolor{keyword}{typename}\ std::list<T>::iterator\ p,nextpoint;}
+\DoxyCodeLine{00704\ \ \ \textcolor{comment}{//auto\ p\ =\ leftovers.begin();}}
+\DoxyCodeLine{00705\ \ \ }
+\DoxyCodeLine{00706\ \ \ \textcolor{keywordtype}{double}\ minarea,area,co1;\textcolor{comment}{//,co2;}}
+\DoxyCodeLine{00707\ \ \ \textcolor{keywordtype}{size\_t}\ i;}
+\DoxyCodeLine{00708\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ vo,v1,v2;}
+\DoxyCodeLine{00709\ \ \ }
+\DoxyCodeLine{00710\ \ \ \textcolor{comment}{//int\ count\ =\ 0;}}
+\DoxyCodeLine{00711\ \ \ \textcolor{keywordflow}{while}(edges.front().length\ >\ scale\ )\{}
+\DoxyCodeLine{00712\ \ \ \ \ }
+\DoxyCodeLine{00713\ \ \ \ \ \textcolor{keywordflow}{if}(leftovers.size()\ ==\ 0)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00714\ \ \ \ \ }
+\DoxyCodeLine{00715\ \ \ \ \ \textcolor{comment}{//\ find\ the\ point\ which\ if\ added\ to\ this\ edge\ would\ change\ the\ area\ least}}
+\DoxyCodeLine{00716\ \ \ \ \ minarea\ =\ HUGE\_VAL;}
+\DoxyCodeLine{00717\ \ \ \ \ i\ =\ edges.front().index;}
+\DoxyCodeLine{00718\ \ \ \ \ }
+\DoxyCodeLine{00719\ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ leftovers.begin()\ ;\ p\ !=\ leftovers.end()\ ;\ ++p)\{}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ }
+\DoxyCodeLine{00721\ \ \ \ \ \ \ v1\ =\ subtract(*p,hull[i]);}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ }
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ edges.front().length\ >\ v1.\mbox{\hyperlink{struct_point__2d_a9e9f0a27be9dadb9184a49dd42d66921}{length}}())\{}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ vo\ =\ subtract(hull[i+1],\ hull[i]);}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \textcolor{comment}{//v2\ =\ subtract(*p,hull[i+1]);}}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ area\ =\ vo\string^v1;}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ co1\ =\ v1*vo;}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \textcolor{comment}{//co2\ =\ v2*vo;}}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ co1\ >\ 0\ \&\&\ (area\ >\ 0)*(area\ <\ minarea)\ )\{}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if(co1\ >\ 0\ \&\&\ area\ >\ 0\ \&\&\ index\_length.front().second\ >\ v1.length())\{}}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ minarea\ =\ area;}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ nextpoint\ =\ p;}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00737\ \ \ \ \ \}}
+\DoxyCodeLine{00738\ \ \ \ \ }
+\DoxyCodeLine{00739\ \ \ \ \ \textcolor{keywordflow}{if}(minarea\ ==\ HUGE\_VAL)\{}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ there\ is\ no\ acceptable\ point\ for\ this\ edge\ continue\ with\ the\ second\ longest\ edge}}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ edges.pop\_front();}
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00743\ \ \ \ \ \}}
+\DoxyCodeLine{00744\ \ \ \ \ }
+\DoxyCodeLine{00745\ \ \ \ \ \textcolor{comment}{//\ insert\ new\ point\ into\ hull}}
+\DoxyCodeLine{00746\ \ \ \ \ T\ tmp\ =\ *nextpoint;}
+\DoxyCodeLine{00747\ \ \ \ \ leftovers.erase(nextpoint);}
+\DoxyCodeLine{00748\ \ \ \ \ hull.insert(hull.begin()\ +\ i\ +\ 1,tmp);}
+\DoxyCodeLine{00749\ \ \ \ \ }
+\DoxyCodeLine{00750\ \ \ \ \ \textcolor{comment}{//\ update\ index\_length\ list}}
+\DoxyCodeLine{00751\ \ \ \ \ Edge\ new1\ =\ edges.front();}
+\DoxyCodeLine{00752\ \ \ \ \ edges.pop\_front();}
+\DoxyCodeLine{00753\ \ \ \ \ new1.length\ =\ (subtract(hull[i],hull[i+1])).length();}
+\DoxyCodeLine{00754\ \ \ \ \ Edge\ new2(i+1,(subtract(hull[i+1],hull[i+2])).length());}
+\DoxyCodeLine{00755\ \ \ \ \ }
+\DoxyCodeLine{00756\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ edges)\ \textcolor{keywordflow}{if}(p.index\ >\ i)\ ++(p.index);}
+\DoxyCodeLine{00757\ \ \ \ \ }
+\DoxyCodeLine{00758\ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ edges.begin();}
+\DoxyCodeLine{00759\ \ \ \ \ \textcolor{keywordflow}{if}(new1.length\ >\ scale)\{}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin()\ ;\ p\ !=\ edges.end()\ ;\ ++p)\{}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new1.length)\{}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new1);}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new1);}
+\DoxyCodeLine{00767\ \ \ \ \ \}}
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordflow}{if}(new2.length\ >\ scale)\{}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin();\ p\ !=\ edges.end()\ ;\ ++p)\{}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new2.length)\{}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new2);}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new2);}
+\DoxyCodeLine{00776\ \ \ \ \ \}}
+\DoxyCodeLine{00777\ \ \ \ \ }
 \DoxyCodeLine{00778\ \ \ \ \ }
-\DoxyCodeLine{00779\ \ \ \ \ }
-\DoxyCodeLine{00780\ \ \ \ \ \textcolor{keywordflow}{if}(TEST)\{}
-\DoxyCodeLine{00781\ \ \ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
-\DoxyCodeLine{00782\ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(cent,256,\ 1.0/256);}
-\DoxyCodeLine{00783\ \ \ \ \ \ \ }
-\DoxyCodeLine{00784\ \ \ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_afbddad3feb07c24ec2e00e1fe305e963}{drawgrid}}(10,0.5);}
-\DoxyCodeLine{00785\ \ \ \ \ \ \ }
-\DoxyCodeLine{00786\ \ \ \ \ \ \ map.drawPoints(init\_points,0.03,1.0);}
-\DoxyCodeLine{00787\ \ \ \ \ \ \ map.drawCurve(hull,2);}
-\DoxyCodeLine{00788\ \ \ \ \ \ \ }
-\DoxyCodeLine{00789\ \ \ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_af2bf825f047bb394a80ff4f812e5fed8}{printFITS}}(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
-\DoxyCodeLine{00790\ \ \ \ \ \}}
-\DoxyCodeLine{00791\ \ \ \}}
-\DoxyCodeLine{00792\ \ \ }
-\DoxyCodeLine{00793\ \ \ hull.pop\_back();}
-\DoxyCodeLine{00794\ \ \ }
-\DoxyCodeLine{00795\ \ \ \textcolor{comment}{//Utilities::RemoveIntersections(hull);}}
-\DoxyCodeLine{00796\ \ \ }
-\DoxyCodeLine{00797\ \ \ std::swap(hull,hull\_out);}
-\DoxyCodeLine{00798\ \ \ }
-\DoxyCodeLine{00799\ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00800\ \}}
-\DoxyCodeLine{00801\ }
-\DoxyCodeLine{00802\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00803\ std::vector<T>\ concave2(std::vector<T>\ \&init\_points,\textcolor{keywordtype}{double}\ scale)}
-\DoxyCodeLine{00804\ \{}
-\DoxyCodeLine{00805\ \ \ }
-\DoxyCodeLine{00806\ \ \ \textcolor{comment}{//typedef\ typename\ InputIt::value\_type\ point;}}
-\DoxyCodeLine{00807\ \ \ }
-\DoxyCodeLine{00808\ \ \ \textcolor{keywordtype}{bool}\ TEST\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00809\ \ \ }
-\DoxyCodeLine{00810\ \ \ \textcolor{comment}{//\ find\ the\ convex\ hull}}
-\DoxyCodeLine{00811\ \ \ std::vector<T>\ hull\ =\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(init\_points);}
-\DoxyCodeLine{00812\ \ \ }
-\DoxyCodeLine{00813\ \ \ \textcolor{keywordflow}{if}(init\_points.size()\ ==\ hull.size())\ \textcolor{keywordflow}{return}\ hull;}
-\DoxyCodeLine{00814\ \ \ }
-\DoxyCodeLine{00815\ \ \ std::list<Edge>\ edges;}
-\DoxyCodeLine{00816\ \ \ std::list<T>\ leftovers;}
-\DoxyCodeLine{00817\ \ \ hull.push\_back(hull[0]);}
-\DoxyCodeLine{00818\ \ \ }
-\DoxyCodeLine{00819\ \ \ \textcolor{keywordtype}{double}\ tmp;}
-\DoxyCodeLine{00820\ \ \ }
-\DoxyCodeLine{00821\ \ \ \textcolor{comment}{//\ find\ pairs\ of\ hull\ points\ that\ are\ further\ appart\ than\ scale}}
-\DoxyCodeLine{00822\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<hull.size()-\/1;++i)\{}
-\DoxyCodeLine{00823\ \ \ \ \ tmp\ =\ (subtract(hull[i],hull[i+1])).length();}
-\DoxyCodeLine{00824\ \ \ \ \ \textcolor{keywordflow}{if}(tmp\ >\ scale)\ edges.emplace\_back(i,tmp);\textcolor{comment}{//\ .push\_back(std::pair<size\_t,double>(i,tmp));}}
-\DoxyCodeLine{00825\ \ \ \}}
-\DoxyCodeLine{00826\ \ \ }
-\DoxyCodeLine{00827\ \ \ \textcolor{keywordflow}{if}(edges.size()\ ==\ 0)\ \textcolor{keywordflow}{return}\ hull;}
-\DoxyCodeLine{00828\ \ \ }
-\DoxyCodeLine{00829\ \ \ \textcolor{keywordflow}{if}(TEST)\{}
-\DoxyCodeLine{00830\ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
-\DoxyCodeLine{00831\ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(cent,256,\ 1.0/256);}
-\DoxyCodeLine{00832\ \ \ \ \ }
-\DoxyCodeLine{00833\ \ \ \ \ map.drawgrid(10,0.5);}
-\DoxyCodeLine{00834\ \ \ \ \ }
-\DoxyCodeLine{00835\ \ \ \ \ map.drawPoints(init\_points,0.01,1.0);}
-\DoxyCodeLine{00836\ \ \ \ \ map.drawCurve(hull,2);}
-\DoxyCodeLine{00837\ \ \ \ \ }
-\DoxyCodeLine{00838\ \ \ \ \ map.printFITS(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
-\DoxyCodeLine{00839\ \ \ \}}
-\DoxyCodeLine{00840\ \ \ }
-\DoxyCodeLine{00841\ \ \ \textcolor{comment}{//\ sort\ edges\ by\ length}}
-\DoxyCodeLine{00842\ \ \ edges.sort([](\textcolor{keyword}{const}\ Edge\ \&p1,\textcolor{keyword}{const}\ Edge\ \&p2)\{\textcolor{keywordflow}{return}\ p1.length\ >\ p2.length;\});}
-\DoxyCodeLine{00843\ \ \ assert(edges.front().length\ >=\ edges.back().length);}
+\DoxyCodeLine{00779\ \ \ \ \ \textcolor{keywordflow}{if}(TEST)\{}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(cent,256,\ 1.0/256);}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ }
+\DoxyCodeLine{00783\ \ \ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_afbddad3feb07c24ec2e00e1fe305e963}{drawgrid}}(10,0.5);}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ }
+\DoxyCodeLine{00785\ \ \ \ \ \ \ map.drawPoints(init\_points,0.03,1.0);}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ map.drawCurve(hull,2);}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ }
+\DoxyCodeLine{00788\ \ \ \ \ \ \ map.\mbox{\hyperlink{class_pixel_map_af2bf825f047bb394a80ff4f812e5fed8}{printFITS}}(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
+\DoxyCodeLine{00789\ \ \ \ \ \}}
+\DoxyCodeLine{00790\ \ \ \}}
+\DoxyCodeLine{00791\ \ \ }
+\DoxyCodeLine{00792\ \ \ hull.pop\_back();}
+\DoxyCodeLine{00793\ \ \ }
+\DoxyCodeLine{00794\ \ \ \textcolor{comment}{//Utilities::RemoveIntersections(hull);}}
+\DoxyCodeLine{00795\ \ \ }
+\DoxyCodeLine{00796\ \ \ std::swap(hull,hull\_out);}
+\DoxyCodeLine{00797\ \ \ }
+\DoxyCodeLine{00798\ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00799\ \}}
+\DoxyCodeLine{00800\ }
+\DoxyCodeLine{00801\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00802\ std::vector<T>\ concave2(std::vector<T>\ \&init\_points,\textcolor{keywordtype}{double}\ scale)}
+\DoxyCodeLine{00803\ \{}
+\DoxyCodeLine{00804\ \ \ }
+\DoxyCodeLine{00805\ \ \ \textcolor{comment}{//typedef\ typename\ InputIt::value\_type\ point;}}
+\DoxyCodeLine{00806\ \ \ }
+\DoxyCodeLine{00807\ \ \ \textcolor{keywordtype}{bool}\ TEST\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00808\ \ \ }
+\DoxyCodeLine{00809\ \ \ \textcolor{comment}{//\ find\ the\ convex\ hull}}
+\DoxyCodeLine{00810\ \ \ std::vector<T>\ hull\ =\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(init\_points);}
+\DoxyCodeLine{00811\ \ \ }
+\DoxyCodeLine{00812\ \ \ \textcolor{keywordflow}{if}(init\_points.size()\ ==\ hull.size())\ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{00813\ \ \ }
+\DoxyCodeLine{00814\ \ \ std::list<Edge>\ edges;}
+\DoxyCodeLine{00815\ \ \ std::list<T>\ leftovers;}
+\DoxyCodeLine{00816\ \ \ hull.push\_back(hull[0]);}
+\DoxyCodeLine{00817\ \ \ }
+\DoxyCodeLine{00818\ \ \ \textcolor{keywordtype}{double}\ tmp;}
+\DoxyCodeLine{00819\ \ \ }
+\DoxyCodeLine{00820\ \ \ \textcolor{comment}{//\ find\ pairs\ of\ hull\ points\ that\ are\ further\ appart\ than\ scale}}
+\DoxyCodeLine{00821\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<hull.size()-\/1;++i)\{}
+\DoxyCodeLine{00822\ \ \ \ \ tmp\ =\ (subtract(hull[i],hull[i+1])).length();}
+\DoxyCodeLine{00823\ \ \ \ \ \textcolor{keywordflow}{if}(tmp\ >\ scale)\ edges.emplace\_back(i,tmp);\textcolor{comment}{//\ .push\_back(std::pair<size\_t,double>(i,tmp));}}
+\DoxyCodeLine{00824\ \ \ \}}
+\DoxyCodeLine{00825\ \ \ }
+\DoxyCodeLine{00826\ \ \ \textcolor{keywordflow}{if}(edges.size()\ ==\ 0)\ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{00827\ \ \ }
+\DoxyCodeLine{00828\ \ \ \textcolor{keywordflow}{if}(TEST)\{}
+\DoxyCodeLine{00829\ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
+\DoxyCodeLine{00830\ \ \ \ \ PixelMap<float>\ map(cent,256,\ 1.0/256);}
+\DoxyCodeLine{00831\ \ \ \ \ }
+\DoxyCodeLine{00832\ \ \ \ \ map.drawgrid(10,0.5);}
+\DoxyCodeLine{00833\ \ \ \ \ }
+\DoxyCodeLine{00834\ \ \ \ \ map.drawPoints(init\_points,0.01,1.0);}
+\DoxyCodeLine{00835\ \ \ \ \ map.drawCurve(hull,2);}
+\DoxyCodeLine{00836\ \ \ \ \ }
+\DoxyCodeLine{00837\ \ \ \ \ map.printFITS(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
+\DoxyCodeLine{00838\ \ \ \}}
+\DoxyCodeLine{00839\ \ \ }
+\DoxyCodeLine{00840\ \ \ \textcolor{comment}{//\ sort\ edges\ by\ length}}
+\DoxyCodeLine{00841\ \ \ edges.sort([](\textcolor{keyword}{const}\ Edge\ \&p1,\textcolor{keyword}{const}\ Edge\ \&p2)\{\textcolor{keywordflow}{return}\ p1.length\ >\ p2.length;\});}
+\DoxyCodeLine{00842\ \ \ assert(edges.front().length\ >=\ edges.back().length);}
+\DoxyCodeLine{00843\ \ \ }
 \DoxyCodeLine{00844\ \ \ }
-\DoxyCodeLine{00845\ \ \ }
-\DoxyCodeLine{00846\ \ \ \{\ \ \ \textcolor{comment}{//\ make\ a\ list\ of\ points\ that\ are\ not\ already\ in\ the\ convex\ hull}}
-\DoxyCodeLine{00847\ \ \ \ \ }
-\DoxyCodeLine{00848\ \ \ \ \ hull.pop\_back();}
-\DoxyCodeLine{00849\ \ \ \ \ std::vector<size\_t>\ index(hull.size());}
-\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
-\DoxyCodeLine{00851\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&ind:\ index)\ ind\ =\ i++;}
-\DoxyCodeLine{00852\ \ \ \ \ std::sort(index.begin(),index.end(),}
-\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&hull](\textcolor{keywordtype}{size\_t}\ p1,\textcolor{keywordtype}{size\_t}\ p2)\{}
-\DoxyCodeLine{00854\ \ \ \ \ \ \ if(hull[p1][0]\ ==\ hull[p2][0])\ return\ hull[p1][1]\ <\ hull[p2][1];}
-\DoxyCodeLine{00855\ \ \ \ \ \ \ return\ hull[p1][0]\ <\ hull[p2][0];\});}
-\DoxyCodeLine{00856\ \ \ \ \ }
-\DoxyCodeLine{00857\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j\ =\ 0;}
-\DoxyCodeLine{00858\ \ \ \ \ }
-\DoxyCodeLine{00859\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ pit\ =\ init\_points.begin();\ pit\ !=\ init\_points.end()\ ;\ ++pit)\{}
-\DoxyCodeLine{00860\ \ \ \ \ \ \ }
-\DoxyCodeLine{00861\ \ \ \ \ \ \ \textcolor{keywordflow}{if}((hull[index[j]][0]\ ==\ (*pit)[0])*(hull[index[j]][1]\ ==\ (*pit)[1]))\{}
-\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ ++j;}
-\DoxyCodeLine{00863\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ leftovers.push\_back(*pit);}
-\DoxyCodeLine{00865\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00866\ \ \ \ \ \ \ }
-\DoxyCodeLine{00867\ \ \ \ \ \}}
-\DoxyCodeLine{00868\ \ \ \ \ assert(hull.size()\ +\ leftovers.size()\ ==\ init\_points.size());}
-\DoxyCodeLine{00869\ \ \ \ \ hull.push\_back(hull[0]);}
-\DoxyCodeLine{00870\ \ \ \}}
-\DoxyCodeLine{00871\ \ \ }
-\DoxyCodeLine{00872\ \ \ \textcolor{keyword}{typename}\ std::list<T>::iterator\ p,nextpoint;}
-\DoxyCodeLine{00873\ \ \ \textcolor{comment}{//auto\ p\ =\ leftovers.begin();}}
-\DoxyCodeLine{00874\ \ \ }
-\DoxyCodeLine{00875\ \ \ \textcolor{keywordtype}{double}\ minarea,area,co1;}
-\DoxyCodeLine{00876\ \ \ \textcolor{keywordtype}{size\_t}\ i;}
-\DoxyCodeLine{00877\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ vo,v1,v2;}
-\DoxyCodeLine{00878\ \ \ }
-\DoxyCodeLine{00879\ \ \ \textcolor{keywordflow}{while}(edges.front().length\ >\ scale\ )\{}
-\DoxyCodeLine{00880\ \ \ \ \ }
-\DoxyCodeLine{00881\ \ \ \ \ \textcolor{keywordflow}{if}(leftovers.size()\ ==\ 0)\ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00882\ \ \ \ \ }
-\DoxyCodeLine{00883\ \ \ \ \ \textcolor{comment}{//\ find\ the\ point\ which\ if\ added\ to\ this\ edge\ would\ change\ the\ area\ least}}
-\DoxyCodeLine{00884\ \ \ \ \ minarea\ =\ HUGE\_VAL;}
-\DoxyCodeLine{00885\ \ \ \ \ i\ =\ edges.front().index;}
-\DoxyCodeLine{00886\ \ \ \ \ }
-\DoxyCodeLine{00887\ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ leftovers.begin()\ ;\ p\ !=\ leftovers.end()\ ;\ ++p)\{}
-\DoxyCodeLine{00888\ \ \ \ \ \ \ }
-\DoxyCodeLine{00889\ \ \ \ \ \ \ v1\ =\ subtract(*p,hull[i]);}
-\DoxyCodeLine{00890\ \ \ \ \ \ \ }
-\DoxyCodeLine{00891\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ edges.front().length\ >\ v1.\mbox{\hyperlink{struct_point__2d_a9e9f0a27be9dadb9184a49dd42d66921}{length}}())\{}
-\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ vo\ =\ subtract(hull[i+1],\ hull[i]);}
-\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \textcolor{comment}{//v2\ =\ subtract(*p,hull[i+1]);}}
-\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ area\ =\ vo\string^v1;}
-\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ co1\ =\ v1*vo;}
-\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \textcolor{comment}{//co2\ =\ v2*vo;}}
-\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ co1\ >\ 0\ \&\&\ (area\ >\ 0)*(area\ <\ minarea)\ )\{}
-\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if(co1\ >\ 0\ \&\&\ area\ >\ 0\ \&\&\ index\_length.front().second\ >\ v1.length())\{}}
-\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \ minarea\ =\ area;}
-\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \ \ nextpoint\ =\ p;}
-\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00904\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00905\ \ \ \ \ \}}
-\DoxyCodeLine{00906\ \ \ \ \ }
-\DoxyCodeLine{00907\ \ \ \ \ \textcolor{keywordflow}{if}(minarea\ ==\ HUGE\_VAL)\{}
-\DoxyCodeLine{00908\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ there\ is\ no\ acceptable\ point\ for\ this\ edge\ continue\ with\ the\ second\ longest\ edge}}
-\DoxyCodeLine{00909\ \ \ \ \ \ \ edges.pop\_front();}
-\DoxyCodeLine{00910\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00911\ \ \ \ \ \}}
-\DoxyCodeLine{00912\ \ \ \ \ }
-\DoxyCodeLine{00913\ \ \ \ \ \textcolor{comment}{//\ insert\ new\ point\ into\ hull}}
-\DoxyCodeLine{00914\ \ \ \ \ T\ tmp\ =\ *nextpoint;}
-\DoxyCodeLine{00915\ \ \ \ \ leftovers.erase(nextpoint);}
-\DoxyCodeLine{00916\ \ \ \ \ hull.insert(hull.begin()\ +\ i\ +\ 1,tmp);}
-\DoxyCodeLine{00917\ \ \ \ \ }
-\DoxyCodeLine{00918\ \ \ \ \ \textcolor{comment}{//\ update\ index\_length\ list}}
-\DoxyCodeLine{00919\ \ \ \ \ Edge\ new1\ =\ edges.front();}
-\DoxyCodeLine{00920\ \ \ \ \ edges.pop\_front();}
-\DoxyCodeLine{00921\ \ \ \ \ new1.length\ =\ (subtract(hull[i],hull[i+1])).length();}
-\DoxyCodeLine{00922\ \ \ \ \ Edge\ new2(i+1,(subtract(hull[i+1],hull[i+2])).length());}
-\DoxyCodeLine{00923\ \ \ \ \ }
-\DoxyCodeLine{00924\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ edges)\ \textcolor{keywordflow}{if}(p.index\ >\ i)\ ++(p.index);}
-\DoxyCodeLine{00925\ \ \ \ \ }
-\DoxyCodeLine{00926\ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ edges.begin();}
-\DoxyCodeLine{00927\ \ \ \ \ \textcolor{keywordflow}{if}(new1.length\ >\ scale)\{}
-\DoxyCodeLine{00928\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin()\ ;\ p\ !=\ edges.end()\ ;\ ++p)\{}
-\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new1.length)\{}
-\DoxyCodeLine{00930\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new1);}
-\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00932\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00933\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00934\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new1);}
-\DoxyCodeLine{00935\ \ \ \ \ \}}
-\DoxyCodeLine{00936\ \ \ \ \ \textcolor{keywordflow}{if}(new2.length\ >\ scale)\{}
-\DoxyCodeLine{00937\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin();\ p\ !=\ edges.end()\ ;\ ++p)\{}
-\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new2.length)\{}
-\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new2);}
-\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00941\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00942\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00943\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new2);}
-\DoxyCodeLine{00944\ \ \ \ \ \}}
+\DoxyCodeLine{00845\ \ \ \{\ \ \ \textcolor{comment}{//\ make\ a\ list\ of\ points\ that\ are\ not\ already\ in\ the\ convex\ hull}}
+\DoxyCodeLine{00846\ \ \ \ \ }
+\DoxyCodeLine{00847\ \ \ \ \ hull.pop\_back();}
+\DoxyCodeLine{00848\ \ \ \ \ std::vector<size\_t>\ index(hull.size());}
+\DoxyCodeLine{00849\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i\ =\ 0;}
+\DoxyCodeLine{00850\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ \&ind:\ index)\ ind\ =\ i++;}
+\DoxyCodeLine{00851\ \ \ \ \ std::sort(index.begin(),index.end(),}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&hull](\textcolor{keywordtype}{size\_t}\ p1,\textcolor{keywordtype}{size\_t}\ p2)\{}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ if(hull[p1][0]\ ==\ hull[p2][0])\ return\ hull[p1][1]\ <\ hull[p2][1];}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ return\ hull[p1][0]\ <\ hull[p2][0];\});}
+\DoxyCodeLine{00855\ \ \ \ \ }
+\DoxyCodeLine{00856\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j\ =\ 0;}
+\DoxyCodeLine{00857\ \ \ \ \ }
+\DoxyCodeLine{00858\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ pit\ =\ init\_points.begin();\ pit\ !=\ init\_points.end()\ ;\ ++pit)\{}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ }
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \textcolor{keywordflow}{if}((hull[index[j]][0]\ ==\ (*pit)[0])*(hull[index[j]][1]\ ==\ (*pit)[1]))\{}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ ++j;}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ leftovers.push\_back(*pit);}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ }
+\DoxyCodeLine{00866\ \ \ \ \ \}}
+\DoxyCodeLine{00867\ \ \ \ \ assert(hull.size()\ +\ leftovers.size()\ ==\ init\_points.size());}
+\DoxyCodeLine{00868\ \ \ \ \ hull.push\_back(hull[0]);}
+\DoxyCodeLine{00869\ \ \ \}}
+\DoxyCodeLine{00870\ \ \ }
+\DoxyCodeLine{00871\ \ \ \textcolor{keyword}{typename}\ std::list<T>::iterator\ p,nextpoint;}
+\DoxyCodeLine{00872\ \ \ \textcolor{comment}{//auto\ p\ =\ leftovers.begin();}}
+\DoxyCodeLine{00873\ \ \ }
+\DoxyCodeLine{00874\ \ \ \textcolor{keywordtype}{double}\ minarea,area,co1;}
+\DoxyCodeLine{00875\ \ \ \textcolor{keywordtype}{size\_t}\ i;}
+\DoxyCodeLine{00876\ \ \ Point\_2d\ vo,v1,v2;}
+\DoxyCodeLine{00877\ \ \ }
+\DoxyCodeLine{00878\ \ \ \textcolor{keywordflow}{while}(edges.front().length\ >\ scale\ )\{}
+\DoxyCodeLine{00879\ \ \ \ \ }
+\DoxyCodeLine{00880\ \ \ \ \ \textcolor{keywordflow}{if}(leftovers.size()\ ==\ 0)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00881\ \ \ \ \ }
+\DoxyCodeLine{00882\ \ \ \ \ \textcolor{comment}{//\ find\ the\ point\ which\ if\ added\ to\ this\ edge\ would\ change\ the\ area\ least}}
+\DoxyCodeLine{00883\ \ \ \ \ minarea\ =\ HUGE\_VAL;}
+\DoxyCodeLine{00884\ \ \ \ \ i\ =\ edges.front().index;}
+\DoxyCodeLine{00885\ \ \ \ \ }
+\DoxyCodeLine{00886\ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ leftovers.begin()\ ;\ p\ !=\ leftovers.end()\ ;\ ++p)\{}
+\DoxyCodeLine{00887\ \ \ \ \ \ \ }
+\DoxyCodeLine{00888\ \ \ \ \ \ \ v1\ =\ subtract(*p,hull[i]);}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ }
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ edges.front().length\ >\ v1.\mbox{\hyperlink{struct_point__2d_a9e9f0a27be9dadb9184a49dd42d66921}{length}}())\{}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ vo\ =\ subtract(hull[i+1],\ hull[i]);}
+\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \textcolor{comment}{//v2\ =\ subtract(*p,hull[i+1]);}}
+\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ area\ =\ vo\string^v1;}
+\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ co1\ =\ v1*vo;}
+\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \textcolor{comment}{//co2\ =\ v2*vo;}}
+\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ co1\ >\ 0\ \&\&\ (area\ >\ 0)*(area\ <\ minarea)\ )\{}
+\DoxyCodeLine{00899\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ if(co1\ >\ 0\ \&\&\ area\ >\ 0\ \&\&\ index\_length.front().second\ >\ v1.length())\{}}
+\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ minarea\ =\ area;}
+\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \ nextpoint\ =\ p;}
+\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00903\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00904\ \ \ \ \ \}}
+\DoxyCodeLine{00905\ \ \ \ \ }
+\DoxyCodeLine{00906\ \ \ \ \ \textcolor{keywordflow}{if}(minarea\ ==\ HUGE\_VAL)\{}
+\DoxyCodeLine{00907\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ there\ is\ no\ acceptable\ point\ for\ this\ edge\ continue\ with\ the\ second\ longest\ edge}}
+\DoxyCodeLine{00908\ \ \ \ \ \ \ edges.pop\_front();}
+\DoxyCodeLine{00909\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00910\ \ \ \ \ \}}
+\DoxyCodeLine{00911\ \ \ \ \ }
+\DoxyCodeLine{00912\ \ \ \ \ \textcolor{comment}{//\ insert\ new\ point\ into\ hull}}
+\DoxyCodeLine{00913\ \ \ \ \ T\ tmp\ =\ *nextpoint;}
+\DoxyCodeLine{00914\ \ \ \ \ leftovers.erase(nextpoint);}
+\DoxyCodeLine{00915\ \ \ \ \ hull.insert(hull.begin()\ +\ i\ +\ 1,tmp);}
+\DoxyCodeLine{00916\ \ \ \ \ }
+\DoxyCodeLine{00917\ \ \ \ \ \textcolor{comment}{//\ update\ index\_length\ list}}
+\DoxyCodeLine{00918\ \ \ \ \ Edge\ new1\ =\ edges.front();}
+\DoxyCodeLine{00919\ \ \ \ \ edges.pop\_front();}
+\DoxyCodeLine{00920\ \ \ \ \ new1.length\ =\ (subtract(hull[i],hull[i+1])).length();}
+\DoxyCodeLine{00921\ \ \ \ \ Edge\ new2(i+1,(subtract(hull[i+1],hull[i+2])).length());}
+\DoxyCodeLine{00922\ \ \ \ \ }
+\DoxyCodeLine{00923\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ edges)\ \textcolor{keywordflow}{if}(p.index\ >\ i)\ ++(p.index);}
+\DoxyCodeLine{00924\ \ \ \ \ }
+\DoxyCodeLine{00925\ \ \ \ \ \textcolor{keyword}{auto}\ p\ =\ edges.begin();}
+\DoxyCodeLine{00926\ \ \ \ \ \textcolor{keywordflow}{if}(new1.length\ >\ scale)\{}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin()\ ;\ p\ !=\ edges.end()\ ;\ ++p)\{}
+\DoxyCodeLine{00928\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new1.length)\{}
+\DoxyCodeLine{00929\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new1);}
+\DoxyCodeLine{00930\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00931\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00932\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00933\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new1);}
+\DoxyCodeLine{00934\ \ \ \ \ \}}
+\DoxyCodeLine{00935\ \ \ \ \ \textcolor{keywordflow}{if}(new2.length\ >\ scale)\{}
+\DoxyCodeLine{00936\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(p\ =\ edges.begin();\ p\ !=\ edges.end()\ ;\ ++p)\{}
+\DoxyCodeLine{00937\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}((*p).length\ <\ new2.length)\{}
+\DoxyCodeLine{00938\ \ \ \ \ \ \ \ \ \ \ edges.insert(p,new2);}
+\DoxyCodeLine{00939\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00940\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00941\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00942\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p==edges.end())\ edges.push\_back(new2);}
+\DoxyCodeLine{00943\ \ \ \ \ \}}
+\DoxyCodeLine{00944\ \ \ \ \ }
 \DoxyCodeLine{00945\ \ \ \ \ }
-\DoxyCodeLine{00946\ \ \ \ \ }
-\DoxyCodeLine{00947\ \ \ \ \ \textcolor{keywordflow}{if}(TEST)\{}
-\DoxyCodeLine{00948\ \ \ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
-\DoxyCodeLine{00949\ \ \ \ \ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(cent,256,\ 1.0/256);}
-\DoxyCodeLine{00950\ \ \ \ \ \ \ }
-\DoxyCodeLine{00951\ \ \ \ \ \ \ map.drawgrid(10,0.5);}
-\DoxyCodeLine{00952\ \ \ \ \ \ \ }
-\DoxyCodeLine{00953\ \ \ \ \ \ \ map.drawPoints(init\_points,0.03,1.0);}
-\DoxyCodeLine{00954\ \ \ \ \ \ \ map.drawCurve(hull,2);}
-\DoxyCodeLine{00955\ \ \ \ \ \ \ }
-\DoxyCodeLine{00956\ \ \ \ \ \ \ map.printFITS(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
-\DoxyCodeLine{00957\ \ \ \ \ \}}
-\DoxyCodeLine{00958\ \ \ \}}
-\DoxyCodeLine{00959\ \ \ }
-\DoxyCodeLine{00960\ \ \ hull.pop\_back();}
-\DoxyCodeLine{00961\ \ \ }
-\DoxyCodeLine{00962\ \ \ \textcolor{comment}{//Utilities::RemoveIntersections(hull);}}
-\DoxyCodeLine{00963\ \ \ }
-\DoxyCodeLine{00964\ \ \ \textcolor{keywordflow}{return}\ hull;}
-\DoxyCodeLine{00965\ \}}
-\DoxyCodeLine{00966\ }
-\DoxyCodeLine{00967\ \textcolor{comment}{//\ shortest\ distance\ between\ P\ and\ the\ segment\ (S1,S2)}}
-\DoxyCodeLine{00968\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{00969\ \textcolor{keywordtype}{double}\ distance\_to\_segment(\textcolor{keyword}{const}\ Ptype\ \&P}
-\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S1}
-\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S2}
-\DoxyCodeLine{00972\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
-\DoxyCodeLine{00973\ \ \ }
-\DoxyCodeLine{00974\ \ \ Ptype\ D\ =\ S2-\/S1;}
-\DoxyCodeLine{00975\ \ \ \textcolor{keywordtype}{double}\ s\ =\ (P-\/S1)*D\ /\ D.length\_sqr();}
-\DoxyCodeLine{00976\ \ \ \textcolor{keywordflow}{if}(isnan(s)\ ||\ s<=0)\{}
-\DoxyCodeLine{00977\ \ \ \ \ \textcolor{keywordflow}{return}\ (P-\/S1).length();}
-\DoxyCodeLine{00978\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(s>=1)\{}
-\DoxyCodeLine{00979\ \ \ \ \ \textcolor{keywordflow}{return}\ (P-\/S2).length();}
-\DoxyCodeLine{00980\ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00981\ \ \ \ \ \textcolor{keywordflow}{return}\ (S1\ +\ D*s\ -\/\ P).length();}
-\DoxyCodeLine{00982\ \ \ \}}
-\DoxyCodeLine{00983\ \}}
-\DoxyCodeLine{00984\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{00985\ \textcolor{keywordtype}{double}\ distance\_to\_segment(\textcolor{keyword}{const}\ Ptype\ \&P}
-\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S1}
-\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S2}
-\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Ptype\ \&closest\_point}
-\DoxyCodeLine{00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
-\DoxyCodeLine{00990\ \ \ }
-\DoxyCodeLine{00991\ \ \ Ptype\ D\ =\ S2-\/S1;}
-\DoxyCodeLine{00992\ \ \ \textcolor{keywordtype}{double}\ s\ =\ (P-\/S1)*D\ /\ D.length\_sqr();}
-\DoxyCodeLine{00993\ }
-\DoxyCodeLine{00994\ \ \ \textcolor{keywordflow}{if}(isnan(s)\ ||\ s<=0)\{}
-\DoxyCodeLine{00995\ \ \ \ \ closest\_point\ =\ S1;}
-\DoxyCodeLine{00996\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(s>=1)\{}
-\DoxyCodeLine{00997\ \ \ \ \ closest\_point\ =\ S2;}
-\DoxyCodeLine{00998\ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00999\ \ \ \ \ closest\_point\ =\ S1\ +\ D*s;}
-\DoxyCodeLine{01000\ \ \ \}}
-\DoxyCodeLine{01001\ \ \ \textcolor{keywordflow}{return}\ (closest\_point\ -\/\ P).length();}
-\DoxyCodeLine{01002\ \}}
-\DoxyCodeLine{01003\ }
-\DoxyCodeLine{01004\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{01005\ \textcolor{keywordtype}{bool}\ segments\_cross(\textcolor{keyword}{const}\ Ptype\ \&a1,\textcolor{keyword}{const}\ Ptype\ \&a2}
-\DoxyCodeLine{01006\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&b1,\textcolor{keyword}{const}\ Ptype\ \&b2)\{}
-\DoxyCodeLine{01007\ \ \ Ptype\ db=\ b2\ -\/\ b1;}
-\DoxyCodeLine{01008\ \ \ Ptype\ da=\ a2\ -\/\ a1;}
-\DoxyCodeLine{01009\ \ \ Ptype\ d1=\ b1\ -\/\ a1;}
-\DoxyCodeLine{01010\ \ \ }
-\DoxyCodeLine{01011\ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ (db\string^da);}
-\DoxyCodeLine{01012\ \ \ \textcolor{keywordflow}{if}(tmp==0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ parallel\ case}}
-\DoxyCodeLine{01013\ \ \ }
-\DoxyCodeLine{01014\ \ \ \textcolor{keywordtype}{double}\ B\ =\ (da\string^d1)\ /\ tmp;}
+\DoxyCodeLine{00946\ \ \ \ \ \textcolor{keywordflow}{if}(TEST)\{}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ PosType\ cent[]\ =\{0.5,0.5\};}
+\DoxyCodeLine{00948\ \ \ \ \ \ \ PixelMap<float>\ map(cent,256,\ 1.0/256);}
+\DoxyCodeLine{00949\ \ \ \ \ \ \ }
+\DoxyCodeLine{00950\ \ \ \ \ \ \ map.drawgrid(10,0.5);}
+\DoxyCodeLine{00951\ \ \ \ \ \ \ }
+\DoxyCodeLine{00952\ \ \ \ \ \ \ map.drawPoints(init\_points,0.03,1.0);}
+\DoxyCodeLine{00953\ \ \ \ \ \ \ map.drawCurve(hull,2);}
+\DoxyCodeLine{00954\ \ \ \ \ \ \ }
+\DoxyCodeLine{00955\ \ \ \ \ \ \ map.printFITS(\textcolor{stringliteral}{"{}!test\_concave.fits"{}});}
+\DoxyCodeLine{00956\ \ \ \ \ \}}
+\DoxyCodeLine{00957\ \ \ \}}
+\DoxyCodeLine{00958\ \ \ }
+\DoxyCodeLine{00959\ \ \ hull.pop\_back();}
+\DoxyCodeLine{00960\ \ \ }
+\DoxyCodeLine{00961\ \ \ \textcolor{comment}{//Utilities::RemoveIntersections(hull);}}
+\DoxyCodeLine{00962\ \ \ }
+\DoxyCodeLine{00963\ \ \ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{00964\ \}}
+\DoxyCodeLine{00965\ }
+\DoxyCodeLine{00966\ \textcolor{comment}{//\ shortest\ distance\ between\ P\ and\ the\ segment\ (S1,S2)}}
+\DoxyCodeLine{00967\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{00968\ \textcolor{keywordtype}{double}\ distance\_to\_segment(\textcolor{keyword}{const}\ Ptype\ \&P}
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S1}
+\DoxyCodeLine{00970\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S2}
+\DoxyCodeLine{00971\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00972\ \ \ }
+\DoxyCodeLine{00973\ \ \ Ptype\ D\ =\ S2-\/S1;}
+\DoxyCodeLine{00974\ \ \ \textcolor{keywordtype}{double}\ s\ =\ (P-\/S1)*D\ /\ D.length\_sqr();}
+\DoxyCodeLine{00975\ \ \ \textcolor{keywordflow}{if}(isnan(s)\ ||\ s<=0)\{}
+\DoxyCodeLine{00976\ \ \ \ \ \textcolor{keywordflow}{return}\ (P-\/S1).length();}
+\DoxyCodeLine{00977\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(s>=1)\{}
+\DoxyCodeLine{00978\ \ \ \ \ \textcolor{keywordflow}{return}\ (P-\/S2).length();}
+\DoxyCodeLine{00979\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00980\ \ \ \ \ \textcolor{keywordflow}{return}\ (S1\ +\ D*s\ -\/\ P).length();}
+\DoxyCodeLine{00981\ \ \ \}}
+\DoxyCodeLine{00982\ \}}
+\DoxyCodeLine{00983\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{00984\ \textcolor{keywordtype}{double}\ distance\_to\_segment(\textcolor{keyword}{const}\ Ptype\ \&P}
+\DoxyCodeLine{00985\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S1}
+\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&S2}
+\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,Ptype\ \&closest\_point}
+\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\{}
+\DoxyCodeLine{00989\ \ \ }
+\DoxyCodeLine{00990\ \ \ Ptype\ D\ =\ S2-\/S1;}
+\DoxyCodeLine{00991\ \ \ \textcolor{keywordtype}{double}\ s\ =\ (P-\/S1)*D\ /\ D.length\_sqr();}
+\DoxyCodeLine{00992\ \ \ \textcolor{keywordflow}{if}(isnan(s)\ ||\ s<=0)\{}
+\DoxyCodeLine{00993\ \ \ \ \ closest\_point\ =\ S1;}
+\DoxyCodeLine{00994\ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(s>=1)\{}
+\DoxyCodeLine{00995\ \ \ \ \ closest\_point\ =\ S2;}
+\DoxyCodeLine{00996\ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00997\ \ \ \ \ closest\_point\ =\ S1\ +\ D*s;}
+\DoxyCodeLine{00998\ \ \ \}}
+\DoxyCodeLine{00999\ \ \ \textcolor{keywordflow}{return}\ (closest\_point\ -\/\ P).length();}
+\DoxyCodeLine{01000\ \}}
+\DoxyCodeLine{01001\ }
+\DoxyCodeLine{01002\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{01003\ \textcolor{keywordtype}{bool}\ segments\_cross(\textcolor{keyword}{const}\ Ptype\ \&a1,\textcolor{keyword}{const}\ Ptype\ \&a2}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Ptype\ \&b1,\textcolor{keyword}{const}\ Ptype\ \&b2)\{}
+\DoxyCodeLine{01005\ \ \ Ptype\ db=\ b2\ -\/\ b1;}
+\DoxyCodeLine{01006\ \ \ Ptype\ da=\ a2\ -\/\ a1;}
+\DoxyCodeLine{01007\ \ \ Ptype\ d1=\ b1\ -\/\ a1;}
+\DoxyCodeLine{01008\ \ \ }
+\DoxyCodeLine{01009\ \ \ \textcolor{keywordtype}{double}\ tmp\ =\ (db\string^da);}
+\DoxyCodeLine{01010\ \ \ \textcolor{keywordflow}{if}(tmp==0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ parallel\ case}}
+\DoxyCodeLine{01011\ \ \ }
+\DoxyCodeLine{01012\ \ \ \textcolor{keywordtype}{double}\ B\ =\ (da\string^d1)\ /\ tmp;}
+\DoxyCodeLine{01013\ \ \ \textcolor{keywordflow}{if}(\ (B>1)\ ||\ (B<0))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01014\ \ \ B\ =\ (db\string^d1)\ /\ tmp;}
 \DoxyCodeLine{01015\ \ \ \textcolor{keywordflow}{if}(\ (B>1)\ ||\ (B<0))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01016\ \ \ B\ =\ (db\string^d1)\ /\ tmp;}
-\DoxyCodeLine{01017\ \ \ \textcolor{keywordflow}{if}(\ (B>1)\ ||\ (B<0))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01018\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01019\ \}}
-\DoxyCodeLine{01020\ }
-\DoxyCodeLine{01022\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{01023\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}{inCurve}}(\textcolor{keyword}{const}\ Ptype\ \&x,\textcolor{keyword}{const}\ std::vector<Ptype>\ \&H)\{}
-\DoxyCodeLine{01024\ \ \ \textcolor{keywordflow}{if}(H.size()\ <\ 3)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01025\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ p1,p2;}
-\DoxyCodeLine{01026\ \ \ \textcolor{keywordtype}{long}\ w=0;}
-\DoxyCodeLine{01027\ \ \ \textcolor{keywordtype}{size\_t}\ n=H.size();}
-\DoxyCodeLine{01028\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n\ ;\ ++i)\{}
-\DoxyCodeLine{01029\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j\ =\ (i+1)\%n;}
-\DoxyCodeLine{01030\ \ \ \ \ \textcolor{keywordflow}{if}(H[j][1]\ !=\ H[i][1])\{\ \textcolor{comment}{//\ ignore\ horizontal\ segments}}
-\DoxyCodeLine{01031\ \ \ \ \ \ \ p1[1]\ =\ H[i][1]\ -\/\ x[1];}
-\DoxyCodeLine{01032\ \ \ \ \ \ \ p2[1]\ =\ H[j][1]\ -\/\ x[1];}
-\DoxyCodeLine{01033\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ p1[1]*p2[1]\ <\ 0\ \ )\{}
-\DoxyCodeLine{01034\ \ \ \ \ \ \ \ \ p1[0]\ =\ H[i][0]\ -\/\ x[0];}
-\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ p2[0]\ =\ H[j][0]\ -\/\ x[0];}
-\DoxyCodeLine{01036\ }
-\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p1[0]>=0\ \&\&\ p2[0]>=0)\{}
-\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ w\ +=\ 2*(\ p1[1]\ >=\ 0\ )\ -\/\ 1;}
-\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(p1[0]\ >\ 0\ ||\ p2[0]\ >\ 0)\{}
-\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ p1[0]\ -\/\ (p2[0]-\/p1[0])*p1[1]/(p2[1]-\/p1[1]);}
-\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(s\ >=\ 0)\{}
-\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \ \ \ \ w\ +=\ 2*(\ p1[1]\ >=\ 0\ )\ -\/\ 1;}
-\DoxyCodeLine{01043\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01045\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(p2[1]==0)\{\ \ \textcolor{comment}{//\ second\ point\ on\ lines}}
-\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ p2[0]\ =\ H[j][0]\ -\/\ x[0];}
-\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ needs\ to\ be\ handled\ separately\ because\ of\ the\ }}
-\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ possibility\ that\ the\ curve\ touches\ the\ line\ a\ one\ vertex\ }}
-\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ but\ does\ not\ cross\ it.}}
-\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p2[0]\ >=\ 0)\{}
-\DoxyCodeLine{01051\ }
-\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ (j+1)\%n;}
-\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\ H[k][1]\ -\/\ x[1]\ ==\ 0\ \&\&\ k!=i)\ k\ =\ (k+1)\%n;}
-\DoxyCodeLine{01054\ }
-\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k!=i\ \&\&\ p1[1]*(\ H[k][1]\ -\/\ x[1]\ )\ <=\ 0)\{}
-\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ \ \ w\ +=\ \ 2*(\ p1[1]\ >=\ 0\ )\ -\/\ 1;}
-\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01059\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01060\ \ \ \ \ \}}
-\DoxyCodeLine{01061\ \ \ \}}
-\DoxyCodeLine{01062\ \ \ \textcolor{keywordflow}{return}\ w\ !=\ 0;}
-\DoxyCodeLine{01063\ \}}
-\DoxyCodeLine{01064\ }
-\DoxyCodeLine{01065\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{01066\ \textcolor{keywordtype}{bool}\ inhull(PosType\ x[],\textcolor{keyword}{const}\ std::vector<Ptype>\ \&H)\{}
-\DoxyCodeLine{01067\ \ \ }
-\DoxyCodeLine{01068\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
-\DoxyCodeLine{01069\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01070\ \ \ \textcolor{keywordtype}{long}\ w=0;}
-\DoxyCodeLine{01071\ \ \ Ptype\ dH,dD;}
-\DoxyCodeLine{01072\ \ \ \textcolor{keywordtype}{double}\ B,A;}
-\DoxyCodeLine{01073\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
-\DoxyCodeLine{01074\ \ \ \ \ dH\ =\ H[i+1]-\/H[i];}
-\DoxyCodeLine{01075\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
-\DoxyCodeLine{01076\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i][1])\{}
-\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i][0])/dH[0];}
-\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
-\DoxyCodeLine{01079\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01080\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01081\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i][0];}
-\DoxyCodeLine{01082\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i][1];}
-\DoxyCodeLine{01083\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
-\DoxyCodeLine{01084\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{01085\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
-\DoxyCodeLine{01086\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
-\DoxyCodeLine{01087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
-\DoxyCodeLine{01088\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
-\DoxyCodeLine{01089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
-\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
-\DoxyCodeLine{01091\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01092\ \ \ \ \ \}}
-\DoxyCodeLine{01093\ \ \ \}}
-\DoxyCodeLine{01094\ \ \ }
-\DoxyCodeLine{01095\ \ \ \textcolor{keywordflow}{return}\ abs(w);}
-\DoxyCodeLine{01096\ \}}
-\DoxyCodeLine{01097\ }
-\DoxyCodeLine{01098\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{01099\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inhull<Point\ *>(PosType\ x[],\textcolor{keyword}{const}\ std::vector<Point\ *>\ \&H)\{}
-\DoxyCodeLine{01100\ \ \ }
-\DoxyCodeLine{01101\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
-\DoxyCodeLine{01102\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01103\ \ \ \textcolor{keywordtype}{long}\ w=0;}
-\DoxyCodeLine{01104\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ dH,dD;}
-\DoxyCodeLine{01105\ \ \ \textcolor{keywordtype}{double}\ B,A;}
-\DoxyCodeLine{01106\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
-\DoxyCodeLine{01107\ \ \ \ \ dH\ =\ *H[i+1]-\/*H[i];}
-\DoxyCodeLine{01108\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
-\DoxyCodeLine{01109\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i]-\/>x[1])\{}
-\DoxyCodeLine{01110\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i]-\/>x[0])/dH[0];}
-\DoxyCodeLine{01111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
-\DoxyCodeLine{01112\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01113\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01114\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i]-\/>x[0];}
-\DoxyCodeLine{01115\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i]-\/>x[1];}
-\DoxyCodeLine{01116\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
-\DoxyCodeLine{01117\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{01118\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
-\DoxyCodeLine{01119\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
-\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
-\DoxyCodeLine{01121\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
-\DoxyCodeLine{01122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
-\DoxyCodeLine{01123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
-\DoxyCodeLine{01124\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01125\ \ \ \ \ \}}
-\DoxyCodeLine{01126\ \ \ \}}
-\DoxyCodeLine{01127\ \ \ }
-\DoxyCodeLine{01128\ \ \ \textcolor{keywordflow}{return}\ w;}
-\DoxyCodeLine{01129\ \}}
-\DoxyCodeLine{01130\ }
-\DoxyCodeLine{01132\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{01133\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_a85c8c08716d4ebdceb0b8c31d543773a}{inhull<RAY>}}(PosType\ x[],\textcolor{keyword}{const}\ std::vector<RAY>\ \&H)\{}
-\DoxyCodeLine{01134\ \ \ }
-\DoxyCodeLine{01135\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
-\DoxyCodeLine{01136\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01137\ \ \ \textcolor{keywordtype}{long}\ w=0;}
-\DoxyCodeLine{01138\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ dH,dD;}
-\DoxyCodeLine{01139\ \ \ \textcolor{keywordtype}{double}\ B,A;}
-\DoxyCodeLine{01140\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
-\DoxyCodeLine{01141\ \ \ \ \ dH\ =\ H[i+1].x-\/H[i].x;}
-\DoxyCodeLine{01142\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
-\DoxyCodeLine{01143\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i].x[1])\{}
-\DoxyCodeLine{01144\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i].x[0])/dH[0];}
-\DoxyCodeLine{01145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
-\DoxyCodeLine{01146\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01147\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01148\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i].x[0];}
-\DoxyCodeLine{01149\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i].x[1];}
-\DoxyCodeLine{01150\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
-\DoxyCodeLine{01151\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{01152\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
-\DoxyCodeLine{01153\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
-\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
-\DoxyCodeLine{01155\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
-\DoxyCodeLine{01156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
-\DoxyCodeLine{01157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
-\DoxyCodeLine{01158\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01159\ \ \ \ \ \}}
-\DoxyCodeLine{01160\ \ \ \}}
-\DoxyCodeLine{01161\ \ \ }
-\DoxyCodeLine{01162\ \ \ \textcolor{keywordflow}{return}\ w;}
-\DoxyCodeLine{01163\ \}}
-\DoxyCodeLine{01164\ }
-\DoxyCodeLine{01165\ \textcolor{keyword}{template}\ <>}
-\DoxyCodeLine{01166\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inhull<PosType\ *>(PosType\ x[],\textcolor{keyword}{const}\ std::vector<PosType\ *>\ \&H)\{}
-\DoxyCodeLine{01167\ \ \ }
-\DoxyCodeLine{01168\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
-\DoxyCodeLine{01169\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01170\ \ \ \textcolor{keywordtype}{long}\ w=0;}
-\DoxyCodeLine{01171\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ dH,dD;}
-\DoxyCodeLine{01172\ \ \ \textcolor{keywordtype}{double}\ B,A;}
-\DoxyCodeLine{01173\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
-\DoxyCodeLine{01174\ \ \ \ \ dH[0]\ =\ H[i+1][0]-\/H[i][0];}
-\DoxyCodeLine{01175\ \ \ \ \ dH[1]\ =\ H[i+1][1]-\/H[i][1];}
-\DoxyCodeLine{01176\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
-\DoxyCodeLine{01177\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i][1])\{}
-\DoxyCodeLine{01178\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i][0])/dH[0];}
-\DoxyCodeLine{01179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
-\DoxyCodeLine{01180\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01181\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01182\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i][0];}
-\DoxyCodeLine{01183\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i][1];}
-\DoxyCodeLine{01184\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
-\DoxyCodeLine{01185\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{01186\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
-\DoxyCodeLine{01187\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
-\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
-\DoxyCodeLine{01189\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
-\DoxyCodeLine{01190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
-\DoxyCodeLine{01191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
-\DoxyCodeLine{01192\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01193\ \ \ \ \ \}}
-\DoxyCodeLine{01194\ \ \ \}}
-\DoxyCodeLine{01195\ \ \ }
-\DoxyCodeLine{01196\ \ \ \textcolor{keywordflow}{return}\ w;}
-\DoxyCodeLine{01197\ \}}
-\DoxyCodeLine{01198\ }
-\DoxyCodeLine{01199\ }
-\DoxyCodeLine{01200\ \textcolor{comment}{/***\ \(\backslash\)brief\ Calculate\ the\ k\ nearest\ neighbors\ concave\ hull.}}
+\DoxyCodeLine{01016\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01017\ \}}
+\DoxyCodeLine{01018\ }
+\DoxyCodeLine{01020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{01021\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}{inCurve}}(\textcolor{keyword}{const}\ Ptype\ \&x,\textcolor{keyword}{const}\ std::vector<Ptype>\ \&H)\{}
+\DoxyCodeLine{01022\ \ \ \textcolor{keywordflow}{if}(H.size()\ <\ 3)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01023\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ p1,p2;}
+\DoxyCodeLine{01024\ \ \ \textcolor{keywordtype}{long}\ w=0;}
+\DoxyCodeLine{01025\ \ \ \textcolor{keywordtype}{size\_t}\ n=H.size();}
+\DoxyCodeLine{01026\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n\ ;\ ++i)\{}
+\DoxyCodeLine{01027\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ j\ =\ (i+1)\%n;}
+\DoxyCodeLine{01028\ \ \ \ \ \textcolor{keywordflow}{if}(H[j][1]\ !=\ H[i][1])\{\ \textcolor{comment}{//\ ignore\ horizontal\ segments}}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ p1[1]\ =\ H[i][1]\ -\/\ x[1];}
+\DoxyCodeLine{01030\ \ \ \ \ \ \ p2[1]\ =\ H[j][1]\ -\/\ x[1];}
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ p1[1]*p2[1]\ <\ 0\ \ )\{}
+\DoxyCodeLine{01032\ \ \ \ \ \ \ \ \ p1[0]\ =\ H[i][0]\ -\/\ x[0];}
+\DoxyCodeLine{01033\ \ \ \ \ \ \ \ \ p2[0]\ =\ H[j][0]\ -\/\ x[0];}
+\DoxyCodeLine{01034\ }
+\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p1[0]>=0\ \&\&\ p2[0]>=0)\{}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ \ \ w\ +=\ 2*(\ p1[1]\ >=\ 0\ )\ -\/\ 1;}
+\DoxyCodeLine{01037\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(p1[0]\ >\ 0\ ||\ p2[0]\ >\ 0)\{}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ p1[0]\ -\/\ (p2[0]-\/p1[0])*p1[1]/(p2[1]-\/p1[1]);}
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(s\ >=\ 0)\{}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ \ \ \ \ \ \ w\ +=\ 2*(\ p1[1]\ >=\ 0\ )\ -\/\ 1;}
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01043\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(p2[1]==0)\{\ \ \textcolor{comment}{//\ second\ point\ on\ lines}}
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ p2[0]\ =\ H[j][0]\ -\/\ x[0];}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ needs\ to\ be\ handled\ separately\ because\ of\ the\ }}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ possibility\ that\ the\ curve\ touches\ the\ line\ a\ one\ vertex\ }}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ but\ does\ not\ cross\ it.}}
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p2[0]\ >=\ 0)\{}
+\DoxyCodeLine{01049\ }
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ k\ =\ (j+1)\%n;}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\ H[k][1]\ -\/\ x[1]\ ==\ 0\ \&\&\ k!=i)\ k\ =\ (k+1)\%n;}
+\DoxyCodeLine{01052\ }
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k!=i\ \&\&\ p1[1]*(\ H[k][1]\ -\/\ x[1]\ )\ <=\ 0)\{}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \ \ \ \ \ \ w\ +=\ \ 2*(\ p1[1]\ >=\ 0\ )\ -\/\ 1;}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01058\ \ \ \ \ \}}
+\DoxyCodeLine{01059\ \ \ \}}
+\DoxyCodeLine{01060\ \ \ \textcolor{keywordflow}{return}\ w\ !=\ 0;}
+\DoxyCodeLine{01061\ \}}
+\DoxyCodeLine{01062\ }
+\DoxyCodeLine{01063\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{01064\ \textcolor{keywordtype}{bool}\ inhull(PosType\ x[],\textcolor{keyword}{const}\ std::vector<Ptype>\ \&H)\{}
+\DoxyCodeLine{01065\ \ \ }
+\DoxyCodeLine{01066\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
+\DoxyCodeLine{01067\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01068\ \ \ \textcolor{keywordtype}{long}\ w=0;}
+\DoxyCodeLine{01069\ \ \ Ptype\ dH,dD;}
+\DoxyCodeLine{01070\ \ \ \textcolor{keywordtype}{double}\ B,A;}
+\DoxyCodeLine{01071\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
+\DoxyCodeLine{01072\ \ \ \ \ dH\ =\ H[i+1]-\/H[i];}
+\DoxyCodeLine{01073\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i][1])\{}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i][0])/dH[0];}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01078\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i][0];}
+\DoxyCodeLine{01080\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i][1];}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
+\DoxyCodeLine{01082\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01083\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
+\DoxyCodeLine{01084\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
+\DoxyCodeLine{01085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
+\DoxyCodeLine{01086\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
+\DoxyCodeLine{01087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
+\DoxyCodeLine{01088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
+\DoxyCodeLine{01089\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01090\ \ \ \ \ \}}
+\DoxyCodeLine{01091\ \ \ \}}
+\DoxyCodeLine{01092\ \ \ }
+\DoxyCodeLine{01093\ \ \ \textcolor{keywordflow}{return}\ abs(w);}
+\DoxyCodeLine{01094\ \}}
+\DoxyCodeLine{01095\ }
+\DoxyCodeLine{01096\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{01097\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inhull<Point\ *>(PosType\ x[],\textcolor{keyword}{const}\ std::vector<Point\ *>\ \&H)\{}
+\DoxyCodeLine{01098\ \ \ }
+\DoxyCodeLine{01099\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
+\DoxyCodeLine{01100\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01101\ \ \ \textcolor{keywordtype}{long}\ w=0;}
+\DoxyCodeLine{01102\ \ \ Point\_2d\ dH,dD;}
+\DoxyCodeLine{01103\ \ \ \textcolor{keywordtype}{double}\ B,A;}
+\DoxyCodeLine{01104\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
+\DoxyCodeLine{01105\ \ \ \ \ dH\ =\ *H[i+1]-\/*H[i];}
+\DoxyCodeLine{01106\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
+\DoxyCodeLine{01107\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i]-\/>x[1])\{}
+\DoxyCodeLine{01108\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i]-\/>x[0])/dH[0];}
+\DoxyCodeLine{01109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
+\DoxyCodeLine{01110\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01111\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01112\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i]-\/>x[0];}
+\DoxyCodeLine{01113\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i]-\/>x[1];}
+\DoxyCodeLine{01114\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
+\DoxyCodeLine{01115\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01116\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
+\DoxyCodeLine{01117\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
+\DoxyCodeLine{01118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
+\DoxyCodeLine{01119\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
+\DoxyCodeLine{01120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
+\DoxyCodeLine{01122\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01123\ \ \ \ \ \}}
+\DoxyCodeLine{01124\ \ \ \}}
+\DoxyCodeLine{01125\ \ \ }
+\DoxyCodeLine{01126\ \ \ \textcolor{keywordflow}{return}\ w;}
+\DoxyCodeLine{01127\ \}}
+\DoxyCodeLine{01128\ }
+\DoxyCodeLine{01130\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{01131\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_a85c8c08716d4ebdceb0b8c31d543773a}{inhull<RAY>}}(PosType\ x[],\textcolor{keyword}{const}\ std::vector<RAY>\ \&H)\{}
+\DoxyCodeLine{01132\ \ \ }
+\DoxyCodeLine{01133\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
+\DoxyCodeLine{01134\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01135\ \ \ \textcolor{keywordtype}{long}\ w=0;}
+\DoxyCodeLine{01136\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ dH,dD;}
+\DoxyCodeLine{01137\ \ \ \textcolor{keywordtype}{double}\ B,A;}
+\DoxyCodeLine{01138\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
+\DoxyCodeLine{01139\ \ \ \ \ dH\ =\ H[i+1].x-\/H[i].x;}
+\DoxyCodeLine{01140\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
+\DoxyCodeLine{01141\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i].x[1])\{}
+\DoxyCodeLine{01142\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i].x[0])/dH[0];}
+\DoxyCodeLine{01143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
+\DoxyCodeLine{01144\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01145\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01146\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i].x[0];}
+\DoxyCodeLine{01147\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i].x[1];}
+\DoxyCodeLine{01148\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
+\DoxyCodeLine{01149\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01150\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
+\DoxyCodeLine{01151\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
+\DoxyCodeLine{01152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
+\DoxyCodeLine{01153\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
+\DoxyCodeLine{01154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
+\DoxyCodeLine{01155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
+\DoxyCodeLine{01156\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01157\ \ \ \ \ \}}
+\DoxyCodeLine{01158\ \ \ \}}
+\DoxyCodeLine{01159\ \ \ }
+\DoxyCodeLine{01160\ \ \ \textcolor{keywordflow}{return}\ w;}
+\DoxyCodeLine{01161\ \}}
+\DoxyCodeLine{01162\ }
+\DoxyCodeLine{01163\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{01164\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ inhull<PosType\ *>(PosType\ x[],\textcolor{keyword}{const}\ std::vector<PosType\ *>\ \&H)\{}
+\DoxyCodeLine{01165\ \ \ }
+\DoxyCodeLine{01166\ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ H.size();}
+\DoxyCodeLine{01167\ \ \ \textcolor{keywordflow}{if}(n\ <=2)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01168\ \ \ \textcolor{keywordtype}{long}\ w=0;}
+\DoxyCodeLine{01169\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ dH,dD;}
+\DoxyCodeLine{01170\ \ \ \textcolor{keywordtype}{double}\ B,A;}
+\DoxyCodeLine{01171\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<n-\/1\ ;\ ++i)\{}
+\DoxyCodeLine{01172\ \ \ \ \ dH[0]\ =\ H[i+1][0]-\/H[i][0];}
+\DoxyCodeLine{01173\ \ \ \ \ dH[1]\ =\ H[i+1][1]-\/H[i][1];}
+\DoxyCodeLine{01174\ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ ==\ 0)\{\ \ \textcolor{comment}{//\ //\ horizontal\ segment}}
+\DoxyCodeLine{01175\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(x[1]\ ==\ H[i][1])\{}
+\DoxyCodeLine{01176\ \ \ \ \ \ \ \ \ B\ =\ (x[0]-\/H[i][0])/dH[0];}
+\DoxyCodeLine{01177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ B>=0\ \&\&\ B<=1\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \textcolor{comment}{//\ point\ on\ boundary}}
+\DoxyCodeLine{01178\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01179\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01180\ \ \ \ \ \ \ dD[0]\ =\ x[0]-\/H[i][0];}
+\DoxyCodeLine{01181\ \ \ \ \ \ \ dD[1]\ =\ x[1]-\/H[i][1];}
+\DoxyCodeLine{01182\ \ \ \ \ \ \ A\ =\ dD[1]/dH[1];}
+\DoxyCodeLine{01183\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ A\ >\ 1\ ||\ A\ <=\ 0)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{01184\ \ \ \ \ \ \ B\ =\ (dH\string^dD)/dH[1];}
+\DoxyCodeLine{01185\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(B==0)\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ on\ the\ boundary}}
+\DoxyCodeLine{01186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ boundaries\ are\ always\ in}}
+\DoxyCodeLine{01187\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(B>0)\{}
+\DoxyCodeLine{01188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dH[1]\ >\ 0)\ ++w;}
+\DoxyCodeLine{01189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ -\/-\/w;}
+\DoxyCodeLine{01190\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01191\ \ \ \ \ \}}
+\DoxyCodeLine{01192\ \ \ \}}
+\DoxyCodeLine{01193\ \ \ }
+\DoxyCodeLine{01194\ \ \ \textcolor{keywordflow}{return}\ w;}
+\DoxyCodeLine{01195\ \}}
+\DoxyCodeLine{01196\ }
+\DoxyCodeLine{01197\ }
+\DoxyCodeLine{01198\ \textcolor{comment}{/***\ \(\backslash\)brief\ Calculate\ the\ k\ nearest\ neighbors\ concave\ hull.}}
+\DoxyCodeLine{01199\ \textcolor{comment}{\ }}
+\DoxyCodeLine{01200\ \textcolor{comment}{\ This\ algorithem\ is\ guarenteed\ to\ find\ a\ curve\ that\ serounds\ an\ island\ of\ points,\ but\ not\ all\ islands\ unless\ check==true.}}
 \DoxyCodeLine{01201\ \textcolor{comment}{\ }}
-\DoxyCodeLine{01202\ \textcolor{comment}{\ This\ algorithem\ is\ guarenteed\ to\ find\ a\ curve\ that\ serounds\ an\ island\ of\ points,\ but\ not\ all\ islands\ unless\ check==true.}}
+\DoxyCodeLine{01202\ \textcolor{comment}{\ If\ it\ at\ first\ fails\ with\ the\ k\ input,\ k\ will\ increase.\ \ The\ final\ k\ relaces\ the\ input\ k.}}
 \DoxyCodeLine{01203\ \textcolor{comment}{\ }}
-\DoxyCodeLine{01204\ \textcolor{comment}{\ If\ it\ at\ first\ fails\ with\ the\ k\ input,\ k\ will\ increase.\ \ The\ final\ k\ relaces\ the\ input\ k.}}
-\DoxyCodeLine{01205\ \textcolor{comment}{\ }}
-\DoxyCodeLine{01206\ \textcolor{comment}{\ check\ determines\ whether\ a\ final\ check\ is\ done\ to\ determine\ whether\ all\ the\ raminaing\ points\ are\ inside\ the\ hull.\ \ Otherwise\ it\ is\ possible\ to\ get\ multiple\ disconnected\ clusters\ and\ the\ hull\ will\ surround\ only\ one.}}
-\DoxyCodeLine{01207\ \textcolor{comment}{\ */}}
-\DoxyCodeLine{01208\ }
-\DoxyCodeLine{01209\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{01210\ std::vector<Ptype>\ \mbox{\hyperlink{namespace_utilities_abe345295eb171c0665350842426124bd}{concaveK}}(std::vector<Ptype>\ \&points,\textcolor{keywordtype}{int}\ \&k,\textcolor{keywordtype}{bool}\ check=\textcolor{keyword}{true})}
-\DoxyCodeLine{01211\ \{}
-\DoxyCodeLine{01212\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}finding\ hull\ ....\ "{};}}
-\DoxyCodeLine{01213\ \ \ \textcolor{keywordflow}{if}(points.size()\ <=\ 3)\{}
-\DoxyCodeLine{01214\ \ \ \ \ \textcolor{keywordflow}{return}\ points;}
-\DoxyCodeLine{01215\ \ \ \}}
+\DoxyCodeLine{01204\ \textcolor{comment}{\ check\ determines\ whether\ a\ final\ check\ is\ done\ to\ determine\ whether\ all\ the\ raminaing\ points\ are\ inside\ the\ hull.\ \ Otherwise\ it\ is\ possible\ to\ get\ multiple\ disconnected\ clusters\ and\ the\ hull\ will\ surround\ only\ one.}}
+\DoxyCodeLine{01205\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{01206\ }
+\DoxyCodeLine{01207\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{01208\ std::vector<Ptype>\ \mbox{\hyperlink{namespace_utilities_abe345295eb171c0665350842426124bd}{concaveK}}(std::vector<Ptype>\ \&points,\textcolor{keywordtype}{int}\ \&k,\textcolor{keywordtype}{bool}\ check=\textcolor{keyword}{true})}
+\DoxyCodeLine{01209\ \{}
+\DoxyCodeLine{01210\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}finding\ hull\ ....\ "{};}}
+\DoxyCodeLine{01211\ \ \ \textcolor{keywordflow}{if}(points.size()\ <=\ 3)\{}
+\DoxyCodeLine{01212\ \ \ \ \ \textcolor{keywordflow}{return}\ points;}
+\DoxyCodeLine{01213\ \ \ \}}
+\DoxyCodeLine{01214\ \ \ }
+\DoxyCodeLine{01215\ \ \ \textcolor{keywordflow}{if}(k\ \ <\ 3)\ k\ =3;}
 \DoxyCodeLine{01216\ \ \ }
-\DoxyCodeLine{01217\ \ \ \textcolor{keywordflow}{if}(k\ \ <\ 3)\ k\ =3;}
+\DoxyCodeLine{01217\ \ \ \textcolor{keywordtype}{size\_t}\ npoints\ =\ points.size();}
 \DoxyCodeLine{01218\ \ \ }
-\DoxyCodeLine{01219\ \ \ \textcolor{keywordtype}{size\_t}\ npoints\ =\ points.size();}
-\DoxyCodeLine{01220\ \ \ }
-\DoxyCodeLine{01221\ \ \ \textcolor{comment}{//\ \ \{}}
-\DoxyCodeLine{01222\ \ \ \textcolor{comment}{//\ \ \ \ tree.pop(7);}}
-\DoxyCodeLine{01223\ \ \ \textcolor{comment}{//\ \ \ \ RandomNumbers\_NR\ ran(123);}}
-\DoxyCodeLine{01224\ \ \ \textcolor{comment}{//\ \ \ \ std::vector<double>\ radii;}}
-\DoxyCodeLine{01225\ \ \ \textcolor{comment}{//\ \ \ \ std::vector<size\_t>\ neighbors;}}
-\DoxyCodeLine{01226\ \ \ \textcolor{comment}{//\ \ \ \ Point\_2d\ point;}}
-\DoxyCodeLine{01227\ \ \ \textcolor{comment}{//\ \ \ \ for(int\ i\ =\ 0\ ;\ i<100;\ ++i)\{}}
-\DoxyCodeLine{01228\ \ \ \textcolor{comment}{//\ \ \ \ \ \ point[0]\ =\ (1-\/2*ran());}}
-\DoxyCodeLine{01229\ \ \ \textcolor{comment}{//\ \ \ \ \ \ point[1]\ =\ (1-\/2*ran());}}
-\DoxyCodeLine{01230\ \ \ \textcolor{comment}{//\ \ \ \ \ \ tree.NearestNeighbors(point.x,k,radii,neighbors);}}
-\DoxyCodeLine{01231\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
-\DoxyCodeLine{01232\ \ \ \textcolor{comment}{//\ \ \ \ for(auto\ p\ :\ points)\{}}
-\DoxyCodeLine{01233\ \ \ \textcolor{comment}{//\ \ \ \ \ \ tree.NearestNeighbors(p.x,k,radii,neighbors);}}
-\DoxyCodeLine{01234\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
-\DoxyCodeLine{01235\ \ \ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{01236\ \ \ std::vector<Ptype>\ hull;}
-\DoxyCodeLine{01237\ \ \ }
-\DoxyCodeLine{01238\ \ \ \textcolor{keywordtype}{double}\ xmin\ =\ points[0][0];}
-\DoxyCodeLine{01239\ \ \ \textcolor{keywordtype}{size\_t}\ first\_point\_index\ =\ 0;}
-\DoxyCodeLine{01240\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<npoints\ ;\ ++i)\{}
-\DoxyCodeLine{01241\ \ \ \ \ \textcolor{keywordflow}{if}(points[i][0]\ <\ xmin)\{}
-\DoxyCodeLine{01242\ \ \ \ \ \ \ xmin\ =\ points[i][0];}
-\DoxyCodeLine{01243\ \ \ \ \ \ \ first\_point\_index\ =\ i;}
-\DoxyCodeLine{01244\ \ \ \ \ \}}
-\DoxyCodeLine{01245\ \ \ \}}
+\DoxyCodeLine{01219\ \ \ \textcolor{comment}{//\ \ \{}}
+\DoxyCodeLine{01220\ \ \ \textcolor{comment}{//\ \ \ \ tree.pop(7);}}
+\DoxyCodeLine{01221\ \ \ \textcolor{comment}{//\ \ \ \ RandomNumbers\_NR\ ran(123);}}
+\DoxyCodeLine{01222\ \ \ \textcolor{comment}{//\ \ \ \ std::vector<double>\ radii;}}
+\DoxyCodeLine{01223\ \ \ \textcolor{comment}{//\ \ \ \ std::vector<size\_t>\ neighbors;}}
+\DoxyCodeLine{01224\ \ \ \textcolor{comment}{//\ \ \ \ Point\_2d\ point;}}
+\DoxyCodeLine{01225\ \ \ \textcolor{comment}{//\ \ \ \ for(int\ i\ =\ 0\ ;\ i<100;\ ++i)\{}}
+\DoxyCodeLine{01226\ \ \ \textcolor{comment}{//\ \ \ \ \ \ point[0]\ =\ (1-\/2*ran());}}
+\DoxyCodeLine{01227\ \ \ \textcolor{comment}{//\ \ \ \ \ \ point[1]\ =\ (1-\/2*ran());}}
+\DoxyCodeLine{01228\ \ \ \textcolor{comment}{//\ \ \ \ \ \ tree.NearestNeighbors(point.x,k,radii,neighbors);}}
+\DoxyCodeLine{01229\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{01230\ \ \ \textcolor{comment}{//\ \ \ \ for(auto\ p\ :\ points)\{}}
+\DoxyCodeLine{01231\ \ \ \textcolor{comment}{//\ \ \ \ \ \ tree.NearestNeighbors(p.x,k,radii,neighbors);}}
+\DoxyCodeLine{01232\ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{01233\ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{01234\ \ \ std::vector<Ptype>\ hull;}
+\DoxyCodeLine{01235\ \ \ }
+\DoxyCodeLine{01236\ \ \ \textcolor{keywordtype}{double}\ xmin\ =\ points[0][0];}
+\DoxyCodeLine{01237\ \ \ \textcolor{keywordtype}{size\_t}\ first\_point\_index\ =\ 0;}
+\DoxyCodeLine{01238\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i=0\ ;\ i<npoints\ ;\ ++i)\{}
+\DoxyCodeLine{01239\ \ \ \ \ \textcolor{keywordflow}{if}(points[i][0]\ <\ xmin)\{}
+\DoxyCodeLine{01240\ \ \ \ \ \ \ xmin\ =\ points[i][0];}
+\DoxyCodeLine{01241\ \ \ \ \ \ \ first\_point\_index\ =\ i;}
+\DoxyCodeLine{01242\ \ \ \ \ \}}
+\DoxyCodeLine{01243\ \ \ \}}
+\DoxyCodeLine{01244\ \ \ }
+\DoxyCodeLine{01245\ \ \ Ptype\ firstpoint\ =\ points[first\_point\_index];}
 \DoxyCodeLine{01246\ \ \ }
-\DoxyCodeLine{01247\ \ \ Ptype\ firstpoint\ =\ points[first\_point\_index];}
-\DoxyCodeLine{01248\ \ \ }
-\DoxyCodeLine{01249\ \ \ std::vector<size\_t>\ remaining\_index;}
-\DoxyCodeLine{01250\ \ \ \textcolor{keywordtype}{bool}\ segmented\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01251\ \ \ \textcolor{keywordflow}{while}(segmented)\{}
-\DoxyCodeLine{01252\ \ \ \ \ \textcolor{keywordtype}{bool}\ found=\textcolor{keyword}{false};}
-\DoxyCodeLine{01253\ \ \ \ \ \textcolor{keywordflow}{while}(!found)\{\ \ \textcolor{comment}{//\ if\ hull\ leaves\ points\ out\ repeat\ with\ larger\ k}}
-\DoxyCodeLine{01254\ \ \ \ \ \ \ hull.resize(0);}
-\DoxyCodeLine{01255\ \ \ \ \ \ \ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<Ptype>}}\ tree(points.data(),npoints,2);}
-\DoxyCodeLine{01256\ \ \ \ \ \ \ }
-\DoxyCodeLine{01257\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k>=points.size())\{}
-\DoxyCodeLine{01258\ \ \ \ \ \ \ \ \ hull\ =\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(points);}
-\DoxyCodeLine{01259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hull;}
-\DoxyCodeLine{01260\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01261\ \ \ \ \ \ \ }
-\DoxyCodeLine{01262\ \ \ \ \ \ \ hull.push\_back(firstpoint);}
-\DoxyCodeLine{01263\ \ \ \ \ \ \ \textcolor{comment}{//\ point\ is\ not\ popper\ frum\ the\ free\ so\ that\ it\ can\ be\ found\ at\ the\ end}}
-\DoxyCodeLine{01264\ \ \ \ \ \ \ }
-\DoxyCodeLine{01265\ \ \ \ \ \ \ std::vector<double>\ radii;}
-\DoxyCodeLine{01266\ \ \ \ \ \ \ std::vector<size\_t>\ neighbors;}
-\DoxyCodeLine{01267\ \ \ \ \ \ \ Ptype\ hull\_end\ =\ hull.back();}
-\DoxyCodeLine{01268\ \ \ \ \ \ \ }
-\DoxyCodeLine{01269\ \ \ \ \ \ \ Ptype\ v1;}
-\DoxyCodeLine{01270\ \ \ \ \ \ \ Ptype\ last\_point\ =\ Ptype(hull[0][0],hull[0][1]-\/1);}
-\DoxyCodeLine{01271\ \ \ \ \ \ \ Ptype\ v2;}
-\DoxyCodeLine{01272\ \ \ \ \ \ \ }
-\DoxyCodeLine{01273\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ new\_index;}
-\DoxyCodeLine{01274\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ theta\_max=0;}
-\DoxyCodeLine{01275\ \ \ \ \ \ \ Ptype\ new\_point;}
-\DoxyCodeLine{01276\ \ \ \ \ \ \ std::vector<double>\ thetas;}
-\DoxyCodeLine{01277\ \ \ \ \ \ \ std::vector<int>\ sorted\_index(k);}
-\DoxyCodeLine{01278\ \ \ \ \ \ \ }
-\DoxyCodeLine{01279\ \ \ \ \ \ \ \textcolor{keywordflow}{while}((hull[0]\ !=\ hull.back()\ \&\&\ found)\ ||\ hull.size()==1\ )\{}
+\DoxyCodeLine{01247\ \ \ std::vector<size\_t>\ remaining\_index;}
+\DoxyCodeLine{01248\ \ \ \textcolor{keywordtype}{bool}\ segmented\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01249\ \ \ \textcolor{keywordflow}{while}(segmented)\{}
+\DoxyCodeLine{01250\ \ \ \ \ \textcolor{keywordtype}{bool}\ found=\textcolor{keyword}{false};}
+\DoxyCodeLine{01251\ \ \ \ \ \textcolor{keywordflow}{while}(!found)\{\ \ \textcolor{comment}{//\ if\ hull\ leaves\ points\ out\ repeat\ with\ larger\ k}}
+\DoxyCodeLine{01252\ \ \ \ \ \ \ hull.resize(0);}
+\DoxyCodeLine{01253\ \ \ \ \ \ \ \mbox{\hyperlink{class_tree_simple_vec}{TreeSimpleVec<Ptype>}}\ tree(points.data(),npoints,2);}
+\DoxyCodeLine{01254\ \ \ \ \ \ \ }
+\DoxyCodeLine{01255\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(k>=points.size())\{}
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ hull\ =\ \mbox{\hyperlink{namespace_utilities_ac0dc30c5f6b7875ed50bcae884432756}{convex\_hull}}(points);}
+\DoxyCodeLine{01257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{01258\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01259\ \ \ \ \ \ \ }
+\DoxyCodeLine{01260\ \ \ \ \ \ \ hull.push\_back(firstpoint);}
+\DoxyCodeLine{01261\ \ \ \ \ \ \ \textcolor{comment}{//\ point\ is\ not\ popper\ frum\ the\ free\ so\ that\ it\ can\ be\ found\ at\ the\ end}}
+\DoxyCodeLine{01262\ \ \ \ \ \ \ }
+\DoxyCodeLine{01263\ \ \ \ \ \ \ std::vector<double>\ radii;}
+\DoxyCodeLine{01264\ \ \ \ \ \ \ std::vector<size\_t>\ neighbors;}
+\DoxyCodeLine{01265\ \ \ \ \ \ \ Ptype\ hull\_end\ =\ hull.back();}
+\DoxyCodeLine{01266\ \ \ \ \ \ \ }
+\DoxyCodeLine{01267\ \ \ \ \ \ \ Ptype\ v1;}
+\DoxyCodeLine{01268\ \ \ \ \ \ \ Ptype\ last\_point\ =\ Ptype(hull[0][0],hull[0][1]-\/1);}
+\DoxyCodeLine{01269\ \ \ \ \ \ \ Ptype\ v2;}
+\DoxyCodeLine{01270\ \ \ \ \ \ \ }
+\DoxyCodeLine{01271\ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ new\_index;}
+\DoxyCodeLine{01272\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ theta\_max=0;}
+\DoxyCodeLine{01273\ \ \ \ \ \ \ Ptype\ new\_point;}
+\DoxyCodeLine{01274\ \ \ \ \ \ \ std::vector<double>\ thetas;}
+\DoxyCodeLine{01275\ \ \ \ \ \ \ std::vector<int>\ sorted\_index(k);}
+\DoxyCodeLine{01276\ \ \ \ \ \ \ }
+\DoxyCodeLine{01277\ \ \ \ \ \ \ \textcolor{keywordflow}{while}((hull[0]\ !=\ hull.back()\ \&\&\ found)\ ||\ hull.size()==1\ )\{}
+\DoxyCodeLine{01278\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01279\ \ \ \ \ \ \ \ \ tree.\mbox{\hyperlink{class_tree_simple_vec_a656687586737eedb85a0686005fc29a0}{NearestNeighbors}}(hull\_end.x,k,radii,neighbors);}
 \DoxyCodeLine{01280\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01281\ \ \ \ \ \ \ \ \ tree.\mbox{\hyperlink{class_tree_simple_vec_a656687586737eedb85a0686005fc29a0}{NearestNeighbors}}(hull\_end.x,k,radii,neighbors);}
-\DoxyCodeLine{01282\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01283\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ Nneighbors\ =\ neighbors.size();\ \textcolor{comment}{//\ incase\ there\ are\ not\ k\ left}}
-\DoxyCodeLine{01284\ \ \ \ \ \ \ \ \ thetas.resize(Nneighbors);}
-\DoxyCodeLine{01285\ \ \ \ \ \ \ \ \ sorted\_index.resize(Nneighbors);}
-\DoxyCodeLine{01286\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01287\ \ \ \ \ \ \ \ \ v1\ =\ hull\_end\ -\/\ last\_point;}
-\DoxyCodeLine{01288\ \ \ \ \ \ \ \ \ theta\_max\ =\ 0;}
-\DoxyCodeLine{01289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<Nneighbors\ ;\ ++i)\{}
-\DoxyCodeLine{01290\ \ \ \ \ \ \ \ \ \ \ v2\ =\ points[neighbors[i]]\ -\/\ hull\_end;}
-\DoxyCodeLine{01291\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cross\ =\ v1\string^v2,dot\ =\ (v1*v2);}
-\DoxyCodeLine{01292\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cross\ ==\ 0\ \&\&\ dot\ <=\ 0)\ thetas[i]\ =\ -\/PI;\ \ \textcolor{comment}{//\ prevents\ backtracking\ at\ beginning}}
-\DoxyCodeLine{01293\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ thetas[i]\ =\ atan2(\ cross\ ,\ dot\ );}
-\DoxyCodeLine{01294\ \ \ \ \ \ \ \ \ \ \ sorted\_index[i]\ =\ i;}
-\DoxyCodeLine{01295\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01296\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01297\ \ \ \ \ \ \ \ \ std::sort(sorted\_index.begin(),sorted\_index.end()}
-\DoxyCodeLine{01298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,[\&thetas](\textcolor{keywordtype}{int}\ i,\textcolor{keywordtype}{int}\ j)\{return\ thetas[i]\ >\ thetas[j];\}\ );}
-\DoxyCodeLine{01299\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01300\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ trial=0;}
-\DoxyCodeLine{01301\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ intersect\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(intersect\ \&\&\ trial\ <\ Nneighbors)\{}
-\DoxyCodeLine{01303\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01304\ \ \ \ \ \ \ \ \ \ \ new\_index\ =\ neighbors[\ sorted\_index[trial]\ ];}
-\DoxyCodeLine{01305\ \ \ \ \ \ \ \ \ \ \ new\_point\ =\ points[\ new\_index\ ];}
+\DoxyCodeLine{01281\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ Nneighbors\ =\ neighbors.size();\ \textcolor{comment}{//\ incase\ there\ are\ not\ k\ left}}
+\DoxyCodeLine{01282\ \ \ \ \ \ \ \ \ thetas.resize(Nneighbors);}
+\DoxyCodeLine{01283\ \ \ \ \ \ \ \ \ sorted\_index.resize(Nneighbors);}
+\DoxyCodeLine{01284\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01285\ \ \ \ \ \ \ \ \ v1\ =\ hull\_end\ -\/\ last\_point;}
+\DoxyCodeLine{01286\ \ \ \ \ \ \ \ \ theta\_max\ =\ 0;}
+\DoxyCodeLine{01287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<Nneighbors\ ;\ ++i)\{}
+\DoxyCodeLine{01288\ \ \ \ \ \ \ \ \ \ \ v2\ =\ points[neighbors[i]]\ -\/\ hull\_end;}
+\DoxyCodeLine{01289\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ cross\ =\ v1\string^v2,dot\ =\ (v1*v2);}
+\DoxyCodeLine{01290\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cross\ ==\ 0\ \&\&\ dot\ <=\ 0)\ thetas[i]\ =\ -\/PI;\ \ \textcolor{comment}{//\ prevents\ backtracking\ at\ beginning}}
+\DoxyCodeLine{01291\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ thetas[i]\ =\ atan2(\ cross\ ,\ dot\ );}
+\DoxyCodeLine{01292\ \ \ \ \ \ \ \ \ \ \ sorted\_index[i]\ =\ i;}
+\DoxyCodeLine{01293\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01294\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01295\ \ \ \ \ \ \ \ \ std::sort(sorted\_index.begin(),sorted\_index.end()}
+\DoxyCodeLine{01296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,[\&thetas](\textcolor{keywordtype}{int}\ i,\textcolor{keywordtype}{int}\ j)\{return\ thetas[i]\ >\ thetas[j];\}\ );}
+\DoxyCodeLine{01297\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01298\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ trial=0;}
+\DoxyCodeLine{01299\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ intersect\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(intersect\ \&\&\ trial\ <\ Nneighbors)\{}
+\DoxyCodeLine{01301\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01302\ \ \ \ \ \ \ \ \ \ \ new\_index\ =\ neighbors[\ sorted\_index[trial]\ ];}
+\DoxyCodeLine{01303\ \ \ \ \ \ \ \ \ \ \ new\_point\ =\ points[\ new\_index\ ];}
+\DoxyCodeLine{01304\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01305\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hull.size()\ <=\ 3)\ intersect\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{01306\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01307\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(hull.size()\ <=\ 3)\ intersect\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01308\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01309\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ new\ edge\ doesn't\ cross\ earlier\ edge}}
-\DoxyCodeLine{01310\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ i\ =\ hull.size()\ -\/\ 2\ ;\ i\ >\ 1\ ;\ -\/-\/i)\{}
-\DoxyCodeLine{01311\ \ \ \ \ \ \ \ \ \ \ \ \ intersect\ =\ segments\_cross(hull[i],hull[i-\/1]}
-\DoxyCodeLine{01312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,hull.back(),new\_point);}
-\DoxyCodeLine{01313\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(intersect)\{}
-\DoxyCodeLine{01315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{01316\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01317\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01318\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01319\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(new\_index\ ==\ first\_point\_index\ \&\&\ !intersect)\{}
-\DoxyCodeLine{01320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ neighbors\ are\ inside\ hull\ that\ would\ be\ closed}}
-\DoxyCodeLine{01321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ is\ to\ prevent\ pre-\/mature\ closing\ of\ the\ loop}}
-\DoxyCodeLine{01322\ \ \ \ \ \ \ \ \ \ \ \ \ hull.push\_back(new\_point);}
-\DoxyCodeLine{01323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ neighbors)\{}
-\DoxyCodeLine{01324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ !=\ new\_index\ \&\&\ !\mbox{\hyperlink{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}{inCurve}}(points[i],hull))\{}
-\DoxyCodeLine{01325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ intersect\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{01327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01328\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01329\ \ \ \ \ \ \ \ \ \ \ \ \ hull.pop\_back();\ \ }
-\DoxyCodeLine{01330\ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01331\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01332\ \ \ \ \ \ \ \ \ \ \ ++trial;}
-\DoxyCodeLine{01333\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01334\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(intersect)\{}
-\DoxyCodeLine{01336\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Intersection\ ..."{}\ <<\ k\ <<\ std::endl;}}
-\DoxyCodeLine{01337\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01338\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::ofstream\ logfile("{}testpoint.csv"{});}}
-\DoxyCodeLine{01339\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ points)\{}}
-\DoxyCodeLine{01340\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
-\DoxyCodeLine{01341\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{01342\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
-\DoxyCodeLine{01343\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01344\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.open("{}testhull.csv"{});}}
-\DoxyCodeLine{01345\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ hull)\{}}
-\DoxyCodeLine{01346\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
-\DoxyCodeLine{01347\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{01348\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile\ <<\ new\_point[0]\ <<"{},"{}<<\ new\_point[1]\ <<\ std::endl;}}
-\DoxyCodeLine{01349\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
-\DoxyCodeLine{01350\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01351\ \ \ \ \ \ \ \ \ \ \ k\ *=\ 2;}
-\DoxyCodeLine{01352\ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01353\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01354\ \ \ \ \ \ \ \ \ \ \ hull.push\_back(new\_point);}
-\DoxyCodeLine{01355\ \ \ \ \ \ \ \ \ \ \ last\_point\ =\ hull\_end;}
-\DoxyCodeLine{01356\ \ \ \ \ \ \ \ \ \ \ hull\_end\ =\ hull.back();}
+\DoxyCodeLine{01307\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ new\ edge\ doesn't\ cross\ earlier\ edge}}
+\DoxyCodeLine{01308\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{long}\ i\ =\ hull.size()\ -\/\ 2\ ;\ i\ >\ 1\ ;\ -\/-\/i)\{}
+\DoxyCodeLine{01309\ \ \ \ \ \ \ \ \ \ \ \ \ intersect\ =\ segments\_cross(hull[i],hull[i-\/1]}
+\DoxyCodeLine{01310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,hull.back(),new\_point);}
+\DoxyCodeLine{01311\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(intersect)\{}
+\DoxyCodeLine{01313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01314\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01315\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01316\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01317\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(new\_index\ ==\ first\_point\_index\ \&\&\ !intersect)\{}
+\DoxyCodeLine{01318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ check\ that\ neighbors\ are\ inside\ hull\ that\ would\ be\ closed}}
+\DoxyCodeLine{01319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ this\ is\ to\ prevent\ pre-\/mature\ closing\ of\ the\ loop}}
+\DoxyCodeLine{01320\ \ \ \ \ \ \ \ \ \ \ \ \ hull.push\_back(new\_point);}
+\DoxyCodeLine{01321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t}\ i\ :\ neighbors)\{}
+\DoxyCodeLine{01322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ !=\ new\_index\ \&\&\ !\mbox{\hyperlink{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}{inCurve}}(points[i],hull))\{}
+\DoxyCodeLine{01323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ intersect\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01326\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01327\ \ \ \ \ \ \ \ \ \ \ \ \ hull.pop\_back();\ \ }
+\DoxyCodeLine{01328\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01329\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01330\ \ \ \ \ \ \ \ \ \ \ ++trial;}
+\DoxyCodeLine{01331\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01332\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01333\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(intersect)\{}
+\DoxyCodeLine{01334\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Intersection\ ..."{}\ <<\ k\ <<\ std::endl;}}
+\DoxyCodeLine{01335\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01336\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::ofstream\ logfile("{}testpoint.csv"{});}}
+\DoxyCodeLine{01337\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ points)\{}}
+\DoxyCodeLine{01338\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
+\DoxyCodeLine{01339\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01340\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
+\DoxyCodeLine{01341\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01342\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.open("{}testhull.csv"{});}}
+\DoxyCodeLine{01343\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ hull)\{}}
+\DoxyCodeLine{01344\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
+\DoxyCodeLine{01345\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01346\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile\ <<\ new\_point[0]\ <<"{},"{}<<\ new\_point[1]\ <<\ std::endl;}}
+\DoxyCodeLine{01347\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
+\DoxyCodeLine{01348\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01349\ \ \ \ \ \ \ \ \ \ \ k\ *=\ 2;}
+\DoxyCodeLine{01350\ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01351\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01352\ \ \ \ \ \ \ \ \ \ \ hull.push\_back(new\_point);}
+\DoxyCodeLine{01353\ \ \ \ \ \ \ \ \ \ \ last\_point\ =\ hull\_end;}
+\DoxyCodeLine{01354\ \ \ \ \ \ \ \ \ \ \ hull\_end\ =\ hull.back();}
+\DoxyCodeLine{01355\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//tree.print();}}
+\DoxyCodeLine{01356\ \ \ \ \ \ \ \ \ \ \ tree.\mbox{\hyperlink{class_tree_simple_vec_a4ebbaa4a5dffb04458d1cf71f241575a}{pop}}(new\_index);}
 \DoxyCodeLine{01357\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//tree.print();}}
-\DoxyCodeLine{01358\ \ \ \ \ \ \ \ \ \ \ tree.\mbox{\hyperlink{class_tree_simple_vec_a4ebbaa4a5dffb04458d1cf71f241575a}{pop}}(new\_index);}
-\DoxyCodeLine{01359\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//tree.print();}}
-\DoxyCodeLine{01360\ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01361\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01362\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \{}}
-\DoxyCodeLine{01363\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ Ptype\ center;}}
-\DoxyCodeLine{01364\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ PixelMap\ map(center.x,\ 512,\ 3.\ /\ 512.);}}
-\DoxyCodeLine{01365\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01366\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ map.drawCurve(hull,1);}}
-\DoxyCodeLine{01367\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ map.drawPoints(points,0,2);}}
-\DoxyCodeLine{01368\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ map.printFITS("{}!concavek\_test"{}+\ std::to\_string(f)\ +"{}.fits"{});}}
-\DoxyCodeLine{01369\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Test\ plot\ :\ concavek\_test"{}\ <<\ f++\ <<\ "{}.fits"{}\ <<\ std::endl;}}
-\DoxyCodeLine{01370\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{01371\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01372\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01373\ \ \ \ \ \ \ remaining\_index\ =\ tree.\mbox{\hyperlink{class_tree_simple_vec_a56b9e9e607df32ada57c3a666d7a6470}{get\_index}}();}
-\DoxyCodeLine{01374\ \ \ \ \ \}}
-\DoxyCodeLine{01375\ \ \ \ \ \textcolor{comment}{//\ test\ if\ all\ remaining\ points\ are\ in\ the\ hull}}
-\DoxyCodeLine{01376\ \ \ \ \ }
-\DoxyCodeLine{01377\ \ \ \ \ }
-\DoxyCodeLine{01378\ \ \ \ \ segmented\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01379\ \ \ \ \ \textcolor{keywordflow}{if}(check)\{}
-\DoxyCodeLine{01380\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ i\ :\ remaining\_index)\{}
-\DoxyCodeLine{01381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}{inCurve}}(points[i],hull))\{}
-\DoxyCodeLine{01382\ \ \ \ \ \ \ \ \ \ \ segmented\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01383\ \ \ \ \ \ \ \ \ \ \ k\ *=\ 2;}
-\DoxyCodeLine{01384\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}point\ outside\ ...\ "{};}}
-\DoxyCodeLine{01385\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::ofstream\ logfile("{}testpoint.csv"{});}}
-\DoxyCodeLine{01386\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ points)\{}}
-\DoxyCodeLine{01387\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
-\DoxyCodeLine{01388\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{01389\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
-\DoxyCodeLine{01390\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01391\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.open("{}testhull.csv"{});}}
-\DoxyCodeLine{01392\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ hull)\{}}
-\DoxyCodeLine{01393\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
-\DoxyCodeLine{01394\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{01395\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
-\DoxyCodeLine{01396\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01397\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01398\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{01399\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01400\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01401\ \ \ \ \ \}}
-\DoxyCodeLine{01402\ \ \ \}}
-\DoxyCodeLine{01403\ \ \ }
-\DoxyCodeLine{01404\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}found\ hull"{}\ <<\ std::endl;}}
-\DoxyCodeLine{01405\ \ \ \textcolor{comment}{//hull.pop\_back();}}
-\DoxyCodeLine{01406\ \ \ }
-\DoxyCodeLine{01407\ \ \ \textcolor{keywordflow}{return}\ hull;}
-\DoxyCodeLine{01408\ \}}
-\DoxyCodeLine{01409\ }
-\DoxyCodeLine{01410\ }
-\DoxyCodeLine{01411\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
-\DoxyCodeLine{01412\ \textcolor{keywordtype}{void}\ testconcaveK()\{}
-\DoxyCodeLine{01413\ \ \ std::vector<Ptype>\ points(200);}
-\DoxyCodeLine{01414\ \ \ RandomNumbers\_NR\ ran(2312);}
-\DoxyCodeLine{01415\ \ \ }
-\DoxyCodeLine{01416\ \ \ \textcolor{keywordflow}{for}(Ptype\ \&p\ :\ points)\{}
-\DoxyCodeLine{01417\ \ \ \ \ p[0]\ =\ (1-\/ran());}
-\DoxyCodeLine{01418\ \ \ \ \ p[1]\ =\ (1-\/2*ran());}
-\DoxyCodeLine{01419\ \ \ \}}
-\DoxyCodeLine{01420\ \ \ }
-\DoxyCodeLine{01421\ \ \ \textcolor{keywordtype}{double}\ x=-\/1;}
-\DoxyCodeLine{01422\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ points.size()/4\ ;\ ++i)\{}
-\DoxyCodeLine{01423\ \ \ \ \ points[i][0]\ =\ 1;}
-\DoxyCodeLine{01424\ \ \ \ \ points[i][1]\ =\ x;}
-\DoxyCodeLine{01425\ \ \ \ \ x\ +=\ 1/25.;}
-\DoxyCodeLine{01426\ \ \ \}}
-\DoxyCodeLine{01427\ \ \ x=-\/1;}
-\DoxyCodeLine{01428\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=points.size()/4\ ;\ i<\ 2*points.size()/4\ ;\ ++i)\{}
-\DoxyCodeLine{01429\ \ \ \ \ points[i][0]\ =\ -\/1;}
-\DoxyCodeLine{01430\ \ \ \ \ points[i][1]\ =\ x;}
-\DoxyCodeLine{01431\ \ \ \ \ x\ +=\ 1/25.;}
-\DoxyCodeLine{01432\ \ \ \}}
-\DoxyCodeLine{01433\ \ \ x=-\/1;}
-\DoxyCodeLine{01434\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=2*points.size()/4\ ;\ i<\ 3*points.size()/4\ ;\ ++i)\{}
-\DoxyCodeLine{01435\ \ \ \ \ points[i][0]\ =\ x;}
-\DoxyCodeLine{01436\ \ \ \ \ points[i][1]\ =\ 1;}
-\DoxyCodeLine{01437\ \ \ \ \ x\ +=\ 1/25.;}
-\DoxyCodeLine{01438\ \ \ \}}
-\DoxyCodeLine{01439\ \ \ x=-\/1;}
-\DoxyCodeLine{01440\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=3*points.size()/4\ ;\ i<\ points.size()\ ;\ ++i)\{}
-\DoxyCodeLine{01441\ \ \ \ \ points[i][0]\ =\ x;}
-\DoxyCodeLine{01442\ \ \ \ \ points[i][1]\ =\ -\/1;}
-\DoxyCodeLine{01443\ \ \ \ \ x\ +=\ 1/25.;}
-\DoxyCodeLine{01444\ \ \ \}}
-\DoxyCodeLine{01445\ \ \ }
-\DoxyCodeLine{01446\ \ \ \textcolor{comment}{//\ \ for(int\ i=0\ ;\ i<\ points.size()/2\ ;\ ++i)\{}}
-\DoxyCodeLine{01447\ \ \ \textcolor{comment}{//\ \ \ \ points[i][0]\ =\ (1-\/ran())\ -\/\ 2;}}
-\DoxyCodeLine{01448\ \ \ \textcolor{comment}{//\ \ \ \ points[i][1]\ =\ (1-\/2*ran());}}
-\DoxyCodeLine{01449\ \ \ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{01450\ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01451\ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01452\ \ \ \textcolor{comment}{//\ \ points[0][0]\ =\ 0;\ points[0][1]\ =\ -\/1;}}
-\DoxyCodeLine{01453\ \ \ \textcolor{comment}{//\ \ points[1][0]\ =\ -\/1;\ points[1][1]\ =\ 0;}}
-\DoxyCodeLine{01454\ \ \ \textcolor{comment}{//\ \ points[2][0]\ =\ 0;\ points[2][1]\ =\ 1;}}
-\DoxyCodeLine{01455\ \ \ \textcolor{comment}{//\ \ points[3][0]\ =\ 1;\ points[3][1]\ =\ 0;}}
-\DoxyCodeLine{01456\ \ \ \textcolor{comment}{//}}
-\DoxyCodeLine{01457\ \ \ \textcolor{comment}{//\ \ points[4][0]\ =\ -\/1;\ points[4][1]\ =\ 1;}}
-\DoxyCodeLine{01458\ \ \ \textcolor{comment}{//\ \ points[5][0]\ =\ 1;\ points[5][1]\ =\ 1;}}
-\DoxyCodeLine{01459\ \ \ }
-\DoxyCodeLine{01460\ \ \ \textcolor{keywordtype}{int}\ k\ =\ 5;}
-\DoxyCodeLine{01461\ \ \ std::vector<Ptype>\ hull\ =\ \mbox{\hyperlink{namespace_utilities_abe345295eb171c0665350842426124bd}{concaveK}}(points,k);}
-\DoxyCodeLine{01462\ \ \ Ptype\ center;}
-\DoxyCodeLine{01463\ \ \ \mbox{\hyperlink{class_pixel_map}{PixelMap<float>}}\ map(center.x,\ 512,\ 3.\ /\ 512.);}
-\DoxyCodeLine{01464\ \ \ }
-\DoxyCodeLine{01465\ \ \ map.drawCurve(hull,1);}
-\DoxyCodeLine{01466\ \ \ map.drawPoints(points,0,2);}
-\DoxyCodeLine{01467\ \ \ map.printFITS(\textcolor{stringliteral}{"{}!concavek\_test.fits"{}});}
-\DoxyCodeLine{01468\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Test\ plot\ :\ concavek\_test.fits"{}}\ <<\ std::endl;}
-\DoxyCodeLine{01469\ \}}
-\DoxyCodeLine{01470\ }
-\DoxyCodeLine{01472\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{namespace_utilities_af55b9c3d5f503bd2c5544cdec2d5aa42}{line\_intersection}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&v1,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&v2,}
-\DoxyCodeLine{01473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&w1,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&w2);}
-\DoxyCodeLine{01474\ }
-\DoxyCodeLine{01475\ }
-\DoxyCodeLine{01477\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_afc0243f1746707bddd91dd1295795f9e}{circleIntersetsCurve}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x,\textcolor{keywordtype}{double}\ r,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v);}
-\DoxyCodeLine{01478\ }
-\DoxyCodeLine{01481\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_aed8667e8dfb7a5c44ae73262f63dd2ba}{circleOverlapsCurve}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&x,\textcolor{keywordtype}{double}\ r,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v);}
-\DoxyCodeLine{01482\ }
-\DoxyCodeLine{01491\ std::vector<Point\_2d>\ \mbox{\hyperlink{namespace_utilities_a6b3b3327085b03c3dcbb1afadd59fcd4}{envelope}}(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v}
-\DoxyCodeLine{01492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&w);}
-\DoxyCodeLine{01493\ }
-\DoxyCodeLine{01499\ std::vector<Point\_2d>\ \mbox{\hyperlink{namespace_utilities_a8baf3c89ecca31f0771e2d781a856f20}{envelope2}}(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v}
-\DoxyCodeLine{01500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&w);}
-\DoxyCodeLine{01501\ }
-\DoxyCodeLine{01509\ std::vector<std::vector<Point\_2d>\ >\ \mbox{\hyperlink{namespace_utilities_a8de229537fd082d389db103bd918160a}{thicken\_poly}}(}
-\DoxyCodeLine{01510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v}
-\DoxyCodeLine{01511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ R);}
-\DoxyCodeLine{01512\ }
-\DoxyCodeLine{01513\ \}}
-\DoxyCodeLine{01514\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ concave\_hull\_h\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01358\ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01359\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01360\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{01361\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ Ptype\ center;}}
+\DoxyCodeLine{01362\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ PixelMap\ map(center.x,\ 512,\ 3.\ /\ 512.);}}
+\DoxyCodeLine{01363\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01364\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ map.drawCurve(hull,1);}}
+\DoxyCodeLine{01365\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ map.drawPoints(points,0,2);}}
+\DoxyCodeLine{01366\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ map.printFITS("{}!concavek\_test"{}+\ std::to\_string(f)\ +"{}.fits"{});}}
+\DoxyCodeLine{01367\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Test\ plot\ :\ concavek\_test"{}\ <<\ f++\ <<\ "{}.fits"{}\ <<\ std::endl;}}
+\DoxyCodeLine{01368\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01369\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01370\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01371\ \ \ \ \ \ \ remaining\_index\ =\ tree.\mbox{\hyperlink{class_tree_simple_vec_a56b9e9e607df32ada57c3a666d7a6470}{get\_index}}();}
+\DoxyCodeLine{01372\ \ \ \ \ \}}
+\DoxyCodeLine{01373\ \ \ \ \ \textcolor{comment}{//\ test\ if\ all\ remaining\ points\ are\ in\ the\ hull}}
+\DoxyCodeLine{01374\ \ \ \ \ }
+\DoxyCodeLine{01375\ \ \ \ \ }
+\DoxyCodeLine{01376\ \ \ \ \ segmented\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01377\ \ \ \ \ \textcolor{keywordflow}{if}(check)\{}
+\DoxyCodeLine{01378\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ i\ :\ remaining\_index)\{}
+\DoxyCodeLine{01379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{namespace_utilities_afc7611a51add4102b0f2109c5d652a20}{inCurve}}(points[i],hull))\{}
+\DoxyCodeLine{01380\ \ \ \ \ \ \ \ \ \ \ segmented\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01381\ \ \ \ \ \ \ \ \ \ \ k\ *=\ 2;}
+\DoxyCodeLine{01382\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}point\ outside\ ...\ "{};}}
+\DoxyCodeLine{01383\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ std::ofstream\ logfile("{}testpoint.csv"{});}}
+\DoxyCodeLine{01384\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ points)\{}}
+\DoxyCodeLine{01385\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
+\DoxyCodeLine{01386\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01387\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
+\DoxyCodeLine{01388\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01389\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.open("{}testhull.csv"{});}}
+\DoxyCodeLine{01390\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ for(auto\ \&p\ :\ hull)\{}}
+\DoxyCodeLine{01391\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ logfile\ <<\ p[0]\ <<"{},"{}<<\ p[1]\ <<\ std::endl;}}
+\DoxyCodeLine{01392\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{01393\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ logfile.close();}}
+\DoxyCodeLine{01394\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01395\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01396\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01397\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01398\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01399\ \ \ \ \ \}}
+\DoxyCodeLine{01400\ \ \ \}}
+\DoxyCodeLine{01401\ \ \ }
+\DoxyCodeLine{01402\ \ \ \textcolor{comment}{//std::cout\ <<\ "{}found\ hull"{}\ <<\ std::endl;}}
+\DoxyCodeLine{01403\ \ \ \textcolor{comment}{//hull.pop\_back();}}
+\DoxyCodeLine{01404\ \ \ }
+\DoxyCodeLine{01405\ \ \ \textcolor{keywordflow}{return}\ hull;}
+\DoxyCodeLine{01406\ \}}
+\DoxyCodeLine{01407\ }
+\DoxyCodeLine{01408\ }
+\DoxyCodeLine{01409\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Ptype>}
+\DoxyCodeLine{01410\ \textcolor{keywordtype}{void}\ testconcaveK()\{}
+\DoxyCodeLine{01411\ \ \ std::vector<Ptype>\ points(200);}
+\DoxyCodeLine{01412\ \ \ RandomNumbers\_NR\ ran(2312);}
+\DoxyCodeLine{01413\ \ \ }
+\DoxyCodeLine{01414\ \ \ \textcolor{keywordflow}{for}(Ptype\ \&p\ :\ points)\{}
+\DoxyCodeLine{01415\ \ \ \ \ p[0]\ =\ (1-\/ran());}
+\DoxyCodeLine{01416\ \ \ \ \ p[1]\ =\ (1-\/2*ran());}
+\DoxyCodeLine{01417\ \ \ \}}
+\DoxyCodeLine{01418\ \ \ }
+\DoxyCodeLine{01419\ \ \ \textcolor{keywordtype}{double}\ x=-\/1;}
+\DoxyCodeLine{01420\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<\ points.size()/4\ ;\ ++i)\{}
+\DoxyCodeLine{01421\ \ \ \ \ points[i][0]\ =\ 1;}
+\DoxyCodeLine{01422\ \ \ \ \ points[i][1]\ =\ x;}
+\DoxyCodeLine{01423\ \ \ \ \ x\ +=\ 1/25.;}
+\DoxyCodeLine{01424\ \ \ \}}
+\DoxyCodeLine{01425\ \ \ x=-\/1;}
+\DoxyCodeLine{01426\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=points.size()/4\ ;\ i<\ 2*points.size()/4\ ;\ ++i)\{}
+\DoxyCodeLine{01427\ \ \ \ \ points[i][0]\ =\ -\/1;}
+\DoxyCodeLine{01428\ \ \ \ \ points[i][1]\ =\ x;}
+\DoxyCodeLine{01429\ \ \ \ \ x\ +=\ 1/25.;}
+\DoxyCodeLine{01430\ \ \ \}}
+\DoxyCodeLine{01431\ \ \ x=-\/1;}
+\DoxyCodeLine{01432\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=2*points.size()/4\ ;\ i<\ 3*points.size()/4\ ;\ ++i)\{}
+\DoxyCodeLine{01433\ \ \ \ \ points[i][0]\ =\ x;}
+\DoxyCodeLine{01434\ \ \ \ \ points[i][1]\ =\ 1;}
+\DoxyCodeLine{01435\ \ \ \ \ x\ +=\ 1/25.;}
+\DoxyCodeLine{01436\ \ \ \}}
+\DoxyCodeLine{01437\ \ \ x=-\/1;}
+\DoxyCodeLine{01438\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=3*points.size()/4\ ;\ i<\ points.size()\ ;\ ++i)\{}
+\DoxyCodeLine{01439\ \ \ \ \ points[i][0]\ =\ x;}
+\DoxyCodeLine{01440\ \ \ \ \ points[i][1]\ =\ -\/1;}
+\DoxyCodeLine{01441\ \ \ \ \ x\ +=\ 1/25.;}
+\DoxyCodeLine{01442\ \ \ \}}
+\DoxyCodeLine{01443\ \ \ }
+\DoxyCodeLine{01444\ \ \ \textcolor{comment}{//\ \ for(int\ i=0\ ;\ i<\ points.size()/2\ ;\ ++i)\{}}
+\DoxyCodeLine{01445\ \ \ \textcolor{comment}{//\ \ \ \ points[i][0]\ =\ (1-\/ran())\ -\/\ 2;}}
+\DoxyCodeLine{01446\ \ \ \textcolor{comment}{//\ \ \ \ points[i][1]\ =\ (1-\/2*ran());}}
+\DoxyCodeLine{01447\ \ \ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{01448\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01449\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01450\ \ \ \textcolor{comment}{//\ \ points[0][0]\ =\ 0;\ points[0][1]\ =\ -\/1;}}
+\DoxyCodeLine{01451\ \ \ \textcolor{comment}{//\ \ points[1][0]\ =\ -\/1;\ points[1][1]\ =\ 0;}}
+\DoxyCodeLine{01452\ \ \ \textcolor{comment}{//\ \ points[2][0]\ =\ 0;\ points[2][1]\ =\ 1;}}
+\DoxyCodeLine{01453\ \ \ \textcolor{comment}{//\ \ points[3][0]\ =\ 1;\ points[3][1]\ =\ 0;}}
+\DoxyCodeLine{01454\ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{01455\ \ \ \textcolor{comment}{//\ \ points[4][0]\ =\ -\/1;\ points[4][1]\ =\ 1;}}
+\DoxyCodeLine{01456\ \ \ \textcolor{comment}{//\ \ points[5][0]\ =\ 1;\ points[5][1]\ =\ 1;}}
+\DoxyCodeLine{01457\ \ \ }
+\DoxyCodeLine{01458\ \ \ \textcolor{keywordtype}{int}\ k\ =\ 5;}
+\DoxyCodeLine{01459\ \ \ std::vector<Ptype>\ hull\ =\ \mbox{\hyperlink{namespace_utilities_abe345295eb171c0665350842426124bd}{concaveK}}(points,k);}
+\DoxyCodeLine{01460\ \ \ Ptype\ center;}
+\DoxyCodeLine{01461\ \ \ PixelMap<float>\ map(center.x,\ 512,\ 3.\ /\ 512.);}
+\DoxyCodeLine{01462\ \ \ }
+\DoxyCodeLine{01463\ \ \ map.drawCurve(hull,1);}
+\DoxyCodeLine{01464\ \ \ map.drawPoints(points,0,2);}
+\DoxyCodeLine{01465\ \ \ map.printFITS(\textcolor{stringliteral}{"{}!concavek\_test.fits"{}});}
+\DoxyCodeLine{01466\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Test\ plot\ :\ concavek\_test.fits"{}}\ <<\ std::endl;}
+\DoxyCodeLine{01467\ \}}
+\DoxyCodeLine{01468\ }
+\DoxyCodeLine{01470\ Point\_2d\ \mbox{\hyperlink{namespace_utilities_af55b9c3d5f503bd2c5544cdec2d5aa42}{line\_intersection}}(\textcolor{keyword}{const}\ Point\_2d\ \&v1,\textcolor{keyword}{const}\ Point\_2d\ \&v2,}
+\DoxyCodeLine{01471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Point\_2d\ \&w1,\textcolor{keyword}{const}\ Point\_2d\ \&w2);}
+\DoxyCodeLine{01472\ }
+\DoxyCodeLine{01473\ }
+\DoxyCodeLine{01475\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_afc0243f1746707bddd91dd1295795f9e}{circleIntersetsCurve}}(\textcolor{keyword}{const}\ Point\_2d\ \&x,\textcolor{keywordtype}{double}\ r,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v);}
+\DoxyCodeLine{01476\ }
+\DoxyCodeLine{01479\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_utilities_aed8667e8dfb7a5c44ae73262f63dd2ba}{circleOverlapsCurve}}(\textcolor{keyword}{const}\ Point\_2d\ \&x,\textcolor{keywordtype}{double}\ r,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v);}
+\DoxyCodeLine{01480\ }
+\DoxyCodeLine{01489\ std::vector<Point\_2d>\ \mbox{\hyperlink{namespace_utilities_a6b3b3327085b03c3dcbb1afadd59fcd4}{envelope}}(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v}
+\DoxyCodeLine{01490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&w);}
+\DoxyCodeLine{01491\ }
+\DoxyCodeLine{01497\ std::vector<Point\_2d>\ \mbox{\hyperlink{namespace_utilities_a8baf3c89ecca31f0771e2d781a856f20}{envelope2}}(\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v}
+\DoxyCodeLine{01498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&w);}
+\DoxyCodeLine{01499\ }
+\DoxyCodeLine{01507\ std::vector<std::vector<Point\_2d>\ >\ \mbox{\hyperlink{namespace_utilities_a8de229537fd082d389db103bd918160a}{thicken\_poly}}(}
+\DoxyCodeLine{01508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v}
+\DoxyCodeLine{01509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ R);}
+\DoxyCodeLine{01510\ }
+\DoxyCodeLine{01511\ \}}
+\DoxyCodeLine{01512\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ concave\_hull\_h\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

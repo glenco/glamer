@@ -14,7 +14,8 @@
 \DoxyCodeLine{00010\ }
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}base\_analens.h"{}}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}\{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{LensHaloUniform}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo_a813618bcd6d1f26dafa49a2e509a37db}{LensHalo}}\{}
 \DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00028\ \ \ \ \mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{LensHaloUniform}}(\textcolor{keywordtype}{double}\ zlens\ \ }
 \DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Sigma\ \ }
@@ -22,7 +23,7 @@
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{class_lens_halo_uniform}{\string~LensHaloUniform}}();}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{\string~LensHaloUniform}}();}
 \DoxyCodeLine{00035\ }
 \DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_lens_halo_uniform_adda5a8f0bcc99dd86cbdf9b1d537cfc8}{getSigma}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ perturb\_modes[0];\};}
 \DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_uniform_a56c08d40619a1d9a32e5b0006aa2e87d}{getShear}}()\textcolor{keyword}{\ const}\{}
@@ -49,7 +50,7 @@
 \DoxyCodeLine{00062\ \ \ \ \ perturb\_modes[2]\ =\ h.perturb\_modes[2];}
 \DoxyCodeLine{00063\ \ \ \}}
 \DoxyCodeLine{00064\ \ \ }
-\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_halo_uniform}{LensHaloUniform}}\ \&h)\{}
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{LensHaloUniform}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens_halo_uniform_a17b52d6372fefb4d7ba8ff0bc34d76d6}{LensHaloUniform}}\ \&h)\{}
 \DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&h)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(h);}
 \DoxyCodeLine{00068\ \ \ \ \ perturb\_modes[0]\ =\ h.perturb\_modes[0];}
@@ -69,10 +70,10 @@
 \DoxyCodeLine{00083\ \ \ \ LensHaloKappaDisk(\textcolor{keywordtype}{double}\ zlens\ \ }
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Sigma\_in\ \ }
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Rmax\ \ \ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ang\_center\ \ }
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ Point\_2d\ ang\_center\ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,COSMOLOGY\ \&cosmo}
 \DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
-\DoxyCodeLine{00089\ \ \ :\mbox{\hyperlink{class_lens_halo}{LensHalo}}(zlens,cosmo),Sigma(Sigma\_in)}
+\DoxyCodeLine{00089\ \ \ :\mbox{\hyperlink{class_lens_halo_a813618bcd6d1f26dafa49a2e509a37db}{LensHalo}}(zlens,cosmo),Sigma(Sigma\_in)}
 \DoxyCodeLine{00090\ \ \ \{}
 \DoxyCodeLine{00091\ \ \ }
 \DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}(Rmax\ <=\ 0)\{}
@@ -90,7 +91,7 @@
 \DoxyCodeLine{00104\ }
 \DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{float}\ getSigma()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Sigma;\};}
 \DoxyCodeLine{00107\ \ \ \ \ }
-\DoxyCodeLine{00108\ \ \ LensHaloKappaDisk(\textcolor{keyword}{const}\ LensHaloKappaDisk\ \&h):\mbox{\hyperlink{class_lens_halo}{LensHalo}}(h)\{}
+\DoxyCodeLine{00108\ \ \ LensHaloKappaDisk(\textcolor{keyword}{const}\ LensHaloKappaDisk\ \&h):\mbox{\hyperlink{class_lens_halo_a813618bcd6d1f26dafa49a2e509a37db}{LensHalo}}(h)\{}
 \DoxyCodeLine{00109\ \ \ \ \ Sigma\ =\ h.Sigma;}
 \DoxyCodeLine{00110\ \ \ \}}
 \DoxyCodeLine{00111\ \ \ }

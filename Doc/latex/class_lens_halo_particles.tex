@@ -423,7 +423,7 @@ static const int {\bfseries Nmod} = 32
 class Lens\+Halo\+Particles$<$ PType $>$}
 A class that represents the lensing by a collection of simulation particles. 
 
-You can create a Lens\+Halo\+Particles$<$$>$ directly from a file, but it is recommended that you use the \doxylink{class_make_particle_lenses}{Make\+Particle\+Lenses} class to create them and then move them to a \doxylink{class_lens}{Lens} object.
+You can create a \doxylink{class_lens_halo_particles}{Lens\+Halo\+Particles$<$$>$} directly from a file, but it is recommended that you use the \doxylink{class_make_particle_lenses}{Make\+Particle\+Lenses} class to create them and then move them to a \doxylink{class_lens}{Lens} object.
 
 Smoothing is done according to the density of particles in 3D. Smoothing sizes are either read in from a file (names simulation\+\_\+filename + "{}."{} + Nsmooth + "{}sizes"{}) or calculated if the file does not exist (in which case the file is created). This can be time and memory consuming when there are a large number of particles.
 
@@ -436,7 +436,7 @@ More input formats will be added in the future.
 \index{LensHaloParticles@{LensHaloParticles}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{LensHaloParticles()}{LensHaloParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a9930f80c98af4265ecd12f72419aa7fa} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\mbox{\hyperlink{class_lens_halo_particles}{\+::\+Lens\+Halo\+Particles}} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{simulation\+\_\+filename}{, }\item[{\mbox{\hyperlink{particle__types_8h_a37e57edf96c5308d47d38beee2b4cb2c}{Sim\+File\+Format}}}]{format}{, }\item[{Pos\+Type}]{redshift}{, }\item[{int}]{Nsmooth}{, }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{theta\+\_\+rotate}{, }\item[{bool}]{recenter}{, }\item[{bool}]{my\+\_\+multimass}{, }\item[{double}]{inv\+\_\+area}{, }\item[{Pos\+Type}]{Min\+PSize}{ = {\ttfamily 0}, }\item[{Pos\+Type}]{rescale\+\_\+mass}{ = {\ttfamily 1.0}, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})}
 
 
@@ -468,7 +468,7 @@ template$<$typename PType $>$ \\
 \index{LensHaloParticles@{LensHaloParticles}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{LensHaloParticles()}{LensHaloParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_abcbba40dce46b265c1873f32820fb71b} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\mbox{\hyperlink{class_lens_halo_particles}{\+::\+Lens\+Halo\+Particles}} (\begin{DoxyParamCaption}\item[{std\+::vector$<$ PType $>$ \&}]{pvector}{, }\item[{float}]{redshift}{, }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{theta\+\_\+rotate}{, }\item[{bool}]{recenter}{, }\item[{double}]{my\+\_\+inv\+\_\+area}{, }\item[{float}]{Min\+PSize}{ = {\ttfamily 0}, }\item[{double}]{max\+\_\+range}{ = {\ttfamily -\/1}, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -494,7 +494,7 @@ template$<$typename PType $>$ \\
 \index{LensHaloParticles@{LensHaloParticles}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{LensHaloParticles()}{LensHaloParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a48d4ed53ba5e81f0af6a1339423fbe66} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\mbox{\hyperlink{class_lens_halo_particles}{\+::\+Lens\+Halo\+Particles}} (\begin{DoxyParamCaption}\item[{PType \texorpdfstring{$\ast$}{*}}]{begin}{, }\item[{size\+\_\+t}]{n}{, }\item[{float}]{redshift}{, }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{theta\+\_\+rotate}{, }\item[{bool}]{recenter}{, }\item[{double}]{my\+\_\+inv\+\_\+area}{, }\item[{float}]{Min\+PSize}{ = {\ttfamily 0}, }\item[{double}]{max\+\_\+range}{ = {\ttfamily -\/1}, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -524,7 +524,7 @@ this constructor does not take possession of the particles
 \index{LensHaloParticles@{LensHaloParticles}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{LensHaloParticles()}{LensHaloParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a287284a34695af4542c2dad6bf610baf} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\mbox{\hyperlink{class_lens_halo_particles}{\+::\+Lens\+Halo\+Particles}} (\begin{DoxyParamCaption}\item[{float}]{redshift}{, }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
 
@@ -538,7 +538,7 @@ template$<$typename PType $>$ \\
 \index{LensHaloParticles@{LensHaloParticles}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{LensHaloParticles()}{LensHaloParticles()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a36d9e0624adb91026d7ac1c648800f8c} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\mbox{\hyperlink{class_lens_halo_particles}{\+::\+Lens\+Halo\+Particles}} (\begin{DoxyParamCaption}\item[{PType \texorpdfstring{$\ast$}{*}}]{pdata}{, }\item[{size\+\_\+t}]{Nparticles}{, }\item[{float}]{redshift}{, }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{theta\+\_\+rotate}{, }\item[{bool}]{recenter}{, }\item[{double}]{my\+\_\+inv\+\_\+area}{, }\item[{bool}]{verbose}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
 
 
@@ -563,7 +563,7 @@ template$<$typename PType $>$ \\
 \index{force\_halo@{force\_halo}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{force\_halo()}{force\_halo()}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a9b240b0b6e022039c971dde8864ce6fd} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 void \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\+::force\+\_\+halo (\begin{DoxyParamCaption}\item[{double \texorpdfstring{$\ast$}{*}}]{alpha}{, }\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{kappa}{, }\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{gamma}{, }\item[{Kappa\+Type \texorpdfstring{$\ast$}{*}}]{phi}{, }\item[{double const \texorpdfstring{$\ast$}{*}}]{xcm}{, }\item[{bool}]{subtract\+\_\+point}{ = {\ttfamily false}, }\item[{Pos\+Type}]{screening}{ = {\ttfamily 1.0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
@@ -574,7 +574,7 @@ Reimplemented from \mbox{\hyperlink{class_lens_halo_a460de105e52520a328d5912455c
 \index{makeSIE@{makeSIE}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{makeSIE()}{makeSIE()}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a6f74ecb8b18030fe0f01136192d9e4bb} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 void \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\+::make\+SIE (\begin{DoxyParamCaption}\item[{std\+::string}]{new\+\_\+filename}{, }\item[{Pos\+Type}]{redshift}{, }\item[{double}]{particle\+\_\+mass}{, }\item[{double}]{total\+\_\+mass}{, }\item[{double}]{sigma}{, }\item[{double}]{q}{, }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
@@ -600,7 +600,7 @@ This is useful for calculating the level of shot noise and finite source size. T
 \index{readPositionFileASCII@{readPositionFileASCII}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{readPositionFileASCII()}{readPositionFileASCII()}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a4fbe0f1a990d0e8c070e4f79b5c831b8} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 void \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\+::read\+Position\+File\+ASCII (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{}\end{DoxyParamCaption})}
 
 
@@ -613,7 +613,7 @@ Coordinates of particles are in physical Mpc units. \Hypertarget{class_lens_halo
 \index{rotate@{rotate}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{rotate()}{rotate()}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a6d2a87ae29ff2a1840ffced17599d8a9} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 void \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\+::rotate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{theta}{}\end{DoxyParamCaption})}
 
 
@@ -624,7 +624,7 @@ rotate simulation \Hypertarget{class_lens_halo_particles_a96e7e332fc3494f003293e
 \index{set\_up@{set\_up}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{set\_up()}{set\_up()}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a96e7e332fc3494f003293e608ebc5bb6} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 void \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\+::set\+\_\+up (\begin{DoxyParamCaption}\item[{float}]{redshift}{, }\item[{const \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{\mbox{\hyperlink{struct_point__2d}{Point\+\_\+2d}}}]{theta\+\_\+rotate}{, }\item[{double}]{max\+\_\+range}{, }\item[{bool}]{recenter}{, }\item[{bool}]{verbose}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
@@ -642,7 +642,7 @@ void \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PTyp
 \index{SIE@{SIE}!LensHaloParticles$<$ PType $>$@{LensHaloParticles$<$ PType $>$}}
 \doxysubsubsection{\texorpdfstring{SIE()}{SIE()}}
 {\footnotesize\ttfamily \label{class_lens_halo_particles_a46def593bc40d817ca3c45d521b700ce} 
-template$<$typename PType $>$ \\
+template$<$typename PType$>$ \\
 \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ \mbox{\hyperlink{struct_particle_type_simple}{Particle\+Type\+Simple}} $>$ \mbox{\hyperlink{class_lens_halo_particles}{Lens\+Halo\+Particles}}$<$ PType $>$\+::\+SIE (\begin{DoxyParamCaption}\item[{Pos\+Type}]{redshift}{, }\item[{double}]{particle\+\_\+mass}{, }\item[{double}]{total\+\_\+mass}{, }\item[{double}]{sigma}{, }\item[{double}]{q}{, }\item[{int}]{Nneighbors}{, }\item[{\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}} \&}]{cosmo}{, }\item[{\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities\+::\+Random\+Numbers\+\_\+\+NR}} \&}]{ran}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 

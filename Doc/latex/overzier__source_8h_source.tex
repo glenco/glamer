@@ -19,15 +19,15 @@
 \DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PI\ 3.141592653589793238462643383279502884}}
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_overzier}{SourceOverzier}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source}{Source}}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_aca1ca0b2c7b26cc4fa287ce6ed51cfd8}{Source}}}
 \DoxyCodeLine{00023\ \{}
 \DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00025\ \ \textcolor{comment}{//SourceOverzier();}}
 \DoxyCodeLine{00026\ \ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}(PosType\ mag,PosType\ mag\_bulge,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zero\_point,PosType\ Reff,PosType\ Rdisk,PosType\ PA,PosType\ inclination,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_id,PosType\ my\_z,\textcolor{keyword}{const}\ PosType\ *theta);}
 \DoxyCodeLine{00027\ \ \ }
-\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier}{SourceOverzier}}\ \&s);}
-\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{class_source_overzier}{SourceOverzier}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier}{SourceOverzier}}\ \&s);}
-\DoxyCodeLine{00030\ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_source_overzier}{\string~SourceOverzier}}();}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}\ \&s);}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}\ \&s);}
+\DoxyCodeLine{00030\ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{\string~SourceOverzier}}();}
 \DoxyCodeLine{00031\ \ }
 \DoxyCodeLine{00032\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_a76c047a69a8d2b0ea028d7aa8f1e2fe7}{setInternals}}(PosType\ mag,PosType\ mag\_bulge,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,PosType\ Reff,PosType\ Rdisk,PosType\ PA,PosType\ inclination,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_id,PosType\ my\_z,\textcolor{keyword}{const}\ PosType\ *my\_theta);}
 \DoxyCodeLine{00033\ \ \ \textcolor{keyword}{virtual}\ PosType\ \mbox{\hyperlink{class_source_overzier_ad3ecb886fab054d37eea81979b5d02a2}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *x)\ \textcolor{keyword}{const};}
@@ -76,13 +76,13 @@
 \DoxyCodeLine{00096\ }
 \DoxyCodeLine{00097\ \textcolor{keyword}{protected}:}
 \DoxyCodeLine{00098\ \ \ }
-\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{class_source_sersic}{SourceSersic}}\ spheroid;}
+\DoxyCodeLine{00099\ \ \ SourceSersic\ spheroid;}
 \DoxyCodeLine{00100\ \ \ \textcolor{keyword}{static}\ std::map<Band,PosType>\ zeropoints;}
 \DoxyCodeLine{00101\ \ \ }
 \DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{float}\ sedtype\ =\ -\/1;}
 \DoxyCodeLine{00103\ \ \ \textcolor{comment}{//\ renormalize\ the\ disk\ and\ bulge\ to\ agree\ with\ current\ mag\ and\ mag\_bulge}}
 \DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{void}\ renormalize\_current();}
-\DoxyCodeLine{00105\ \ \textcolor{keywordtype}{void}\ assignParams(\mbox{\hyperlink{class_input_params}{InputParams}}\&\ params);}
+\DoxyCodeLine{00105\ \ \textcolor{keywordtype}{void}\ assignParams(InputParams\&\ params);}
 \DoxyCodeLine{00106\ }
 \DoxyCodeLine{00107\ \ \ \textcolor{keyword}{struct\ }Params\{}
 \DoxyCodeLine{00108\ }
@@ -123,10 +123,11 @@
 \DoxyCodeLine{00146\ \ \textcolor{comment}{//\ optional\ position\ variables}}
 \DoxyCodeLine{00147\ \};}
 \DoxyCodeLine{00148\ }
-\DoxyCodeLine{00154\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_overzier}{SourceOverzier}}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_source_overzier_a7daf93ff04c7fac85410f1f62adf846f}{SourceOverzier}}}
 \DoxyCodeLine{00155\ \{}
 \DoxyCodeLine{00156\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00157\ \ \ \textcolor{comment}{//SourceOverzierPlus();}}
+\DoxyCodeLine{00157\ }
 \DoxyCodeLine{00158\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}(}
 \DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PosType\ my\_mag\ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_mag\_bulge\ \ \ }
@@ -144,86 +145,91 @@
 \DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
 \DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{00174\ \ \ }
-\DoxyCodeLine{00175\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}(}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PosType\ my\_mag\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_mag\_bulge\ \ }
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ mag\_zero\_point\ \ \ \ \ \ \ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_Reff\ \ \ \ \ \ \ }
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_Rdisk\ \ \ \ \ \ }
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_PA\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ inclination\ \ \ }
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_id}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_z\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ PosType\ *theta\ \ \ }
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
-\DoxyCodeLine{00188\ );}
-\DoxyCodeLine{00189\ \ }
-\DoxyCodeLine{00190\ }
-\DoxyCodeLine{00191\ \ \ \mbox{\hyperlink{class_source_overzier_plus}{\string~SourceOverzierPlus}}();}
-\DoxyCodeLine{00192\ \ \ }
-\DoxyCodeLine{00193\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ \&p);}
-\DoxyCodeLine{00194\ \ \ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ \&p);}
+\DoxyCodeLine{00176\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}(}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PosType\ my\_mag\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_mag\_bulge\ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ mag\_zero\_point\ \ \ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_Reff\ \ \ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_Rdisk\ \ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_PA\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ inclination\ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_id}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_z\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ PosType\ *theta\ \ \ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_sersic\_index\_max}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ my\_sersic\_index\_min}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran}
+\DoxyCodeLine{00191\ );}
+\DoxyCodeLine{00192\ \ }
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{\string~SourceOverzierPlus}}();}
 \DoxyCodeLine{00195\ \ \ }
-\DoxyCodeLine{00196\ \ \ \textcolor{comment}{//***\ meed\ to\ be\ able\ to\ change\ band}}
-\DoxyCodeLine{00197\ \ \ \textcolor{comment}{//***\ put\ modes\ and\ phases\ into\ surface\ brightness}}
-\DoxyCodeLine{00198\ \ \ \textcolor{comment}{//***\ possible\ put\ gaussian\ texture\ on\ disk}}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \ \ PosType\ \mbox{\hyperlink{class_source_overzier_plus_af3f11f4fcfd496db297b80509584696c}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00201\ }
-\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_ad61fb626b05bbd2be9a6096e2ca54091}{setMag}}(PosType\ my\_mag,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zeropoint)\{}
-\DoxyCodeLine{00204\ \ \ \ \ current.mag\_map[band]\ =\ my\_mag;}
-\DoxyCodeLine{00205\ \ \ \ \ original.mag\_map[band]\ =\ my\_mag;}
-\DoxyCodeLine{00206\ \ \ \ \ zeropoints[band]\ =\ zeropoint;}
-\DoxyCodeLine{00207\ \ \ \}}
-\DoxyCodeLine{00209\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a487215689036b4328ad569fb97125892}{setMagBulge}}(PosType\ my\_mag,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zeropoint)\{}
-\DoxyCodeLine{00210\ \ \ \ \ current.bulge\_mag\_map[band]\ =\ my\_mag;}
-\DoxyCodeLine{00211\ \ \ \ \ original.bulge\_mag\_map[band]\ =\ my\_mag;}
-\DoxyCodeLine{00212\ \ \ \ \ zeropoints[band]\ =\ zeropoint;}
-\DoxyCodeLine{00213\ \ \ \ \ spheroid.setMag(my\_mag,band,zeropoint);}
-\DoxyCodeLine{00214\ \ \ \}}
-\DoxyCodeLine{00215\ \ \ }
-\DoxyCodeLine{00217\ \ \ PosType\ \mbox{\hyperlink{class_source_overzier_plus_a652c992ffee40090801c81f41b2c6761}{getPA}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ PA;\ \}}
-\DoxyCodeLine{00218\ \ \ \textcolor{keywordtype}{void}\ setPA(\textcolor{keywordtype}{double}\ pa);\ \textcolor{comment}{//\ in\ radians}}
-\DoxyCodeLine{00219\ }
-\DoxyCodeLine{00220\ \ \ \textcolor{keywordtype}{int}\ getNarms()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Narms;\}}
-\DoxyCodeLine{00221\ \ \ PosType\ getArmAmplitude()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Ad;\}}
-\DoxyCodeLine{00222\ \ \ PosType\ getArmAlpha()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ arm\_alpha;\}}
-\DoxyCodeLine{00223\ \ \ PosType\ getSphIndex()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ spheroid.getSersicIndex();\}}
-\DoxyCodeLine{00224\ \ \ PosType\ getSphAxisRatio()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ spheroid.getAxesRatio();\}}
-\DoxyCodeLine{00225\ \ \ \textcolor{comment}{//PosType\ getSphPA()\ const\ \{return\ spheroid.getPA();\}}}
-\DoxyCodeLine{00226\ \ \ }
-\DoxyCodeLine{00227\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_ab6164374500d1a48af7403640ca8853c}{changeBand}}(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
-\DoxyCodeLine{00228\ \ \ \textcolor{keyword}{static}\ PosType*\ getx(\mbox{\hyperlink{class_source_overzier_plus}{SourceOverzierPlus}}\ \&sourceo)\{\textcolor{keywordflow}{return}\ sourceo.\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}.x;\}}
-\DoxyCodeLine{00229\ }
-\DoxyCodeLine{00231\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a54381c627c5b60f9384046cfcbaacd8b}{setTheta}}(PosType\ *xx)\{}
-\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ xx[0];}
-\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ xx[1];}
-\DoxyCodeLine{00234\ \ \ \}}
-\DoxyCodeLine{00235\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a54381c627c5b60f9384046cfcbaacd8b}{setTheta}}(PosType\ my\_x,PosType\ my\_y)\{}
-\DoxyCodeLine{00236\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ my\_x;}
-\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ my\_y;}
-\DoxyCodeLine{00238\ \ \ \}}
-\DoxyCodeLine{00239\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a54381c627c5b60f9384046cfcbaacd8b}{setTheta}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{}
-\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}\ =\ p;}
+\DoxyCodeLine{00196\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}\ \&p);}
+\DoxyCodeLine{00197\ \ \ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}\ \&p);}
+\DoxyCodeLine{00198\ \ \ }
+\DoxyCodeLine{00199\ \ \ \textcolor{comment}{//***\ meed\ to\ be\ able\ to\ change\ band}}
+\DoxyCodeLine{00200\ \ \ \textcolor{comment}{//***\ put\ modes\ and\ phases\ into\ surface\ brightness}}
+\DoxyCodeLine{00201\ \ \ \textcolor{comment}{//***\ possible\ put\ gaussian\ texture\ on\ disk}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ PosType\ \mbox{\hyperlink{class_source_overzier_plus_af3f11f4fcfd496db297b80509584696c}{SurfaceBrightness}}(\textcolor{keyword}{const}\ PosType\ *y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00206\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_ad61fb626b05bbd2be9a6096e2ca54091}{setMag}}(PosType\ my\_mag,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zeropoint)\{}
+\DoxyCodeLine{00207\ \ \ \ \ current.mag\_map[band]\ =\ my\_mag;}
+\DoxyCodeLine{00208\ \ \ \ \ original.mag\_map[band]\ =\ my\_mag;}
+\DoxyCodeLine{00209\ \ \ \ \ zeropoints[band]\ =\ zeropoint;}
+\DoxyCodeLine{00210\ \ \ \}}
+\DoxyCodeLine{00212\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a487215689036b4328ad569fb97125892}{setMagBulge}}(PosType\ my\_mag,\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band,\textcolor{keywordtype}{double}\ zeropoint)\{}
+\DoxyCodeLine{00213\ \ \ \ \ current.bulge\_mag\_map[band]\ =\ my\_mag;}
+\DoxyCodeLine{00214\ \ \ \ \ original.bulge\_mag\_map[band]\ =\ my\_mag;}
+\DoxyCodeLine{00215\ \ \ \ \ zeropoints[band]\ =\ zeropoint;}
+\DoxyCodeLine{00216\ \ \ \ \ spheroid.setMag(my\_mag,band,zeropoint);}
+\DoxyCodeLine{00217\ \ \ \}}
+\DoxyCodeLine{00218\ \ \ }
+\DoxyCodeLine{00220\ \ \ PosType\ \mbox{\hyperlink{class_source_overzier_plus_a652c992ffee40090801c81f41b2c6761}{getPA}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ PA;\ \}}
+\DoxyCodeLine{00221\ \ \ \textcolor{keywordtype}{void}\ setPA(\textcolor{keywordtype}{double}\ pa);\ \textcolor{comment}{//\ in\ radians}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \textcolor{keywordtype}{int}\ getNarms()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Narms;\}}
+\DoxyCodeLine{00224\ \ \ PosType\ getArmAmplitude()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Ad;\}}
+\DoxyCodeLine{00225\ \ \ PosType\ getArmAlpha()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ arm\_alpha;\}}
+\DoxyCodeLine{00226\ \ \ PosType\ getSphIndex()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ spheroid.getSersicIndex();\}}
+\DoxyCodeLine{00227\ \ \ PosType\ getSphAxisRatio()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ spheroid.getAxesRatio();\}}
+\DoxyCodeLine{00228\ \ \ \textcolor{comment}{//PosType\ getSphPA()\ const\ \{return\ spheroid.getPA();\}}}
+\DoxyCodeLine{00229\ \ \ }
+\DoxyCodeLine{00230\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_ab6164374500d1a48af7403640ca8853c}{changeBand}}(\mbox{\hyperlink{_input_params_8h_a6bf89b34f34485e455d0236d25b05198}{Band}}\ band);}
+\DoxyCodeLine{00231\ \ \ \textcolor{keyword}{static}\ PosType*\ getx(\mbox{\hyperlink{class_source_overzier_plus_a87a1ca9de24ae18e6c833b35dd0b6006}{SourceOverzierPlus}}\ \&sourceo)\{\textcolor{keywordflow}{return}\ sourceo.\mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}.x;\}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00234\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a54381c627c5b60f9384046cfcbaacd8b}{setTheta}}(PosType\ *xx)\{}
+\DoxyCodeLine{00235\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ xx[0];}
+\DoxyCodeLine{00236\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ xx[1];}
+\DoxyCodeLine{00237\ \ \ \}}
+\DoxyCodeLine{00238\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a54381c627c5b60f9384046cfcbaacd8b}{setTheta}}(PosType\ my\_x,PosType\ my\_y)\{}
+\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[0]\ =\ my\_x;}
+\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}[1]\ =\ my\_y;}
 \DoxyCodeLine{00241\ \ \ \}}
-\DoxyCodeLine{00242\ \ \ \textcolor{keywordtype}{void}\ setBulgeAxisRatio(PosType\ q)\{}
-\DoxyCodeLine{00243\ \ \ \ \ spheroid.setAxesRatio(q);}
+\DoxyCodeLine{00242\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a54381c627c5b60f9384046cfcbaacd8b}{setTheta}}(\textcolor{keyword}{const}\ Point\_2d\ \&p)\{}
+\DoxyCodeLine{00243\ \ \ \ \ \mbox{\hyperlink{class_source_a48ab18beedb3237d02841cc213e4d4df}{source\_x}}\ =\ p;}
 \DoxyCodeLine{00244\ \ \ \}}
-\DoxyCodeLine{00245\ \ \ \textcolor{keywordtype}{void}\ setBulgeSersicIndex(\textcolor{keywordtype}{double}\ index)\{}
-\DoxyCodeLine{00246\ \ \ \ \ spheroid.setSersicIndex(index);}
+\DoxyCodeLine{00245\ \ \ \textcolor{keywordtype}{void}\ setBulgeAxisRatio(PosType\ q)\{}
+\DoxyCodeLine{00246\ \ \ \ \ spheroid.setAxesRatio(q);}
 \DoxyCodeLine{00247\ \ \ \}}
-\DoxyCodeLine{00249\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a3f7e9b83f0cf5816b3d716ce665100d2}{randomize}}(\mbox{\hyperlink{class_utilities_1_1_random_numbers___n_r}{Utilities::RandomNumbers\_NR}}\ \&ran);}
-\DoxyCodeLine{00250\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00251\ \ \ \textcolor{keywordtype}{int}\ Narms;}
-\DoxyCodeLine{00252\ \ \ PosType\ Ad,mctalpha,arm\_alpha;}
-\DoxyCodeLine{00253\ \ \ \mbox{\hyperlink{class_source_sersic}{SourceSersic}}\ spheroid;}
-\DoxyCodeLine{00254\ \ \ std::vector<PosType>\ modes;}
-\DoxyCodeLine{00255\ \ \ PosType\ disk\_phase;}
-\DoxyCodeLine{00256\ \ \ PosType\ cosPA,sinPA,cosi,PA;}
-\DoxyCodeLine{00257\ \ \ }
-\DoxyCodeLine{00258\ \ \ SourceOverzier::Params\ original;\ \ \textcolor{comment}{//\ original\ parameters}}
-\DoxyCodeLine{00259\ \};}
-\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GALAXIES\_OVERZIER\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00248\ \ \ \textcolor{keywordtype}{void}\ setBulgeSersicIndex(\textcolor{keywordtype}{double}\ index)\{}
+\DoxyCodeLine{00249\ \ \ \ \ spheroid.setSersicIndex(index);}
+\DoxyCodeLine{00250\ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_source_overzier_plus_a3f7e9b83f0cf5816b3d716ce665100d2}{randomize}}(Utilities::RandomNumbers\_NR\ \&ran);}
+\DoxyCodeLine{00253\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00254\ \ \ \textcolor{keywordtype}{int}\ Narms;}
+\DoxyCodeLine{00255\ \ \ PosType\ Ad,mctalpha,arm\_alpha;}
+\DoxyCodeLine{00256\ \ \ SourceSersic\ spheroid;}
+\DoxyCodeLine{00257\ \ \ std::vector<PosType>\ modes;}
+\DoxyCodeLine{00258\ \ \ PosType\ disk\_phase;}
+\DoxyCodeLine{00259\ \ \ PosType\ cosPA,sinPA,cosi,PA;}
+\DoxyCodeLine{00260\ \ \ }
+\DoxyCodeLine{00261\ \ \ SourceOverzier::Params\ original;\ \ \textcolor{comment}{//\ original\ parameters}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ PosType\ sersic\_index\_max;}
+\DoxyCodeLine{00264\ \ \ PosType\ sersic\_index\_min;}
+\DoxyCodeLine{00265\ \};}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ GALAXIES\_OVERZIER\_H\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

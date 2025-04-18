@@ -37,11 +37,11 @@ bool \mbox{\hyperlink{class_input_params_ad2feaa3320f932f24dc540e2a50119eb}{get}
 \begin{DoxyCompactList}\small\item\em Assigns to "{}value"{} the value of the parameter called "{}label"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not "{}match"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_input_params_ada9f2c7b45ede7ad82e2b92bba8b7d8c}{get}} (std\+::string label, \mbox{\hyperlink{_input_params_8h_abeeb8c8413457c56ac46767a52fc2618}{Ellip\+Method}} \&value) const
 \begin{DoxyCompactList}\small\item\em Assigns to "{}value"{} the value of the parameter called "{}label"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not "{}match"{} the type of value false will also be returned and a warning printed to stdout. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename Number $>$ }\\bool \mbox{\hyperlink{class_input_params_aed3c1e721d11361f34a646c13ef696da}{get}} (std\+::string label, Number \&value) const
+{\footnotesize template$<$typename Number$>$ }\\bool \mbox{\hyperlink{class_input_params_aed3c1e721d11361f34a646c13ef696da}{get}} (std\+::string label, Number \&value) const
 \begin{DoxyCompactList}\small\item\em Assigns to "{}value"{} the value of the parameter called "{}label"{}. If this parameter label does not appear in the parameter file false is returned and the value is set to the default value of the numerical type. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_input_params_a96b0e61d991d69becd7cdaf8ab3b58b7}{get}} (std\+::string label, const T \&def=T()) const
+{\footnotesize template$<$typename T$>$ }\\T \mbox{\hyperlink{class_input_params_a96b0e61d991d69becd7cdaf8ab3b58b7}{get}} (std\+::string label, const T \&def=T()) const
 \item 
-{\footnotesize template$<$typename T $>$ }\\T \mbox{\hyperlink{class_input_params_aee63b091ac4a836112d6c215236d9ded}{require}} (std\+::string label) const
+{\footnotesize template$<$typename T$>$ }\\T \mbox{\hyperlink{class_input_params_aee63b091ac4a836112d6c215236d9ded}{require}} (std\+::string label) const
 \item 
 \Hypertarget{class_input_params_aa0cc0292e129427337329b50920f25a2}\label{class_input_params_aa0cc0292e129427337329b50920f25a2} 
 bool {\bfseries exist} (std\+::string label) const
@@ -66,7 +66,7 @@ std\+::string {\bfseries filename} () const
 \begin{DoxyCompactList}\small\item\em Return name of the parameter file. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}{put}} (std\+::string label, std\+::string value, std\+::string comment=std\+::string())
 \item 
-{\footnotesize template$<$typename Number $>$ }\\void \mbox{\hyperlink{class_input_params_a93306d790e5337bd576d12ac1d55ba01}{put}} (std\+::string label, Number value, std\+::string comment=std\+::string())
+{\footnotesize template$<$typename Number$>$ }\\void \mbox{\hyperlink{class_input_params_a93306d790e5337bd576d12ac1d55ba01}{put}} (std\+::string label, Number value, std\+::string comment=std\+::string())
 \item 
 void \mbox{\hyperlink{class_input_params_ae5679ef61b65b9ab211f87a775025ab1}{read\+MOKA}} ()
 \begin{DoxyCompactList}\small\item\em Read input parameters from a MOKA FITS header. This function reads the FITS file given by the MOKA\+\_\+input\+\_\+file parameter and uses the values found in its header to set various input parameters such as z\+\_\+lens, z\+\_\+source, Omega\+\_\+matter, ... \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -146,7 +146,7 @@ Main\+Lens\+Type entries in the parameter file must be 0 through 2 or NFW, Power
 \index{get@{get}!InputParams@{InputParams}}
 \doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
 {\footnotesize\ttfamily \label{class_input_params_a96b0e61d991d69becd7cdaf8ab3b58b7} 
-template$<$typename T $>$ \\
+template$<$typename T$>$ \\
 T Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label}{, }\item[{const T \&}]{def}{ = {\ttfamily T()}}\end{DoxyParamCaption}) const}
 
 Return a parameter value. \Hypertarget{class_input_params_ada9f2c7b45ede7ad82e2b92bba8b7d8c}\index{InputParams@{InputParams}!get@{get}}
@@ -209,11 +209,11 @@ bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label}
 
 Assigns to "{}value"{} the value of the parameter called "{}label"{}. If this parameter label does not appear in the parameter file false is returned. If the parameter in the file does not "{}match"{} the type of value false will also be returned and a warning printed to stdout. 
 
-Mass\+Func\+Type entries in the parameter file must be 0 through 2 or PS (Press \& Schechter), ST (Sheth \& Torman) or Power\+Law (Power-\/law). \Hypertarget{class_input_params_aed3c1e721d11361f34a646c13ef696da}\index{InputParams@{InputParams}!get@{get}}
+\doxylink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{Mass\+Func\+Type} entries in the parameter file must be 0 through 2 or PS (Press \& Schechter), ST (Sheth \& Torman) or Power\+Law (Power-\/law). \Hypertarget{class_input_params_aed3c1e721d11361f34a646c13ef696da}\index{InputParams@{InputParams}!get@{get}}
 \index{get@{get}!InputParams@{InputParams}}
 \doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
 {\footnotesize\ttfamily \label{class_input_params_aed3c1e721d11361f34a646c13ef696da} 
-template$<$typename Number $>$ \\
+template$<$typename Number$>$ \\
 bool Input\+Params\+::get (\begin{DoxyParamCaption}\item[{std\+::string}]{label}{, }\item[{Number \&}]{value}{}\end{DoxyParamCaption}) const}
 
 
@@ -234,7 +234,7 @@ If there is an entry in the parameter file this function will always return it i
 \index{put@{put}!InputParams@{InputParams}}
 \doxysubsubsection{\texorpdfstring{put()}{put()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily \label{class_input_params_a93306d790e5337bd576d12ac1d55ba01} 
-template$<$typename Number $>$ \\
+template$<$typename Number$>$ \\
 void Input\+Params\+::put (\begin{DoxyParamCaption}\item[{std\+::string}]{label}{, }\item[{Number}]{value}{, }\item[{std\+::string}]{comment}{ = {\ttfamily std\+:\+:string()}}\end{DoxyParamCaption})}
 
 Add a new parameter to the parameter list. \Hypertarget{class_input_params_a19ac8f21520d6647da80cb74b5f5148f}\index{InputParams@{InputParams}!put@{put}}
@@ -257,7 +257,7 @@ This method needs ENABLE\+\_\+\+FITS to be defined. \Hypertarget{class_input_par
 \index{require@{require}!InputParams@{InputParams}}
 \doxysubsubsection{\texorpdfstring{require()}{require()}}
 {\footnotesize\ttfamily \label{class_input_params_aee63b091ac4a836112d6c215236d9ded} 
-template$<$typename T $>$ \\
+template$<$typename T$>$ \\
 T Input\+Params\+::require (\begin{DoxyParamCaption}\item[{std\+::string}]{label}{}\end{DoxyParamCaption}) const}
 
 Return a parameter value or throw an error. \Hypertarget{class_input_params_ae4df821522f3ee935379efe3f8ce38a5}\index{InputParams@{InputParams}!sample@{sample}}

@@ -66,8 +66,8 @@ void {\bfseries get\+Dims} ()
 void {\bfseries read\+Map} ()
 \begin{DoxyCompactList}\small\item\em reads in the fits file for the MOKA or mass map and saves it in the structure map \end{DoxyCompactList}\item 
 \Hypertarget{class_lens_halo_mass_map_a459771fced3913bb2094fb62a027f5dd}\label{class_lens_halo_mass_map_a459771fced3913bb2094fb62a027f5dd} 
-{\footnotesize template$<$typename T $>$ }\\void {\bfseries set\+Map} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&inputmap, double convertionfactor, double z)
-\begin{DoxyCompactList}\small\item\em reads in the fits file for the MOKA or mass map and saves it in the structure map \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\void {\bfseries set\+Map} (const \mbox{\hyperlink{class_pixel_map}{Pixel\+Map}}$<$ T $>$ \&inputmap, double convertionfactor, double z)
+\item 
 \Hypertarget{class_lens_halo_mass_map_aa890ed7562990f4794cd5041cf391293}\label{class_lens_halo_mass_map_aa890ed7562990f4794cd5041cf391293} 
 void {\bfseries write\+Image} (std\+::string fn)
 \begin{DoxyCompactList}\small\item\em write the fits file of the new MOKA map from the structure map \end{DoxyCompactList}\item 
@@ -387,7 +387,10 @@ static const int {\bfseries Nmod} = 32
 \doxysubsection{Detailed Description}
 A class that includes the MOKA lens map. 
 
-A class, where the lens is represented by a MOKA cluster in the form of a \doxylink{struct_m_o_k_amap}{MOKAmap} object (see the description of \doxylink{struct_m_o_k_amap}{MOKAmap}). It can either be used with the \doxylink{class_lens}{Lens} model or by itself.
+The class represents a pixelixed mass map as a lens. The mass map can come from the output of a nbody/hydro simulation or from anywhere else. ~\newline
+
+
+An alternative way of using the output of a particle-\/based simulation is to use a \doxylink{class_lens_halo_particles}{Lens\+Halo\+Particles}.
 
 Note\+: To use this class requires setting the ENABLE\+\_\+\+FITS compiler flag and linking the cfits library. 
 
@@ -408,7 +411,7 @@ constructor for making lens halo directly from a mass map
 
 The pixel map should be defined with physical Mpc dimensions. 
 \begin{DoxyParams}{Parameters}
-{\em Mass\+Map} & mass map  \\
+{\em Mass\+Map} & mass map, resolution/range in radians, Pixel\+Map\+Units setting is ignored  \\
 \hline
 {\em massconvertion} & convertion factor from pixel units to solar masses  \\
 \hline
@@ -429,7 +432,7 @@ Lens\+Halo\+Mass\+Map\+::\+Lens\+Halo\+Mass\+Map (\begin{DoxyParamCaption}\item[
 
 
 \begin{DoxyParams}{Parameters}
-{\em Mass\+Map} & mass map  \\
+{\em Mass\+Map} & mass map, resolution/range in radians, Pixel\+Map\+Units setting is ignored  \\
 \hline
 {\em massconvertion} & convertion factor from pixel units to solar masses  \\
 \hline

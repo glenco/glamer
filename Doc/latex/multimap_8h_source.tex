@@ -47,13 +47,13 @@
 \DoxyCodeLine{00043\ \ \ \}}
 \DoxyCodeLine{00044\ \};}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_lens_map}{LensMap}}\{}
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }LensMap\{}
 \DoxyCodeLine{00057\ \ \ }
-\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}():nx(0),ny(0),boxlMpc(0),angular\_pixel\_size(0)\{\};}
+\DoxyCodeLine{00058\ \ \ LensMap():nx(0),ny(0),boxlMpc(0),angular\_pixel\_size(0)\{\};}
 \DoxyCodeLine{00059\ \ \ }
 \DoxyCodeLine{00060\ \ \ \textcolor{comment}{//\ move\ operators}}
-\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}(\mbox{\hyperlink{struct_lens_map}{LensMap}}\ \&\&m);}
-\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}\&\ operator=(\mbox{\hyperlink{struct_lens_map}{LensMap}}\ \&\&m);}
+\DoxyCodeLine{00061\ \ \ LensMap(LensMap\ \&\&m);}
+\DoxyCodeLine{00062\ \ \ LensMap\&\ operator=(LensMap\ \&\&m);}
 \DoxyCodeLine{00063\ \ \ }
 \DoxyCodeLine{00065\ \ std::valarray<double>\ \mbox{\hyperlink{struct_lens_map_a56f291d46a4321ed9402bff4fb7d22f1}{surface\_density}};\ \ \textcolor{comment}{//\ Msun\ /\ Mpc\string^2}}
 \DoxyCodeLine{00066\ \ std::valarray<float>\ alpha1\_bar;\ \ \textcolor{comment}{//\ Msun\ /\ Mpc}}
@@ -78,7 +78,7 @@
 \DoxyCodeLine{00086\ }
 \DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{bool}\ evaluate(\textcolor{keyword}{const}\ PosType\ *x,KappaType\ \&sigma,KappaType\ *gamma,PosType\ *alpha);}
 \DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}(std::string\ fits\_input\_file,\textcolor{keywordtype}{double}\ angDist)\{}
+\DoxyCodeLine{00089\ \ \ LensMap(std::string\ fits\_input\_file,\textcolor{keywordtype}{double}\ angDist)\{}
 \DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{struct_lens_map_a473194bfbf830c18f993cb1704769c15}{read}}(fits\_input\_file,angDist);}
 \DoxyCodeLine{00091\ \ \ \}}
 \DoxyCodeLine{00092\ \ \ }
@@ -95,7 +95,7 @@
 \DoxyCodeLine{00107\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,double\ Dist}}
 \DoxyCodeLine{00108\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}}
 \DoxyCodeLine{00109\ \ \ }
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a0b05178fa65738ec4db3f31eb753eb7a}{read\_sub}}(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&cpfits}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_lens_map_a0b05178fa65738ec4db3f31eb753eb7a}{read\_sub}}(CPFITS\_READ\ \&cpfits}
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<long>\ \&first}
 \DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<long>\ \&last}
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ Dist}
@@ -154,7 +154,7 @@
 \DoxyCodeLine{00167\ \ \ \}}
 \DoxyCodeLine{00168\ \};}
 \DoxyCodeLine{00169\ }
-\DoxyCodeLine{00176\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_multi_map}{LensHaloMultiMap}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}}
+\DoxyCodeLine{00176\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lens_halo_a813618bcd6d1f26dafa49a2e509a37db}{LensHalo}}}
 \DoxyCodeLine{00177\ \{}
 \DoxyCodeLine{00178\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00179\ }
@@ -174,7 +174,7 @@
 \DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ rsmooth2\ =\ 0\ \textcolor{comment}{//\ smoothing\ scale\ on\ potential}}
 \DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{00195\ }
-\DoxyCodeLine{00196\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map}{\string~LensHaloMultiMap}}()\{}
+\DoxyCodeLine{00196\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{\string~LensHaloMultiMap}}()\{}
 \DoxyCodeLine{00197\ \ \ \ \ -\/-\/count;}
 \DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{if}(count\ ==\ 0)\{}
 \DoxyCodeLine{00199\ \ \ \ \ \ \ plans\_set\_up\ =\ \textcolor{keyword}{false};}
@@ -219,7 +219,7 @@
 \DoxyCodeLine{00244\ \ \textcolor{keywordtype}{void}\ writeImage(std::string\ fn);}
 \DoxyCodeLine{00245\ \ \ }
 \DoxyCodeLine{00247\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a62574c4e60b6aea190a3f623815a50b0}{getLowerLeft\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.lowerleft;\ \}}
-\DoxyCodeLine{00249\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_aa75e10a37d94aa14efac48785aa4309f}{getUpperRight\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.\mbox{\hyperlink{struct_lens_map_a9d35d54d06ceb6823d69134e5d485ada}{upperright}};\ \}}
+\DoxyCodeLine{00249\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_aa75e10a37d94aa14efac48785aa4309f}{getUpperRight\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.upperright;\ \}}
 \DoxyCodeLine{00251\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a17decbf5feed2c78edab1162b13ec4b9}{getCenter\_lr}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ long\_range\_map.center;\ \}}
 \DoxyCodeLine{00252\ }
 \DoxyCodeLine{00254\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{class_lens_halo_multi_map_a35620fb0b5da1a49046fedb0503a58f6}{getLowerLeft\_sr}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ short\_range\_maps[i].lowerleft;\ \}}
@@ -245,7 +245,7 @@
 \DoxyCodeLine{00285\ \ \ \textcolor{keywordtype}{double}\ getResolutionMpc()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ resolution\_mpc;\}}
 \DoxyCodeLine{00286\ \ \ \textcolor{keywordtype}{double}\ getResolutionAngular()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ angular\_resolution;\}}
 \DoxyCodeLine{00287\ }
-\DoxyCodeLine{00288\ \ \ \textcolor{keywordtype}{void}\ operator\ =(\mbox{\hyperlink{class_lens_halo_multi_map}{LensHaloMultiMap}}\ \&\&m)\{}
+\DoxyCodeLine{00288\ \ \ \textcolor{keywordtype}{void}\ operator\ =(\mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}\ \&\&m)\{}
 \DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{class_lens_halo_aaa135c7e56a24de4a1dee76604a44141}{LensHalo::operator=}}(std::move(m));}
 \DoxyCodeLine{00290\ \ \ \ \ cosmo\ =\ m.cosmo;}
 \DoxyCodeLine{00291\ \ \ \ \ long\_range\_map\ =\ std::move(m.long\_range\_map);}
@@ -276,8 +276,8 @@
 \DoxyCodeLine{00316\ \ \ \ \ gfactor\ =\ m.gfactor;}
 \DoxyCodeLine{00317\ \ \ \}}
 \DoxyCodeLine{00318\ \ \ }
-\DoxyCodeLine{00319\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}(\mbox{\hyperlink{class_lens_halo_multi_map}{LensHaloMultiMap}}\ \&\&m):}
-\DoxyCodeLine{00320\ \ \ \mbox{\hyperlink{class_lens_halo}{LensHalo}}(std::move(m)),cosmo(m.cosmo),cpfits(std::move(m.cpfits))}
+\DoxyCodeLine{00319\ \ \ \mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}(\mbox{\hyperlink{class_lens_halo_multi_map_a47d977f45c6e79b0ac619bc2bdad0b4f}{LensHaloMultiMap}}\ \&\&m):}
+\DoxyCodeLine{00320\ \ \ \mbox{\hyperlink{class_lens_halo_a813618bcd6d1f26dafa49a2e509a37db}{LensHalo}}(std::move(m)),cosmo(m.cosmo),cpfits(std::move(m.cpfits))}
 \DoxyCodeLine{00321\ \ \ \{}
 \DoxyCodeLine{00322\ \ \ \ \ long\_range\_map\ =\ std::move(m.long\_range\_map);}
 \DoxyCodeLine{00323\ \ \ \ \ short\_range\_maps\ =\ std::move(m.short\_range\_maps);}
@@ -309,15 +309,15 @@
 \DoxyCodeLine{00349\ \ \ \}}
 \DoxyCodeLine{00350\ }
 \DoxyCodeLine{00351\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00352\ \ \ \mbox{\hyperlink{struct_lens_map}{LensMap}}\ long\_range\_map;}
+\DoxyCodeLine{00352\ \ \ LensMap\ long\_range\_map;}
 \DoxyCodeLine{00353\ \ \ std::vector<LensMap>\ short\_range\_maps;}
 \DoxyCodeLine{00354\ }
 \DoxyCodeLine{00355\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00356\ }
 \DoxyCodeLine{00357\ \ \ \textcolor{keywordtype}{bool}\ write\_shorts;}
 \DoxyCodeLine{00358\ \ \ \textcolor{comment}{//bool\ single\_grid;}}
-\DoxyCodeLine{00359\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo;}
-\DoxyCodeLine{00360\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ cpfits;}
+\DoxyCodeLine{00359\ \ \ COSMOLOGY\ \&cosmo;}
+\DoxyCodeLine{00360\ \ \ CPFITS\_READ\ cpfits;}
 \DoxyCodeLine{00361\ \ \ }
 \DoxyCodeLine{00362\ \ \ \textcolor{keywordtype}{double}\ ave\_ang\_sd;}
 \DoxyCodeLine{00363\ \ \ }
@@ -340,7 +340,7 @@
 \DoxyCodeLine{00380\ \ \ \textcolor{keywordtype}{int}\ zerosize;}
 \DoxyCodeLine{00381\ }
 \DoxyCodeLine{00382\ \ \ \textcolor{comment}{//\ setsup\ everything\ for\ the\ given\ short\ range\ map.}}
-\DoxyCodeLine{00383\ \ \ \textcolor{keywordtype}{void}\ setsubmap(\mbox{\hyperlink{struct_lens_map}{LensMap}}\ \&short\_range\_map}
+\DoxyCodeLine{00383\ \ \ \textcolor{keywordtype}{void}\ setsubmap(LensMap\ \&short\_range\_map}
 \DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keyword}{const}\ std::vector<long>\ \&lower\_left}
 \DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//,const\ std::vector<long>\ \&upper\_right}}
 \DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}

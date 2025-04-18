@@ -70,24 +70,48 @@
 \DoxyCodeLine{00074\ \};}
 \DoxyCodeLine{00075\ }
 \DoxyCodeLine{00076\ }
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00104\ }
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00112\ }
-\DoxyCodeLine{00114\ }
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00119\ }
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00127\ }
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00179\ //std::ostream\ \&operator<<(std::ostream\ \&os,\ CausticSummary\ const\ \&caust);}
+\DoxyCodeLine{00085\ \ \ }
+\DoxyCodeLine{00086\ public:}
+\DoxyCodeLine{00087\ \ \ CausticDataStore(std::string\ filename,bool\ verbose\ =\ false);}
+\DoxyCodeLine{00089\ \ \ CausticDataStore(std::vector<ImageFinding::CriticalCurve>\ \&crticurve\_vec);}
+\DoxyCodeLine{00090\ \ \ CausticDataStore(const\ CausticDataStore\ \&input);}
+\DoxyCodeLine{00091\ \ \ \string~CausticDataStore();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ }
+\DoxyCodeLine{00095\ \ \ void\ addcrits(std::vector<ImageFinding::CriticalCurve>\ \&crticurve\_vec);}
+\DoxyCodeLine{00096\ \ \ }
+\DoxyCodeLine{00097\ \ \ double\ getTotalCritArea()\{return\ totalcritarea;\}}
+\DoxyCodeLine{00098\ \ \ double\ getTotalCausticArea()\{return\ totalcausticarea;\}}
+\DoxyCodeLine{00099\ \ \ }
+\DoxyCodeLine{00101\ \ \ void\ printfile(std::string\ filename,std::string\ paramfile,double\ fieldofview,double\ minscale);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00104\ \ \ void\ resize(size\_t\ size)\{\ data.resize(size);\}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ size\_t\ numberOfCaustics()\{return\ data.size();\}}
+\DoxyCodeLine{00107\ \ \ }
+\DoxyCodeLine{00109\ \ \ CausticSummary\ \&\ operator[](size\_t\ index)\{return\ data[index];\}}
+\DoxyCodeLine{00110\ \ \ }
+\DoxyCodeLine{00112\ \ \ CausticSummary\ \&\ CritAreaOrder(size\_t\ n)\{return\ data[crit\_area\_index[n]];\}}
+\DoxyCodeLine{00114\ \ \ CausticSummary\ \&\ CausticAreaOrder(size\_t\ n)\{return\ data[caus\_area\_index[n]];\}}
+\DoxyCodeLine{00116\ \ \ CausticSummary\ \&\ CritRadiusOrder(size\_t\ n)\{return\ data[caus\_area\_index[n]];\}}
+\DoxyCodeLine{00117\ \ \ }
+\DoxyCodeLine{00119\ \ \ size\_t\ getNthIndexCritArea(size\_t\ n)\{return\ crit\_area\_index[n];\}}
+\DoxyCodeLine{00121\ \ \ size\_t\ getNthIndexCaustArea(size\_t\ n)\{return\ caus\_area\_index[n];\}}
+\DoxyCodeLine{00123\ \ \ size\_t\ getNthIndexCritRadius(size\_t\ n)\{return\ crit\_radius\_index[n];\}}
+\DoxyCodeLine{00124\ \ }
+\DoxyCodeLine{00125\ \ \ }
+\DoxyCodeLine{00127\ \ \ //void\ SortByCritSize();}
+\DoxyCodeLine{00129\ \ \ //void\ SortByCritArea();}
+\DoxyCodeLine{00131\ \ \ //void\ SortByCausticArea();}
+\DoxyCodeLine{00132\ \ \ }
+\DoxyCodeLine{00134\ \ \ size\_t\ init\_for\_random(}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ short\ type\ \ \ \ \ \ \ \ \ \ \ \ \ \ ///\ select\ according\ to:\ (1)\ critical\ curve\ area,\ (2)\ caustic\ curve\ area}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ ,double\ limit\ =\ 0.0\ \ \ \ \ ///\ minimum\ accepted\ area}
+\DoxyCodeLine{00137\ \ \ );}
+\DoxyCodeLine{00138\ \ \ */}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{comment}{//std::ostream\ \&operator<<(std::ostream\ \&os,\ CausticSummary\ const\ \&caust);}}
 \DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ \#endif\ /*\ defined(\_\_SLsimLib\_\_causticdata\_\_)\ */}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ defined(\_\_SLsimLib\_\_causticdata\_\_)\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

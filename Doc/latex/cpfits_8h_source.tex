@@ -214,14 +214,14 @@
 \DoxyCodeLine{00228\ \ \ \textcolor{keywordtype}{int}\ bitpix;}
 \DoxyCodeLine{00229\ \};}
 \DoxyCodeLine{00230\ }
-\DoxyCodeLine{00232\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
+\DoxyCodeLine{00232\ \textcolor{keyword}{class\ }CPFITS\_READ\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
 \DoxyCodeLine{00233\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00234\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
 \DoxyCodeLine{00235\ \ \ \textcolor{comment}{//CPFITS\_READ(CPFITS\_READ\ \&);}}
 \DoxyCodeLine{00236\ \ \ \textcolor{comment}{//CPFITS\_READ\ operator=(CPFITS\_READ\ );}}
 \DoxyCodeLine{00237\ \ \ }
 \DoxyCodeLine{00238\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00239\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}(std::string\ filename,std::string\ extension=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{00239\ \ \ CPFITS\_READ(std::string\ filename,std::string\ extension=\textcolor{stringliteral}{"{}"{}}}
 \DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false})\ \{}
 \DoxyCodeLine{00241\ }
 \DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
@@ -242,15 +242,15 @@
 \DoxyCodeLine{00257\ \ \ \ \ \}}
 \DoxyCodeLine{00258\ \ \ \}}
 \DoxyCodeLine{00259\ \ \ }
-\DoxyCodeLine{00260\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{\string~CPFITS\_READ}}()\{}
+\DoxyCodeLine{00260\ \ \ \string~CPFITS\_READ()\{}
 \DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
 \DoxyCodeLine{00262\ \ \ \ \ fits\_close\_file(fptr,\ \&status);}
 \DoxyCodeLine{00263\ \ \ \ \ \textcolor{comment}{//check\_status(status,"{}Problem\ closing\ fits\ file!"{});}}
 \DoxyCodeLine{00264\ \ \ \}}
 \DoxyCodeLine{00265\ \ \ }
-\DoxyCodeLine{00266\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff):CPFITS\_BASE(std::move(ff))\{\};}
+\DoxyCodeLine{00266\ \ \ CPFITS\_READ(CPFITS\_READ\ \&\&ff):CPFITS\_BASE(std::move(ff))\{\};}
 \DoxyCodeLine{00267\ \ \ }
-\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff)\{}
+\DoxyCodeLine{00268\ \ \ \textcolor{keywordtype}{void}\ operator=(CPFITS\_READ\ \&\&ff)\{}
 \DoxyCodeLine{00269\ \ \ \ \ \ CPFITS\_BASE::operator=(std::move(ff));}
 \DoxyCodeLine{00270\ \ \ \}}
 \DoxyCodeLine{00271\ \ \ }
@@ -384,7 +384,7 @@
 \DoxyCodeLine{00408\ \ \ }
 \DoxyCodeLine{00409\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00410\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
-\DoxyCodeLine{00411\ \ \ CPFITS\_WRITE(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&);}
+\DoxyCodeLine{00411\ \ \ CPFITS\_WRITE(CPFITS\_READ\ \&);}
 \DoxyCodeLine{00412\ \ \ CPFITS\_WRITE\ operator=(CPFITS\_WRITE\ );}
 \DoxyCodeLine{00413\ \ \ }
 \DoxyCodeLine{00414\ \textcolor{keyword}{public}:}
@@ -601,7 +601,7 @@
 \DoxyCodeLine{00632\ }
 \DoxyCodeLine{00633\ \};}
 \DoxyCodeLine{00634\ }
-\DoxyCodeLine{00636\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
+\DoxyCodeLine{00636\ \textcolor{keyword}{class\ }CPFITS\_READ\_TABLES\ :\ \textcolor{keyword}{public}\ CPFITS\_BASE\ \{}
 \DoxyCodeLine{00637\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00638\ \ \ \textcolor{comment}{//\ make\ it\ uncopyable}}
 \DoxyCodeLine{00639\ \ \ \textcolor{comment}{//CPFITS\_READ(CPFITS\_READ\ \&);}}
@@ -638,7 +638,7 @@
 \DoxyCodeLine{00670\ \ \ \}}
 \DoxyCodeLine{00671\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00672\ \ \ }
-\DoxyCodeLine{00673\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}(std::string\ filename,\textcolor{keywordtype}{int}\ hdunum=2,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00673\ \ \ CPFITS\_READ\_TABLES(std::string\ filename,\textcolor{keywordtype}{int}\ hdunum=2,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false})\ \{}
 \DoxyCodeLine{00674\ }
 \DoxyCodeLine{00675\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
 \DoxyCodeLine{00676\ \ \ \ \ fits\_open\_table(\&fptr,filename.c\_str(),\ READONLY,\ \&status);}
@@ -672,14 +672,14 @@
 \DoxyCodeLine{00704\ \ \ \ \ \}}
 \DoxyCodeLine{00705\ \ \ \}}
 \DoxyCodeLine{00706\ \ \ }
-\DoxyCodeLine{00707\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{\string~CPFITS\_READ\_TABLES}}()\{}
+\DoxyCodeLine{00707\ \ \ \string~CPFITS\_READ\_TABLES()\{}
 \DoxyCodeLine{00708\ \ \ \ \ \textcolor{keywordtype}{int}\ status\ =\ 0;}
 \DoxyCodeLine{00709\ \ \ \ \ fits\_close\_file(fptr,\ \&status);}
 \DoxyCodeLine{00710\ \ \ \}}
 \DoxyCodeLine{00711\ \ \ }
-\DoxyCodeLine{00712\ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff):CPFITS\_BASE(std::move(ff))\{\};}
+\DoxyCodeLine{00712\ \ \ CPFITS\_READ\_TABLES(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d}{CPFITS\_READ}}\ \&\&ff):CPFITS\_BASE(std::move(ff))\{\};}
 \DoxyCodeLine{00713\ \ \ }
-\DoxyCodeLine{00714\ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ \&\&ff)\{}
+\DoxyCodeLine{00714\ \ \ \textcolor{keywordtype}{void}\ operator=(CPFITS\_READ\_TABLES\ \&\&ff)\{}
 \DoxyCodeLine{00715\ \ \ \ \ \ CPFITS\_BASE::operator=(std::move(ff));}
 \DoxyCodeLine{00716\ \ \ \}}
 \DoxyCodeLine{00717\ \ \ }
@@ -856,7 +856,7 @@
 \DoxyCodeLine{00889\ \ \ \ \ std::vector<std::string>\ all\_column\_names;}
 \DoxyCodeLine{00890\ \ \ \ \ std::vector<std::string>\ used\_column\_names;}
 \DoxyCodeLine{00891\ \ \ \ \ std::string\ filename;}
-\DoxyCodeLine{00892\ \ \ \ \ \mbox{\hyperlink{class_c_p_f_i_t_s___r_e_a_d___t_a_b_l_e_s}{CPFITS\_READ\_TABLES}}\ cpfits;}
+\DoxyCodeLine{00892\ \ \ \ \ CPFITS\_READ\_TABLES\ cpfits;}
 \DoxyCodeLine{00893\ \ \ \ \ std::vector<std::vector<T>\ >\ data;}
 \DoxyCodeLine{00894\ \ \ \ \ \textcolor{keywordtype}{long}\ n0;}
 \DoxyCodeLine{00895\ \ \ \ \ std::vector<int>\ column\_index;}

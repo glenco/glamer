@@ -24,8 +24,9 @@
 \DoxyCodeLine{00025\ \textcolor{comment}{//short\ const\ treeNBdim\ =\ 2;}}
 \DoxyCodeLine{00026\ }
 \DoxyCodeLine{00027\ }
+\DoxyCodeLine{00045\ }
 \DoxyCodeLine{00046\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
-\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles}}\ \{}
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tree_quad_particles_ada4cd659653d35f09750d55c3f3a9741}{TreeQuadParticles}}\ \{}
 \DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{class_tree_quad_particles_ada4cd659653d35f09750d55c3f3a9741}{TreeQuadParticles}}(}
 \DoxyCodeLine{00050\ \ \ \ PType\ *xpt}
@@ -209,11 +210,11 @@
 \DoxyCodeLine{00230\ \ \textcolor{comment}{//QTreeNB<PType>\ *\ rotate\_project(PType\ *xp,IndexType\ Nparticles,IndexType\ *particles}}
 \DoxyCodeLine{00231\ \ \textcolor{comment}{//\ \ ,PosType\ **coord,PosType\ theta,float\ *rsph,float\ *mass}}
 \DoxyCodeLine{00232\ \ \textcolor{comment}{//\ \ ,bool\ MultiRadius,bool\ MultiMass);}}
-\DoxyCodeLine{00233\ \ \ \textcolor{keywordtype}{void}\ cuttoffscale(\mbox{\hyperlink{struct_q_tree_n_b}{QTreeNB<PType>}}\ *\ tree,PosType\ *theta);}
+\DoxyCodeLine{00233\ \ \ \textcolor{keywordtype}{void}\ cuttoffscale(QTreeNB<PType>\ *\ tree,PosType\ *theta);}
 \DoxyCodeLine{00234\ }
-\DoxyCodeLine{00235\ \ \ \textcolor{keywordtype}{void}\ walkTree\_recur(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch,PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi);}
+\DoxyCodeLine{00235\ \ \ \textcolor{keywordtype}{void}\ walkTree\_recur(QBranchNB\ *branch,PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi);}
 \DoxyCodeLine{00236\ }
-\DoxyCodeLine{00237\ \ \ \textcolor{keywordtype}{void}\ walkTree\_iter(\mbox{\hyperlink{class_q_biterator}{QBiterator<PType>}}\ \&treeit,\ PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa}
+\DoxyCodeLine{00237\ \ \ \textcolor{keywordtype}{void}\ walkTree\_iter(QBiterator<PType>\ \&treeit,\ PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa}
 \DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,KappaType\ *gamma,KappaType\ *phi)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00239\ \ \ }
 \DoxyCodeLine{00240\ \ \ PosType\ phiintconst;}
@@ -241,7 +242,7 @@
 \DoxyCodeLine{00264\ ,Nbucket(bucket)}
 \DoxyCodeLine{00265\ ,force\_theta(theta\_force)}
 \DoxyCodeLine{00266\ ,max\_range(maximum\_range)}
-\DoxyCodeLine{00267\ ,periodic\_buffer(my\_periodic\_buffer)}
+\DoxyCodeLine{00267\ ,\mbox{\hyperlink{class_tree_quad_particles_a5f75730cb3056cdd66896ff5d9cb5b63}{periodic\_buffer}}(my\_periodic\_buffer)}
 \DoxyCodeLine{00268\ ,inv\_screening\_scale2(my\_inv\_screening\_scale*my\_inv\_screening\_scale)}
 \DoxyCodeLine{00269\ \{}
 \DoxyCodeLine{00270\ \ \ index.resize(Npoints);}
@@ -270,7 +271,7 @@
 \DoxyCodeLine{00294\ }
 \DoxyCodeLine{00295\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
 \DoxyCodeLine{00296\ \textcolor{comment}{//QTreeNB<PType>\ *\ TreeQuadParticles<PType>::BuildQTreeNB(PType\ *xxp,IndexType\ Nparticles,IndexType\ *particles)\{}}
-\DoxyCodeLine{00297\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>::BuildQTreeNB}}(PType\ *xxp,IndexType\ Nparticles)\{}
+\DoxyCodeLine{00297\ \textcolor{keywordtype}{void}\ TreeQuadParticles<PType>::BuildQTreeNB(PType\ *xxp,IndexType\ Nparticles)\{}
 \DoxyCodeLine{00298\ \ \ IndexType\ i;}
 \DoxyCodeLine{00299\ \ \ \textcolor{keywordtype}{short}\ j;}
 \DoxyCodeLine{00300\ \ \ PosType\ p1[2],p2[2];}
@@ -520,19 +521,19 @@
 \DoxyCodeLine{00546\ \ \ \textcolor{comment}{//delete[]\ x;}}
 \DoxyCodeLine{00547\ \ \ }
 \DoxyCodeLine{00548\ \ \ tree-\/>moveToChild(0);}
-\DoxyCodeLine{00549\ \ \ \_BuildQTreeNB(child0-\/>nparticles,child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00549\ \ \ \mbox{\hyperlink{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}{\_BuildQTreeNB}}(child0-\/>nparticles,child0-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
 \DoxyCodeLine{00550\ \ \ tree-\/>moveUp();}
 \DoxyCodeLine{00551\ \ \ }
 \DoxyCodeLine{00552\ \ \ tree-\/>moveToChild(1);}
-\DoxyCodeLine{00553\ \ \ \_BuildQTreeNB(child1-\/>nparticles,child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00553\ \ \ \mbox{\hyperlink{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}{\_BuildQTreeNB}}(child1-\/>nparticles,child1-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
 \DoxyCodeLine{00554\ \ \ tree-\/>moveUp();}
 \DoxyCodeLine{00555\ \ \ }
 \DoxyCodeLine{00556\ \ \ tree-\/>moveToChild(2);}
-\DoxyCodeLine{00557\ \ \ \_BuildQTreeNB(child2-\/>nparticles,child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00557\ \ \ \mbox{\hyperlink{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}{\_BuildQTreeNB}}(child2-\/>nparticles,child2-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
 \DoxyCodeLine{00558\ \ \ tree-\/>moveUp();}
 \DoxyCodeLine{00559\ \ \ }
 \DoxyCodeLine{00560\ \ \ tree-\/>moveToChild(3);}
-\DoxyCodeLine{00561\ \ \ \_BuildQTreeNB(child3-\/>nparticles,child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
+\DoxyCodeLine{00561\ \ \ \mbox{\hyperlink{class_tree_quad_particles_a357b6f786c0dc103fe747e382d77c28e}{\_BuildQTreeNB}}(child3-\/>nparticles,child3-\/>\mbox{\hyperlink{struct_q_branch_n_b_af28dd7c579a35b6dc44be0e038067468}{particles}});}
 \DoxyCodeLine{00562\ \ \ tree-\/>moveUp();}
 \DoxyCodeLine{00563\ \ \ }
 \DoxyCodeLine{00564\ \ \ \textcolor{keywordflow}{return};}
@@ -540,7 +541,7 @@
 \DoxyCodeLine{00566\ }
 \DoxyCodeLine{00567\ \textcolor{comment}{//\ calculates\ moments\ of\ the\ mass\ and\ the\ cutoff\ scale\ for\ each\ box}}
 \DoxyCodeLine{00568\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
-\DoxyCodeLine{00569\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>::CalcMoments}}()\{}
+\DoxyCodeLine{00569\ \textcolor{keywordtype}{void}\ TreeQuadParticles<PType>::CalcMoments()\{}
 \DoxyCodeLine{00570\ \ \ }
 \DoxyCodeLine{00571\ \ \ \textcolor{comment}{//***\ make\ compatable}}
 \DoxyCodeLine{00572\ \ \ IndexType\ i;}
@@ -618,6 +619,7 @@
 \DoxyCodeLine{00647\ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00648\ \}}
 \DoxyCodeLine{00649\ }
+\DoxyCodeLine{00669\ }
 \DoxyCodeLine{00670\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
 \DoxyCodeLine{00671\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles_a166ba35f1a6b1c59cf5d5a8d120d9448}{TreeQuadParticles<PType>::force2D}}(\textcolor{keyword}{const}\ PosType\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi)\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00672\ \ \ }
@@ -629,7 +631,7 @@
 \DoxyCodeLine{00678\ \ \ assert(tree);}
 \DoxyCodeLine{00679\ \ \ \mbox{\hyperlink{class_q_biterator}{QBiterator<PType>}}\ it(tree);}
 \DoxyCodeLine{00680\ \ \ }
-\DoxyCodeLine{00681\ \ \ \textcolor{keywordflow}{if}(periodic\_buffer)\{}
+\DoxyCodeLine{00681\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_tree_quad_particles_a5f75730cb3056cdd66896ff5d9cb5b63}{periodic\_buffer}})\{}
 \DoxyCodeLine{00682\ \ \ \ \ PosType\ tmp\_ray[2];}
 \DoxyCodeLine{00683\ \ \ \ \ }
 \DoxyCodeLine{00684\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ -\/1;i<2;++i)\{}
@@ -653,9 +655,9 @@
 \DoxyCodeLine{00702\ \}}
 \DoxyCodeLine{00703\ }
 \DoxyCodeLine{00706\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
-\DoxyCodeLine{00707\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{TreeQuadParticles<PType>::neighbors}}(PosType\ ray[],PosType\ rmax,std::list<IndexType>\ \&neighbors)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00707\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{TreeQuadParticles<PType>::neighbors}}(PosType\ ray[],PosType\ rmax,std::list<IndexType>\ \&\mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{neighbors}})\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00708\ \ \ \mbox{\hyperlink{class_q_biterator}{QBiterator<PType>}}\ it(tree);}
-\DoxyCodeLine{00709\ \ \ neighbors.clear();}
+\DoxyCodeLine{00709\ \ \ \mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{neighbors}}.clear();}
 \DoxyCodeLine{00710\ \ \ }
 \DoxyCodeLine{00711\ \ \ PosType\ r2\ =\ rmax*rmax;}
 \DoxyCodeLine{00712\ \ \ \textcolor{keywordtype}{bool}\ decend=\textcolor{keyword}{true};}
@@ -667,12 +669,12 @@
 \DoxyCodeLine{00718\ \ \ \ \ \textcolor{keywordflow}{if}(cut\ ==\ 0)\{\ \ \ \ \ \ \textcolor{comment}{//\ box\ outside\ circle}}
 \DoxyCodeLine{00719\ \ \ \ \ \ \ decend\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00720\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(cut\ ==\ 1)\{\ \ \textcolor{comment}{//\ whole\ box\ inside\ circle}}
-\DoxyCodeLine{00721\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<(*it)-\/>nparticles;++i)\ neighbors.push\_back((*it)-\/>particles[i]);}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<(*it)-\/>nparticles;++i)\ \mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{neighbors}}.push\_back((*it)-\/>particles[i]);}
 \DoxyCodeLine{00722\ \ \ \ \ \ \ decend\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00723\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}((*it)-\/>child0\ ==\ NULL)\{\ \ \textcolor{comment}{//\ at\ leaf}}
 \DoxyCodeLine{00724\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<(*it)-\/>nparticles;++i)\{}
 \DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ (tree-\/>xxp[(*it)-\/>particles[i]][0]\ -\/\ ray[0])*(tree-\/>xxp[(*it)-\/>particles[i]][0]\ -\/\ ray[0])}
-\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \ \ \ +\ (tree-\/>xxp[(*it)-\/>particles[i]][1]\ -\/\ ray[1])*(tree-\/>xxp[(*it)-\/>particles[i]][1]\ -\/\ ray[1])\ <\ r2)\ neighbors.push\_back((*it)-\/>particles[i]);}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \ \ \ +\ (tree-\/>xxp[(*it)-\/>particles[i]][1]\ -\/\ ray[1])*(tree-\/>xxp[(*it)-\/>particles[i]][1]\ -\/\ ray[1])\ <\ r2)\ \mbox{\hyperlink{class_tree_quad_particles_a513cbc01e141c887c1e3109d4fcbe275}{neighbors}}.push\_back((*it)-\/>particles[i]);}
 \DoxyCodeLine{00727\ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00728\ \ \ \ \ \ \ decend\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00729\ \ \ \ \ \}}
@@ -681,7 +683,7 @@
 \DoxyCodeLine{00732\ \}}
 \DoxyCodeLine{00733\ }
 \DoxyCodeLine{00734\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
-\DoxyCodeLine{00735\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>::walkTree\_iter}}(}
+\DoxyCodeLine{00735\ \textcolor{keywordtype}{void}\ TreeQuadParticles<PType>::walkTree\_iter(}
 \DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_q_biterator}{QBiterator<PType>}}\ \&treeit,}
 \DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ PosType\ *ray}
 \DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,PosType\ *alpha}
@@ -854,6 +856,7 @@
 \DoxyCodeLine{00905\ \}}
 \DoxyCodeLine{00906\ }
 \DoxyCodeLine{00907\ }
+\DoxyCodeLine{00931\ }
 \DoxyCodeLine{00932\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
 \DoxyCodeLine{00933\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles_a5e245b201cd43f69b77a294ea21a930e}{TreeQuadParticles<PType>::force2D\_recur}}(\textcolor{keyword}{const}\ PosType\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,KappaType\ *phi)\{}
 \DoxyCodeLine{00934\ \ \ }
@@ -866,7 +869,7 @@
 \DoxyCodeLine{00941\ \ \ }
 \DoxyCodeLine{00942\ \ \ \textcolor{comment}{//walkTree\_recur(tree-\/>top,ray,\&alpha[0],kappa,\&gamma[0],phi);}}
 \DoxyCodeLine{00943\ \ \ }
-\DoxyCodeLine{00944\ \ \ \textcolor{keywordflow}{if}(periodic\_buffer)\{}
+\DoxyCodeLine{00944\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_tree_quad_particles_a5f75730cb3056cdd66896ff5d9cb5b63}{periodic\_buffer}})\{}
 \DoxyCodeLine{00945\ \ \ \ \ PosType\ tmp\_ray[2],tmp\_c[2];}
 \DoxyCodeLine{00946\ \ \ \ \ }
 \DoxyCodeLine{00947\ \ \ \ \ \textcolor{comment}{//\ for\ points\ outside\ of\ primary\ zone\ shift\ to\ primary\ zone}}
@@ -913,7 +916,7 @@
 \DoxyCodeLine{00988\ }
 \DoxyCodeLine{00989\ }
 \DoxyCodeLine{00990\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ PType>}
-\DoxyCodeLine{00991\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tree_quad_particles}{TreeQuadParticles<PType>::walkTree\_recur}}(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch,PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,\ KappaType\ *phi)\{}
+\DoxyCodeLine{00991\ \textcolor{keywordtype}{void}\ TreeQuadParticles<PType>::walkTree\_recur(\mbox{\hyperlink{struct_q_branch_n_b}{QBranchNB}}\ *branch,PosType\ \textcolor{keyword}{const}\ *ray,PosType\ *alpha,KappaType\ *kappa,KappaType\ *gamma,\ KappaType\ *phi)\{}
 \DoxyCodeLine{00992\ \ \ }
 \DoxyCodeLine{00993\ \ \ PosType\ xcm[2],rcm2cell,rcm2,tmp,boxsize2;}
 \DoxyCodeLine{00994\ \ \ IndexType\ i;}

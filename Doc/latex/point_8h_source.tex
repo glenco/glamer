@@ -43,86 +43,87 @@
 \DoxyCodeLine{00041\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
 \DoxyCodeLine{00042\ \textcolor{keywordtype}{int}\ sign(T\ val)\{\textcolor{keywordflow}{return}\ (T(0)\ <\ val)\ -\/\ (val\ <\ T(0));\}}
 \DoxyCodeLine{00043\ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\{}
-\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}()\{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }Point\_2d\{}
+\DoxyCodeLine{00049\ \ \ Point\_2d()\{}
 \DoxyCodeLine{00050\ \ \ \ \ x[0]=x[1]=0.0;}
 \DoxyCodeLine{00051\ \ \ \}}
-\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(\textcolor{keywordtype}{double}\ x1,\textcolor{keywordtype}{double}\ x2)\{}
+\DoxyCodeLine{00052\ \ \ Point\_2d(\textcolor{keywordtype}{double}\ x1,\textcolor{keywordtype}{double}\ x2)\{}
 \DoxyCodeLine{00053\ \ \ \ \ x[0]=x1;}
 \DoxyCodeLine{00054\ \ \ \ \ x[1]=x2;}
 \DoxyCodeLine{00055\ \ \ \}}
 \DoxyCodeLine{00056\ \ \ }
-\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{struct_point__2d}{\string~Point\_2d}}()\{\};}
+\DoxyCodeLine{00057\ \ \ \string~Point\_2d()\{\};}
 \DoxyCodeLine{00058\ \ \ }
-\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{}
+\DoxyCodeLine{00059\ \ \ Point\_2d(\textcolor{keyword}{const}\ Point\_2d\ \&p)\{}
 \DoxyCodeLine{00060\ \ \ \ \ x[0]=p.x[0];}
 \DoxyCodeLine{00061\ \ \ \ \ x[1]=p.x[1];}
 \DoxyCodeLine{00062\ \ \ \}}
-\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{}
+\DoxyCodeLine{00063\ \ \ Point\_2d\ \&\ operator=(\textcolor{keyword}{const}\ Point\_2d\ \&p)\{}
 \DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00065\ \ \ \ \ x[0]=p.x[0];}
 \DoxyCodeLine{00066\ \ \ \ \ x[1]=p.x[1];}
 \DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00068\ \ \ \}}
-\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(\textcolor{keyword}{const}\ PosType\ *p)\{}
+\DoxyCodeLine{00069\ \ \ Point\_2d(\textcolor{keyword}{const}\ PosType\ *p)\{}
 \DoxyCodeLine{00070\ \ \ \ \ x[0]=p[0];}
 \DoxyCodeLine{00071\ \ \ \ \ x[1]=p[1];}
 \DoxyCodeLine{00072\ \ \ \}}
 \DoxyCodeLine{00073\ }
 \DoxyCodeLine{00074\ \ \ }
-\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Point\_2d\ \&p)\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ (x[0]\ ==\ p.x[0])*(x[1]\ ==\ p.x[1]);}
 \DoxyCodeLine{00077\ \ \ \}}
-\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ Point\_2d\ \&p)\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{return}\ (x[0]\ !=\ p.x[0])\ ||\ (x[1]\ !=\ p.x[1]);}
 \DoxyCodeLine{00080\ \ \ \}}
 \DoxyCodeLine{00081\ \ }
-\DoxyCodeLine{00082\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ tmp;}
+\DoxyCodeLine{00082\ \ \ Point\_2d\ \ operator+(\textcolor{keyword}{const}\ Point\_2d\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00083\ \ \ \ \ Point\_2d\ tmp;}
 \DoxyCodeLine{00084\ \ \ \ \ tmp.x[0]\ =\ x[0]\ +\ p.x[0];}
 \DoxyCodeLine{00085\ \ \ \ \ tmp.x[1]\ =\ x[1]\ +\ p.x[1];}
 \DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
 \DoxyCodeLine{00087\ \ \ \}}
-\DoxyCodeLine{00088\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \ operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ tmp;}
+\DoxyCodeLine{00088\ \ \ Point\_2d\ \ operator-\/(\textcolor{keyword}{const}\ Point\_2d\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00089\ \ \ \ \ Point\_2d\ tmp;}
 \DoxyCodeLine{00090\ \ \ \ \ tmp.x[0]\ =\ x[0]\ -\/\ p.x[0];}
 \DoxyCodeLine{00091\ \ \ \ \ tmp.x[1]\ =\ x[1]\ -\/\ p.x[1];}
 \DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
 \DoxyCodeLine{00093\ \ \ \}}
-\DoxyCodeLine{00094\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&\ operator+=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{}
+\DoxyCodeLine{00094\ \ \ Point\_2d\ \&\ operator+=(\textcolor{keyword}{const}\ Point\_2d\ \&p)\{}
 \DoxyCodeLine{00095\ \ \ \ \ x[0]+=p.x[0];}
 \DoxyCodeLine{00096\ \ \ \ \ x[1]+=p.x[1];}
 \DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00098\ \ \ \}}
-\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&\ operator-\/=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{}
+\DoxyCodeLine{00099\ \ \ Point\_2d\ \&\ operator-\/=(\textcolor{keyword}{const}\ Point\_2d\ \&p)\{}
 \DoxyCodeLine{00100\ \ \ \ \ x[0]-\/=p.x[0];}
 \DoxyCodeLine{00101\ \ \ \ \ x[1]-\/=p.x[1];}
 \DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00103\ \ \ \}}
-\DoxyCodeLine{00104\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&\ operator/=(PosType\ value)\{}
+\DoxyCodeLine{00104\ \ \ Point\_2d\ \&\ operator/=(PosType\ value)\{}
 \DoxyCodeLine{00105\ \ \ \ \ x[0]/=value;}
 \DoxyCodeLine{00106\ \ \ \ \ x[1]/=value;}
 \DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00108\ \ \ \}}
-\DoxyCodeLine{00109\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ operator/(PosType\ value)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ tmp;}
+\DoxyCodeLine{00109\ \ \ Point\_2d\ operator/(PosType\ value)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00110\ \ \ \ \ Point\_2d\ tmp;}
 \DoxyCodeLine{00111\ \ \ \ \ tmp[0]\ =\ x[0]/value;}
 \DoxyCodeLine{00112\ \ \ \ \ tmp[1]\ =\ x[1]/value;}
 \DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
 \DoxyCodeLine{00114\ \ \ \}}
-\DoxyCodeLine{00115\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&\ operator*=(PosType\ value)\{}
+\DoxyCodeLine{00115\ \ \ Point\_2d\ \&\ operator*=(PosType\ value)\{}
 \DoxyCodeLine{00116\ \ \ \ \ x[0]*=value;}
 \DoxyCodeLine{00117\ \ \ \ \ x[1]*=value;}
 \DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00119\ \ \ \}}
-\DoxyCodeLine{00120\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ operator*(PosType\ value)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(x[0]*value,x[1]*value);}
+\DoxyCodeLine{00120\ \ \ Point\_2d\ operator*(PosType\ value)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{return}\ Point\_2d(x[0]*value,x[1]*value);}
 \DoxyCodeLine{00122\ \ \ \}}
 \DoxyCodeLine{00123\ }
-\DoxyCodeLine{00125\ \ \ PosType\ \mbox{\hyperlink{struct_point__2d_a9f854b6845bf2954bbf3d91974c35fe1}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00125\ \ \ PosType\ \mbox{\hyperlink{struct_point__2d_a9f854b6845bf2954bbf3d91974c35fe1}{operator*}}(\textcolor{keyword}{const}\ Point\_2d\ \&p)\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ x[0]*p.x[0]\ +\ x[1]*p.x[1];}
 \DoxyCodeLine{00127\ \ \ \}}
-\DoxyCodeLine{00129\ \ \ PosType\ \mbox{\hyperlink{struct_point__2d_af1b1546f52ec3715bb472820584a265b}{operator\string^}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00129\ \ \ PosType\ \mbox{\hyperlink{struct_point__2d_af1b1546f52ec3715bb472820584a265b}{operator\string^}}(\textcolor{keyword}{const}\ Point\_2d\ \&p)\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{return}\ x[0]*p.x[1]\ -\/\ x[1]*p.x[0];}
 \DoxyCodeLine{00131\ \ \ \}}
 \DoxyCodeLine{00132\ \ \ }
@@ -142,8 +143,8 @@
 \DoxyCodeLine{00148\ \ \ \ \ x[1]\ =\ c*x[1]\ +\ s*tmp;}
 \DoxyCodeLine{00149\ \ \ \}}
 \DoxyCodeLine{00150\ \ \ }
-\DoxyCodeLine{00152\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{struct_point__2d_a22e2e2cc975e80e5b2e02112b805948f}{rotated}}(PosType\ theta)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ p;}
+\DoxyCodeLine{00152\ \ \ Point\_2d\ \mbox{\hyperlink{struct_point__2d_a22e2e2cc975e80e5b2e02112b805948f}{rotated}}(PosType\ theta)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00153\ \ \ \ \ Point\_2d\ p;}
 \DoxyCodeLine{00154\ \ \ \ \ PosType\ c\ =\ cos(theta),s\ =\ sin(theta);}
 \DoxyCodeLine{00155\ \ \ \ \ p[0]\ =\ c*x[0]\ -\/\ s*x[1];}
 \DoxyCodeLine{00156\ \ \ \ \ p[1]\ =\ c*x[1]\ +\ s*x[0];}
@@ -157,9 +158,9 @@
 \DoxyCodeLine{00165\ \ \ \ \ x[1]\ /=\ s;}
 \DoxyCodeLine{00166\ \ \ \}}
 \DoxyCodeLine{00167\ }
-\DoxyCodeLine{00169\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{struct_point__2d_abf9970497f1670e5f913d8ac8a4d56bd}{unit}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00169\ \ \ Point\_2d\ \mbox{\hyperlink{struct_point__2d_abf9970497f1670e5f913d8ac8a4d56bd}{unit}}()\textcolor{keyword}{\ const\ }\{}
 \DoxyCodeLine{00170\ \ \ \ \ PosType\ s\ =\ \mbox{\hyperlink{struct_point__2d_a9e9f0a27be9dadb9184a49dd42d66921}{length}}();}
-\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}(x[0]/s,x[1]/s);}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordflow}{return}\ Point\_2d(x[0]/s,x[1]/s);}
 \DoxyCodeLine{00172\ \ \ \}}
 \DoxyCodeLine{00173\ }
 \DoxyCodeLine{00174\ \ \ }
@@ -227,8 +228,8 @@
 \DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{return}\ m;}
 \DoxyCodeLine{00237\ \ \ \}}
 \DoxyCodeLine{00238\ }
-\DoxyCodeLine{00239\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ operator*(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&v)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ v2;}
+\DoxyCodeLine{00239\ \ \ Point\_2d\ operator*(\textcolor{keyword}{const}\ Point\_2d\ \&v)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00240\ \ \ \ \ Point\_2d\ v2;}
 \DoxyCodeLine{00241\ \ \ \ \ v2[0]\ =\ a[0]*v[0]\ +\ a[1]*v[1];}
 \DoxyCodeLine{00242\ \ \ \ \ v2[1]\ =\ a[2]*v[0]\ +\ a[3]*v[1];}
 \DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordflow}{return}\ v2;}
@@ -406,21 +407,22 @@
 \DoxyCodeLine{00416\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_branch}{Branch}};}
 \DoxyCodeLine{00417\ }
 \DoxyCodeLine{00418\ }
-\DoxyCodeLine{00421\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point}{Point}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\{}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}:\ \textcolor{keyword}{public}\ Point\_2d\{}
 \DoxyCodeLine{00422\ \ \ \ \ }
 \DoxyCodeLine{00423\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}();}
-\DoxyCodeLine{00424\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p);}
+\DoxyCodeLine{00424\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}(\textcolor{keyword}{const}\ Point\_2d\ \&p);}
 \DoxyCodeLine{00425\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}(PosType\ x,PosType\ y);}
-\DoxyCodeLine{00426\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *next=\textcolor{keyword}{nullptr};\ \ \ \ \textcolor{comment}{//\ pointer\ to\ next\ point\ in\ linked\ list}}
-\DoxyCodeLine{00427\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *prev=\textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00428\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *image=\textcolor{keyword}{nullptr};\ \ \textcolor{comment}{//\ pointer\ to\ point\ on\ image\ or\ source\ plane}}
+\DoxyCodeLine{00426\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *next=\textcolor{keyword}{nullptr};\ \ \ \ \textcolor{comment}{//\ pointer\ to\ next\ point\ in\ linked\ list}}
+\DoxyCodeLine{00427\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *prev=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00428\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *image=\textcolor{keyword}{nullptr};\ \ \textcolor{comment}{//\ pointer\ to\ point\ on\ image\ or\ source\ plane}}
 \DoxyCodeLine{00429\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{id}=0;}
 \DoxyCodeLine{00430\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ head=0;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ marks\ beginning\ of\ allocated\ array\ of\ points\ for\ easy\ deallocation}}
 \DoxyCodeLine{00431\ \ \ Boo\ in\_image;\ \textcolor{comment}{//\ marks\ if\ point\ is\ in\ image}}
 \DoxyCodeLine{00432\ }
 \DoxyCodeLine{00433\ \ \ PosType\ *ptr\_y()\{\textcolor{keywordflow}{return}\ image-\/>x;\}}
 \DoxyCodeLine{00434\ \ \ }
-\DoxyCodeLine{00436\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ \mbox{\hyperlink{struct_point_aa30c552d6adec08e730bda8a2addbcb3}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&p)\{}
+\DoxyCodeLine{00436\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ \mbox{\hyperlink{struct_point_aa30c552d6adec08e730bda8a2addbcb3}{operator=}}(\textcolor{keyword}{const}\ Point\_2d\ \&p)\{}
 \DoxyCodeLine{00437\ \ \ \ \ Point\_2d::operator=(p);}
 \DoxyCodeLine{00438\ \ \ \ \ }
 \DoxyCodeLine{00439\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
@@ -460,13 +462,13 @@
 \DoxyCodeLine{00474\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderX(\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2)\{}
 \DoxyCodeLine{00475\ \ \ \ \ \textcolor{keywordflow}{return}\ (p1-\/>x[0]\ <\ p2-\/>x[0]);}
 \DoxyCodeLine{00476\ \ \ \}}
-\DoxyCodeLine{00477\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderXrev(\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2)\{}
+\DoxyCodeLine{00477\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderXrev(\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *p1,\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *p2)\{}
 \DoxyCodeLine{00478\ \ \ \ \ \textcolor{keywordflow}{return}\ (p1-\/>x[0]\ >\ p2-\/>x[0]);}
 \DoxyCodeLine{00479\ \ \ \}}
-\DoxyCodeLine{00480\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderY(\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2)\{}
+\DoxyCodeLine{00480\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderY(\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *p1,\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *p2)\{}
 \DoxyCodeLine{00481\ \ \ \ \ \textcolor{keywordflow}{return}\ (p1-\/>x[1]\ <\ p2-\/>x[1]);}
 \DoxyCodeLine{00482\ \ \ \}}
-\DoxyCodeLine{00483\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderYrev(\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2)\{}
+\DoxyCodeLine{00483\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ orderYrev(\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *p1,\mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ *p2)\{}
 \DoxyCodeLine{00484\ \ \ \ \ \textcolor{keywordflow}{return}\ (p1-\/>x[1]\ >\ p2-\/>x[1]);}
 \DoxyCodeLine{00485\ \ \ \}}
 \DoxyCodeLine{00486\ }
@@ -480,21 +482,21 @@
 \DoxyCodeLine{00495\ }
 \DoxyCodeLine{00496\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{struct_point}{Point}}\ \textcolor{keyword}{const}\ \&p);}
 \DoxyCodeLine{00497\ }
-\DoxyCodeLine{00502\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_linked_point}{LinkedPoint}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_point}{Point}}}
+\DoxyCodeLine{00502\ \textcolor{keyword}{struct\ }LinkedPoint\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}}
 \DoxyCodeLine{00503\ \{}
-\DoxyCodeLine{00504\ \ \ \mbox{\hyperlink{struct_linked_point}{LinkedPoint}}()\{}
+\DoxyCodeLine{00504\ \ \ LinkedPoint()\{}
 \DoxyCodeLine{00505\ \ \ \ \ image\ =\ \&im;}
 \DoxyCodeLine{00506\ \ \ \ \ im.image\ =\ \textcolor{keyword}{this};}
 \DoxyCodeLine{00507\ \ \ \}}
 \DoxyCodeLine{00508\ \ \ }
 \DoxyCodeLine{00509\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\&\ y()\{\textcolor{keywordflow}{return}\ im;\}}
 \DoxyCodeLine{00510\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00511\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ im;}
+\DoxyCodeLine{00511\ \ \ \mbox{\hyperlink{struct_point_ad92f2337b839a94ce97dcdb439b4325a}{Point}}\ im;}
 \DoxyCodeLine{00512\ \};}
 \DoxyCodeLine{00513\ }
 \DoxyCodeLine{00514\ }
-\DoxyCodeLine{00517\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_r_a_y}{RAY}}\{}
-\DoxyCodeLine{00518\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}()\{}
+\DoxyCodeLine{00517\ \textcolor{keyword}{struct\ }RAY\{}
+\DoxyCodeLine{00518\ \ \ RAY()\{}
 \DoxyCodeLine{00519\ }
 \DoxyCodeLine{00520\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a11149357e4f55fc61412fc5531304efc}{dt}}\ =\ 0.0;}
 \DoxyCodeLine{00521\ \ \ \ \ A\ =\ Matrix2x2<KappaType>::I();}
@@ -502,7 +504,7 @@
 \DoxyCodeLine{00523\ }
 \DoxyCodeLine{00524\ \ \ \};}
 \DoxyCodeLine{00525\ \ \ }
-\DoxyCodeLine{00526\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\ \&p,\textcolor{keywordtype}{double}\ zs\ =\ -\/1)\{}
+\DoxyCodeLine{00526\ \ \ RAY(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\ \&p,\textcolor{keywordtype}{double}\ zs\ =\ -\/1)\{}
 \DoxyCodeLine{00527\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}[0]\ =\ p.x[0];}
 \DoxyCodeLine{00528\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}[1]\ =\ p.x[1];}
 \DoxyCodeLine{00529\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}}[0]\ =\ p.image-\/>x[0];}
@@ -513,7 +515,7 @@
 \DoxyCodeLine{00534\ \ \ \ \ A\ =\ p.A;}
 \DoxyCodeLine{00535\ \ \ \ \ z\ =\ zs;}
 \DoxyCodeLine{00536\ \ \ \};}
-\DoxyCodeLine{00537\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_linked_point}{LinkedPoint}}\ \&p,\textcolor{keywordtype}{double}\ zs\ =\ -\/1)\{}
+\DoxyCodeLine{00537\ \ \ RAY(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_linked_point}{LinkedPoint}}\ \&p,\textcolor{keywordtype}{double}\ zs\ =\ -\/1)\{}
 \DoxyCodeLine{00538\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}[0]\ =\ p.x[0];}
 \DoxyCodeLine{00539\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}[1]\ =\ p.x[1];}
 \DoxyCodeLine{00540\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}}[0]\ =\ p.image-\/>x[0];}
@@ -525,7 +527,7 @@
 \DoxyCodeLine{00546\ \ \ \ \ z\ =\ zs;}
 \DoxyCodeLine{00547\ \ \ \};}
 \DoxyCodeLine{00548\ \ \ }
-\DoxyCodeLine{00549\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ \&p)\{}
+\DoxyCodeLine{00549\ \ \ RAY(\textcolor{keyword}{const}\ RAY\ \&p)\{}
 \DoxyCodeLine{00550\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}\ =\ p.\mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}};}
 \DoxyCodeLine{00551\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}}\ =\ p.\mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}};}
 \DoxyCodeLine{00552\ }
@@ -535,7 +537,7 @@
 \DoxyCodeLine{00556\ \ \ \ \ z\ =\ p.z;}
 \DoxyCodeLine{00557\ \ \ \};}
 \DoxyCodeLine{00558\ }
-\DoxyCodeLine{00559\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\ \&p)\{}
+\DoxyCodeLine{00559\ \ \ RAY\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point}{Point}}\ \&p)\{}
 \DoxyCodeLine{00560\ \ \ \ \ assert(p.image\ !=\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{00561\ \ \ \ \ }
 \DoxyCodeLine{00562\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}[0]\ =\ p.x[0];}
@@ -552,7 +554,7 @@
 \DoxyCodeLine{00573\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00574\ \ \ \};}
 \DoxyCodeLine{00575\ \ \ }
-\DoxyCodeLine{00576\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ \&p)\{}
+\DoxyCodeLine{00576\ \ \ RAY\ \&\ operator=(\textcolor{keyword}{const}\ RAY\ \&p)\{}
 \DoxyCodeLine{00577\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}}\ =\ p.\mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}};}
 \DoxyCodeLine{00578\ \ \ \ \ \mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}}\ =\ p.\mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}};}
 \DoxyCodeLine{00579\ \ \ \ \ }
@@ -564,7 +566,7 @@
 \DoxyCodeLine{00585\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{00586\ \ \ \};}
 \DoxyCodeLine{00587\ \ \ }
-\DoxyCodeLine{00588\ \ \ \mbox{\hyperlink{struct_r_a_y}{\string~RAY}}()\{\};}
+\DoxyCodeLine{00588\ \ \ \string~RAY()\{\};}
 \DoxyCodeLine{00589\ \ \ }
 \DoxyCodeLine{00591\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{struct_r_a_y_a72cfa36f89cc4fff02d65c3d52223585}{x}};}
 \DoxyCodeLine{00593\ \ \ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \mbox{\hyperlink{struct_r_a_y_ae7694a6aaa68bf08861aca75ba06314a}{y}};}
@@ -595,632 +597,636 @@
 \DoxyCodeLine{00621\ \};}
 \DoxyCodeLine{00622\ }
 \DoxyCodeLine{00623\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \textcolor{keyword}{const}\ \&p);}
-\DoxyCodeLine{00624\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v);}
-\DoxyCodeLine{00625\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<RAY>\ \&v);}
-\DoxyCodeLine{00626\ }
-\DoxyCodeLine{00627\ \textcolor{comment}{//inline\ std::string\ to\_string(RAY\ \&r)\ \{}}
-\DoxyCodeLine{00628\ \textcolor{comment}{//\ \ std::string\ s\ =\ "{}["{}\ +\ std::to\_string(r.x[0])\ +\ "{},"{}\ +\ r.x[1]\ +\ "{},["{}\ +\ r.y[0]\ +\ "{},"{}\ +\ r.y[1]}}
-\DoxyCodeLine{00629\ \textcolor{comment}{//\ \ +\ "{}],"{}\ +\ r.z\ +\ "{},"{}\ +\ r.kappa()\ +\ "{},["{}\ +\ r.gamma1()\ +\ "{},"{}\ +\ r.gamma2()\ +\ "{},"{}\ +\ r.gamma3()\ +\ "{}],"{}\ <<\ r.dt;}}
-\DoxyCodeLine{00630\ \textcolor{comment}{//\ \ return\ s;}}
-\DoxyCodeLine{00631\ \textcolor{comment}{//\}}}
-\DoxyCodeLine{00632\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ \textcolor{keyword}{const}\ \&r);}
-\DoxyCodeLine{00633\ }
-\DoxyCodeLine{00635\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_branch}{Branch}}\{}
-\DoxyCodeLine{00636\ \ \mbox{\hyperlink{struct_branch}{Branch}}(\mbox{\hyperlink{struct_point}{Point}}\ *my\_points,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_npoints}
-\DoxyCodeLine{00637\ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_boundary\_p1[2],\textcolor{keywordtype}{double}\ my\_boundary\_p2[2]}
-\DoxyCodeLine{00638\ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_center[2],\textcolor{keywordtype}{int}\ my\_level);}
-\DoxyCodeLine{00639\ \ \ \mbox{\hyperlink{struct_branch}{\string~Branch}}();}
-\DoxyCodeLine{00640\ }
-\DoxyCodeLine{00641\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point}{Point}}\ *points;\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00642\ \ \ }
-\DoxyCodeLine{00643\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_branch_aedf2f62cd44e29a4e9ce35d150278be6}{npoints}};}
-\DoxyCodeLine{00644\ \ \ \textcolor{keywordtype}{double}\ center[2];}
-\DoxyCodeLine{00645\ \ \ \textcolor{keywordtype}{int}\ level;}
-\DoxyCodeLine{00646\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ number;}
-\DoxyCodeLine{00647\ \ \ \textcolor{keywordtype}{double}\ boundary\_p1[2];}
-\DoxyCodeLine{00648\ \ \ \textcolor{keywordtype}{double}\ boundary\_p2[2];}
-\DoxyCodeLine{00649\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ *child1;}
-\DoxyCodeLine{00650\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ *child2;}
-\DoxyCodeLine{00651\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ *brother;}
-\DoxyCodeLine{00652\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ *prev;}
-\DoxyCodeLine{00654\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_branch_a9f1ff918f82c82650a9f00815a720cdc}{refined}};}
-\DoxyCodeLine{00655\ }
-\DoxyCodeLine{00656\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_branch_a5a07d166792af57c2c9d024efed0c5bc}{print}}();}
-\DoxyCodeLine{00657\ }
-\DoxyCodeLine{00658\ \ \ PosType\ area()\{\textcolor{keywordflow}{return}\ (boundary\_p2[0]-\/boundary\_p1[0])*(boundary\_p2[1]-\/boundary\_p1[1]);\}}
-\DoxyCodeLine{00659\ \ \ \ \ }
-\DoxyCodeLine{00660\ \ \ std::list<Branch\ *>\ neighbors;}
-\DoxyCodeLine{00661\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00662\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ countID;}
-\DoxyCodeLine{00663\ }
-\DoxyCodeLine{00664\ \ \ \textcolor{comment}{//\ make\ a\ Branch\ uncopyable}}
-\DoxyCodeLine{00665\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_branch}{Branch}}\ \&p);}
-\DoxyCodeLine{00666\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ \&operator=(\mbox{\hyperlink{struct_branch}{Branch}}\ \&p);}
-\DoxyCodeLine{00667\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_branch}{Branch}}\ \&p);}
-\DoxyCodeLine{00668\ }
-\DoxyCodeLine{00669\ \}\ ;}
-\DoxyCodeLine{00670\ }
-\DoxyCodeLine{00671\ \textcolor{comment}{//typedef\ struct\ branchstruct\ Branch;}}
-\DoxyCodeLine{00672\ }
-\DoxyCodeLine{00676\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00677\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_memmory_bank}{MemmoryBank}}\{}
-\DoxyCodeLine{00678\ \ \ }
-\DoxyCodeLine{00679\ \ \ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank}}():count(0)\{\};}
-\DoxyCodeLine{00680\ \ \ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank}}(\mbox{\hyperlink{struct_memmory_bank}{MemmoryBank}}\ \&\&membank)\{}
-\DoxyCodeLine{00681\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(membank);}
-\DoxyCodeLine{00682\ \ \ \}}
-\DoxyCodeLine{00683\ \ \ \textcolor{keywordtype}{void}\ operator=(\mbox{\hyperlink{struct_memmory_bank}{MemmoryBank}}\ \&\&membank)\{}
-\DoxyCodeLine{00684\ \ \ \ \ bank\ =\ std::move(membank.bank);}
+\DoxyCodeLine{00624\ }
+\DoxyCodeLine{00625\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<Point\_2d>\ \&v);}
+\DoxyCodeLine{00626\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<RAY>\ \&v);}
+\DoxyCodeLine{00627\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<float>\ \&v);}
+\DoxyCodeLine{00628\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<double>\ \&v);}
+\DoxyCodeLine{00629\ }
+\DoxyCodeLine{00630\ \textcolor{comment}{//inline\ std::string\ to\_string(RAY\ \&r)\ \{}}
+\DoxyCodeLine{00631\ \textcolor{comment}{//\ \ std::string\ s\ =\ "{}["{}\ +\ std::to\_string(r.x[0])\ +\ "{},"{}\ +\ r.x[1]\ +\ "{},["{}\ +\ r.y[0]\ +\ "{},"{}\ +\ r.y[1]}}
+\DoxyCodeLine{00632\ \textcolor{comment}{//\ \ +\ "{}],"{}\ +\ r.z\ +\ "{},"{}\ +\ r.kappa()\ +\ "{},["{}\ +\ r.gamma1()\ +\ "{},"{}\ +\ r.gamma2()\ +\ "{},"{}\ +\ r.gamma3()\ +\ "{}],"{}\ <<\ r.dt;}}
+\DoxyCodeLine{00633\ \textcolor{comment}{//\ \ return\ s;}}
+\DoxyCodeLine{00634\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00635\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ \textcolor{keyword}{const}\ \&r);}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00638\ \textcolor{keyword}{struct\ }Branch\{}
+\DoxyCodeLine{00639\ \ Branch(\mbox{\hyperlink{struct_point}{Point}}\ *my\_points,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ my\_npoints}
+\DoxyCodeLine{00640\ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_boundary\_p1[2],\textcolor{keywordtype}{double}\ my\_boundary\_p2[2]}
+\DoxyCodeLine{00641\ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ my\_center[2],\textcolor{keywordtype}{int}\ my\_level);}
+\DoxyCodeLine{00642\ \ \ \string~Branch();}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point}{Point}}\ *points;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00645\ \ \ }
+\DoxyCodeLine{00646\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{struct_branch_aedf2f62cd44e29a4e9ce35d150278be6}{npoints}};}
+\DoxyCodeLine{00647\ \ \ \textcolor{keywordtype}{double}\ center[2];}
+\DoxyCodeLine{00648\ \ \ \textcolor{keywordtype}{int}\ level;}
+\DoxyCodeLine{00649\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ number;}
+\DoxyCodeLine{00650\ \ \ \textcolor{keywordtype}{double}\ boundary\_p1[2];}
+\DoxyCodeLine{00651\ \ \ \textcolor{keywordtype}{double}\ boundary\_p2[2];}
+\DoxyCodeLine{00652\ \ \ Branch\ *child1;}
+\DoxyCodeLine{00653\ \ \ Branch\ *child2;}
+\DoxyCodeLine{00654\ \ \ Branch\ *brother;}
+\DoxyCodeLine{00655\ \ \ Branch\ *prev;}
+\DoxyCodeLine{00657\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_branch_a9f1ff918f82c82650a9f00815a720cdc}{refined}};}
+\DoxyCodeLine{00658\ }
+\DoxyCodeLine{00659\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_branch_a5a07d166792af57c2c9d024efed0c5bc}{print}}();}
+\DoxyCodeLine{00660\ }
+\DoxyCodeLine{00661\ \ \ PosType\ area()\{\textcolor{keywordflow}{return}\ (boundary\_p2[0]-\/boundary\_p1[0])*(boundary\_p2[1]-\/boundary\_p1[1]);\}}
+\DoxyCodeLine{00662\ \ \ \ \ }
+\DoxyCodeLine{00663\ \ \ std::list<Branch\ *>\ neighbors;}
+\DoxyCodeLine{00664\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00665\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ countID;}
+\DoxyCodeLine{00666\ }
+\DoxyCodeLine{00667\ \ \ \textcolor{comment}{//\ make\ a\ Branch\ uncopyable}}
+\DoxyCodeLine{00668\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_branch}{Branch}}\ \&p);}
+\DoxyCodeLine{00669\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ \&operator=(\mbox{\hyperlink{struct_branch}{Branch}}\ \&p);}
+\DoxyCodeLine{00670\ \ \ \mbox{\hyperlink{struct_branch}{Branch}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_branch}{Branch}}\ \&p);}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \}\ ;}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00674\ \textcolor{comment}{//typedef\ struct\ branchstruct\ Branch;}}
+\DoxyCodeLine{00675\ }
+\DoxyCodeLine{00679\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00680\ \textcolor{keyword}{struct\ }MemmoryBank\{}
+\DoxyCodeLine{00681\ \ \ }
+\DoxyCodeLine{00682\ \ \ MemmoryBank():count(0)\{\};}
+\DoxyCodeLine{00683\ \ \ MemmoryBank(MemmoryBank\ \&\&membank)\{}
+\DoxyCodeLine{00684\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(membank);}
 \DoxyCodeLine{00685\ \ \ \}}
-\DoxyCodeLine{00686\ }
-\DoxyCodeLine{00687\ \ \ }
-\DoxyCodeLine{00688\ \ \ T\ *\ operator()(\textcolor{keywordtype}{size\_t}\ N)\{}
-\DoxyCodeLine{00689\ \ \ \ \ \textcolor{keywordflow}{if}(N\ <=\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00690\ \ \ \ \ }
-\DoxyCodeLine{00691\ \ \ \ \ bank.emplace\_back(\textcolor{keyword}{new}\ T[N]);}
-\DoxyCodeLine{00692\ \ \ \ \ count\ +=\ N;}
-\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordflow}{return}\ bank.back().get();}
-\DoxyCodeLine{00694\ \ \ \}}
-\DoxyCodeLine{00695\ \ \ }
-\DoxyCodeLine{00696\ \ \ \textcolor{comment}{//\ clear\ all\ data}}
-\DoxyCodeLine{00697\ \ \ \textcolor{keywordtype}{void}\ clear()\{}
-\DoxyCodeLine{00698\ \ \ \ \ bank.clear();}
-\DoxyCodeLine{00699\ \ \ \ \ count\ =\ 0;}
-\DoxyCodeLine{00700\ \ \ \}}
-\DoxyCodeLine{00701\ \ \ }
-\DoxyCodeLine{00702\ \ \ \textcolor{comment}{//\ clear\ specific\ array,\ does\ not\ decrement\ count}}
-\DoxyCodeLine{00703\ \ \ \textcolor{keywordtype}{bool}\ clear(T\ *ptr)\{}
-\DoxyCodeLine{00704\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ bank)\{}
-\DoxyCodeLine{00705\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p.get()\ ==\ ptr)\{}
-\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ p.swap(bank.back());}
-\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ bank.pop\_back();}
-\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00709\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00710\ \ \ \ \ \}}
-\DoxyCodeLine{00711\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00712\ \ \ \}}
-\DoxyCodeLine{00713\ \ \ }
-\DoxyCodeLine{00714\ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_blocks()\{\textcolor{keywordflow}{return}\ bank.size();\}}
-\DoxyCodeLine{00715\ \ \ }
-\DoxyCodeLine{00716\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00717\ }
-\DoxyCodeLine{00718\ \ \ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank<T>}}\ \&b);}
-\DoxyCodeLine{00719\ \ \ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank<T>}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_memmory_bank}{MemmoryBank<T>}}\ \&b);}
-\DoxyCodeLine{00720\ \ \ }
-\DoxyCodeLine{00721\ \ \ \textcolor{keywordtype}{size\_t}\ count;}
-\DoxyCodeLine{00722\ \ \ std::vector<std::unique\_ptr<T[]>\ >\ bank;}
-\DoxyCodeLine{00723\ \};}
-\DoxyCodeLine{00724\ }
-\DoxyCodeLine{00725\ \textcolor{comment}{//\ A\ class\ that\ onlt\ counts\ iteslf\ for\ testing}}
-\DoxyCodeLine{00726\ \textcolor{comment}{//struct\ DummyClass\{}}
-\DoxyCodeLine{00727\ \textcolor{comment}{//\ \ DummyClass()\{}}
-\DoxyCodeLine{00728\ \textcolor{comment}{//\ \ \ \ N\ =\ count;}}
-\DoxyCodeLine{00729\ \textcolor{comment}{//\ \ \ \ ++count;}}
-\DoxyCodeLine{00730\ \textcolor{comment}{//\ \ \};}}
-\DoxyCodeLine{00731\ \textcolor{comment}{//\ \ \string~DummyClass()\{}}
-\DoxyCodeLine{00732\ \textcolor{comment}{//\ \ \ \ std::cout\ <<\ "{}delete\ "{}\ <<\ N\ <<\ std::endl;}}
-\DoxyCodeLine{00733\ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{00734\ \textcolor{comment}{//\ \ int\ N;}}
-\DoxyCodeLine{00735\ \textcolor{comment}{//\ \ static\ int\ count;}}
-\DoxyCodeLine{00736\ \textcolor{comment}{//\};}}
-\DoxyCodeLine{00737\ }
-\DoxyCodeLine{00738\ \textcolor{comment}{//int\ DummyClass::count\ =\ 0;}}
-\DoxyCodeLine{00739\ \textcolor{comment}{//\{\ \ test\ lines\ for\ MemmoryBank}}
-\DoxyCodeLine{00740\ \textcolor{comment}{//\ \ MemmoryBank<DummyClass>\ pointbang;}}
-\DoxyCodeLine{00741\ \textcolor{comment}{//}}
-\DoxyCodeLine{00742\ \textcolor{comment}{//\ \ DummyClass\ *p\ =\ pointbang(10);}}
-\DoxyCodeLine{00743\ \textcolor{comment}{//\ \ p[7].N\ =\ 2;}}
-\DoxyCodeLine{00744\ \textcolor{comment}{//\ \ for(int\ i=0\ ;\ i<10\ ;\ ++i)\{}}
-\DoxyCodeLine{00745\ \textcolor{comment}{//\ \ \ \ cout\ <<\ p[i].N\ <<\ endl;}}
-\DoxyCodeLine{00746\ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{00747\ \textcolor{comment}{//}}
-\DoxyCodeLine{00748\ \textcolor{comment}{//\ \ DummyClass\ *p2\ =\ pointbang(5);}}
-\DoxyCodeLine{00749\ \textcolor{comment}{//\ \ for(int\ i=0\ ;\ i<5\ ;\ ++i)\{}}
-\DoxyCodeLine{00750\ \textcolor{comment}{//\ \ \ \ cout\ <<\ p2[i].N\ <<\ endl;}}
-\DoxyCodeLine{00751\ \textcolor{comment}{//\ \ \}}}
-\DoxyCodeLine{00752\ \textcolor{comment}{//}}
-\DoxyCodeLine{00753\ \textcolor{comment}{//\ \ pointbang.clear(p2);}}
-\DoxyCodeLine{00754\ \textcolor{comment}{//}}
-\DoxyCodeLine{00755\ \textcolor{comment}{//\ \ DummyClass\ *p3\ =\ pointbang(10);}}
-\DoxyCodeLine{00756\ \textcolor{comment}{//\}}}
-\DoxyCodeLine{00757\ }
-\DoxyCodeLine{00762\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point_list}{PointList}}\{}
-\DoxyCodeLine{00763\ \ \ \mbox{\hyperlink{struct_point_list}{PointList}}()\{}
-\DoxyCodeLine{00764\ \ \ \ \ top=NULL;}
-\DoxyCodeLine{00765\ \ \ \ \ Npoints=0;}
-\DoxyCodeLine{00766\ \ \ \ \ bottom\ =\ top;}
-\DoxyCodeLine{00767\ \ \ \}}
-\DoxyCodeLine{00768\ \ \ \mbox{\hyperlink{struct_point_list}{\string~PointList}}()\{\}}
-\DoxyCodeLine{00769\ \ \ }
-\DoxyCodeLine{00770\ \ \ \textcolor{keyword}{struct\ }iterator\{}
-\DoxyCodeLine{00771\ }
-\DoxyCodeLine{00772\ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *current;}
-\DoxyCodeLine{00773\ \ \ \ \ }
-\DoxyCodeLine{00774\ \ \ \ \ iterator():current(NULL)\{\ \}}
-\DoxyCodeLine{00775\ \ \ \ \ }
-\DoxyCodeLine{00776\ \ \ \ \ iterator(\mbox{\hyperlink{struct_point}{Point}}\ *p)\{}
-\DoxyCodeLine{00777\ \ \ \ \ \ \ current\ =\ p;}
-\DoxyCodeLine{00778\ \ \ \ \ \}}
-\DoxyCodeLine{00779\ \ \ \ \ }
-\DoxyCodeLine{00780\ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *operator*()\{\textcolor{keywordflow}{return}\ current;\}}
-\DoxyCodeLine{00781\ \ \ \ \ }
-\DoxyCodeLine{00782\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator++()\{}
-\DoxyCodeLine{00783\ \ \ \ \ \ \ assert(current);}
-\DoxyCodeLine{00784\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>prev\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00785\ \ \ \ \ \ \ current=current-\/>prev;}
-\DoxyCodeLine{00786\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00787\ \ \ \ \ \}}
-\DoxyCodeLine{00788\ \ \ \ \ }
-\DoxyCodeLine{00790\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator++(\textcolor{keywordtype}{int})\{}
-\DoxyCodeLine{00791\ \ \ \ \ \ \ assert(current);}
-\DoxyCodeLine{00792\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>prev\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00793\ \ \ \ \ \ \ current=current-\/>prev;}
-\DoxyCodeLine{00794\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00795\ \ \ \ \ \}}
-\DoxyCodeLine{00796\ \ \ \ \ }
-\DoxyCodeLine{00798\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator-\/-\/()\{}
-\DoxyCodeLine{00799\ \ \ \ \ \ \ assert(current);}
-\DoxyCodeLine{00800\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>next\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00801\ \ \ \ \ \ \ current=current-\/>next;}
-\DoxyCodeLine{00802\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00803\ \ \ \ \ \ \}}
-\DoxyCodeLine{00804\ \ \ \ \ }
-\DoxyCodeLine{00806\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator-\/-\/(\textcolor{keywordtype}{int})\{}
-\DoxyCodeLine{00807\ \ \ \ \ \ \ assert(current);}
-\DoxyCodeLine{00808\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>next\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00809\ \ \ \ \ \ \ current=current-\/>next;}
-\DoxyCodeLine{00810\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00811\ \ \ \ \ \}}
-\DoxyCodeLine{00812\ \ \ \ \ }
-\DoxyCodeLine{00813\ \ \ \ \ \textcolor{keywordtype}{void}\ JumpDownList(\textcolor{keywordtype}{int}\ jump)\{}
-\DoxyCodeLine{00814\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
-\DoxyCodeLine{00815\ \ \ \ \ \ \ }
-\DoxyCodeLine{00816\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jump\ >\ 0)\ \textcolor{keywordflow}{for}(i=0;i<jump;++i)\ -\/-\/(*\textcolor{keyword}{this});}
-\DoxyCodeLine{00817\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jump\ <\ 0)\ \textcolor{keywordflow}{for}(i=0;i<abs(jump);++i)\ ++(*\textcolor{keyword}{this});}
-\DoxyCodeLine{00818\ \ \ \ \ \}}
-\DoxyCodeLine{00819\ }
-\DoxyCodeLine{00820\ \ \ \ \ }
-\DoxyCodeLine{00821\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ iterator\ my\_it)\{}
-\DoxyCodeLine{00822\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (current\ ==\ my\_it.current);}
-\DoxyCodeLine{00823\ \ \ \ \ \}}
-\DoxyCodeLine{00824\ \ \ \ \ }
-\DoxyCodeLine{00825\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ iterator\ my\_it)\{}
-\DoxyCodeLine{00826\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (current\ !=\ my\_it.current);}
-\DoxyCodeLine{00827\ \ \ \ \ \}}
-\DoxyCodeLine{00828\ \ \ \ \ }
-\DoxyCodeLine{00829\ \ \ \};}
-\DoxyCodeLine{00830\ \ \ }
-\DoxyCodeLine{00831\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ size()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Npoints;\}}
-\DoxyCodeLine{00832\ }
-\DoxyCodeLine{00833\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsTop(PointList::iterator\ \&it)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00834\ \ \ \ \ \textcolor{keywordflow}{return}\ *it\ ==\ top;}
-\DoxyCodeLine{00835\ \ \ \};}
-\DoxyCodeLine{00836\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsBottom(PointList::iterator\ \&it)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00837\ \ \ \ \ \textcolor{keywordflow}{return}\ *it\ ==\ bottom;}
+\DoxyCodeLine{00686\ \ \ \textcolor{keywordtype}{void}\ operator=(MemmoryBank\ \&\&membank)\{}
+\DoxyCodeLine{00687\ \ \ \ \ bank\ =\ std::move(membank.bank);}
+\DoxyCodeLine{00688\ \ \ \}}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00690\ \ \ }
+\DoxyCodeLine{00691\ \ \ T\ *\ operator()(\textcolor{keywordtype}{size\_t}\ N)\{}
+\DoxyCodeLine{00692\ \ \ \ \ \textcolor{keywordflow}{if}(N\ <=\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00693\ \ \ \ \ }
+\DoxyCodeLine{00694\ \ \ \ \ bank.emplace\_back(\textcolor{keyword}{new}\ T[N]);}
+\DoxyCodeLine{00695\ \ \ \ \ count\ +=\ N;}
+\DoxyCodeLine{00696\ \ \ \ \ \textcolor{keywordflow}{return}\ bank.back().get();}
+\DoxyCodeLine{00697\ \ \ \}}
+\DoxyCodeLine{00698\ \ \ }
+\DoxyCodeLine{00699\ \ \ \textcolor{comment}{//\ clear\ all\ data}}
+\DoxyCodeLine{00700\ \ \ \textcolor{keywordtype}{void}\ clear()\{}
+\DoxyCodeLine{00701\ \ \ \ \ bank.clear();}
+\DoxyCodeLine{00702\ \ \ \ \ count\ =\ 0;}
+\DoxyCodeLine{00703\ \ \ \}}
+\DoxyCodeLine{00704\ \ \ }
+\DoxyCodeLine{00705\ \ \ \textcolor{comment}{//\ clear\ specific\ array,\ does\ not\ decrement\ count}}
+\DoxyCodeLine{00706\ \ \ \textcolor{keywordtype}{bool}\ clear(T\ *ptr)\{}
+\DoxyCodeLine{00707\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{auto}\ \&p\ :\ bank)\{}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(p.get()\ ==\ ptr)\{}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ p.swap(bank.back());}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ bank.pop\_back();}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00713\ \ \ \ \ \}}
+\DoxyCodeLine{00714\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00715\ \ \ \}}
+\DoxyCodeLine{00716\ \ \ }
+\DoxyCodeLine{00717\ \ \ \textcolor{keywordtype}{size\_t}\ number\_of\_blocks()\{\textcolor{keywordflow}{return}\ bank.size();\}}
+\DoxyCodeLine{00718\ \ \ }
+\DoxyCodeLine{00719\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ \ \ MemmoryBank(\textcolor{keyword}{const}\ MemmoryBank<T>\ \&b);}
+\DoxyCodeLine{00722\ \ \ MemmoryBank<T>\ \&\ operator=(\textcolor{keyword}{const}\ MemmoryBank<T>\ \&b);}
+\DoxyCodeLine{00723\ \ \ }
+\DoxyCodeLine{00724\ \ \ \textcolor{keywordtype}{size\_t}\ count;}
+\DoxyCodeLine{00725\ \ \ std::vector<std::unique\_ptr<T[]>\ >\ bank;}
+\DoxyCodeLine{00726\ \};}
+\DoxyCodeLine{00727\ }
+\DoxyCodeLine{00728\ \textcolor{comment}{//\ A\ class\ that\ onlt\ counts\ iteslf\ for\ testing}}
+\DoxyCodeLine{00729\ \textcolor{comment}{//struct\ DummyClass\{}}
+\DoxyCodeLine{00730\ \textcolor{comment}{//\ \ DummyClass()\{}}
+\DoxyCodeLine{00731\ \textcolor{comment}{//\ \ \ \ N\ =\ count;}}
+\DoxyCodeLine{00732\ \textcolor{comment}{//\ \ \ \ ++count;}}
+\DoxyCodeLine{00733\ \textcolor{comment}{//\ \ \};}}
+\DoxyCodeLine{00734\ \textcolor{comment}{//\ \ \string~DummyClass()\{}}
+\DoxyCodeLine{00735\ \textcolor{comment}{//\ \ \ \ std::cout\ <<\ "{}delete\ "{}\ <<\ N\ <<\ std::endl;}}
+\DoxyCodeLine{00736\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00737\ \textcolor{comment}{//\ \ int\ N;}}
+\DoxyCodeLine{00738\ \textcolor{comment}{//\ \ static\ int\ count;}}
+\DoxyCodeLine{00739\ \textcolor{comment}{//\};}}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00741\ \textcolor{comment}{//int\ DummyClass::count\ =\ 0;}}
+\DoxyCodeLine{00742\ \textcolor{comment}{//\{\ \ test\ lines\ for\ MemmoryBank}}
+\DoxyCodeLine{00743\ \textcolor{comment}{//\ \ MemmoryBank<DummyClass>\ pointbang;}}
+\DoxyCodeLine{00744\ \textcolor{comment}{//}}
+\DoxyCodeLine{00745\ \textcolor{comment}{//\ \ DummyClass\ *p\ =\ pointbang(10);}}
+\DoxyCodeLine{00746\ \textcolor{comment}{//\ \ p[7].N\ =\ 2;}}
+\DoxyCodeLine{00747\ \textcolor{comment}{//\ \ for(int\ i=0\ ;\ i<10\ ;\ ++i)\{}}
+\DoxyCodeLine{00748\ \textcolor{comment}{//\ \ \ \ cout\ <<\ p[i].N\ <<\ endl;}}
+\DoxyCodeLine{00749\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00750\ \textcolor{comment}{//}}
+\DoxyCodeLine{00751\ \textcolor{comment}{//\ \ DummyClass\ *p2\ =\ pointbang(5);}}
+\DoxyCodeLine{00752\ \textcolor{comment}{//\ \ for(int\ i=0\ ;\ i<5\ ;\ ++i)\{}}
+\DoxyCodeLine{00753\ \textcolor{comment}{//\ \ \ \ cout\ <<\ p2[i].N\ <<\ endl;}}
+\DoxyCodeLine{00754\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{00755\ \textcolor{comment}{//}}
+\DoxyCodeLine{00756\ \textcolor{comment}{//\ \ pointbang.clear(p2);}}
+\DoxyCodeLine{00757\ \textcolor{comment}{//}}
+\DoxyCodeLine{00758\ \textcolor{comment}{//\ \ DummyClass\ *p3\ =\ pointbang(10);}}
+\DoxyCodeLine{00759\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00760\ }
+\DoxyCodeLine{00765\ \textcolor{keyword}{struct\ }PointList\{}
+\DoxyCodeLine{00766\ \ \ PointList()\{}
+\DoxyCodeLine{00767\ \ \ \ \ top=NULL;}
+\DoxyCodeLine{00768\ \ \ \ \ Npoints=0;}
+\DoxyCodeLine{00769\ \ \ \ \ bottom\ =\ top;}
+\DoxyCodeLine{00770\ \ \ \}}
+\DoxyCodeLine{00771\ \ \ \string~PointList()\{\}}
+\DoxyCodeLine{00772\ \ \ }
+\DoxyCodeLine{00773\ \ \ \textcolor{keyword}{struct\ }iterator\{}
+\DoxyCodeLine{00774\ }
+\DoxyCodeLine{00775\ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *current;}
+\DoxyCodeLine{00776\ \ \ \ \ }
+\DoxyCodeLine{00777\ \ \ \ \ iterator():current(NULL)\{\ \}}
+\DoxyCodeLine{00778\ \ \ \ \ }
+\DoxyCodeLine{00779\ \ \ \ \ iterator(\mbox{\hyperlink{struct_point}{Point}}\ *p)\{}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ current\ =\ p;}
+\DoxyCodeLine{00781\ \ \ \ \ \}}
+\DoxyCodeLine{00782\ \ \ \ \ }
+\DoxyCodeLine{00783\ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *operator*()\{\textcolor{keywordflow}{return}\ current;\}}
+\DoxyCodeLine{00784\ \ \ \ \ }
+\DoxyCodeLine{00785\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator++()\{}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ assert(current);}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>prev\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ current=current-\/>prev;}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00790\ \ \ \ \ \}}
+\DoxyCodeLine{00791\ \ \ \ \ }
+\DoxyCodeLine{00793\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator++(\textcolor{keywordtype}{int})\{}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ assert(current);}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>prev\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ current=current-\/>prev;}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00798\ \ \ \ \ \}}
+\DoxyCodeLine{00799\ \ \ \ \ }
+\DoxyCodeLine{00801\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator-\/-\/()\{}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ assert(current);}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>next\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ current=current-\/>next;}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00806\ \ \ \ \ \ \}}
+\DoxyCodeLine{00807\ \ \ \ \ }
+\DoxyCodeLine{00809\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator-\/-\/(\textcolor{keywordtype}{int})\{}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ assert(current);}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(current-\/>next\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ current=current-\/>next;}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00814\ \ \ \ \ \}}
+\DoxyCodeLine{00815\ \ \ \ \ }
+\DoxyCodeLine{00816\ \ \ \ \ \textcolor{keywordtype}{void}\ JumpDownList(\textcolor{keywordtype}{int}\ jump)\{}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ }
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jump\ >\ 0)\ \textcolor{keywordflow}{for}(i=0;i<jump;++i)\ -\/-\/(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jump\ <\ 0)\ \textcolor{keywordflow}{for}(i=0;i<abs(jump);++i)\ ++(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00821\ \ \ \ \ \}}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00823\ \ \ \ \ }
+\DoxyCodeLine{00824\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ iterator\ my\_it)\{}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (current\ ==\ my\_it.current);}
+\DoxyCodeLine{00826\ \ \ \ \ \}}
+\DoxyCodeLine{00827\ \ \ \ \ }
+\DoxyCodeLine{00828\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ iterator\ my\_it)\{}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (current\ !=\ my\_it.current);}
+\DoxyCodeLine{00830\ \ \ \ \ \}}
+\DoxyCodeLine{00831\ \ \ \ \ }
+\DoxyCodeLine{00832\ \ \ \};}
+\DoxyCodeLine{00833\ \ \ }
+\DoxyCodeLine{00834\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ size()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ Npoints;\}}
+\DoxyCodeLine{00835\ }
+\DoxyCodeLine{00836\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsTop(PointList::iterator\ \&it)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00837\ \ \ \ \ \textcolor{keywordflow}{return}\ *it\ ==\ top;}
 \DoxyCodeLine{00838\ \ \ \};}
-\DoxyCodeLine{00839\ \ \ }
-\DoxyCodeLine{00840\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *Top()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ top;\}}
-\DoxyCodeLine{00841\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *Bottom()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ bottom;\}}
+\DoxyCodeLine{00839\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ IsBottom(PointList::iterator\ \&it)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00840\ \ \ \ \ \textcolor{keywordflow}{return}\ *it\ ==\ bottom;}
+\DoxyCodeLine{00841\ \ \ \};}
 \DoxyCodeLine{00842\ \ \ }
-\DoxyCodeLine{00843\ \ \ \textcolor{keywordtype}{void}\ EmptyList();}
-\DoxyCodeLine{00844\ \ \ \textcolor{comment}{//void\ InsertAfterCurrent(iterator\ \&current,double\ *x,unsigned\ long\ id,Point\ *image);}}
-\DoxyCodeLine{00845\ \ \ \textcolor{comment}{//void\ InsertBeforeCurrent(iterator\ \&current,double\ *x,unsigned\ long\ id,Point\ *image);}}
-\DoxyCodeLine{00846\ \ \ \textcolor{keywordtype}{void}\ InsertPointAfterCurrent(iterator\ \&current,\mbox{\hyperlink{struct_point}{Point}}\ *);}
-\DoxyCodeLine{00847\ \ \ \textcolor{keywordtype}{void}\ InsertPointBeforeCurrent(iterator\ \&current,\mbox{\hyperlink{struct_point}{Point}}\ *);}
-\DoxyCodeLine{00848\ \ \ }
-\DoxyCodeLine{00849\ \ \ \textcolor{keywordtype}{void}\ MoveCurrentToBottom(iterator\ \&current);}
-\DoxyCodeLine{00850\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *\mbox{\hyperlink{struct_point_list_a5582e98ded628b2e47642c679fb5faa2}{TakeOutCurrent}}(iterator\ \&current);}
-\DoxyCodeLine{00851\ }
-\DoxyCodeLine{00852\ \ \ \textcolor{keywordtype}{void}\ InsertListAfterCurrent(iterator\ \&current,\mbox{\hyperlink{struct_point_list}{PointList}}\ *list2);}
-\DoxyCodeLine{00853\ \ \ \textcolor{keywordtype}{void}\ InsertListBeforeCurrent(iterator\ \&current,\mbox{\hyperlink{struct_point_list}{PointList}}\ *list2);}
-\DoxyCodeLine{00854\ \ \ \textcolor{keywordtype}{void}\ MergeLists(\mbox{\hyperlink{struct_point_list}{PointList}}*\ list2);}
-\DoxyCodeLine{00855\ \ \ \textcolor{keywordtype}{void}\ ShiftList(iterator\ \&current);}
-\DoxyCodeLine{00856\ }
-\DoxyCodeLine{00857\ \ \ \textcolor{comment}{//void\ FillList(double\ **x,unsigned\ long\ N}}
-\DoxyCodeLine{00858\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,unsigned\ long\ idmin);}}
-\DoxyCodeLine{00859\ \ \ \textcolor{keywordtype}{void}\ PrintList();}
-\DoxyCodeLine{00860\ }
-\DoxyCodeLine{00861\ \ \ \textcolor{keywordtype}{void}\ setN(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N)\{Npoints\ =\ N;\}}
-\DoxyCodeLine{00862\ \ \ \textcolor{keywordtype}{void}\ setTop(\mbox{\hyperlink{struct_point}{Point}}\ *p)\{top\ =\ p;\}}
-\DoxyCodeLine{00863\ \ \ \textcolor{keywordtype}{void}\ setBottom(\mbox{\hyperlink{struct_point}{Point}}\ *p)\{bottom\ =\ p;\}}
-\DoxyCodeLine{00864\ \ \ }
-\DoxyCodeLine{00865\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00866\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *top;}
-\DoxyCodeLine{00867\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *bottom;}
-\DoxyCodeLine{00868\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Npoints;}
-\DoxyCodeLine{00869\ \ \ }
-\DoxyCodeLine{00870\ \ \ \textcolor{comment}{//\ make\ a\ point\ uncopyable}}
-\DoxyCodeLine{00871\ \ \ \mbox{\hyperlink{struct_point_list}{PointList}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point_list}{PointList}}\ \&p);}
-\DoxyCodeLine{00872\ \};}
-\DoxyCodeLine{00873\ }
-\DoxyCodeLine{00874\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point_list}{PointList}}\ *\mbox{\hyperlink{struct_point_list}{ListHndl}};}
-\DoxyCodeLine{00875\ }
+\DoxyCodeLine{00843\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *Top()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ top;\}}
+\DoxyCodeLine{00844\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *Bottom()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ bottom;\}}
+\DoxyCodeLine{00845\ \ \ }
+\DoxyCodeLine{00846\ \ \ \textcolor{keywordtype}{void}\ EmptyList();}
+\DoxyCodeLine{00847\ \ \ \textcolor{comment}{//void\ InsertAfterCurrent(iterator\ \&current,double\ *x,unsigned\ long\ id,Point\ *image);}}
+\DoxyCodeLine{00848\ \ \ \textcolor{comment}{//void\ InsertBeforeCurrent(iterator\ \&current,double\ *x,unsigned\ long\ id,Point\ *image);}}
+\DoxyCodeLine{00849\ \ \ \textcolor{keywordtype}{void}\ InsertPointAfterCurrent(iterator\ \&current,\mbox{\hyperlink{struct_point}{Point}}\ *);}
+\DoxyCodeLine{00850\ \ \ \textcolor{keywordtype}{void}\ InsertPointBeforeCurrent(iterator\ \&current,\mbox{\hyperlink{struct_point}{Point}}\ *);}
+\DoxyCodeLine{00851\ \ \ }
+\DoxyCodeLine{00852\ \ \ \textcolor{keywordtype}{void}\ MoveCurrentToBottom(iterator\ \&current);}
+\DoxyCodeLine{00853\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *\mbox{\hyperlink{struct_point_list_a5582e98ded628b2e47642c679fb5faa2}{TakeOutCurrent}}(iterator\ \&current);}
+\DoxyCodeLine{00854\ }
+\DoxyCodeLine{00855\ \ \ \textcolor{keywordtype}{void}\ InsertListAfterCurrent(iterator\ \&current,PointList\ *list2);}
+\DoxyCodeLine{00856\ \ \ \textcolor{keywordtype}{void}\ InsertListBeforeCurrent(iterator\ \&current,PointList\ *list2);}
+\DoxyCodeLine{00857\ \ \ \textcolor{keywordtype}{void}\ MergeLists(PointList*\ list2);}
+\DoxyCodeLine{00858\ \ \ \textcolor{keywordtype}{void}\ ShiftList(iterator\ \&current);}
+\DoxyCodeLine{00859\ }
+\DoxyCodeLine{00860\ \ \ \textcolor{comment}{//void\ FillList(double\ **x,unsigned\ long\ N}}
+\DoxyCodeLine{00861\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,unsigned\ long\ idmin);}}
+\DoxyCodeLine{00862\ \ \ \textcolor{keywordtype}{void}\ PrintList();}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00864\ \ \ \textcolor{keywordtype}{void}\ setN(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N)\{Npoints\ =\ N;\}}
+\DoxyCodeLine{00865\ \ \ \textcolor{keywordtype}{void}\ setTop(\mbox{\hyperlink{struct_point}{Point}}\ *p)\{top\ =\ p;\}}
+\DoxyCodeLine{00866\ \ \ \textcolor{keywordtype}{void}\ setBottom(\mbox{\hyperlink{struct_point}{Point}}\ *p)\{bottom\ =\ p;\}}
+\DoxyCodeLine{00867\ \ \ }
+\DoxyCodeLine{00868\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00869\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *top;}
+\DoxyCodeLine{00870\ \ \ \mbox{\hyperlink{struct_point}{Point}}\ *bottom;}
+\DoxyCodeLine{00871\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Npoints;}
+\DoxyCodeLine{00872\ \ \ }
+\DoxyCodeLine{00873\ \ \ \textcolor{comment}{//\ make\ a\ point\ uncopyable}}
+\DoxyCodeLine{00874\ \ \ PointList\ \&operator=(\textcolor{keyword}{const}\ PointList\ \&p);}
+\DoxyCodeLine{00875\ \};}
 \DoxyCodeLine{00876\ }
-\DoxyCodeLine{00877\ \textcolor{comment}{//\ ***********************************************************}}
-\DoxyCodeLine{00878\ \textcolor{comment}{//\ \ \ routines\ for\ linked\ list\ of\ points}}
-\DoxyCodeLine{00879\ \textcolor{comment}{//\ ************************************************************}}
-\DoxyCodeLine{00880\ }
-\DoxyCodeLine{00881\ \textcolor{comment}{//Point\ *NewPoint(double\ *x,unsigned\ long\ id);}}
-\DoxyCodeLine{00882\ }
-\DoxyCodeLine{00883\ \textcolor{keywordtype}{void}\ SwapPointsInList(\mbox{\hyperlink{struct_point_list}{ListHndl}}\ list,\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2);}
-\DoxyCodeLine{00884\ \mbox{\hyperlink{struct_point}{Point}}\ *sortList(\textcolor{keywordtype}{long}\ n,\ \textcolor{keywordtype}{double}\ arr[],\mbox{\hyperlink{struct_point_list}{ListHndl}}\ list,\mbox{\hyperlink{struct_point}{Point}}\ *firstpoint);}
+\DoxyCodeLine{00877\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point_list}{PointList}}\ *ListHndl;}
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ }
+\DoxyCodeLine{00880\ \textcolor{comment}{//\ ***********************************************************}}
+\DoxyCodeLine{00881\ \textcolor{comment}{//\ \ \ routines\ for\ linked\ list\ of\ points}}
+\DoxyCodeLine{00882\ \textcolor{comment}{//\ ************************************************************}}
+\DoxyCodeLine{00883\ }
+\DoxyCodeLine{00884\ \textcolor{comment}{//Point\ *NewPoint(double\ *x,unsigned\ long\ id);}}
 \DoxyCodeLine{00885\ }
-\DoxyCodeLine{00889\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ PosType>}
-\DoxyCodeLine{00890\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point__3d}{Point\_3d}}\{}
-\DoxyCodeLine{00891\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}()\{}
-\DoxyCodeLine{00892\ \ \ \ \ x[0]=x[1]=x[2]=0.0;}
-\DoxyCodeLine{00893\ \ \ \}}
-\DoxyCodeLine{00894\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}(T\ xx,T\ yy,T\ zz)\{}
-\DoxyCodeLine{00895\ \ \ \ \ x[0]=xx;}
-\DoxyCodeLine{00896\ \ \ \ \ x[1]=yy;}
-\DoxyCodeLine{00897\ \ \ \ \ x[2]=zz;}
-\DoxyCodeLine{00898\ \ \ \}}
-\DoxyCodeLine{00899\ \ \ \mbox{\hyperlink{struct_point__3d}{\string~Point\_3d}}()\{\};}
-\DoxyCodeLine{00900\ \ \ }
-\DoxyCodeLine{00901\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\{}
-\DoxyCodeLine{00902\ \ \ \ \ x[0]=p.x[0];}
-\DoxyCodeLine{00903\ \ \ \ \ x[1]=p.x[1];}
-\DoxyCodeLine{00904\ \ \ \ \ x[2]=p.x[2];}
-\DoxyCodeLine{00905\ \ \ \}}
-\DoxyCodeLine{00906\ \ \ }
-\DoxyCodeLine{00907\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\{}
-\DoxyCodeLine{00908\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00909\ \ \ \ \ x[0]=p.x[0];}
-\DoxyCodeLine{00910\ \ \ \ \ x[1]=p.x[1];}
-\DoxyCodeLine{00911\ \ \ \ \ x[2]=p.x[2];}
-\DoxyCodeLine{00912\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00913\ \ \ \}}
-\DoxyCodeLine{00914\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00915\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ tmp;}
-\DoxyCodeLine{00916\ \ \ \ \ tmp.x[0]\ =\ x[0]\ +\ p.x[0];}
-\DoxyCodeLine{00917\ \ \ \ \ tmp.x[1]\ =\ x[1]\ +\ p.x[1];}
-\DoxyCodeLine{00918\ \ \ \ \ tmp.x[2]\ =\ x[2]\ +\ p.x[2];}
-\DoxyCodeLine{00919\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{00920\ \ \ \}}
-\DoxyCodeLine{00921\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \ operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00922\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ tmp;}
-\DoxyCodeLine{00923\ \ \ \ \ tmp.x[0]\ =\ x[0]\ -\/\ p.x[0];}
-\DoxyCodeLine{00924\ \ \ \ \ tmp.x[1]\ =\ x[1]\ -\/\ p.x[1];}
-\DoxyCodeLine{00925\ \ \ \ \ tmp.x[2]\ =\ x[2]\ -\/\ p.x[2];}
-\DoxyCodeLine{00926\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{00927\ \ \ \}}
-\DoxyCodeLine{00928\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&\ operator+=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\{}
-\DoxyCodeLine{00929\ \ \ \ \ x[0]+=p.x[0];}
-\DoxyCodeLine{00930\ \ \ \ \ x[1]+=p.x[1];}
-\DoxyCodeLine{00931\ \ \ \ \ x[2]+=p.x[2];}
-\DoxyCodeLine{00932\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00933\ \ \ \}}
-\DoxyCodeLine{00934\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&\ operator-\/=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\{}
-\DoxyCodeLine{00935\ \ \ \ \ x[0]-\/=p.x[0];}
-\DoxyCodeLine{00936\ \ \ \ \ x[1]-\/=p.x[1];}
-\DoxyCodeLine{00937\ \ \ \ \ x[2]-\/=p.x[2];}
-\DoxyCodeLine{00938\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00939\ \ \ \}}
-\DoxyCodeLine{00940\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&\ operator/=(T\ value)\{}
-\DoxyCodeLine{00941\ \ \ \ \ x[0]/=value;}
-\DoxyCodeLine{00942\ \ \ \ \ x[1]/=value;}
-\DoxyCodeLine{00943\ \ \ \ \ x[2]/=value;}
-\DoxyCodeLine{00944\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00945\ \ \ \}}
-\DoxyCodeLine{00946\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ operator/(T\ value)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00947\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ tmp;}
-\DoxyCodeLine{00948\ \ \ \ \ tmp[0]\ =\ x[0]/value;}
-\DoxyCodeLine{00949\ \ \ \ \ tmp[1]\ =\ x[1]/value;}
-\DoxyCodeLine{00950\ \ \ \ \ tmp[2]\ =\ x[2]/value;}
-\DoxyCodeLine{00951\ \ \ \ \ }
-\DoxyCodeLine{00952\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{00953\ \ \ \}}
-\DoxyCodeLine{00954\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&\ operator*=(T\ value)\{}
-\DoxyCodeLine{00955\ \ \ \ \ x[0]\ *=value;}
-\DoxyCodeLine{00956\ \ \ \ \ x[1]\ *=value;}
-\DoxyCodeLine{00957\ \ \ \ \ x[2]\ *=value;}
-\DoxyCodeLine{00958\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00959\ \ \ \}}
-\DoxyCodeLine{00960\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ operator*(PosType\ value)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00961\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ tmp;}
-\DoxyCodeLine{00962\ \ \ \ \ tmp[0]\ =\ x[0]*value;}
-\DoxyCodeLine{00963\ \ \ \ \ tmp[1]\ =\ x[1]*value;}
-\DoxyCodeLine{00964\ \ \ \ \ tmp[2]\ =\ x[2]*value;}
-\DoxyCodeLine{00965\ \ \ \ \ }
-\DoxyCodeLine{00966\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{00967\ \ \ \}}
-\DoxyCodeLine{00968\ \ \ }
-\DoxyCodeLine{00970\ \ \ T\ \mbox{\hyperlink{struct_point__3d_a1e20b43af3f4dc48bf904bbdbead4b98}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d}}\ \&p)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00971\ \ \ \ \ \textcolor{keywordflow}{return}\ x[0]*p.x[0]\ +\ x[1]*p.x[1]\ +\ x[2]*p.x[2];}
-\DoxyCodeLine{00972\ \ \ \}}
-\DoxyCodeLine{00973\ }
-\DoxyCodeLine{00975\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{struct_point__3d_ab7da9d9c8d7c5be91cc076caf17ddee1}{operator\string^}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00976\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ v;}
-\DoxyCodeLine{00977\ \ \ \ \ v[0]\ =\ x[1]*p[2]\ -\/\ x[2]*p[1];}
-\DoxyCodeLine{00978\ \ \ \ \ v[1]\ =\ x[2]*p[0]\ -\/\ x[0]*p[2];}
-\DoxyCodeLine{00979\ \ \ \ \ v[2]\ =\ x[0]*p[1]\ -\/\ x[1]*p[0];}
-\DoxyCodeLine{00980\ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
-\DoxyCodeLine{00981\ \ \ \}}
-\DoxyCodeLine{00982\ }
-\DoxyCodeLine{00984\ \ \ T\ \mbox{\hyperlink{struct_point__3d_a1ac61319e2ad822eb214e6348d394f9a}{length}}()\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00985\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]\ +\ x[2]*x[2]);}
-\DoxyCodeLine{00986\ \ \ \}}
-\DoxyCodeLine{00987\ }
-\DoxyCodeLine{00988\ \ \ T\ length\_sqr()\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{00989\ \ \ \ \ \textcolor{keywordflow}{return}\ x[0]*x[0]\ +\ x[1]*x[1]\ +\ x[2]*x[2];}
-\DoxyCodeLine{00990\ \ \ \}}
-\DoxyCodeLine{00991\ \ \ }
-\DoxyCodeLine{00993\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_point__3d_a29194815fd5c472e3962a4429a40b885}{rotate}}(T\ theta,T\ phi)\{}
-\DoxyCodeLine{00994\ \ \ \ \ T\ c\ =\ cos(theta),s\ =\ sin(theta);}
-\DoxyCodeLine{00995\ \ \ \ \ T\ tmp\ =\ c*x[0]\ -\/\ s*x[1];}
-\DoxyCodeLine{00996\ \ \ \ \ x[1]\ =\ c*x[1]\ +\ s*x[0];}
-\DoxyCodeLine{00997\ \ \ \ \ }
-\DoxyCodeLine{00998\ \ \ \ \ c\ =\ cos(phi);}
-\DoxyCodeLine{00999\ \ \ \ \ s\ =\ sin(phi);;}
-\DoxyCodeLine{01000\ \ \ \ \ x[0]\ \ =\ c*tmp\ -\/\ s*x[2];}
-\DoxyCodeLine{01001\ \ \ \ \ x[2]\ =\ c*x[2]\ +\ s*tmp;}
-\DoxyCodeLine{01002\ \ \ \}}
-\DoxyCodeLine{01003\ \ \ }
-\DoxyCodeLine{01005\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_point__3d_a8f88aebedd3557d39440dba79cf02b39}{unitize}}()\{}
-\DoxyCodeLine{01006\ \ \ \ \ T\ s\ =\ \mbox{\hyperlink{struct_point__3d_a1ac61319e2ad822eb214e6348d394f9a}{length}}();}
-\DoxyCodeLine{01007\ \ \ \ \ x[0]\ /=\ s;}
-\DoxyCodeLine{01008\ \ \ \ \ x[1]\ /=\ s;}
-\DoxyCodeLine{01009\ \ \ \ \ x[2]\ /=\ s;}
-\DoxyCodeLine{01010\ \ \ \}}
-\DoxyCodeLine{01011\ }
-\DoxyCodeLine{01012\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ unit()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01013\ \ \ \ \ PosType\ s\ =\ \mbox{\hyperlink{struct_point__3d_a1ac61319e2ad822eb214e6348d394f9a}{length}}();}
-\DoxyCodeLine{01014\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(x[0]/s,x[1]/s,x[2]/s);}
-\DoxyCodeLine{01015\ \ \ \}}
-\DoxyCodeLine{01016\ \ \ }
-\DoxyCodeLine{01018\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{struct_point__3d_a84c343a86c3a18c06be5039a24b15df4}{unitPhi}}()\{}
-\DoxyCodeLine{01019\ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]);}
-\DoxyCodeLine{01020\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(-\/x[1],x[0],0)\ /\ s;}
-\DoxyCodeLine{01021\ \ \ \}}
-\DoxyCodeLine{01022\ }
-\DoxyCodeLine{01025\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \mbox{\hyperlink{struct_point__3d_a32033cd977ef3b7d74f27f3eddaf2766}{unitTheta}}()\{}
-\DoxyCodeLine{01026\ \ \ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ v(-\/x[0]*x[2],-\/x[1]*x[2]\ ,x[0]*x[0]\ +\ x[1]*x[1]);}
-\DoxyCodeLine{01027\ \ \ \ \ v.\mbox{\hyperlink{struct_point__3d_a8f88aebedd3557d39440dba79cf02b39}{unitize}}();}
-\DoxyCodeLine{01028\ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
-\DoxyCodeLine{01029\ \ \ \}}
-\DoxyCodeLine{01030\ }
-\DoxyCodeLine{01031\ \ \ T*\ data()\{\textcolor{keywordflow}{return}\ x;\}}
-\DoxyCodeLine{01032\ \ \ }
-\DoxyCodeLine{01033\ \ \ T\ x[3];}
-\DoxyCodeLine{01034\ \ \ T\ \&\ operator[](\textcolor{keywordtype}{size\_t}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
-\DoxyCodeLine{01035\ \ \ \textcolor{keyword}{const}\ T\ \&\ \ operator[](\textcolor{keywordtype}{size\_t}\ i)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ x[i];\}}
-\DoxyCodeLine{01036\ \};}
-\DoxyCodeLine{01037\ }
-\DoxyCodeLine{01038\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{01039\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \textcolor{keyword}{const}\ \&p)\ \{}
-\DoxyCodeLine{01040\ \ \ \textcolor{keywordflow}{return}\ os\ <<\ p.x[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ p.x[1]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ p.x[2];}
-\DoxyCodeLine{01041\ \}}
-\DoxyCodeLine{01042\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{01043\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ >\ \&v)\{}
-\DoxyCodeLine{01044\ \ \ std::ofstream\ file(filename);}
-\DoxyCodeLine{01045\ \ \ file\ <<\ \textcolor{stringliteral}{"{}x,y,z"{}}\ <<\ std::endl;}
-\DoxyCodeLine{01046\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&p\ :\ v)\ file\ <<\ p[0]\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ p[1]\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ p[2]\ <<\ std::endl;}
-\DoxyCodeLine{01047\ \}}
-\DoxyCodeLine{01048\ }
-\DoxyCodeLine{01049\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{01050\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<T>\ \&x,\textcolor{keyword}{const}\ std::vector<T>\ \&y)\{}
-\DoxyCodeLine{01051\ \ \ std::ofstream\ file(filename);}
-\DoxyCodeLine{01052\ \ \ \textcolor{keywordflow}{if}(x.size()\ !=\ y.size())\{}
-\DoxyCodeLine{01053\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}mismatch"{}});}
-\DoxyCodeLine{01054\ \ \ \}}
-\DoxyCodeLine{01055\ \ \ \textcolor{keywordtype}{int}\ n=x.size();}
-\DoxyCodeLine{01056\ \ \ file\ <<\ \textcolor{stringliteral}{"{}x,y"{}}\ <<\ std::endl;}
-\DoxyCodeLine{01057\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<n\ ;\ ++i)\{}
-\DoxyCodeLine{01058\ \ \ \ \ file\ <<\ x[i]\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ y[i]\ <<\ std::endl;}
-\DoxyCodeLine{01059\ \ \ \}}
-\DoxyCodeLine{01060\ \}}
-\DoxyCodeLine{01061\ }
-\DoxyCodeLine{01062\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ pointx(\mbox{\hyperlink{struct_point}{Point}}\ \&p)\{\textcolor{keywordflow}{return}\ p.x[0];\}}
-\DoxyCodeLine{01063\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ pointy(\mbox{\hyperlink{struct_point}{Point}}\ \&p)\{\textcolor{keywordflow}{return}\ p.x[1];\}}
-\DoxyCodeLine{01064\ }
-\DoxyCodeLine{01065\ \textcolor{comment}{/*}}
-\DoxyCodeLine{01066\ \textcolor{comment}{template\ <typename\ T>}}
-\DoxyCodeLine{01067\ \textcolor{comment}{struct\ LISTiterator\{}}
-\DoxyCodeLine{01068\ \textcolor{comment}{}}
-\DoxyCodeLine{01069\ \textcolor{comment}{\ \ std::list<T>::iterator\ current\_it;}}
-\DoxyCodeLine{01070\ \textcolor{comment}{\ \ }}
-\DoxyCodeLine{01071\ \textcolor{comment}{\ \ LISTiterator()\{\ \}}}
+\DoxyCodeLine{00886\ \textcolor{keywordtype}{void}\ SwapPointsInList(ListHndl\ list,\mbox{\hyperlink{struct_point}{Point}}\ *p1,\mbox{\hyperlink{struct_point}{Point}}\ *p2);}
+\DoxyCodeLine{00887\ \mbox{\hyperlink{struct_point}{Point}}\ *sortList(\textcolor{keywordtype}{long}\ n,\ \textcolor{keywordtype}{double}\ arr[],ListHndl\ list,\mbox{\hyperlink{struct_point}{Point}}\ *firstpoint);}
+\DoxyCodeLine{00888\ }
+\DoxyCodeLine{00892\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ PosType>}
+\DoxyCodeLine{00893\ \textcolor{keyword}{struct\ }Point\_3d\{}
+\DoxyCodeLine{00894\ \ \ Point\_3d()\{}
+\DoxyCodeLine{00895\ \ \ \ \ x[0]=x[1]=x[2]=0.0;}
+\DoxyCodeLine{00896\ \ \ \}}
+\DoxyCodeLine{00897\ \ \ Point\_3d(T\ xx,T\ yy,T\ zz)\{}
+\DoxyCodeLine{00898\ \ \ \ \ x[0]=xx;}
+\DoxyCodeLine{00899\ \ \ \ \ x[1]=yy;}
+\DoxyCodeLine{00900\ \ \ \ \ x[2]=zz;}
+\DoxyCodeLine{00901\ \ \ \}}
+\DoxyCodeLine{00902\ \ \ \string~Point\_3d()\{\};}
+\DoxyCodeLine{00903\ \ \ }
+\DoxyCodeLine{00904\ \ \ Point\_3d(\textcolor{keyword}{const}\ Point\_3d\ \&p)\{}
+\DoxyCodeLine{00905\ \ \ \ \ x[0]=p.x[0];}
+\DoxyCodeLine{00906\ \ \ \ \ x[1]=p.x[1];}
+\DoxyCodeLine{00907\ \ \ \ \ x[2]=p.x[2];}
+\DoxyCodeLine{00908\ \ \ \}}
+\DoxyCodeLine{00909\ \ \ }
+\DoxyCodeLine{00910\ \ \ Point\_3d\ \&\ operator=(\textcolor{keyword}{const}\ Point\_3d\ \&p)\{}
+\DoxyCodeLine{00911\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00912\ \ \ \ \ x[0]=p.x[0];}
+\DoxyCodeLine{00913\ \ \ \ \ x[1]=p.x[1];}
+\DoxyCodeLine{00914\ \ \ \ \ x[2]=p.x[2];}
+\DoxyCodeLine{00915\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00916\ \ \ \}}
+\DoxyCodeLine{00917\ \ \ Point\_3d\ \ operator+(\textcolor{keyword}{const}\ Point\_3d\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00918\ \ \ \ \ Point\_3d\ tmp;}
+\DoxyCodeLine{00919\ \ \ \ \ tmp.x[0]\ =\ x[0]\ +\ p.x[0];}
+\DoxyCodeLine{00920\ \ \ \ \ tmp.x[1]\ =\ x[1]\ +\ p.x[1];}
+\DoxyCodeLine{00921\ \ \ \ \ tmp.x[2]\ =\ x[2]\ +\ p.x[2];}
+\DoxyCodeLine{00922\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00923\ \ \ \}}
+\DoxyCodeLine{00924\ \ \ Point\_3d\ \ operator-\/(\textcolor{keyword}{const}\ Point\_3d\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00925\ \ \ \ \ Point\_3d\ tmp;}
+\DoxyCodeLine{00926\ \ \ \ \ tmp.x[0]\ =\ x[0]\ -\/\ p.x[0];}
+\DoxyCodeLine{00927\ \ \ \ \ tmp.x[1]\ =\ x[1]\ -\/\ p.x[1];}
+\DoxyCodeLine{00928\ \ \ \ \ tmp.x[2]\ =\ x[2]\ -\/\ p.x[2];}
+\DoxyCodeLine{00929\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00930\ \ \ \}}
+\DoxyCodeLine{00931\ \ \ Point\_3d\ \&\ operator+=(\textcolor{keyword}{const}\ Point\_3d\ \&p)\{}
+\DoxyCodeLine{00932\ \ \ \ \ x[0]+=p.x[0];}
+\DoxyCodeLine{00933\ \ \ \ \ x[1]+=p.x[1];}
+\DoxyCodeLine{00934\ \ \ \ \ x[2]+=p.x[2];}
+\DoxyCodeLine{00935\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00936\ \ \ \}}
+\DoxyCodeLine{00937\ \ \ Point\_3d\ \&\ operator-\/=(\textcolor{keyword}{const}\ Point\_3d\ \&p)\{}
+\DoxyCodeLine{00938\ \ \ \ \ x[0]-\/=p.x[0];}
+\DoxyCodeLine{00939\ \ \ \ \ x[1]-\/=p.x[1];}
+\DoxyCodeLine{00940\ \ \ \ \ x[2]-\/=p.x[2];}
+\DoxyCodeLine{00941\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00942\ \ \ \}}
+\DoxyCodeLine{00943\ \ \ Point\_3d\ \&\ operator/=(T\ value)\{}
+\DoxyCodeLine{00944\ \ \ \ \ x[0]/=value;}
+\DoxyCodeLine{00945\ \ \ \ \ x[1]/=value;}
+\DoxyCodeLine{00946\ \ \ \ \ x[2]/=value;}
+\DoxyCodeLine{00947\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00948\ \ \ \}}
+\DoxyCodeLine{00949\ \ \ Point\_3d\ operator/(T\ value)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00950\ \ \ \ \ Point\_3d\ tmp;}
+\DoxyCodeLine{00951\ \ \ \ \ tmp[0]\ =\ x[0]/value;}
+\DoxyCodeLine{00952\ \ \ \ \ tmp[1]\ =\ x[1]/value;}
+\DoxyCodeLine{00953\ \ \ \ \ tmp[2]\ =\ x[2]/value;}
+\DoxyCodeLine{00954\ \ \ \ \ }
+\DoxyCodeLine{00955\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00956\ \ \ \}}
+\DoxyCodeLine{00957\ \ \ Point\_3d\ \&\ operator*=(T\ value)\{}
+\DoxyCodeLine{00958\ \ \ \ \ x[0]\ *=value;}
+\DoxyCodeLine{00959\ \ \ \ \ x[1]\ *=value;}
+\DoxyCodeLine{00960\ \ \ \ \ x[2]\ *=value;}
+\DoxyCodeLine{00961\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00962\ \ \ \}}
+\DoxyCodeLine{00963\ \ \ Point\_3d\ operator*(PosType\ value)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00964\ \ \ \ \ Point\_3d\ tmp;}
+\DoxyCodeLine{00965\ \ \ \ \ tmp[0]\ =\ x[0]*value;}
+\DoxyCodeLine{00966\ \ \ \ \ tmp[1]\ =\ x[1]*value;}
+\DoxyCodeLine{00967\ \ \ \ \ tmp[2]\ =\ x[2]*value;}
+\DoxyCodeLine{00968\ \ \ \ \ }
+\DoxyCodeLine{00969\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00970\ \ \ \}}
+\DoxyCodeLine{00971\ \ \ }
+\DoxyCodeLine{00973\ \ \ T\ \mbox{\hyperlink{struct_point__3d_a1e20b43af3f4dc48bf904bbdbead4b98}{operator*}}(\textcolor{keyword}{const}\ Point\_3d\ \&p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00974\ \ \ \ \ \textcolor{keywordflow}{return}\ x[0]*p.x[0]\ +\ x[1]*p.x[1]\ +\ x[2]*p.x[2];}
+\DoxyCodeLine{00975\ \ \ \}}
+\DoxyCodeLine{00976\ }
+\DoxyCodeLine{00978\ \ \ Point\_3d<T>\ \mbox{\hyperlink{struct_point__3d_ab7da9d9c8d7c5be91cc076caf17ddee1}{operator\string^}}(\textcolor{keyword}{const}\ Point\_3d<T>\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00979\ \ \ \ \ Point\_3d<T>\ v;}
+\DoxyCodeLine{00980\ \ \ \ \ v[0]\ =\ x[1]*p[2]\ -\/\ x[2]*p[1];}
+\DoxyCodeLine{00981\ \ \ \ \ v[1]\ =\ x[2]*p[0]\ -\/\ x[0]*p[2];}
+\DoxyCodeLine{00982\ \ \ \ \ v[2]\ =\ x[0]*p[1]\ -\/\ x[1]*p[0];}
+\DoxyCodeLine{00983\ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{00984\ \ \ \}}
+\DoxyCodeLine{00985\ }
+\DoxyCodeLine{00987\ \ \ T\ \mbox{\hyperlink{struct_point__3d_a1ac61319e2ad822eb214e6348d394f9a}{length}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00988\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]\ +\ x[2]*x[2]);}
+\DoxyCodeLine{00989\ \ \ \}}
+\DoxyCodeLine{00990\ }
+\DoxyCodeLine{00991\ \ \ T\ length\_sqr()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{00992\ \ \ \ \ \textcolor{keywordflow}{return}\ x[0]*x[0]\ +\ x[1]*x[1]\ +\ x[2]*x[2];}
+\DoxyCodeLine{00993\ \ \ \}}
+\DoxyCodeLine{00994\ \ \ }
+\DoxyCodeLine{00996\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_point__3d_a29194815fd5c472e3962a4429a40b885}{rotate}}(T\ theta,T\ phi)\{}
+\DoxyCodeLine{00997\ \ \ \ \ T\ c\ =\ cos(theta),s\ =\ sin(theta);}
+\DoxyCodeLine{00998\ \ \ \ \ T\ tmp\ =\ c*x[0]\ -\/\ s*x[1];}
+\DoxyCodeLine{00999\ \ \ \ \ x[1]\ =\ c*x[1]\ +\ s*x[0];}
+\DoxyCodeLine{01000\ \ \ \ \ }
+\DoxyCodeLine{01001\ \ \ \ \ c\ =\ cos(phi);}
+\DoxyCodeLine{01002\ \ \ \ \ s\ =\ sin(phi);;}
+\DoxyCodeLine{01003\ \ \ \ \ x[0]\ \ =\ c*tmp\ -\/\ s*x[2];}
+\DoxyCodeLine{01004\ \ \ \ \ x[2]\ =\ c*x[2]\ +\ s*tmp;}
+\DoxyCodeLine{01005\ \ \ \}}
+\DoxyCodeLine{01006\ \ \ }
+\DoxyCodeLine{01008\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_point__3d_a8f88aebedd3557d39440dba79cf02b39}{unitize}}()\{}
+\DoxyCodeLine{01009\ \ \ \ \ T\ s\ =\ \mbox{\hyperlink{struct_point__3d_a1ac61319e2ad822eb214e6348d394f9a}{length}}();}
+\DoxyCodeLine{01010\ \ \ \ \ x[0]\ /=\ s;}
+\DoxyCodeLine{01011\ \ \ \ \ x[1]\ /=\ s;}
+\DoxyCodeLine{01012\ \ \ \ \ x[2]\ /=\ s;}
+\DoxyCodeLine{01013\ \ \ \}}
+\DoxyCodeLine{01014\ }
+\DoxyCodeLine{01015\ \ \ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ unit()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01016\ \ \ \ \ PosType\ s\ =\ \mbox{\hyperlink{struct_point__3d_a1ac61319e2ad822eb214e6348d394f9a}{length}}();}
+\DoxyCodeLine{01017\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}(x[0]/s,x[1]/s,x[2]/s);}
+\DoxyCodeLine{01018\ \ \ \}}
+\DoxyCodeLine{01019\ \ \ }
+\DoxyCodeLine{01021\ \ \ Point\_3d<T>\ \mbox{\hyperlink{struct_point__3d_a84c343a86c3a18c06be5039a24b15df4}{unitPhi}}()\{}
+\DoxyCodeLine{01022\ \ \ \ \ \textcolor{keywordtype}{double}\ s\ =\ sqrt(x[0]*x[0]\ +\ x[1]*x[1]);}
+\DoxyCodeLine{01023\ \ \ \ \ \textcolor{keywordflow}{return}\ Point\_3d<T>(-\/x[1],x[0],0)\ /\ s;}
+\DoxyCodeLine{01024\ \ \ \}}
+\DoxyCodeLine{01025\ }
+\DoxyCodeLine{01028\ \ \ Point\_3d<T>\ \mbox{\hyperlink{struct_point__3d_a32033cd977ef3b7d74f27f3eddaf2766}{unitTheta}}()\{}
+\DoxyCodeLine{01029\ \ \ \ \ Point\_3d<T>\ v(-\/x[0]*x[2],-\/x[1]*x[2]\ ,x[0]*x[0]\ +\ x[1]*x[1]);}
+\DoxyCodeLine{01030\ \ \ \ \ v.\mbox{\hyperlink{struct_point__3d_a8f88aebedd3557d39440dba79cf02b39}{unitize}}();}
+\DoxyCodeLine{01031\ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{01032\ \ \ \}}
+\DoxyCodeLine{01033\ }
+\DoxyCodeLine{01034\ \ \ T*\ data()\{\textcolor{keywordflow}{return}\ x;\}}
+\DoxyCodeLine{01035\ \ \ }
+\DoxyCodeLine{01036\ \ \ T\ x[3];}
+\DoxyCodeLine{01037\ \ \ T\ \&\ operator[](\textcolor{keywordtype}{size\_t}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{01038\ \ \ \textcolor{keyword}{const}\ T\ \&\ \ operator[](\textcolor{keywordtype}{size\_t}\ i)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{01039\ \};}
+\DoxyCodeLine{01040\ }
+\DoxyCodeLine{01041\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01042\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \textcolor{keyword}{const}\ \&p)\ \{}
+\DoxyCodeLine{01043\ \ \ \textcolor{keywordflow}{return}\ os\ <<\ p.x[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ p.x[1]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ p.x[2];}
+\DoxyCodeLine{01044\ \}}
+\DoxyCodeLine{01045\ }
+\DoxyCodeLine{01046\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01047\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<\mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ >\ \&v)\{}
+\DoxyCodeLine{01048\ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{01049\ \ \ file\ <<\ \textcolor{stringliteral}{"{}x,y,z"{}}\ <<\ std::endl;}
+\DoxyCodeLine{01050\ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__3d}{Point\_3d<T>}}\ \&p\ :\ v)\ file\ <<\ p[0]\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ p[1]\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ p[2]\ <<\ std::endl;}
+\DoxyCodeLine{01051\ \}}
+\DoxyCodeLine{01052\ }
+\DoxyCodeLine{01053\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{01054\ \textcolor{keywordtype}{void}\ write\_csv(std::string\ filename,\textcolor{keyword}{const}\ std::vector<T>\ \&x,\textcolor{keyword}{const}\ std::vector<T>\ \&y)\{}
+\DoxyCodeLine{01055\ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{01056\ \ \ \textcolor{keywordflow}{if}(x.size()\ !=\ y.size())\{}
+\DoxyCodeLine{01057\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}mismatch"{}});}
+\DoxyCodeLine{01058\ \ \ \}}
+\DoxyCodeLine{01059\ \ \ \textcolor{keywordtype}{int}\ n=x.size();}
+\DoxyCodeLine{01060\ \ \ file\ <<\ \textcolor{stringliteral}{"{}x,y"{}}\ <<\ std::endl;}
+\DoxyCodeLine{01061\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<n\ ;\ ++i)\{}
+\DoxyCodeLine{01062\ \ \ \ \ file\ <<\ x[i]\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ y[i]\ <<\ std::endl;}
+\DoxyCodeLine{01063\ \ \ \}}
+\DoxyCodeLine{01064\ \}}
+\DoxyCodeLine{01065\ }
+\DoxyCodeLine{01066\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ pointx(\mbox{\hyperlink{struct_point}{Point}}\ \&p)\{\textcolor{keywordflow}{return}\ p.x[0];\}}
+\DoxyCodeLine{01067\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ pointy(\mbox{\hyperlink{struct_point}{Point}}\ \&p)\{\textcolor{keywordflow}{return}\ p.x[1];\}}
+\DoxyCodeLine{01068\ }
+\DoxyCodeLine{01069\ \textcolor{comment}{/*}}
+\DoxyCodeLine{01070\ \textcolor{comment}{template\ <typename\ T>}}
+\DoxyCodeLine{01071\ \textcolor{comment}{struct\ LISTiterator\{}}
 \DoxyCodeLine{01072\ \textcolor{comment}{}}
-\DoxyCodeLine{01073\ \textcolor{comment}{\ \ T\&\ operator*()\{return\ *current\_it;\}}}
-\DoxyCodeLine{01074\ \textcolor{comment}{}}
-\DoxyCodeLine{01075\ \textcolor{comment}{\ \ bool\ operator++()\{}}
-\DoxyCodeLine{01076\ \textcolor{comment}{\ \ \ \ if(current\_it\ ==\ )}}
-\DoxyCodeLine{01077\ \textcolor{comment}{\ \ \ \ -\/-\/current\_it;}}
-\DoxyCodeLine{01078\ \textcolor{comment}{\ \ \ \ }}
-\DoxyCodeLine{01079\ \textcolor{comment}{\ \ \ \ assert(current);}}
-\DoxyCodeLine{01080\ \textcolor{comment}{\ \ \ \ if(current-\/>prev\ ==\ NULL)\ return\ false;}}
-\DoxyCodeLine{01081\ \textcolor{comment}{\ \ \ \ current=current-\/>prev;}}
-\DoxyCodeLine{01082\ \textcolor{comment}{\ \ \ \ return\ true;}}
-\DoxyCodeLine{01083\ \textcolor{comment}{\ \ \}}}
-\DoxyCodeLine{01084\ \textcolor{comment}{}}
-\DoxyCodeLine{01086\ \ \ bool\ operator++(int)\{}
-\DoxyCodeLine{01087\ \ \ \ \ assert(current);}
-\DoxyCodeLine{01088\ \ \ \ \ if(current-\/>prev\ ==\ NULL)\ return\ false;}
-\DoxyCodeLine{01089\ \ \ \ \ current=current-\/>prev;}
-\DoxyCodeLine{01090\ \ \ \ \ return\ true;}
-\DoxyCodeLine{01091\ \ \ \}}
-\DoxyCodeLine{01092\ }
-\DoxyCodeLine{01094\ \ \ bool\ operator-\/-\/()\{}
-\DoxyCodeLine{01095\ \ \ \ \ assert(current);}
-\DoxyCodeLine{01096\ \ \ \ \ if(current-\/>next\ ==\ NULL)\ return\ false;}
-\DoxyCodeLine{01097\ \ \ \ \ current=current-\/>next;}
-\DoxyCodeLine{01098\ \ \ \ \ return\ true;}
-\DoxyCodeLine{01099\ \ \ \ \}}
-\DoxyCodeLine{01100\ }
-\DoxyCodeLine{01102\ \ \ bool\ operator-\/-\/(int)\{}
-\DoxyCodeLine{01103\ \ \ \ \ assert(current);}
-\DoxyCodeLine{01104\ \ \ \ \ if(current-\/>next\ ==\ NULL)\ return\ false;}
-\DoxyCodeLine{01105\ \ \ \ \ current=current-\/>next;}
-\DoxyCodeLine{01106\ \ \ \ \ return\ true;}
-\DoxyCodeLine{01107\ \ \ \}}
-\DoxyCodeLine{01108\ }
-\DoxyCodeLine{01109\ \ \ void\ JumpDownList(int\ jump)\{}
-\DoxyCodeLine{01110\ \ \ \ \ int\ i;}
-\DoxyCodeLine{01111\ }
-\DoxyCodeLine{01112\ \ \ \ \ if(jump\ >\ 0)\ for(i=0;i<jump;++i)\ -\/-\/(*this);}
-\DoxyCodeLine{01113\ \ \ \ \ if(jump\ <\ 0)\ for(i=0;i<abs(jump);++i)\ ++(*this);}
-\DoxyCodeLine{01114\ \ \ \}}
+\DoxyCodeLine{01073\ \textcolor{comment}{\ \ std::list<T>::iterator\ current\_it;}}
+\DoxyCodeLine{01074\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{01075\ \textcolor{comment}{\ \ LISTiterator()\{\ \}}}
+\DoxyCodeLine{01076\ \textcolor{comment}{}}
+\DoxyCodeLine{01077\ \textcolor{comment}{\ \ T\&\ operator*()\{return\ *current\_it;\}}}
+\DoxyCodeLine{01078\ \textcolor{comment}{}}
+\DoxyCodeLine{01079\ \textcolor{comment}{\ \ bool\ operator++()\{}}
+\DoxyCodeLine{01080\ \textcolor{comment}{\ \ \ \ if(current\_it\ ==\ )}}
+\DoxyCodeLine{01081\ \textcolor{comment}{\ \ \ \ -\/-\/current\_it;}}
+\DoxyCodeLine{01082\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{01083\ \textcolor{comment}{\ \ \ \ assert(current);}}
+\DoxyCodeLine{01084\ \textcolor{comment}{\ \ \ \ if(current-\/>prev\ ==\ NULL)\ return\ false;}}
+\DoxyCodeLine{01085\ \textcolor{comment}{\ \ \ \ current=current-\/>prev;}}
+\DoxyCodeLine{01086\ \textcolor{comment}{\ \ \ \ return\ true;}}
+\DoxyCodeLine{01087\ \textcolor{comment}{\ \ \}}}
+\DoxyCodeLine{01088\ \textcolor{comment}{}}
+\DoxyCodeLine{01090\ \ \ bool\ operator++(int)\{}
+\DoxyCodeLine{01091\ \ \ \ \ assert(current);}
+\DoxyCodeLine{01092\ \ \ \ \ if(current-\/>prev\ ==\ NULL)\ return\ false;}
+\DoxyCodeLine{01093\ \ \ \ \ current=current-\/>prev;}
+\DoxyCodeLine{01094\ \ \ \ \ return\ true;}
+\DoxyCodeLine{01095\ \ \ \}}
+\DoxyCodeLine{01096\ }
+\DoxyCodeLine{01098\ \ \ bool\ operator-\/-\/()\{}
+\DoxyCodeLine{01099\ \ \ \ \ assert(current);}
+\DoxyCodeLine{01100\ \ \ \ \ if(current-\/>next\ ==\ NULL)\ return\ false;}
+\DoxyCodeLine{01101\ \ \ \ \ current=current-\/>next;}
+\DoxyCodeLine{01102\ \ \ \ \ return\ true;}
+\DoxyCodeLine{01103\ \ \ \ \}}
+\DoxyCodeLine{01104\ }
+\DoxyCodeLine{01106\ \ \ bool\ operator-\/-\/(int)\{}
+\DoxyCodeLine{01107\ \ \ \ \ assert(current);}
+\DoxyCodeLine{01108\ \ \ \ \ if(current-\/>next\ ==\ NULL)\ return\ false;}
+\DoxyCodeLine{01109\ \ \ \ \ current=current-\/>next;}
+\DoxyCodeLine{01110\ \ \ \ \ return\ true;}
+\DoxyCodeLine{01111\ \ \ \}}
+\DoxyCodeLine{01112\ }
+\DoxyCodeLine{01113\ \ \ void\ JumpDownList(int\ jump)\{}
+\DoxyCodeLine{01114\ \ \ \ \ int\ i;}
 \DoxyCodeLine{01115\ }
-\DoxyCodeLine{01116\ }
-\DoxyCodeLine{01117\ \ \ bool\ operator==(const\ iterator\ my\_it)\{}
-\DoxyCodeLine{01118\ \ \ \ \ return\ (current\ ==\ my\_it.current);}
-\DoxyCodeLine{01119\ \ \ \}}
+\DoxyCodeLine{01116\ \ \ \ \ if(jump\ >\ 0)\ for(i=0;i<jump;++i)\ -\/-\/(*this);}
+\DoxyCodeLine{01117\ \ \ \ \ if(jump\ <\ 0)\ for(i=0;i<abs(jump);++i)\ ++(*this);}
+\DoxyCodeLine{01118\ \ \ \}}
+\DoxyCodeLine{01119\ }
 \DoxyCodeLine{01120\ }
-\DoxyCodeLine{01121\ \ \ bool\ operator!=(const\ iterator\ my\_it)\{}
-\DoxyCodeLine{01122\ \ \ \ \ return\ (current\ !=\ my\_it.current);}
+\DoxyCodeLine{01121\ \ \ bool\ operator==(const\ iterator\ my\_it)\{}
+\DoxyCodeLine{01122\ \ \ \ \ return\ (current\ ==\ my\_it.current);}
 \DoxyCodeLine{01123\ \ \ \}}
-\DoxyCodeLine{01124\ \};}
-\DoxyCodeLine{01125\ }
-\DoxyCodeLine{01126\ }
-\DoxyCodeLine{01127\ template\ <typename\ T>}
-\DoxyCodeLine{01128\ struct\ LIST}
-\DoxyCodeLine{01129\ \{}
-\DoxyCodeLine{01130\ \ \ LIST()\{}
-\DoxyCodeLine{01131\ \ \ \}}
-\DoxyCodeLine{01132\ \ \ \string~LIST()\{EmptyList();\}}
-\DoxyCodeLine{01133\ \ \ }
-\DoxyCodeLine{01134\ \ \ std::list<T>\ list;}
-\DoxyCodeLine{01135\ \ \ }
-\DoxyCodeLine{01136\ \ \ LISTiterator<T>\ top()\{}
-\DoxyCodeLine{01137\ \ \ \ \ iterator\ it;}
-\DoxyCodeLine{01138\ \ \ \ \ it.current\_it\ =\ list.begin();}
-\DoxyCodeLine{01139\ \ \ \ \ return\ it;}
-\DoxyCodeLine{01140\ \ \ \}}
-\DoxyCodeLine{01141\ \ }
-\DoxyCodeLine{01142\ \ \ LISTiterator<T>\ bottom()\{}
-\DoxyCodeLine{01143\ \ \ \ \ iterator\ it;}
-\DoxyCodeLine{01144\ \ \ \ \ it.current\_it\ =\ list.end();}
-\DoxyCodeLine{01145\ \ \ \ \ return\ it;}
-\DoxyCodeLine{01146\ \ \ \}}
-\DoxyCodeLine{01147\ \ }
-\DoxyCodeLine{01148\ \ \ unsigned\ long\ size()\ const\ \{return\ list.size();\}}
-\DoxyCodeLine{01149\ }
-\DoxyCodeLine{01150\ \ \ inline\ bool\ IsTop(LISTiterator<T>\ \&it)\ const\{}
-\DoxyCodeLine{01151\ \ \ \ \ return\ it.current\_it\ ==\ list.begin();}
-\DoxyCodeLine{01152\ \ \ \};}
-\DoxyCodeLine{01153\ \ \ inline\ bool\ IsBottom(LIST::iterator\ \&it)\ const\{}
-\DoxyCodeLine{01154\ \ \ \ \ return\ it.current\_it\ ==\ list.end();}
-\DoxyCodeLine{01155\ \ \ \};}
-\DoxyCodeLine{01156\ \ \ }
-\DoxyCodeLine{01157\ \ \ T\ *Top()\ const\ \{return\ list.front();\}}
-\DoxyCodeLine{01158\ \ \ T\ *Bottom()\ const\ \{return\ list.back();\}}
-\DoxyCodeLine{01159\ \ \ }
-\DoxyCodeLine{01160\ \ \ void\ EmptyList()\{list.clear();\}}
-\DoxyCodeLine{01161\ \ \ }
-\DoxyCodeLine{01162\ \ \ void\ InsertAfterCurrent(LISTiterator<T>\ \&it,T\ \&d)\{}
-\DoxyCodeLine{01163\ \ \ \ \ list.insert(it.current\_it+1,d);}
-\DoxyCodeLine{01164\ \ \ \}}
-\DoxyCodeLine{01165\ \ \ void\ InsertBeforeCurrent(LISTiterator<T>\ \&it,T\ \&d)\{}
-\DoxyCodeLine{01166\ \ \ \ \ list.insert(it.current\_it,d);}
-\DoxyCodeLine{01167\ \ \ \}}
-\DoxyCodeLine{01168\ \ \ }
-\DoxyCodeLine{01169\ \ \ void\ MoveCurrentToBottom(iterator\ \&current);}
-\DoxyCodeLine{01170\ \ \ Point\ *TakeOutCurrent(iterator\ \&current);}
-\DoxyCodeLine{01171\ }
-\DoxyCodeLine{01172\ \ \ void\ InsertListAfterCurrent(iterator\ \&current,PointList\ *list2);}
-\DoxyCodeLine{01173\ \ \ void\ InsertListBeforeCurrent(iterator\ \&current,PointList\ *list2);}
-\DoxyCodeLine{01174\ \ \ void\ MergeLists(PointList*\ list2);}
-\DoxyCodeLine{01175\ \ \ void\ ShiftList(iterator\ \&current);}
-\DoxyCodeLine{01176\ \ \ }
-\DoxyCodeLine{01177\ \ \ void\ PrintList();}
-\DoxyCodeLine{01178\ }
-\DoxyCodeLine{01179\ \ \ //void\ setN(unsigned\ long\ N)\{Npoints\ =\ N;\}}
-\DoxyCodeLine{01180\ \ \ //void\ setTop(Point\ *p)\{top\ =\ p;\}}
-\DoxyCodeLine{01181\ \ \ //void\ setBottom(Point\ *p)\{bottom\ =\ p;\}}
+\DoxyCodeLine{01124\ }
+\DoxyCodeLine{01125\ \ \ bool\ operator!=(const\ iterator\ my\_it)\{}
+\DoxyCodeLine{01126\ \ \ \ \ return\ (current\ !=\ my\_it.current);}
+\DoxyCodeLine{01127\ \ \ \}}
+\DoxyCodeLine{01128\ \};}
+\DoxyCodeLine{01129\ }
+\DoxyCodeLine{01130\ }
+\DoxyCodeLine{01131\ template\ <typename\ T>}
+\DoxyCodeLine{01132\ struct\ LIST}
+\DoxyCodeLine{01133\ \{}
+\DoxyCodeLine{01134\ \ \ LIST()\{}
+\DoxyCodeLine{01135\ \ \ \}}
+\DoxyCodeLine{01136\ \ \ \string~LIST()\{EmptyList();\}}
+\DoxyCodeLine{01137\ \ \ }
+\DoxyCodeLine{01138\ \ \ std::list<T>\ list;}
+\DoxyCodeLine{01139\ \ \ }
+\DoxyCodeLine{01140\ \ \ LISTiterator<T>\ top()\{}
+\DoxyCodeLine{01141\ \ \ \ \ iterator\ it;}
+\DoxyCodeLine{01142\ \ \ \ \ it.current\_it\ =\ list.begin();}
+\DoxyCodeLine{01143\ \ \ \ \ return\ it;}
+\DoxyCodeLine{01144\ \ \ \}}
+\DoxyCodeLine{01145\ \ }
+\DoxyCodeLine{01146\ \ \ LISTiterator<T>\ bottom()\{}
+\DoxyCodeLine{01147\ \ \ \ \ iterator\ it;}
+\DoxyCodeLine{01148\ \ \ \ \ it.current\_it\ =\ list.end();}
+\DoxyCodeLine{01149\ \ \ \ \ return\ it;}
+\DoxyCodeLine{01150\ \ \ \}}
+\DoxyCodeLine{01151\ \ }
+\DoxyCodeLine{01152\ \ \ unsigned\ long\ size()\ const\ \{return\ list.size();\}}
+\DoxyCodeLine{01153\ }
+\DoxyCodeLine{01154\ \ \ inline\ bool\ IsTop(LISTiterator<T>\ \&it)\ const\{}
+\DoxyCodeLine{01155\ \ \ \ \ return\ it.current\_it\ ==\ list.begin();}
+\DoxyCodeLine{01156\ \ \ \};}
+\DoxyCodeLine{01157\ \ \ inline\ bool\ IsBottom(LIST::iterator\ \&it)\ const\{}
+\DoxyCodeLine{01158\ \ \ \ \ return\ it.current\_it\ ==\ list.end();}
+\DoxyCodeLine{01159\ \ \ \};}
+\DoxyCodeLine{01160\ \ \ }
+\DoxyCodeLine{01161\ \ \ T\ *Top()\ const\ \{return\ list.front();\}}
+\DoxyCodeLine{01162\ \ \ T\ *Bottom()\ const\ \{return\ list.back();\}}
+\DoxyCodeLine{01163\ \ \ }
+\DoxyCodeLine{01164\ \ \ void\ EmptyList()\{list.clear();\}}
+\DoxyCodeLine{01165\ \ \ }
+\DoxyCodeLine{01166\ \ \ void\ InsertAfterCurrent(LISTiterator<T>\ \&it,T\ \&d)\{}
+\DoxyCodeLine{01167\ \ \ \ \ list.insert(it.current\_it+1,d);}
+\DoxyCodeLine{01168\ \ \ \}}
+\DoxyCodeLine{01169\ \ \ void\ InsertBeforeCurrent(LISTiterator<T>\ \&it,T\ \&d)\{}
+\DoxyCodeLine{01170\ \ \ \ \ list.insert(it.current\_it,d);}
+\DoxyCodeLine{01171\ \ \ \}}
+\DoxyCodeLine{01172\ \ \ }
+\DoxyCodeLine{01173\ \ \ void\ MoveCurrentToBottom(iterator\ \&current);}
+\DoxyCodeLine{01174\ \ \ Point\ *TakeOutCurrent(iterator\ \&current);}
+\DoxyCodeLine{01175\ }
+\DoxyCodeLine{01176\ \ \ void\ InsertListAfterCurrent(iterator\ \&current,PointList\ *list2);}
+\DoxyCodeLine{01177\ \ \ void\ InsertListBeforeCurrent(iterator\ \&current,PointList\ *list2);}
+\DoxyCodeLine{01178\ \ \ void\ MergeLists(PointList*\ list2);}
+\DoxyCodeLine{01179\ \ \ void\ ShiftList(iterator\ \&current);}
+\DoxyCodeLine{01180\ \ \ }
+\DoxyCodeLine{01181\ \ \ void\ PrintList();}
 \DoxyCodeLine{01182\ }
-\DoxyCodeLine{01183\ private:}
-\DoxyCodeLine{01184\ \ \ //Point\ *top;}
-\DoxyCodeLine{01185\ \ \ //Point\ *bottom;}
-\DoxyCodeLine{01186\ \ \ //unsigned\ long\ Npoints;}
-\DoxyCodeLine{01187\ \ \ }
-\DoxyCodeLine{01188\ \ \ //\ make\ a\ point\ uncopyable}
-\DoxyCodeLine{01189\ \ \ LIST\ \&operator=(const\ LIST\ \&p);}
-\DoxyCodeLine{01190\ \}}
-\DoxyCodeLine{01191\ \ */}
-\DoxyCodeLine{01192\ }
-\DoxyCodeLine{01197\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ PosType>}
-\DoxyCodeLine{01198\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_point__nd}{Point\_nd}}\{}
-\DoxyCodeLine{01199\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd}}():dim(0)\{\ \}}
-\DoxyCodeLine{01200\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd}}(\textcolor{keywordtype}{int}\ d):x(d,0),dim(d)\{\ \}}
-\DoxyCodeLine{01201\ \ \ }
-\DoxyCodeLine{01202\ \ \ \textcolor{keywordtype}{void}\ setD(\textcolor{keywordtype}{int}\ d)\{}
-\DoxyCodeLine{01203\ \ \ \ \ dim=d;}
-\DoxyCodeLine{01204\ \ \ \ \ x.resize(dim);}
-\DoxyCodeLine{01205\ \ \ \}}
-\DoxyCodeLine{01206\ \ \ }
-\DoxyCodeLine{01207\ \ \ \mbox{\hyperlink{struct_point__nd}{\string~Point\_nd}}()\{\};}
-\DoxyCodeLine{01208\ \ \ }
-\DoxyCodeLine{01209\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd}}\ \&p)\{}
-\DoxyCodeLine{01210\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ =\ p.x[i];}
-\DoxyCodeLine{01211\ \ \ \}}
+\DoxyCodeLine{01183\ \ \ //void\ setN(unsigned\ long\ N)\{Npoints\ =\ N;\}}
+\DoxyCodeLine{01184\ \ \ //void\ setTop(Point\ *p)\{top\ =\ p;\}}
+\DoxyCodeLine{01185\ \ \ //void\ setBottom(Point\ *p)\{bottom\ =\ p;\}}
+\DoxyCodeLine{01186\ }
+\DoxyCodeLine{01187\ private:}
+\DoxyCodeLine{01188\ \ \ //Point\ *top;}
+\DoxyCodeLine{01189\ \ \ //Point\ *bottom;}
+\DoxyCodeLine{01190\ \ \ //unsigned\ long\ Npoints;}
+\DoxyCodeLine{01191\ \ \ }
+\DoxyCodeLine{01192\ \ \ //\ make\ a\ point\ uncopyable}
+\DoxyCodeLine{01193\ \ \ LIST\ \&operator=(const\ LIST\ \&p);}
+\DoxyCodeLine{01194\ \}}
+\DoxyCodeLine{01195\ \ */}
+\DoxyCodeLine{01196\ }
+\DoxyCodeLine{01201\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T\ =\ PosType>}
+\DoxyCodeLine{01202\ \textcolor{keyword}{struct\ }Point\_nd\{}
+\DoxyCodeLine{01203\ \ \ Point\_nd():dim(0)\{\ \}}
+\DoxyCodeLine{01204\ \ \ Point\_nd(\textcolor{keywordtype}{int}\ d):x(d,0),dim(d)\{\ \}}
+\DoxyCodeLine{01205\ \ \ }
+\DoxyCodeLine{01206\ \ \ \textcolor{keywordtype}{void}\ setD(\textcolor{keywordtype}{int}\ d)\{}
+\DoxyCodeLine{01207\ \ \ \ \ dim=d;}
+\DoxyCodeLine{01208\ \ \ \ \ x.resize(dim);}
+\DoxyCodeLine{01209\ \ \ \}}
+\DoxyCodeLine{01210\ \ \ }
+\DoxyCodeLine{01211\ \ \ \string~Point\_nd()\{\};}
 \DoxyCodeLine{01212\ \ \ }
-\DoxyCodeLine{01213\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&p)\{}
-\DoxyCodeLine{01214\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{01215\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ =\ p.x[i];}
-\DoxyCodeLine{01216\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{01217\ \ \ \}}
-\DoxyCodeLine{01218\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{01219\ \ \ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ tmp(dim);}
-\DoxyCodeLine{01220\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]\ +\ p.x[i];}
-\DoxyCodeLine{01221\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{01222\ \ \ \}}
-\DoxyCodeLine{01223\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \ operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&p)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{01224\ \ \ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ tmp(dim);}
-\DoxyCodeLine{01225\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]\ -\/\ p.x[i];}
-\DoxyCodeLine{01226\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{01227\ \ \ \}}
-\DoxyCodeLine{01228\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&\ operator+=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&p)\{}
-\DoxyCodeLine{01229\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ +=\ p.x[i];}
-\DoxyCodeLine{01230\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01213\ \ \ Point\_nd(\textcolor{keyword}{const}\ Point\_nd\ \&p)\{}
+\DoxyCodeLine{01214\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ =\ p.x[i];}
+\DoxyCodeLine{01215\ \ \ \}}
+\DoxyCodeLine{01216\ \ \ }
+\DoxyCodeLine{01217\ \ \ Point\_nd<T>\ \&\ operator=(\textcolor{keyword}{const}\ Point\_nd<T>\ \&p)\{}
+\DoxyCodeLine{01218\ \ \ \ \ \textcolor{keywordflow}{if}(\textcolor{keyword}{this}\ ==\ \&p)\ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01219\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ =\ p.x[i];}
+\DoxyCodeLine{01220\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01221\ \ \ \}}
+\DoxyCodeLine{01222\ \ \ Point\_nd<T>\ \ operator+(\textcolor{keyword}{const}\ Point\_nd<T>\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01223\ \ \ \ \ Point\_nd<T>\ tmp(dim);}
+\DoxyCodeLine{01224\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]\ +\ p.x[i];}
+\DoxyCodeLine{01225\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{01226\ \ \ \}}
+\DoxyCodeLine{01227\ \ \ Point\_nd<T>\ \ operator-\/(\textcolor{keyword}{const}\ Point\_nd<T>\ \&p)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01228\ \ \ \ \ Point\_nd<T>\ tmp(dim);}
+\DoxyCodeLine{01229\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]\ -\/\ p.x[i];}
+\DoxyCodeLine{01230\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
 \DoxyCodeLine{01231\ \ \ \}}
-\DoxyCodeLine{01232\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&\ operator-\/=(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&p)\{}
-\DoxyCodeLine{01233\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ -\/=\ p.x[i];}
+\DoxyCodeLine{01232\ \ \ Point\_nd<T>\ \&\ operator+=(\textcolor{keyword}{const}\ Point\_nd<T>\ \&p)\{}
+\DoxyCodeLine{01233\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ +=\ p.x[i];}
 \DoxyCodeLine{01234\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{01235\ \ \ \}}
-\DoxyCodeLine{01236\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&\ operator/=(T\ value)\{}
-\DoxyCodeLine{01237\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]/=value;}
+\DoxyCodeLine{01236\ \ \ Point\_nd<T>\ \&\ operator-\/=(\textcolor{keyword}{const}\ Point\_nd<T>\ \&p)\{}
+\DoxyCodeLine{01237\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ -\/=\ p.x[i];}
 \DoxyCodeLine{01238\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
 \DoxyCodeLine{01239\ \ \ \}}
-\DoxyCodeLine{01240\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ operator/(T\ value)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{01241\ \ \ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ tmp;}
-\DoxyCodeLine{01242\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]/value;}
-\DoxyCodeLine{01243\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{01244\ \ \ \}}
-\DoxyCodeLine{01245\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&\ operator*=(T\ value)\{}
-\DoxyCodeLine{01246\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ *=value;}
-\DoxyCodeLine{01247\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01240\ \ \ Point\_nd<T>\ \&\ operator/=(T\ value)\{}
+\DoxyCodeLine{01241\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]/=value;}
+\DoxyCodeLine{01242\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01243\ \ \ \}}
+\DoxyCodeLine{01244\ \ \ Point\_nd<T>\ operator/(T\ value)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01245\ \ \ \ \ Point\_nd<T>\ tmp;}
+\DoxyCodeLine{01246\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]/value;}
+\DoxyCodeLine{01247\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
 \DoxyCodeLine{01248\ \ \ \}}
-\DoxyCodeLine{01249\ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd}}\ operator*(PosType\ value)\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{01250\ \ \ \ \ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ tmp;}
-\DoxyCodeLine{01251\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]*value;}
-\DoxyCodeLine{01252\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
-\DoxyCodeLine{01253\ \ \ \}}
-\DoxyCodeLine{01254\ \ \ }
-\DoxyCodeLine{01256\ \ \ T\ \mbox{\hyperlink{struct_point__nd_ad169771f6d8dc0c713210357f9c83a91}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_point__nd}{Point\_nd<T>}}\ \&p)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01257\ \ \ \ \ T\ ans\ =\ 0;}
-\DoxyCodeLine{01258\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ ans\ +=\ x[i]*p.x[i];}
-\DoxyCodeLine{01259\ \ \ \ \ \textcolor{keywordflow}{return}\ ans;}
-\DoxyCodeLine{01260\ \ \ \}}
-\DoxyCodeLine{01261\ }
-\DoxyCodeLine{01263\ \ \ T\ \mbox{\hyperlink{struct_point__nd_a3758f7a67dd7c2436973d3654fce191a}{length\_sqr}}()\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{01264\ \ \ \ \ T\ ans\ =\ 0;}
-\DoxyCodeLine{01265\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ ans\ +=\ x[i]*x[i];}
-\DoxyCodeLine{01266\ \ \ \ \ \textcolor{keywordflow}{return}\ ans;}
-\DoxyCodeLine{01267\ \ \ \}}
-\DoxyCodeLine{01268\ }
-\DoxyCodeLine{01269\ \ \ T\ length()\textcolor{keyword}{\ const}\{}
-\DoxyCodeLine{01270\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(\mbox{\hyperlink{struct_point__nd_a3758f7a67dd7c2436973d3654fce191a}{length\_sqr}}());}
+\DoxyCodeLine{01249\ \ \ Point\_nd<T>\ \&\ operator*=(T\ value)\{}
+\DoxyCodeLine{01250\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ x[i]\ *=value;}
+\DoxyCodeLine{01251\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{01252\ \ \ \}}
+\DoxyCodeLine{01253\ \ \ Point\_nd\ operator*(PosType\ value)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01254\ \ \ \ \ Point\_nd<T>\ tmp;}
+\DoxyCodeLine{01255\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ tmp.x[i]\ =\ x[i]*value;}
+\DoxyCodeLine{01256\ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{01257\ \ \ \}}
+\DoxyCodeLine{01258\ \ \ }
+\DoxyCodeLine{01260\ \ \ T\ \mbox{\hyperlink{struct_point__nd_ad169771f6d8dc0c713210357f9c83a91}{operator*}}(\textcolor{keyword}{const}\ Point\_nd<T>\ \&p)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01261\ \ \ \ \ T\ ans\ =\ 0;}
+\DoxyCodeLine{01262\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ ans\ +=\ x[i]*p.x[i];}
+\DoxyCodeLine{01263\ \ \ \ \ \textcolor{keywordflow}{return}\ ans;}
+\DoxyCodeLine{01264\ \ \ \}}
+\DoxyCodeLine{01265\ }
+\DoxyCodeLine{01267\ \ \ T\ \mbox{\hyperlink{struct_point__nd_a3758f7a67dd7c2436973d3654fce191a}{length\_sqr}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01268\ \ \ \ \ T\ ans\ =\ 0;}
+\DoxyCodeLine{01269\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0\ ;\ i<dim\ ;\ ++i\ )\ ans\ +=\ x[i]*x[i];}
+\DoxyCodeLine{01270\ \ \ \ \ \textcolor{keywordflow}{return}\ ans;}
 \DoxyCodeLine{01271\ \ \ \}}
-\DoxyCodeLine{01272\ \ \ }
-\DoxyCodeLine{01273\ \ \ T*\ data()\{\textcolor{keywordflow}{return}\ x.data();\}}
-\DoxyCodeLine{01274\ \ \ }
-\DoxyCodeLine{01275\ \ \ std::vector<T>\ x;}
-\DoxyCodeLine{01276\ \ \ T\ \&\ operator[](\textcolor{keywordtype}{size\_t}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
-\DoxyCodeLine{01277\ \ \ \textcolor{keyword}{const}\ T\ \&\ \ operator[](\textcolor{keywordtype}{size\_t}\ i)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ x[i];\}}
-\DoxyCodeLine{01278\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{01279\ \ \ \textcolor{keywordtype}{int}\ dim;}
-\DoxyCodeLine{01280\ \};}
-\DoxyCodeLine{01281\ }
-\DoxyCodeLine{01282\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{01272\ }
+\DoxyCodeLine{01273\ \ \ T\ length()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{01274\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(\mbox{\hyperlink{struct_point__nd_a3758f7a67dd7c2436973d3654fce191a}{length\_sqr}}());}
+\DoxyCodeLine{01275\ \ \ \}}
+\DoxyCodeLine{01276\ \ \ }
+\DoxyCodeLine{01277\ \ \ T*\ data()\{\textcolor{keywordflow}{return}\ x.data();\}}
+\DoxyCodeLine{01278\ \ \ }
+\DoxyCodeLine{01279\ \ \ std::vector<T>\ x;}
+\DoxyCodeLine{01280\ \ \ T\ \&\ operator[](\textcolor{keywordtype}{size\_t}\ i)\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{01281\ \ \ \textcolor{keyword}{const}\ T\ \&\ \ operator[](\textcolor{keywordtype}{size\_t}\ i)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ x[i];\}}
+\DoxyCodeLine{01282\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{01283\ \ \ \textcolor{keywordtype}{int}\ dim;}
+\DoxyCodeLine{01284\ \};}
+\DoxyCodeLine{01285\ }
+\DoxyCodeLine{01286\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

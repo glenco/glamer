@@ -20,20 +20,21 @@
 \DoxyCodeLine{00016\ GLAMER\_TEST\_USES(LensTest)}
 \DoxyCodeLine{00017\ }
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00071\ class\ \mbox{\hyperlink{class_lens}{Lens}}\{}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ class\ \mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}}\{}
 \DoxyCodeLine{00072\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{class_lens}{Lens}}(\textcolor{keywordtype}{long}*\ seed,\ PosType\ z\_source,CosmoParamSet\ cosmoset,\ \textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}}(\textcolor{keywordtype}{long}*\ seed,\ PosType\ z\_source,CosmoParamSet\ cosmoset,\ \textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00074\ \ \ \textcolor{comment}{//Lens(InputParams\&\ params,\ long*\ my\_seed,\ CosmoParamSet\ cosmoset,\ bool\ verbose\ =\ false);}}
-\DoxyCodeLine{00075\ \ \ \mbox{\hyperlink{class_lens}{Lens}}(\textcolor{keywordtype}{long}*\ seed,\ PosType\ z\_source,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo,\ \textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00075\ \ \ \mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}}(\textcolor{keywordtype}{long}*\ seed,\ PosType\ z\_source,\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo,\ \textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00076\ \ \ \textcolor{comment}{//Lens(InputParams\&\ params,\ long*\ my\_seed,\ const\ COSMOLOGY\ \&cosmo,\ bool\ verbose\ =\ false);}}
 \DoxyCodeLine{00077\ \ \ }
-\DoxyCodeLine{00078\ \ \mbox{\hyperlink{class_lens}{\string~Lens}}();}
+\DoxyCodeLine{00078\ \ \mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{\string~Lens}}();}
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00081\ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lens_a09c7b4946959331f7dc5aed93053727c}{set}};}
 \DoxyCodeLine{00082\ }
 \DoxyCodeLine{00084\ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_lens_a0ce0eee4b6bf7070d5524d27b3474168}{getNplanes}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ lensing\_planes.size();\}}
 \DoxyCodeLine{00085\ \ \ }
-\DoxyCodeLine{00087\ \ PosType\ \mbox{\hyperlink{class_lens_a4269648ebbcbfcb1df353a92a5da2710}{getfov}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ fieldofview;\};}
+\DoxyCodeLine{00087\ \ PosType\ \mbox{\hyperlink{class_lens_a4269648ebbcbfcb1df353a92a5da2710}{getfov}}()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_lens_aee17d6e92bea425de358a9381ad6280b}{fieldofview}};\};}
 \DoxyCodeLine{00088\ \ \textcolor{keywordtype}{void}\ setfov(PosType\ fov)\{fieldofview=fov;\};}
 \DoxyCodeLine{00089\ }
 \DoxyCodeLine{00091\ \ \textcolor{keywordtype}{void}\ resetFieldNplanes(std::size\_t\ field\_Nplanes,\ \textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
@@ -54,7 +55,7 @@
 \DoxyCodeLine{00110\ \ \}}
 \DoxyCodeLine{00112\ \ PosType\ \mbox{\hyperlink{class_lens_a9b720d302cc40cc8dc820b98e766339e}{getAngDistLens}}()\textcolor{keyword}{\ const}\{}
 \DoxyCodeLine{00113\ \ \ \textcolor{keywordflow}{if}(flag\_switch\_main\_halo\_on)}
-\DoxyCodeLine{00114\ \ \ \ \textcolor{keywordflow}{return}\ cosmo.\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a907355eb8b7de87fef45837e2ccb9589}{angDist}}(\ main\_halos[0]-\/>getZlens());}
+\DoxyCodeLine{00114\ \ \ \ \textcolor{keywordflow}{return}\ cosmo.angDist(\ main\_halos[0]-\/>\mbox{\hyperlink{class_lens_ac96bfac69304667e16af07feb20843f8}{getZlens}}());}
 \DoxyCodeLine{00115\ \ \ \textcolor{keywordflow}{else}\{}
 \DoxyCodeLine{00116\ \ \ \ ERROR\_MESSAGE();}
 \DoxyCodeLine{00117\ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}error,\ no\ main\ lens\ present"{}}\ <<\ std::endl;}
@@ -223,6 +224,7 @@
 \DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ RSIverbose\ =\ \textcolor{keyword}{false}}
 \DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{00334\ \ \ }
+\DoxyCodeLine{00339\ \ \ }
 \DoxyCodeLine{00340\ \ \ \textcolor{keywordtype}{void}\ rayshooterInternal(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ Npoints\ \ \ }
 \DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_linked_point}{LinkedPoint}}\ *i\_points\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<double>\ \&source\_zs\ }
@@ -261,6 +263,7 @@
 \DoxyCodeLine{00380\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ ,int\ sign=0\ \ \ \ \ \ \ \ \ \ \ \ \ ///\ sign\ of\ magnification,\ it\ is\ found\ automatically\ if\ left\ out}}
 \DoxyCodeLine{00381\ \textcolor{comment}{\ \ );*/}}
 \DoxyCodeLine{00382\ \ \ }
+\DoxyCodeLine{00393\ }
 \DoxyCodeLine{00394\ \ \ \mbox{\hyperlink{struct_r_a_y}{RAY}}\ find\_image\_min(}
 \DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_point}{Point}}\ \&p\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ zs\ \ \ \ \ \ \ \ \ \ \ \ }
@@ -332,9 +335,9 @@
 \DoxyCodeLine{00478\ }
 \DoxyCodeLine{00479\ \ PosType\ getZmax()\textcolor{keyword}{\ const}\{\textcolor{keywordflow}{return}\ plane\_redshifts.back();\}}
 \DoxyCodeLine{00480\ }
-\DoxyCodeLine{00482\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_a6e65d6c8d5c97e4024d7002eb8cc7d04}{PrintCosmology}}()\ \{\ cosmo.\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a2b51480746298bdc547f599cf9f9e350}{PrintCosmology}}();\ \}}
+\DoxyCodeLine{00482\ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lens_a6e65d6c8d5c97e4024d7002eb8cc7d04}{PrintCosmology}}()\ \{\ cosmo.PrintCosmology();\ \}}
 \DoxyCodeLine{00483\ \ }
-\DoxyCodeLine{00485\ \ PosType\ \mbox{\hyperlink{class_lens_a53108c7002e0cb4ce7064d43c5efdb0e}{getSigmaCrit}}(PosType\ zsource)\textcolor{keyword}{\ const}\{\ \textcolor{keywordflow}{return}\ cosmo.\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a4c83495b75f4c2f42daa8d0cd39bae1e}{SigmaCrit}}(getZlens(),\ zsource);\ \}}
+\DoxyCodeLine{00485\ \ PosType\ \mbox{\hyperlink{class_lens_a53108c7002e0cb4ce7064d43c5efdb0e}{getSigmaCrit}}(PosType\ zsource)\textcolor{keyword}{\ const}\{\ \textcolor{keywordflow}{return}\ cosmo.SigmaCrit(\mbox{\hyperlink{class_lens_ac96bfac69304667e16af07feb20843f8}{getZlens}}(),\ zsource);\ \}}
 \DoxyCodeLine{00486\ \ }
 \DoxyCodeLine{00487\ }
 \DoxyCodeLine{00489\ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&\ \mbox{\hyperlink{class_lens_a6ba1ed741c10e793c12dd8f0693a4384}{getCosmo}}()\{\textcolor{keywordflow}{return}\ cosmo;\}}
@@ -347,543 +350,540 @@
 \DoxyCodeLine{00498\ \ \ \textcolor{comment}{//\ get\ the\ field\_Off\ value\ :}}
 \DoxyCodeLine{00499\ \ \ \textcolor{keywordtype}{bool}\ getfieldOff()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ flag\_switch\_field\_off\ ;\}}
 \DoxyCodeLine{00500\ \ \ }
-\DoxyCodeLine{00501\ \ \ \ }
-\DoxyCodeLine{00502\ \ \ \mbox{\hyperlink{class_lens}{Lens}}\ \&\ \mbox{\hyperlink{class_lens_a3b2fa9d4008780de6be33f3fa165e931}{operator=}}(\mbox{\hyperlink{class_lens}{Lens}}\ \&\&lens)\{}
-\DoxyCodeLine{00503\ \ \ \ \ }
-\DoxyCodeLine{00504\ \ \ \ \ fieldofview\ =\ lens.\mbox{\hyperlink{class_lens_aee17d6e92bea425de358a9381ad6280b}{fieldofview}};}
-\DoxyCodeLine{00505\ \ \ \ \ seed\ =\ lens.seed;}
-\DoxyCodeLine{00506\ \ \ \ \ init\_seed\ =\ lens.init\_seed;}
-\DoxyCodeLine{00507\ \ \ \ \ cosmo\ =\ lens.cosmo;}
-\DoxyCodeLine{00508\ \ \ \ \ toggle\_source\_plane\ =\ lens.toggle\_source\_plane;}
-\DoxyCodeLine{00509\ \ \ }
-\DoxyCodeLine{00510\ \ \ \ \ zs\_implant\ =\ lens.zs\_implant;}
-\DoxyCodeLine{00511\ \ \ \ \ zsource\ =\ lens.zsource;}
-\DoxyCodeLine{00512\ }
-\DoxyCodeLine{00513\ \ \ \ \ NZSamples\ =\ lens.NZSamples;}
-\DoxyCodeLine{00514\ \ \ \ \ zbins\ =\ lens.zbins;}
-\DoxyCodeLine{00515\ \ \ \ \ NhalosbinZ\ =\ lens.NhalosbinZ;}
-\DoxyCodeLine{00516\ \ \ \ \ Nhaloestot\_Tab\ =\ lens.Nhaloestot\_Tab;}
-\DoxyCodeLine{00517\ \ \ \ \ aveNhalosField\ =\ lens.aveNhalosField;}
-\DoxyCodeLine{00518\ \ \ \ \ Logm\ =\ lens.Logm;}
-\DoxyCodeLine{00519\ \ \ \ \ NhalosbinMass\ =\ lens.NhalosbinMass;}
-\DoxyCodeLine{00520\ \ \ \ \ sigma\_back\_Tab\ =\ lens.sigma\_back\_Tab;}
-\DoxyCodeLine{00521\ \ \ \ \ }
-\DoxyCodeLine{00522\ \ \ \ \ flag\_switch\_deflection\_off\ =\ lens.flag\_switch\_deflection\_off;}
-\DoxyCodeLine{00523\ \ \ \ \ flag\_switch\_lensing\_off\ =\ lens.flag\_switch\_lensing\_off;}
-\DoxyCodeLine{00524\ \ \ \ \ }
-\DoxyCodeLine{00525\ \ \ \ \ Dl\ =\ lens.Dl;}
-\DoxyCodeLine{00526\ \ \ \ \ dDl\ =\ lens.dDl;}
-\DoxyCodeLine{00527\ \ \ \ \ dTl\ =\ lens.dTl;}
-\DoxyCodeLine{00528\ \ \ \ \ plane\_redshifts\ =\ lens.plane\_redshifts;}
-\DoxyCodeLine{00529\ \ \ \ \ charge\ =\ lens.charge;}
-\DoxyCodeLine{00530\ \ \ \ \ flag\_switch\_field\_off\ =\ lens.flag\_switch\_field\_off;}
-\DoxyCodeLine{00531\ \ \ \ \ }
-\DoxyCodeLine{00532\ \ \ \ \ field\_halos\ =\ lens.field\_halos;}
-\DoxyCodeLine{00533\ }
-\DoxyCodeLine{00534\ \ \ \ \ field\_Nplanes\_original\ =\ lens.field\_Nplanes\_original;}
-\DoxyCodeLine{00535\ \ \ \ \ field\_Nplanes\_current\ =\ lens.field\_Nplanes\_current;}
-\DoxyCodeLine{00536\ \ \ \ \ }
-\DoxyCodeLine{00537\ \ \ \ \ field\_plane\_redshifts\ =\ lens.field\_plane\_redshifts;}
-\DoxyCodeLine{00538\ \ \ \ \ field\_plane\_redshifts\_original\ =\ lens.field\_plane\_redshifts\_original;}
-\DoxyCodeLine{00539\ \ \ \ \ field\_Dl\ =\ lens.field\_Dl;}
-\DoxyCodeLine{00540\ \ \ \ \ field\_Dl\_original\ =\ lens.field\_Dl\_original;}
-\DoxyCodeLine{00541\ \ \ \ \ }
-\DoxyCodeLine{00542\ \ \ \ \ \textcolor{comment}{//substructure\ =\ lens.substructure;}}
-\DoxyCodeLine{00543\ \ \ \ \ }
-\DoxyCodeLine{00544\ \ \ \ \ \textcolor{comment}{//WasInsertSubStructuresCalled\ =\ lens.WasInsertSubStructuresCalled;}}
-\DoxyCodeLine{00545\ \ \ \ \ field\_mass\_func\_type\ =\ lens.field\_mass\_func\_type;}
-\DoxyCodeLine{00546\ \ \ \ \ mass\_func\_PL\_slope\ =\ lens.mass\_func\_PL\_slope;}
-\DoxyCodeLine{00547\ \ \ \ \ field\_min\_mass\ =\ lens.field\_min\_mass;}
-\DoxyCodeLine{00548\ \ \ \ \ field\_int\_prof\_type\ =\ lens.field\_int\_prof\_type;}
-\DoxyCodeLine{00549\ \ \ \ \ field\_prof\_internal\_slope\ =\ lens.field\_prof\_internal\_slope;}
-\DoxyCodeLine{00550\ \ \ \ \ }
-\DoxyCodeLine{00551\ \ \ \ \ flag\_field\_gal\_on\ =\ lens.flag\_field\_gal\_on;}
-\DoxyCodeLine{00552\ \ \ \ \ field\_int\_prof\_gal\_type\ =\ lens.field\_int\_prof\_gal\_type;}
-\DoxyCodeLine{00553\ \ \ \ \ field\_int\_prof\_gal\_slope\ =\ lens.field\_int\_prof\_gal\_slope;}
+\DoxyCodeLine{00505\ \ \ \textcolor{keywordtype}{void}\ GenerateFieldHalos(\textcolor{keywordtype}{double}\ min\_mass\ }
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{MassFuncType}}\ mass\_function\ }
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ field\_of\_view\ \ }
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nplanes\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ halo\_type\ =\ LensHaloType::nfw\_lens\ \ }
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\ galaxy\_type\ =\ GalaxyLensHaloType::null\_gal\ \ }
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ buffer\ =\ 1.0\ }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00514\ \ \ }
+\DoxyCodeLine{00515\ \ \ \mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}}\ \&\ \mbox{\hyperlink{class_lens_a3b2fa9d4008780de6be33f3fa165e931}{operator=}}(\mbox{\hyperlink{class_lens_acc69ae46a84f55e9f89633d0e4182230}{Lens}}\ \&\&lens)\{}
+\DoxyCodeLine{00516\ \ \ \ \ }
+\DoxyCodeLine{00517\ \ \ \ \ \mbox{\hyperlink{class_lens_aee17d6e92bea425de358a9381ad6280b}{fieldofview}}\ =\ lens.fieldofview;}
+\DoxyCodeLine{00518\ \ \ \ \ seed\ =\ lens.seed;}
+\DoxyCodeLine{00519\ \ \ \ \ init\_seed\ =\ lens.init\_seed;}
+\DoxyCodeLine{00520\ \ \ \ \ cosmo\ =\ lens.cosmo;}
+\DoxyCodeLine{00521\ \ \ \ \ toggle\_source\_plane\ =\ lens.toggle\_source\_plane;}
+\DoxyCodeLine{00522\ \ \ }
+\DoxyCodeLine{00523\ \ \ \ \ zs\_implant\ =\ lens.zs\_implant;}
+\DoxyCodeLine{00524\ \ \ \ \ zsource\ =\ lens.zsource;}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \ \ \ \ NZSamples\ =\ lens.NZSamples;}
+\DoxyCodeLine{00527\ \ \ \ \ zbins\ =\ lens.zbins;}
+\DoxyCodeLine{00528\ \ \ \ \ NhalosbinZ\ =\ lens.NhalosbinZ;}
+\DoxyCodeLine{00529\ \ \ \ \ Nhaloestot\_Tab\ =\ lens.Nhaloestot\_Tab;}
+\DoxyCodeLine{00530\ \ \ \ \ aveNhalosField\ =\ lens.aveNhalosField;}
+\DoxyCodeLine{00531\ \ \ \ \ Logm\ =\ lens.Logm;}
+\DoxyCodeLine{00532\ \ \ \ \ NhalosbinMass\ =\ lens.NhalosbinMass;}
+\DoxyCodeLine{00533\ \ \ \ \ sigma\_back\_Tab\ =\ lens.sigma\_back\_Tab;}
+\DoxyCodeLine{00534\ \ \ \ \ }
+\DoxyCodeLine{00535\ \ \ \ \ flag\_switch\_deflection\_off\ =\ lens.flag\_switch\_deflection\_off;}
+\DoxyCodeLine{00536\ \ \ \ \ flag\_switch\_lensing\_off\ =\ lens.flag\_switch\_lensing\_off;}
+\DoxyCodeLine{00537\ \ \ \ \ }
+\DoxyCodeLine{00538\ \ \ \ \ Dl\ =\ lens.Dl;}
+\DoxyCodeLine{00539\ \ \ \ \ dDl\ =\ lens.dDl;}
+\DoxyCodeLine{00540\ \ \ \ \ dTl\ =\ lens.dTl;}
+\DoxyCodeLine{00541\ \ \ \ \ plane\_redshifts\ =\ lens.plane\_redshifts;}
+\DoxyCodeLine{00542\ \ \ \ \ charge\ =\ lens.charge;}
+\DoxyCodeLine{00543\ \ \ \ \ flag\_switch\_field\_off\ =\ lens.flag\_switch\_field\_off;}
+\DoxyCodeLine{00544\ \ \ \ \ }
+\DoxyCodeLine{00545\ \ \ \ \ field\_halos\ =\ lens.field\_halos;}
+\DoxyCodeLine{00546\ }
+\DoxyCodeLine{00547\ \ \ \ \ field\_Nplanes\_original\ =\ lens.field\_Nplanes\_original;}
+\DoxyCodeLine{00548\ \ \ \ \ field\_Nplanes\_current\ =\ lens.field\_Nplanes\_current;}
+\DoxyCodeLine{00549\ \ \ \ \ }
+\DoxyCodeLine{00550\ \ \ \ \ field\_plane\_redshifts\ =\ lens.field\_plane\_redshifts;}
+\DoxyCodeLine{00551\ \ \ \ \ field\_plane\_redshifts\_original\ =\ lens.field\_plane\_redshifts\_original;}
+\DoxyCodeLine{00552\ \ \ \ \ field\_Dl\ =\ lens.field\_Dl;}
+\DoxyCodeLine{00553\ \ \ \ \ field\_Dl\_original\ =\ lens.field\_Dl\_original;}
 \DoxyCodeLine{00554\ \ \ \ \ }
-\DoxyCodeLine{00555\ \ \ \ \ redshift\_planes\_file\ =\ lens.redshift\_planes\_file;}
-\DoxyCodeLine{00556\ \ \ \ \ read\_redshift\_planes\ =\ lens.read\_redshift\_planes;}
-\DoxyCodeLine{00557\ \ \ \ \ }
-\DoxyCodeLine{00558\ \ \ \ \ field\_input\_sim\_file\ =\ lens.field\_input\_sim\_file;}
-\DoxyCodeLine{00559\ \ \ \ \ field\_input\_sim\_format\ =\ lens.field\_input\_sim\_format;}
-\DoxyCodeLine{00560\ \ \ \ \ }
-\DoxyCodeLine{00561\ \ \ \ \ sim\_input\_flag\ =\ lens.sim\_input\_flag;}
-\DoxyCodeLine{00562\ \ \ \ \ read\_sim\_file\ =\ lens.read\_sim\_file;}
-\DoxyCodeLine{00563\ \ \ \ \ field\_buffer\ =\ lens.field\_buffer;}
-\DoxyCodeLine{00564\ \ \ \ \ }
-\DoxyCodeLine{00565\ \ \ \ \ flag\_switch\_main\_halo\_on\ =\ lens.flag\_switch\_main\_halo\_on;}
-\DoxyCodeLine{00566\ \ \ \ \ }
-\DoxyCodeLine{00567\ \ \ \ \ main\_plane\_redshifts\ =\ lens.main\_plane\_redshifts;}
-\DoxyCodeLine{00568\ \ \ \ \ main\_Dl\ =\ lens.main\_Dl;}
-\DoxyCodeLine{00569\ \ \ \ \ }
-\DoxyCodeLine{00570\ \ \ \ \ main\_halo\_type\ =\ lens.main\_halo\_type;}
-\DoxyCodeLine{00571\ \ \ \ \ main\_galaxy\_halo\_type\ =\ lens.main\_galaxy\_halo\_type;}
-\DoxyCodeLine{00572\ }
-\DoxyCodeLine{00573\ \ \ \ \ pixel\_map\_input\_file\ =\ lens.pixel\_map\_input\_file;}
-\DoxyCodeLine{00574\ \ \ \ \ pixel\_map\_on\ =\ lens.pixel\_map\_on;}
-\DoxyCodeLine{00575\ \ \ \ \ pixel\_map\_zeropad\ =\ lens.pixel\_map\_zeropad;}
-\DoxyCodeLine{00576\ \ \ \ \ pixel\_map\_zeromean\ =\ lens.pixel\_map\_zeromean;}
+\DoxyCodeLine{00555\ \ \ \ \ \textcolor{comment}{//substructure\ =\ lens.substructure;}}
+\DoxyCodeLine{00556\ \ \ \ \ }
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{comment}{//WasInsertSubStructuresCalled\ =\ lens.WasInsertSubStructuresCalled;}}
+\DoxyCodeLine{00558\ \ \ \ \ field\_mass\_func\_type\ =\ lens.field\_mass\_func\_type;}
+\DoxyCodeLine{00559\ \ \ \ \ mass\_func\_PL\_slope\ =\ lens.mass\_func\_PL\_slope;}
+\DoxyCodeLine{00560\ \ \ \ \ field\_min\_mass\ =\ lens.field\_min\_mass;}
+\DoxyCodeLine{00561\ \ \ \ \ field\_int\_prof\_type\ =\ lens.field\_int\_prof\_type;}
+\DoxyCodeLine{00562\ \ \ \ \ field\_prof\_internal\_slope\ =\ lens.field\_prof\_internal\_slope;}
+\DoxyCodeLine{00563\ \ \ \ \ }
+\DoxyCodeLine{00564\ \ \ \ \ flag\_field\_gal\_on\ =\ lens.flag\_field\_gal\_on;}
+\DoxyCodeLine{00565\ \ \ \ \ field\_int\_prof\_gal\_type\ =\ lens.field\_int\_prof\_gal\_type;}
+\DoxyCodeLine{00566\ \ \ \ \ field\_int\_prof\_gal\_slope\ =\ lens.field\_int\_prof\_gal\_slope;}
+\DoxyCodeLine{00567\ \ \ \ \ }
+\DoxyCodeLine{00568\ \ \ \ \ redshift\_planes\_file\ =\ lens.redshift\_planes\_file;}
+\DoxyCodeLine{00569\ \ \ \ \ read\_redshift\_planes\ =\ lens.read\_redshift\_planes;}
+\DoxyCodeLine{00570\ \ \ \ \ }
+\DoxyCodeLine{00571\ \ \ \ \ field\_input\_sim\_file\ =\ lens.field\_input\_sim\_file;}
+\DoxyCodeLine{00572\ \ \ \ \ field\_input\_sim\_format\ =\ lens.field\_input\_sim\_format;}
+\DoxyCodeLine{00573\ \ \ \ \ }
+\DoxyCodeLine{00574\ \ \ \ \ sim\_input\_flag\ =\ lens.sim\_input\_flag;}
+\DoxyCodeLine{00575\ \ \ \ \ read\_sim\_file\ =\ lens.read\_sim\_file;}
+\DoxyCodeLine{00576\ \ \ \ \ field\_buffer\ =\ lens.field\_buffer;}
 \DoxyCodeLine{00577\ \ \ \ \ }
-\DoxyCodeLine{00578\ \ \ \ \ central\_point\_sphere\ =\ lens.central\_point\_sphere;}
-\DoxyCodeLine{00579\ \ \ \ \ sim\_angular\_radius\ =\ lens.sim\_angular\_radius;}
-\DoxyCodeLine{00580\ \ \ \ \ inv\_ang\_screening\_scale\ =\ lens.inv\_ang\_screening\_scale;}
-\DoxyCodeLine{00581\ \ \ \ \ }
-\DoxyCodeLine{00582\ \ \ \ \ std::swap(lensing\_planes,lens.lensing\_planes);}
-\DoxyCodeLine{00583\ \ \ \ \ std::swap(field\_planes,lens.field\_planes);}
-\DoxyCodeLine{00584\ \ \ \ \ swap(main\_halos,lens.main\_halos);\ \ }
-\DoxyCodeLine{00585\ \ \ \ \ std::swap(main\_planes,lens.main\_planes);}
-\DoxyCodeLine{00586\ \ \ \ \ }
-\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00588\ \ \ \}}
-\DoxyCodeLine{00589\ \ \ \mbox{\hyperlink{class_lens}{Lens}}(\mbox{\hyperlink{class_lens}{Lens}}\ \&\&lens)\{}
-\DoxyCodeLine{00590\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(lens);}
-\DoxyCodeLine{00591\ \ \ \}}
-\DoxyCodeLine{00592\ \ \ }
-\DoxyCodeLine{00593\ \ \ \textcolor{comment}{//\ get\ the\ adress\ of\ field\_plane\_redshifts}}
-\DoxyCodeLine{00594\ \ \ std::vector<PosType>\ \ get\_plane\_redshifts\ ()\ \{\ \textcolor{keywordflow}{return}\ plane\_redshifts;\ \}}
-\DoxyCodeLine{00595\ \ }
-\DoxyCodeLine{00596\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00597\ \ \ \mbox{\hyperlink{class_lens}{Lens}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens}{Lens}}\ \&lens);\ \ \ \textcolor{comment}{//\ block\ copy}}
-\DoxyCodeLine{00598\ \ \ \mbox{\hyperlink{class_lens}{Lens}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens}{Lens}}\ \&lens);}
-\DoxyCodeLine{00599\ \ \ }
-\DoxyCodeLine{00600\ \textcolor{keyword}{protected}:}
-\DoxyCodeLine{00602\ \ \ PosType\ \mbox{\hyperlink{class_lens_aee17d6e92bea425de358a9381ad6280b}{fieldofview}};}
-\DoxyCodeLine{00603\ }
-\DoxyCodeLine{00604\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00605\ \ GLAMER\_TEST\_FRIEND(LensTest)}
-\DoxyCodeLine{00606\ \ \ }
-\DoxyCodeLine{00607\ \ \ }
-\DoxyCodeLine{00608\ \ \ \textcolor{keywordtype}{void}\ \_find\_images\_(std::vector<RAY>\ \&images}
-\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&y}
-\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ll}
-\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ur}
-\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ resolution}
-\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ stop\_res}
-\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00615\ \ \ }
-\DoxyCodeLine{00616\ \ \ \textcolor{keywordtype}{void}\ \_find\_images\_min\_parallel\_(\mbox{\hyperlink{struct_r_a_y}{RAY}}\ *rays}
-\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ begin}
-\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ end}
-\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ ytol2}
-\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<bool>\ \&success}
-\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00622\ \ \ }
-\DoxyCodeLine{00623\ \ \textcolor{comment}{//\ seed\ for\ random\ field\ generation}}
-\DoxyCodeLine{00624\ \ \textcolor{keywordtype}{long}\ *seed;}
-\DoxyCodeLine{00625\ \ \ }
-\DoxyCodeLine{00626\ \ \ \textcolor{keywordtype}{long}\ init\_seed;}
-\DoxyCodeLine{00627\ \ \ \textcolor{comment}{//InputParams\ init\_params;}}
+\DoxyCodeLine{00578\ \ \ \ \ flag\_switch\_main\_halo\_on\ =\ lens.flag\_switch\_main\_halo\_on;}
+\DoxyCodeLine{00579\ \ \ \ \ }
+\DoxyCodeLine{00580\ \ \ \ \ main\_plane\_redshifts\ =\ lens.main\_plane\_redshifts;}
+\DoxyCodeLine{00581\ \ \ \ \ main\_Dl\ =\ lens.main\_Dl;}
+\DoxyCodeLine{00582\ \ \ \ \ }
+\DoxyCodeLine{00583\ \ \ \ \ main\_halo\_type\ =\ lens.main\_halo\_type;}
+\DoxyCodeLine{00584\ \ \ \ \ main\_galaxy\_halo\_type\ =\ lens.main\_galaxy\_halo\_type;}
+\DoxyCodeLine{00585\ }
+\DoxyCodeLine{00586\ \ \ \ \ pixel\_map\_input\_file\ =\ lens.pixel\_map\_input\_file;}
+\DoxyCodeLine{00587\ \ \ \ \ pixel\_map\_on\ =\ lens.pixel\_map\_on;}
+\DoxyCodeLine{00588\ \ \ \ \ pixel\_map\_zeropad\ =\ lens.pixel\_map\_zeropad;}
+\DoxyCodeLine{00589\ \ \ \ \ pixel\_map\_zeromean\ =\ lens.pixel\_map\_zeromean;}
+\DoxyCodeLine{00590\ \ \ \ \ }
+\DoxyCodeLine{00591\ \ \ \ \ central\_point\_sphere\ =\ lens.central\_point\_sphere;}
+\DoxyCodeLine{00592\ \ \ \ \ sim\_angular\_radius\ =\ lens.sim\_angular\_radius;}
+\DoxyCodeLine{00593\ \ \ \ \ inv\_ang\_screening\_scale\ =\ lens.inv\_ang\_screening\_scale;}
+\DoxyCodeLine{00594\ \ \ \ \ }
+\DoxyCodeLine{00595\ \ \ \ \ std::swap(lensing\_planes,lens.lensing\_planes);}
+\DoxyCodeLine{00596\ \ \ \ \ std::swap(field\_planes,lens.field\_planes);}
+\DoxyCodeLine{00597\ \ \ \ \ swap(main\_halos,lens.main\_halos);\ \ }
+\DoxyCodeLine{00598\ \ \ \ \ std::swap(main\_planes,lens.main\_planes);}
+\DoxyCodeLine{00599\ \ \ \ \ }
+\DoxyCodeLine{00600\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00601\ \ \ \}}
+\DoxyCodeLine{00602\ \ \ \mbox{\hyperlink{class_lens}{Lens}}(\mbox{\hyperlink{class_lens}{Lens}}\ \&\&lens)\{}
+\DoxyCodeLine{00603\ \ \ \ \ *\textcolor{keyword}{this}\ =\ std::move(lens);}
+\DoxyCodeLine{00604\ \ \ \}}
+\DoxyCodeLine{00605\ \ \ }
+\DoxyCodeLine{00606\ \ \ \textcolor{comment}{//\ get\ the\ adress\ of\ field\_plane\_redshifts}}
+\DoxyCodeLine{00607\ \ \ std::vector<PosType>\ \ get\_plane\_redshifts\ ()\ \{\ \textcolor{keywordflow}{return}\ plane\_redshifts;\ \}}
+\DoxyCodeLine{00608\ \ }
+\DoxyCodeLine{00609\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00610\ \ \ \mbox{\hyperlink{class_lens}{Lens}}\ \&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens}{Lens}}\ \&lens);\ \ \ \textcolor{comment}{//\ block\ copy}}
+\DoxyCodeLine{00611\ \ \ \mbox{\hyperlink{class_lens}{Lens}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_lens}{Lens}}\ \&lens);}
+\DoxyCodeLine{00612\ \ \ }
+\DoxyCodeLine{00613\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00615\ \ \ PosType\ \mbox{\hyperlink{class_lens_aee17d6e92bea425de358a9381ad6280b}{fieldofview}};}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00617\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00618\ \ GLAMER\_TEST\_FRIEND(LensTest)}
+\DoxyCodeLine{00619\ \ \ }
+\DoxyCodeLine{00620\ \ \ }
+\DoxyCodeLine{00621\ \ \ \textcolor{keywordtype}{void}\ \_find\_images\_(std::vector<RAY>\ \&images}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ \&y}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ll}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_point__2d}{Point\_2d}}\ ur}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ resolution}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ stop\_res}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
 \DoxyCodeLine{00628\ \ \ }
-\DoxyCodeLine{00629\ \ \ \textcolor{comment}{//\ the\ cosmology}}
-\DoxyCodeLine{00630\ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ cosmo;}
-\DoxyCodeLine{00631\ }
-\DoxyCodeLine{00632\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ P>}
-\DoxyCodeLine{00633\ \ \ \textcolor{keywordtype}{void}\ compute\_points\_parallel(\textcolor{keywordtype}{int}\ start}
-\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ chunk\_size}
-\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,P\ *i\_point}
-\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ *source\_zs}
-\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ multiZs}
-\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00639\ \ \ }
-\DoxyCodeLine{00640\ \ \ \textcolor{comment}{//\ this\ is\ a\ version\ that\ uses\ RAYs\ instead\ of\ Points\ or\ LinkedPoints\ and\ must\ be\ kept\ sinked\ with\ the\ above}}
-\DoxyCodeLine{00641\ \ \ \textcolor{keywordtype}{void}\ compute\_rays\_parallel(\textcolor{keywordtype}{int}\ start}
-\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ chunk\_size}
-\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_r_a_y}{RAY}}\ *rays}
-\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00645\ \ }
-\DoxyCodeLine{00646\ \ \textcolor{comment}{//void\ readCosmology(InputParams\&\ params);}}
-\DoxyCodeLine{00647\ \ \textcolor{comment}{//void\ assignParams(InputParams\&\ params,bool\ verbose\ =\ false);}}
-\DoxyCodeLine{00648\ \ \ \textcolor{keywordtype}{void}\ defaultParams(PosType\ zsource,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00649\ \ }
-\DoxyCodeLine{00651\ \ \textcolor{keywordtype}{bool}\ toggle\_source\_plane;}
-\DoxyCodeLine{00652\ \ }
-\DoxyCodeLine{00653\ \ \ \textcolor{comment}{//\ redhsift\ of\ true\ source\ plane\ if\ rest\ from\ original}}
-\DoxyCodeLine{00654\ \ \ PosType\ zs\_implant;}
-\DoxyCodeLine{00655\ \ }
-\DoxyCodeLine{00657\ \ PosType\ zsource;}
+\DoxyCodeLine{00629\ \ \ \textcolor{keywordtype}{void}\ \_find\_images\_min\_parallel\_(\mbox{\hyperlink{struct_r_a_y}{RAY}}\ *rays}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ begin}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{size\_t}\ end}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ ytol2}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,std::vector<bool>\ \&success}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00635\ \ \ }
+\DoxyCodeLine{00636\ \ \textcolor{comment}{//\ seed\ for\ random\ field\ generation}}
+\DoxyCodeLine{00637\ \ \textcolor{keywordtype}{long}\ *seed;}
+\DoxyCodeLine{00638\ \ \ }
+\DoxyCodeLine{00639\ \ \ \textcolor{keywordtype}{long}\ init\_seed;}
+\DoxyCodeLine{00640\ \ \ \textcolor{comment}{//InputParams\ init\_params;}}
+\DoxyCodeLine{00641\ \ \ }
+\DoxyCodeLine{00642\ \ \ \textcolor{comment}{//\ the\ cosmology}}
+\DoxyCodeLine{00643\ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ cosmo;}
+\DoxyCodeLine{00644\ }
+\DoxyCodeLine{00645\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ P>}
+\DoxyCodeLine{00646\ \ \ \textcolor{keywordtype}{void}\ compute\_points\_parallel(\textcolor{keywordtype}{int}\ start}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ chunk\_size}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,P\ *i\_point}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ *source\_zs}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ multiZs}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00652\ \ \ }
+\DoxyCodeLine{00653\ \ \ \textcolor{comment}{//\ this\ is\ a\ version\ that\ uses\ RAYs\ instead\ of\ Points\ or\ LinkedPoints\ and\ must\ be\ kept\ sinked\ with\ the\ above}}
+\DoxyCodeLine{00654\ \ \ \textcolor{keywordtype}{void}\ compute\_rays\_parallel(\textcolor{keywordtype}{int}\ start}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ chunk\_size}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{struct_r_a_y}{RAY}}\ *rays}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00658\ \ }
-\DoxyCodeLine{00659\ \ \textcolor{keywordtype}{void}\ quicksort(\mbox{\hyperlink{class_lens_halo}{LensHaloHndl}}\ *halo,PosType\ **pos,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N);}
-\DoxyCodeLine{00660\ \ }
-\DoxyCodeLine{00661\ \ \textcolor{comment}{//\ create\ the\ lens\ planes}}
-\DoxyCodeLine{00662\ \ \textcolor{comment}{//void\ buildPlanes(InputParams\&\ params,\ bool\ verbose);}}
-\DoxyCodeLine{00663\ \ }
-\DoxyCodeLine{00665\ \ \textcolor{keywordtype}{void}\ setFieldDist();}
-\DoxyCodeLine{00667\ \ \textcolor{keywordtype}{void}\ setFieldDistFromFile();}
-\DoxyCodeLine{00669\ \ \textcolor{keywordtype}{void}\ setupFieldPlanes();}
-\DoxyCodeLine{00672\ \ \ \textcolor{keywordtype}{void}\ ComputeHalosDistributionVariables\ ();}
-\DoxyCodeLine{00673\ \ \ }
-\DoxyCodeLine{00674\ \ \ \textcolor{keyword}{enum}\ DM\_Light\_Division\ \{All\_DM,Moster\};}
-\DoxyCodeLine{00675\ }
-\DoxyCodeLine{00676\ \ \textcolor{keywordtype}{void}\ createFieldHalos(\textcolor{keywordtype}{bool}\ verbose,DM\_Light\_Division\ division\ =\ Moster);}
-\DoxyCodeLine{00677\ \ \ }
-\DoxyCodeLine{00679\ \ \textcolor{keywordtype}{void}\ readInputSimFileMillennium(\textcolor{keywordtype}{bool}\ verbose,DM\_Light\_Division\ division\ =\ Moster);}
-\DoxyCodeLine{00680\ \ \ }
-\DoxyCodeLine{00682\ \ \textcolor{keywordtype}{void}\ readInputSimFileMultiDarkHalos(\textcolor{keywordtype}{bool}\ verbose,DM\_Light\_Division\ division\ =\ Moster);}
-\DoxyCodeLine{00683\ \ \ }
-\DoxyCodeLine{00685\ \ \ \textcolor{keywordtype}{void}\ readInputSimFileObservedGalaxies(\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00659\ \ \textcolor{comment}{//void\ readCosmology(InputParams\&\ params);}}
+\DoxyCodeLine{00660\ \ \textcolor{comment}{//void\ assignParams(InputParams\&\ params,bool\ verbose\ =\ false);}}
+\DoxyCodeLine{00661\ \ \ \textcolor{keywordtype}{void}\ defaultParams(PosType\ zsource,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00662\ \ }
+\DoxyCodeLine{00664\ \ \textcolor{keywordtype}{bool}\ toggle\_source\_plane;}
+\DoxyCodeLine{00665\ \ }
+\DoxyCodeLine{00666\ \ \ \textcolor{comment}{//\ redhsift\ of\ true\ source\ plane\ if\ rest\ from\ original}}
+\DoxyCodeLine{00667\ \ \ PosType\ zs\_implant;}
+\DoxyCodeLine{00668\ \ }
+\DoxyCodeLine{00670\ \ PosType\ zsource;}
+\DoxyCodeLine{00671\ \ }
+\DoxyCodeLine{00672\ \ \textcolor{keywordtype}{void}\ quicksort(LensHaloHndl\ *halo,PosType\ **pos,\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ N);}
+\DoxyCodeLine{00673\ \ }
+\DoxyCodeLine{00674\ \ \textcolor{comment}{//\ create\ the\ lens\ planes}}
+\DoxyCodeLine{00675\ \ \textcolor{comment}{//void\ buildPlanes(InputParams\&\ params,\ bool\ verbose);}}
+\DoxyCodeLine{00676\ \ }
+\DoxyCodeLine{00678\ \ \textcolor{keywordtype}{void}\ setFieldDist();}
+\DoxyCodeLine{00680\ \ \textcolor{keywordtype}{void}\ setFieldDistFromFile();}
+\DoxyCodeLine{00682\ \ \textcolor{keywordtype}{void}\ setupFieldPlanes();}
+\DoxyCodeLine{00685\ \ \ \textcolor{keywordtype}{void}\ ComputeHalosDistributionVariables\ ();}
 \DoxyCodeLine{00686\ \ \ }
-\DoxyCodeLine{00688\ \ \textcolor{keywordtype}{void}\ createFieldPlanes(\textcolor{keywordtype}{bool}\ verbose);}
-\DoxyCodeLine{00689\ \ }
-\DoxyCodeLine{00690\ \ \textcolor{comment}{//\ generate\ main\ halo\ from\ the\ parameter\ file}}
-\DoxyCodeLine{00691\ \ \textcolor{comment}{//void\ createMainHalos(InputParams\&\ params);}}
-\DoxyCodeLine{00693\ \ \textcolor{keywordtype}{void}\ createMainPlanes();}
-\DoxyCodeLine{00695\ \ \textcolor{keywordtype}{void}\ addMainHaloToPlane(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
-\DoxyCodeLine{00696\ \ \ \textcolor{keywordtype}{void}\ addMainHaloToNearestPlane(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
-\DoxyCodeLine{00697\ }
-\DoxyCodeLine{00699\ \ \textcolor{keywordtype}{void}\ combinePlanes(\textcolor{keywordtype}{bool}\ verbose);}
-\DoxyCodeLine{00700\ \ }
-\DoxyCodeLine{00701\ \ \ \textcolor{comment}{/*\ Variables\ used\ by\ buildPlanes,\ createFieldHalos,\ and\ createFieldPlanes\ */}}
-\DoxyCodeLine{00703\ \ \ }
-\DoxyCodeLine{00705\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Nzbins\ =\ 64\ ;}
-\DoxyCodeLine{00707\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Nmassbin=64;}
-\DoxyCodeLine{00709\ \ \ \textcolor{keywordtype}{int}\ NZSamples\ =\ 50;}
-\DoxyCodeLine{00710\ \ \ \textcolor{comment}{//\ table\ for\ redshift\ bins\ for\ mass\ function}}
-\DoxyCodeLine{00711\ \ \ std::vector<PosType>\ zbins\ ;}
-\DoxyCodeLine{00712\ \ \ \textcolor{comment}{//\ table\ of\ number\ of\ halos\ per\ redshift\ bins\ for\ mass\ function}}
-\DoxyCodeLine{00713\ \ \ std::vector<PosType>\ NhalosbinZ\ ;}
-\DoxyCodeLine{00715\ \ \ std::vector<PosType>\ Nhaloestot\_Tab\ ;}
-\DoxyCodeLine{00717\ \ \ PosType\ aveNhalosField\ ;}
-\DoxyCodeLine{00719\ \ \ std::vector<PosType>\ Logm;}
-\DoxyCodeLine{00721\ \ \ std::vector<std::vector<PosType>>\ NhalosbinMass;}
-\DoxyCodeLine{00723\ \ \ std::vector<PosType>\ sigma\_back\_Tab;}
-\DoxyCodeLine{00724\ \ \ }
-\DoxyCodeLine{00725\ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/\ */}}
-\DoxyCodeLine{00726\ \ \ }
-\DoxyCodeLine{00728\ \ \ \textcolor{keywordtype}{size\_t}\ getNFieldHalos()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ field\_halos.size();\}}
-\DoxyCodeLine{00730\ \ \ \textcolor{comment}{//size\_t\ getNSubHalos()\ const\ \{return\ substructure.halos.size();\}}}
-\DoxyCodeLine{00731\ \ \ }
-\DoxyCodeLine{00732\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ force\ calculation\ */}}
-\DoxyCodeLine{00734\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_deflection\_off;}
-\DoxyCodeLine{00735\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_lensing\_off;}
-\DoxyCodeLine{00736\ \ }
-\DoxyCodeLine{00738\ \ std::vector<LensPlane\ *>\ lensing\_planes;}
-\DoxyCodeLine{00740\ \ std::vector<PosType>\ Dl;}
-\DoxyCodeLine{00742\ \ \ std::vector<PosType>\ dDl;}
-\DoxyCodeLine{00744\ \ \ std::vector<PosType>\ dTl;}
-\DoxyCodeLine{00746\ \ std::vector<PosType>\ plane\_redshifts;}
-\DoxyCodeLine{00748\ \ PosType\ charge;}
+\DoxyCodeLine{00687\ \ \ \textcolor{keyword}{enum}\ DM\_Light\_Division\ \{All\_DM,Moster\};}
+\DoxyCodeLine{00688\ }
+\DoxyCodeLine{00689\ \ \textcolor{keywordtype}{void}\ createFieldHalos(\textcolor{keywordtype}{bool}\ verbose,DM\_Light\_Division\ division\ =\ Moster);}
+\DoxyCodeLine{00690\ \ \ }
+\DoxyCodeLine{00692\ \ \textcolor{keywordtype}{void}\ readInputSimFileMillennium(\textcolor{keywordtype}{bool}\ verbose,DM\_Light\_Division\ division\ =\ Moster);}
+\DoxyCodeLine{00693\ \ \ }
+\DoxyCodeLine{00695\ \ \textcolor{keywordtype}{void}\ readInputSimFileMultiDarkHalos(\textcolor{keywordtype}{bool}\ verbose,DM\_Light\_Division\ division\ =\ Moster);}
+\DoxyCodeLine{00696\ \ \ }
+\DoxyCodeLine{00698\ \ \ \textcolor{keywordtype}{void}\ readInputSimFileObservedGalaxies(\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00699\ \ \ }
+\DoxyCodeLine{00701\ \ \textcolor{keywordtype}{void}\ createFieldPlanes(\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00702\ \ }
+\DoxyCodeLine{00703\ \ \textcolor{comment}{//\ generate\ main\ halo\ from\ the\ parameter\ file}}
+\DoxyCodeLine{00704\ \ \textcolor{comment}{//void\ createMainHalos(InputParams\&\ params);}}
+\DoxyCodeLine{00706\ \ \textcolor{keywordtype}{void}\ createMainPlanes();}
+\DoxyCodeLine{00708\ \ \textcolor{keywordtype}{void}\ addMainHaloToPlane(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
+\DoxyCodeLine{00709\ \ \ \textcolor{keywordtype}{void}\ addMainHaloToNearestPlane(\mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ halo);}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00712\ \ \textcolor{keywordtype}{void}\ combinePlanes(\textcolor{keywordtype}{bool}\ verbose);}
+\DoxyCodeLine{00713\ \ }
+\DoxyCodeLine{00714\ \ \ \textcolor{comment}{/*\ Variables\ used\ by\ buildPlanes,\ createFieldHalos,\ and\ createFieldPlanes\ */}}
+\DoxyCodeLine{00716\ \ \ }
+\DoxyCodeLine{00718\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Nzbins\ =\ 64\ ;}
+\DoxyCodeLine{00720\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Nmassbin=64;}
+\DoxyCodeLine{00722\ \ \ \textcolor{keywordtype}{int}\ NZSamples\ =\ 50;}
+\DoxyCodeLine{00723\ \ \ \textcolor{comment}{//\ table\ for\ redshift\ bins\ for\ mass\ function}}
+\DoxyCodeLine{00724\ \ \ std::vector<PosType>\ zbins\ ;}
+\DoxyCodeLine{00725\ \ \ \textcolor{comment}{//\ table\ of\ number\ of\ halos\ per\ redshift\ bins\ for\ mass\ function}}
+\DoxyCodeLine{00726\ \ \ std::vector<PosType>\ NhalosbinZ\ ;}
+\DoxyCodeLine{00728\ \ \ std::vector<PosType>\ Nhaloestot\_Tab\ ;}
+\DoxyCodeLine{00730\ \ \ PosType\ aveNhalosField\ ;}
+\DoxyCodeLine{00732\ \ \ std::vector<PosType>\ Logm;}
+\DoxyCodeLine{00734\ \ \ std::vector<std::vector<PosType>>\ NhalosbinMass;}
+\DoxyCodeLine{00736\ \ \ std::vector<PosType>\ sigma\_back\_Tab;}
+\DoxyCodeLine{00737\ \ \ }
+\DoxyCodeLine{00738\ \ \ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00739\ \ \ }
+\DoxyCodeLine{00741\ \ \ \textcolor{keywordtype}{size\_t}\ getNFieldHalos()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ field\_halos.size();\}}
+\DoxyCodeLine{00743\ \ \ \textcolor{comment}{//size\_t\ getNSubHalos()\ const\ \{return\ substructure.halos.size();\}}}
+\DoxyCodeLine{00744\ \ \ }
+\DoxyCodeLine{00745\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ force\ calculation\ */}}
+\DoxyCodeLine{00747\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_deflection\_off;}
+\DoxyCodeLine{00748\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_lensing\_off;}
 \DoxyCodeLine{00749\ \ }
-\DoxyCodeLine{00750\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ field\ */}}
-\DoxyCodeLine{00752\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_field\_off;}
-\DoxyCodeLine{00753\ \ }
-\DoxyCodeLine{00755\ \ \ std::vector<LensHalo\ *>\ field\_halos;}
-\DoxyCodeLine{00757\ \ \ std::size\_t\ field\_Nplanes\_original;}
-\DoxyCodeLine{00758\ \ \ std::size\_t\ field\_Nplanes\_current;}
-\DoxyCodeLine{00759\ \ \ }
-\DoxyCodeLine{00761\ \ std::vector<LensPlane*>\ field\_planes;}
-\DoxyCodeLine{00763\ \ \ std::vector<PosType>\ field\_plane\_redshifts;}
-\DoxyCodeLine{00765\ \ \ std::vector<PosType>\ field\_plane\_redshifts\_original;}
-\DoxyCodeLine{00767\ \ \ std::vector<PosType>\ field\_Dl;}
-\DoxyCodeLine{00769\ \ \ std::vector<PosType>\ field\_Dl\_original;}
-\DoxyCodeLine{00770\ \ \ }
-\DoxyCodeLine{00771\ \textcolor{comment}{//\ \ struct\ SubStructureInfo\{}}
-\DoxyCodeLine{00772\ \textcolor{comment}{//\ \ \ \ //\ things\ for\ substructures}}
-\DoxyCodeLine{00773\ \textcolor{comment}{//\ \ \ \ ///\ vector\ of\ all\ substructure\ halos}}
-\DoxyCodeLine{00774\ \textcolor{comment}{//\ \ \ \ std::vector<LensHaloNFW\ *>\ halos;}}
-\DoxyCodeLine{00775\ \textcolor{comment}{//\ \ \ \ LensPlane\ *plane;}}
-\DoxyCodeLine{00776\ \textcolor{comment}{//\ \ \ \ PosType\ Rregion\ =\ 0;}}
-\DoxyCodeLine{00777\ \textcolor{comment}{//\ \ \ \ PosType\ Mmax\ =\ 0;}}
-\DoxyCodeLine{00778\ \textcolor{comment}{//\ \ \ \ PosType\ Mmin\ =\ 0;}}
-\DoxyCodeLine{00779\ \textcolor{comment}{//\ \ \ \ PosType\ alpha\ =\ 0;}}
-\DoxyCodeLine{00780\ \textcolor{comment}{//\ \ \ \ PosType\ Ndensity\ =\ 0;}}
-\DoxyCodeLine{00781\ \textcolor{comment}{//\ \ \ \ Point\_2d\ center;}}
-\DoxyCodeLine{00782\ \textcolor{comment}{//\ \ \ \ PosType\ rho\_tidal\ =\ 0;}}
-\DoxyCodeLine{00783\ \textcolor{comment}{//\ \ \ \ //\ Added\ quantities\ for\ the\ resetting\ of\ the\ substructure}}
-\DoxyCodeLine{00784\ \textcolor{comment}{//\ \ \ \ //\ (when\ WasInsertSubStructuresCalled\ =\ MAYBE)\ :}}
-\DoxyCodeLine{00785\ \textcolor{comment}{//\ \ \ \ PosType\ redshift\ =\ 0;}}
-\DoxyCodeLine{00786\ \textcolor{comment}{//\ \ \ \ bool\ verbose\ =\ false;}}
-\DoxyCodeLine{00787\ \textcolor{comment}{//\ \ \};}}
-\DoxyCodeLine{00788\ \textcolor{comment}{//}}
-\DoxyCodeLine{00789\ \textcolor{comment}{//\ \ SubStructureInfo\ substructure;}}
-\DoxyCodeLine{00790\ \ \ }
-\DoxyCodeLine{00792\ \ \textcolor{comment}{//\ Boo\ WasInsertSubStructuresCalled\ =\ NO\ ;}}
-\DoxyCodeLine{00793\ \ \ }
-\DoxyCodeLine{00795\ \ \textcolor{comment}{//PosType\ **halo\_pos;}}
-\DoxyCodeLine{00796\ \ }
-\DoxyCodeLine{00798\ \ \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{MassFuncType}}\ field\_mass\_func\_type;}
-\DoxyCodeLine{00800\ \ PosType\ mass\_func\_PL\_slope;}
-\DoxyCodeLine{00802\ \ PosType\ field\_min\_mass;}
-\DoxyCodeLine{00804\ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ field\_int\_prof\_type;}
-\DoxyCodeLine{00806\ \ PosType\ field\_prof\_internal\_slope;}
-\DoxyCodeLine{00807\ \ }
-\DoxyCodeLine{00809\ \ \textcolor{keywordtype}{bool}\ flag\_field\_gal\_on;}
-\DoxyCodeLine{00811\ \ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\ field\_int\_prof\_gal\_type;}
-\DoxyCodeLine{00813\ \ \ PosType\ field\_int\_prof\_gal\_slope;}
-\DoxyCodeLine{00814\ }
-\DoxyCodeLine{00815\ \ \textcolor{comment}{//\ mass\ fraction\ in\ the\ host\ galaxy}}
-\DoxyCodeLine{00816\ \ \textcolor{comment}{//PosType\ field\_galaxy\_mass\_fraction;}}
-\DoxyCodeLine{00817\ \ }
-\DoxyCodeLine{00818\ \ std::string\ redshift\_planes\_file;}
-\DoxyCodeLine{00819\ \ \textcolor{keywordtype}{bool}\ read\_redshift\_planes;}
+\DoxyCodeLine{00751\ \ std::vector<LensPlane\ *>\ lensing\_planes;}
+\DoxyCodeLine{00753\ \ std::vector<PosType>\ Dl;}
+\DoxyCodeLine{00755\ \ \ std::vector<PosType>\ dDl;}
+\DoxyCodeLine{00757\ \ \ std::vector<PosType>\ dTl;}
+\DoxyCodeLine{00759\ \ std::vector<PosType>\ plane\_redshifts;}
+\DoxyCodeLine{00761\ \ PosType\ charge;}
+\DoxyCodeLine{00762\ \ }
+\DoxyCodeLine{00763\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ field\ */}}
+\DoxyCodeLine{00765\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_field\_off;}
+\DoxyCodeLine{00766\ \ }
+\DoxyCodeLine{00768\ \ \ std::vector<LensHalo\ *>\ field\_halos;}
+\DoxyCodeLine{00770\ \ \ std::size\_t\ field\_Nplanes\_original;}
+\DoxyCodeLine{00771\ \ \ std::size\_t\ field\_Nplanes\_current;}
+\DoxyCodeLine{00772\ \ \ }
+\DoxyCodeLine{00774\ \ std::vector<LensPlane*>\ field\_planes;}
+\DoxyCodeLine{00776\ \ \ std::vector<PosType>\ field\_plane\_redshifts;}
+\DoxyCodeLine{00778\ \ \ std::vector<PosType>\ field\_plane\_redshifts\_original;}
+\DoxyCodeLine{00780\ \ \ std::vector<PosType>\ field\_Dl;}
+\DoxyCodeLine{00782\ \ \ std::vector<PosType>\ field\_Dl\_original;}
+\DoxyCodeLine{00783\ \ \ }
+\DoxyCodeLine{00784\ \textcolor{comment}{//\ \ struct\ SubStructureInfo\{}}
+\DoxyCodeLine{00785\ \textcolor{comment}{//\ \ \ \ //\ things\ for\ substructures}}
+\DoxyCodeLine{00786\ \textcolor{comment}{//\ \ \ \ ///\ vector\ of\ all\ substructure\ halos}}
+\DoxyCodeLine{00787\ \textcolor{comment}{//\ \ \ \ std::vector<LensHaloNFW\ *>\ halos;}}
+\DoxyCodeLine{00788\ \textcolor{comment}{//\ \ \ \ LensPlane\ *plane;}}
+\DoxyCodeLine{00789\ \textcolor{comment}{//\ \ \ \ PosType\ Rregion\ =\ 0;}}
+\DoxyCodeLine{00790\ \textcolor{comment}{//\ \ \ \ PosType\ Mmax\ =\ 0;}}
+\DoxyCodeLine{00791\ \textcolor{comment}{//\ \ \ \ PosType\ Mmin\ =\ 0;}}
+\DoxyCodeLine{00792\ \textcolor{comment}{//\ \ \ \ PosType\ alpha\ =\ 0;}}
+\DoxyCodeLine{00793\ \textcolor{comment}{//\ \ \ \ PosType\ Ndensity\ =\ 0;}}
+\DoxyCodeLine{00794\ \textcolor{comment}{//\ \ \ \ Point\_2d\ center;}}
+\DoxyCodeLine{00795\ \textcolor{comment}{//\ \ \ \ PosType\ rho\_tidal\ =\ 0;}}
+\DoxyCodeLine{00796\ \textcolor{comment}{//\ \ \ \ //\ Added\ quantities\ for\ the\ resetting\ of\ the\ substructure}}
+\DoxyCodeLine{00797\ \textcolor{comment}{//\ \ \ \ //\ (when\ WasInsertSubStructuresCalled\ =\ MAYBE)\ :}}
+\DoxyCodeLine{00798\ \textcolor{comment}{//\ \ \ \ PosType\ redshift\ =\ 0;}}
+\DoxyCodeLine{00799\ \textcolor{comment}{//\ \ \ \ bool\ verbose\ =\ false;}}
+\DoxyCodeLine{00800\ \textcolor{comment}{//\ \ \};}}
+\DoxyCodeLine{00801\ \textcolor{comment}{//}}
+\DoxyCodeLine{00802\ \textcolor{comment}{//\ \ SubStructureInfo\ substructure;}}
+\DoxyCodeLine{00803\ \ \ }
+\DoxyCodeLine{00805\ \ \textcolor{comment}{//\ Boo\ WasInsertSubStructuresCalled\ =\ NO\ ;}}
+\DoxyCodeLine{00806\ \ \ }
+\DoxyCodeLine{00808\ \ \textcolor{comment}{//PosType\ **halo\_pos;}}
+\DoxyCodeLine{00809\ \ }
+\DoxyCodeLine{00811\ \ \mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{MassFuncType}}\ field\_mass\_func\_type;}
+\DoxyCodeLine{00813\ \ PosType\ mass\_func\_PL\_slope;}
+\DoxyCodeLine{00815\ \ PosType\ field\_min\_mass;}
+\DoxyCodeLine{00817\ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ field\_int\_prof\_type;}
+\DoxyCodeLine{00819\ \ PosType\ field\_prof\_internal\_slope;}
 \DoxyCodeLine{00820\ \ }
-\DoxyCodeLine{00821\ \ std::string\ field\_input\_sim\_file;}
-\DoxyCodeLine{00822\ \ \ HaloCatFormats\ field\_input\_sim\_format;}
-\DoxyCodeLine{00823\ \ \ }
-\DoxyCodeLine{00824\ \ \textcolor{keywordtype}{bool}\ sim\_input\_flag;}
-\DoxyCodeLine{00825\ \ \textcolor{comment}{//std::string\ input\_gal\_file;}}
-\DoxyCodeLine{00826\ \ \textcolor{comment}{//bool\ gal\_input\_flag;}}
-\DoxyCodeLine{00827\ \ \textcolor{keywordtype}{bool}\ read\_sim\_file;}
-\DoxyCodeLine{00828\ \ }
-\DoxyCodeLine{00830\ \ PosType\ field\_buffer;}
-\DoxyCodeLine{00831\ \ }
-\DoxyCodeLine{00832\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ main\ */}}
-\DoxyCodeLine{00834\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_main\_halo\_on;}
-\DoxyCodeLine{00835\ \ }
-\DoxyCodeLine{00837\ \ \mbox{\hyperlink{class_utilities_1_1_mixed_vector}{Utilities::MixedVector<LensHalo*>}}\ main\_halos;}
-\DoxyCodeLine{00840\ \ std::vector<LensPlane*>\ main\_planes;}
-\DoxyCodeLine{00842\ \ std::vector<PosType>\ main\_plane\_redshifts;}
-\DoxyCodeLine{00844\ \ std::vector<PosType>\ main\_Dl;}
-\DoxyCodeLine{00845\ \ }
-\DoxyCodeLine{00847\ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ main\_halo\_type;}
-\DoxyCodeLine{00849\ \ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\ main\_galaxy\_halo\_type;}
-\DoxyCodeLine{00850\ \ }
-\DoxyCodeLine{00851\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ input\ */}}
-\DoxyCodeLine{00853\ \ std::string\ pixel\_map\_input\_file;}
-\DoxyCodeLine{00854\ \ }
-\DoxyCodeLine{00856\ \ \ \textcolor{keywordtype}{short}\ pixel\_map\_on;}
-\DoxyCodeLine{00858\ \ \ \textcolor{keywordtype}{int}\ pixel\_map\_zeropad;}
-\DoxyCodeLine{00859\ \ \ \textcolor{keywordtype}{bool}\ pixel\_map\_zeromean;}
-\DoxyCodeLine{00860\ \ \textcolor{keywordtype}{void}\ readPixelizedDensity();}
-\DoxyCodeLine{00861\ \ \ }
-\DoxyCodeLine{00863\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities::Geometry::SphericalPoint<PosType>}}\ central\_point\_sphere;}
-\DoxyCodeLine{00865\ \ \ PosType\ sim\_angular\_radius;}
-\DoxyCodeLine{00867\ \ \ PosType\ inv\_ang\_screening\_scale;}
-\DoxyCodeLine{00868\ \ \ }
-\DoxyCodeLine{00869\ \ \ \textcolor{comment}{/*\ TO\ BE\ DEPRICATED}}
-\DoxyCodeLine{00870\ \textcolor{comment}{\ \ \ Add\ random\ halos\ to\ the\ light\ cone\ according\ to\ standard\ structure\ formation\ theory.\ \ A\ new\ realization\ of\ the\ light-\/cone\ can\ be\ made\ with\ Lens::resetFieldHalos()\ after\ this\ function\ is\ called\ once.}}
-\DoxyCodeLine{00871\ \textcolor{comment}{\ \ \ }}
-\DoxyCodeLine{00872\ \textcolor{comment}{\ \ \ The\ cone\ is\ filled\ up\ until\ the\ redshift\ of\ the\ current\ zsource\ that\ is\ stored\ in\ the\ Lens\ class.\ \ The\ field\ is\ a\ circular\ on\ the\ sky.\ \ There\ is\ no\ clustering\ of\ the\ halos.}}
-\DoxyCodeLine{00873\ \textcolor{comment}{\ \ \ */}}
-\DoxyCodeLine{00874\ \ \ \textcolor{keywordtype}{void}\ GenerateFieldHalos(\textcolor{keywordtype}{double}\ min\_mass\ }
-\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a5f08f39a7095359c5ef668d6fdce6470}{MassFuncType}}\ mass\_function\ }
-\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ field\_of\_view\ \ }
-\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ Nplanes\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ halo\_type\ =\ LensHaloType::nfw\_lens\ \ }
-\DoxyCodeLine{00879\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\ galaxy\_type\ =\ GalaxyLensHaloType::null\_gal\ \ }
-\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ buffer\ =\ 1.0\ }
-\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose\ =\ \textcolor{keyword}{false}}
-\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
-\DoxyCodeLine{00883\ }
-\DoxyCodeLine{00884\ }
-\DoxyCodeLine{00885\ \};}
-\DoxyCodeLine{00886\ }
-\DoxyCodeLine{00887\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{class_lens_ad5edcf261950dab5a8d3339626b01eed}{Lens::getNMainHalos}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00888\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00889\ \ \textcolor{keywordflow}{return}\ main\_halos.\mbox{\hyperlink{class_utilities_1_1_mixed_vector_a367007c2c9aaf9ea791a21742ab66a4e}{size}}();}
-\DoxyCodeLine{00890\ \}}
-\DoxyCodeLine{00891\ }
-\DoxyCodeLine{00892\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HaloType>}
-\DoxyCodeLine{00893\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{class_lens_ad5edcf261950dab5a8d3339626b01eed}{Lens::getNMainHalos}}()\textcolor{keyword}{\ const}}
-\DoxyCodeLine{00894\ \textcolor{keyword}{}\{}
-\DoxyCodeLine{00895\ \ \textcolor{keywordflow}{return}\ main\_halos.\mbox{\hyperlink{class_utilities_1_1_mixed_vector_a367007c2c9aaf9ea791a21742ab66a4e}{size}}<HaloType>();}
-\DoxyCodeLine{00896\ \}}
-\DoxyCodeLine{00897\ }
-\DoxyCodeLine{00898\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ \mbox{\hyperlink{class_lens_aecc7754f42783ebe2f3d7a8074591322}{Lens::getMainHalo}}(std::size\_t\ i)}
-\DoxyCodeLine{00899\ \{}
-\DoxyCodeLine{00900\ \ \textcolor{keywordflow}{return}\ main\_halos.\mbox{\hyperlink{class_utilities_1_1_mixed_vector_ab5a8c7e9ecc7d873abf76e8b3bfc3aaf}{at}}(i);}
-\DoxyCodeLine{00901\ \}}
-\DoxyCodeLine{00902\ }
-\DoxyCodeLine{00903\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HaloType>}
-\DoxyCodeLine{00904\ \textcolor{keyword}{inline}\ HaloType*\ \mbox{\hyperlink{class_lens_aecc7754f42783ebe2f3d7a8074591322}{Lens::getMainHalo}}(std::size\_t\ i)}
-\DoxyCodeLine{00905\ \{}
-\DoxyCodeLine{00906\ \ \ \textcolor{keywordflow}{if}(main\_halos.\mbox{\hyperlink{class_utilities_1_1_mixed_vector_a367007c2c9aaf9ea791a21742ab66a4e}{size}}<HaloType>()\ ==\ 0\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00907\ \ \textcolor{keywordflow}{return}\ main\_halos.\mbox{\hyperlink{class_utilities_1_1_mixed_vector_ab5a8c7e9ecc7d873abf76e8b3bfc3aaf}{at}}<HaloType>(i);}
-\DoxyCodeLine{00908\ \}}
-\DoxyCodeLine{00909\ }
-\DoxyCodeLine{00910\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_lens}{Lens}}*\ \mbox{\hyperlink{class_lens}{LensHndl}};}
-\DoxyCodeLine{00911\ }
-\DoxyCodeLine{00912\ \textcolor{comment}{//\ P\ should\ be\ Point\ or\ LinkedPoint}}
-\DoxyCodeLine{00913\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ P>}
-\DoxyCodeLine{00914\ \textcolor{keywordtype}{void}\ Lens::compute\_points\_parallel(\textcolor{keywordtype}{int}\ start}
-\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ chunk\_size}
-\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,P\ *i\_points}
-\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ *source\_zs}
-\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ multiZs}
-\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose)}
-\DoxyCodeLine{00920\ \{}
-\DoxyCodeLine{00921\ \ \ \textcolor{keywordtype}{int}\ end\ \ \ \ \ \ \ \ =\ start\ +\ chunk\_size;}
-\DoxyCodeLine{00922\ }
-\DoxyCodeLine{00923\ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{00822\ \ \textcolor{keywordtype}{bool}\ flag\_field\_gal\_on;}
+\DoxyCodeLine{00824\ \ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\ field\_int\_prof\_gal\_type;}
+\DoxyCodeLine{00826\ \ \ PosType\ field\_int\_prof\_gal\_slope;}
+\DoxyCodeLine{00827\ }
+\DoxyCodeLine{00828\ \ \textcolor{comment}{//\ mass\ fraction\ in\ the\ host\ galaxy}}
+\DoxyCodeLine{00829\ \ \textcolor{comment}{//PosType\ field\_galaxy\_mass\_fraction;}}
+\DoxyCodeLine{00830\ \ }
+\DoxyCodeLine{00831\ \ std::string\ redshift\_planes\_file;}
+\DoxyCodeLine{00832\ \ \textcolor{keywordtype}{bool}\ read\_redshift\_planes;}
+\DoxyCodeLine{00833\ \ }
+\DoxyCodeLine{00834\ \ std::string\ field\_input\_sim\_file;}
+\DoxyCodeLine{00835\ \ \ HaloCatFormats\ field\_input\_sim\_format;}
+\DoxyCodeLine{00836\ \ \ }
+\DoxyCodeLine{00837\ \ \textcolor{keywordtype}{bool}\ sim\_input\_flag;}
+\DoxyCodeLine{00838\ \ \textcolor{comment}{//std::string\ input\_gal\_file;}}
+\DoxyCodeLine{00839\ \ \textcolor{comment}{//bool\ gal\_input\_flag;}}
+\DoxyCodeLine{00840\ \ \textcolor{keywordtype}{bool}\ read\_sim\_file;}
+\DoxyCodeLine{00841\ \ }
+\DoxyCodeLine{00843\ \ PosType\ field\_buffer;}
+\DoxyCodeLine{00844\ \ }
+\DoxyCodeLine{00845\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ main\ */}}
+\DoxyCodeLine{00847\ \ \textcolor{keywordtype}{bool}\ flag\_switch\_main\_halo\_on;}
+\DoxyCodeLine{00848\ \ }
+\DoxyCodeLine{00850\ \ \mbox{\hyperlink{class_utilities_1_1_mixed_vector}{Utilities::MixedVector<LensHalo*>}}\ main\_halos;}
+\DoxyCodeLine{00853\ \ std::vector<LensPlane*>\ main\_planes;}
+\DoxyCodeLine{00855\ \ std::vector<PosType>\ main\_plane\_redshifts;}
+\DoxyCodeLine{00857\ \ std::vector<PosType>\ main\_Dl;}
+\DoxyCodeLine{00858\ \ }
+\DoxyCodeLine{00860\ \ \mbox{\hyperlink{_input_params_8h_adc636f57bc26ded1ea43d457bba6da97}{LensHaloType}}\ main\_halo\_type;}
+\DoxyCodeLine{00862\ \ \mbox{\hyperlink{_input_params_8h_a84369a9df44a3e61609a068b4debd98f}{GalaxyLensHaloType}}\ main\_galaxy\_halo\_type;}
+\DoxyCodeLine{00863\ \ }
+\DoxyCodeLine{00864\ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ input\ */}}
+\DoxyCodeLine{00866\ \ std::string\ pixel\_map\_input\_file;}
+\DoxyCodeLine{00867\ \ }
+\DoxyCodeLine{00869\ \ \ \textcolor{keywordtype}{short}\ pixel\_map\_on;}
+\DoxyCodeLine{00871\ \ \ \textcolor{keywordtype}{int}\ pixel\_map\_zeropad;}
+\DoxyCodeLine{00872\ \ \ \textcolor{keywordtype}{bool}\ pixel\_map\_zeromean;}
+\DoxyCodeLine{00873\ \ \textcolor{keywordtype}{void}\ readPixelizedDensity();}
+\DoxyCodeLine{00874\ \ \ }
+\DoxyCodeLine{00876\ \ \ \mbox{\hyperlink{class_utilities_1_1_geometry_1_1_spherical_point}{Utilities::Geometry::SphericalPoint<PosType>}}\ central\_point\_sphere;}
+\DoxyCodeLine{00878\ \ \ PosType\ sim\_angular\_radius;}
+\DoxyCodeLine{00880\ \ \ PosType\ inv\_ang\_screening\_scale;}
+\DoxyCodeLine{00881\ \};}
+\DoxyCodeLine{00882\ }
+\DoxyCodeLine{00883\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{class_lens_ad5edcf261950dab5a8d3339626b01eed}{Lens::getNMainHalos}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00884\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00885\ \ \textcolor{keywordflow}{return}\ main\_halos.size();}
+\DoxyCodeLine{00886\ \}}
+\DoxyCodeLine{00887\ }
+\DoxyCodeLine{00888\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HaloType>}
+\DoxyCodeLine{00889\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{class_lens_ad5edcf261950dab5a8d3339626b01eed}{Lens::getNMainHalos}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00890\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00891\ \ \textcolor{keywordflow}{return}\ main\_halos.size<HaloType>();}
+\DoxyCodeLine{00892\ \}}
+\DoxyCodeLine{00893\ }
+\DoxyCodeLine{00894\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_lens_halo}{LensHalo}}*\ \mbox{\hyperlink{class_lens_aecc7754f42783ebe2f3d7a8074591322}{Lens::getMainHalo}}(std::size\_t\ i)}
+\DoxyCodeLine{00895\ \{}
+\DoxyCodeLine{00896\ \ \textcolor{keywordflow}{return}\ main\_halos.at(i);}
+\DoxyCodeLine{00897\ \}}
+\DoxyCodeLine{00898\ }
+\DoxyCodeLine{00899\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ HaloType>}
+\DoxyCodeLine{00900\ \textcolor{keyword}{inline}\ HaloType*\ \mbox{\hyperlink{class_lens_aecc7754f42783ebe2f3d7a8074591322}{Lens::getMainHalo}}(std::size\_t\ i)}
+\DoxyCodeLine{00901\ \{}
+\DoxyCodeLine{00902\ \ \ \textcolor{keywordflow}{if}(main\_halos.size<HaloType>()\ ==\ 0\ )\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00903\ \ \textcolor{keywordflow}{return}\ main\_halos.at<HaloType>(i);}
+\DoxyCodeLine{00904\ \}}
+\DoxyCodeLine{00905\ }
+\DoxyCodeLine{00906\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_lens}{Lens}}*\ LensHndl;}
+\DoxyCodeLine{00907\ }
+\DoxyCodeLine{00908\ \textcolor{comment}{//\ P\ should\ be\ Point\ or\ LinkedPoint}}
+\DoxyCodeLine{00909\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ P>}
+\DoxyCodeLine{00910\ \textcolor{keywordtype}{void}\ Lens::compute\_points\_parallel(\textcolor{keywordtype}{int}\ start}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{int}\ chunk\_size}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,P\ *i\_points}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ *source\_zs}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ multiZs}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ verbose)}
+\DoxyCodeLine{00916\ \{}
+\DoxyCodeLine{00917\ \ \ \textcolor{keywordtype}{int}\ end\ \ \ \ \ \ \ \ =\ start\ +\ chunk\_size;}
+\DoxyCodeLine{00918\ }
+\DoxyCodeLine{00919\ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{00920\ \ \ }
+\DoxyCodeLine{00921\ \ \ PosType\ xx[2];}
+\DoxyCodeLine{00922\ \ \ PosType\ aa,bb;}
+\DoxyCodeLine{00923\ \ \ PosType\ alpha[2];}
 \DoxyCodeLine{00924\ \ \ }
-\DoxyCodeLine{00925\ \ \ PosType\ xx[2];}
-\DoxyCodeLine{00926\ \ \ PosType\ aa,bb;}
-\DoxyCodeLine{00927\ \ \ PosType\ alpha[2];}
-\DoxyCodeLine{00928\ \ \ }
-\DoxyCodeLine{00929\ \ \ KappaType\ kappa,gamma[3];}
-\DoxyCodeLine{00930\ \ \ KappaType\ phi;}
-\DoxyCodeLine{00931\ \ \ }
-\DoxyCodeLine{00932\ \ \ Matrix2x2<PosType>\ G;}
-\DoxyCodeLine{00933\ }
-\DoxyCodeLine{00934\ \ \ PosType\ SumPrevAlphas[2];}
-\DoxyCodeLine{00935\ \ \ Matrix2x2<PosType>\ SumPrevAG;}
-\DoxyCodeLine{00936\ \ \ }
-\DoxyCodeLine{00937\ \ \ PosType\ *theta;}
-\DoxyCodeLine{00938\ \ \ }
-\DoxyCodeLine{00939\ \ \ \textcolor{keywordtype}{long}\ jmax\ =\ lensing\_planes.size();}
-\DoxyCodeLine{00940\ \ \ \textcolor{keywordtype}{double}\ Dls\_Ds;\ \textcolor{comment}{//\ this\ is\ the\ ratio\ between\ of\ the\ distance\ between\ the\ last\ lens\ plane\ and\ the\ source\ to\ the\ distance\ to\ the\ source}}
-\DoxyCodeLine{00941\ \ \ \textcolor{keywordtype}{double}\ D\_Ds;\ \textcolor{comment}{//\ this\ is\ the\ ratio\ between\ of\ the\ distance\ to\ the\ last\ lens\ plane\ and\ the\ source\ to\ the\ distance\ to\ the\ source}}
-\DoxyCodeLine{00942\ }
-\DoxyCodeLine{00943\ \ \ \textcolor{keywordflow}{if}(!multiZs)\{}
-\DoxyCodeLine{00944\ \ \ \ \ \textcolor{keywordflow}{if}(source\_zs[0]\ ==\ plane\_redshifts.back()\ )\{}
-\DoxyCodeLine{00945\ \ \ \ \ \ \ Dls\_Ds\ =\ dDl.back()\ /\ Dl.back();}
-\DoxyCodeLine{00946\ \ \ \ \ \ \ D\_Ds\ =\ Dl[Dl.size()\ -\/\ 2]\ /\ Dl.back();}
-\DoxyCodeLine{00947\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00948\ \ \ \ \ \ \ PosType\ Dls,Ds;}
-\DoxyCodeLine{00949\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}{FindSourcePlane}}(source\_zs[0],jmax,Dls,Ds);}
-\DoxyCodeLine{00950\ \ \ \ \ \ \ Dls\_Ds\ =\ Dls\ /\ Ds;}
-\DoxyCodeLine{00951\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jmax\ >\ 0)\ D\_Ds\ =\ Dl[jmax-\/1]\ /\ Ds;}
-\DoxyCodeLine{00952\ \ \ \ \ \}}
-\DoxyCodeLine{00953\ \ \ \}}
-\DoxyCodeLine{00954\ \ \ }
-\DoxyCodeLine{00955\ \ \ \textcolor{comment}{//\ Main\ loop\ :\ loop\ over\ the\ points\ of\ the\ image}}
-\DoxyCodeLine{00956\ \ \ \textcolor{keywordflow}{for}(i\ =\ start;\ i\ <\ end;\ i++)}
-\DoxyCodeLine{00957\ \ \ \{}
-\DoxyCodeLine{00958\ \ \ \ \ \textcolor{comment}{//\ In\ case\ e.g.\ a\ temporary\ point\ is\ outside\ of\ the\ grid.}}
-\DoxyCodeLine{00959\ \ \ \ \ \textcolor{keywordflow}{if}(i\_points[i].in\_image\ ==\ MAYBE)\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00960\ \ \ \ \ }
-\DoxyCodeLine{00961\ \ \ \ \ \textcolor{comment}{//theta\ =\ i\_points[i].image-\/>x;}}
-\DoxyCodeLine{00962\ \ \ \ \ theta\ =\ i\_points[i].ptr\_y();}
-\DoxyCodeLine{00963\ \ \ \ \ }
-\DoxyCodeLine{00964\ \ \ \ \ theta[0]\ =\ i\_points[i].x[0];}
-\DoxyCodeLine{00965\ \ \ \ \ theta[1]\ =\ i\_points[i].x[1];}
+\DoxyCodeLine{00925\ \ \ KappaType\ kappa,gamma[3];}
+\DoxyCodeLine{00926\ \ \ KappaType\ phi;}
+\DoxyCodeLine{00927\ \ \ }
+\DoxyCodeLine{00928\ \ \ Matrix2x2<PosType>\ G;}
+\DoxyCodeLine{00929\ }
+\DoxyCodeLine{00930\ \ \ PosType\ SumPrevAlphas[2];}
+\DoxyCodeLine{00931\ \ \ Matrix2x2<PosType>\ SumPrevAG;}
+\DoxyCodeLine{00932\ \ \ }
+\DoxyCodeLine{00933\ \ \ PosType\ *theta;}
+\DoxyCodeLine{00934\ \ \ }
+\DoxyCodeLine{00935\ \ \ \textcolor{keywordtype}{long}\ jmax\ =\ lensing\_planes.size();}
+\DoxyCodeLine{00936\ \ \ \textcolor{keywordtype}{double}\ Dls\_Ds;\ \textcolor{comment}{//\ this\ is\ the\ ratio\ between\ of\ the\ distance\ between\ the\ last\ lens\ plane\ and\ the\ source\ to\ the\ distance\ to\ the\ source}}
+\DoxyCodeLine{00937\ \ \ \textcolor{keywordtype}{double}\ D\_Ds;\ \textcolor{comment}{//\ this\ is\ the\ ratio\ between\ of\ the\ distance\ to\ the\ last\ lens\ plane\ and\ the\ source\ to\ the\ distance\ to\ the\ source}}
+\DoxyCodeLine{00938\ }
+\DoxyCodeLine{00939\ \ \ \textcolor{keywordflow}{if}(!multiZs)\{}
+\DoxyCodeLine{00940\ \ \ \ \ \textcolor{keywordflow}{if}(source\_zs[0]\ ==\ plane\_redshifts.back()\ )\{}
+\DoxyCodeLine{00941\ \ \ \ \ \ \ Dls\_Ds\ =\ dDl.back()\ /\ Dl.back();}
+\DoxyCodeLine{00942\ \ \ \ \ \ \ D\_Ds\ =\ Dl[Dl.size()\ -\/\ 2]\ /\ Dl.back();}
+\DoxyCodeLine{00943\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ PosType\ Dls,Ds;}
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}{FindSourcePlane}}(source\_zs[0],jmax,Dls,Ds);}
+\DoxyCodeLine{00946\ \ \ \ \ \ \ Dls\_Ds\ =\ Dls\ /\ Ds;}
+\DoxyCodeLine{00947\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jmax\ >\ 0)\ D\_Ds\ =\ Dl[jmax-\/1]\ /\ Ds;}
+\DoxyCodeLine{00948\ \ \ \ \ \}}
+\DoxyCodeLine{00949\ \ \ \}}
+\DoxyCodeLine{00950\ \ \ }
+\DoxyCodeLine{00951\ \ \ \textcolor{comment}{//\ Main\ loop\ :\ loop\ over\ the\ points\ of\ the\ image}}
+\DoxyCodeLine{00952\ \ \ \textcolor{keywordflow}{for}(i\ =\ start;\ i\ <\ end;\ i++)}
+\DoxyCodeLine{00953\ \ \ \{}
+\DoxyCodeLine{00954\ \ \ \ \ \textcolor{comment}{//\ In\ case\ e.g.\ a\ temporary\ point\ is\ outside\ of\ the\ grid.}}
+\DoxyCodeLine{00955\ \ \ \ \ \textcolor{keywordflow}{if}(i\_points[i].in\_image\ ==\ MAYBE)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00956\ \ \ \ \ }
+\DoxyCodeLine{00957\ \ \ \ \ \textcolor{comment}{//theta\ =\ i\_points[i].image-\/>x;}}
+\DoxyCodeLine{00958\ \ \ \ \ theta\ =\ i\_points[i].ptr\_y();}
+\DoxyCodeLine{00959\ \ \ \ \ }
+\DoxyCodeLine{00960\ \ \ \ \ theta[0]\ =\ i\_points[i].x[0];}
+\DoxyCodeLine{00961\ \ \ \ \ theta[1]\ =\ i\_points[i].x[1];}
+\DoxyCodeLine{00962\ }
+\DoxyCodeLine{00963\ \ \ \ \ \textcolor{comment}{//\ Initializing\ SumPrevAlphas\ :}}
+\DoxyCodeLine{00964\ \ \ \ \ SumPrevAlphas[0]\ =\ theta[0];}
+\DoxyCodeLine{00965\ \ \ \ \ SumPrevAlphas[1]\ =\ theta[1];}
 \DoxyCodeLine{00966\ }
-\DoxyCodeLine{00967\ \ \ \ \ \textcolor{comment}{//\ Initializing\ SumPrevAlphas\ :}}
-\DoxyCodeLine{00968\ \ \ \ \ SumPrevAlphas[0]\ =\ theta[0];}
-\DoxyCodeLine{00969\ \ \ \ \ SumPrevAlphas[1]\ =\ theta[1];}
-\DoxyCodeLine{00970\ }
-\DoxyCodeLine{00971\ \ \ \ \ \textcolor{comment}{//\ Initializing\ SumPrevAG\ :}}
-\DoxyCodeLine{00972\ \ \ \ \ SumPrevAG.setToI();}
-\DoxyCodeLine{00973\ \ \ \ \ }
-\DoxyCodeLine{00974\ \ \ \ \ \textcolor{comment}{//\ Setting\ phi\ on\ the\ first\ plane.}}
-\DoxyCodeLine{00975\ \ \ \ \ phi\ =\ 0.0;}
+\DoxyCodeLine{00967\ \ \ \ \ \textcolor{comment}{//\ Initializing\ SumPrevAG\ :}}
+\DoxyCodeLine{00968\ \ \ \ \ SumPrevAG.setToI();}
+\DoxyCodeLine{00969\ \ \ \ \ }
+\DoxyCodeLine{00970\ \ \ \ \ \textcolor{comment}{//\ Setting\ phi\ on\ the\ first\ plane.}}
+\DoxyCodeLine{00971\ \ \ \ \ phi\ =\ 0.0;}
+\DoxyCodeLine{00972\ \ \ \ \ }
+\DoxyCodeLine{00973\ \ \ \ \ \textcolor{comment}{//\ Default\ values\ :}}
+\DoxyCodeLine{00974\ \ \ \ \ i\_points[i].A.setToI();}
+\DoxyCodeLine{00975\ \ \ \ \ i\_points[i].dt\ =\ 0;}
 \DoxyCodeLine{00976\ \ \ \ \ }
-\DoxyCodeLine{00977\ \ \ \ \ \textcolor{comment}{//\ Default\ values\ :}}
-\DoxyCodeLine{00978\ \ \ \ \ i\_points[i].A.setToI();}
-\DoxyCodeLine{00979\ \ \ \ \ i\_points[i].dt\ =\ 0;}
-\DoxyCodeLine{00980\ \ \ \ \ }
-\DoxyCodeLine{00981\ \ \ \ \ \textcolor{comment}{//\ In\ case\ we\ don't\ want\ to\ compute\ the\ values\ :}}
-\DoxyCodeLine{00982\ \ \ \ \ \textcolor{keywordflow}{if}(flag\_switch\_lensing\_off)}
-\DoxyCodeLine{00983\ \ \ \ \ \{}
-\DoxyCodeLine{00984\ \ \ \ \ \ \ i\_points[i].image-\/>A.setToI();}
-\DoxyCodeLine{00985\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00986\ \ \ \ \ \}}
-\DoxyCodeLine{00987\ \ \ \ \ }
-\DoxyCodeLine{00988\ \ \ \ \ \textcolor{comment}{//\ Time\ delay\ at\ first\ plane\ :\ position\ on\ the\ observer\ plane\ is\ (0,0)\ =>\ no\ need\ to\ take\ difference\ of\ positions.}}
-\DoxyCodeLine{00989\ \ \ \ \ i\_points[i].dt\ =\ 0;}
-\DoxyCodeLine{00990\ \ \ \ \ }
-\DoxyCodeLine{00991\ \ \ \ \ \textcolor{comment}{//0.5*(\ p-\/>i\_points[i].image-\/>x[0]*p-\/>i\_points[i].image-\/>x[0]\ +\ p-\/>i\_points[i].image-\/>x[1]*p-\/>i\_points[i].image-\/>x[1]\ )/\ p-\/>dDl[0]\ ;}}
-\DoxyCodeLine{00992\ \ \ \ \ }
-\DoxyCodeLine{00993\ \ \ \ \ \textcolor{keywordflow}{if}(multiZs)\{}
-\DoxyCodeLine{00994\ \ \ \ \ \ \ PosType\ Dls,Ds;}
-\DoxyCodeLine{00995\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}{FindSourcePlane}}(source\_zs[i],jmax,Dls,Ds);}
-\DoxyCodeLine{00996\ \ \ \ \ \ \ Dls\_Ds\ =\ Dls\ /\ Ds;}
-\DoxyCodeLine{00997\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jmax\ >\ 0)\ D\_Ds\ =\ Dl[jmax-\/1]/Ds;}
-\DoxyCodeLine{00998\ \ \ \ \ \}}
-\DoxyCodeLine{00999\ \ \ \ \ }
-\DoxyCodeLine{01000\ \ \ \ \ \textcolor{comment}{//\ Begining\ of\ the\ loop\ through\ the\ planes\ :}}
-\DoxyCodeLine{01001\ \ \ \ \ \textcolor{comment}{//\ Each\ iteration\ leaves\ i\_point[i].image\ on\ plane\ (j+1)}}
-\DoxyCodeLine{01002\ }
-\DoxyCodeLine{01003\ \ \ \ \ \textcolor{keywordflow}{for}(j\ =\ 0;\ j\ <\ jmax\ ;\ ++j)}
-\DoxyCodeLine{01004\ \ \ \ \ \ \ \{}
-\DoxyCodeLine{01005\ \ \ \ \ \ \ }
-\DoxyCodeLine{01006\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Dphysical\ =\ Dl[j]/(1\ +\ plane\_redshifts[j]);}
-\DoxyCodeLine{01007\ \ \ \ \ \ \ \textcolor{comment}{//\ convert\ to\ physical\ coordinates\ on\ the\ plane\ j,\ just\ for\ force\ calculation}}
-\DoxyCodeLine{01008\ \ \ \ \ \ \ xx[0]\ =\ theta[0]\ *\ \ Dphysical;}
-\DoxyCodeLine{01009\ \ \ \ \ \ \ xx[1]\ =\ theta[1]\ *\ \ Dphysical;}
-\DoxyCodeLine{01010\ \ \ \ \ \ \ \textcolor{comment}{//\ PhysMpc\ =\ ComMpc\ /\ (1+z)}}
+\DoxyCodeLine{00977\ \ \ \ \ \textcolor{comment}{//\ In\ case\ we\ don't\ want\ to\ compute\ the\ values\ :}}
+\DoxyCodeLine{00978\ \ \ \ \ \textcolor{keywordflow}{if}(flag\_switch\_lensing\_off)}
+\DoxyCodeLine{00979\ \ \ \ \ \{}
+\DoxyCodeLine{00980\ \ \ \ \ \ \ i\_points[i].image-\/>A.setToI();}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00982\ \ \ \ \ \}}
+\DoxyCodeLine{00983\ \ \ \ \ }
+\DoxyCodeLine{00984\ \ \ \ \ \textcolor{comment}{//\ Time\ delay\ at\ first\ plane\ :\ position\ on\ the\ observer\ plane\ is\ (0,0)\ =>\ no\ need\ to\ take\ difference\ of\ positions.}}
+\DoxyCodeLine{00985\ \ \ \ \ i\_points[i].dt\ =\ 0;}
+\DoxyCodeLine{00986\ \ \ \ \ }
+\DoxyCodeLine{00987\ \ \ \ \ \textcolor{comment}{//0.5*(\ p-\/>i\_points[i].image-\/>x[0]*p-\/>i\_points[i].image-\/>x[0]\ +\ p-\/>i\_points[i].image-\/>x[1]*p-\/>i\_points[i].image-\/>x[1]\ )/\ p-\/>dDl[0]\ ;}}
+\DoxyCodeLine{00988\ \ \ \ \ }
+\DoxyCodeLine{00989\ \ \ \ \ \textcolor{keywordflow}{if}(multiZs)\{}
+\DoxyCodeLine{00990\ \ \ \ \ \ \ PosType\ Dls,Ds;}
+\DoxyCodeLine{00991\ \ \ \ \ \ \ \mbox{\hyperlink{class_lens_a7ddbfe99548eb3e63d1d45af2f005972}{FindSourcePlane}}(source\_zs[i],jmax,Dls,Ds);}
+\DoxyCodeLine{00992\ \ \ \ \ \ \ Dls\_Ds\ =\ Dls\ /\ Ds;}
+\DoxyCodeLine{00993\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(jmax\ >\ 0)\ D\_Ds\ =\ Dl[jmax-\/1]/Ds;}
+\DoxyCodeLine{00994\ \ \ \ \ \}}
+\DoxyCodeLine{00995\ \ \ \ \ }
+\DoxyCodeLine{00996\ \ \ \ \ \textcolor{comment}{//\ Begining\ of\ the\ loop\ through\ the\ planes\ :}}
+\DoxyCodeLine{00997\ \ \ \ \ \textcolor{comment}{//\ Each\ iteration\ leaves\ i\_point[i].image\ on\ plane\ (j+1)}}
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{00999\ \ \ \ \ \textcolor{keywordflow}{for}(j\ =\ 0;\ j\ <\ jmax\ ;\ ++j)}
+\DoxyCodeLine{01000\ \ \ \ \ \ \ \{}
+\DoxyCodeLine{01001\ \ \ \ \ \ \ }
+\DoxyCodeLine{01002\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ Dphysical\ =\ Dl[j]/(1\ +\ plane\_redshifts[j]);}
+\DoxyCodeLine{01003\ \ \ \ \ \ \ \textcolor{comment}{//\ convert\ to\ physical\ coordinates\ on\ the\ plane\ j,\ just\ for\ force\ calculation}}
+\DoxyCodeLine{01004\ \ \ \ \ \ \ xx[0]\ =\ theta[0]\ *\ \ Dphysical;}
+\DoxyCodeLine{01005\ \ \ \ \ \ \ xx[1]\ =\ theta[1]\ *\ \ Dphysical;}
+\DoxyCodeLine{01006\ \ \ \ \ \ \ \textcolor{comment}{//\ PhysMpc\ =\ ComMpc\ /\ (1+z)}}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ }
+\DoxyCodeLine{01008\ \ \ \ \ \ \ assert(xx[0]\ ==\ xx[0]\ \&\&\ xx[1]\ ==\ xx[1]);}
+\DoxyCodeLine{01009\ \ \ \ \ \ \ }
 \DoxyCodeLine{01011\ \ \ \ \ \ \ }
-\DoxyCodeLine{01012\ \ \ \ \ \ \ assert(xx[0]\ ==\ xx[0]\ \&\&\ xx[1]\ ==\ xx[1]);}
-\DoxyCodeLine{01013\ \ \ \ \ \ \ }
-\DoxyCodeLine{01015\ \ \ \ \ \ \ }
-\DoxyCodeLine{01016\ \ \ \ \ \ \ lensing\_planes[j]-\/>force(alpha,\&kappa,gamma,\&phi,xx);}
-\DoxyCodeLine{01017\ \ \ \ \ \ \ \textcolor{comment}{//\ Computed\ in\ physical\ coordinates,\ xx\ is\ in\ PhysMpc.}}
-\DoxyCodeLine{01018\ \ \ \ \ \ \ }
-\DoxyCodeLine{01020\ \ \ \ \ \ \ }
-\DoxyCodeLine{01021\ \ \ \ \ \ \ assert(alpha[0]\ ==\ alpha[0]\ \&\&\ alpha[1]\ ==\ alpha[1]);}
-\DoxyCodeLine{01022\ \ \ \ \ \ \ assert(gamma[0]\ ==\ gamma[0]\ \&\&\ gamma[1]\ ==\ gamma[1]);}
-\DoxyCodeLine{01023\ \ \ \ \ \ \ assert(kappa\ ==\ kappa);}
-\DoxyCodeLine{01024\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(std::isinf(kappa))\ \{\ std::cout\ <<\ \textcolor{stringliteral}{"{}xx\ =\ "{}}\ <<\ xx[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ xx[1]\ <<\ std::endl\ ;\}}
-\DoxyCodeLine{01025\ \ \ \ \ \ \ assert(!std::isinf(kappa));}
-\DoxyCodeLine{01026\ \ \ \ \ \ \ }
-\DoxyCodeLine{01027\ \ \ \ \ \ \ G[0]\ =\ kappa\ +\ gamma[0];\ \ \ \ G[1]\ =\ gamma[1];}
-\DoxyCodeLine{01028\ \ \ \ \ \ \ G[2]\ =\ gamma[1];\ G[3]\ =\ kappa\ -\/\ gamma[0];}
-\DoxyCodeLine{01029\ \ \ }
-\DoxyCodeLine{01030\ \ \ \ \ \ \ \textcolor{comment}{/*\ multiply\ by\ fac\ to\ obtain\ 1/comoving\_distance/physical\_distance}}
-\DoxyCodeLine{01031\ \textcolor{comment}{\ \ \ \ \ \ \ *\ such\ that\ a\ multiplication\ with\ the\ charge\ (in\ units\ of\ physical\ distance)}}
-\DoxyCodeLine{01032\ \textcolor{comment}{\ \ \ \ \ \ \ *\ will\ result\ in\ a\ 1/comoving\_distance\ quantity\ */}}
-\DoxyCodeLine{01033\ \ \ \ \ \ \ }
-\DoxyCodeLine{01034\ \ \ \ \ \ \ G\ *=\ charge\ *\ Dl[j]\ /\ (1\ +\ plane\_redshifts[j]);}
-\DoxyCodeLine{01035\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01036\ \ \ \ \ \ \ assert(gamma[0]\ ==\ gamma[0]\ \&\&\ gamma[1]\ ==\ gamma[1]);}
-\DoxyCodeLine{01037\ \ \ \ \ \ \ assert(kappa\ ==\ kappa);}
-\DoxyCodeLine{01038\ \ \ \ \ \ \ \textcolor{comment}{//assert(phi\ ==\ phi);}}
-\DoxyCodeLine{01039\ \ \ \ \ \ \ }
-\DoxyCodeLine{01040\ \ \ \ \ \ \ \textcolor{comment}{//\ This\ computes\ \(\backslash\)vec\{x\}\string^\{j+1\}\ in\ terms\ of\ \(\backslash\)vec\{x\}\string^\{j\}}}
-\DoxyCodeLine{01041\ \ \ \ \ \ \ \textcolor{comment}{//\ according\ to\ the\ corrected\ Eq.\ (18)\ of\ paper\ GLAMER\ II\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01042\ \ \ \ \ \ \ }
-\DoxyCodeLine{01043\ \ \ \ \ \ \ \textcolor{comment}{//\ Adding\ the\ j-\/plane\ alpha\ contribution\ to\ the\ sum\ \(\backslash\)Sum\_\{k=1\}\string^\{j\}\ \(\backslash\)vec\{alpha\_j\}\ :}}
-\DoxyCodeLine{01044\ \ \ \ \ \ \ SumPrevAlphas[0]\ -\/=\ charge\ *\ alpha[0]\ ;}
-\DoxyCodeLine{01045\ \ \ \ \ \ \ SumPrevAlphas[1]\ -\/=\ charge\ *\ alpha[1]\ ;}
-\DoxyCodeLine{01046\ \ \ \ \ \ \ }
-\DoxyCodeLine{01047\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ <\ jmax-\/1\ )\{}
-\DoxyCodeLine{01048\ \ \ \ \ \ \ \ \ aa\ =\ dDl[j+1]\ /\ Dl[j+1];}
-\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ bb\ =\ Dl[j]\ /\ Dl[j+1];}
-\DoxyCodeLine{01050\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{01051\ \ \ \ \ \ \ \ \ aa\ =\ Dls\_Ds;}
-\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ bb\ =\ D\_Ds;}
-\DoxyCodeLine{01053\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01054\ \ \ \ \ \ \ }
-\DoxyCodeLine{01055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!flag\_switch\_deflection\_off)\{}
-\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \ \ theta[0]\ =\ bb\ *\ theta[0]\ +\ aa\ *\ SumPrevAlphas[0];}
-\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ theta[1]\ =\ bb\ *\ theta[1]\ +\ aa\ *\ SumPrevAlphas[1];}
-\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01059\ \ \ \ }
-\DoxyCodeLine{01060\ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{01062\ \ \ \ \ \ \ \textcolor{comment}{//\ Sum\_\{k=1\}\string^\{j\}\ Dl[k]\ A\string^k.G\string^k}}
-\DoxyCodeLine{01063\ \ \ \ \ \ \ SumPrevAG\ -\/=\ (G\ *\ (i\_points[i].A))\ ;}
-\DoxyCodeLine{01064\ \ \ \ \ \ \ }
-\DoxyCodeLine{01065\ \ \ \ \ \ \ \textcolor{comment}{//\ Computation\ of\ the\ "{}plus\ quantities"{},\ i.e.\ the\ \ next\ plane\ quantities\ :}}
-\DoxyCodeLine{01066\ \ \ \ \ \ \ i\_points[i].A\ =\ i\_points[i].A\ *\ bb\ +\ SumPrevAG\ *\ aa;}
-\DoxyCodeLine{01067\ \ \ \ \ \ \ }
-\DoxyCodeLine{01068\ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01069\ \ \ \ \ \ \ }
-\DoxyCodeLine{01070\ \ \ \ \ \ \ \textcolor{comment}{//\ Geometric\ time\ delay\ with\ added\ potential}}
-\DoxyCodeLine{01071\ \ \ \ \ \ \ \textcolor{comment}{//p-\/>i\_points[i].dt\ +=\ 0.5*(\ (xplus[0]\ -\/\ xminus[0])*(xplus[0]\ -\/\ xminus[0])\ +\ (xplus[1]\ -\/\ xminus[1])*(xplus[1]\ -\/\ xminus[1])\ )\ *\ p-\/>dTl[j+1]\ /p-\/>dDl[j+1]\ /p-\/>dDl[j+1]\ -\/\ phi\ *\ p-\/>charge\ ;\ ///\ in\ Mpc\ \ ???}}
-\DoxyCodeLine{01072\ \ \ \ \ \ \ }
-\DoxyCodeLine{01073\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ that\ the\ 1+z\ factor\ must\ indeed\ be\ there\ (because\ the\ x\ positions\ have\ been\ rescaled,\ so\ it\ may\ be\ different\ compared\ to\ the\ draft).}}
-\DoxyCodeLine{01074\ \ \ \ \ \ \ \textcolor{comment}{//\ Remark\ :\ Here\ the\ true\ lensing\ potential\ is\ not\ "{}phi"{}\ but\ "{}phi\ *\ p-\/>charge\ =\ phi\ *\ 4\ pi\ G"{}.}}
-\DoxyCodeLine{01075\ \ \ \ \ \ \ }
+\DoxyCodeLine{01012\ \ \ \ \ \ \ lensing\_planes[j]-\/>force(alpha,\&kappa,gamma,\&phi,xx);}
+\DoxyCodeLine{01013\ \ \ \ \ \ \ \textcolor{comment}{//\ Computed\ in\ physical\ coordinates,\ xx\ is\ in\ PhysMpc.}}
+\DoxyCodeLine{01014\ \ \ \ \ \ \ }
+\DoxyCodeLine{01016\ \ \ \ \ \ \ }
+\DoxyCodeLine{01017\ \ \ \ \ \ \ \textcolor{comment}{//\ if(alpha[0]\ !=\ alpha[0]\ ||\ alpha[1]\ !=\ alpha[1])\{}}
+\DoxyCodeLine{01018\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ std::cout\ <<\ "{}xx[0]\ =\ "{}\ <<\ xx[0]\ <<\ "{}\ xx[1]\ =\ "{}\ <<\ xx[1]\ <<\ std::endl\ ;}}
+\DoxyCodeLine{01019\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ std::cout\ <<\ "{}alpha\ =\ "{}\ <<\ alpha[0]\ <<\ "{}\ "{}\ <<\ alpha[1]\ <<\ std::endl\ ;}}
+\DoxyCodeLine{01020\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ throw\ std::runtime\_error("{}alpha\ is\ NaN"{});}}
+\DoxyCodeLine{01021\ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{01022\ \ \ \ \ \ \ assert(alpha[0]\ ==\ alpha[0]\ \&\&\ alpha[1]\ ==\ alpha[1]);}
+\DoxyCodeLine{01023\ \ \ \ \ \ \ assert(gamma[0]\ ==\ gamma[0]\ \&\&\ gamma[1]\ ==\ gamma[1]);}
+\DoxyCodeLine{01024\ \ \ \ \ \ \ assert(kappa\ ==\ kappa);}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(std::isinf(kappa))\ \{\ std::cout\ <<\ \textcolor{stringliteral}{"{}xx\ =\ "{}}\ <<\ xx[0]\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ xx[1]\ <<\ std::endl\ ;\}}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ assert(!std::isinf(kappa));}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ }
+\DoxyCodeLine{01028\ \ \ \ \ \ \ G[0]\ =\ kappa\ +\ gamma[0];\ \ \ \ G[1]\ =\ gamma[1];}
+\DoxyCodeLine{01029\ \ \ \ \ \ \ G[2]\ =\ gamma[1];\ G[3]\ =\ kappa\ -\/\ gamma[0];}
+\DoxyCodeLine{01030\ \ \ }
+\DoxyCodeLine{01031\ \ \ \ \ \ \ \textcolor{comment}{/*\ multiply\ by\ fac\ to\ obtain\ 1/comoving\_distance/physical\_distance}}
+\DoxyCodeLine{01032\ \textcolor{comment}{\ \ \ \ \ \ \ *\ such\ that\ a\ multiplication\ with\ the\ charge\ (in\ units\ of\ physical\ distance)}}
+\DoxyCodeLine{01033\ \textcolor{comment}{\ \ \ \ \ \ \ *\ will\ result\ in\ a\ 1/comoving\_distance\ quantity\ */}}
+\DoxyCodeLine{01034\ \ \ \ \ \ \ }
+\DoxyCodeLine{01035\ \ \ \ \ \ \ G\ *=\ charge\ *\ Dl[j]\ /\ (1\ +\ plane\_redshifts[j]);}
+\DoxyCodeLine{01036\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01037\ \ \ \ \ \ \ assert(gamma[0]\ ==\ gamma[0]\ \&\&\ gamma[1]\ ==\ gamma[1]);}
+\DoxyCodeLine{01038\ \ \ \ \ \ \ assert(kappa\ ==\ kappa);}
+\DoxyCodeLine{01039\ \ \ \ \ \ \ \textcolor{comment}{//assert(phi\ ==\ phi);}}
+\DoxyCodeLine{01040\ \ \ \ \ \ \ }
+\DoxyCodeLine{01041\ \ \ \ \ \ \ \textcolor{comment}{//\ This\ computes\ \(\backslash\)vec\{x\}\string^\{j+1\}\ in\ terms\ of\ \(\backslash\)vec\{x\}\string^\{j\}}}
+\DoxyCodeLine{01042\ \ \ \ \ \ \ \textcolor{comment}{//\ according\ to\ the\ corrected\ Eq.\ (18)\ of\ paper\ GLAMER\ II\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01043\ \ \ \ \ \ \ }
+\DoxyCodeLine{01044\ \ \ \ \ \ \ \textcolor{comment}{//\ Adding\ the\ j-\/plane\ alpha\ contribution\ to\ the\ sum\ \(\backslash\)Sum\_\{k=1\}\string^\{j\}\ \(\backslash\)vec\{alpha\_j\}\ :}}
+\DoxyCodeLine{01045\ \ \ \ \ \ \ SumPrevAlphas[0]\ -\/=\ charge\ *\ alpha[0]\ ;}
+\DoxyCodeLine{01046\ \ \ \ \ \ \ SumPrevAlphas[1]\ -\/=\ charge\ *\ alpha[1]\ ;}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ }
+\DoxyCodeLine{01048\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(j\ <\ jmax-\/1\ )\{}
+\DoxyCodeLine{01049\ \ \ \ \ \ \ \ \ aa\ =\ dDl[j+1]\ /\ Dl[j+1];}
+\DoxyCodeLine{01050\ \ \ \ \ \ \ \ \ bb\ =\ Dl[j]\ /\ Dl[j+1];}
+\DoxyCodeLine{01051\ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{01052\ \ \ \ \ \ \ \ \ aa\ =\ Dls\_Ds;}
+\DoxyCodeLine{01053\ \ \ \ \ \ \ \ \ bb\ =\ D\_Ds;}
+\DoxyCodeLine{01054\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01055\ \ \ \ \ \ \ }
+\DoxyCodeLine{01056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!flag\_switch\_deflection\_off)\{}
+\DoxyCodeLine{01057\ \ \ \ \ \ \ \ \ \ \ theta[0]\ =\ bb\ *\ theta[0]\ +\ aa\ *\ SumPrevAlphas[0];}
+\DoxyCodeLine{01058\ \ \ \ \ \ \ \ \ \ \ theta[1]\ =\ bb\ *\ theta[1]\ +\ aa\ *\ SumPrevAlphas[1];}
+\DoxyCodeLine{01059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01060\ \ \ \ }
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01062\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01063\ \ \ \ \ \ \ \textcolor{comment}{//\ Sum\_\{k=1\}\string^\{j\}\ Dl[k]\ A\string^k.G\string^k}}
+\DoxyCodeLine{01064\ \ \ \ \ \ \ SumPrevAG\ -\/=\ (G\ *\ (i\_points[i].A))\ ;}
+\DoxyCodeLine{01065\ \ \ \ \ \ \ }
+\DoxyCodeLine{01066\ \ \ \ \ \ \ \textcolor{comment}{//\ Computation\ of\ the\ "{}plus\ quantities"{},\ i.e.\ the\ \ next\ plane\ quantities\ :}}
+\DoxyCodeLine{01067\ \ \ \ \ \ \ i\_points[i].A\ =\ i\_points[i].A\ *\ bb\ +\ SumPrevAG\ *\ aa;}
+\DoxyCodeLine{01068\ \ \ \ \ \ \ }
+\DoxyCodeLine{01069\ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01070\ \ \ \ \ \ \ }
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \textcolor{comment}{//\ Geometric\ time\ delay\ with\ added\ potential}}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \textcolor{comment}{//p-\/>i\_points[i].dt\ +=\ 0.5*(\ (xplus[0]\ -\/\ xminus[0])*(xplus[0]\ -\/\ xminus[0])\ +\ (xplus[1]\ -\/\ xminus[1])*(xplus[1]\ -\/\ xminus[1])\ )\ *\ p-\/>dTl[j+1]\ /p-\/>dDl[j+1]\ /p-\/>dDl[j+1]\ -\/\ phi\ *\ p-\/>charge\ ;\ ///\ in\ Mpc\ \ ???}}
+\DoxyCodeLine{01073\ \ \ \ \ \ \ }
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ that\ the\ 1+z\ factor\ must\ indeed\ be\ there\ (because\ the\ x\ positions\ have\ been\ rescaled,\ so\ it\ may\ be\ different\ compared\ to\ the\ draft).}}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \textcolor{comment}{//\ Remark\ :\ Here\ the\ true\ lensing\ potential\ is\ not\ "{}phi"{}\ but\ "{}phi\ *\ p-\/>charge\ =\ phi\ *\ 4\ pi\ G"{}.}}
 \DoxyCodeLine{01076\ \ \ \ \ \ \ }
-\DoxyCodeLine{01077\ \ \ \ \ \}\ \textcolor{comment}{//\ End\ of\ the\ loop\ going\ through\ the\ planes}}
-\DoxyCodeLine{01078\ \ \ \ \ }
-\DoxyCodeLine{01079\ \ \ \ \ \textcolor{keywordflow}{if}(flag\_switch\_deflection\_off)\{}
-\DoxyCodeLine{01080\ \ \ \ \ \ \ i\_points[i].A\ =\ Matrix2x2<KappaType>::I()\ -\/\ SumPrevAG;}
-\DoxyCodeLine{01081\ \ \ \ \ \}}
-\DoxyCodeLine{01082\ \ \ \ \ }
-\DoxyCodeLine{01083\ \ \ \ \ \textcolor{comment}{//\ Subtracting\ off\ a\ term\ that\ makes\ the\ unperturbed\ ray\ to\ have\ zero\ time\ delay}}
-\DoxyCodeLine{01084\ \ \ \ \ \textcolor{comment}{//p-\/>i\_points[i].dt\ -\/=\ 0.5*(\ p-\/>i\_points[i].image-\/>x[0]*p-\/>i\_points[i].image-\/>x[0]\ +\ p-\/>i\_points[i].image-\/>x[1]*p-\/>i\_points[i].image-\/>x[1]\ )\ /\ p-\/>Dl[NLastPlane];}}
-\DoxyCodeLine{01085\ \ \ \ \ }
-\DoxyCodeLine{01086\ \ \ \ \ \textcolor{comment}{//\ Conversion\ of\ dt\ from\ Mpc\ (physical\ Mpc)\ to\ Years\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01087\ \ \ \ \ i\_points[i].dt\ *=\ MpcToSeconds\ *\ SecondToYears\ ;}
-\DoxyCodeLine{01088\ \ \ \ \ }
-\DoxyCodeLine{01089\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01090\ \ \ \ \ }
-\DoxyCodeLine{01091\ \ \ \ \ \textcolor{comment}{//\ Putting\ the\ final\ values\ of\ the\ quantities\ in\ the\ image\ point\ -\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01092\ \ \ \ \ i\_points[i].image-\/>A\ =\ i\_points[i].A;}
-\DoxyCodeLine{01093\ \ \ \ \ i\_points[i].image-\/>dt\ =\ i\_points[i].dt;}
-\DoxyCodeLine{01094\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{01095\ \ \ \ \ }
+\DoxyCodeLine{01077\ \ \ \ \ \ \ }
+\DoxyCodeLine{01078\ \ \ \ \ \}\ \textcolor{comment}{//\ End\ of\ the\ loop\ going\ through\ the\ planes}}
+\DoxyCodeLine{01079\ \ \ \ \ }
+\DoxyCodeLine{01080\ \ \ \ \ \textcolor{keywordflow}{if}(flag\_switch\_deflection\_off)\{}
+\DoxyCodeLine{01081\ \ \ \ \ \ \ i\_points[i].A\ =\ Matrix2x2<KappaType>::I()\ -\/\ SumPrevAG;}
+\DoxyCodeLine{01082\ \ \ \ \ \}}
+\DoxyCodeLine{01083\ \ \ \ \ }
+\DoxyCodeLine{01084\ \ \ \ \ \textcolor{comment}{//\ Subtracting\ off\ a\ term\ that\ makes\ the\ unperturbed\ ray\ to\ have\ zero\ time\ delay}}
+\DoxyCodeLine{01085\ \ \ \ \ \textcolor{comment}{//p-\/>i\_points[i].dt\ -\/=\ 0.5*(\ p-\/>i\_points[i].image-\/>x[0]*p-\/>i\_points[i].image-\/>x[0]\ +\ p-\/>i\_points[i].image-\/>x[1]*p-\/>i\_points[i].image-\/>x[1]\ )\ /\ p-\/>Dl[NLastPlane];}}
+\DoxyCodeLine{01086\ \ \ \ \ }
+\DoxyCodeLine{01087\ \ \ \ \ \textcolor{comment}{//\ Conversion\ of\ dt\ from\ Mpc\ (physical\ Mpc)\ to\ Years\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01088\ \ \ \ \ i\_points[i].dt\ *=\ MpcToSeconds\ *\ SecondToYears\ ;}
+\DoxyCodeLine{01089\ \ \ \ \ }
+\DoxyCodeLine{01090\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01091\ \ \ \ \ }
+\DoxyCodeLine{01092\ \ \ \ \ \textcolor{comment}{//\ Putting\ the\ final\ values\ of\ the\ quantities\ in\ the\ image\ point\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{01093\ \ \ \ \ i\_points[i].image-\/>A\ =\ i\_points[i].A;}
+\DoxyCodeLine{01094\ \ \ \ \ i\_points[i].image-\/>dt\ =\ i\_points[i].dt;}
+\DoxyCodeLine{01095\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
 \DoxyCodeLine{01096\ \ \ \ \ }
-\DoxyCodeLine{01097\ \ \ \ \ \textcolor{comment}{//\ TEST\ :\ showing\ final\ quantities}}
-\DoxyCodeLine{01098\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/=}}
-\DoxyCodeLine{01099\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}RSI\ final\ :\ X\ X\ |\ "{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ source\_zs[i]\ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ i\_points[i].kappa()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].gamma1()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].gamma2()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].gamma3()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].invmag()\ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ i\_points[i].dt\ <<\ std::endl\ ;}
-\DoxyCodeLine{01100\ \ \ \ \ }
-\DoxyCodeLine{01101\ \ \ \}\ \textcolor{comment}{//\ End\ of\ the\ main\ loop.}}
-\DoxyCodeLine{01102\ }
-\DoxyCodeLine{01103\ \}}
-\DoxyCodeLine{01104\ }
-\DoxyCodeLine{01105\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MULTIPLANE\_H\_\ */}\textcolor{preprocessor}{}}
-\DoxyCodeLine{01106\ }
+\DoxyCodeLine{01097\ \ \ \ \ }
+\DoxyCodeLine{01098\ \ \ \ \ \textcolor{comment}{//\ TEST\ :\ showing\ final\ quantities}}
+\DoxyCodeLine{01099\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/=}}
+\DoxyCodeLine{01100\ \ \ \ \ \textcolor{keywordflow}{if}(verbose)\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}RSI\ final\ :\ X\ X\ |\ "{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ \ "{}}\ <<\ source\_zs[i]\ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ i\_points[i].kappa()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].gamma1()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].gamma2()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].gamma3()\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ i\_points[i].invmag()\ <<\ \textcolor{stringliteral}{"{}\ |\ "{}}\ <<\ i\_points[i].dt\ <<\ std::endl\ ;}
+\DoxyCodeLine{01101\ \ \ \ \ }
+\DoxyCodeLine{01102\ \ \ \}\ \textcolor{comment}{//\ End\ of\ the\ main\ loop.}}
+\DoxyCodeLine{01103\ }
+\DoxyCodeLine{01104\ \}}
+\DoxyCodeLine{01105\ }
+\DoxyCodeLine{01106\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MULTIPLANE\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{01107\ }
 
 \end{DoxyCode}

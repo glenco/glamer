@@ -42,17 +42,17 @@
 \DoxyCodeLine{00039\ std::string\ to\_string(\textcolor{keyword}{const}\ CosmoParamSet\ \&p);}
 \DoxyCodeLine{00040\ std::ostream\ \&operator<<(std::ostream\ \&os,\textcolor{keyword}{const}\ CosmoParamSet\ \&p);}
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\{}
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }COSMOLOGY\{}
 \DoxyCodeLine{00053\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00054\ \ \ }
-\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}(CosmoParamSet\ cosmo\_p\ =\ CosmoParamSet::WMAP5yr);}
-\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}(\textcolor{keywordtype}{double}\ omegam,\textcolor{keywordtype}{double}\ omegal,\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}},\ \textcolor{keywordtype}{double}\ w\ =\ -\/1,\textcolor{keywordtype}{double}\ wa\ =\ 0}
+\DoxyCodeLine{00055\ \ \ COSMOLOGY(CosmoParamSet\ cosmo\_p\ =\ CosmoParamSet::WMAP5yr);}
+\DoxyCodeLine{00057\ \ \ COSMOLOGY(\textcolor{keywordtype}{double}\ omegam,\textcolor{keywordtype}{double}\ omegal,\textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_a917fee454b9acccd334d8f3452997d99}{h}},\ \textcolor{keywordtype}{double}\ w\ =\ -\/1,\textcolor{keywordtype}{double}\ wa\ =\ 0}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{bool}\ justdistances=\textcolor{keyword}{false}\ }
 \DoxyCodeLine{00059\ \ \ );}
-\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo);}
-\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{\string~COSMOLOGY}}();}
+\DoxyCodeLine{00060\ \ \ COSMOLOGY(\textcolor{keyword}{const}\ COSMOLOGY\ \&cosmo);}
+\DoxyCodeLine{00061\ \ \ \string~COSMOLOGY();}
 \DoxyCodeLine{00062\ \ \ }
-\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo);}
+\DoxyCodeLine{00063\ \ \ COSMOLOGY\&\ operator=(\textcolor{keyword}{const}\ COSMOLOGY\ \&cosmo);}
 \DoxyCodeLine{00064\ \ \ }
 \DoxyCodeLine{00065\ \ \ \textcolor{comment}{//\ returns\ the\ parameter\ set\ if\ any}}
 \DoxyCodeLine{00066\ \ \ CosmoParamSet\ ParamSet()\{\textcolor{keywordflow}{return}\ cosmo\_set;\}}
@@ -117,13 +117,13 @@
 \DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\textcolor{keywordtype}{double}\ k\_max\ =\ 100,\textcolor{keywordtype}{double}\ k\_min\ =\ 1.0e-\/3);}
 \DoxyCodeLine{00152\ }
 \DoxyCodeLine{00153\ \ \ \textcolor{keyword}{struct\ }CorrFunctorType\{}
-\DoxyCodeLine{00154\ \ \ \ \ CorrFunctorType(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *cosmo,\textcolor{keywordtype}{double}\ radius,\textcolor{keywordtype}{double}\ redshift)}
+\DoxyCodeLine{00154\ \ \ \ \ CorrFunctorType(COSMOLOGY\ *cosmo,\textcolor{keywordtype}{double}\ radius,\textcolor{keywordtype}{double}\ redshift)}
 \DoxyCodeLine{00155\ \ \ \ \ :\ cosmology(cosmo),z(redshift),r(radius)}
 \DoxyCodeLine{00156\ \ \ \ \ \{}
 \DoxyCodeLine{00157\ \ \ \ \ \ \ norm\ =\ 0.5/PI/PI/(1+z)/(1+z);}
 \DoxyCodeLine{00158\ \ \ \ \ \};}
 \DoxyCodeLine{00159\ \ \ \ \ }
-\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *cosmology;}
+\DoxyCodeLine{00160\ \ \ \ \ COSMOLOGY\ *cosmology;}
 \DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{double}\ z;}
 \DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{double}\ r;}
 \DoxyCodeLine{00163\ \ \ \ \ }
@@ -212,30 +212,30 @@
 \DoxyCodeLine{00260\ \ \ }
 \DoxyCodeLine{00261\ \ \ \textcolor{comment}{//\ structure\ rappers\ to\ make\ integration\ thread\ safe}}
 \DoxyCodeLine{00262\ \ \ \textcolor{keyword}{struct\ }drdz\_struct\{}
-\DoxyCodeLine{00263\ \ \ \ \ drdz\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00263\ \ \ \ \ drdz\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz(x);\}}
-\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00265\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00266\ \ \ \};}
 \DoxyCodeLine{00267\ \ \ \textcolor{keyword}{struct\ }drdzdark\_struct\{}
-\DoxyCodeLine{00268\ \ \ \ \ drdzdark\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00268\ \ \ \ \ drdzdark\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz\_dark(x);\}}
-\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00270\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00271\ \ \ \};}
 \DoxyCodeLine{00272\ \ \ \textcolor{keyword}{struct\ }adrdz\_struct\{}
-\DoxyCodeLine{00273\ \ \ \ \ adrdz\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00273\ \ \ \ \ adrdz\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz(x)/x;\}}
-\DoxyCodeLine{00275\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00275\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00276\ \ \ \};}
 \DoxyCodeLine{00277\ \ \ \textcolor{keyword}{struct\ }adrdzdark\_struct\{}
-\DoxyCodeLine{00278\ \ \ \ \ adrdzdark\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00278\ \ \ \ \ adrdzdark\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.drdz\_dark(x)/x;\}}
-\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00280\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00281\ \ \ \};}
 \DoxyCodeLine{00282\ }
 \DoxyCodeLine{00283\ \ \ \textcolor{keyword}{struct\ }normL\_struct\{}
-\DoxyCodeLine{00284\ \ \ \ \ normL\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00284\ \ \ \ \ normL\_struct(COSMOLOGY\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.normL(x);\}}
-\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \&cos;}
+\DoxyCodeLine{00286\ \ \ \ \ COSMOLOGY\ \&cos;}
 \DoxyCodeLine{00287\ \ \ \};}
 \DoxyCodeLine{00288\ }
 \DoxyCodeLine{00289\ \ \ \textcolor{keywordtype}{double}\ ddrdzdOmo(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
@@ -243,19 +243,19 @@
 \DoxyCodeLine{00291\ \ \ \textcolor{keywordtype}{double}\ ddrdzdw1(\textcolor{keywordtype}{double}\ x)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00292\ \ \ }
 \DoxyCodeLine{00293\ \ \ \textcolor{keyword}{struct\ }ddrdzdOmo\_struct\{}
-\DoxyCodeLine{00294\ \ \ \ \ ddrdzdOmo\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00294\ \ \ \ \ ddrdzdOmo\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.ddrdzdOmo(x);\}}
-\DoxyCodeLine{00296\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00296\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00297\ \ \ \};}
 \DoxyCodeLine{00298\ \ \ \textcolor{keyword}{struct\ }ddrdzdw\_struct\{}
-\DoxyCodeLine{00299\ \ \ \ \ ddrdzdw\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00299\ \ \ \ \ ddrdzdw\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.ddrdzdw(x);\}}
-\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00301\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00302\ \ \ \};}
 \DoxyCodeLine{00303\ \ \ \textcolor{keyword}{struct\ }ddrdzdw1\_struct\{}
-\DoxyCodeLine{00304\ \ \ \ \ ddrdzdw1\_struct(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
+\DoxyCodeLine{00304\ \ \ \ \ ddrdzdw1\_struct(COSMOLOGY\ \textcolor{keyword}{const}\ \&cosmo):cos(cosmo)\{\};}
 \DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ cos.ddrdzdw1(x);\}}
-\DoxyCodeLine{00306\ \ \ \ \ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ \textcolor{keyword}{const}\ \&cos;}
+\DoxyCodeLine{00306\ \ \ \ \ COSMOLOGY\ \textcolor{keyword}{const}\ \&cos;}
 \DoxyCodeLine{00307\ \ \ \};}
 \DoxyCodeLine{00308\ }
 \DoxyCodeLine{00309\ \ \ \textcolor{keywordtype}{bool}\ init\_structure\_functions;}
@@ -302,8 +302,8 @@
 \DoxyCodeLine{00361\ \ \ \textcolor{keywordtype}{double}\ timeEarly(\textcolor{keywordtype}{double}\ a)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00362\ \ \ \textcolor{keywordtype}{double}\ dNdz(\textcolor{keywordtype}{double}\ z);}
 \DoxyCodeLine{00363\ \ \ }
-\DoxyCodeLine{00364\ \ \ \textcolor{keyword}{typedef}\ double\ (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}::*pt2MemFunc)(double)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00365\ \ \ \textcolor{keyword}{typedef}\ double\ (\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}::*pt2MemFuncNonConst)(double);}
+\DoxyCodeLine{00364\ \ \ \textcolor{keyword}{typedef}\ double\ (COSMOLOGY::*pt2MemFunc)(double)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00365\ \ \ \textcolor{keyword}{typedef}\ double\ (COSMOLOGY::*pt2MemFuncNonConst)(double);}
 \DoxyCodeLine{00366\ \ \ }
 \DoxyCodeLine{00367\ \ \ \textcolor{keywordtype}{double}\ nintegrateDcos(pt2MemFunc\ func,\textcolor{keywordtype}{double}\ a,\textcolor{keywordtype}{double}\ b,\textcolor{keywordtype}{double}\ tols)\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00368\ \ \ \textcolor{keywordtype}{double}\ trapzdDcoslocal(pt2MemFunc\ func,\ \textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y_ae36601fd4a4eae5059470813b68b1095}{n}},\ \textcolor{keywordtype}{double}\ *s2)\ \textcolor{keyword}{const};}
@@ -382,11 +382,11 @@
 \DoxyCodeLine{00441\ \ \ std::vector<double>\ radDist\_interp;}
 \DoxyCodeLine{00442\ \};}
 \DoxyCodeLine{00443\ }
-\DoxyCodeLine{00444\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}};}
-\DoxyCodeLine{00451\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_n_f_w___utility}{NFW\_Utility}}\ \{}
+\DoxyCodeLine{00444\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{COSMOLOGY}}\ *CosmoHndl;}
+\DoxyCodeLine{00451\ \textcolor{keyword}{class\ }NFW\_Utility\ \{}
 \DoxyCodeLine{00452\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00453\ \ \ \mbox{\hyperlink{class_n_f_w___utility}{NFW\_Utility}}()\{\}}
-\DoxyCodeLine{00454\ \ \ \mbox{\hyperlink{class_n_f_w___utility}{\string~NFW\_Utility}}()\{\};}
+\DoxyCodeLine{00453\ \ \ NFW\_Utility()\{\}}
+\DoxyCodeLine{00454\ \ \ \string~NFW\_Utility()\{\};}
 \DoxyCodeLine{00455\ \ \ }
 \DoxyCodeLine{00456\ \ \ \textcolor{comment}{//\ methods\ for\ NFW\ profile}}
 \DoxyCodeLine{00457\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_n_f_w___utility_acc2dee463cfc4de09d9a50b4ae62b7c3}{NFW\_V200}}(\textcolor{keywordtype}{double}\ M200,\textcolor{keywordtype}{double}\ R200);}
@@ -404,7 +404,7 @@
 \DoxyCodeLine{00469\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00470\ \ \ \textcolor{keywordtype}{float}\ Vmax,R\_half,mass;\ \ \ \ \ \ \ }
 \DoxyCodeLine{00471\ \ \ }
-\DoxyCodeLine{00472\ \ \ \textcolor{keyword}{typedef}\ float\ (\mbox{\hyperlink{class_n_f_w___utility}{NFW\_Utility}}::*MemFunc)(float);}
+\DoxyCodeLine{00472\ \ \ \textcolor{keyword}{typedef}\ float\ (NFW\_Utility::*MemFunc)(float);}
 \DoxyCodeLine{00473\ \ \ \textcolor{keywordtype}{float}\ zbrentD(MemFunc\ func,\ \textcolor{keywordtype}{float}\ a,\textcolor{keywordtype}{float}\ b,\textcolor{keywordtype}{float}\ tols);}
 \DoxyCodeLine{00474\ \ \ \textcolor{keywordtype}{float}\ nfwfunc(\textcolor{keywordtype}{float}\ cons);}
 \DoxyCodeLine{00475\ \ \ \textcolor{keywordtype}{float}\ funcforconcentration(\textcolor{keywordtype}{float}\ cons);}
@@ -419,8 +419,8 @@
 \DoxyCodeLine{00485\ \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{00486\ }
 \DoxyCodeLine{00487\ \textcolor{comment}{/***\ in\ cosmo.c\ ***/}}
-\DoxyCodeLine{00488\ \textcolor{keywordtype}{int}\ cosmo\_compare(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos1,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos2);}
-\DoxyCodeLine{00489\ \textcolor{keywordtype}{void}\ cosmo\_copy(\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos1,\mbox{\hyperlink{class_c_o_s_m_o_l_o_g_y}{CosmoHndl}}\ cos2);}
+\DoxyCodeLine{00488\ \textcolor{keywordtype}{int}\ cosmo\_compare(CosmoHndl\ cos1,CosmoHndl\ cos2);}
+\DoxyCodeLine{00489\ \textcolor{keywordtype}{void}\ cosmo\_copy(CosmoHndl\ cos1,CosmoHndl\ cos2);}
 \DoxyCodeLine{00490\ \textcolor{keywordtype}{void}\ ders(\textcolor{keywordtype}{double}\ z,\textcolor{keywordtype}{double}\ Da[],\textcolor{keywordtype}{double}\ dDdz[]);}
 \DoxyCodeLine{00491\ \textcolor{keywordtype}{void}\ dir(\textcolor{keywordtype}{double}\ r,\textcolor{keywordtype}{double}\ a[],\textcolor{keywordtype}{double}\ dadr[]);}
 \DoxyCodeLine{00492\ \textcolor{keywordtype}{double}\ arctanh(\textcolor{keywordtype}{double}\ x);}
